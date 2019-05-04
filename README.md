@@ -4,6 +4,9 @@ welcome to my apocalypse
 
 recent publications ....
 
+* 2019-05-04
+  * [german synth draft odp](../../raw/master/alchi%20synth%20pres%20german%20draft%202019-05-04.odp) (11 MB) (link to download)
+
 * 2019-04-11
   * [german synth draft pdf](../../raw/master/alchi%20draft%202019-04-11/alchi%20synth%20pres%20german%20draft%202019-04-11.q90.pdf) (3 MB) (link to download)
   * [german synth draft odp](../../raw/master/alchi%20draft%202019-04-11/alchi%20synth%20pres%20german%20draft%202019-04-11.odp) (5 MB) (link to download)
