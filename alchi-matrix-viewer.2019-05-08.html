@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="utf-8"/>
+<script type="text/javascript">
+
+/*
+	#alchi
+	web of the sixteen types
+	2019-05-08
+	license = public domain OR creative commons zero OR unlicense OR mit license
+*/
+
+// build matrix of sixteen types
+function m_build(n)
+{
+	// s = same sex
+	// d = diff sex
+	
+	// A-bond
+	/*
+		s - - -
+		- - - d
+		- s - -
+		- - d -
+	*/
+	m_set(0, 0, n); // = sc x sm x st
+	m_set(2, 1, n); // = sc x sm x st
+	// short version: use "diff gender" function dg(n)
+	m_set(1, 3, dg(n)); // = dc x sm x st
+	m_set(3, 2, dg(n)); // = dc x sm x st
+
+	// B-bond
+	/*
+		- s - -
+		- - d -
+		s - - -
+		- - - d
+	*/
+
+	x = lx3(
+		no(n, 'sc'), // same congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'st'), // same tempo
+	);
+
+	m_set(0, 1, x); // = sc x dm x st
+	m_set(2, 0, x); // = sc x dm x st
+
+	// short version: use "diff gender" function dg(n)
+	m_set(1, 2, dg(x)); // = dc x dm x st
+	m_set(3, 3, dg(x)); // = dc x dm x st
+
+
+
+	// D-bond, only diff sex
+	/*
+		- - - -
+		d - - -
+		- - - -
+		- d - -
+	*/
+
+	x = lx3(
+		no(n, 'sc'), // same congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'dt'), // diff tempo
+	);
+
+	m_set(1, 0, x); // = sc x dm x dt
+	m_set(3, 1, x); // = sc x dm x dt
+
+	//m_set(0, 3, dg(x)); // = dc x dm x dt
+	//m_set(2, 2, dg(x)); // = dc x dm x dt
+
+
+
+	// H-bond, only same sex
+	/*
+		- - - s
+		- - - -
+		- - s -
+		- - - -
+	*/
+
+	x = lx3(
+		no(n, 'dc'), // diff congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'dt'), // diff tempo
+	);
+
+	m_set(0, 3, x); // = dc x dm x dt
+	m_set(2, 2, x); // = dc x dm x dt
+
+	//m_set(1, 0, dg(x)); // = sc x dm x dt
+	//m_set(3, 1, dg(x)); // = sc x dm x dt
+
+
+
+	// P-bond
+	/*
+		- - s -
+		- d - -
+		- - - s
+		d - - -
+	*/
+
+	x = lx3(
+		no(n, 'sc'), // same congruence
+		no(n, 'sm'), // same mood
+		no(n, 'dt'), // diff tempo
+	);
+
+	m_set(3, 0, x); // = sc x sm x dt
+	m_set(1, 1, x); // = sc x sm x dt
+
+	// short version: use "diff gender" function dg(n)
+	m_set(0, 2, dg(x)); // = dc x sm x dt
+	m_set(2, 3, dg(x));	 // = dc x sm x dt
+
+}
+
+
+
+/* definitions */
+
+// number names
+// variant: congruence first
+//   the two variants
+//    1. congruence first --> 1=M1 .... 6=F1 ....
+//    2. opposition first --> 1=F1 .... 6=M1 ....
+//   are only used internally,
+//   cos every congruence will claim the "first place"
+//   and there will never be conset on "who is number one?"
+//   only "local conset" in the "same congruence" group.
+//   if you use the "numeric eight notation" N8 = 1 2 3 4   6 7 8 9
+//   then you should explain: what variant do you mean?
+//   short: evil are always the other ones.
+//
+//   the dimensions mood and tempo are independent of gender,
+//   but "psychotic tempo" is masculine
+//   and "neurotic  tempo" is feminine.
+//   --> congruence: tempo-gender is same as body-gender = M1 F2 F3 M4
+//   --> opposition: tempo-gender is diff to body-gender = F1 M2 M3 F4
+var names = [
+	// gender-congruent
+	// 0     1     2     3     4
+	   '', 'M1', 'F2', 'F3', 'M4',
+
+	// gender-opposing
+	// 5     6     7     8     9
+	   '', 'F1', 'M2', 'M3', 'F4',
+]
+
+// element colors
+// eigen colors:
+// fire red, earth green, air yellow, water blue
+// opposite of "aura colors": green red blue yellow
+var color = ['', 'r', 'g', 'y', 'b'];
+
+// congruence of gender
+// variant: congruence first
+var gc = [1, 2, 3, 4]; // patriarchy = gender-congruent
+var go = [6, 7, 8, 9]; // matriarchy = gender-opposing
+
+// gender
+// variant: congruence first
+var gm = [1, 4, 7, 8]; // male   = penis
+var gf = [2, 3, 6, 9]; // female = vagina
+
+// tempo
+var tp = [1, 4, 6, 9]; // psychotic = phlegmatic
+var tn = [2, 3, 7, 8]; // neurotic  = choleric
+
+// mood
+var me = [1, 3, 6, 8]; // extravert = sanguinic
+var mi = [2, 4, 7, 9]; // introvert = melancholic
+
+// class
+// not needed here
+// extravert is attractive, introvert is selfless
+// tempo direction of "introvert to extravert":
+// Logic  class: neurotic  is attracted to psychotic = earth --> fire
+// Grafic class: psychotic is attracted to neurotic  = water --> air
+// Logic  class = center in attacking team
+// Grafic class = center in defending team
+var cc = [1, 2, 6, 7]; // classic  = Logic
+var cr = [3, 4, 8, 9]; // romantic = Grafic
+
+var dim_name = {
+	'c': ['gc', 'go'], // congruence of gender
+	'm': ['mi', 'me'], // mood
+	't': ['tn', 'tp'], // tempo
+};
+
+// number orbit/context/expansion
+// expand noun to adjective
+// expand one number to four numbers
+// n in [1, 2, 3, 4, 6, 7, 8, 9]
+// t in ['sc', 'dc', 'sm', 'dm', 'st', 'dt']
+// t is "context type"
+// 's' is same, 'd' is diff = different
+// 'c' is congruence = congruent or opposing
+// 'm' is mood = extravert or introvert
+// 't' is tempo = neurotic or psychotic
+function no(n, t)
+{
+		var s = t[0]; // sign: s or d = same or diff
+		var d = t[1]; // dimension: c, m, t
+		var a = dim_name[d][0];
+		var b = dim_name[d][1];
+		
+		if (s == 's')
+			return eval(a+'.includes('+n+') ? '+a+' : '+b);
+		if (s == 'd')
+			return eval(a+'.includes('+n+') ? '+b+' : '+a);
+
+		// eval code samples:
+		//
+		// t='sc':   gc.includes(n) ? gc : go
+		//
+		// t='dc':   gc.includes(n) ? go : gc
+		//
+		// = "ternary if" syntax = is_true ? yes : no
+}
+
+
+
+
+
+
+// usage: lx(list_a, list_b, list_c, ...)
+// or: lx.apply(null, lists)
+function lx(){
+/*
+	if(arguments.length === 1) {
+		lists = arguments[0];
+	} else {
+		lists = arguments;
+	}
+  */
+    var res = arguments[0];
+	var tmp = [];
+	for (var L = 1; L < arguments.length; L++) {
+		for (var i = 0; i < res.length; i++) {
+			for (var k = 0; k < arguments[L].length; k++) {
+				if (res[i] == arguments[L][k]) {
+					tmp.push(res[i]);
+					break;
+				}
+			}
+		}
+		res = tmp;
+		tmp = [];
+	}
+	if (res.length === 1)
+		return res[0];
+    return res;
+}
+
+
+
+
+
+
+/* list intersection of three arrays */
+/* faster than lx() */
+function lx3(a, b, c){
+    var res = [];
+    for (var i = 0; i < a.length; i++) {
+        for (var k = 0; k < b.length; k++) {
+            if (a[i] == b[k]) {
+                res.push(a[i]);
+                break;
+            }
+        }
+    }
+	// change variables
+	a = res;
+	b = c;
+	// repeat
+	res = [];
+    for (var i = 0; i < a.length; i++) {
+        for (var k = 0; k < b.length; k++) {
+            if (a[i] == b[k]) {
+                res.push(a[i]);
+                break;
+            }
+        }
+    }
+	// return
+	if (res.length === 1)
+		return res[0];
+    return res;
+}
+
+
+
+
+
+
+var M; // matrix table
+
+function m_init()
+{
+	M = document.getElementById('matrix');
+	var r;
+	var d;
+
+	for (y=0; y<4; y++)
+	{
+		r = document.createElement("tr");
+
+		for (x=0; x<4; x++)
+		{
+			d = document.createElement("td");
+			d.setAttribute("onClick", "m_click(this);");
+			r.appendChild(d);
+		}
+	
+		M = document.getElementById('matrix');
+
+		M.appendChild(r);
+	}
+}
+
+
+
+function m_cell(y, x)
+{
+	var m = document.getElementById('matrix');
+	var r = m.getElementsByTagName("tr")[y];
+	var d = r.getElementsByTagName("td")[x];
+	return d;
+}
+
+
+
+
+function m_set(y, x, n)
+{
+	//global gm;
+	n = parseInt(n);
+	
+	var d = m_cell(y, x);
+	var e = (n>4) ? n-5 : n;
+	var g = gm.includes(n) ? 'M' : 'F';
+	s = g + e;
+	if (e == 2 || e == 4) {
+		s = '<div><div>ᐱ<br/>ᐳ <b>'+s+'</b> ᐸ<br/>ᐯ</div></div>'; // ᐸᐱᐳᐯ
+		//s = '<div><div>🡩<br/>🡪 <b>'+s+'</b> 🡨<br/>🡫</div></div>'; // 🡨🡩🡪🡫
+		//s = '🡩<br/>🡪 <b>'+s+'</b> 🡨<br/>🡫'; // 🡨🡩🡪🡫
+		//s = 'ᐱ<br/>ᐳ <b>'+s+'</b> ᐸ<br/>ᐯ'; // ᐸᐱᐳᐯ
+	}
+	else {
+		s = '<div><div>ᐯ<br/>ᐸ <b>'+s+'</b> ᐳ<br/>ᐱ</div></div>'; // ᐸᐱᐳᐯ
+		//s = '<div><div>🡫<br/>🡨 <b>'+s+'</b> 🡪<br/>🡩</div></div>'; // 🡨🡩🡪🡫
+		//s = '🡫<br/>🡨 <b>'+s+'</b> 🡪<br/>🡩'; // 🡨🡩🡪🡫
+		//s = 'ᐯ<br/>ᐸ <b>'+s+'</b> ᐳ<br/>ᐱ'; // ᐸᐱᐳᐯ
+	}
+	d.setAttribute("class", color[e]);
+	d.innerHTML = s;
+}
+
+
+// diff gender
+function dg(n)
+{
+	n = parseInt(n);
+	if (n>4)
+		return n-5;
+	return n+5;
+}
+
+
+
+/*
+https://stackoverflow.com/questions/951021
+what-is-the-javascript-version-of-sleep
+*/
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+var log_node;
+
+var use_log = false;
+//var use_log = true; // verbose move
+
+function log(s){
+
+	if (use_log == false) {
+		return;
+	}
+
+	log_node.innerHTML += s;
+	
+	var scrollHeight = Math.max(log_node.scrollHeight, log_node.clientHeight);
+	log_node.scrollTop = scrollHeight - log_node.clientHeight;
+}
+
+
+
+var step_sleep_ms = 0;
+// var step_sleep_ms = 1000; // slow move
+
+// function m_move(T, Y, X){
+async function m_move(T, Y, X){
+	log('move start '+Y+' '+X+'\n');
+	// simplify Y
+	if (Y>1) {
+		Y = Y - 2;
+		if (X>1) {
+			X = 5-X; // = (1-(X-2))+2
+		}
+		else {
+			X = 1 - X;
+		}
+		log('move step1 '+Y+' '+X+'\n');
+	}
+
+	if ( (Y==0 && X==0) ) {
+		log('move done  '+Y+' '+X+'\n\n');
+		// dont move
+		return;
+	}
+	
+	// change color
+	//T.childNodes[Y].childNodes[X].setAttribute("class", "x");
+	
+	// hide steps, dont flicker
+	//T.style.display = 'none';
+	T_old = T;
+	T = T_old.cloneNode(true);
+
+	
+	var y, x, r, rc, d, dc, n, nc;
+	if (X>1) {
+		//alert('hflip');
+		// hflip = horizontal flip
+		for(y=0;y<4;y++){
+			r = T.childNodes[y];
+			// half width
+			for(x=0;x<2;x++){
+				d = r.childNodes[x];
+				n = r.childNodes[3-x];
+				dc = d.cloneNode(true);
+				nc = n.cloneNode(true);
+				r.replaceChild(nc, d);
+				r.replaceChild(dc, n);
+			}
+		}
+		X = 3-X;
+		
+		log('move step2 '+Y+' '+X+'\n');
+		
+		await sleep(step_sleep_ms);
+
+	}
+	if ( (Y==0 && X==0) || (Y==2 && X==1) ) {
+		// stop moving
+		log('move done  '+Y+' '+X+'\n\n');
+		//T.style.display = 'block';
+		T_old.parentNode.replaceChild(T, T_old);
+		return;
+	}
+	
+	
+	
+	
+	if ( (Y==0 && X==1) || (Y==1 && X==1) ) {
+		// flip columns
+		for(y=0;y<4;y++){
+			r = T.childNodes[y];
+			// every second column
+			for(x=0;x<4;x=x+2){
+				d = r.childNodes[x];
+				n = r.childNodes[x+1];
+				dc = d.cloneNode(true);
+				nc = n.cloneNode(true);
+				r.replaceChild(nc, d);
+				r.replaceChild(dc, n);
+			}
+		}
+		X = 1 - X;
+		Y = Y % 2;
+		
+		log('move step3 '+Y+' '+X+'\n');
+
+		await sleep(step_sleep_ms);
+	}
+
+
+
+
+	if ( (Y==1 && X==0) ) {
+		// flip rows
+		// every second row
+		for(y=0;y<4;y=y+2){
+			r = T.childNodes[y];
+			n = T.childNodes[y+1];
+			rc = r.cloneNode(true);
+			nc = n.cloneNode(true);
+			T.replaceChild(nc, r);
+			T.replaceChild(rc, n);
+		}
+		
+		Y = 1 - Y;
+		
+		log('move step4 '+Y+' '+X+'\n');
+
+		await sleep(step_sleep_ms);
+		
+	}
+
+	if ( (Y==0 && X==0) ) {
+		log('move done  '+Y+' '+X+'\n\n');
+		//T.style.display = 'block';
+		T_old.parentNode.replaceChild(T, T_old);
+		return;
+	}
+	
+
+
+			log('move failed? '+Y+' '+X+'\n');
+
+	
+	return;
+	
+	if (Y>1) {
+		//alert('vflip');
+		// vflip = vertical flip
+		// half height
+		for(y=0;y<4;y=y+2){
+			r = T.childNodes[y];
+			n = T.childNodes[y+1];
+			rc = r.cloneNode(true);
+			nc = n.cloneNode(true);
+			T.replaceChild(nc, r);
+			T.replaceChild(rc, n);
+		}
+		Y = (Y+1)%4;
+		
+		await sleep(step_sleep_ms);
+	}
+	if ( (Y==0 && X==0) || (Y==2 && X==1) ) {
+		// stop moving
+		return;
+	}
+	
+	//alert(Y+' '+X);
+		/* now XY is 01 or 10 or 11 */
+
+}
+
+
+
+
+function m_click(d)
+{
+	
+	// get click position
+	var y, x, r, t;
+	r = d.parentNode;
+	for (x=0; x<4; x++) {
+		if (d == r.childNodes[x]) {
+			t = r.parentNode;
+			for (y=0; y<4; y++) {
+				if (r == t.childNodes[y]) {
+					// position found
+					break;
+				}
+			}
+			break;
+		}
+	}
+	
+	return m_move(t, y, x);
+	
+	//global gm, gf, gc, go, me, mi, tn, tp;
+	s = d.getElementsByTagName("b")[0].innerHTML;
+	//g = s[0]; // M or F
+	//e = parseInt(s[1]); // in [1, 2, 3, 4]
+	n = names.indexOf(s); // number
+	// rebuild matrix
+	
+	m_build(n);
+}
+
+
+window.onload = function()
+{
+	log_node = document.getElementById('log');
+
+	if (use_log == true) {
+		log("log:\n\n");
+	}
+
+
+	m_init();
+	m_build(8);
+};
+
+
+</script>
+
+
+
+<style type="text/css">
+
+pre#log{
+text-align:left;
+max-height:20em;
+width:12em;
+overflow-y:auto;
+overflow-x:auto;
+/*
+position:absolute;
+left:2em;
+top:2em;
+*/
+}
+
+
+h1,h2,h3,h4{text-align:center;font-family:monospace;font-weight:normal;
+/*
+margin:0;
+*/
+}
+
+body{
+overflow:scroll;
+text-align:center;
+}
+
+a{
+text-decoration: none;
+}
+a::before{
+content:"➔ ";
+}
+
+
+table#matrix{
+/*
+*/
+border-collapse: collapse;
+
+/* center horizontally
+	 */
+    margin-left:auto; 
+    margin-right:auto;
+	margin-top:1em;
+	margin-bottom:1em;
+	}
+
+table#matrix td{
+padding:0;
+/*
+min-width:6em;
+*/
+}
+
+
+table#matrix td>div>div{text-align:center;font-family:monospace;
+font-size:20px;
+
+width:90px;
+
+}
+
+/* */
+table#matrix b{font-weight:normal;}
+/* */
+
+/* dark  bg colors: lightness 96/256 */
+table#matrix td.b>div>div{color:#ffff41;background:#0000c0;}
+/* yellow on blue */
+
+table#matrix td.r>div>div{color:#41ff41;background:#c00000;}
+/* green on red */
+
+
+/* light bg colors: lightness 160/256 */
+table#matrix td.y>div>div{color:#0000c0;background:#ffff41;}
+/* blue on yellow */
+
+table#matrix td.g>div>div{color:#c00000;background:#41ff41;}
+/* red on green */
+
+
+
+/* highlighted cell */
+table#matrix td.x>div>div{color:black;background:white;}
+
+
+
+table#matrix tr:nth-child(2) td{
+	border-bottom: double 6px black ;
+}
+table#matrix tr:nth-child(2) td>div{
+	margin-bottom:12px;
+}
+table#matrix tr:nth-child(3) td>div{
+	margin-top:12px;
+}
+
+table#matrix td:nth-child(2)>div>div{
+	margin-right: 12px;
+}
+table#matrix td:nth-child(3)>div>div{
+	margin-left: 12px;
+}
+table#matrix td:nth-child(2)>div{
+	border-right: solid 2px black ;
+}
+
+
+/*
+table#matrix td:nth-child(2)>div>div{
+	border-right: solid 12px white ;
+}
+table#matrix td:nth-child(2)>div{
+	border-right: solid 2px black ;
+}
+table#matrix td:nth-child(3)>div>div{
+	border-left: solid 12px white ;
+}
+*/
+
+/*
+table#matrix tr:nth-child(3){
+	border-top: solid 1em black ;
+}
+*/
+/*
+table#matrix td:nth-child(2){
+	border-right: solid 1em white ;
+}
+*/
+
+
+</style>
+</head>
+<body>
+<!--
+<h1>alchi</h1>
+-->
+<h2>perfect group of sixteen bodies</h2>
+
+<table id="matrix"></table>
+
+
+<h3>click a body to play</h3>
+<h4>part of the alchi project<br/>
+<a href="https://github.com/milahu/alchi">github.com</a><br/>
+<a href="http://m6su7s3ir7dxggwg.onion/haades/alchi">m6su7s3ir7dxggwg.onion</a></h4>
+<pre id="log"></pre>
+</body>
+</html>
+<!--
+
+end of file
+garbage dump
+
+// short version:
+	x = lx(
+		no(n, 'sc'), // same congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'st'), // same tempo
+	);
+	m_set(0, 1, x);
+	m_set(2, 0, x);
+	// use "diff gender" function as shortcut
+	m_set(1, 2, dg(x));
+	m_set(3, 3, dg(x));
+
+// long version:
+	x = lx(
+		no(n, 'sc'), // same congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'st'), // same tempo
+	);
+	m_set(0, 1, x);
+	m_set(2, 0, x);
+
+	x = lx(
+		no(n, 'dc'), // diff congruence
+		no(n, 'dm'), // diff mood
+		no(n, 'st'), // same tempo
+	);
+	m_set(1, 2, x);
+	m_set(3, 3, x);
+
+
+→
+➜
+🠚
+🡒
+🡢
+
+
+/*
+
+unicode arrows
+🞀🞁🞂🞃
+⯇⯅⯈⯆
+◀▲▶▼
+◁△▷▽
+ᐸᐱᐳᐯ
+⮘⮙⮚⮛
+⮜⮝⮞⮟
+← ↑ → ↓
+⇐ ⇑ ⇒ ⇓
+⇚ ⤊ ⇛ ⤋
+⭅ ⟰ ⭆ ⟱
+⬅⬆⬇
+➜
+🞀🞁🞂🞃
+🠀🠁🠂🠃
+🠄🠅🠆🠇
+🠈🠉🠊🠋
+🠐🠑🠒🠓
+🠔🠕🠖🠗
+🠘🠙🠚🠛
+🠜🠝🠞🠟
+🠠🠡🠢🠣
+🠤🠥🠦🠧
+🠨🠩🠪🠫
+🠬🠭🠮🠯
+🠰🠱🠲🠳
+🠴🠵🠶🠷
+🠸🠹🠺🠻
+🠼🠽🠾🠿
+🡀🡁🡂🡃
+🡄🡅🡆🡇
+🡐🡑🡒🡓
+🡠🡡🡢🡣
+🡨🡩🡪🡫
+🡰🡱🡲🡳
+🡸🡹🡺🡻
+🢀🢁🢂🢃
+🢐🢑🢒🢓
+🢔🢕🢖🢗
+🢘🢙🢚🢛
+
+*/
+
+
+
+
+/* for better performance, sort arrays by size, from small to large */
+/*
+function lx_slow_2(){
+	var arrays;
+	if(arguments.length === 1) {
+		arrays = arguments[0];
+	} else {
+		arrays = arguments;
+	}
+
+	var res = arrays[0];
+	var tmp;
+	var i, k;
+	for(i=1; i<arrays.length; i++){
+		tmp = [];
+		for(k=0; k<res.length; k++){
+			if(arrays[i].indexOf(res[k]) !== -1){
+				tmp.push(res[k]);
+			}
+		}
+		res = tmp;
+	}
+	if (res.length === 1)
+		return res[0];
+	return res;
+}
+*/
+
+
+
+/*
+// list intersection
+// https://stackoverflow.com/a/37320681/10440128
+function lx_slow_1() {
+	var result = [];
+	var lists;
+
+	if(arguments.length === 1) {
+		lists = arguments[0];
+	} else {
+		lists = arguments;
+	}
+
+	for(var i = 0; i < lists.length; i++) {
+		var currentList = lists[i];
+		for(var y = 0; y < currentList.length; y++) {
+				var currentValue = currentList[y];
+			if(result.indexOf(currentValue) === -1) {
+				var existsInAll = true;
+				for(var x = 0; x < lists.length; x++) {
+					if(lists[x].indexOf(currentValue) === -1) {
+						existsInAll = false;
+						break;
+					}
+				}
+				if(existsInAll) {
+					result.push(currentValue);
+				}
+			}
+		}
+	}
+	if (result.length === 1)
+		return result[0];
+	return result;
+}
+*/
+
+
+
+
+	/*
+			e = E[y][x];
+			d.setAttribute("class", color[e]);
+			g = (y%2==0) ? 'M' : 'F';
+			s = g + e;
+			if (e == 2 || e == 4)
+				s = '↑<br/>→ <b>'+s+'</b> ←<br/>↓';
+			else
+				s = '↓<br/>← <b>'+s+'</b> →<br/>↑';
+			//t = document.createTextNode(s);
+			//d.appendChild(t);
+			d.innerHTML = s;
+			r.appendChild(d);
+	*/
+
+
+/*
+// build matrix from string
+var s = '3214412323411432';
+
+var E = [];
+var y = 0;
+var x = 0;
+for (y=0; y<4; y++)
+{
+	E[y] = [];
+	for (x=0; x<4; x++)
+	{
+		E[y][x] = parseInt(s[(y*4)+x]);
+	}
+}
+
+var t;
+var e = 0;
+var g;
+var s;
+*/
+
+
+
+		//s = '↑<br/>→ <b>'+s+'</b> ←<br/>↓'; // ←↑→↓
+		//s = '▲<br/>▶ <b>'+s+'</b> ◀<br/>▼'; // ◀▲▶▼
+		//s = '△<br/>▷ <b>'+s+'</b> ◁<br/>▽'; // ◁△▷▽
+		//s = '🡱<br/>🡲 <b>'+s+'</b> 🡰<br/>🡳'; // 🡰🡱🡲🡳
+
+		//s = '↓<br/>← <b>'+s+'</b> →<br/>↑'; // ←↑→↓
+		//s = '▼<br/>◀ <b>'+s+'</b> ▶<br/>▲'; // ◀▲▶▼
+		//s = '▽<br/>◁ <b>'+s+'</b> ▷<br/>△'; // ◁△▷▽
+		//s = '🡳<br/>🡰 <b>'+s+'</b> 🡲<br/>🡱'; // 🡰🡱🡲🡳
+
+
+<pre>
+unicode arrows
+
+working on android 7.1
+◀▲▶▼
+◁△▷▽
+ᐸᐱᐳᐯ
+
+← ↑ → ↓
+⇐ ⇑ ⇒ ⇓
+⇚ ⤊ ⇛ ⤋
+⭅ ⟰ ⭆ ⟱
+⬅⬆⬇
+➜
+
+
+❬
+❭
+
+❮
+❯
+
+❰
+❱
+
+
+
+➔ ➙ ➛ ➜ ➝ ➞ ➟ ➠ ➡ ➢ ➣ ➤ ➥ 
+
+
+
+
+➔
+
+➘
+
+➙
+
+➚
+
+➛
+
+➜
+
+➝
+
+➞
+
+➟
+
+➠
+
+➡
+
+➢
+
+➣
+
+➤
+
+➥
+
+➦
+
+➧
+
+
+
+broken on android 7.1
+
+🞀🞁🞂🞃
+⯇⯅⯈⯆
+⮘⮙⮚⮛
+⮜⮝⮞⮟
+
+🞀🞁🞂🞃
+🠀🠁🠂🠃
+🠄🠅🠆🠇
+🠈🠉🠊🠋
+🠐🠑🠒🠓
+🠔🠕🠖🠗
+🠘🠙🠚🠛
+🠜🠝🠞🠟
+🠠🠡🠢🠣
+🠤🠥🠦🠧
+🠨🠩🠪🠫
+🠬🠭🠮🠯
+🠰🠱🠲🠳
+🠴🠵🠶🠷
+🠸🠹🠺🠻
+🠼🠽🠾🠿
+🡀🡁🡂🡃
+🡄🡅🡆🡇
+🡐🡑🡒🡓
+🡠🡡🡢🡣
+🡨🡩🡪🡫
+🡰🡱🡲🡳
+🡸🡹🡺🡻
+🢀🢁🢂🢃
+🢐🢑🢒🢓
+🢔🢕🢖🢗
+🢘🢙🢚🢛
+
+</pre>
+
+
+
+-->
