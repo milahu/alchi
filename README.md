@@ -4,8 +4,8 @@ welcome to my apocalypse
 
 recent publications ....
 
-* 2019-05-10
-  * [matrix viewer html+js](https://milahu.github.io/alchi/alchi-matrix-viewer.2019-05-08.html) (18 KB)
+* 2019-05-13
+  * [matrix viewer html+js](https://milahu.github.io/alchi/alchi-matrix-viewer.2019-05-13.html) (22 KB)
   * [matrix viewer screenshot gif](../../raw/master/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
   
 * 2019-05-04
