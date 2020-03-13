@@ -6,6 +6,7 @@ recent publications ....
 
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps.2020-03-10.html) (130 KB)
+  * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps-2020-03-10.html.preview.webp) (68 KB)
 
 * 2019-05-13
   * [matrix viewer html+js](https://milahu.github.io/alchi/alchi-matrix-viewer.2019-05-13.html) (22 KB)
