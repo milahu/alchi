@@ -1,12 +1,21 @@
 # alchi
 
-welcome to my apocalypse
+welcome to our apocalypse.  
+welcome to our lifting of the veil.
+
+**humans and their relations** are the last secret of this world.  
+lets decode this last secret!
+
+in our view, **psychology and sociology** must be seen as one science.  
+both psychology and sociology are only two sides of one coin.  
+this one science is the science of mental chemistry, in short: alchemy.
 
 recent publications ....
 
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps.2020-03-10.html) (130 KB)
   * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps-2020-03-10.html.preview.webp) (68 KB)
+  * [alcimaps source code](https://github.com/milahu/alcimaps) (550 KB) for [svelte - the javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
   * [matrix viewer html+js](https://milahu.github.io/alchi/alchi-matrix-viewer.2019-05-13.html) (22 KB)
