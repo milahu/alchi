@@ -40,30 +40,32 @@ future work ....
 
 ## SEO, search engine optimization, tags
 
-* non-calendar astrology
-* alternative to calendar astrology
-* what is natural order
-* who are my friends
-* who are my ideal parents
-* matchmaking
-* intertype compatibility, compatibility algorithm
+* [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm
+* [arranged friendship](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
+* who are my friends, what is my circle of friends, what is my inner circle
+* who are my ideal parents, who are my ideal teachers, who are my ideal students
+* matchmaking, procuring, procuration, arranged marriage
+* dating platform algorithm
 * human combinatorics, human relations
 * stable match problem, stable matching problem, stable marriage problem, stable roommates problem, game theory
-* primitive culture, minimalism, natural religion
-* physiognomy, anthropometry, body types, stigmata
-* anthropology, science of humans
 * organization theory
 * social psychology, psycho sociology
 * socionics, social engineering
+* communication theory, systems theory
 * small state, utopia, paradise on earth
+* non-calendar astrology (calendar astrology is wrong, personality type is NOT related to birthday)
+* alternative to calendar astrology
+* what is natural order
+* primitive culture, minimalism, natural religion
+* physiognomy, anthropometry, body types, stigmata
+* anthropology, science of humans
 * sacred geometry, natural patterns
 * a perfect synthesis
 * alchemy, humorology, four classical elements
 * numerology, trinity (three modalities), quaternio (four elements)
 * comparative cultural studies, meta politics, cultural theory
 * simple but effective, realistic reductionism
-* communication theory, systems theory
-* intuitive factor analysis (the project author is element fire)
+* intuitive factor analysis (the project author is element fire, who dreams to be a benevolent dictator)
 * border science, borderline science, between all the worlds
 * claim of perfection, totalitarian approach, a theory for every body
 * search for the one universal truth, monotheism, monism
