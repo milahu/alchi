@@ -37,3 +37,33 @@ future work ....
 * handout = one page summary
 * video
 * proof of concept
+
+## SEO, search engine optimization, tags
+
+* non-calendar astrology
+* alternative to calendar astrology
+* what is natural order
+* who are my friends
+* who are my ideal parents
+* matchmaking
+* intertype compatibility, compatibility algorithm
+* human combinatorics, human relations
+* stable match problem, stable matching problem, stable marriage problem, stable roommates problem, game theory
+* primitive culture, minimalism, natural religion
+* physiognomy, anthropometry, body types, stigmata
+* anthropology, science of humans
+* organization theory
+* social psychology, psycho sociology
+* socionics, social engineering
+* small state, utopia, paradise on earth
+* sacred geometry, natural patterns
+* a perfect synthesis
+* alchemy, humorology, four classical elements
+* numerology, trinity (three modalities), quaternio (four elements)
+* comparative cultural studies, meta politics, cultural theory
+* simple but effective, realistic reductionism
+* communication theory, systems theory
+* intuitive factor analysis (the project author is element fire)
+* border science, borderline science, between all the worlds
+* claim of perfection, totalitarian approach, a theory for every body
+* search for the one universal truth, monotheism, monism
