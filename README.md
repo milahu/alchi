@@ -10,7 +10,9 @@ in our view, **psychology and sociology** must be seen as one science.
 both psychology and sociology are only two sides of one coin.  
 this one science is the science of mental chemistry, in short: alchemy.
 
-recent publications ....
+## recent publications
+
+subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
 
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps.2020-03-10.html) (130 KB)
@@ -31,7 +33,7 @@ recent publications ....
   * [various svg graphics](../../tree/master/alchi%20draft%202019-04-11/) (650 KB)
   * [python script](../../raw/master/alchi%20draft%202019-04-11/alchi-web.py) (20 KB) to render matrix views
 
-future work ....
+## future work
 
 * english synth
 * handout = one page summary
