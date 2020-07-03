@@ -41,7 +41,7 @@ future work ....
 ## SEO, search engine optimization, tags
 
 * [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm
-* [arranged friendship](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
+* [arranged friendship (talk by Dr. Vas Taras)](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
 * who are my friends, what is my circle of friends, what is my inner circle
 * who are my ideal parents, who are my ideal teachers, who are my ideal students
 * matchmaking, procuring, procuration, arranged marriage
