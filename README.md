@@ -66,3 +66,4 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 * border science, borderline science, between all the worlds
 * claim of perfection, totalitarian approach, a theory for every body
 * search for the one universal truth, monotheism, monism
+* Human Resource Management (HRM)
