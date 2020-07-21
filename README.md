@@ -37,7 +37,7 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 
 ## SEO, search engine optimization, tags
 
-* [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm
+* [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm, candidate for a "general theory of interpersonal compatibility"
 * [arranged friendship (talk by Dr. Vas Taras)](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
 * who are my friends, what is my circle of friends, what is my inner circle
 * who are my ideal parents, who are my ideal teachers, who are my ideal students
@@ -67,3 +67,14 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 * claim of perfection, totalitarian approach, a theory for every body
 * search for the one universal truth, monotheism, monism
 * Human Resource Management (HRM)
+
+## Mirrors
+
+in the rare case that this project is censored by github, here are some mirror locations
+
+* https://gitlab.com/milahu/alchi
+* https://try.gitea.io/milahu/alchi
+* [https://web.archive.org/web/*/https://github.com/milahu/alchi](https://web.archive.org/web/*/https://github.com/milahu/alchi)
+* (with Tor Browser) `http://rootgit4rghbuenb.onion/milahu/alchi`
+* (with Tor Browser) `http://galaxy3m2mn5iqtn.onion/profile/milahu`
+* (with Tor Browser) `mailto:milahu@torbox3uiot6wchz.onion`
