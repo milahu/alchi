@@ -1,6 +1,6 @@
 # alchi
 
-([English](tree/master/english))
+[[english version](english)]
 
 Menschen und ihre Beziehungen  
 sind das letzte Geheimnis dieser Welt.
@@ -21,7 +21,7 @@ die deine Fragen beantworten können ....
 Diese Art der Selbstorganisation ist der Sinn unserer Sache.
 
 Wenn du trotzdem noch Fragen hast,  
-dann geh auf eine unserer [Internet-Seiten](../MIRRORS.md)  
+dann geh auf eine unserer [Internet-Seiten](MIRRORS.md)  
 und stelle dort deine Fragen.  
 Bei `github.com` gehst du oben auf `Issues` und `New Issue`.  
 Andere Seiten funktionieren ähnlich.
@@ -29,9 +29,6 @@ Andere Seiten funktionieren ähnlich.
 ## Veröffentlichungen
 
 Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) für Benachrichtigung bei Änderungen.
-
-* 2020-08-16
-  * [alchi flyer deutsch html](https://milahu.github.io/alchi/deutsch/alchi-flyer-deutsch.html) (160 KB)
 
 * 2020-03-10
   * [alcimaps html+svg+js](../alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
@@ -94,4 +91,8 @@ Alle Dateien der letzten Version (master branch) kannst du runterladen in dem ZI
 * Randwissenschaft, Grenzwissenschaft
 * Suche nach Perfektion, nach einem sinnvollen Platz für jeden Körper
 
+## Mirrors
 
+für den seltenen Fall, dass dieses Projekt zensiert wird von github, sind hier mehrere Ausweich-Adressen
+
+siehe [MIRRORS.md](MIRRORS.md)
