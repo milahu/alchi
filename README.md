@@ -31,18 +31,18 @@ Andere Seiten funktionieren ähnlich.
 Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) für Benachrichtigung bei Änderungen.
 
 * 2020-03-10
-  * [alcimaps html+svg+js](../alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
-  * [alcimaps preview webp](../alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
+  * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
+  * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
   * [alcimaps source code](../alcimaps/src) (550 KB) für [svelte - der javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
-  * [matrix viewer html+js](../alcimaps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
-  * [matrix viewer screenshot gif](../alcimaps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
+  * [matrix viewer html+js](https://milahu.github.io/alchi/alcimaps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
+  * [matrix viewer screenshot gif](https://milahu.github.io/alchi/alcimaps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
 
 * 2019-04-11
-  * [english synth notes txt](alchi%20synth%20english%202019-04-11.txt) (260 KB)
-  * [diverse svg bilder](../images) (650 KB)
-  * [python script](../scripts/alchi-web.py) (20 KB) zum Erzeugen verschiedener "Matrix" Ansichten (Vorgänger von `alcimaps`)
+  * [english synth notes txt](english/alchi%20synth%20english%202019-04-11.txt) (260 KB)
+  * [diverse svg bilder](images) (650 KB)
+  * [python script](scripts/alchi-web.py) (20 KB) zum Erzeugen verschiedener "Matrix" Ansichten (Vorgänger von `alcimaps`)
 
 ## Download
 
