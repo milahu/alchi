@@ -15,13 +15,13 @@ this one science is the science of mental chemistry, in short: alchemy.
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
 
 * 2020-03-10
-  * [alcimaps html+svg+js](../alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
-  * [alcimaps preview webp](../alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
-  * [alcimaps source code](../alcimaps/src) (550 KB) for [svelte - the javascript compiler](https://svelte.dev/repl/hello-world)
+  * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
+  * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
+  * [alcimaps source code](https://github.com/milahu/alcimaps) (550 KB) for [svelte - the javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
-  * [matrix viewer html+js](../alcimaps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
-  * [matrix viewer screenshot gif](../alcimaps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
+  * [matrix viewer html+js](https://milahu.github.io/alchi/alcimaps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
+  * [matrix viewer screenshot gif](https://milahu.github.io/alchi/alcimaps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
 
 * 2019-04-11
   * [english synth notes txt](alchi%20synth%20english%202019-04-11.txt) (260 KB)
