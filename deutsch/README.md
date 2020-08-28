@@ -36,7 +36,7 @@ Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) f�
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html#A1_e/bxinout_s+m_1110_0_de_np) (130 KB)
   * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
-  * [alcimaps source code](https://github.com/milahu/alcimaps) (550 KB) für [svelte - der javascript compiler](https://svelte.dev/repl/hello-world)
+  * [alcimaps source code](../src/alcimaps) (550 KB) für [svelte - der javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
   * [matrix viewer html+js](https://milahu.github.io/alchi/alcimaps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
