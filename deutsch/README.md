@@ -31,7 +31,7 @@ Andere Seiten funktionieren ähnlich.
 Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) für Benachrichtigung bei Änderungen.
 
 * 2020-08-10
-  * [finger test - three hands svg](../images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test für die drei Sheldon-Typen
+  * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test für die drei Sheldon-Typen
 
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html#A1_e/bxinout_s+m_1110_0_de_np) (130 KB)
@@ -44,8 +44,8 @@ Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) f�
 
 * 2019-04-11
   * [english synth notes txt](../english/alchi%20synth%20english%202019-04-11.txt) (260 KB)
-  * [diverse svg bilder](../images) (650 KB)
-  * [python script](../scripts/alchi-web.py) (20 KB) zum Erzeugen verschiedener "Matrix" Ansichten (Vorgänger von `alcimaps`)
+  * [diverse svg bilder](../src/images) (650 KB)
+  * [python script](../src/scripts/alchi-web.py) (20 KB) zum Erzeugen verschiedener "Matrix" Ansichten (Vorgänger von `alcimaps`)
 
 ## Download
 
