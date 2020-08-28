@@ -1,2 +1,3 @@
-alcimaps/node_modules
-alcimaps/pnpm-lock.yaml
+src/alcimaps/node_modules
+src/alcimaps/pnpm-lock.yaml
+src/alcimaps/public/build
