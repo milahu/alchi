@@ -34,7 +34,7 @@ Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) f�
   * [finger test - three hands svg](../images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test für die drei Sheldon-Typen
 
 * 2020-03-10
-  * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html) (130 KB)
+  * [alcimaps html+svg+js](https://milahu.github.io/alchi/alcimaps/dist/alcimaps.2020-03-10.html#A1_e/bxinout_s+m_1110_0_de_np) (130 KB)
   * [alcimaps preview webp](https://milahu.github.io/alchi/alcimaps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
   * [alcimaps source code](https://github.com/milahu/alcimaps) (550 KB) für [svelte - der javascript compiler](https://svelte.dev/repl/hello-world)
 
