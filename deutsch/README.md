@@ -1,7 +1,5 @@
 # alchi
 
-[[english version](../english)]
-
 Menschen und ihre Beziehungen  
 sind das letzte Geheimnis dieser Welt.
 
