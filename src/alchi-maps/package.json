@@ -6,7 +6,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --host 0.0.0.0",
-    "inline": "inliner http://0.0.0.0:5000/alcimaps.html >alcimaps-inlined.html"
+    "inline": "inliner http://0.0.0.0:5000/alchi-maps.html >alchi-maps.inlined.html"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
