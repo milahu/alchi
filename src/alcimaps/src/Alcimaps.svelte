@@ -1,10 +1,126 @@
-<script preval>
+<script preval="preval">
+
+  // the "preval" key does
+  // activate the src/sveltePreval.js preprocessor
+  // configured in rollup.config.js
 
   /*
 
   TODO
 
-  critical: change moveStep with zoom level / "odd angle" view
+  dont capture ctrl+wheel events = browser zoom
+
+  move "control" divs to background
+    allow click access to visible elements
+    handle click and drag events on visible elements
+    avoid transparent control divs in foreground
+
+  complete "click not move" handling
+    on click, pass click event down to background layers
+
+  firefox is slow at counter-rotate.
+    add option to "rotate faster"
+    = counter-rotate without transition at the middle/end of rotation
+
+  generate standalone svg image from current map view
+    = svg screenshot
+    copy svg source to clipboard
+    or provide download link? size limit?
+    TODO include transforms, before export repaint svg with transformed matrix?
+
+  firefox. respect var(--fg) color for text
+
+  rename or alias?
+    from sympatonia/vagotonia [group, noun, integral]
+    to sympatone/vagotone [property, factor, part]
+
+  have a global state object like "map"
+    to set map parameters with click handlers aka links
+    <a href="javascript: map.format = 'mbti';">set format to mbti</a>
+
+  make svg use the css variables --fg and --bg
+    use css variables to colorize all svg images
+    also those included/inlined from external svg files
+    or inline these files manually? or with sveltePreval?
+    use css variable for foreground + background color
+    var(--fg) and var(--bg)
+
+  done:
+  add "pallas sign" in all eight rotations
+    each as separate svg file
+    with square size = 1:1 aspect ratio
+    or 16:10 ratio, like font glyph ratio of monospace char X
+
+  add prefix "map_" to fragment ID before map parameters
+    like "map_A1_e/bxinout_etc_etc"
+    allow to use other fragment IDs to navigate in description text
+    remember map parameters also without map_x fragment ID
+
+  cosmetic: make fragment ID parameters optional
+    and/or make parameters non-positional with key-value pairs
+    like query string #map&k1=v1&k2=v2&....
+    or single char prefixed values like #map_oA1_fe/b_a0
+    for origin, format, angle
+    or #map&o=A1&f=e/b&a=0
+    escape special chars (# & = .... and unicode) with %xx hex codes
+
+  also inline external svg image assets
+    not done by "npm run inline" command
+
+  done: test-hands-long-or-broad.svg [and others] is NOT inlined
+  verify inline of svg image + bitmap images (jpg png gif webp)
+    via <img src="image.svg" /> tag
+    inline = pack all content into on html file
+    single file output
+
+  change light/dark mode more slowly
+    and on double press of "L",
+      change back from "current state"
+      and not from "final state"
+
+  done: listen on <div id="transform-mask"
+    use `tabindex="-1"` to allow keydown listener
+    handle key events only when grid is visible
+    allow to scroll page with arrow keys, without moving the grid
+    = unbind arrow keys?
+    = ignore arrow keys for (pageScroll > 0)?
+
+  allow to disable all animations = show next state now
+
+  done: not, use "change position" code
+    cos rotate3d is not counter-rotatable, no real 3D transform
+    do flipBodies() with translate-rotate layer and css: rotate3d(x,y,z,a)
+
+  "fill this with some helpful text"
+  probably the hardest part of all ....
+  cos human language is so imperfect and dirty
+
+  flip: also flip background pattern
+
+  cosmetic: make zooming smooth
+    use css transition on "transform: scale(f)"
+    and after transition, set svg viewport to render sharp
+
+  add touch gestures
+    two finger zoom
+    double tap to zoom in
+
+  allow to switch "line mode" between monlog and dialog
+    also animate diagonal monologs
+    show dialogs with double line? = double bond in chemistry
+
+  done: change with zoom level, better: do not change, cos internal sizes dont change
+    change moveStep with zoom level / "odd angle" view
+  
+  critical: fix "zoom center"
+    always zoom relative to center of map
+    define "center of map"? origin = (x = 1 && y = 1) ?
+    before rotation!
+    allow to "center-and-zoom map" with double click/tap?
+    allow to "center map" only? center = origin from url parameter
+
+  critical: fix "flip center"
+    always flip relative to center of map
 
   allow to paint pathos-flows as arrows
     so the flow direction is visible in a static screenshot
@@ -20,7 +136,8 @@
   cosmetic: animate zoom with css `transform: scale(1.5)` = blurred view
     and set zoom-state with svg-viewbox = re-render to sharp view
 
-  zoom relative to visible center
+  zoom relative to visible center,
+    and/or relative to mouse position?
 
   in rare cases, mousemove handler
     is not activated after mousedown
@@ -642,7 +759,25 @@
   // TODO FIXME CRITICAL
   import { readable, writable } from 'svelte/store';
 
-  import * as alchi from './alchi.js'
+  import * as alchi from './alchi.js';
+
+  // body + element = asmg
+  const C3 = 0b0000;
+  const A3 = 0b0001;
+  const C1 = 0b0010;
+  const A1 = 0b0011;
+  const C2 = 0b0100;
+  const A2 = 0b0101;
+  const C4 = 0b0110;
+  const A4 = 0b0111;
+  const B3 = 0b1000;
+  const D3 = 0b1001;
+  const B1 = 0b1010;
+  const D1 = 0b1011;
+  const B2 = 0b1100;
+  const D2 = 0b1101;
+  const B4 = 0b1110;
+  const D4 = 0b1111;
 
   // TODO better. explicitly make svelte commit diffs
   //   wait for svelte to commit diffs
@@ -705,12 +840,45 @@
 
 
 
-  let nameFromN = []
-  let nameParts = 1
-  let nameFromSM = []
-  let nameFromAG = []
-  let pathosFromSM = []
-  let showPathos = true
+  let nameFromN = [];
+  let nameParts = 1;
+  let nameFromSM = [];
+  let nameFromAG = [];
+  let pathosFromSM = [];
+  let showPathos = true;
+
+
+
+  // index 0 = foto url, index 1 = foto title
+  let fotoData = Array.from(Array(16)).map(x => ['data:image/jpeg,', 'empty foto']);
+  // TODO make fotoData editable
+
+  fotoData[D1] = ['/d1-bender.webp', 'Bender']; // D1 = fire father
+  
+  // south park
+  fotoData[A1] = ['/a1-kenny.webp', 'Kenny']; // A1 = fire son
+  fotoData[A2] = ['/a2-stan.webp', 'Stan']; // A2 = earth son
+  fotoData[A3] = ['/a3-cartman.webp', 'Cartman']; // A3 = air son
+  fotoData[A4] = ['/a4-kyle.webp', 'Kyle']; // A4 = water son
+  fotoData[C3] = ['/c3-heidi-turner.webp', 'Heidi Turner']; // C3 = air daughter
+  fotoData[B2] = ['/b2-sharon-marsh.webp', 'Sharon Marsh']; // B2 = earth mother
+  
+  // simpsons
+  fotoData[C4] = ['/c4-lisa.webp', 'Lisa']; // C4 = water daughter
+  fotoData[D2] = ['/d2-homer.webp', 'Homer']; // D2 = earth father
+  fotoData[B1] = ['/b1-marge.webp', 'Marge']; // B1 = fire mother
+
+  // american dad
+  fotoData[B3] = ['/b3-francine.webp', 'Francine']; // B3 = air mother
+  
+  // family guy
+  fotoData[D3] = ['/d3-peter.webp', 'Peter Griffin']; // D3 = air father
+  fotoData[B4] = ['/b4-lois.webp', 'Lois Griffin']; // B4 = water mother
+  fotoData[C2] = ['/c2-meg-griffin.webp', 'Meg Griffin']; // C2 = earth daughter
+
+  // disenchantment
+  fotoData[C1] = ['/c1-bean.webp', 'Bean']; // C1 = fire daughter
+  fotoData[D4] = ['/d4-odval.webp', 'Odval']; // D4 = water father
 
 
 
@@ -1105,6 +1273,8 @@
   function handleDoubleClickBody (event, x, y, num, idx) {
     // TODO show tooltips for body + pathos
     //   or use double-click to zoom-in
+
+    console.dir(event);
   }
 
   
@@ -1476,6 +1646,7 @@
 
   const rotate3DVectorFromAngle_flipX = moveMatrixFromAngle.map(
     ([a, b, c, d]) => [c, a])
+
   const rotate3DVectorFromAngle_flipY = moveMatrixFromAngle.map(
     ([a, b, c, d]) => [d, b])
 
@@ -1541,32 +1712,68 @@
 
   // change moveStep with zoomLevel
   //$: moveStep = 200 + zoomLevel*(zoomLevel % 2 === 0 ? 100 : 66.6666666);
-  $: moveStep = (zoomLevel in moveStepByZoom) ? (moveStepByZoom[zoomLevel]) : 200;
+  let moveStepIntern = 200;
+
+  $: {
+    moveStep = (zoomLevel in moveStepByZoom) ? (moveStepByZoom[zoomLevel]) : 200;
+    //moveStepIntern = 400 - moveStep;
+  }
 
   // zoom state
   let zoomLevel = 0;
   let svg_viewbox = [0, 0, 0, 0];
   let move_odd = 0;
   $: {
+
+    /*
+    // force center for every zoom step
     move_odd = (zoomLevel % 2 === 0) ? 0 : (
       100
-    )
+    );
+    */
+
+    /*
+    move_odd = 0; // disable "force center"
+
     svg_viewbox = [
       -gridPadding + zoomLevel*300 + move_odd,
       -gridPadding + zoomLevel*300 + move_odd,
       3*width_in +2*gridPadding - 2*zoomLevel*300,
       3*height_in+2*gridPadding - 2*zoomLevel*300,
     ];
-    console.log(`svg_viewbox = ${svg_viewbox.join(' ')}`)
+    */
+
+    /*
+    svg_viewbox = [
+      -gridPadding + zoomLevel*300, // TODO use zoomEvent?
+      -gridPadding + zoomLevel*300,
+      3*width_in +2*gridPadding - 2*zoomLevel*300,
+      3*height_in+2*gridPadding - 2*zoomLevel*300,
+    ];
+    */
+
+    svg_viewbox = [
+      -gridPadding + zoomLevel*300, // TODO use zoomEvent?
+      -gridPadding + zoomLevel*300,
+      3*width_in +2*gridPadding - 2*zoomLevel*300,
+      3*height_in+2*gridPadding - 2*zoomLevel*300,
+    ];
+
+    console.log(`svg_viewbox = ${svg_viewbox.join(' ')}`);
   }
 
   //dxSum, dySum
+
+  const max_zoomLevel = 3;
 
   // TODO
   function zoomBodies(zoomStep=+1) {
     // TODO use <svg viewBox="a b c d"> to zoom
     //   viewBox or viewPort ?
-    zoomLevel += zoomStep;
+    if (zoomStep < 0 || zoomLevel < max_zoomLevel ) {
+      zoomLevel += zoomStep;
+    }
+    console.log(`zoomLevel = ${zoomLevel}`)
   }
   window.zoomBodies = zoomBodies; // make global
 
@@ -1574,6 +1781,8 @@
 
   // rename: "skipMove" to "animateMove" [positive name]
   function moveBodies(dxOut=0, dyOut=0, rotate=true, skipMove=false, hideMove=false) {
+
+console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
 
     if (dxOut == 0 && dyOut == 0) {
       // no change
@@ -1670,6 +1879,10 @@
             //console.dir({scale_odd,tlx: (-4*dx*scale_out*moveStep*scale_odd), tly: (-4*dy*scale_out*moveStep*scale_odd), dx, dy, scale_out, moveStep})
             //transform_translate.style.transform += `translate(${-1*dx*scale_out*moveStep*scale_odd}px,${-1*dy*scale_out*moveStep*scale_odd}px) `;
             //transform_translate.style.transform += `translate(${-4*dx*scale_out*moveStep*scale_odd}px,${-4*dy*scale_out*moveStep*scale_odd}px) `;
+            /*
+              ${-1*moveModX*scale_out*moveStepIntern*scale_odd}px,
+              ${-1*moveModY*scale_out*moveStepIntern*scale_odd}px
+            */
             transform_translate.style.transform += `translate(
               ${-1*moveModX*scale_out*moveStep*scale_odd}px,
               ${-1*moveModY*scale_out*moveStep*scale_odd}px
@@ -1747,6 +1960,9 @@
       //dy = (dy+2).mod(4)-2
 
       /**/
+console.log(`moveBodies: skipMove is`, skipMove);
+console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
+
       if (skipMove === false) {
         doAnimateMoves = true;
       }
@@ -1876,7 +2092,9 @@
           promiseTimeout(skipMove ? svelteCommitTime : tweenDurShort)
           .then(() => {
 
-            if (doAnimateMoves === false) {
+console.log(`doAnimateMoves is`, doAnimateMoves);
+
+            if (doAnimateMoves == false) {
               doAnimateMoves = true
             }
 
@@ -1917,6 +2135,8 @@
             */
 
 
+            console.log(`move back. moveStep = ${moveStep}`)
+
             // TODO use dx or dxOut ?
 
             if (dx !== 0) {
@@ -1933,7 +2153,8 @@
                   //console.log(`ix = ${ix}   ix2 = ${ix2}`)
                   bodyPosStatic[ix2] = bodyPosStatic[ix2].map(
                     ([xPos, yPos], y) => ([
-                      xPos - sdx*4*moveStep,
+                      //xPos - sdx*4*moveStep,
+                      xPos - sdx*4*moveStepIntern,
                       yPos,
                     ])
               )})
@@ -1954,7 +2175,8 @@
                     (col, x) => col.map(
                       ([xPos, yPos], y) => ([
                         xPos,
-                        yPos - ((y === iy2) ? (sdy*4*moveStep) : (0)),
+                        //yPos - ((y === iy2) ? (sdy*4*moveStep) : (0)),
+                        yPos - ((y === iy2) ? (sdy*4*moveStepIntern) : (0)),
                         //yPos,
                       ])
                   ))
@@ -2003,6 +2225,8 @@
         moveEndTimer = setTimeout(() => {
           doAnimateMoves = false
 
+console.log(`doAnimateMoves is`, doAnimateMoves);
+
           // snap background pattern
           moveEndTimer = null
         }, 3*tweenDurShort)
@@ -2016,151 +2240,173 @@
 
       //})
     })
-  }
+  } // end function moveBodies
 
 
 
 
 
-  function flipX() { flipBodies(1, 0) }
+  function flipX() { flipBodies(1, 0); }
 
-  function flipY() { flipBodies(0, 1) }
+  function flipY() { flipBodies(0, 1); }
 
-  function flipD() {
-    flipBodies(1, 0, 1)
-    /* flip diagonal */
-    // quickfix via (angle - 1) + flipX ?
-  }
+  function flipD() { flipBodies(1, 0, 1); }
+  /* flip diagonal */
+  // quickfix via (angle - 1) + flipX ?
 
-  function flipA() {
-    /*TODO flip anti-diagonal */
-    flipBodies(0, 1, 1)
-  }
+  function flipA() { flipBodies(0, 1, 1); }
+  /*TODO flip anti-diagonal */
+
+  let transform_rotate = null; // set later in handleWindowLoad
+
 
   function flipBodies(dxOut, dyOut, angleBias=0) {
 
-    doAnimateMoves = true
+    doAnimateMoves = true;
+
+console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
     // set new flip state
     flipOut = [
       flipOut[0] * (dxOut ? -1 : 1),
       flipOut[1] * (dyOut ? -1 : 1),
-    ]
+    ];
 
     //console.log(`flipBodies(${dxOut}, ${dyOut})`)
 
     // compensate rotation
     //angle_id = ((angle[0]/rotateStep)|0).mod(8)
 
-    const angle_id_b = angle_id + angleBias
+    const angle_id_b = angle_id + angleBias;
 
-    const m = moveMatrixFromAngle[angle_id_b]
-    const [dx, dy] = productMatrixVector(m, [dxOut, dyOut])
-
-
-
-    console.log(`flipBodies   d ${dx} ${dy}   dOut ${dxOut} ${dyOut}   angle ${angle_id_b}`)
-    console.log(`flipBodies old flipIn ${flipIn[0]} ${flipIn[1]} ${flipIn[2]} ${flipIn[3]}`)
+    const m = moveMatrixFromAngle[angle_id_b];
+    const [dx, dy] = productMatrixVector(m, [dxOut, dyOut]);
 
 
 
-    let get_xPos = null
-    let get_yPos = null
-
-    if (angle_id_b % 2 == 0) {
-      // even angle
-      // flip along row or column
-      get_xPos = (dx !== 0) ? (
-        (xPos, yPos) => 3*moveStep - xPos // flipX
-      ) : (
-        (xPos, yPos) => xPos // no change
-      )
-      
-      get_yPos = (dy !== 0) ? (
-        (xPos, yPos) => 3*moveStep - yPos // flipY
-      ) : (
-        (xPos, yPos) => yPos // no change
-      )
+    console.log(`flipBodies   d ${dx} ${dy}   dOut ${dxOut} ${dyOut}   angle ${angle_id_b}`);
+    console.log(`flipBodies old flipIn ${flipIn[0]} ${flipIn[1]} ${flipIn[2]} ${flipIn[3]}`);
 
 
 
-      // set flip state
-      // to flip pattern [etc?]
+    if (1) {
 
-      // TODO remove?
+      let get_xPos = null;
+      let get_yPos = null;
 
-      flipIn = [
-        flipIn[0] * (dx ? -1 : 1),
-        flipIn[1] * (dx ? -1 : 1),
-        flipIn[2] * (dy ? -1 : 1),
-        flipIn[3] * (dy ? -1 : 1),
-      ]
-    }
+      if (angle_id_b % 2 == 0) {
+        // even angle
+        // flip along row or column
+        get_xPos = (dx !== 0) ? (
 
-    else {
-      // odd angle
-      // flip along diagonal
+          // FIXME change 3 to dynamic value
+          //(xPos, yPos) => 3*moveStep - xPos // flipX
+          (xPos, yPos) => (3-2*dxSum)*moveStep - xPos // flipX
+        
+        ) : (
+          (xPos, yPos) => xPos // no change
+        );
+        
+        get_yPos = (dy !== 0) ? (
 
-      // FIXME
-      // wrong at angle == 1
+          // FIXME change 3 to dynamic value
+          (xPos, yPos) => (3-2*dySum)*moveStep - yPos // flipY
 
-      get_xPos = (dx === dy) ? (
-        (xPos, yPos) => 3*moveStep - yPos // anti diagonal
-      ) : (
-        (xPos, yPos) => yPos // diagonal
-      )
-      
-      get_yPos = (dx === dy) ? (
-        (xPos, yPos) => 3*moveStep - xPos // anti diagonal
-      ) : (
-        (xPos, yPos) => xPos // diagonal
-      )
+        ) : (
+          (xPos, yPos) => yPos // no change
+        );
 
-      /*
-      if (angle_id_b == 1) {
+
+
+        // set flip state
+        // to flip pattern [etc?]
+
+        // TODO remove?
+
         flipIn = [
           flipIn[0] * (dx ? -1 : 1),
           flipIn[1] * (dx ? -1 : 1),
           flipIn[2] * (dy ? -1 : 1),
           flipIn[3] * (dy ? -1 : 1),
-        ]
+        ];
       }
+
       else {
-      */
-      flipIn = [
-        flipIn[1] * ((dx === dy) ? -1 : 1),
-        flipIn[0] * ((dx === dy) ? -1 : 1),
-        flipIn[3] * ((dx === dy) ? -1 : 1),
-        flipIn[2] * ((dx === dy) ? -1 : 1),
-      ]
+        // odd angle
+        // flip along diagonal
 
-      /*
-      pathosPos = [
-        pathosPos[2],
-        pathosPos[3],
-        pathosPos[0],
-        pathosPos[1],
-      ]
-      */
-      
-      promiseTimeout(0.5*tweenDurShort).then(() => {
-        pathosPos = pathosPos.reverse()
-      })
+        // FIXME
+        // wrong at angle == 1
 
-    }
+        get_xPos = (dx === dy) ? (
 
+          // FIXME change 3 to dynamic value
+          (xPos, yPos) => (3-2*dxSum)*moveStep - yPos // anti diagonal
 
-    // flip bodies
-    console.log('bodyPosStatic 2294:')
-    bodyPosStatic = bodyPosStatic.map(
-      (row, x) => row.map(
-      ([xPos, yPos], y) => {
-        return [
-          get_xPos(xPos, yPos),
-          get_yPos(xPos, yPos),
+        ) : (
+          (xPos, yPos) => yPos // diagonal
+        );
+        
+        get_yPos = (dx === dy) ? (
+
+          // FIXME change 3 to dynamic value
+          (xPos, yPos) => (3-2*dySum)*moveStep - xPos // anti diagonal
+
+        ) : (
+          (xPos, yPos) => xPos // diagonal
+        );
+
+        /*
+        if (angle_id_b == 1) {
+          flipIn = [
+            flipIn[0] * (dx ? -1 : 1),
+            flipIn[1] * (dx ? -1 : 1),
+            flipIn[2] * (dy ? -1 : 1),
+            flipIn[3] * (dy ? -1 : 1),
+          ]
+        }
+        else {
+        */
+        
+        // FIXME?
+        flipIn = [
+          flipIn[1] * ((dx === dy) ? -1 : 1),
+          flipIn[0] * ((dx === dy) ? -1 : 1),
+          flipIn[3] * ((dx === dy) ? -1 : 1),
+          flipIn[2] * ((dx === dy) ? -1 : 1),
+        ];
+
+        /*
+        pathosPos = [
+          pathosPos[2],
+          pathosPos[3],
+          pathosPos[0],
+          pathosPos[1],
         ]
-    }))
-    console.dir(bodyPosStatic)
+        */
+        
+        promiseTimeout(0.5*tweenDurShort).then(() => {
+          pathosPos = pathosPos.reverse();
+        });
+
+      }
+
+      // flip bodies .... finally
+
+      // set all body positions. slow cos many small moves
+      console.log('bodyPosStatic 2294:')
+      bodyPosStatic = bodyPosStatic.map(
+        (row, x) => row.map(
+        ([xPos, yPos], y) => {
+          return [
+            get_xPos(xPos, yPos),
+            get_yPos(xPos, yPos),
+          ];
+      }));
+      console.dir(bodyPosStatic);
+
+    } // end function flipBodies
+
 
 
 
@@ -2187,11 +2433,25 @@
 
     let angle_id_b_m4 = (dxOut) ? (
       angle_id_b % 4) : (
-      (angle_id_b + 2) % 4)
+      (angle_id_b + 2) % 4);
 
 
-    const v = rotVecFromAngle[angle_id_b_m4]
-    
+    const v = rotVecFromAngle[angle_id_b_m4];
+    //console.log(`v ${v}   angle ${angle_id_b_m4}`)
+
+
+    // flip via rotate3d
+    /*
+    transform_rotate.style.transform += 'rotate3d('+v+',0,180deg)';
+    */
+
+
+    // TODO better
+    /*
+    Array.from(document.getElementsByClassName('body_wrapper')).forEach(e => {
+      e.style.transform += 'rotate3d('+v+',0,-180deg)';
+    })
+    */
 
 
     if (angle_id_b % 2 == 0) {
@@ -2200,7 +2460,7 @@
         rotVecFromAngle[3],
         rotVecFromAngle[2],
         rotVecFromAngle[1],
-      ]
+      ];
     }
     else {
       rotVecFromAngle = [
@@ -2208,15 +2468,26 @@
         rotVecFromAngle[1],
         rotVecFromAngle[0],
         rotVecFromAngle[3],
-      ]
+      ];
     }
 
     // wait for animation, disable CSS transition
+    // TODO allow to cancel promise / clear timeout
     promiseTimeout(tweenDurShort)
     .then(() => {
-      doAnimateMoves = false
-    })
+      doAnimateMoves = false;
+    });
 
+  }
+
+
+
+  var fotoOverlayHide = true;
+
+  function editFoto (num) {
+    // TODO show overlay to edit foto
+    //fotoOverlayHide = false
+    alert(`edit foto for num = ${num}`);
   }
 
 
@@ -2266,18 +2537,23 @@
 
     187: (e=>zoomBodies(+1)), // +
     189: (e=>zoomBodies(-1)), // -
-  }
+  };
 
 
 
   // handle keyboard input
   function handleKeydown(event) {
-    if (event.target.nodeName === 'INPUT'
+    if (
+         event.target.nodeName === 'INPUT'
       || event.ctrlKey
       || event.altKey
-      || event.metaKey) {
-      return
+      || event.metaKey
+      || event.isComposing // TODO verify - src https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
+    ) {
+      return;
     }
+    console.log('handleKeydown');
+    console.dir(event);
     /*
     event.ctrlKey
     event.altKey
@@ -2286,12 +2562,13 @@
     */
 
     try {
-      console.log(`event key ${event.key} keyCode ${event.keyCode}`)
-      keyHandler[event.keyCode](event)
+      console.log(`event key ${event.key} keyCode ${event.keyCode}`);
+      keyHandler[event.keyCode](event);
+      event.preventDefault();
     }
     catch (e) {
-      console.log(`ignore event key ${event.key}`)
-      throw(e)
+      console.log(`ignore event key ${event.key}`);
+      throw(e);
     }
 
   }
@@ -2309,7 +2586,7 @@
     })
   */
 
-  let matrix = alchi.ac_xor(origin, alchi.ac_bits_asmg_11)
+  let matrix = alchi.ac_xor(origin, alchi.ac_bits_asmg_11);
   // now origin is at position (1, 1) = index 5
   // rotate + flip matrix to the "normal view"
   //   fire  water  =     top-left     top-right
@@ -2320,66 +2597,66 @@
     13,  9,  5,  1,
     14, 10,  6,  2,
     15, 11,  7,  3,
-  ]
+  ];
 
   const matrixIdxRotateLeft = [
      3,  7, 11, 15,
      2,  6, 10, 14,
      1,  5,  9, 13,
      0,  4,  8, 12,
-  ]
+  ];
 
   const matrixIdxFlipD = [
      0,  4,  8, 12,
      1,  5,  9, 13,
      2,  6, 10, 14,
      3,  7, 11, 15,
-  ]
+  ];
 
   const matrixIdxFlipA = [
     15, 11,  7,  3,
     14, 10,  6,  2,
     13,  9,  5,  1,
     12,  8,  4,  0
-  ]
+  ];
 
   const matrixIdxFlipX = [
      3,  2,  1,  0,
      7,  6,  5,  4,
     11, 10,  9,  8,
     15, 14, 13, 12,
-  ]
+  ];
 
   const matrixIdxFlipY = [
     12, 13, 14 ,15,
      8,  9, 10, 11,
      4,  5,  6,  7,
      0,  1,  2,  3,
-  ]
+  ];
 
-  const origin_sm = (origin & 0b0110) >> 1
+  const origin_sm = (origin & 0b0110) >> 1;
   switch(origin_sm) {
     case 0:
       // air --> rotate 90deg ccw
       matrix = matrix.map(
         (val, idx, matrix) => matrix[
           matrixIdxRotateLeft[idx]
-      ])
-      break
+      ]);
+      break;
     case 1:
       // fire --> no change
-      break
+      break;
     case 2:
       // earth --> rotate 180deg
-      matrix = matrix.reverse()
-      break
+      matrix = matrix.reverse();
+      break;
     case 3:
       // water --> rotate 90deg cw
       matrix = matrix.map(
         (val, idx, matrix) => matrix[
           matrixIdxRotateRight[idx]
-      ])
-      break
+      ]);
+      break;
   }
 
   if (origin_sm == 0 || origin_sm == 3) {
@@ -2388,7 +2665,7 @@
       matrix = matrix.map(
         (val, idx, matrix) => matrix[
           matrixIdxFlipA[idx]
-        ])
+        ]);
     }
   } else {
     // fire or earth
@@ -2396,7 +2673,7 @@
       matrix = matrix.map(
         (val, idx, matrix) => matrix[
           matrixIdxFlipD[idx]
-        ])
+        ]);
     }
   }
 
@@ -2417,18 +2694,19 @@
     'SA': 'same ( Sense x Age ) = same "age congruence" [2 groups]',
     'G+M+S+A': 'TODO 16 groups',
     '+': 'no groups',
-  }
+  };
 
-  let groupFromN
-  let numGroups
-  let temp_groupFromN
+  let groupFromN;
+  let numGroups;
+  let temp_groupFromN;
 
   const colorTable = preval(({baseDir}) => {
-    return require(baseDir+'/src/colorTable.cjs').colors;
+    const colorTable = require(baseDir+'/src/colorTable.cjs')
+    return colorTable.colors
   });
 
-  let groupColor = [] //  = colorTable[numGroups]
-  let groupColorNode = []
+  let groupColor = []; //  = colorTable[numGroups]
+  let groupColorNode = [];
   
   //let numSmOfAg = []
 
@@ -2442,7 +2720,7 @@
       ((asmg & 0b0001) << 1) |
       ((asmg & 0b0010) >> 1)
     )
-  )
+  );
 
       /*
       const mgas = (
@@ -2464,10 +2742,10 @@
 
 
   function setLocale(l) {
-    locale = l
-    alchi.setLocale(l)
+    locale = l;
+    alchi.setLocale(l);
 
-    change_nameFormat()
+    change_nameFormat();
   }
 
 
@@ -2492,9 +2770,9 @@
     // default colors
     //ag: ['#ffff00', '#ff0000', '#00c000', '#0000ff'],
     //sm: ['#ffff00', '#ff0000', '#00c000', '#0000ff'],
-  }
+  };
 
-  groupColor = colorTable[numGroups]
+  groupColor = colorTable[numGroups];
 
 
   function change_groupFormat () {
@@ -2518,11 +2796,18 @@
 
   let nameFormatPresets = {
     'e/b': 'Element + Body. split in Top + Bottom',
-    's/m|a/g': 'Sense / Move | Age / Gender. split in four',
+    // TODO swap element <> body, to body | element
+    's/m|a/g': 'Sense / Move | Age / Gender = Element | Body. split in four',
     'smagxshape': 'Sense Move Age Gender + shape',
     'e/bxinout': 'Element / Body = In / Out',
-    'ebxorbit': 'Element + Body x orbit = Out ( In In ) Out',
-    'ebxshape': 'Element + Body x shape',
+    'e/bxfoto': 'Element / Body x Foto',
+    'be': 'Body | Element',
+    'bexfoto': 'Body | Element \\ Foto',
+    // TODO swap element <> body, to body | element
+    'ebxorbit': 'Element | Body x orbit = Out ( In In ) Out',
+    // TODO swap element <> body, to body | element
+    'ebxshape': 'Element | Body x shape',
+    // TODO swap element <> body, to body | element
     's/e/m|a/b/g': 'Sense / Element / Move | Age / Body / Gender. split in six',
     'ep': 'Element + Pathos: Element',
     'cg-jung': 'CG Jung. Element = function, pathos = "introvert" or "extravert"',
@@ -2556,8 +2841,8 @@
       nameFromN = temp_nameFromN
       nameParts = nameFromN[0].length
       console.log('nameFormat "'+nameFormat+'" is valid. nameFromN:')
-      console.dir(nameFromN)
-      console.log(`nameParts = ${nameParts}`)
+      //console.dir(nameFromN)
+      //console.log(`nameParts = ${nameParts}`)
     } else {
 
       // special case
@@ -2645,10 +2930,51 @@
         title.innerHTML = 'Animation Stop'
         use.setAttribute('xlink:href', '#stop')
       }
-  */
-
+    */
   }
 
+
+
+  var exportOverlayHide = true;
+  
+  function exportSvg () {
+    
+    console.log('export svg');
+    
+    // get svg element
+    var svg = document.getElementById("content");
+
+    // get svg source
+    var serializer = new XMLSerializer();
+    var source = serializer.serializeToString(svg);
+
+    // add name spaces
+    if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+        source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+        source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+    }
+
+    // add xml declaration
+    source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+    // patch svg viewBox
+    source = source.replace(
+      ' viewBox="0 0 2400 2400" ',
+      ' viewBox="800 800 1600 1600" '
+    );
+
+    //convert svg source to URI data scheme.
+    var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+
+    //window.location = url;
+    //set url value to a element's href attribute.
+    document.getElementById("export-link").href = url;
+    //you can download svg file by right click menu.
+
+    exportOverlayHide = false;
+  }
 
 
   function changeDark () {
@@ -2937,7 +3263,15 @@
       'transform-move')
     console.log(`move_container = ${move_container}`)
 
+    transform_rotate = document.getElementById('transform-rotate');
+    window.transform_rotate = transform_rotate; // make global
 
+    /**/
+    // moved: add keydown handler to control-* elements
+    let keydown_element = document.getElementById('transform-mask');
+    keydown_element.addEventListener('keydown', handleKeydown);
+    console.log('done adding keydown handler to '+keydown_element.id)
+    /**/
 
     // init Rematrix
 
@@ -3271,6 +3605,23 @@
       };
 
 
+      let zoomEvent = { clientX: 0, clientY: 0 };
+
+      function handleWheelBodies(event) {
+        console.dir(event);
+        
+        zoomEvent = event;
+        // TODO set zoom center from position
+        // event.clientX, event.clientY
+
+        zoomBodies(
+          (event.deltaY > 0) ? -1 : +1
+        );
+        event.stopPropagation();
+        event.preventDefault();
+      }
+
+
       let mouseDownTime = 0;
       let isMoving = false;
       let eventTarget = null;
@@ -3381,6 +3732,8 @@
               )
               {
                 // click not move
+
+                // TODO use click to zoom
                 
                 console.log('click not move');
                 isClick = true;
@@ -3416,13 +3769,9 @@
                 };
               }
 
-              rotateEventRightStart = {
-                clientX: 0
-              };
+              rotateEventRightStart = { clientX: 0 };
 
-              rotateEventRight = {
-                clientX: 0
-              };
+              rotateEventRight = { clientX: 0 };
 
               // measure FPS
               const deltaT = event.timeStamp - moveStartTime;
@@ -3436,6 +3785,11 @@
               // dont "bubble" event to parent nodes
               event.stopPropagation();
 
+              // TODO
+              // Alcimaps.svelte:3526 Uncaught TypeError:
+              // Cannot read property 'dispatchEvent' of null
+              // at HTMLDivElement.<anonymous>
+              // (Alcimaps.svelte:3526)
               if (isClick && v == 'mouseup') {
                 ele2.dispatchEvent(new Event('click'));
               }
@@ -3453,6 +3807,16 @@
         },
 
         'center-center': e => {
+
+          // TODO add touch gestures
+          //   two finger zoom
+          //   double tap to zoom in
+          ;['wheel'].forEach(v => {
+            e.addEventListener(
+              v, handleWheelBodies, false
+            )
+          });
+
           ;['mousedown', 'touchstart'].forEach(v => {
           //e.addEventListener('mousedown', (event)=>{
 
@@ -3675,7 +4039,11 @@
         //const control_element = document // TEST
 
         add_listeners_by_control_id[
-          control_id](control_element)
+          control_id](control_element);
+
+        // add keydown handler to every control-* element
+        control_element.addEventListener('keydown', handleKeydown);
+
 
       });
     }
@@ -3902,10 +4270,29 @@
   }
 
 
+
+  // TODO add more svg assets
+
+  const asset_svg = preval(
+    () => (
+      require('fs')
+      .readFileSync(
+        'public/test-hands-long-or-broad.svg'
+      ).toString()
+      .replace(/^<\?xml[^>]*>/, '')
+      .replace(/#000000/sg, 'var(--fg)')
+      .replace(/#ffffff/sg, 'var(--bg)')
+    )
+  )
+
+
+
 </script>
 
-<svelte:window
+<!--
   on:keydown={handleKeydown}
+-->
+<svelte:window
   on:load={handleWindowLoad}
 />
 
@@ -3920,77 +4307,335 @@
 
   <!-- define svg symbols -->
   <svg style="display: none">
-    <symbol id="circle-arrow-left" viewbox="0 -10 100 110">
-      <path d="m 20 80 A 40 40 0 1 0 20 20"
-        fill="none" stroke-width="10"
-        style="stroke: var(--fg)" />
-      <path d="M 10 0 v 40 h 40"
-        style="fill: var(--fg)" />
-    </symbol>
-    <symbol id="line-arrow-left" viewbox="0 0 100 100">
-      <line x1="25" x2="90" y1="50" y2="50"
-        style="stroke: var(--fg)"
-        stroke-width="10"
-      />
-      <path d="M 40 20 L 10 50 L 40 80"
-        style="fill: var(--fg)"
-      />
-    </symbol>
-    <symbol id="line-arrow-horiz" viewbox="0 0 100 100">
-      <line x1="25" x2="75" y1="50" y2="50"
-        style="stroke: var(--fg)"
-        stroke-width="10"
-      />
-      <path d="M 30 25 L 10 50 L 30 75"
-        style="fill: var(--fg)"
-      />
-      <path d="M 70 25 L 90 50 L 70 75"
-        style="fill: var(--fg)"
-      />
-    </symbol>
-    <symbol id="light-sun" viewbox="0 0 100 100">
-      <g style="stroke: var(--fg)" stroke-width="8">
-        <line x1="5" y1="50" x2="95" y2="50" />
-        <line y1="5" x1="50" y2="95" x2="50" />
-        <line x1="18.2" y1="18.2" x2="81.8" y2="81.8" />
-        <line x1="18.2" y1="81.8" x2="81.8" y2="18.2" />
-        <circle cx="50" cy="50" r="20" style="fill: var(--bg)"/>
+
+    <symbol id="element-and-pathos" viewBox="0 0 400 300">
+      <!--
+      <circle cx="50" cy="100" r="40" style="stroke: var(--fg)" />
+      <rect x="50" y="150" width="20" height="20" style="stroke: var(--fg)" />
+      -->
+
+      <!-- svg path arc commands:
+      A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+      a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
+      -->
+
+      <!--
+      <g style="stroke: var(--fg); fill: none" >
+        {#each Array.from(Array(10).keys()) as idx}
+          <line x1="{idx*50}" x2="{idx*50}" y1="0" y2="300" />
+        {/each}
+        {#each Array.from(Array(10).keys()) as idx}
+          <line x1="0" x2="400" y1="{idx*50}" y2="{idx*50}" />
+        {/each}
       </g>
-    </symbol>
-    <symbol id="menu" viewbox="0 0 100 100">
-      <g style="stroke: var(--fg)" stroke-width="8">
-        <line x1="15" x2="85" y1="25" y2="25" />
-        <line x1="15" x2="85" y1="50" y2="50" />
-        <line x1="15" x2="85" y1="75" y2="75" />
-      </g>
-    </symbol>
-    <symbol id="stop" viewbox="0 0 100 100">
-      <g fill="none" stroke="var(--fg)" stroke-width="8">
-        <rect x="20" y="20" width="60" height="60" />
-      </g>
-    </symbol>
-    <symbol id="play" viewbox="0 0 100 100">
-      <g fill="none" stroke="var(--fg)" stroke-width="8">
-        <path d="M 20,20 L 80,50 L 20,80 z" />
-      </g>
+      -->
+
+      <path d="
+        M 10 150 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -20 20
+        a 20 20 0 0 0 -20 20
+        a 20 20 0 0 0 -20 -20
+        a 20 20 0 0 1 -20 -20
+        z
+      " style="
+        stroke: var(--fg); fill: red"/>
+
+
+      <path d="
+        M 10 50 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -40 0
+        a 20 20 0 0 1 -40 0
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 10 250 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 0 1 20 20 
+        a 20 20 0 0 1 -20 20 
+        a 20 20 0 0 0 -20 20 
+        a 20 20 0 0 0 -20 -20 
+        a 20 20 0 0 1 -20 -20 
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 110 150 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 1 1 -20 20 
+        a 20 20 0 0 1 -40 0 
+        z
+      " style="
+        stroke: var(--fg); fill: green"/>
+
+      <path d="
+        M 110 50 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -40 0
+        a 20 20 0 0 1 -40 0
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 110 250 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 0 1 20 20 
+        a 20 20 0 0 1 -20 20 
+        a 20 20 0 0 0 -20 20 
+        a 20 20 0 0 0 -20 -20 
+        a 20 20 0 0 1 -20 -20 
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 210 150 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -40 0
+        a 20 20 0 0 1 -40 0
+        z
+      " style="
+        stroke: var(--fg); fill: yellow"/>
+
+      <path d="
+        M 210 50 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 1 1 -20 20 
+        a 20 20 0 0 1 -40 0 
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 210 250 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -20 20
+        a 20 20 0 0 0 -20 20
+        a 20 20 0 0 0 -20 -20
+        a 20 20 0 0 1 -20 -20
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+
+      <path d="
+        M 310 150 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 0 1 20 20 
+        a 20 20 0 0 1 -20 20 
+        a 20 20 0 0 0 -20 20 
+        a 20 20 0 0 0 -20 -20 
+        a 20 20 0 0 1 -20 -20 
+        z
+      " style="
+        stroke: var(--fg); fill: blue"/>
+
+      <path d="
+        M 310 50 
+        a 20 20 0 0 1 20 -20 
+        a 20 20 0 0 0 20 -20 
+        a 20 20 0 0 0 20 20 
+        a 20 20 0 1 1 -20 20 
+        a 20 20 0 0 1 -40 0 
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
+      <path d="
+        M 310 250 
+        a 20 20 0 0 1 40 0 
+        a 20 20 0 0 1 40 0
+        a 20 20 0 0 1 -20 20
+        a 20 20 0 0 0 -20 20
+        a 20 20 0 0 0 -20 -20
+        a 20 20 0 0 1 -20 -20
+        z
+      " style="
+        stroke: var(--fg); fill: none"/>
+
     </symbol>
 
-    <symbol id="odd-hide" viewbox="0 0 100 100">
-      <g fill="none" stroke="var(--fg)" stroke-width="8">
-        <!--<path d="M 10 50 L 50 10 L 90 50 L 50 90 z" />-->
-        <path d="
-          M 20 40 L 40 20
-          M 60 20 L 80 40
-          M 80 60 L 60 80
-          M 40 80 L 20 60
-        " />
-      </g>
-    </symbol>
-    <symbol id="odd-show" viewbox="0 0 100 100">
-      <g fill="none" stroke="var(--fg)" stroke-width="8">
-        <path d="M 20 50 L 50 20 L 80 50 L 50 80 z" />
-      </g>
-    </symbol>
+    <g id="pallas-sign-collection">
+
+      <symbol id="pallas-sign-rotate7" viewBox="0 0 16 16">
+        <!--
+          <rect fill="#000000" x="0" y="0"
+            width="16" height="16" style="fill: var(--bg)" />
+        -->
+        <g stroke-width="1.4" fill="none" style="stroke: var(--fg)">
+          <!-- square -->
+          <rect x="2" y="2" width="6" height="6" />
+          <!-- cross -->
+          <line x1="8" y1="8" x2="14" y2="14" />
+          <line x1="8" y1="14" x2="14" y2="8" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate5" viewBox="0 0 16 16">
+        <g stroke-width="1.4" fill="none" style="stroke: var(--fg)">
+          <rect x="2" y="8" width="6" height="6" />
+          <line x1="14" y1="8" x2="8" y2="2" />
+          <line x1="14" y1="2" x2="8" y2="8" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate3" viewBox="0 0 16 16">
+        <g stroke-width="1.4" fill="none" style="stroke: var(--fg)">
+          <rect x="8" y="8" width="6" height="6" />
+          <line x1="8" y1="8" x2="2" y2="2" />
+          <line x1="8" y1="2" x2="2" y2="8" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate1" viewBox="0 0 16 16">
+        <g stroke-width="1.4" fill="none" style="stroke: var(--fg)">
+          <rect x="8" y="2" width="6" height="6" />
+          <line x1="8" y1="14" x2="2" y2="8" />
+          <line x1="8" y1="8" x2="2" y2="14" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate0" viewBox="0 0 16 16">
+        <g stroke-width="1" fill="none" style="stroke: var(--fg)">
+          <path d="M 8 8 l 3 -3 l -3 -3 l -3 3 z" />
+          <line x1="8" y1="8" x2="8" y2="14" />
+          <line x1="5" y1="11" x2="11" y2="11" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate2" viewBox="0 0 16 16">
+        <g stroke-width="1" fill="none" style="stroke: var(--fg)">
+          <path d="M 11 11 l 3 -3 l -3 -3 l -3 3 z" />
+          <line x1="8" y1="8" x2="2" y2="8" />
+          <line x1="5" y1="5" x2="5" y2="11" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate4" viewBox="0 0 16 16">
+        <g stroke-width="1" fill="none" style="stroke: var(--fg)">
+          <path d="M 8 14 l 3 -3 l -3 -3 l -3 3 z" />
+          <line x1="8" y1="8" x2="8" y2="2" />
+          <line x1="5" y1="5" x2="11" y2="5" />
+        </g>
+      </symbol>
+
+      <symbol id="pallas-sign-rotate6" viewBox="0 0 16 16">
+        <g stroke-width="1" fill="none" style="stroke: var(--fg)">
+          <path d="M 5 11 l 3 -3 l -3 -3 l -3 3 z" />
+          <line x1="8" y1="8" x2="14" y2="8" />
+          <line x1="11" y1="11" x2="11" y2="5" />
+        </g>
+      </symbol>
+    </g>
+
+    <g id="arrow-collection">
+      <symbol id="circle-arrow-left" viewbox="0 -10 100 110">
+        <path d="m 20 80 A 40 40 0 1 0 20 20"
+          fill="none" stroke-width="10"
+          style="stroke: var(--fg)" />
+        <path d="M 10 0 v 40 h 40"
+          style="fill: var(--fg)" />
+      </symbol>
+      
+      <symbol id="line-arrow-left" viewbox="0 0 100 100">
+        <line x1="25" x2="90" y1="50" y2="50"
+          style="stroke: var(--fg)"
+          stroke-width="10"
+        />
+        <path d="M 40 20 L 10 50 L 40 80"
+          style="fill: var(--fg)"
+        />
+      </symbol>
+      
+      <symbol id="line-arrow-horiz" viewbox="0 0 100 100">
+        <line x1="25" x2="75" y1="50" y2="50"
+          style="stroke: var(--fg)"
+          stroke-width="10"
+        />
+        <path d="M 30 25 L 10 50 L 30 75"
+          style="fill: var(--fg)"
+        />
+        <path d="M 70 25 L 90 50 L 70 75"
+          style="fill: var(--fg)"
+        />
+      </symbol>
+    </g>
+
+    <g id="symbol-collection">
+      <symbol id="light-sun" viewbox="0 0 100 100">
+        <g style="stroke: var(--fg)" stroke-width="8">
+          <line x1="5" y1="50" x2="95" y2="50" />
+          <line y1="5" x1="50" y2="95" x2="50" />
+          <line x1="18.2" y1="18.2" x2="81.8" y2="81.8" />
+          <line x1="18.2" y1="81.8" x2="81.8" y2="18.2" />
+          <circle cx="50" cy="50" r="20" style="fill: var(--bg)"/>
+        </g>
+      </symbol>
+
+      <symbol id="menu" viewbox="0 0 100 100">
+        <g style="stroke: var(--fg)" stroke-width="8">
+          <line x1="15" x2="85" y1="25" y2="25" />
+          <line x1="15" x2="85" y1="50" y2="50" />
+          <line x1="15" x2="85" y1="75" y2="75" />
+        </g>
+      </symbol>
+
+      <symbol id="stop" viewbox="0 0 100 100">
+        <g fill="none" stroke="var(--fg)" stroke-width="8">
+          <rect x="20" y="20" width="60" height="60" />
+        </g>
+      </symbol>
+
+      <symbol id="play" viewbox="0 0 100 100">
+        <g fill="none" stroke="var(--fg)" stroke-width="8">
+          <path d="M 20,20 L 80,50 L 20,80 z" />
+        </g>
+      </symbol>
+
+      <symbol id="odd-hide" viewbox="0 0 100 100">
+        <g fill="none" stroke="var(--fg)" stroke-width="8">
+          <!--<path d="M 10 50 L 50 10 L 90 50 L 50 90 z" />-->
+          <path d="
+            M 20 40 L 40 20
+            M 60 20 L 80 40
+            M 80 60 L 60 80
+            M 40 80 L 20 60
+          " />
+        </g>
+      </symbol>
+
+      <symbol id="odd-show" viewbox="0 0 100 100">
+        <g fill="none" stroke="var(--fg)" stroke-width="8">
+          <path d="M 20 50 L 50 20 L 80 50 L 50 80 z" />
+        </g>
+      </symbol>
+
+      <symbol id="export" viewbox="0 0 100 100">
+        <g fill="none" stroke="var(--fg)" stroke-width="8">
+          <path d="M 50 20 V 80 M 20 50 L 50 80 L 80 50 M 20 90 H 80" />
+        </g>
+      </symbol>
+    </g>
 
   </svg>
 
@@ -4036,8 +4681,8 @@
  --><div class="collapse"><!--
    --><div class="content"><!--
 
-     --><div class="head"><!--
-       -->
+     --><div class="head" style="margin-bottom: 16px"><!--
+          -->
 
           <button
               on:click="{()=>{showOddAngles = !showOddAngles}}" class="square"
@@ -4045,15 +4690,24 @@
               <title>{showOddAngles ? 'Hide' : 'Show'} odd angles</title>
               <use xlink:href="#{showOddAngles ? 'odd-hide' : 'odd-show'}" />
             </svg>
-          </button>
+          </button><!--
 
-          
+       --><button
+              on:click="{exportSvg}" class="square"
+            ><svg>
+              <title>Export SVG Image</title>
+              <use xlink:href="#export" />
+            </svg>
+          </button><!--
 
+       --><div class="square" /><!--
 
-
-       <!----><div class="square" /><button
-            on:click={changeExpand} class="square"
+       --><button
+            on:click={changeExpand}
+            class="square"
+            title="show/hide transforms"
           >&ndash;</button><!--
+     
      --></div><!--
 
      --><div class="body"><!--
@@ -4123,11 +4777,11 @@
      --></div><!--
    --></div><!--
 
- --></div><!--
+    --></div><!--
 
- - -><div class="expand uppercase">
- --><div class="expand">
-<!-- todo avoid repeat, use a loop, or better: use components -->
+    - -><div class="expand uppercase">
+    --><div class="expand">
+      <!-- todo avoid repeat, use a loop, or better: use components -->
       <div class="content">
         <div class="head">
           <input
@@ -4149,7 +4803,7 @@
 
 
 
- -->{#if false}
+    -->{#if false}
 
       <!-- groupFormat selector -->
 
@@ -4180,8 +4834,8 @@
 
     {/if}<!--
 
- --><div class="expand">
-<!-- todo avoid repeat, use a loop, or better: use components -->
+    --><div class="expand">
+      <!-- todo avoid repeat, use a loop, or better: use components -->
       <div class="content">
         <div class="head">
           <input
@@ -4203,7 +4857,7 @@
       </div>
     </div><!--
 
- --><div class="numbtn first-row">
+    --><div class="numbtn first-row">
       {#each Object.keys(anim_dash_factor_presets) as n}
         <button on:click={()=>{anim_dash_factor_key = n}}>{n}</button>
       {/each}
@@ -4217,12 +4871,16 @@
   keydown = value has "maybe" changed
 -->
 
-<!-- #wrapper -->
+<!-- #wrapper for alcimaps TODO rename -->
+<!--
+  TODO svelte: attribute "on:keydown"
+    only working for <svelte:window> tag?
+    on:keydown={handleKeydown}
+-->
 <div
   id="wrapper"
   class:animate_dash="{doAnimateDash}"
   class:animate_moves="{doAnimateMoves}"
-  class:animate_moves_off="{doAnimateMoves === false}"
   style="
 
     /* set css variables */
@@ -4239,7 +4897,14 @@
 
 <!-- TODO move controls out of move-container -->
 
+<!--
+  tabindex="-1"
+  allow to handle keydown events on a div
+  https://stackoverflow.com/questions/51267273
+-->
+
 <div id="transform-mask"
+  tabindex="-1"
   style="
     width: {width}px;
     height: {height}px;
@@ -4264,7 +4929,7 @@
 
 <div id="transform-down"
   style="
-    will-change: transform;
+    /*will-change: transform; no need for accel */
     
     transform:
       translate(
@@ -4272,6 +4937,7 @@
         {-1*moveStartEvent.clientY}px
       )
       ;
+
   "
 >
 
@@ -4280,6 +4946,7 @@
     will-change: transform;
 
     /* TODO verify */
+    /*transform-origin: {0.5*width}px {1.5*height}px;*/
     transform-origin: {0.5*width}px {1.5*height}px;
     
     transform: rotate( var(--angle) );
@@ -4958,6 +5625,8 @@ cannot rotate <g> around center?
 
                 {:else}
                 
+                  <!-- TODO remove groupFormat -->
+
                   {#if groupFormat !== '+'}
 
                     <!-- big circle for showPathos == false -->
@@ -4974,7 +5643,9 @@ cannot rotate <g> around center?
                         */
                       "
                     >
-                      
+
+
+
                       {#if nameParts === 1}
 
                         <circle
@@ -4983,6 +5654,8 @@ cannot rotate <g> around center?
                           stroke="{groupColor[groupFromN[num]][1]}"
                           stroke-width="{numGroups===2 ? 1 : 0}"
                         ><title>{nameFromN[num][1]}</title></circle>
+
+
 
                       {:else if nameParts === 2 && nameFormat == 'e/b'}
 
@@ -4996,6 +5669,8 @@ cannot rotate <g> around center?
                         <path d="M 20 100 v 60 a 20 20 0 0 0 20 20 h 120 a 20 20 0 0 0 20 -20 v -60 z"
                           fill="{valColor.ag[ag][0]}"
                         />
+
+
 
                       {:else if nameParts === 2 && nameFormat == 'e/bxinout'}
 
@@ -5012,6 +5687,88 @@ cannot rotate <g> around center?
                           stroke="{valColor.sm[sm][1]}"
                           stroke-width="{sm === ag ? 2 : 0}"
                         />
+
+
+
+                      {:else if nameParts === 2 && nameFormat == 'be'}
+
+                        <!-- left = body --->
+                        <!-- width 80 + 1 to fill gap -->
+                        <rect x="20" y="20" width="81" height="160"
+                          fill="{valColor.ag[ag][0]}"
+                        />
+                        
+                        <!-- right = element --->
+                        <rect x="100" y="20" width="80" height="160"
+                          fill="{valColor.sm[sm][0]}"
+                        />
+
+
+
+                      {:else if nameParts === 2 && nameFormat == 'e/bxfoto'}
+
+                        <!-- left = foto -->
+                        <!-- width +10 to overpaint right stroke -->
+                        <rect x="21" y="21" width="129" height="158"
+                          stroke="var(--fg)"
+                          stroke-width="2"
+                        />
+                        <!-- outer frame = body -->
+                        <!-- stroke-width +2 to fill gap -->
+                        <!--
+                          <rect x="23" y="23" width="115" height="154"
+                            stroke="{valColor.ag[ag][0]}"
+                            stroke-width="6"
+                          />
+                        -->
+                        <!-- inner frame = element -->
+                        <!--
+                          <rect x="26" y="26" width="108" height="148"
+                            stroke="{valColor.sm[sm][0]}"
+                            stroke-width="4"
+                          />
+                        -->
+
+                        <!-- top = element --->
+                        <rect x="140" y="20" width="40" height="81"
+                          fill="{valColor.ag[ag][0]}"
+                        />
+
+                        <!-- bottom = body --->
+                        <!-- width 80 + 1 to fill gap -->
+                        <rect x="140" y="100" width="40" height="80"
+                          fill="{valColor.sm[sm][0]}"
+                        />
+
+
+
+                      {:else if nameParts === 2 && nameFormat == 'bexfoto'}
+
+                        <!-- top = foto -->
+                        <!-- outer frame = body -->
+                        <!-- stroke-width +2 to fill gap -->
+                        <rect x="23" y="23" width="154" height="115"
+                          stroke="{valColor.ag[ag][0]}"
+                          stroke-width="6"
+                        />
+                        <!-- inner frame = element -->
+                        <rect x="26" y="26" width="148" height="108"
+                          stroke="{valColor.sm[sm][0]}"
+                          stroke-width="4"
+                        />
+
+                        <!-- left = body --->
+                        <!-- width 80 + 1 to fill gap -->
+                        <rect x="20" y="140" width="81" height="40"
+                          fill="{valColor.ag[ag][0]}"
+                        />
+                        
+                        <!-- right = element --->
+                        <rect x="100" y="140" width="80" height="40"
+                          fill="{valColor.sm[sm][0]}"
+                        />
+
+
 
                       {:else if nameParts === 2 && nameFormat == 'ebxorbit'}
 
@@ -5031,6 +5788,8 @@ cannot rotate <g> around center?
                           stroke="{valColor.sm[sm][1]}"
                           stroke-width="{sm === ag ? 2 : 0}"
                         />
+
+
 
                       {:else if nameParts === 2 && nameFormat == 'ebxshape'}
 
@@ -5504,10 +6263,222 @@ cannot rotate <g> around center?
 
                       </foreignObject>
 
-                      <!--
-                 -->{:else if nameParts === 2 && nameFormat === 'ebxorbit'}<!--
 
-                   --><foreignObject
+
+                    {:else if nameParts === 2 && nameFormat === 'be'}
+
+                      <foreignObject
+                        x="20" y="20"
+                        width="160" height="160"
+                      >
+
+                        <div
+                          xmlns="http://www.w3.org/1999/xhtml"
+                          style="
+                            line-height: 1em;
+                            font-family: sans-serif;
+
+                            font-size: 54px;
+
+                            padding: 0; margin: 0;
+
+                            word-break: break-all;
+                            width: 160px; height: 160px;
+
+                            text-align: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: column;
+                          "
+                        >
+                          
+                          <div
+                            style="
+                              height: 160px; width: 80px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              color: {valColor.ag[ag][1]};
+                            "
+                            title="{nameFromN[num][0][1]}"
+                          >{nameFromN[num][0][0]}</div>
+                          
+                          <div
+                            style="
+                              height: 160px; width: 80px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              color: {valColor.sm[sm][1]};
+                            "
+                            title="{nameFromN[num][1][1]}"
+                            >{nameFromN[num][1][0]}</div>
+
+                        </div>
+
+                      </foreignObject>
+
+
+
+                    {:else if nameParts === 2 && nameFormat === 'e/bxfoto'}
+
+                      <foreignObject
+                        x="20" y="20"
+                        width="160" height="160"
+                      >
+
+                        <div
+                          xmlns="http://www.w3.org/1999/xhtml"
+                          style="
+                            line-height: 1em;
+                            font-family: sans-serif;
+
+                            font-size: 27px;
+
+                            padding: 0; margin: 0;
+
+                            word-break: break-all;
+                            width: 160px; height: 160px;
+
+                            text-align: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: row;
+                          "
+                        >
+                          
+                          <div
+                            class="foto-container-high"
+                            style="
+                              height: 160px; width: 122px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                            "
+                            on:click="{() => editFoto(num)}"
+                            
+                          ><img class="foto" src="{fotoData[num][0]}" alt="foto of {nameFromN[num][0][1]} {nameFromN[num][1][1]}" title="{fotoData[num][1]}" /></div>
+
+                          <div
+                            style="
+                              height: 160px; width: 38px;
+                              display: flex;
+                              flex-wrap: wrap;
+                              flex-direction: column;
+                            "
+                          >
+
+                            <div
+                              style="
+                                height: 80px; width: 38px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: {valColor.ag[ag][1]};
+                              "
+                              title="{nameFromN[num][1][1]}"
+                              >{nameFromN[num][1][0]}</div>
+
+                            <div
+                              style="
+                                height: 80px; width: 40px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: {valColor.sm[sm][1]};
+                              "
+                              title="{nameFromN[num][0][1]}"
+                            >{nameFromN[num][0][0]}</div>
+
+                          </div>
+                        
+                        </div>
+
+                      </foreignObject>
+
+
+
+                    {:else if nameParts === 2 && nameFormat === 'bexfoto'}
+
+                      <foreignObject
+                        x="20" y="20"
+                        width="160" height="160"
+                      >
+
+                        <div
+                          xmlns="http://www.w3.org/1999/xhtml"
+                          style="
+                            line-height: 1em;
+                            font-family: sans-serif;
+
+                            font-size: 27px;
+
+                            padding: 0; margin: 0;
+
+                            word-break: break-all;
+                            width: 160px; height: 160px;
+
+                            text-align: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: column;
+                          "
+                        >
+                          
+                          <div
+                            class="foto-container-broad"
+                            style="
+                              height: 120px; width: 160px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                            "
+                            on:click="{() => editFoto(num)}"
+                            
+                          ><img class="foto" src="{fotoData[num][0]}" alt="foto of {nameFromN[num][1][1]} {nameFromN[num][0][1]}" title="{fotoData[num][1]}" /></div>
+
+                          <div
+                            style="
+                              height: 40px; width: 160px;
+                              display: flex;
+                              flex-wrap: wrap;
+                              flex-direction: row;
+                            "
+                          >
+
+                            <div
+                              style="
+                                height: 40px; width: 80px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: {valColor.ag[ag][1]};
+                              "
+                              title="{nameFromN[num][0][1]}"
+                            >{nameFromN[num][0][0]}</div>
+                            
+                            <div
+                              style="
+                                height: 40px; width: 80px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: {valColor.sm[sm][1]};
+                              "
+                              title="{nameFromN[num][1][1]}"
+                              >{nameFromN[num][1][0]}</div>
+
+                          </div>
+                        
+                        </div>
+
+                      </foreignObject>
+
+
+
+                    {:else if nameParts === 2 && nameFormat === 'ebxorbit'}
+
+                      <foreignObject
                         x="20" y="20"
                         width="160" height="160"
                       >
@@ -6214,18 +7185,297 @@ cannot rotate <g> around center?
   {/each}
 
 {/if}
+</div><!-- close #control-wrapper -->
 
 </div><!-- close #transform-mask -->
-
 </div><!-- close #wrapper -->
 
-<!--</div>-->
+<div
+  class="overlay-box"
+  class:hidden="{exportOverlayHide}"
+>
+  <div class="title">export SVG image</div>
+  <div class="close" on:click="{()=>{exportOverlayHide=true;}}">✕</div>
+  <div class="content">
+    <!-- svelte will complain: <a href="javascript: null" id="export-link">right click and save link</a>-->
+    <a href="empty.html" id="export-link">right click and save link</a>
+  </div>
+</div>
 
 </main>
 
 
 
 <style>
+
+  .overlay-box.hidden {
+    display: none;
+  }
+  .overlay-box {
+    z-index: +2;
+    padding: 0.25em;
+    /*transform: translateZ(+2px);*/
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 12em; height: 6em;
+    margin: -3em 0 0 -6em;
+    border: solid 1px var(--fg);
+    background: var(--bg);
+  }
+  .overlay-box .title {
+    width: 10.5em; height: 1em;
+    line-height: 0.9em;
+    border-bottom: solid 1px var(--fg);
+    float: left;
+    padding: 0.25em;
+    margin: -0.25em 0 0.25em -0.25em;
+  }
+  .overlay-box .close {
+    cursor: pointer;
+    width: 1em; height: 1em;
+    padding: 0.25em;
+    line-height: 0.9em;
+    border: solid 1px var(--fg);
+    margin-left: -1px;
+    margin: -0.25em -0.25em 0.25em -1px;
+    border-top: none;
+    border-right: none;
+    float: right;
+  }
+  .overlay-box .content {
+    clear: both;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    color: var(--fg);
+    border-bottom: dotted 1px var(--fg);
+  }
+  a:hover {
+    text-decoration: none;
+    border-bottom: solid 1px var(--fg);
+  }
+
+  table.fourxfour {
+    border-collapse: collapse;
+    margin: 1em auto 2em auto !important;
+  }
+  table.fourxfour td {
+    padding: 0.5em;
+    border: solid 1px var(--fg);
+  }
+
+  tr.empty, tr.empty td {
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  /*
+    css hack. only works for height = 1em = single line heading.
+    more height must be declared manually, like
+    <tr style="height: 5em">
+  */
+  tr.colspan-four td {
+    border-width: 2px 0 !important;
+    height: 2.5em; /* TODO automatic height? */
+  }
+  tr.colspan-four td:nth-child(1) {
+    border-left-width: 1px !important;
+  }
+  tr.colspan-four td:nth-child(4) {
+    border-right-width: 1px !important;
+  }
+  tr.colspan-four td div {
+    position: absolute;
+    /* TODO add margin/padding? */
+    width: 100%;
+    left: 0;
+    /*right: 0;*/
+    margin: 0;
+    margin-top: 1em;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* four column table = fire earth air water */
+  table.four-column {
+    border-collapse: collapse;
+    /*margin: 1em auto !important;*/
+    margin: 1em auto 2em auto !important;
+  }
+  table.four-column td[colspan] {
+    border: none !important;
+  }
+  table.four-column td {
+    vertical-align: top;
+    padding: 0.5em;
+    border-width: 2px 1px;
+    border-style: solid;
+    border-left-color: var(--fg);
+    border-right-color: var(--fg);
+  }
+  table.four-column td:nth-child(1) {
+    border-top-color: red;
+    border-bottom-color: red;
+  }
+  table.four-column td:nth-child(2) {
+    border-top-color: green;
+    border-bottom-color: green;
+  }
+  table.four-column td:nth-child(3) {
+    border-top-color: yellow;
+    border-bottom-color: yellow;
+  }
+  table.four-column td:nth-child(4) {
+    border-top-color: blue;
+    border-bottom-color: blue;
+  }
+
+  /* three column table = air fire+earth water */
+  /* this version works until zoom level 175%
+       in chrome on a 1440px wide display */
+  table.three-column {
+    border-collapse: collapse;
+    margin: 1em auto 2em auto !important;
+    /*width: 98%;*/
+  }
+  table.three-column td {
+    vertical-align: top;
+    padding: 0.5em;
+    border-width: 2px 1px;
+    border-style: solid;
+    border-left-color: var(--fg);
+    border-right-color: var(--fg);
+  }
+  table.three-column td[colspan] {
+    border: none !important;
+  }
+  table.three-column td:nth-child(1) {
+    border-top-color: red;
+    border-bottom-color: red;
+    border-right: none;
+  }
+  table.three-column td:nth-child(2) {
+    border-top-color: green;
+    border-bottom-color: green;
+    border-left: none;
+  }
+  table.three-column td:nth-child(3) {
+    border-top-color: yellow;
+    border-bottom-color: yellow;
+  }
+  table.three-column td:nth-child(4) {
+    border-top-color: blue;
+    border-bottom-color: blue;
+  }
+  table.three-column tr td div {
+    position: relative;
+
+    /* todo fix for all zoom levels */
+    width: 210%;
+    padding: 8px;
+    
+    text-align: center;
+    margin: -0.5em;
+  }
+  tr.colspan-three td {
+    border-width: 2px 0 !important;
+    height: 2.5em; /* TODO automatic height? */
+  }
+  tr.colspan-three td:nth-child(1) {
+    border-left-width: 1px !important;
+  }
+  tr.colspan-three td:nth-child(4) {
+    border-right-width: 1px !important;
+  }
+  tr.colspan-three td div {
+    position: absolute !important;
+    /* TODO add margin/padding? */
+    width: 100% !important;
+    left: 0;
+    /*right: 0;*/
+    margin: 0 !important;
+    margin-top: 1em !important;
+    padding: 0 !important;
+    text-align: center;
+  }
+
+  table.two-column {
+    /*
+    border-collapse: separate;
+    */
+    border-spacing: 16px 8px;
+    margin: 1em auto 2em auto !important;
+  }
+  table.two-column td[colspan] {
+    text-align: center !important;
+  }
+  table.two-column td {
+    vertical-align: top;
+    padding: 0.5em;
+  }
+  table.two-column td:nth-child(1) {
+    text-align: right;
+    /*
+    border-right: none;
+    */
+  }
+  table.two-column td:nth-child(2) {
+    text-align: left;
+  }
+
+  table.two-column td[colspan] {
+    border: none !important;
+    border-image: none !important;
+  }
+
+  table.two-column.sense td,
+  table.two-column.move td,
+  table.two-column.class td
+  {
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  table.two-column.sense td:nth-child(1) {
+    border-color: #ff6600; /* orange */
+    /* red + yellow dashes
+       probably broken in internet explorer */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%23ffff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+  table.two-column.sense td:nth-child(2) {
+    border-color: #008080; /* turquoise */
+    /* green + blue dashes */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%2300ff00" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+
+  table.two-column.move td:nth-child(1) {
+    border-color: #a800a8; /* purple */
+    /* red + blue dashes */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+  table.two-column.move td:nth-child(2) {
+    border-color: #ccff00; /* lime */
+    /* green + yellow dashes */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%2300ff00" x="0" y="0" width="24" height="24" /><path stroke="%23ffff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+
+  table.two-column.class td:nth-child(1) {
+    border-color: red;
+    /* red + green dashes */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%2300ff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+  table.two-column.class td:nth-child(2) {
+    border-color: yellow;
+    /* yellow + blue dashes */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ffff00" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+  }
+
+
 
   /* css variables. init here + change later in javascript */
   
@@ -6251,14 +7501,22 @@ cannot rotate <g> around center?
     min-height: 100%;
   }
 
+  p {
+    margin-bottom: 2em;
+  }
+
+  main, p, tt {
+    font-size: 16px;
+  }
+
   .uppercase, .uppercase * {
     text-transform: uppercase;
   }
 
 
 
-  .animate_dash .anim_dash1,
-  .animate_dash .anim_dash2 {
+  :global(.animate_dash .anim_dash1),
+  :global(.animate_dash .anim_dash2) {
     stroke-dasharray: 30, 10;
   }
 
@@ -6304,15 +7562,15 @@ cannot rotate <g> around center?
   }
 
   /* TODO rename to body-translate */
-  .animate_moves g.body_wrapper,
+  :global(.animate_moves g.body_wrapper),
 
   /* TODO rename to body-rotate */
-  .animate_moves g.rotateBack,
-  .animate_moves svg.body > g,
+  :global(.animate_moves g.rotateBack),
+  :global(.animate_moves svg.body > g),
 
   /* TODO rename to group-translate, group-rotate */
-  .animate_moves #transform-translate,
-  .animate_moves #transform-rotate
+  :global(.animate_moves #transform-translate),
+  :global(.animate_moves #transform-rotate)
   {
     /*transition: transform .5s cubic-bezier(0.445, 0.050, 0.550, 0.950 );*/
     transition: transform .5s linear;
@@ -6388,7 +7646,10 @@ cannot rotate <g> around center?
   /* control menu */
 
   #control0 {
+    /*
     position: fixed;
+    */
+    position: absolute;
     top: 0%; left: 0%;
     
     /* TODO android workaround for position:fixed
@@ -6397,7 +7658,9 @@ cannot rotate <g> around center?
   }
 
   .control {
+    /*
     position: fixed;
+    */
     z-index: +1;
 
     /* TODO FIXME scroll broken after expand */
@@ -6488,6 +7751,23 @@ cannot rotate <g> around center?
   symbol.zodiac {
     fill: none;
     stroke-width: 12;
+  }
+
+  div#description {
+    /** / text-align: left; /**/
+    margin: 1em;
+  }
+
+  .foto-container-broad .foto {
+    /* size depends on scale factor html vs svg [TODO verify] */
+    max-height: 105px;
+    max-width: 145px;
+  }
+
+  .foto-container-high .foto {
+    /* size depends on scale factor html vs svg [TODO verify] */
+    height: 157px;
+    width: 119px;
   }
 
 </style>
