@@ -1,6 +1,6 @@
-import Alcimaps from './Alcimaps.svelte'
+import AlchiMaps from './AlchiMaps.svelte'
 
-const app = new Alcimaps({
+const app = new AlchiMaps({
   target: document.body,
 	//props: {
 	//	name: 0b0011
