@@ -14,6 +14,10 @@ this one science is the science of mental chemistry, in short: alchemy.
 
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
 
+* 2020-09-01
+  * [alchi tables html](https://milahu.github.io/alchi/english/alchi-tables.html)
+  * [alchi flyer html (german)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
+
 * 2020-08-10
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) is the most simple test for the three sheldon-types
 
