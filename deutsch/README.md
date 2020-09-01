@@ -28,6 +28,10 @@ Andere Seiten funktionieren ähnlich.
 
 Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) für Benachrichtigung bei Änderungen.
 
+* 2020-09-01
+  * [alchi flyer html (deutsch)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
+  * [alchi tables html (englisch)](https://milahu.github.io/alchi/english/alchi-tables.html)
+
 * 2020-08-10
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test für die drei Sheldon-Typen
 
