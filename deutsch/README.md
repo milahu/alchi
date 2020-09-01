@@ -36,13 +36,13 @@ Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) f�
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test für die drei Sheldon-Typen
 
 * 2020-03-10
-  * [alcimaps html+svg+js](https://milahu.github.io/alchi/alchi-maps/dist/alcimaps.2020-03-10.html#A1_e/bxinout_s+m_1110_0_de_np) (130 KB)
-  * [alcimaps preview webp](https://milahu.github.io/alchi/alchi-maps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
+  * [alcimaps html+svg+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alcimaps.2020-03-10.html#A1_e/bxinout_s+m_1110_0_de_np) (130 KB)
+  * [alcimaps preview webp](https://milahu.github.io/alchi/src/alchi-maps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
   * [alcimaps source code](../src/alchi-maps) (550 KB) für [svelte - der javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
-  * [matrix viewer html+js](https://milahu.github.io/alchi/alchi-maps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
-  * [matrix viewer screenshot gif](https://milahu.github.io/alchi/alchi-maps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
+  * [matrix viewer html+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
+  * [matrix viewer screenshot gif](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-matrix-viewer.2019-05-08.html.M3.gif) (33 KB)
 
 * 2019-04-11
   * [english synth notes txt](../english/alchi%20synth%20english%202019-04-11.txt) (260 KB)
