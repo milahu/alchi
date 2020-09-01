@@ -1,12 +1,20 @@
 <script preval="preval">
 
-  // the "preval" key does
-  // activate the src/sveltePreval.js preprocessor
-  // configured in rollup.config.js
+  // preval: see rollup.config.js
 
   /*
 
   TODO
+
+  fix fast multi moves
+    like right+right
+    without waiting for the first move to finish
+    allow to move fast
+    better separation of state and animation = static + dynamic
+
+  make compatible with firefox darkreader
+    darkreader in dynamic mode preserves colors (not perfect)
+    but drops background line color
 
   dont capture ctrl+wheel events = browser zoom
 
@@ -22,11 +30,14 @@
     add option to "rotate faster"
     = counter-rotate without transition at the middle/end of rotation
 
+  fix svg export
+    include transforms, before export repaint svg with transformed matrix?
+
+  done:
   generate standalone svg image from current map view
     = svg screenshot
     copy svg source to clipboard
     or provide download link? size limit?
-    TODO include transforms, before export repaint svg with transformed matrix?
 
   firefox. respect var(--fg) color for text
 
@@ -45,7 +56,7 @@
     use css variable for foreground + background color
     var(--fg) and var(--bg)
 
-  done:
+  moved to alchi-tables
   add "pallas sign" in all eight rotations
     each as separate svg file
     with square size = 1:1 aspect ratio
@@ -67,6 +78,7 @@
   also inline external svg image assets
     not done by "npm run inline" command
 
+  moved to alchi-tables
   done: test-hands-long-or-broad.svg [and others] is NOT inlined
   verify inline of svg image + bitmap images (jpg png gif webp)
     via <img src="image.svg" /> tag
@@ -91,6 +103,7 @@
     cos rotate3d is not counter-rotatable, no real 3D transform
     do flipBodies() with translate-rotate layer and css: rotate3d(x,y,z,a)
 
+  moved to alchi-tables
   "fill this with some helpful text"
   probably the hardest part of all ....
   cos human language is so imperfect and dirty
@@ -169,8 +182,8 @@
   critical:
   add mousemove listeners for rotate + zoom + flip
 
-  done? fixed "move modulo"
-  critical: fix "chained distant moves"
+  done:
+  critical: fix distant moves
     like moveBodies(+2, +2); moveBodies(+2, +2)
     or   moveBodies(+2, -2); moveBodies(+2, -2)
     or   moveBodies(+2,  0); moveBodies(+2,  0)
@@ -197,6 +210,7 @@
   inject source.zip into inlined.html
     total around 500 KByte
     200 build + 300 source
+    bundle everything into html
 
   use matrix3d transforms to solve the "transformOrigin problem"?
     library candidates
@@ -216,12 +230,10 @@
   fix init angle / angle_id
     read from URL fragment
 
-  allow to move fast
-    better separation of state and animation = static + dynamic
-
-  svelte bug!
+  svelte bug?
     ignores whitespace between two template variables
     workaround with <span style="margin-left: 0.33em">
+    or {' '} {@html '&#x20;'}
 
   fix rotate + move back
 
@@ -1780,9 +1792,8 @@
 
 
   // rename: "skipMove" to "animateMove" [positive name]
+  // remove hideMove ?
   function moveBodies(dxOut=0, dyOut=0, rotate=true, skipMove=false, hideMove=false) {
-
-console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
 
     if (dxOut == 0 && dyOut == 0) {
       // no change
@@ -1951,6 +1962,7 @@ console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
     }
 
     // wait for svelte to commit diffs
+    // TODO move to svelte.afterUpdate function?
     //promiseTimeout(waitForModulo ? 2*svelteCommitTime2 : 0).then(() => {
     promiseTimeout(waitForModulo ? svelteCommitTime2 : 0).then(() => {
 
@@ -1959,19 +1971,9 @@ console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
       //dx = (dx+2).mod(4)-2
       //dy = (dy+2).mod(4)-2
 
-      /**/
-console.log(`moveBodies: skipMove is`, skipMove);
-console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
-
       if (skipMove === false) {
         doAnimateMoves = true;
       }
-      /** /
-      
-      doAnimateMoves = !skipMove; // TODO verify
-      //doAnimateMoves = false // DEBUG
-      /**/
-
 
       // sleep
       // wait for svelte to set translate_x, translate_y
@@ -2012,7 +2014,7 @@ console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
 
         if (1) {
           //transform_translate.style.transform += `translate(${moveX*75}px,${moveY*75}px) `;
-          console.log(`translate(${dx*scale_out*moveStep*scale_odd}px,${dy*scale_out*moveStep*scale_odd}px) `)
+          //console.log(`translate(${dx*scale_out*moveStep*scale_odd}px,${dy*scale_out*moveStep*scale_odd}px) `)
           transform_translate.style.transform += `translate(${dx*scale_out*moveStep*scale_odd}px,${dy*scale_out*moveStep*scale_odd}px) `;
 
           // DEBUG
@@ -2084,15 +2086,13 @@ console.log(`moveBodies: doAnimateMoves is`, doAnimateMoves);
         }
 
         console.log(`d_Out = ${dxOut} ${dyOut}   d_ = ${dx} ${dy}   flip = ${flipIn[0]} ${flipIn[1]} ${flipIn[2]} ${flipIn[3]}`);
-        
+
         if (1) {
           // move back clipped bodies
           // wait for svelte to commit diffs, delta T = 10 ms
           //promiseTimeout(moveBackTimeout)
           promiseTimeout(skipMove ? svelteCommitTime : tweenDurShort)
           .then(() => {
-
-console.log(`doAnimateMoves is`, doAnimateMoves);
 
             if (doAnimateMoves == false) {
               doAnimateMoves = true
@@ -2144,20 +2144,20 @@ console.log(`doAnimateMoves is`, doAnimateMoves);
 
               const sdx = Math.sign(dx)
 
-              Array.from(Array(Math.abs(dx)).keys()).forEach(
-                (ix) => {
-                  //const iy2 = (+1.5-1.5*sdy+iy-dySum).mod(4)
-                  //const ix2 = (-1+1*sdx+ix-dxSum).mod(4)
-                  const ix2 = (+1.5-1.5*sdx+ix-dxSum).mod(4)
-                  console.dir({ix,ix2,sdx,dxSum,dx,dxOut})
-                  //console.log(`ix = ${ix}   ix2 = ${ix2}`)
-                  bodyPosStatic[ix2] = bodyPosStatic[ix2].map(
-                    ([xPos, yPos], y) => ([
-                      //xPos - sdx*4*moveStep,
-                      xPos - sdx*4*moveStepIntern,
-                      yPos,
-                    ])
-              )})
+              Array.from(Array(Math.abs(dx)).keys())
+              .forEach((ix) => {
+
+                const ix2 = (dx < 0)
+                  ? ((3-ix)-dxSum).mod(4)
+                  : (ix-dxSum).mod(4);
+
+                bodyPosStatic[ix2] = bodyPosStatic[ix2].map(
+                  ([xPos, yPos], y) => ([
+                    xPos - sdx*4*moveStepIntern,
+                    yPos,
+                  ])
+                );
+              });
 
             }
 
@@ -2167,7 +2167,12 @@ console.log(`doAnimateMoves is`, doAnimateMoves);
 
               Array.from(Array(Math.abs(dy)).keys()).forEach(
                 (iy) => {
-                  const iy2 = (+1.5-1.5*sdy+iy-dySum).mod(4)
+
+                  const iy2 = (dy < 0)
+                    ? ((3-iy)-dySum).mod(4)
+                    : (iy-dySum).mod(4);
+
+                  //const iy2 = (+1.5-1.5*sdy+iy-dySum).mod(4)
                   console.dir({iy,iy2,sdy,dySum,dy,dyOut})
                   //console.log(`iy = ${iy}   iy2 = ${iy2}`)
                   console.log('bodyPosStatic 2086:')
@@ -2802,7 +2807,7 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
     'e/bxinout': 'Element / Body = In / Out',
     'e/bxfoto': 'Element / Body x Foto',
     'be': 'Body | Element',
-    'bexfoto': 'Body | Element \\ Foto',
+    //'bexfoto': 'Body | Element \\ Foto',
     // TODO swap element <> body, to body | element
     'ebxorbit': 'Element | Body x orbit = Out ( In In ) Out',
     // TODO swap element <> body, to body | element
@@ -3268,7 +3273,8 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
     /**/
     // moved: add keydown handler to control-* elements
-    let keydown_element = document.getElementById('transform-mask');
+    //let keydown_element = document.getElementById('transform-mask');
+    let keydown_element = document;
     keydown_element.addEventListener('keydown', handleKeydown);
     console.log('done adding keydown handler to '+keydown_element.id)
     /**/
@@ -3811,13 +3817,16 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
           // TODO add touch gestures
           //   two finger zoom
           //   double tap to zoom in
-          ;['wheel'].forEach(v => {
+
+          /* add mousewheel listener, TODO implement zoom
+          ['wheel'].forEach(v => {
             e.addEventListener(
               v, handleWheelBodies, false
             )
           });
+          */
 
-          ;['mousedown', 'touchstart'].forEach(v => {
+          ['mousedown', 'touchstart'].forEach(v => {
           //e.addEventListener('mousedown', (event)=>{
 
             const v2 = (v[0] === 'm') ? 'mousemove' : 'touchmove';
@@ -7259,220 +7268,15 @@ cannot rotate <g> around center?
     border-bottom: solid 1px var(--fg);
   }
 
-  table.fourxfour {
-    border-collapse: collapse;
-    margin: 1em auto 2em auto !important;
-  }
-  table.fourxfour td {
-    padding: 0.5em;
-    border: solid 1px var(--fg);
-  }
+
+
+
+
 
   tr.empty, tr.empty td {
     height: 0;
     padding: 0;
     margin: 0;
-  }
-
-  /*
-    css hack. only works for height = 1em = single line heading.
-    more height must be declared manually, like
-    <tr style="height: 5em">
-  */
-  tr.colspan-four td {
-    border-width: 2px 0 !important;
-    height: 2.5em; /* TODO automatic height? */
-  }
-  tr.colspan-four td:nth-child(1) {
-    border-left-width: 1px !important;
-  }
-  tr.colspan-four td:nth-child(4) {
-    border-right-width: 1px !important;
-  }
-  tr.colspan-four td div {
-    position: absolute;
-    /* TODO add margin/padding? */
-    width: 100%;
-    left: 0;
-    /*right: 0;*/
-    margin: 0;
-    margin-top: 1em;
-    padding: 0;
-    text-align: center;
-  }
-
-  /* four column table = fire earth air water */
-  table.four-column {
-    border-collapse: collapse;
-    /*margin: 1em auto !important;*/
-    margin: 1em auto 2em auto !important;
-  }
-  table.four-column td[colspan] {
-    border: none !important;
-  }
-  table.four-column td {
-    vertical-align: top;
-    padding: 0.5em;
-    border-width: 2px 1px;
-    border-style: solid;
-    border-left-color: var(--fg);
-    border-right-color: var(--fg);
-  }
-  table.four-column td:nth-child(1) {
-    border-top-color: red;
-    border-bottom-color: red;
-  }
-  table.four-column td:nth-child(2) {
-    border-top-color: green;
-    border-bottom-color: green;
-  }
-  table.four-column td:nth-child(3) {
-    border-top-color: yellow;
-    border-bottom-color: yellow;
-  }
-  table.four-column td:nth-child(4) {
-    border-top-color: blue;
-    border-bottom-color: blue;
-  }
-
-  /* three column table = air fire+earth water */
-  /* this version works until zoom level 175%
-       in chrome on a 1440px wide display */
-  table.three-column {
-    border-collapse: collapse;
-    margin: 1em auto 2em auto !important;
-    /*width: 98%;*/
-  }
-  table.three-column td {
-    vertical-align: top;
-    padding: 0.5em;
-    border-width: 2px 1px;
-    border-style: solid;
-    border-left-color: var(--fg);
-    border-right-color: var(--fg);
-  }
-  table.three-column td[colspan] {
-    border: none !important;
-  }
-  table.three-column td:nth-child(1) {
-    border-top-color: red;
-    border-bottom-color: red;
-    border-right: none;
-  }
-  table.three-column td:nth-child(2) {
-    border-top-color: green;
-    border-bottom-color: green;
-    border-left: none;
-  }
-  table.three-column td:nth-child(3) {
-    border-top-color: yellow;
-    border-bottom-color: yellow;
-  }
-  table.three-column td:nth-child(4) {
-    border-top-color: blue;
-    border-bottom-color: blue;
-  }
-  table.three-column tr td div {
-    position: relative;
-
-    /* todo fix for all zoom levels */
-    width: 210%;
-    padding: 8px;
-    
-    text-align: center;
-    margin: -0.5em;
-  }
-  tr.colspan-three td {
-    border-width: 2px 0 !important;
-    height: 2.5em; /* TODO automatic height? */
-  }
-  tr.colspan-three td:nth-child(1) {
-    border-left-width: 1px !important;
-  }
-  tr.colspan-three td:nth-child(4) {
-    border-right-width: 1px !important;
-  }
-  tr.colspan-three td div {
-    position: absolute !important;
-    /* TODO add margin/padding? */
-    width: 100% !important;
-    left: 0;
-    /*right: 0;*/
-    margin: 0 !important;
-    margin-top: 1em !important;
-    padding: 0 !important;
-    text-align: center;
-  }
-
-  table.two-column {
-    /*
-    border-collapse: separate;
-    */
-    border-spacing: 16px 8px;
-    margin: 1em auto 2em auto !important;
-  }
-  table.two-column td[colspan] {
-    text-align: center !important;
-  }
-  table.two-column td {
-    vertical-align: top;
-    padding: 0.5em;
-  }
-  table.two-column td:nth-child(1) {
-    text-align: right;
-    /*
-    border-right: none;
-    */
-  }
-  table.two-column td:nth-child(2) {
-    text-align: left;
-  }
-
-  table.two-column td[colspan] {
-    border: none !important;
-    border-image: none !important;
-  }
-
-  table.two-column.sense td,
-  table.two-column.move td,
-  table.two-column.class td
-  {
-    border-width: 2px;
-    border-style: solid;
-  }
-
-  table.two-column.sense td:nth-child(1) {
-    border-color: #ff6600; /* orange */
-    /* red + yellow dashes
-       probably broken in internet explorer */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%23ffff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
-  }
-  table.two-column.sense td:nth-child(2) {
-    border-color: #008080; /* turquoise */
-    /* green + blue dashes */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%2300ff00" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
-  }
-
-  table.two-column.move td:nth-child(1) {
-    border-color: #a800a8; /* purple */
-    /* red + blue dashes */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
-  }
-  table.two-column.move td:nth-child(2) {
-    border-color: #ccff00; /* lime */
-    /* green + yellow dashes */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%2300ff00" x="0" y="0" width="24" height="24" /><path stroke="%23ffff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
-  }
-
-  table.two-column.class td:nth-child(1) {
-    border-color: red;
-    /* red + green dashes */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ff0000" x="0" y="0" width="24" height="24" /><path stroke="%2300ff00" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
-  }
-  table.two-column.class td:nth-child(2) {
-    border-color: yellow;
-    /* yellow + blue dashes */
-    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ffff00" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
   }
 
 
@@ -7524,7 +7328,7 @@ cannot rotate <g> around center?
     cos of buggy svg implementations
     workaround:
     use javascript with a low frame-rate
-  * /
+
     .animate .anim_dash1,
     .animate .anim_dash2 {
       animation: anim_dash2 4s linear infinite;
@@ -7535,7 +7339,7 @@ cannot rotate <g> around center?
     @keyframes anim_dash2 {
       100% { stroke-dashoffset:  80 }
     }
-  /**/
+  */
 
   /* expand = collapsed by default */
   .expand {
