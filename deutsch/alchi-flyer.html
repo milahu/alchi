@@ -1,0 +1,5844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+
+<title>alchi flyer</title>
+
+<!--
+
+nur wer sucht, kann finden.
+
+nur wer die wahrheit* sucht, kann sie auch finden.
+*(das richtige ziel)
+
+13/24 rache, kritik: früher / später
+
+print settings:
+	use mozilla firefox
+		code is optimized for firefox
+		chrome shows some bugs (page 2 moved up)
+		and uses other font (increase font_size)
+	scale to full page, not printable area
+	duplex on long side
+		some printers have slow duplex,
+		so manual duplex is faster for large batches
+	printer:
+		im using a Canon Pixma G5050
+		bottle ink printer
+		with a 250 sheet paper capacity
+		costing about 0,1 euro-cent per page
+		print quality is only 600dpi
+		but we can optimize our document (pixel hinting)
+		for better print results
+
+change text:
+	change 'const font_size = ....;'
+	to change font size, to fill pages
+
+TODO
+	* use printer unit "points"
+	  and pixel-hinting / dot-hinting
+	  for better print results.
+	  optimize for 600dpi printers.
+	  translate html to svg coordinates 1:1.
+	  avoid scaling factors, or round scaled coordinates.
+
+-->
+
+<meta name="author"
+	content="Milan Hauth <milahu@gmail.com>">
+
+<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+<meta name="dcterms.rights"
+	content="License is Creative Commons Zero">
+<link rel="copyright"
+	href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">
+
+<!--
+	printing from firefox is blurry
+	use "print to PDF"
+	and print from a PDF viewer (not firefox)
+	-- fixed?
+-->
+
+<!-- zoom to 80% gives ratio 1:1 on my screen -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=0.8">
+<!-- initial-scale ignored by firefox? -->
+
+<script>
+
+	const VERSION = "2020-09-01-de";
+	const DOCNAME = `alchi-flyer-${VERSION}`;
+	document.title = DOCNAME;
+
+	// din a4 = 210 x 297 mm2
+	const page_x = 210; // mm
+	//const page_y = 297; // mm
+	const page_y = 296.666666; // mm - bigger values add empty page
+	// TODO report bug to firefox? 297mm != 296.6666666mm - rounding error from inch conversion?
+	// firefox print dialog: A4 = 8.27 inch x 11.69 inch
+
+	//const page_margin = 5; // mm
+	const page_margin = {
+		top: 5,
+		right: 5,
+		bottom: 5,
+		left: 5,
+	}; // mm
+
+	const content_x = page_x - page_margin.left - page_margin.right;
+	const content_y = page_y - page_margin.top - page_margin.bottom;
+
+	const map_margin = 3;
+	const map_w = 10;
+	const map_a = map_w / 8;
+
+	const map_x_html = content_x/4;
+	const map_y_html = map_x_html;
+
+	const map_x_svg = 4*map_w + 3*map_margin + 4*map_a;
+	const map_y_svg = map_x_svg;
+	
+	const scale_svg_html = map_x_svg / map_x_html;
+
+	const table_margin = 4;
+	
+	const bgpat_w = content_x / 5 / 4;
+
+	// TODO scale with content
+ 	const font_size = 2.365; // firefox
+
+
+	const font_size_page2 = font_size;
+
+	const font_size_map = 4;
+	const footer_y = font_size * 1.25;
+
+	// helper function
+	Array.range = function(from, to=undefined) {
+		if (to) {
+			const len = to - from;
+			if (len > 0) {
+				// from <= val <= to
+				return Array.from(Array(1+len)).map((_, idx) => from+idx);
+			} else {
+				// from >= val >= to
+				return Array.from(Array(1-len)).map((_, idx) => from-idx);
+			}
+		} else {
+			if (from > 0) {
+				// 0 <= val <= "from"
+				return Array.from(Array(1+from)).map((_, idx) => idx);
+			} else {
+				// 0 >= val >= "from"
+				return Array.from(Array(1-from)).map((_, idx) => -idx);
+			}
+		}
+	}
+
+	// intake: `${energy}kCal` or `${mass}Gr`
+	function macros_mass_ratio(type, intake, round_to=1) {
+		// kiloCalories
+		//const energy_intake = 2000; // daily intake
+		//const energy_intake = 400; // one meal
+
+		const energy_ratio = {
+			// numbers in percent
+			"endo": {c: 25, p: 35, f: 40}, // = air
+			"meso": {c: 40, p: 30, f: 30}, // = fire + earth
+			"ecto": {c: 55, p: 25, f: 20}, // = water
+		};
+
+		// energy density. D = E / M. M = E / D
+		const cal_per_gram = {
+			c: 4, p: 4, f: 9,
+		};
+
+		const density_cpf = ["c", "p", "f"].map(key => (
+			energy_ratio[type][key]/100/cal_per_gram[key]
+		));
+
+		function _round(f, round_to=1){
+			return Math.round(f/round_to)*round_to;
+		}
+
+		const m1 = intake.match(/^([0-9]+)kCal$/);
+		if (m1) {
+			const energy_intake = parseInt(m1[1]);
+			return density_cpf.map(val => _round(val*energy_intake, round_to)).join("+");
+		}
+		
+		const m2 = intake.match(/^([0-9]+)Gr$/);
+		if (m2) {
+			const mass_intake = parseInt(m2[1]);
+			const density_total = density_cpf.reduce((acc, val) => (acc + val), 0);
+			return density_cpf.map(val => _round(val/density_total*100, round_to)).join("+");
+		}
+	}
+
+
+
+	function macros_energy_ratio(mc, mp, mf, show_relative=true) {
+		//const energy_intake = 2000; // kiloCalories
+		const mass = { c: mc, p: mp, f: mf };
+		// energy density. D = E / M. M = E / D
+		const cal_per_gram = {
+			c: 4, p: 4, f: 9,
+		};
+		const energy_cpf = ["c", "p", "f"].map(key => (
+			mass[key]*cal_per_gram[key]
+		));
+		
+		if (show_relative) {
+			// normalize to 100 grams total
+			const energy_total = energy_cpf.reduce((acc, val) => (acc + val), 0);
+			return energy_cpf.map(val => Math.round(val/energy_total*100)).join("+");
+		}
+		else {
+			return energy_cpf.map(val => Math.round(val)).join("+");
+		}
+	}
+
+	/* files are now inlined in html
+	let file = {
+		four_bodies: 'four elements - bodies 2020-07-30 color5.svg',
+		three_hands: 'test-hands-long-or-broad.de.svg',
+	};
+	*/
+
+	let text = {
+
+		page_footer: `
+
+			<span>[ <a href="https://web.archive.org/web/*/https://github.com/milahu/alchi">web.archive.org/web/*/</a> ]&nbsp; <a href="https://github.com/milahu/alchi">github.com/milahu/alchi</a></span>
+
+			<span><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">Lizenz: CC-Zero-1.0</a></span>
+
+			<span>${DOCNAME}.html</span>
+
+		`,
+
+		header_page1: `
+
+			Hey! <b>Wir suchen Freunde</b>,
+			und das ist unser Plan:
+
+		`,
+
+		header_page2: `
+
+			Hey! <b>Wir suchen Freunde</b>,
+			und das ist Seite 2:
+
+		`,
+
+		para_four_bodies: `
+
+			Die perfekte <b>Großfamilie</b>
+			braucht genau <b>16 Menschen</b>.
+
+			Wer ist wer?
+			Die <b>Vier Körper</b> ABCD
+			können wir leicht sehen,
+			denn <nw>Geschlecht (Mann oder Frau?)</nw>
+			und <nw>Alter (Elter oder Kind?)</nw>
+			sind offensichtlich
+			(überschwellig, laute Stimmen, Grobstruktur).
+
+			Vier Körper =
+
+		`,
+
+		para_four_elements: `
+
+			Schwerer zu sehen
+			(unterschwellig, leise Stimmen,
+			Feinstruktur, Geister)
+			sind die <b>Vier Elemente</b> 1234.
+
+			Die Vier Elemente unterscheiden sich in Sensorik und Motorik.
+
+			Sensorik prägt unsere Passivität
+			(Weltsicht, Eindruck, Nehmen),
+			Motorik prägt unsere Aktivität
+			(Bewegung, Ausdruck, Geben).
+
+			(Vergleich:
+			sensorische und motorische Nervenfasern)
+
+			Vier Elemente =
+
+		`,
+
+		problem_misunderstandings: `
+
+			Ein großes Problem dieser Welt ist:
+			<nw>Falsche Kommunikation</nw> und <b>Missverständnisse</b>
+			zwischen verschiedenen Menschentypen.
+
+			Wir umgeben uns gerne nur mit Freunden
+			aber mit unseren Feinden können wir nichts anfangen,
+			ausser sie auf Distanz halten,
+			und heimlich bekämpfen.
+
+			Unser Modell zeigt:
+			Wie können wir unsere Freunde nutzen,
+			um mit unseren Feinden zu reden?
+			Dafür arbeiten unsere <b>Freunde als Übersetzer</b>.
+
+			Eine direkte Kommunikation mit Feinden ist verboten,
+			denn das bringt immer nur Missverständnisse
+			(Mit Fremden soll man nicht Reden,
+			dont talk to stranger),
+
+			denn Freundschaft und Feindschaft
+			haben meistens <b>Persönliche Gründe</b>
+			und Sachliche Gründe sind oft nur Vorwand.
+
+		`,
+
+		/* moved to natural order
+		mutual_completion: `
+
+			In der perfekten Welt
+			darf jedes Element seine Stärke leben
+			und kann seine <b>Schwächen delegieren</b>
+			an seine Freunde.
+
+		`,
+		*/
+
+		mix_types: `
+
+			<nw><b>Mischtypen</b> - Woher kommen Mischtypen?</nw>
+
+			Jedes Element kann drei Modalitäten spielen.
+			Jede Modalität ist auch ein Element.
+			Beispiel: Feuer spielt Wasser = 1x4.
+
+			Das Element das <b>nicht</b> gespielt werden kann,
+			ist das Gegen-Element = typische Schwäche.
+			(Deswegen nur drei Modalitäten, und nicht vier.)
+
+			Gegen-Elemente sind: Feuer-Erde und Luft-Wasser
+			(siehe Kompass oder
+			<nw>Spannkreuz &xmark;</nw> auf der Karte).
+			Beispiel: Wasser kann nie Luft spielen.
+
+			Manchmal ist es einfacher zu fragen:
+			<b>Welches Element kann ich nie spielen?</b>
+			Oder, welche zwei Eigenschaften (Sensorik + Motorik)
+			kann ich nie gleichzeitig spielen?
+
+			Wenn ein Element sich selbst spielt,
+			dann spielt es die "bewegliche" Modalität
+			(Schütze, Jungfrau, Zwillinge, Fische).
+			Bsp. Luft spielt Luft
+			= 3x3 = bewegliche Luft = Zwillinge.
+
+			(Sternzeichen? Ja, aber
+			<b>Kalender-Astrologie ist falsch</b>.
+			Geburtstag sagt nichts über Element oder Modalität,
+			sondern <b>Elemente sind
+			<nw>zufällig verteilt</nw></b>,
+			<nw>nicht erblich</nw>,
+			<nw>nicht berechenbar</nw>).
+
+			Die zwei äusseren Modalitäten,
+			kindische Modalität (x13) und
+			erwachsene Modalität (x24)
+			entsprechen der Bindung
+			an bestimmte Mitmenschen
+			(Bindung als Ursache <b>oder</b> Wirkung
+			= Partner haben oder Partner suchen).
+
+			Bei den zwei <b>äusseren Modalitäten</b>
+			(kindisch oder erwachsen)
+			wird eine Eigenschaft gestärkt,
+			<!-- (Sensorik oder Motorik), -->
+			und die andere Eigenschaft wird geschwächt.
+			Beispiel:
+			<nw>2x4 = Erde spielt Wasser</nw>
+			= weiblich-erwachsen
+			spielt männlich-erwachsen
+			= Inneres Geschlecht wird geschwächt
+			und Inneres Alter wird gestärkt.
+
+			Die geschwächte Eigenschaft
+			ist ausgeglichen
+			(mittel-alt oder "bi-sexuell"),
+			die gestärkte Eigenschaft ist extrem
+			(<nw>extrem männlich</nw>, <nw>extrem weiblich</nw>,
+			<nw>extrem kindisch</nw>, <nw>extrem erwachsen</nw>).
+
+			Wechselbare Modalität heisst auch:
+			Die zwei äusseren Modalitäten
+			werden gleich oft/stark gespielt,
+			also sind im Gleichgewicht.
+
+			<nw>Wann spiele ich <b>welche Modalität?</b></nw>
+			Das sehen wir auf der Karte der 16 Typen.    
+
+		`,
+		
+		mix_types_sample: `
+			
+			Beispiel: Als "Ich" nehmen wir
+			<nw>den Punkt A1 (Feuer Sohn).</nw>
+			Als Bindungs-Partner nehmen wir
+			<nw>den Punkt C3 (Luft Tochter).</nw>
+			Dann gehen wir <b>ein Schritt weiter</b> zu A4
+			- das ist die Modalität von A1,
+			also:
+			<nw>Feuer (1) spielt Wasser (4) = 1x4</nw>
+			= festes Feuer = Löwe,
+			genauer:
+			<nw>Feuer <b>sucht Luft</b> spielt Wasser = 134.</nw>
+
+			Für den Partner C3 gilt:
+			<nw>Luft (sucht Feuer) spielt Erde = 312.</nw>
+
+			Insgesamt sehen wir eine Dialog-Bindung
+			<nw>2 1&lt;&gt;3 4 = 1&lt;&gt;3</nw>.
+
+			Bleiben wir bei "Ich gleich A1".
+			Jetzt nehmen wir C2 (Erde Tochter) als Bindungs-Partner.
+			Wir gehen wieder "ein Schritt weiter"
+			und landen wieder bei A4
+			(die Karte wird einfach wiederholt:
+			oben raus und unten wieder rein).
+
+			Hier gilt also:
+			<nw>Feuer <b>sucht Erde</b> spielt Wasser = 124</nw>
+			Und:
+			<nw>Erde sucht Feuer spielt Luft = 213.</nw>
+
+			Insgesamt sehen wir eine Monolog-Bindung
+			<nw>4 2&gt;&gt;1 3 = 2&gt;&gt;1</nw>.
+
+			Also für jede Modalität gibt es
+			immer zwei Bindungs-Partner.
+
+			<!--
+			Die kindischen Modalitäten (x13) heissen "kardinal"
+			(Widder, Steinbock, Waage, Krebs) (Pfeil raus),
+			die erwachsenen Modalitäten (x24) heissten "fest"
+			(Löwe, Stier, Wassermann, Skorpion) (Pfeil rein).
+			-->
+
+		`,
+
+		two_modalities: `
+
+			Kindische Modalität
+			= Ich spielt ein <nw>kindisches Element (x13)</nw>
+			= <nw><b>Stärke</b> aber Dummheit</nw>
+			= <nw>Sehen und Reden.</nw>
+
+			Erwachsene Modalität
+			= Ich spielt ein <nw>erwachsenes Element (x24)</nw>
+			= <nw><b>Schlauheit</b> aber Schwäche</nw>
+			= <nw>Hören und Zeigen.</nw>
+
+			Modalität ist die <b>bevorzugte</b> Stress-Reaktion,
+			die "im Zweifel" (neutraler Stress)
+			häufiger gewählt wird.
+			Oder der bevorzugte Bindungs-Partner,
+			der häufiger gewählt wird
+			(aus Gewohnheit/Einseitigkeit).
+
+			Bei rein theoretischen Persönlichkeits-Tests
+			(blind für Körpertyp)
+			oder Umfragen zur politischen Gesinnung
+			antwortet die Modalität, nicht das Element.
+
+			Modalität prägt <b>Selbstbild</b>.
+
+		`,
+
+		monolog_bond: `
+
+			Stärke und Schlauheit
+			in einer <b>Monolog</b>-Beziehung (Gleichstrom):
+
+			<nw>Redner &gt;&gt; Hörer</nw>
+			(Pfeile siehe Karte,
+			Beispiel <nw>3 4&lt;&lt;1 2 = 4&lt;&lt;1</nw>).
+
+			<b>Redner</b> ist stark aber dumm
+			(spielt seine kindische Modalität),
+			
+			<b>Hörer</b> ist schlau aber schwach
+			(spielt seine erwachsene Modalität).
+
+			Redner ist Seher und Redner, Lehrer,
+			Erzähler, Antworter, Wortführer,
+			hat Misstrauen und Einfluss.
+
+			Hörer ist Hörer und Zeiger,
+			Schüler, Versteher,
+			Nenner, Frager,
+			hat Vertrauen und Ohnmacht.
+
+			Redner und Hörer führen ein <b>Interview</b>:
+			Redner sendet lange Sätze,
+			Hörer sendet kurze Stichworte.
+
+			Die Glaubensfrage (Was glaube ich?)
+			ist immer eine persönliche Frage,
+			also <b>Wem glaube ich?</b>,
+			also Auf wen höre ich?,
+			also Wer sind meine Redner?,
+			also Bei wem spiele ich
+			meine erwachsene Modalität (Hörer)
+			und kann verstehen?
+
+			<!--
+				(und der Andere spielt
+				seine kindische Modalität.)
+			-->
+
+			Und umgekehrt:
+			<b>Wer glaubt mir?</b>,
+			also Wer hört auf mich?,
+			also Wer sind meine Hörer?,
+			also Bei wem spiele ich
+			meine Kindische Modalität (Redner)
+			und werde verstanden?
+
+			<!--
+				also Wer spielt bei mir
+				seine erwachsene Modalität?
+
+				(und Ich spiele
+				meine kindische Modalität.)
+
+				Antworten liefert die Karte:
+			-->
+
+			<!--
+				Antworten/Erzählungen fließen von Redner nach Hörer,
+				Fragen/Emotionen fließen von Hörer nach Redner.
+
+				Antworten/Erzählungen sind emotionslos, wertneutral.
+				Fragen/Emotionen sind grundlos, unerklärbar.
+
+				Redner sendet Rationen und fängt Emotionen.
+				Hörer fängt Rationen und sendet Emotionen.
+
+				TODO better.
+				von Redner nach Hörer fließen Rationale Informationen [komplex],
+				von Hörer nach Redner fließen Emotionale Informationen [einfach].
+				Hörer ist taub für die Emotionen von Redner,
+				Redner ist taub für die Rationen von Hörer.
+
+				Naturordnung
+				Persönliche Gründe
+				Lehrer und Schüler
+				Sender und Fänger
+				Einfluss und Verstand
+				Unglaube und Glaube
+			-->
+
+		`,
+
+		four_truths: `
+
+			Die Vier Elemente
+			bringen <b>Vier Wahrheiten</b>,
+
+			und nur wenn Redner und Hörer
+			naturrichtig verbunden sind,
+			kann jede Wahrheit gehört werden,
+
+			und nur so kann jedes Element
+			auch andere Wahrheiten nutzen.
+
+		`,
+
+		anti_nature: `
+
+			Eine häufige Ursache für Gewalt und Schmerz
+			ist Kommunikation <b>gegen die Natur</b>ordnung,
+			also Falsche Stärke oder Falsche Schlauheit.
+
+			Falsche Erwartung heisst:
+			(Von Natur aus) etwas nicht haben können,
+			aber <b>trotz</b>dem haben wollen
+			(Gewalt, Zwang, Rebellion, Der mühsame Weg).
+
+			Beispiel:
+			Von Natur aus können zwei Partner
+			nur eine Monolog-Beziehung führen,
+			weil ihre Modalitäten das so vorgeben.
+			Wenn die Zwei trotzdem Dialog führen wollen,
+			dann ist das immer ein Falscher Dialog,
+			und bringt immer nur Missverständnisse,
+			weil die Beziehung dafür "nicht gemacht" ist.
+
+		`,
+
+		false_talking: `
+
+			<b>Falsche Redner</b>:
+
+			Hörer und Redner sind in einer Monolog-Beziehung:
+			<nw>Redner &gt;&gt; Hörer</nw>.
+
+			Redner spielt seine kindische Modalität,
+			Hörer spielt seine erwachsene Modalität.
+
+			Hörer will zurück Reden
+			(Rollentausch ohne Partnertausch),
+
+			aber Hörer spielt automatisch den Hörer
+			in der Nähe von Redner.
+
+			Auf direktem Weg
+			kann Hörer nicht Reden,
+			also muss Hörer psychische Gewalt anwenden
+			(lauter schreien),
+			um eine falsche Rede zu senden.
+
+			Hörer wird versuchen,
+			die natürliche Taubheit von Redner zu brechen.
+
+			Redner scheint taub, ungehorsam,
+			ungläubig, unbelehrbar,
+			undankbares Kind, Problemschüler.
+
+			Im Extremfall begeht Hörer den falschen Schluss:
+			"Der Redner lernt nichts von mir,
+			also lernt er von keinem."
+
+		`,
+
+		false_hearing: `
+
+			<b>Falsche Hörer</b>:
+
+			Redner will hören und verstehen,
+			was Hörer sagt und meint
+			(Rollentausch ohne Partnertausch).
+
+			Aber Redner wird automatisch zum Redner
+			in der Nähe von Hörer.
+			Redner ist taub für die Antworten von Hörer,
+			und versteht nur Fragen von Hörer.
+
+			Um <b>trotz</b>dem Antworten zu finden,
+			wird Redner die Fragen selbst beantworten,
+			aber diese Falschen Antworten
+			sind nicht die Antworten von Hörer.
+
+			Redner wird versuchen,
+			natürliche Missverständnisse zu brechen.
+
+			Hörer scheint wie ein Stummer,
+			Geheimnisvoller, Dummkopf, Verrückter, Unreifer,
+			der nur tausend Fragen stellt,
+			aber keine Antworten gibt.
+
+			Im Extremfall begeht Redner den falschen Schluss:
+			"Ich kann den nicht verstehen,
+			also keiner kann den verstehen."
+
+		`,
+
+		right_feedback: `
+
+			(Natur-)Richtiges Reden und Hören:
+
+			Wenn wir mit Monolog-Partnern
+			einen Dialog führen wollen
+			(Zurück-Reden oder Zurück-Hören),
+			brauchen wir <b>gemeinsame Freunde</b>
+			zum Bilden von <nw>Flusskreis &square;</nw>
+			oder <nw>Spannkreuz &xmark;</nw>.
+
+			Der <b>Rückweg</b> geht dann nicht direkt zum Partner,
+			sondern über den <b>Umweg</b>
+			der zwei Anderen in der Vierer-Gruppe
+			(siehe Partnertausch im Flusskreis).
+
+		`,
+
+		dialog_bonds: `
+
+			In einer <b>Dialog</b>-Beziehung (Wechselstrom)
+			haben beide die gleiche Sensorik,
+			also <nw>2 1&lt;&gt;3 4 = 1&lt;&gt;3</nw>
+			(Beide spielen Hörer)
+			oder <nw>1 2&gt;&lt;4 3 = 2&gt;&lt;4</nw>
+			(Beide spielen Redner).
+
+			<!-- TODO expand? -->
+
+		`,
+
+		diagonal_bonds: `
+
+			Zum <b>gleichen Element</b>
+			haben wir genau eine Bindung,
+			nämlich die Diagonal-Bindung im Flusskreis.
+
+			Diese Bindung funktioniert nur dann,
+			wenn Beide die gleiche Modalität spielen
+			(Beispiel: D4x2 und C4x2)
+			und gleichzeitig ihre Modalität wechseln
+			(zu D4x1 und C4x1).
+
+			Dieser Modalitäts-Wechsel
+			passiert auch beim
+			<b>Partnertausch</b> im Flusskreis,
+
+			dabei ist der Diagonal-Partner ein Gegenspieler (Halbfreund),
+			mit dem man sich zwei Partner teilt,
+			und immer wieder gleichzeitig
+			die Partner wechselt,
+			so dass immer <b>zwei Paare</b> da sind.
+
+		`,
+
+		club16: `
+
+			<nw><b>Club 16</b>: Wir treffen uns <b>jeden Tag</b> um 16 Uhr</nw>
+			an den Hausnummern <nw>"K Mal 16"</nw>
+			in den Straßen unserer Nachbarschaft.
+
+			<nw>Also Hausnummern ${Array.range(8).map(v=>v*16).join(", ")}, ...</nw>
+			<!-- 0, 16, 32, 48, 64, 80, 96, 112, 128 -->
+
+			Das ist unser Minimal-Konsens
+			als Grundlage für Selbstorganisation.
+
+			An deinem Treffpunkt kommt keiner?
+			Dann probier auch mal andere Treffpunkte,
+			in anderen Straßen deiner Nachbarschaft.
+
+			Wir fragen:
+			<nw>1. Was ist dein Element?</nw>
+			<nw>2. Wie alt bist du?</nw>
+			<nw>3. Wen kennst du hier?</nw>
+			<nw>4. Wer passt zusammen?</nw>
+
+			Wir gehen <nw>von Haus zu Haus</nw>,
+			<nw>von Tür zu Tür</nw>
+			und wir sagen <nw>"Hey! Wir suchen Freunde."</nw>
+			(Der Rest ergibt sich dann irgendwie ....)
+
+			<!-- all treffpunkts are beautiful. dezentral!
+				Größere Treffpunkte sind Hausnummern
+				K*32, K*64, K*128, etc.
+
+				Der größte Treffpunkt ist immer
+				Hausnummer Null (am Anfang der Straße).
+			-->
+
+			<nw><b>Kuppeln</b>: Wer passt zusammen?</nw>
+			Wenn nach unserer Karte
+			zwei Menschen gut zusammen passen,
+			dann bringen wir die zwei zusammen.
+
+			Versammlungen:
+			Mit unseren Freunden
+			machen wir jeden Tag zwei Versammlungen,
+			umzu unser <b>Privatleben organisieren</b>.
+
+			Eine <b>Morgenversammlung</b>,
+			wo die Nacht nachbereitet wird,
+			und wo der Tag vorbereitet wird.
+
+			Und eine <b>Abendversammlung</b>,
+			wo der Tag nachbereitet wird,
+			und wo die Nacht vorbereitet wird.
+
+			Nachbereiten heisst:
+			Was war gut?
+			Was war schlecht?
+
+			Vorbereiten heisst:
+			Bilden von Paaren und Gruppen,
+			für den Tag oder für die Nacht.
+
+			Langfristig können wir damit organisieren
+			eine <b>Abstimmung mit den Füßen</b>,
+			also Partnertausch, Kindertausch,
+			Wohnungstausch, ....
+			so dass jeder seine Freunde in der Nähe hat
+			(<nw>Nahbindung statt Fernbeziehung,</nw>
+			<nw>Bewegung statt Gefangenschaft</nw>).
+
+			<!--
+				Wer sein Element nach aussen tragen will,
+				der trägt
+				seine Gegenfarbe (als Armband oder Kleid)
+				oder seine Nebenfarben
+				als zweiteiliges Kleid (oben-unten).
+			-->
+
+		`,
+
+		gender_vs_modality: `
+
+			Geschlecht vom Partner:
+
+			Erwachsene Elemente
+			bei Homo-Partnern
+			spielen <b>Schüler</b>/Hörer (24sg24).
+
+			Erwachsene Elemente
+			bei Hetero-Partnern
+			spielen <b>Lehrer</b>/Redner (24dg13).
+
+			Kindische Elemente
+			bei Homo-Partnern
+			spielen Lehrer/Redner (13sg13).
+
+			Kindische Elemente
+			bei Hetero-Partnern
+			spielen Schüler/Hörer (13dg24).
+
+			"Homo" = gleiches Geschlecht
+			= same gender = sg.
+
+			"Hetero" = anderes Geschlecht
+			= diff(erent) gender = dg.
+
+			Also:
+			Erwachsene Elemente (24)
+			brauchen Lehrer/Redner vom gleichen Geschlecht.
+			Kindische Elemente (13)
+			brauchen Lehrer/Redner vom anderen Geschlecht.
+
+		`,
+
+		/*
+		props_are_positive: `
+			Eigenschaften der vier Elemente
+			sind immer Stärken, Talente (positiv).
+			Für Extraverts ist Introversion eine Schwäche.
+			Für Neurotiker ist Psychotik eine Schwäche.
+			Und umgekehrt.
+		`,
+		*/
+
+		nature_vs_art: `
+
+			Natur oder Kunst?
+			<!--Naturordnung und Kunstordnung.-->
+
+			Die eine Hälfte aller Menschen
+			glaubt an Naturordnung,
+			die andere Hälfte
+			glaubt an Kunstordnung.
+
+			<b>Beide</b> haben subjektiv Recht, wie so oft.
+
+			Die entscheidende Frage ist:
+			Welche Modalität ist besser?
+			Die wechselbare Modalität
+			oder eine äussere Modalität?
+
+		`,
+
+		natural_order: `
+
+			<b>Naturordnung</b> heisst:
+			Jeder Mensch wird geboren
+			mit einem der vier Elemente (eine Mitte),
+			das Element/Talent bleibt lebenslang gleich.
+			Vorbestimmung, Schicksal.
+			Jeder soll seine wechselbare Modalität spielen.
+			Tu was DU willst,
+			Sei du selbst, nicht künstlich,
+			Vier Farben System.
+
+			In der Naturordnung
+			darf jedes Element seine Stärke leben
+			und kann seine <b>Schwächen delegieren</b>
+			an seine Freunde
+			(natürliche Arbeitsteilung).
+
+			Das einseitige Spielen von äusseren Modalitäten
+			ist eine Schieflage, die korrigiert werden soll.
+
+			Schieflage <b>korrigieren</b>:
+			Dazu bildet man Flusskreise und/oder Spannkreuze,
+			in denen die Anderen eine passende Schieflage haben,
+			so dass immer zwei Paare entstehen,
+			die dann vorsichtig
+			den <b>Partnertausch</b> üben können.
+
+			Der bevorzugte/alte Partner gibt Sicherheit,
+			so kann man den anderen/neuen Partner
+			langsam kennen lernen
+			(Regel und Ausnahme),
+			und seine schwache äussere Modalität trainieren.
+
+			Alle Mitglieder der Gruppe
+			verlassen ihre Schieflage gleichzeitig,
+			so dass die Gruppe im Gleichgewicht bleibt.
+
+			<!-- wiederholung
+				Element ist angeboren und lebenslang.
+				Talent ist vorbestimmt und konstant.
+			-->
+
+		`,
+
+		made_order: `
+
+			<b>Kunstordnung</b> heisst:
+			Alle Menschen sind gleich geboren
+			(wechselbare Modalität)
+			und werden durch Erziehung (Kunst, Kultur)
+			entweder "gut" (erwachsene Modalität)
+			oder "böse" (kindische Modalität, Peter Pan).
+			Modalität ist gelernt und änderbar.
+			Talent kann man lernen.
+			"Man muss nur wollen, dann geht alles."
+			(Konstruktivismus, Drei Farben System).
+
+		`,
+
+		mutable_modality: `
+
+			<!-- nein, nur subjektiv gültig für 12
+			Die wechselbare Modalität gilt als besonders gesund,
+			sie ist die Mitte zwischen den zwei anderen Modalitäten (kardinal und fest).
+			-->
+
+			Die <b>wechselbare</b> Modalität (mittelalt)
+			ist die Mitte
+			zwischen den äusseren Modalitäten,
+			zwischen kindisch und erwachsen.
+
+			Wechselbare Modalität heisst:
+			Das Element spielt im Durchschnitt
+			beide äusseren Modalitäten gleich stark/oft
+			(steter Wechsel, ausgewogenes Hin und Her).
+
+			Wechselbare Modalität heisst auch:
+			Das Element spielt sich selbst,
+			zB "Luft spielt Luft" = 3x3,
+
+		`,
+
+		in_case_of_doubt: `
+
+			<b>Zweifel</b>:
+			Nur eine Theorie/Vision/Tagtraum?
+			Wenn die Karte falsch ist:
+			<nw>Die 16 Menschen-Typen</nw> sind real
+			<nw>(4 Körper x 4 Elemente)</nw>,
+			und wenn man sie alle an einem Ort versammelt,
+			dann werden sie
+			die richtige Ordnung von selbst finden
+			(Selbstorganisation).
+
+			Andere Weltbilder sind auch "nur Theorie"
+			und nur weil andere Experimente schon länger laufen,
+			sind sie nicht automatisch besser.
+			Mehr Wettbewerb bitte!
+
+			Und, Probieren geht über Studieren:
+			Eine Theorie kann man nur vergleichen,
+			wenn man sie vorher ausprobiert hat.
+
+			Wer eine gute Theorie angreifen will
+			der wird vom Thema ablenken
+			und mit Falschen Gründen argumentieren
+			(Formalkritik).
+
+			Forschung:
+			Was ist noch <b>unklar</b>?
+
+			Als Modalität nehmen wir
+			die Dreifach-Sensorik,
+			aber was ist mit der Dreifach-Motorik?
+
+			Genauer:
+			Als Redefluss nehmen wir
+			die Richtung der kindischen Modalität,
+			also den <nw>Sensorik-Fluss (&gt;sense&gt;)</nw>.
+			Aber welche Rolle spielt
+			der <nw>Motorik-Fluss (&gt;move&gt;)</nw>
+			in Richtung der weiblichen Modalität?
+			(Beispiel <nw>4 3&gt;move&gt;1 2</nw>)
+
+		`,
+
+		education_mothers: `
+
+			Ein Problem von <b>Erziehung</b>
+			ist die Über-Presenz von Frauen.
+			Dadurch werden Kinder in eine Modalität gedrängt:
+
+			Kindische Söhne (A13) und
+			erwachsene Töchter (C24)
+			spielen ihre erwachsene Modalität (x24)
+			(werden "brav").
+
+			Erwachsene Söhne (A24) und
+			kindische Töchter (C13)
+			spielen ihre kindische Modalität (x13)
+			(werden "böse").
+
+			Auch daher die populäre Verwechslung
+			"Männer sind kindisch (also stark aber dumm)".
+
+			Nein,
+			Geschlecht (AD-BC) und Inneres Alter (13-24)
+			sind verschiedene Eigenschaften.
+
+			Ein anderer Grund für die Verwechslung
+			"Männer sind kindisch"
+			sind die äusseren Modalitäten von Altruisten (34):
+			Entweder ein Altruist spielt Feuer (34x1),
+			dann fühlt er sich männlich und kindisch.
+			Oder ein Altruist spielt Erde (34x2),
+			dann fühlt er sich weiblich und erwachsen.
+
+			Bewusstsein und <b>Selbstbild</b>
+			sind Ausdruck von Modalität,
+			nicht von Element.
+
+			<!-- warum nur 34? 12 machen das auch! = same element bonds
+				Kunstordnung:
+				Altruisten (34) neigen zur Einigung
+				unter einer gemeinsamen Modalität.
+
+				Beispiel:
+
+				Altruisten (34) einigen sich auf
+				"erwachsene Modalität ist gut (34x2),
+				und kindische Modalität ist böse."
+				Also:
+				"Mutter gut, Sohn böse".
+				(Feministen, Mutter-Göttin, Erde-Ideal).
+
+				Oder:
+
+				Altruisten (34) einigen sich auf
+				"kindische Modalität ist gut (34x1),
+				und erwachsene Modalität ist böse."
+				Also:
+				"Sohn gut, Mutter böse".
+				(Satanisten, Sohn-Gott, Feuer-Ideal).
+
+				Diese zwei Kollektive (34x2 und 34x1)
+				führen einen endlosen Krieg darum,
+				welches Ideal besser ist (Erde oder Feuer).
+			-->
+
+		`,
+
+		school_no_choice: `
+
+			Ein Problem von <b>Schule</b> ist:
+			Lehrer sind Vorgesetzte und können nicht gewählt werden.
+			Idealer Weise können Schüler und Lehrer
+			sich gegenseitig wählen (Personenkult, Beidseitigkeit).
+
+		`,
+
+		works_everywhere: `
+
+			Das Schöne ist:
+			Naturordnung funktioniert <b>immer</b> und überall,
+			das heisst,
+			alle Lebensbereiche können so reformiert werden,
+			dass alle Menschen
+			ihre natürlichen Bindungen haben.
+
+			Ein Nachteil dieser Allgemeingültigkeit ist:
+			Keiner fühlt sich verantwortlich,
+			und keiner will den ersten Schritt machen ....
+
+		`,
+
+		four_crosses: `
+
+			Die <b>Vier Spannkreuze</b>
+			(<nw>Kreuze &xmark;</nw> auf der Karte)
+			unterscheiden sich in den Zwei Kongruenzen:
+
+			<nw>1. Geschlechts-Kongruenz</nw>
+				= <nw>Äußeres Geschlecht</nw>
+				mal <nw>Inneres Geschlecht</nw>.
+
+			<nw>2. Alters-Kongruenz</nw>
+				= <nw>Äußeres Alter</nw>
+				mal <nw>Inneres Alter</nw>.
+
+			Positive Produkte heissten "Kongruenz",
+			negative Produkte heissen "Opposition".
+
+			Beispiel:
+
+			(positive) Geschlechts-Kongruenz
+				= Männer sind männlich
+				und Frauen sind weiblich
+				= M1 F2 F3 M4
+				= "PatriArchat" (Ark = unten spitz = 14).
+
+			Geschlechts-Opposition
+				= Frauen sind männlich
+				und Männer sind weiblich
+				= F1 M2 M3 F4
+				= "MatriArchat" (Frauen sind Strategen = 14).
+
+		`,
+
+		four_dots: `
+
+			In einem <b>Viereck</b> (ABCD) gilt:
+
+			Mutter und Vater sind <b>gleich alt</b>.
+			Tochter und Sohn sind gleich alt.
+	
+			Gleichalte Kinder kommen von verschiedenen Müttern,
+			sind also nicht blutverwandt.
+
+			(Element ist <nw>nicht erblich</nw>,
+			der Schluss von blutverwandt
+			auf geistverwandt ist falsch.)
+
+			Aber für gute Kommunikation
+			sind sie <b>geistverwandt</b>,
+			also nebeneinander auf der Karte,
+			in einem gemeinsamen
+			<nw>Flusskreis &square;</nw> oder
+			<nw>Spannkreuz &xmark;</nw>.
+
+		`,
+
+		post_script: `
+
+			Und sonst?
+
+			Wir brauchen ein besseres Flugblatt
+			(<tt>github.com/milahu/alchi</tt>),
+
+			ein Video mit unserem Plan,
+			mehr Übersetzungen,
+			vielleicht ein Buch,
+
+			und ganz viele Leute,
+			die unser Projekt mögen und teilen
+			(im Internet teilen,
+			Flyer drucken und verteilen).
+
+			<!--
+				Weil: Wir suchen Freunde.
+			-->
+
+		`,
+
+		post_script_2: `
+
+			Ein mal gelesen und alles verstanden?
+			Glaub ich dir nicht : P
+
+			Ich hab selber viele Jahre gesucht
+			um diese Antworten zu finden ....
+
+			Gönn dir ne Pause,
+			und lies den Zettel nochmal.
+
+			<nw>Zurück zu: Wir suchen Freunde!</nw>
+
+		`,
+
+		// TODO remove?
+		body1: `A : Sohn : jung + männlich`,
+		body2: `B : Mutter : alt + weiblich`,
+		body3: `C : Tochter : jung + weiblich`,
+		body4: `D : Vater : alt + männlich`,
+
+		// TODO remove?
+		element1: `1 : Feuer : extravertiert + psychotisch`,
+		element2: `2 : Erde : introvertiert + neurotisch`,
+		element3: `3 : Luft : extravertiert + neurotisch`,
+		element4: `4 : Wasser : introvertiert + psychotisch`,
+
+		// pallas
+		me: 'Ich',
+		you: 'Du',
+		he: 'Er',
+		she: 'Sie',
+
+		dress_opposite_color: `
+
+			Kleid in <b>Gegenfarbe</b>:
+
+			Frauen <nw>tragen Lila und suchen Männer</nw>,
+			Männer <nw>tragen Lime und suchen Frauen</nw>
+			(vom gleichen Alter).
+
+			Kinder <nw>tragen Türkis und suchen Eltern</nw>,
+			Eltern <nw>tragen Orange und suchen Kinder</nw>
+			(vom gleichen Geschlecht).
+
+		`,
+
+		translation_bigfive: `
+
+			Übersetzung zu The <b>Big Five</b>:
+			kindisch (13) = High Openness,
+			weiblich (23) = High Neuroticism,
+			altruistisch (34) = High Agreeableness,
+			kindische Modalität (x13) = High Extraversion,
+			männliche Modalität (x14) = High Conscientiousness.
+
+		`,
+
+		translation_mbti: `
+
+			Übersetzung zu <b>MBTI</b>:
+			weiblich (23) = "Extraversion",
+			kindisch (13) = iNtuition,
+			männliche Modalität (x14) = Thinking (Denken),
+			kindische Modalität (x13) = Perceiving (Wahrnehmen).
+
+		`,
+
+		project_intro: `
+
+			<!-- TODO expand? -->
+
+			Wer schreibt hier?
+			<nw>"Wir suchen Freunde"</nw>
+			ist ein Projekt von Element Feuer
+			(<nw>liberaler Stratege</nw>,
+			<nw>Hauptberuf Sohn</nw>),
+
+			zur Befreiung vom Problem der Missverständnisse,
+			zur Befreiung aus Schwäche und Dummheit.
+
+			Eine Antwort auf das Gebet "Erlöse uns von dem Bösen".
+
+			Eine Antwort auf die Frage:
+			<b><nw>Wer muss mit wem reden,</nw>
+			<nw>damit jeder gehört wird?</nw></b>
+
+			Eine komplexe Lösung für komplexe Probleme.
+
+			<nw>Wir versprechen:
+			<b>Stärke und Schlauheit für alle!</b></nw>
+
+			<!--
+			Und: Bilanz in allen vier Dimensionen
+			(Geschlecht, Motorik, Sensorik, Alter).
+			-->
+
+		`,
+
+		bodies: `
+
+			<!-- Körper -->
+			<nw>A. Sohn</nw>
+			<nw>B. Mutter</nw>
+			<nw>C. Tochter</nw>
+			<nw>D. Vater</nw>
+
+			<nw>Alter + Geschlecht</nw>
+			<nw>Kind + Mann</nw>
+			<nw>Elter + Frau</nw>
+			<nw>Kind + Frau</nw>
+			<nw>Elter + Mann</nw>
+
+		`,
+
+		gender2_age3: `
+
+			<b>Geschlecht ist zweifach</b>:
+			Mann oder Frau.
+			("Anderes Geschlecht" ist eindeutig.)
+
+			Auch das Innere Geschlecht ist zweifach:
+			männlich oder weiblich.
+
+			<b>Alter ist dreifach</b>:
+			Kinder oder Gleichalte oder Eltern.
+			("Anderes Alter" ist zweideutig: jünger oder älter.)
+
+			Auch das Innere Alter ist dreifach,
+			weil <b>Inneres Alter gleich Modalität</b>:
+			kindisch oder mittelalt oder erwachsen.
+
+			Weil es viele verschiedene Alter gibt,
+			unterscheiden wir in <b>Meine Bilanz</b>
+			nur nach Geschlecht und Element
+			(2 x 4 = <b>Acht Typen</b>, Noahs Familie).
+
+			Zum Verkuppeln ist das <b>Alter</b> aber schon wichtig,
+			das zeigt die Karte der sechzehn Typen.
+			2 von 6 Freunden sind gleich-alt,
+			4 von 6 Freunden sind verschieden-alt (jünger und älter).
+			Die verschieden-alten Freunde
+			brauchen wir in beiden Altern, also jünger <b>und</b> älter.
+
+			Idealer Weise braucht jeder Mensch also <b>10 Freunde</b>:
+			4 Eltern + 2 Gleichalte + 4 Kinder.
+
+			Keiner will der Jüngste oder der Älteste sein.
+			Kinder haben Kuscheltiere
+			als Ersatz für jüngere Freunde.
+			Eltern haben Götter
+			als Ersatz für ältere Freunde
+			(Ahnen, Vorfahren, Älteste).
+
+			Der Alters-Unterschied zu verschieden-alten Freunden
+			sollten mehrere Jahre sein.
+
+			Jede Alters-Stufe braucht 8 Typen (4 Elemente mal 2 Geschlechter),
+			also geben drei Alter gleich 24 Typen (4 E x 2 G x 3 Alter).
+			Drei Alter = Großeltern, Eltern, Kinder = "Oberschicht, Mittelschicht, Unterschicht".
+			Dann sind für die <b>Mittelschicht</b> alle Beziehungen erfüllt.
+
+		`,
+
+		elements: `
+
+			<!-- Element -->
+			1. Feuer
+			2. Erde
+			3. Luft
+			4. Wasser
+
+			Eigenfarbe<!-- (wird nie nach Aussen getragen TODO ??)-->
+			Rot
+			Grün
+			Gelb
+			Blau
+
+			Gehirn, Instinkt, Geist, Innenleben, "Hauptberuf"
+			Sohn
+			Mutter
+			Tochter
+			Vater
+
+			Plato, David Keirsey
+			Künstler-Handwerker<!-- iconic -->
+			Händler<!-- pistic -->
+			Idealist-Ethiker<!-- noetic -->
+			Techniker<!-- dianoetic -->
+
+			Gegenfarbe<!-- TODO ?? (einfarbiges Sommerkleid/Unterkleid) -->
+			Grün
+			Rot
+			Blau
+			Gelb
+
+			Carl Jung
+			Intuition
+			Sensation
+			Fühlen
+			Denken
+
+			William Sheldon
+			Meso-
+			Meso-
+			Endo-
+			Ecto-<div class="suffix">Morph</div>
+
+			Anton LaVey
+			Satan<!-- Arian -->
+			Belial<!-- Bella -->
+			Lucifer<!-- Lucas? -->
+			Leviathan
+
+			Symbol
+			♥ Herz
+			♠ Pik, Spaten
+			♣ Blatt
+			♦ Karo, Raute
+
+			Körperform
+			Apfel
+			Birne
+			Sanduhr
+			Spargel
+
+			"Rasse" oben-unten
+			Weiss-Schwarz
+			Schwarz-Weiss
+			Weiss
+			Schwarz
+
+			South Park
+			Kenny
+			Stan
+			Eric
+			Kyle
+
+			Körper oben-unten
+			Breit-Lang
+			Lang-Breit
+			Breit-Breit
+			Lang-Lang
+
+			<!-- Körper oben-unten -->
+			weich-hart
+			hart-weich
+			weich-weich
+			hart-hart
+
+			Sport
+			Boxer
+			Läufer
+			Ringer
+			Hochspringer
+
+			Harry Potter
+			Gryffindor
+			Hufflepuff
+			Ravenclaw
+			Slytherin
+
+			Simpsons
+			Marge
+			Homer
+			Bart
+			Lisa
+
+			Nebenfarben (zweifarbiges Sommerkleid/Unterkleid, figur-betonend) oben-unten
+			Gelb-Blau
+			Blau-Gelb
+			Rot-Grün
+			Grün-Rot
+
+			Inneres Alter + Inneres Geschlecht (Sensorik + Motorik)
+			kindisch + männlich
+			erwachsen + weiblich
+			kindisch + weiblich
+			erwachsen + männlich
+
+			MakroNährstoff-Bedarf in Gramm Carbs+Protein+Fett pro Tag (2000 kCal)
+			${macros_mass_ratio("meso", "2000kCal", 5)}
+			${macros_mass_ratio("meso", "2000kCal", 5)}
+			${macros_mass_ratio("endo", "2000kCal", 5)}
+			${macros_mass_ratio("ecto", "2000kCal", 5)}
+
+			Milton Rokeach
+			Kommunist
+			Nationalist
+			Sozialist
+			Faschist
+
+			<a href="https://flowgenomeproject.com/">FlowGenomeProject.com</a>
+			Hard Charger
+			Flow Goer
+			Crowd Pleaser
+			Deep Thinker
+<!--
+			Fettverteilung oben-unten
+			Fett-Mager
+			Mager-Fett
+			Fett
+			Mager
+
+			Körperteil
+			Zunge
+			Nase
+			Mund?
+			Augen?
+
+			Körperform
+			Karotte
+			Glocke
+			Acht
+			Strich
+
+			Stress-Hormon
+			Adrenalin
+			Endorphin
+			Cortisol
+			Serotonin
+
+			Typischer Mangel
+			Tyrosin
+			D-PhenylAlanin
+			GABA
+			Tryptophan
+
+			Makros pro 100 Gramm
+			${macros_mass_ratio("meso", "100Gr")}
+			${macros_mass_ratio("meso", "100Gr")}
+			${macros_mass_ratio("endo", "100Gr")}
+			${macros_mass_ratio("ecto", "100Gr")}
+
+			Zahl
+			1
+			2
+			3
+			4
+
+			Talent?
+			Schlau
+			Schwach
+			Stark
+			Dumm
+
+			Flagge von
+			Nord-Holland
+			Berber
+			Ghana
+			Dagestan
+
+			Arbeit
+			Mörder (geiler Bock, Züchter)
+			Schöpfer (Bauer, Gärtner)
+			Räuber (Jäger, Unter-Nehmer)
+			Schenker (Diplomat?)
+
+			Hans Eysenck<!- - Sensorik (Inneres Alter) + Motorik (Inneres Geschlecht)- ->
+			extravertiert + psychotisch
+			introvertiert + neurotisch
+			extravertiert + neurotisch
+			introvertiert + psychotisch
+
+			Körperteil
+			Brust
+			Arsch
+			Kopf
+			Hals
+
+			Tobias Beck
+			1 Hai, Egoist
+			2 Wal, Helfer, Arbeiter
+			3 Delphin, Optimist
+			4 Eule, Hinterfragen, Analysieren
+
+			Makronährstoff-Bedarf in Gramm Carbs+Protein+Fett pro Portion (400 kCal)
+			${macros_mass_ratio("meso", "400kCal")}
+			${macros_mass_ratio("meso", "400kCal")}
+			${macros_mass_ratio("endo", "400kCal")}
+			${macros_mass_ratio("ecto", "400kCal")}
+-->
+
+		`,
+
+		sense: `
+
+			Inneres Alter
+			Kindisch
+			Erwachsen
+
+			Zahlen
+			13
+			24
+
+			<!-- -->
+			Leichtsinn
+			Starrsinn
+
+			<!-- -->
+			neugierig
+			altmodisch
+
+			Hans Eysenck
+			Extravertiert
+			Introvertiert
+
+			<!-- Hans Eysenck -->
+			E
+			I
+
+			<!-- -->
+			Stolz
+			Scham
+
+			Lösungen
+			improvisieren
+			wiederholen
+
+			Gewissen
+			schlecht
+			gut
+
+			Schätzt
+			Gefühl
+			Erfahrung
+
+			<!-- -->
+			Probleme bekämpfen
+			Gutes vermehren
+
+			Fokus
+			verteilt
+			konzentriert
+
+			Neues verstehen, Lernen
+			schnell
+			langsam
+
+			Arbeit
+			Universalist
+			Spezialist
+
+			<!-- -->
+			Katzen-
+			Hunde-<div class="suffix">Menschen</div>
+
+			Nase
+			fein
+			grob
+
+			Brust
+			groß
+			klein
+
+			<!-- -->
+			Vorfreude<!-- bevor man etwas probiert, glücklich durch warten, idealistisch -->
+			Nachfreude<!-- nach erledigter Pflicht, glücklich durch machen, materialistisch -->
+
+			<!-- kinderspiel -->
+			Wahrheit
+			Pflicht
+
+			Big Five - Offenheit für Erfahrung
+			Offen
+			Geschlossen
+
+			Arbeit
+			kreativ
+			Routine
+
+			Bewegung
+			in Freiheit
+			auf Kommando
+
+			<!-- arbeit -->
+			Fleisch-Jäger
+			Blumen-Sammler
+
+			<!-- tag nach rhythmus -->
+			Frühaufsteher
+			Langschläfer
+
+			<!-- -->
+			Morgen-
+			Abend-<div class="suffix">Mensch</div>
+
+			Eigenfarbe
+			Orange
+			Türkis
+
+			<!-- -->
+			Rot-Gelb
+			Grün-Blau
+
+			<!-- -->
+			freche Wahrsager
+			höfliche Lügner
+
+			<!-- -->
+			Sucher
+			Verstecker
+
+			Bei Problemen<!-- Abweichung -->
+			sensibel
+			leidensfähig<!-- ignorant -->
+
+			Probleme
+			angreifen
+			verdrängen
+
+			Gegen Probleme
+			aggressiv
+			defensiv
+
+			Gift
+			spucken
+			schlucken
+<!--
+			-
+			konfrontieren
+			meiden
+-->
+			<!-- -->
+			Nachsicht
+			Vorsicht
+<!--
+			Für neue Erfahrung
+			offen
+			geschlossen
+-->
+			<!-- -->
+			naiv
+			erfahren
+
+			<!-- alter -->
+			spätkindisch
+			frühreif
+
+			<!-- -->
+			Sensor
+			Speicher
+
+			Gut
+			Fühlen
+			Wissen
+
+			Gut
+			Zukunft
+			Vergangenheit
+
+			Böse
+			vorsätzlich
+			fahrlässig
+
+			<!-- Böse -->
+			bewusst
+			unbewusst
+
+			<!-- -->
+			Probierer
+			Studierer
+<!--
+			-
+			Praktiker
+			Theoretiker
+-->
+			<!-- -->
+			Neugier
+			Geduld
+
+			<!-- -->
+			Anspruchsvoll<!-- Kritisch -->
+			Bescheiden
+
+			Gesund
+			Körper
+			Geist (Ruf, Ansehen)
+
+			Politischer Kompass
+			liberal
+			konservativ
+<!--
+			fahrlässig, nebenbei
+			kreativ
+			destruktiv
+
+			Schmerz
+			Täter
+			Opfer
+-->
+			Zivilisation
+			Kriminelle
+			Zivilisten
+
+			Prinzip
+			Lust
+			Angst
+
+			<!-- -->
+			Streitlust
+			Harmoniesucht
+
+			Humor
+			warm
+			kalt
+
+			Ausschnitt
+			Rundhals
+			V-Neck
+
+			Kopfhaare
+			fein
+			kräftig
+
+			<!-- Kopfhaare -->
+			kurz
+			lang
+<!--
+			Reden
+			Sender
+			Fänger
+
+			Kommmunikation
+			Redner
+			Hörer
+
+			Kommmunikation
+			Erzähler
+			Dichter
+
+			Kommmunikation
+			lange Sätze
+			kurze Sätze
+
+			Kommmunikation
+			Redner
+			Schreiber (Zeiger)
+
+			Arbeit
+			Kinderpfleger
+			Altenpfleger
+
+			Gefühl
+			Optimist
+			Pessimist
+
+			Entspannt
+			manisch
+			depressiv
+
+			Volk
+			Goyim
+			Juden
+-->
+
+		`,
+
+		move: `
+
+			Inneres Geschlecht
+			Männlich
+			Weiblich
+
+			Zahlen
+			14
+			23
+
+			Motorik
+			Fein
+			Grob
+
+			Hans Eysenck
+			Psychotisch
+			Neurotisch
+
+			<!-- Hans Eysenck -->
+			P
+			N
+
+			Psychostress-Toleranz
+			Hoch
+			Niedrig
+
+			<!-- -->
+			Stratege
+			Politiker
+
+			<!-- -->
+			häuslich ("dominant")
+			öffentlich
+
+			<!-- -->
+			Innendienst
+			Aussendienst
+
+			<!-- -->
+			Hausarbeiter
+			Feldarbeiter
+
+			Eigenfarbe
+			Lila
+			Lime
+
+			<!-- eigenfarbe am körper -->
+			Eichel
+			Schleim
+
+			<!-- -->
+			Rot-Blau
+			Grün-Gelb
+
+			<!-- -->
+			Einzelgänger
+			Geselle
+
+			<!-- -->
+			der Meister
+			die Gesellschaft
+
+			<!-- -->
+			der Untergrund
+			die Oberfläche
+
+			<!-- -->
+			der Hintergrund
+			die Öffentlichkeit
+
+			<!-- -->
+			der Haushalt
+			die Aussenwelt
+
+			Alleine
+			Kämpfer
+			Kläger
+
+			<!-- -->
+			Minderheit
+			Mehrheit
+
+			Arsch
+			klein
+			groß
+
+			Finger-Nagelbett<!-- TODO größe oder länge? -->
+			Groß<!-- Lang -->
+			Klein<!-- Kurz -->
+
+			Beinhaare
+			kräftig
+			fein
+
+			Politischer Kompass
+			autoritär
+			demokratisch
+
+			<!-- -->
+			Tagträumer
+			Nachtträumer
+<!--
+			Big Five - Neurotizismus
+			Niedrig
+			Hoch
+-->
+			Arbeit
+			geistig
+			körperlich
+
+		`,
+
+		// sensexmove aka flowsquare, class, diagonal, angle, half
+		sensexmove: `
+
+			Big Five - Verträglichkeit (Agreeableness)
+			Niedrig
+			Hoch
+
+			Elemente
+			Feuer+Erde
+			Luft+Wasser
+
+			Zahlen
+			12
+			34
+
+			Innen
+			Sohn+Mutter
+			Tochter+Vater
+
+			<!-- -->
+			Klassiker
+			Romantiker
+
+			Spencer Stuart CAF
+			Results Culture
+			Caring Culture
+<!--
+			Leadership (see Big Five Agreeableness)
+			Transformational (Soft Power)
+			Transactional
+-->
+			Kultur
+			Primitiv
+			Hoch
+
+			<!-- -->
+			Egoisten
+			Altruisten
+
+			Arbeits-Sektor
+			Primär
+			Dienstleistung
+
+			<!-- Politisch (N) -->
+			Politisch Konservativ (2)
+			Politisch Liberal (3)
+
+			<!-- Strategisch (P) -->
+			Strategisch Liberal (1)
+			Strategisch Konservativ (4)
+
+			<!-- -->
+			antisozial
+			sozial
+
+			Kultur
+			Sesshafte
+			Nomaden
+
+			Humor
+			Trocken
+			Feucht
+
+			<!-- -->
+			Narziss (1. grandios + 2. vulnerabel)
+			Echo
+
+			<!-- -->
+			Individualisten
+			Kollektivisten
+<!-- gilt eher für motorik: männlich/weiblich
+			Stark
+			alleine
+			in Gruppen
+-->
+			<!-- ? -->
+			Soziologen
+			Psychologen
+
+			<!-- soz / psych -->
+			Die Gesellschaft ist schuld
+			Ein Sündenbock ist schuld
+
+			<!-- -->
+			Wettbewerb
+			Kooperation
+
+			<!-- -->
+			LeistungsPrinzip (gut gemacht)
+			GesinnungsEthik (gut gemeint)
+
+			<!-- -->
+			Individualsport
+			Teamsport
+
+			Motorik mal Sensorik: männliche Elemente sind
+			kindisch (1)
+			erwachsen (4)
+
+			<!-- Motorik mal Sensorik -->weibliche Elemente sind
+			erwachsen (2)
+			kindisch (3)
+
+			<!-- -->
+			Einzelkämpfer
+			Mitarbeiter
+
+			<!-- -->
+			Realisten
+			Idealisten
+
+			Matrix (Strategie)
+			Rote Pille (bittere Wahrheit)
+			Blaue Pille (schöne Lüge)
+
+			<!-- -->
+			Einzelgänger
+			Mitläufer
+
+			Behauptungen<!-- Thesen -->
+			prüfbar
+			endlos
+
+			Wissenschaft
+			Hart
+			Weich
+
+			<!-- -->
+			Natur-
+			Geistes-<div class="suffix">Wissenschaft</div>
+
+			William Sheldon
+			MesoMorph
+			ExtraMorph (Endo+Ecto)
+
+			<!-- -->
+			Protestanten (irdisches Glück)
+			Katholiken (Lohn nach dem Tod)
+<!--
+			Psychotiker sind
+			extravertiert (1)
+			introvertiert (4)
+
+			Neurotiker sind
+			introvertiert (2)
+			extravertiert (3)
+-->
+
+		`,
+
+		modalities: `
+			
+			Modalität
+			Kardinal
+			Wechselbar
+			Fest
+
+			Inneres Alter
+			jung
+			mittel
+			alt
+
+			Hans Eysenck
+			extravertiert
+			ambivertiert
+			introvertiert
+
+			Sigmund Freud
+			Es
+			Ich
+			Über-Ich
+
+			<!-- Sigmund Freud -->
+			Trieb
+			Vermittler
+			Moral
+
+			Islam Nafs
+			al-'ammārah
+			al-lawwāmah
+			al-mutma'innah
+
+			<!-- Islam Nafs -->
+			Trieb
+			Zweifel
+			Ruhe
+
+			Christen-Trinität
+			Körper
+			Seele
+			Geist
+
+		`,
+
+		bal: {
+			title: `
+				Meine Bilanz: Wen kenne ich? (Beispiel)<br/>
+				Händler: Milan Hauth, Jägerstr. 10, Trostberg
+			`,
+			f1: ["Lena 3", "Caro 30"],
+			f2: ["Laura 30", "Ramo 40"],
+			f3: ["Ameli 5", "Vroni 12"],
+			f4: ["Conny 30"],
+			m1: ["Mila 30", "Chris 30"],
+			m2: ["Franz 30"],
+			m3: ["Fabi 12", "Tom 30"],
+			m4: ["Markus 30"],
+		},
+
+		caption: {
+			double_pallas: `Schlüssel der 10 Freunde
+				<br/> 4 Eltern (BD) <br/> 2 Gleichalte (FM) <br/> 4 Kinder (AC)`,
+			eight_double_pallas: `Acht Schlüssel`,
+			map_6x6: 'Große Karte der 16 Schlüssel',
+			exchange: 'Partnertausch im Flusskreis',
+			pallas: 'Schlüssel der <br/> 6 Freunde <br/> (Pallas Symbol)',
+			compass: 'Kompass: 4 Elemente <br /> mal 3 Modalitäten',
+			map: 'Karte der 16 Typen',
+			four_bodies: `
+				<span style="margin-left:1.0em">Feuer</span>
+				<span style="margin-left:2.1em">Erde</span>
+				<span style="margin-left:2.5em">Luft</span>
+				<span style="margin-left:1.9em">Wasser</span>
+			`,
+			three_hands: 'Finger Test zeigt Sheldon-Typ',
+
+			sense: "Sensorik",
+			move: "Motorik",
+			modality: "Dreifache Sensorik",
+
+			flowsquare: `
+				<nw><b>Flusskreis</b> = Quadrat &square; auf der Karte</nw>
+			`,
+
+		},
+
+	};
+
+
+
+	/* old stuff
+	// format body* and element*
+	text = Object.keys(text).reduce((acc, key) => {
+		//const t = text[key];
+		//if (!(key.startsWith("body") || key.startsWith("element"))) {
+		if (!key.match(/(body[ABCD]|element[1234])/)) {
+			acc[key] = text[key];
+			return acc;
+		}
+		const [a, b, cd] = text[key].split(" : ");
+		const [c, d] = cd.split(" + ");
+		//acc[key] = `<div>${a}</div><div>${b}</div><div>${c}<br/>${d}</div>`;
+		acc[key] = `<div>${a}</div><div>${b}</div><div>${c} + ${d}</div>`;
+		return acc;
+	}, {});
+	*/
+
+
+
+	// helper function
+	Array.prototype.contains = function(needle) {
+		return this.indexOf(needle) !== -1
+	};
+
+
+
+	const color = {
+
+		"map": {
+			1: "#a80000", // dark red
+			2: "#58ff58", // light green
+			3: "#ffff58", // light yellow
+			4: "#0000a8", // dark blue
+		},
+
+		"light": {
+			1: "#ffc0c0", // light red
+			2: "#c0ffc0", // light green
+			3: "#ffff80", // light yellow
+			4: "#c0c0ff", // light blue
+
+			13: "#ffdfc0", // light orange
+			24: "#c0ffff", // light turc
+			14: "#ffc0ff", // light purple
+			23: "#dfffc0", // light lime
+		},
+
+		"dark": {
+			1: "#800000", // dark red
+			2: "#008000", // dark green
+			3: "#808000", // dark yellow
+			4: "#000080", // dark blue
+		},
+
+		"medium": {
+			1: "#ff0000", // red
+			2: "#00ff00", // green
+			3: "#ffff00", // yellow
+			4: "#0000ff", // blue
+			
+			// deviations from "exact" values come from print color matching
+			// printer = canon G5000
+
+			//13: "#ff8000", // orange 30deg
+			13: "#ff9100", // orange 34deg
+
+			//24: "#00ffff", // turc 180deg
+			24: "#00ffee", // turc 176deg
+			
+			//14: "#ff00ff", // purple 300deg
+			14: "#ea00ff", // purple 295deg
+
+			//23: "#80ff00", // lime 90deg
+			23: "#aaff00", // lime 80deg
+			
+		},
+
+	};
+
+
+
+	color.map = color.medium;
+
+	color.map.A = color.map[1];
+	color.map.B = color.map[2];
+	color.map.C = color.map[3];
+	color.map.D = color.map[4];
+
+	// old
+	const opposite = {
+		1: 2,
+		2: 1,
+		3: 4,
+		4: 3,
+		"A": "B",
+		"B": "A",
+		"C": "D",
+		"D": "C",
+	};
+
+
+
+	// escape hex color for svg inline data url
+	function sesc(s) {
+		return s.replace("#", "%23");
+	}
+
+	function cssVarsOfColorMap(mapname){
+		const mapval = color[mapname];
+		return Object.keys(mapval).reduce((acc, key) => {
+			return acc + "--" + mapname + key + ": " + mapval[key] + ";\n";
+		}, "");
+	}
+
+
+
+	// dashed border
+	const dash_length = 6;
+
+
+
+	document.write(`
+		<style type="text/css">
+
+			/* set css variables */
+			:root {
+				${cssVarsOfColorMap("light")}
+				${cssVarsOfColorMap("dark")}
+				${cssVarsOfColorMap("medium")}
+			}
+
+			/* debug on screen, hide for print */
+			@media screen {
+				div.page {
+					outline: solid 1px black;
+				}
+			}
+
+			/* print settings */
+			@page {
+				size: A4 portrait;
+				margin: 0;
+			}
+
+			/*
+				hidden margins are a pain .... !
+				child-margins affect margins of parent ??
+				blame margin-collapsing
+				solve with - overflow: auto
+				https://stackoverflow.com/questions/1762539/margin-on-child-element-moves-parent-element
+			*/
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			/*
+				always hide script source
+				<script style="display: none">
+				https://stackoverflow.com/questions/21440225
+				the-javascript-code-is-visible-on-the-browser
+			*/
+			script {
+				display: none !important;
+			}
+
+			body {
+				font-family: sans-serif;
+				font-size: ${font_size}mm;
+				/* TODO use points? like 10pt
+				  for better print quality? */
+
+				line-height: 125%; /* default 121% in firefox */
+			}
+
+			div.page1 {
+			}
+
+			div.page2 {
+				font-size: ${font_size_page2}mm;
+			}
+
+			div.page {
+				page-break-after: always; /* TODO remove? */
+
+				width: ${page_x}mm;
+				height: ${page_y}mm;
+
+				/*outline: solid 1px blue;*/
+
+				overflow: auto; /* disable css margin collapsing */
+			}
+
+			div.content {
+				/*outline: solid 1pt black; /* outline vs border: outline does not add height/width */
+				
+				width: ${content_x}mm;
+				height: ${content_y}mm;
+				
+				/*
+				position: relative;
+				left: ${page_margin.left}mm;
+				top: ${page_margin.top}mm;
+				*/
+				margin-left: ${page_margin.left}mm;
+				margin-top: ${page_margin.top}mm;
+
+				display: flex;
+				flex-direction: column; /* content / footer */
+				justify-content: space-between;
+			}
+
+			div.inner_content {
+				height: ${content_y - footer_y}mm;
+				overflow: hidden; /* auto = scroll on demand */
+			}
+
+			html {
+				background: white;
+			}
+
+			p#h1 {
+				margin-bottom: .5em;
+			}
+
+			/* TODO why start at N=2 ? */
+			/*
+			.table-four > div:nth-child(2) { background: var(--light1) }
+			.table-four > div:nth-child(3) { background: var(--light2) }
+			.table-four > div:nth-child(4) { background: var(--light3) }
+			.table-four > div:nth-child(5) { background: var(--light4) }
+			*/
+
+			.table-four > div {
+				/*border: solid 1pt black;*/
+				
+			}
+
+			.table-four > div:nth-child(1) { box-shadow: inset 0 0 0 1pt var(--medium1) }
+			.table-four > div:nth-child(2) { box-shadow: inset 0 0 0 1pt var(--medium2) }
+			.table-four > div:nth-child(3) { box-shadow: inset 0 0 0 1pt var(--medium3) }
+			.table-four > div:nth-child(4) { box-shadow: inset 0 0 0 1pt var(--medium4) }
+
+			div#map-and-tables {
+
+				/* border: solid 1pt red; /* DEBUG */
+				margin-bottom: .5em;
+
+				/*
+				height: ${content_x/3}mm;
+				*/
+				width: ${content_x}mm;
+				display: flex;
+				/*
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: baseline;
+				*/
+				align-items: flex-start;
+
+				/*
+				align-items: center;
+				justify-content: center;
+				*/
+			}
+
+			div#table-bodies,
+			div#table-elements {
+				width: ${content_x/8*3 - 2*table_margin}mm;
+				line-height: 120%;
+				overflow: hidden;
+
+				margin: 0 ${table_margin}mm;
+
+				/* border: solid 1pt green; /* DEBUG */
+			}
+			
+			/*
+			div#table-bodies {
+				margin-right: ${table_margin}mm;
+			}
+			div#table-elements {
+				margin-left: ${table_margin}mm;
+			}
+			*/
+
+			svg.map {
+				/* border: solid 1pt blue; /* DEBUG */
+			}
+
+			div.table-four > div {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			div#table-bodies > div {
+				flex-direction: row-reverse; /* right to left */
+				text-align: right;
+				padding-right: 4mm;
+			}
+
+			div#table-elements > div {
+				padding-left: 4mm;
+				flex-direction: row; /* left to right */
+			}
+
+			div.table-four > div {
+				/*
+				height: ${content_x/16}mm;
+				TODO:
+				height: ${map_w / scale_svg_html}mm;
+				margin: ${2*map_a / scale_svg_html}mm 0;
+				*/
+
+				/* TODO better .... */
+				height: 9.4mm;
+				margin: 2.65mm 0;
+
+			}
+
+			.table-four {
+				margin-top: -0.5mm !important;
+			}
+
+			div.table-four > div > div {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			#table-bodies > * > *:nth-child(1) { width: 7% }
+			#table-bodies > * > *:nth-child(2) { width: 23% }
+			#table-bodies > * > *:nth-child(3) { width: 70% }
+
+			#table-elements > * > *:nth-child(1) { width: 7% }
+			#table-elements > * > *:nth-child(2) { width: 23% }
+			#table-elements > * > *:nth-child(3) { width: 70% }
+
+			#table-elements-two {
+				display: flex;
+				flex-direction: column;
+				width: ${content_x}mm;
+				align-items: stretch;
+			}
+			#table-elements-two > * {
+				display: flex;
+			}
+			#table-elements-two > * > * {
+				display: block;
+				width: 20%;
+				padding: 0 1mm;
+
+				border-bottom: solid 1pt black;
+				/* TODO smaller border in firefox print */
+
+			}
+			#table-elements-two > *:first-child > * {
+				border-top: solid 1pt black;
+			}
+			#table-elements-two > * > *:nth-child(2) { border-color: var(--medium1) }
+			#table-elements-two > * > *:nth-child(3) { border-color: var(--medium2) }
+			#table-elements-two > * > *:nth-child(4) { border-color: var(--medium3) }
+			#table-elements-two > * > *:nth-child(5) { border-color: var(--medium4) }
+
+			#table-properties {
+				display: flex;
+				flex-direction: column;
+				width: ${content_x}mm;
+				align-items: stretch;
+			}
+			#table-properties > * {
+				display: flex;
+			}
+			#table-properties > * > * {
+				display: block;
+				width: 20%;
+				padding: 0 1mm;
+			}
+
+			/*
+			con: mix colors are hard to read
+			#table-properties > * > *:nth-child(2) { background: var(--light13) }
+			#table-properties > * > *:nth-child(3) { background: var(--light24) }
+			#table-properties > * > *:nth-child(4) { background: var(--light14) }
+			#table-properties > * > *:nth-child(5) { background: var(--light23) }
+			*/
+
+			#table-properties > * > * {
+				border-bottom: solid 1pt black;
+			}
+			#table-properties > *:first-child > * {
+				border-top: solid 1pt black;
+			}
+
+			#table-properties > * > *:nth-child(2) { border-color: var(--medium13) }
+			#table-properties > * > *:nth-child(3) { border-color: var(--medium24) }
+			#table-properties > * > *:nth-child(4) { border-color: var(--medium14) }
+			#table-properties > * > *:nth-child(5) { border-color: var(--medium23) }
+
+			/*
+			.two-column {
+				column-count: 2;
+				column-gap: 4mm;
+				column-rule: solid 1pt black;
+			}
+
+			.three-column {
+				column-count: 3;
+				column-gap: 4mm;
+			}
+			*/
+
+			.table-inline {
+				/*
+				column-count: 2;
+				column-gap: 4mm;
+				column-rule: solid 1pt black;
+				*/
+			}
+
+			.table-inline > div {
+				white-space: nowrap;
+			}
+
+
+			#table-inline-elements,
+			#table-inline-elements > *,
+			#table-inline-elements > * > * {
+				display: inline;
+			}
+
+			#table-inline-elements > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			#table-inline-elements > * > *:nth-child(2) { text-decoration-color: var(--medium1) }
+			#table-inline-elements > * > *:nth-child(3) { text-decoration-color: var(--medium2) }
+			#table-inline-elements > * > *:nth-child(4) { text-decoration-color: var(--medium3) }
+			#table-inline-elements > * > *:nth-child(5) { text-decoration-color: var(--medium4) }
+
+			#table-inline-bodies,
+			#table-inline-bodies > *,
+			#table-inline-bodies > * > * {
+				display: inline;
+			}
+
+			#table-inline-bodies > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			#table-inline-bodies > * > *:nth-child(2) { text-decoration-color: var(--medium1) }
+			#table-inline-bodies > * > *:nth-child(3) { text-decoration-color: var(--medium2) }
+			#table-inline-bodies > * > *:nth-child(4) { text-decoration-color: var(--medium3) }
+			#table-inline-bodies > * > *:nth-child(5) { text-decoration-color: var(--medium4) }
+
+			#table-inline-properties {
+			}
+			#table-inline-properties > * {
+				display: inline;
+			}
+			#table-inline-properties > * > * {
+				display: inline;
+			}
+
+			#table-inline-properties > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			#table-inline-properties > * > *:nth-child(2) { text-decoration-color: var(--medium13) }
+			#table-inline-properties > * > *:nth-child(3) { text-decoration-color: var(--medium24) }
+			#table-inline-properties > * > *:nth-child(4) { text-decoration-color: var(--medium14) }
+			#table-inline-properties > * > *:nth-child(5) { text-decoration-color: var(--medium23) }
+
+			#table-inline-sense,
+			#table-inline-sense > *,
+			#table-inline-sense > * > * {
+				display: inline;
+			}      
+
+			#table-inline-sense > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			#table-inline-sense > * > *:nth-child(2) { text-decoration-color: var(--medium13) }
+			#table-inline-sense > * > *:nth-child(3) { text-decoration-color: var(--medium24) }
+
+			#table-inline-move,
+			#table-inline-move > *,
+			#table-inline-move > * > * {
+				display: inline;
+			}      
+			#table-inline-move > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			#table-inline-move > * > *:nth-child(2) { text-decoration-color: var(--medium14) }
+			#table-inline-move > * > *:nth-child(3) { text-decoration-color: var(--medium23) }
+
+			#table-inline-sensexmove,
+			#table-inline-sensexmove > *,
+			#table-inline-sensexmove > * > * {
+				display: inline;
+			}      
+			#table-inline-sensexmove > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			/*
+				realism = red pill = republican party
+				idealism = blue pill = democratic party
+			*/
+
+			/* color variant N - eigencolor of neurotic */
+			/*
+			#table-inline-sensexmove > * > *:nth-child(2) { text-decoration-color: var(--medium2) }
+			#table-inline-sensexmove > * > *:nth-child(3) { text-decoration-color: var(--medium3) }
+			*/
+
+			/* color variant P - eigencolor of psychotic */
+			#table-inline-sensexmove > * > *:nth-child(2) { text-decoration-color: var(--medium1) }
+			#table-inline-sensexmove > * > *:nth-child(3) { text-decoration-color: var(--medium4) }
+
+			#table-inline-modalities,
+			#table-inline-modalities > *,
+			#table-inline-modalities > * > * {
+				display: inline;
+			}      
+			#table-inline-modalities > * > * {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			/*
+				three primary colors?
+				 - red green blue ("additive")
+				 - cyan magenta yellow = blue-green blue-red yellow
+				 - red yellow blue ("subtractive")
+			*/
+
+			/* variant: sense colors + neutral color black */
+			#table-inline-modalities > * > *:nth-child(2) { text-decoration-color: var(--medium13) }
+			#table-inline-modalities > * > *:nth-child(3) { text-decoration-color: black }
+			#table-inline-modalities > * > *:nth-child(4) { text-decoration-color: var(--medium24) }
+
+			.para-margin-bottom {
+				margin-bottom: .5em;
+
+				display: inline;
+				margin-right: 2em;
+			}
+
+			.para-page-footer {
+				width: ${content_x}mm;
+
+				font-family: monospace;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			p, .para {
+				display: inline;
+				margin-right: 2em;
+			}
+
+			svg {
+				float: right;
+				clear: right; /* stack vertical */
+			}
+
+			svg.map {
+				/*
+				margin: 1em;
+				*/
+			}
+
+			span.a1,
+			span.b2,
+			span.c3,
+			span.d4 {
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				text-decoration-thickness: 1pt;
+			}
+
+			span.a1 { text-decoration-color: var(--medium1) }
+			span.b2 { text-decoration-color: var(--medium2) }
+			span.c3 { text-decoration-color: var(--medium3) }
+			span.d4 { text-decoration-color: var(--medium4) }
+
+			.balance {
+				display: inline-flex;
+				/*
+					float: right;
+					margin: 1em 0 1em 1em;
+				*/
+				flex-direction: column;
+
+				width: 23em; /* TODO */
+			}
+			.balance > .title {
+				margin-bottom: .5em;
+			}
+			.balance > .f, .balance > .m {
+				display: flex;
+				flex-direction: row;
+			}
+			.balance > .f {
+				padding-bottom: .25em;
+
+				border-bottom: solid 1px black;
+				/* TODO smaller border in firefox print */
+			}
+			.balance > .m {
+				padding-top: .25em;
+			}
+			.balance > div > div {
+				display: flex;
+				flex-basis: 25%;
+			}
+			.balance > .f > div {
+				flex-direction: column-reverse;
+			}
+			.balance > .m > div {
+				flex-direction: column;
+			}
+			.balance > div > div > div {
+				text-align: center;
+			}
+			.balance > .f > div > .h2 {
+				margin-top: .25em;
+			}
+			.balance > .m > div > .h2 {
+				margin-bottom: .25em;
+			}
+
+			/* workaround. print borders are too thick */
+			@media print {
+				* {
+					/* no effect in firefox, but working in chrome */
+					border-width: 0.5pt !important;
+				}
+			}
+
+			.caption-container.four_bodies > div:nth-child(2) {
+				display: flex;
+				justify-content: center;
+			}
+
+			.caption-container {
+				display: inline-flex;
+				flex-direction: column;
+				width: auto;
+				margin: 0.5em 0;
+			}
+			.caption-container > div {
+				display: inline-block;
+				text-align: center;
+			}
+
+			/*
+				https://stackoverflow.com/a/19735997/10440128
+				for vertical-stacked floats, use style="float: right; clear: right"
+			*/
+
+			.float-right {
+				float: right;
+				clear: right; /* stack vertical */
+				margin-left: 1em;
+			}
+
+			.float-left {
+				float: left;
+				clear: left; /* stack vertical */
+				margin-right: 1em;
+			}
+
+			#div_four_bodies > svg {
+				width: 175px;
+				height: auto;
+			}
+
+			#div_three_hands > svg {
+				width: 160px;
+				height: auto;
+			}
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			/* not working, solve in javascript
+			.suffix {
+				text-decoration: none !important;
+			}
+			*/
+
+			/* square sign */
+			.square-sign {
+				position:relative;
+				top:-0.5px;
+			}
+
+			/* cross sign */
+			.xmark-sign {
+				font-size: 125%;
+				position:relative;
+				top:0.5px;
+			}
+
+			.nowrap-element, b {
+				white-space: nowrap;
+			}
+
+			.double-pallas-small-container > svg {
+				border-bottom: solid 1px black;
+				/* TODO smaller border in firefox print */
+			}
+			
+			.double-pallas-small-container > svg:last-child {
+				border-bottom: none;
+			}
+
+		</style>
+	`)
+
+
+			/* css dashed border with two colors */
+			/*
+			#table-properties > * > *:nth-child(2) {
+				/* red + yellow * /
+				border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="${sesc(color.medium[1])}" x="0" y="0" width="24" height="24" /><path stroke="${sesc(color.medium[3])}" stroke-dasharray="${dash_length}" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+			}
+			#table-properties > * > *:nth-child(3) {
+				/* green + blue * /
+				border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="${sesc(color.medium[2])}" x="0" y="0" width="24" height="24" /><path stroke="${sesc(color.medium[4])}" stroke-dasharray="${dash_length}" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+			}
+			#table-properties > * > *:nth-child(4) {
+				/* red + blue * /
+				border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="${sesc(color.medium[1])}" x="0" y="0" width="24" height="24" /><path stroke="${sesc(color.medium[4])}" stroke-dasharray="${dash_length}" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+			}
+			#table-properties > * > *:nth-child(5) {
+				/* green + yellow * /
+				border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="${sesc(color.medium[2])}" x="0" y="0" width="24" height="24" /><path stroke="${sesc(color.medium[3])}" stroke-dasharray="${dash_length}" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
+			}
+			*/
+
+
+
+		/* css background images
+			#table-properties > * > *:nth-child(2) {
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${bgpat_w} ${bgpat_w}" x="0" y="0" width="${bgpat_w}mm" height="${bgpat_w}mm"><rect fill="${sesc(color.light[1])}" x="0" y="0" width="${bgpat_w}" height="100" /><rect fill="${sesc(color.light[3])}" x="${bgpat_w/2}" y="0" width="${bgpat_w/2}" height="100" /></svg>');
+			}
+			#table-properties > * > *:nth-child(3) {
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${bgpat_w} ${bgpat_w}" x="0" y="0" width="${bgpat_w}mm" height="${bgpat_w}mm"><rect fill="${sesc(color.light[2])}" x="0" y="0" width="${bgpat_w}" height="100" /><rect fill="${sesc(color.light[4])}" x="${bgpat_w/2}" y="0" width="${bgpat_w/2}" height="100" /></svg>');
+			}
+			#table-properties > * > *:nth-child(4) {
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${bgpat_w} ${bgpat_w}" x="0" y="0" width="${bgpat_w}mm" height="${bgpat_w}mm"><rect fill="${sesc(color.light[1])}" x="0" y="0" width="${bgpat_w}" height="100" /><rect fill="${sesc(color.light[4])}" x="${bgpat_w/2}" y="0" width="${bgpat_w/2}" height="100" /></svg>');
+			}
+			#table-properties > * > *:nth-child(5) {
+				background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${bgpat_w} ${bgpat_w}" x="0" y="0" width="${bgpat_w}mm" height="${bgpat_w}mm"><rect fill="${sesc(color.light[2])}" x="0" y="0" width="${bgpat_w}" height="100" /><rect fill="${sesc(color.light[3])}" x="${bgpat_w/2}" y="0" width="${bgpat_w/2}" height="100" /></svg>');
+			}
+		*/
+
+
+</script>
+
+<style type="text/css">
+
+</style>
+
+
+<script>
+
+	function write_para(id, _class="para-margin-bottom") {
+		if (_class) {
+			document.write(`<div id="${id}" class="${_class}">${text[id]}</div>`)
+		}
+		else {
+			document.write(`<div id="${id}">${text[id]}</div>`)
+		}
+	}
+
+
+
+	function write_caption(id) {
+		document.write(text.caption[id]);
+	}
+
+
+
+	// alchi.js
+
+	// age sense move gender, origin 11
+	// signs: 0 = same, 1 = diff
+	// these factors are XOR-ed with the origin asmg
+	const ac_bits_asmg_11 = [
+			0b1001, 0b0111, 0b1011, 0b0101,
+			0b1110, 0b0000, 0b1100, 0b0010,
+			0b1101, 0b0011, 0b1111, 0b0001,
+			0b1010, 0b0100, 0b1000, 0b0110,
+	];
+
+	// XOR factors for "key of 10 friends" aka "double pallas"
+	// five bits! XOR only last three bits!
+	//
+	// typeList index vs position in double-pallas
+	//
+	//   0 1 2 3 // parents
+	//   4  5  6 // same age
+	//   7 8 9 A // kids
+
+	const ac_bits_aasmg_double_pallas = [
+			0b01001, 0b01110, 0b01100, 0b01111, // D3 B4  B2 D4
+			0b10111,    0b10000,       0b10011, // M4   F3   M1
+			0b00001, 0b00110, 0b00100, 0b00111, // A3 C4  C2 A4
+	];
+
+	/*
+	// young age: aa = 00
+	const C3 = 0b0000, A3 = 0b0001, C1 = 0b0010, A1 = 0b0011;
+	const C2 = 0b0100, A2 = 0b0101, C4 = 0b0110, A4 = 0b0111;
+	// old age: aa = 01
+	const B3 = 0b1000, D3 = 0b1001, B1 = 0b1010, D1 = 0b1011;
+	const B2 = 0b1100, D2 = 0b1101, B4 = 0b1110, D4 = 0b1111;
+	// no age: aa = 10 (five bits)
+	const F3 = 0b10000, M3 = 0b10001, F1 = 0b10010, M1 = 0b10011;
+	const F2 = 0b10100, M2 = 0b10101, F4 = 0b10110, M4 = 0b10111;
+	*/
+
+
+
+	const get_bit = function (num, idx) {
+			return (num & (1 << idx)) >> idx;
+	}
+
+
+
+	const decode_bitstring = function (asmg) {
+			return parseInt(asmg, 2);
+	}
+
+
+
+	const ac_xor = function(factor, list) {
+			return list.map(function (n) {
+					return factor ^ n
+			})
+	}
+
+
+
+	// letters of the four dimensions
+	const letter_asmg = [
+			['S', 'L'], // age   = Short  or Long
+			['E', 'I'], // sense = Extra  or Intro
+			['N', 'P'], // move  = Neuro  or Psycho
+			['F', 'M'], // gen   = Female or Male
+	]
+
+
+
+	// element = sense + move
+	const element = [
+			[
+				'3', // _00_ = EN = 3
+				'1', // _01_ = EP = 1
+			], [
+				'2', // _10_ = IN = 2
+				'4', // _11_ = IP = 4
+			],
+	]
+
+
+
+	// body = age + gender
+	const element_outside = [
+			[
+				'C', // 0__0 = SF = C
+				'A', // 0__1 = SM = A
+			], [
+				'B', // 1__0 = LF = B
+				'D', // 1__1 = LM = D
+			],
+	]
+
+
+
+	const idxFromDim = {
+		'A': 0,
+		'S': 1,
+		'M': 2,
+		'G': 3,
+
+		'a': 0,
+		's': 1,
+		'm': 2,
+		'g': 3,}
+
+
+	function getDimBit (asmg, dim) {
+		//global idxFromDim
+		return asmg[idxFromDim[dim]]
+	}
+
+	const letterFromASMG = function (dim, asmg) { //TODO change to (asmg, dim)
+		// ASMG
+		const i = idxFromDim[dim]
+		//document.write('dim '+dim+'   idx '+i)
+		if (i !== undefined) {
+			return letter_asmg[i][asmg[i]]
+		}
+		// element
+		if (dim == 'E' || dim == 'e') {
+			return element[asmg[1]][asmg[2]]
+		}
+		// outside element = Body = material = family role
+		if (dim == 'B' || dim == 'b') {
+			return element_outside[asmg[0]][asmg[3]]
+		}
+	}
+
+
+
+	/*
+	if(Array.prototype.contains) {
+		console.warn("Overriding existing Array.prototype.contains. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+	}
+	*/
+	Array.prototype.contains = function(needle) {
+		return this.indexOf(needle) !== -1
+	};
+
+	// modulo function, also for negative numbers
+	Number.prototype.mod = function(n) {
+			return ((this%n)+n)%n
+	}
+
+
+
+	// body + element = asmg
+	// young age: aa = 00
+	const C3 = 0b0000;
+	const A3 = 0b0001;
+	const C1 = 0b0010;
+	const A1 = 0b0011;
+	const C2 = 0b0100;
+	const A2 = 0b0101;
+	const C4 = 0b0110;
+	const A4 = 0b0111;
+	// old age: aa = 01
+	const B3 = 0b1000;
+	const D3 = 0b1001;
+	const B1 = 0b1010;
+	const D1 = 0b1011;
+	const B2 = 0b1100;
+	const D2 = 0b1101;
+	const B4 = 0b1110;
+	const D4 = 0b1111;
+	// no age: aa = 10
+	const F3 = 0b10000;
+	const M3 = 0b10001;
+	const F1 = 0b10010;
+	const M1 = 0b10011;
+	const F2 = 0b10100;
+	const M2 = 0b10101;
+	const F4 = 0b10110;
+	const M4 = 0b10111;
+
+
+
+	function write_map(map_origin = A1) {
+
+		const w = map_w;
+		const h = w;
+
+		const margin = 3;
+
+		const wh = w/2;
+
+		//const a = 1.25;
+		const a = map_a;
+		//const map_margin = a;
+
+		//const sw = 2*w;
+		//const sh = 2*h;
+		const sw = w + 2*a;
+		const sh = h + 2*a;
+
+
+		const d_gap = 0.1;
+		const wh2 = wh + d_gap; // fill gap between rect-s
+
+		//const page_x = 210; // mm
+		//const page_y = 297; // mm
+
+		const stroke_width = 0.4;
+
+		const puzzle_path = {
+
+			"IL": `
+				M ${sw/2+d_gap} ${(sh-h)/2-a}
+				h ${-d_gap}
+				l ${-a} ${a}
+				h ${-(w/2-a)}
+				v ${h/2-a}
+				l ${a} ${a}
+				l ${-a} ${a}
+				v ${h/2-a}
+				h ${w/2-a}
+				l ${a} ${a}
+				h ${d_gap}
+			`,
+
+			"EL": `
+				M ${sw/2+d_gap} ${(sh-h)/2+a}
+				h ${-d_gap}
+				l ${-a} ${-a}
+				h ${-(w/2-a)}
+				v ${h/2-a}
+				l ${-a} ${a}
+				l ${a} ${a}
+				v ${h/2-a}
+				h ${w/2-a}
+				l ${a} ${-a}
+				h ${d_gap}
+			`,
+
+			"IR": `
+				M ${sw/2} ${(sh-h)/2-a}
+				l ${a} ${a}
+				h ${w/2-a}
+				v ${h/2-a}
+				l ${-a} ${a}
+				l ${a} ${a}
+				v ${h/2-a}
+				h ${-(w/2-a)}
+				l ${-a} ${a}
+			`,
+
+			"ER": `
+				M ${sw/2} ${(sh-h)/2+a}
+				l ${a} ${-a}
+				h ${+(w/2-a)}
+				v ${h/2-a}
+				l ${a} ${a}
+				l ${-a} ${a}
+				v ${h/2-a}
+				h ${-(w/2-a)}
+				l ${-a} ${-a}
+			`,
+
+
+		};
+
+
+
+		document.write(`<svg
+			class="map"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.7}mm" height="${map_y_html*0.7}mm"
+			viewBox="0 0 ${map_x_svg} ${map_y_svg}"
+		>
+		`);
+		// svg user unit: 1 = 1mm
+
+		// style
+		document.write(`<g 
+			font-size="${font_size}"
+			font-family="sans-serif"
+			dominant-baseline="hanging"
+			stroke-width="${stroke_width}"
+		>
+		`);
+
+		const w_alcimap = (2*a+4*w+3*margin);
+		// alcimap
+		if (1) {
+
+			document.write(`<g 
+				transform="translate(${map_a}, ${map_a})"
+				dominant-baseline="mathematical" text-anchor="middle"
+				font-size="${font_size_map}"
+			>
+			`);
+
+
+
+			// flowsquares
+			const a_square = 2;
+			const a_cross = 2.4;
+			[[0,0], [0,1], [1,0], [1,1]].forEach(([x,y]) => (
+				document.write(`<rect
+					x="${-a_square/2+(1+2*x)*sw+(1+5*x)*stroke_width/2}"
+					y="${-a_square/2+(1+2*y)*sh+(1+5*y)*stroke_width/2}"
+					width="${a_square}" height="${a_square}"
+					stroke="black" fill="none" />`)
+			));
+
+			// tenscross
+			/*
+			document.write(`<rect
+				x="${-a_square/2+2*sw+4*stroke_width/2}"
+				y="${-a_square/2+2*sh+4*stroke_width/2}"
+				width="${a_square}" height="${a_square}"
+				stroke="black" fill="none" />`);
+			*/
+			document.write(`<line
+				x1="${-a_cross/2+2*sw+4*stroke_width/2}"
+				y1="${-a_cross/2+2*sh+4*stroke_width/2}"
+				x2="${+a_cross/2+2*sw+4*stroke_width/2}"
+				y2="${+a_cross/2+2*sh+4*stroke_width/2}"
+				stroke="black" fill="none" />`);
+			document.write(`<line
+				x2="${-a_cross/2+2*sw+4*stroke_width/2}"
+				y1="${-a_cross/2+2*sh+4*stroke_width/2}"
+				x1="${+a_cross/2+2*sw+4*stroke_width/2}"
+				y2="${+a_cross/2+2*sh+4*stroke_width/2}"
+				stroke="black" fill="none" />`);
+
+			// tenscross parts
+			document.write(`
+				<!-- half crosses -->
+				<path d="
+						M
+							${2*sw+4*stroke_width/2-a_cross/2}
+							${0*sh-1*stroke_width/2+a_cross/2}
+						l
+							${a_cross/2}
+							${-a_cross/2}
+						l
+							${a_cross/2}
+							${a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${2*sw+4*stroke_width/2-a_cross/2}
+							${4*sh+9*stroke_width/2-a_cross/2}
+						l
+							${a_cross/2}
+							${a_cross/2}
+						l
+							${a_cross/2}
+							${-a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${4*sw+9*stroke_width/2-a_cross/2}
+							${2*sh+4*stroke_width/2-a_cross/2}
+						l
+							${a_cross/2}
+							${a_cross/2}
+						l
+							${-a_cross/2}
+							${a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${0*sw-1*stroke_width/2+a_cross/2}
+							${2*sh+4*stroke_width/2-a_cross/2}
+						l
+							${-a_cross/2}
+							${a_cross/2}
+						l
+							${a_cross/2}
+							${a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+
+				<!-- quarter crosses -->
+				<path d="
+						M
+							${0*sw-1*stroke_width/2+a_cross/2}
+							${0*sh-1*stroke_width/2+a_cross/2}
+						l
+							${-a_cross/2}
+							${-a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${4*sw+9*stroke_width/2-a_cross/2}
+							${0*sh-1*stroke_width/2+a_cross/2}
+						l
+							${a_cross/2}
+							${-a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${4*sw+9*stroke_width/2-a_cross/2}
+							${4*sh+9*stroke_width/2-a_cross/2}
+						l
+							${a_cross/2}
+							${a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+				<path d="
+						M
+							${0*sw-1*stroke_width/2+a_cross/2}
+							${4*sh+9*stroke_width/2-a_cross/2}
+						l
+							${-a_cross/2}
+							${a_cross/2}
+					"
+					stroke="black" fill="none"
+				/>
+			`);
+
+
+			// puzzle pieces
+			// origin = A1 = 0b0011
+			//ac_xor(0b0011, ac_bits_asmg_11).forEach((num, idx) => {
+			ac_xor(map_origin, ac_bits_asmg_11).forEach((num, idx) => {
+				
+				const asmg = num.toString(2).padStart(4, 0).split('');
+
+				const e = letterFromASMG('E', asmg); // element
+				const b = letterFromASMG('B', asmg); // body
+
+				const e_sense = (e % 2 == 0) ? "I" : "E";
+
+				const cb = color.map[b];
+				const ce = color.map[e];
+
+				//const cbt = color.map[opposite[b]];
+				//const cet = color.map[opposite[e]];
+
+				/*
+				const cbt = (b == "A" || b == "D") ? "white" : "black";
+				const cet = (e == 1 || e == 4) ? "white" : "black";
+				*/
+				const cbt = "black";
+				const cet = "black";
+
+				const x = idx % 4;
+				const xp = x * (w + margin);
+				const xb = xp + a;
+				const xe = xp + a + wh;
+				
+				const yp = ((idx / 4)|0) * (h + margin);
+				const y = yp + a;
+
+				const xbt = xb + 0.5*(wh+a);
+				const xet = xe + 0.5*(wh-a);
+				
+				const yt = y + 0.5*h;
+
+				document.write(`<!-- ${b}${e} -->`)
+				
+				/*
+				document.write(`<path transform="translate(${xp}, ${yp})" fill="${cb}" stroke="${cbt}" d="${puzzle_path[e_sense+"L"]}" />`)
+				document.write(`<path transform="translate(${xp}, ${yp})" fill="${ce}" stroke="${cet}" d="${puzzle_path[e_sense+"R"]}" />`)
+				*/
+				document.write(`<path transform="translate(${xp}, ${yp})" stroke="${cb}" fill="none" d="${puzzle_path[e_sense+"L"]}" />`)
+				document.write(`<path transform="translate(${xp}, ${yp})" stroke="${ce}" fill="none" d="${puzzle_path[e_sense+"R"]}" />`)
+
+				document.write(`<text x="${xbt}" y="${yt}" fill="${cbt}" width="${wh}" height="${h}">${b}</text>`)
+				document.write(`<text x="${xet}" y="${yt}" fill="${cet}" width="${wh}" height="${h}">${e}</text>`)
+
+
+			});
+
+			document.write(`</g>`);
+
+		}
+
+		//document.write(`</g>`); // header
+		//document.write(`</g>`); // content
+		document.write(`</g>`); // style
+		document.write(`</svg>`);
+	}
+
+
+
+	// 6x6 map shows all pallas keys
+	function write_map_6x6(map_origin = A1) {
+		// lazy version, we just hide unwanted areas
+		// by changing the svg viewBox
+		// and using transform-translate-groups
+
+		const w = map_w;
+		const h = w;
+
+		const margin = 3;
+
+		const wh = w/2;
+
+		//const a = 1.25;
+		const a = map_a;
+		//const map_margin = a;
+
+		//const sw = 2*w;
+		//const sh = 2*h;
+		const sw = w + 2*a;
+		const sh = h + 2*a;
+
+
+		const d_gap = 0.1;
+		const wh2 = wh + d_gap; // fill gap between rect-s
+
+		//const page_x = 210; // mm
+		//const page_y = 297; // mm
+
+		const stroke_width = 0.4;
+
+		// shadow var
+		const font_size_map = 5; // orig is 4
+
+		document.write(`<svg
+			class="map map-6x6"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.8}mm" height="${map_y_html*0.8}mm"
+			viewBox="${map_x_svg*0.5} ${map_x_svg*0.5} ${map_x_svg*1.5} ${map_y_svg*1.5}"
+		>
+		`);
+
+		// style + move
+		document.write(`<g 
+			font-size="${font_size}"
+			font-family="sans-serif"
+			dominant-baseline="hanging"
+			stroke-width="${stroke_width}"
+
+			transform="translate(${-sw}, ${-sh})"
+		>
+		`);
+
+		const w_alcimap = (2*a+4*w+3*margin);
+
+		// alcimap
+
+		document.write(`<g 
+			transform="translate(${map_a}, ${map_a})"
+			dominant-baseline="mathematical" text-anchor="middle"
+			font-size="${font_size_map}"
+		>
+		`);
+
+
+
+		// flowsquares
+		//const a_square = 2;
+		//const a_cross = 2.4;
+		const a_square = 3;
+		const a_cross = 3.6;
+		Array.range(2, 3).forEach(x => {
+			Array.range(2, 3).forEach(y => {
+				document.write(`<rect
+					x="${-a_square/2+(1+2*x)*sw+(1+5*x)*stroke_width/2}"
+					y="${-a_square/2+(1+2*y)*sh+(1+5*y)*stroke_width/2}"
+					width="${a_square}" height="${a_square}"
+					stroke="black" fill="none" />`
+				);
+			});
+		});
+
+		// tenscross
+		// todo make formulas simpler, use svg group with translate?
+		Array.range(1, 3).forEach(x => {
+			Array.range(1, 3).forEach(y => {
+				document.write(`<line
+					x1="${-a_cross/2+2*sw+4*stroke_width/2+(2*x)*sw+(5*x)*stroke_width/2}"
+					y1="${-a_cross/2+2*sh+4*stroke_width/2+(2*y)*sh+(5*y)*stroke_width/2}"
+					x2="${+a_cross/2+2*sw+4*stroke_width/2+(2*x)*sw+(5*x)*stroke_width/2}"
+					y2="${+a_cross/2+2*sh+4*stroke_width/2+(2*y)*sh+(5*y)*stroke_width/2}"
+					stroke="black" fill="none" />`);
+				document.write(`<line
+					x2="${-a_cross/2+2*sw+4*stroke_width/2+(2*x)*sw+(5*x)*stroke_width/2}"
+					y1="${-a_cross/2+2*sh+4*stroke_width/2+(2*y)*sh+(5*y)*stroke_width/2}"
+					x1="${+a_cross/2+2*sw+4*stroke_width/2+(2*x)*sw+(5*x)*stroke_width/2}"
+					y2="${+a_cross/2+2*sh+4*stroke_width/2+(2*y)*sh+(5*y)*stroke_width/2}"
+					stroke="black" fill="none" />`);
+			});
+		});
+
+
+
+		const mapSize = 4*(w + margin); // TODO
+		// repeat map 3x3 times
+		Array.from(Array(3).keys()).forEach(xRepeat => {
+			Array.from(Array(3).keys()).forEach(yRepeat => {
+
+				document.write(`<g transform="translate(${mapSize*xRepeat},${mapSize*yRepeat})">`)
+
+				// puzzle pieces + names
+				ac_xor(map_origin, ac_bits_asmg_11).forEach((num, idx) => {
+					
+					const asmg = num.toString(2).padStart(4, 0).split('');
+
+					const e = letterFromASMG('E', asmg); // element
+					const b = letterFromASMG('B', asmg); // body
+
+					const e_sense = (e % 2 == 0) ? "I" : "E";
+
+					const cb = color.map[b];
+					const ce = color.map[e];
+
+					//const cbt = color.map[opposite[b]];
+					//const cet = color.map[opposite[e]];
+
+					/*
+					const cbt = (b == "A" || b == "D") ? "white" : "black";
+					const cet = (e == 1 || e == 4) ? "white" : "black";
+					*/
+					const cbt = "black";
+					const cet = "black";
+
+					const x = idx % 4;
+					const xp = x * (w + margin);
+					const xb = xp + a;
+					const xe = xp + a + wh;
+					
+					const yp = ((idx / 4)|0) * (h + margin);
+					const y = yp + a;
+
+					const xbt = xb + 0.5*(wh+a);
+					const xet = xe + 0.5*(wh-a);
+					
+					const yt = y + 0.5*h;
+
+					document.write(`<!-- ${b}${e} -->`)
+
+					document.write(`<text x="${xbt}" y="${yt}" fill="${cbt}" width="${wh}" height="${h}">${b}</text>`)
+					document.write(`<text x="${xet}" y="${yt}" fill="${cet}" width="${wh}" height="${h}">${e}</text>`)
+
+
+				});
+				document.write(`</g>`);
+			});
+		});
+
+		document.write(`</g>`); // style + move
+
+		//document.write(`</g>`); // header
+		//document.write(`</g>`); // content
+		document.write(`</g>`); // style
+		document.write(`</svg>`);
+	}
+
+
+
+	function write_compass(){
+
+		const stroke_width = 1;
+		const stroke_width_circles = 2 * stroke_width;
+
+		// outer circle
+		const r1 = 80;
+
+		// inner circle (parent nodes)
+		const r2 = r1 * (
+			Math.cos(2*Math.PI/12) - Math.sin(2*Math.PI/12)
+		);
+		// r2 so that angles are 45 degrees
+
+		const r3 = 17;
+		const r4 = 40.5; // x - r3
+
+		const cx = 100;
+		const cy = 100;
+
+		document.write(`<svg
+			id="compass"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.7}mm" height="${map_y_html*0.7}mm"
+			viewBox="0 0 200 200"
+		>
+		`);
+
+		// style
+		document.write(`
+			<g 
+				font-size="${font_size*6}"
+				font-family="sans-serif"
+				text-anchor="middle"
+				dominant-baseline="mathematical"
+				stroke-width="${stroke_width}"
+			>
+		`);
+
+
+		/*
+			<line x1="${cx}" y1="${cy}" x2="${cx + r1}" y2="${cy}" stroke="yellow" />
+			<line x1="${cx}" y1="${cy}" x2="${cx - r1}" y2="${cy}" stroke="blue" />
+			<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy + r1}" stroke="red" />
+			<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - r1}" stroke="green" />
+		*/
+		document.write(`
+			<!--
+			<circle cx="100" cy="100" r="80" fill="white" stroke="black" />
+			-->
+
+			<line x1="${cx - r1}" y1="${cy}" x2="${cx + r1}" y2="${cy}" stroke="black" />
+			<line x1="${cx}" y1="${cy - r1}" x2="${cx}" y2="${cy + r1}" stroke="black" />
+			
+				`);
+		
+		// 12 "zodiac" signs
+		/*
+			idx:
+							0
+					 11    1
+				 10        2
+				9           3
+				 8         4
+					 7     5
+							6
+
+		 label:
+							22
+					 24   23
+				 42       32
+				44          33
+				 41        31
+					 14    13
+							11
+
+	 */
+
+		//const label = ["22", "23", "32", "33", "31", "13", "11", "14", "41", "44", "42", "24"];
+		const label = [
+			       "2x2", "2x3",
+			"3x2", "3x3", "3x1",
+			"1x3", "1x1", "1x4",
+			"4x1", "4x4", "4x2",
+			"2x4",
+		];
+
+		const color = ["green", "yellow", "red", "blue"];
+
+		const colidx2 = [
+			null, 1, 0,
+			null, 2, 1,
+			null, 3, 2,
+			null, 0, 3,
+		];
+
+		// TODO use group-transform-translate to center to (cx, cy)
+		document.write(`<g fill="white" stroke="black">`)
+		Array.from(Array(12)).map((v,i)=>i).forEach(idx => {
+			// idx = 0, 1, 2, ... 10, 11
+
+			// child node, outer circle
+			const a = 2*Math.PI*idx/12; // angle
+			let x = cx + r1 * Math.sin(a);
+			let y = cy - r1 * Math.cos(a);
+
+			// parent node, inner circle
+			const pidx = Math.round((idx) / 3)*3;
+			const pa = 2*Math.PI*pidx/12;
+			const px = cx + r2 * Math.sin(pa);
+			const py = cy - r2 * Math.cos(pa);
+
+
+			const piby4 = Math.PI/4;
+			const daList = [0,piby4,piby4,0,3*piby4,3*piby4,0,5*piby4,5*piby4,0,7*piby4,7*piby4];
+			if (idx == pidx) {
+				document.write(`<line x1="${x}" y1="${y}" x2="${px}" y2="${py}" />`);
+			} else {
+				const da = daList[idx];
+				const dx = r4 * Math.sin(da);
+				const dy = -r4 * Math.cos(da);
+				document.write(`<path d="M ${px} ${py} l ${dx} ${dy}" />`);
+			}
+
+			const tf_rotate = [0, 135, -45, 0, 225, 45, 0, -45, 135, 0, 45, 225];
+			document.write(`<g transform="rotate(${tf_rotate[idx]}, ${x}, ${y})">`);
+			
+			if (idx == pidx) {
+				// 11, 22, 33, 44
+				document.write(`<circle cx="${x}" cy="${y}" r="${r3}" stroke="${color[(pidx/3).mod(4)]}" stroke-width="${stroke_width_circles}" />`);
+			}
+			else {
+				// 23, 32, 31, 13, ...
+				// two half circles
+				const col2 = color[colidx2[idx]];
+
+				document.write(`<circle cx="${x}" cy="${y}" r="${r3}" stroke="none" fill="none" />`);
+
+				//console.log(`idx ${idx}  (pidx/3).mod(4) = ${(pidx/3).mod(4)}`)
+				document.write(`<path d="M ${x + r3} ${y} a ${r3} ${r3} 0 0 1 ${-2*r3} 0" stroke="${color[(pidx/3).mod(4)]}" fill="none" stroke-width="${stroke_width_circles}" />`);
+				document.write(`<path d="M ${x + r3} ${y} a ${r3} ${r3} 0 0 0 ${-2*r3} 0" stroke="${col2}"  fill="none" stroke-width="${stroke_width_circles}" />`);
+			}
+
+
+			document.write('</g>');
+			document.write(`<text x="${x}" y="${y}" stroke="none" fill="black">${label[idx]}</text>`)
+
+			
+		})
+
+
+
+		// four corners I P E N
+		const a_square = 26;
+		([
+			[+1, +1, 'E', 1, 1],
+			[-1, -1, 'I', 0, 0],
+			[+1, -1, 'N', 1, 0],
+			[-1, +1, 'P', 0, 1],
+		]).forEach(([ix, iy, label, ix2, iy2]) => {
+			/*
+			let x = cx + ix*(r1+r3) - ix2*a_square;
+			let y = cy + iy*(r1+r3) - iy2*a_square;
+			let tx = x + a_square/2;
+			let ty = y + a_square/2;
+			*/
+			let tx = cx + ix*r1;
+			let ty = cy + iy*r1;
+			let x = tx - a_square/2;
+			let y = ty - a_square/2;
+
+			document.write(`<rect x="${x}" y="${y}"
+				width="${a_square}" height="${a_square}"
+				stroke="black" fill="none"
+			/>`);
+
+			document.write(`<text
+				x="${tx}" y="${ty}"
+				fill="black" stroke="none"
+				>${label}</text>`);
+
+		});
+
+
+
+		document.write(`</g>`)
+
+
+
+		document.write(`<g fill="white" stroke="black">`)
+		Array.from(Array(4)).map((v,i)=>3*i).forEach(idx => {
+			const a = 2*Math.PI/12*idx;
+			const x = 100 + r2 * Math.sin(a);
+			const y = 100 - r2 * Math.cos(a);
+
+			document.write(`<circle cx="${x}" cy="${y}" r="15" stroke="${color[idx/3]}" stroke-width="${stroke_width_circles}" />`)
+			document.write(`<text x="${x}" y="${y}" stroke="none" fill="black">${label[idx][0]}</text>`)
+
+		})
+		document.write(`</g>`)
+
+
+
+		document.write('</g>');
+		document.write('</svg>');
+
+	}
+
+
+
+	function write_pallas(){
+
+		const stroke_width = 1;
+
+		const g = 50; // grid size
+		const g2 = g*0.5;
+		const cx = 100;
+		const cy = 100;
+
+
+
+		document.write(`<svg
+			id="pallas"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.4}mm" height="${map_y_html*0.4}mm"
+			viewBox="35 35 130 130"
+		>
+		`);
+
+		// style
+		document.write(`
+			<g 
+				font-size="${font_size*6}"
+				font-family="sans-serif"
+				text-anchor="middle"
+				dominant-baseline="mathematical"
+				stroke-width="${stroke_width}"
+			>
+		`);
+
+		document.write(`<text fill="black" x="${cx}" y="${cy}">${text.me}</text>`);
+
+		document.write(`<text fill="black" x="${cx + g}" y="${cy + g}">${text.you}</text>`);
+		document.write(`<text fill="black" x="${cx - g}" y="${cy - g}">${text.you}</text>`);
+
+		document.write(`<text fill="black" x="${cx}" y="${cy + g}">${text.he}</text>`);
+		document.write(`<text fill="black" x="${cx}" y="${cy - g}">${text.he}</text>`);
+
+		document.write(`<text fill="black" x="${cx + g}" y="${cy}">${text.she}</text>`);
+		document.write(`<text fill="black" x="${cx - g}" y="${cy}">${text.she}</text>`);
+
+
+		// same class square, flusskreis, flowsquare
+		document.write(`<rect x="${cx + (g - g2)/2}" y="${cy + g/2 - g2/2}" width="${g2}" height="${g2}" fill="none" stroke="black" />`);
+
+		// spannkreuz, tenscross
+		document.write(`<line x1="${cx - (g - g2)/2}" y1="${cy - (g - g2)/2}" x2="${cx - (g - g2)/2 - g2}" y2="${cy - (g - g2)/2 - g2}" stroke="black" />`);
+		document.write(`<line x1="${cx - (g - g2)/2}" y1="${cy - (g - g2)/2 - g2}" x2="${cx - (g - g2)/2 - g2}" y2="${cy - (g - g2)/2}" stroke="black" />`);
+
+		document.write('</g>');
+		document.write('</svg>');
+
+	}
+
+
+
+	/*
+		typeList index vs position in double-pallas
+		0 1 2 3 // parents
+		4  5  6 // same age
+		7 8 9 A // kids
+	*/
+
+
+
+	// TODO move
+	function getBits(number, numBits = 4) {
+		return number.toString(2).slice(-numBits).padStart(numBits, 0).split('').map(x => x|0);
+	}
+
+
+
+	function write_double_pallas(pallas_origin = M1){
+
+		typeList = ac_bits_aasmg_double_pallas.map(n => {
+			// XOR (multiply) only last three bits, OR (add) two other bits
+			return ((pallas_origin & 0b111) ^ (n & 0b111)) | (n & 0b11000);
+		});
+
+		// NOTE age-less types need 5 bits
+		// TODO also encode three modalities?
+
+		const stroke_width = 1;
+
+		const g = 66.6; // grid size
+		const g2 = g*0.666;
+		const cx = 100;
+		const cy = 100;
+
+
+
+		document.write(`<svg
+			class="double-pallas"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.5*4/3}mm" height="${map_y_html*0.5}mm"
+			viewBox="10 10 180 180"
+		>
+		`);
+
+		// style
+		document.write(`
+			<g 
+				font-size="${font_size*7}"
+				font-family="sans-serif"
+				text-anchor="middle"
+				dominant-baseline="mathematical"
+				stroke-width="${stroke_width}"
+			>
+		`);
+
+		//const g = letterFromASMG('g', asmgBits); // gender
+
+		//const aasmgBits = getBits(asmgNum, 5);
+		//const noAge = aasmgBits[0];
+
+		// typeList index vs position in double-pallas
+		//
+		//   0 1 2 3   // parents
+		//   4  5  6   // same age
+		//   7 8 9 A   // kids
+
+		// TODO shorter, use one loop
+		// use lookup-tables for text positions?
+
+		// parents = idx 0, 1, 2, 3
+		typeList.slice(0, 4).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const b = letterFromASMG('B', asmgBits); // body
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			//const pos = 7/8*(posIdx - 3/2);
+			const posMap = [-4/3, -1/3, +1/3, +4/3];
+			const pos = posMap[posIdx];
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy - g}">${b+e}</text>`);
+		});
+		// same age = idx 4, 5, 6
+		typeList.slice(4, 7).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const gender = letterFromASMG('g', asmgBits); // gender
+			// var `g` already taken for "grid constant"
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			//const pos = posIdx - 1;
+			const pos = 4/3*(posIdx - 1);
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy}">${gender+e}</text>`);
+		});
+		// kids = idx 7, 8, 9, 10
+		typeList.slice(7, 11).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const b = letterFromASMG('B', asmgBits); // body
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			const posMap = [-4/3, -1/3, +1/3, +4/3];
+			const pos = posMap[posIdx];
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy + g}">${b+e}</text>`);
+		});
+
+		/*
+		document.write(`<text x="${cx}" y="${cy}">${text.me}</text>`);
+
+		document.write(`<text x="${cx + g}" y="${cy + g}">${text.you}</text>`);
+		document.write(`<text x="${cx - g}" y="${cy - g}">${text.you}</text>`);
+
+		document.write(`<text x="${cx}" y="${cy + g}">${text.he}</text>`);
+		document.write(`<text x="${cx}" y="${cy - g}">${text.he}</text>`);
+
+		document.write(`<text x="${cx + g}" y="${cy}">${text.she}</text>`);
+		document.write(`<text x="${cx - g}" y="${cy}">${text.she}</text>`);
+		*/
+
+		//const oddness = g/6;
+		const oddness = 0;
+
+		// same class square, flusskreis, flowsquare
+		// top left:
+		document.write(`<rect
+			x="${(cx-g2/2) - g*5/6}"
+			y="${(cy-g2/2) - g*1/2}"
+			width="${g2}" height="${g2}" fill="none" stroke="black" />`);
+		// bottom left:
+		document.write(`<rect
+			x="${(cx-g2/2) - g*5/6}"
+			y="${(cy-g2/2) + g*1/2}"
+			width="${g2}" height="${g2}" fill="none" stroke="black" />`);
+		/*
+		// top left (odd):
+		document.write(`<path d="
+			M ${(cx-g2/2) - g*5/6} ${(cy-g2/2) - g*1/2}
+			h ${ g2}
+			l ${oddness} ${ g2}
+			h ${-g2-oddness}
+			z
+			" fill="none" stroke="black" />`);
+		// bottom left (odd):
+		document.write(`<path d="
+			M ${(cx-g2/2) - g*5/6} ${(cy-g2/2) + g*1/2}
+			h ${ g2+oddness}
+			l ${-oddness} ${ g2}
+			h ${-g2}
+			z
+			" fill="none" stroke="black" />`);
+		*/
+
+		// spannkreuz, tenscross
+		// top right:
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2}" 
+			y1="${cy+g2/2 - g*1/2}" y2="${cy+g2/2 - g*1/2 - g2}" />`);
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)}" 
+			y2="${cy+g2/2 - g*1/2}" y1="${cy+g2/2 - g*1/2 - g2}" />`);
+		// bottom right:
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)}" 
+			y1="${cy+g2/2 + g*1/2}" y2="${cy+g2/2 + g*1/2 - g2}" />`);
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2}" 
+			y2="${cy+g2/2 + g*1/2}" y1="${cy+g2/2 + g*1/2 - g2}" />`);
+
+		// dotted lines to connect original pallas keys
+		document.write(`<path stroke="black" d="
+			M ${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)} ${cy+g2/2 - g*1/2}
+			h ${-g-g2}
+		" stroke-dasharray="${stroke_width*3} ${stroke_width*6}" />`);
+		document.write(`<path stroke="black" d="
+			M ${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)} ${cy+g2/2 + g*1/2 - g2}
+			h ${-g-g2}
+		" stroke-dasharray="${stroke_width*3} ${stroke_width*6}" />`);
+		document.write('</g>');
+		document.write('</svg>');
+
+	}
+
+
+
+	function write_double_pallas_small(pallas_origin = M1){
+
+		typeList = ac_bits_aasmg_double_pallas.map(n => {
+			// XOR (multiply) only last three bits, OR (add) two other bits
+			return ((pallas_origin & 0b111) ^ (n & 0b111)) | (n & 0b11000);
+		});
+
+		// NOTE age-less types need 5 bits! TODO encode?
+		// TODO also encode three modalities? --> 7 bits
+
+		const stroke_width = 1;
+
+		const g = 66.6; // grid size
+		const g2 = g*0.4;
+		const cx = 100;
+		const cy = 100;
+
+		const margin_x = 10;
+
+		document.write(`<svg
+			class="double-pallas-small"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${content_x/9}mm" height="${content_x/9*200/(200+2*margin_x)}mm"
+			viewBox="-${margin_x} 0 ${200+2*margin_x} 200"
+		>
+		`);
+
+		// style
+		document.write(`
+			<g 
+				font-size="${font_size*9}"
+				font-family="sans-serif"
+				text-anchor="middle"
+				dominant-baseline="mathematical"
+				stroke-width="${stroke_width*2}"
+			>
+		`);
+
+		//const g = letterFromASMG('g', asmgBits); // gender
+
+		//const aasmgBits = getBits(asmgNum, 5);
+		//const noAge = aasmgBits[0];
+
+		// typeList index vs position in double-pallas
+		//
+		//   0 1 2 3   // parents
+		//   4  5  6   // same age
+		//   7 8 9 A   // kids
+
+		// TODO shorter, use one loop
+		// use lookup-tables for text positions?
+
+		// parents = idx 0, 1, 2, 3
+		typeList.slice(0, 4).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const b = letterFromASMG('B', asmgBits); // body
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			//const pos = 7/8*(posIdx - 3/2);
+			const posMap = [-4/3, -1/3, +1/3, +4/3];
+			const pos = posMap[posIdx];
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy - g}">${b+e}</text>`);
+		});
+		// same age = idx 4, 5, 6
+		typeList.slice(4, 7).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const gender = letterFromASMG('g', asmgBits); // gender
+			// var `g` already taken for "grid constant"
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			//const pos = posIdx - 1;
+			const pos = 4/3*(posIdx - 1);
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy}">${gender+e}</text>`);
+		});
+		// kids = idx 7, 8, 9, 10
+		typeList.slice(7, 11).forEach((asmgNum, posIdx) => {
+			const asmgBits = getBits(asmgNum, 4);
+			const b = letterFromASMG('B', asmgBits); // body
+			const e = letterFromASMG('E', asmgBits); // element
+			//const pos = 2/3*(posIdx - 3/2);
+			const posMap = [-4/3, -1/3, +1/3, +4/3];
+			const pos = posMap[posIdx];
+			document.write(`<text fill="black" x="${cx + g*pos}" y="${cy + g}">${b+e}</text>`);
+		});
+
+		//const oddness = g/6;
+		const oddness = 0;
+
+		// same class square, flusskreis, flowsquare
+		// top left:
+		document.write(`<rect
+			x="${(cx-g2/2) - g*5/6}"
+			y="${(cy-g2/2) - g*1/2}"
+			width="${g2}" height="${g2}" fill="none" stroke="black" />`);
+		// bottom left:
+		document.write(`<rect
+			x="${(cx-g2/2) - g*5/6}"
+			y="${(cy-g2/2) + g*1/2}"
+			width="${g2}" height="${g2}" fill="none" stroke="black" />`);
+		/*
+		// top left (odd):
+		document.write(`<path d="
+			M ${(cx-g2/2) - g*5/6} ${(cy-g2/2) - g*1/2}
+			h ${ g2}
+			l ${oddness} ${ g2}
+			h ${-g2-oddness}
+			z
+			" fill="none" stroke="black" />`);
+		// bottom left (odd):
+		document.write(`<path d="
+			M ${(cx-g2/2) - g*5/6} ${(cy-g2/2) + g*1/2}
+			h ${ g2+oddness}
+			l ${-oddness} ${ g2}
+			h ${-g2}
+			z
+			" fill="none" stroke="black" />`);
+		*/
+
+		// spannkreuz, tenscross
+		// top right:
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2}" 
+			y1="${cy+g2/2 - g*1/2}" y2="${cy+g2/2 - g*1/2 - g2}" />`);
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)}" 
+			y2="${cy+g2/2 - g*1/2}" y1="${cy+g2/2 - g*1/2 - g2}" />`);
+		// bottom right:
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)}" 
+			y1="${cy+g2/2 + g*1/2}" y2="${cy+g2/2 + g*1/2 - g2}" />`);
+		document.write(`<line stroke="black"
+			x1="${cx+g2/2 + g*5/6}" x2="${cx+g2/2 + g*5/6 - g2}" 
+			y2="${cy+g2/2 + g*1/2}" y1="${cy+g2/2 + g*1/2 - g2}" />`);
+
+		// dotted lines to connect original pallas keys
+		document.write(`<path stroke="black" d="
+			M
+				${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)}
+				${cy+g2/2 - g*1/2}
+			h ${-g-g2}
+		" stroke-dasharray="${stroke_width*3} ${stroke_width*6}" />`);
+		document.write(`<path stroke="black" d="
+			M ${cx+g2/2 + g*5/6 - g2 - (oddness /* odd cross */)} ${cy+g2/2 + g*1/2 - g2}
+			h ${-g-g2}
+		" stroke-dasharray="${stroke_width*3} ${stroke_width*6}" />`);
+		document.write('</g>');
+		document.write('</svg>');
+
+	}
+
+
+
+	function write_exchange() {
+
+		const stroke_width = 1;
+
+		//const g = 66.6; // grid size
+		//const g2 = g*0.666;
+
+		const s = 200; // size
+		const m = 4; // margin
+		const A = 1.5; // aspect
+		const d = 20; // distance
+		
+		const m2 = m - stroke_width; // margin of boxes
+
+		const H = (s - d) / (A + 1);
+		const W = A * H;
+
+
+
+		// puzzle pieces
+
+		const h = 0.4 * H;
+		const w = h;
+		const a = w / 8;
+
+		const sw = w + 2*a;
+		const sh = h + 2*a;
+
+
+
+		const puzzle_path = {
+
+			I: `
+				M ${sw/2} ${(sh-h)/2-a}
+				l ${-a} ${a}
+				h ${-(w/2-a)}
+				v ${h/2-a}
+				l ${a} ${a}
+				l ${-a} ${a}
+				v ${h/2-a}
+				h ${w/2-a}
+				l ${a} ${a}
+				l ${a} ${-a}
+				h ${w/2-a}
+				v ${-(h/2-a)}
+				l ${-a} ${-a}
+				l ${a} ${-a}
+				v ${-(h/2-a)}
+				h ${-(w/2-a)}
+				z
+			`,
+
+			E: `
+				M ${sw/2} ${(sh-h)/2+a}
+				l ${-a} ${-a}
+				h ${-(w/2-a)}
+				v ${h/2-a}
+				l ${-a} ${a}
+				l ${a} ${a}
+				v ${h/2-a}
+				h ${w/2-a}
+				l ${a} ${-a}
+				l ${a} ${a}
+				h ${w/2-a}
+				v ${-(h/2-a)}
+				l ${a} ${-a}
+				l ${-a} ${-a}
+				v ${-(h/2-a)}
+				h ${-(w/2-a)}
+				z
+			`,
+
+		};
+
+		const x0 = 20;
+
+
+		// these numbers are a mess, but it works
+		let svg_exchange_h = s+2*m-2*x0;
+		let svg_exchange_w = s+2*m;
+
+
+		document.write(`<svg
+			id="exchange"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0" y="0" width="${map_x_html*0.75}mm" height="${map_y_html*0.75*0.7}mm"
+			viewBox="${-x0*0.8} ${-x0*1} ${svg_exchange_w} ${svg_exchange_h-1.25*x0}"
+			style="margin: 0.5em"
+		>
+		`);
+
+		document.write(`
+			<defs>
+				<marker id="arrowhead" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+					<path d="M0,0 L0,6 L9,3 z" fill="black" />
+				</marker>
+				<marker id="arrowhead-back" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
+					<path d="M10,0 L10,6 L1,3 z" fill="black" />
+				</marker>
+			</defs>
+		`);
+
+		// style + transform
+		// TODO set text anchor to center
+		document.write(`
+			<g
+				transform="
+					translate(${+(svg_exchange_w/2)} ${+(svg_exchange_h/2)})
+					rotate(90)
+					translate(${-(svg_exchange_w/2)} ${-(svg_exchange_h/2)})
+					translate(${-1.5*x0} 0 )
+				"
+				font-size="${font_size*6}"
+				font-family="sans-serif"
+				text-anchor="middle"
+				dominant-baseline="mathematical"
+				stroke-width="${stroke_width}"
+				fill="none"
+				stroke="black"
+			>
+			<style>
+				.rotateBack text {
+					transform:  rotate(-90deg);
+					transform-box: fill-box;
+				}
+			</style>
+		`);
+
+
+
+		// boxes
+		document.write(`
+			<rect x="${(s-W)/2-m2}" y="${-m2}" width="${W+2*m2}" height="${H+2*m2}" stroke-dasharray="${stroke_width} ${stroke_width*2}" />
+			<rect x="${(s-H)/2-m2}" y="${H+d-m2}" width="${H+2*m2}" height="${W+2*m2}" stroke-dasharray="${stroke_width} ${stroke_width*2}" />
+		`);
+
+		// puzzle pieces
+		document.write(`
+			<path transform="translate(${(s-W)/2+W-sw},${0})" d="${puzzle_path.I}"/>
+			<path transform="translate(${(s-W)/2},${0})" d="${puzzle_path.E}"/>
+			<path transform="translate(${(s-W)/2},${H-sw})" d="${puzzle_path.I}"/>
+			<path transform="translate(${(s-W)/2+W-sw},${H-sw})" d="${puzzle_path.E}"/>
+
+			<path transform="translate(${s/2},${H+d})" d="${puzzle_path.I}"/>
+			<path transform="translate(${s/2-sw},${H+d})" d="${puzzle_path.E}"/>
+			<path transform="translate(${s/2-sw},${H+d+W-sw})" d="${puzzle_path.I}"/>
+			<path transform="translate(${s/2},${H+d+W-sw})" d="${puzzle_path.E}"/>
+		`);
+
+		// labels
+		// set fill="black" for every text node,
+		//   so firefox-darkreader can invert colors correctly
+		document.write(`
+			<g stroke="none" class="rotateBack" transform="translate(-4, 14)">
+				<text fill="black" y="${sh/2}" x="${(s-W)/2+sw/2}">C</text>
+				<text fill="black" y="${sh/2}" x="${(s-W)/2-sw/2+W}">A</text>
+				<text fill="black" y="${H-sw+sh/2}" x="${(s-W)/2-sw/2+W}">D</text>
+				<text fill="black" y="${H-sw+sh/2}" x="${(s-W)/2+sw/2}">B</text>
+				
+				<text fill="black" y="${H+d+sh/2}" x="${s/2+sw/2}">A</text>
+				<text fill="black" y="${H+d+sh/2}" x="${s/2-sw/2}">C</text>
+				<text fill="black" y="${H+d+sh/2+W-sw}" x="${s/2-sw/2}">B</text>
+				<text fill="black" y="${H+d+sh/2+W-sw}" x="${s/2+sw/2}">D</text>
+			</g>
+		`);
+
+		// arrows
+		/* variant: middle to corner
+		document.write(`<path d="
+			M ${s/2+W/2+3*m2} ${H+5}
+			A ${s/4} ${s/4} 0 0 1 ${s/2+(H/2+2*m2)+8} ${H+d+W/2-5}
+			" marker-end="url(#arrowhead)" />`);
+		document.write(`<path d="
+			M ${s/2-(W/2+3*m2)} ${H+15}
+			A ${s/4} ${s/4} 0 0 0 ${s/2-(H/2+3*m2)} ${H+d+W/2}
+			" marker-start="url(#arrowhead-back)" />`);
+		*/
+		// variant: middle to middle
+		document.write(`<path d="
+			M ${s/2+W/2+3*m2-2} ${H+5-40}
+			A ${s/4*2} ${s/4*2} 0 0 1 ${s/2+(H/2+2*m2)+8} ${H+d+W/2-5}
+			" marker-end="url(#arrowhead)" />`);
+		document.write(`<path d="
+			M ${s/2-(W/2+3*m2)} ${H+15-40}
+			A ${s/4*2} ${s/4*2} 0 0 0 ${s/2-(H/2+3*m2)} ${H+d+W/2}
+			" marker-start="url(#arrowhead-back)" />`);
+
+		document.write('</g>');
+		document.write('</svg>');
+
+	}
+
+
+
+	function write_balance(id) {
+		const bal = text[id];
+
+		document.write(`<div class="balance">`);
+		if (bal.title) {
+			document.write(`<div class="title">${bal.title}</div>`);
+		}
+
+		["f", "m"].forEach(gender => {
+			document.write(`<div class="${gender}">`);
+			[1, 2, 3, 4].forEach(element => {
+				
+				document.write(`<div class="${gender}${element}">`);
+				
+				document.write(`<div class="h1">${gender.toUpperCase() + element}</div>`);
+				
+				/* save some space
+				if (gender == "f") {
+					document.write(`<div class="h2">B${element} + C${element}</div>`);
+				} else {
+					document.write(`<div class="h2">A${element} + D${element}</div>`);
+				}
+				*/
+				
+				bal[gender + element].forEach(name => {
+					document.write(`<div>${name}</div>`);
+				});
+				document.write(`</div>`);
+			});
+			document.write(`</div>`);
+		});
+		document.write(`</div>`);
+
+	}
+
+
+
+	function write_table(id) {
+		text[id]
+		.trim().split("\n\n").forEach(line => {
+			document.write(`<div>`);
+			line.split("\n").forEach(cell => {
+				document.write(`<div>${cell.trim()}</div>`);
+			});
+			document.write(`</div>`);
+		});
+	}
+
+	const numword = ["zero", "one", "two", "three", "four", "five"];
+
+
+
+	function write_table_inline(id /*, idx_list=null*/) {
+
+		// TODO use regular expression for .split()
+		// like .split(/\n[ \t]*\n/g)
+		// to ignore empty indent lines
+
+		/*
+		const cell_filter = idx_list ? (
+			(val, idx) => (idx in idx_list)
+		) : () => true;
+		const cell_count = idx_list ? idx_list.length : (
+			text[id].trim().split("\n\n")[0].split("\n").length
+		);
+		*/
+
+		// remove multi-line comments
+		const text2 = text[id].replace(/\n<!--.*?-->\n/sg, '\n\n').trim();    
+
+		const cell_count = (
+			text2.trim().split("\n\n")[0].split("\n").length
+		);
+		document.write(`<div id="table-inline-${id}" class="table-inline ${numword[cell_count]}-cell">`);
+
+		text2
+		.trim().split("\n\n").forEach((line, line_idx, line_arr) => {
+			document.write(`<div>`);
+
+			line.split("\n")
+				//.filter(cell_filter)
+				.forEach((cell, idx, cell_arr) => {
+
+					const ct = cell.trim();
+					let ctr = ct.replace(/<!--.*?-->/g, '').trim();
+					const sm = ctr.match(/<div class="suffix">.*<\/div>/s);
+					let suf = '';
+					if (sm) {
+						ctr = ctr.replace(sm[0], ''); // remove suffix
+						suf = sm[0];
+					}
+
+					if (idx == 0) {
+
+						if (ctr == "") {
+							document.write(`<div></div>`);
+						}
+						else {
+							document.write(`<div>${ctr}</div>:&nbsp;`);
+						}
+					}
+					else if (idx == cell_arr.length-1) {
+						// add suffix only in last cell
+						if (line_idx == line_arr.length-1) {
+							document.write(`<div>${ctr}</div>${suf}`);
+						}
+						else {
+							document.write(`<div>${ctr}</div>${suf} = `);
+						}
+					}
+					else {
+						document.write(`<div>${ctr}</div>&nbsp;/&nbsp;`);
+					}
+				});
+
+			document.write(`</div> `);
+			// extra whitespace after </div> = allow wrap
+		});
+		document.write('</div>')
+	}
+
+</script>
+
+</head>
+
+
+
+<body>
+
+<!-- page 1 -->
+<div class="page page1">
+<div class="content">
+<div class="inner_content"><!-- content above footer -->
+
+
+
+<script>write_para("header_page1")</script>
+
+<script>write_para("project_intro")</script>
+
+<script>write_para("problem_misunderstandings")</script>
+
+
+
+<div id="table-inline-bodies-wrapper" class="para-margin-bottom">
+	<script>
+		document.write(text["para_four_bodies"]);
+		write_table_inline("bodies");
+	</script>
+</div>
+
+<div class="caption-container float-right four_bodies">
+	<div id="div_four_bodies"><!--<script>document.write(`<img style="width: 210px" src="${file.four_bodies}" />`)</script>--></div>
+	<div><script>write_caption("four_bodies")</script></div>
+</div>
+
+<div id="table-inline-elements-wrapper" class="para-margin-bottom">
+	<script>
+		document.write(text["para_four_elements"]);
+		write_table_inline("elements");
+	</script>
+</div>
+
+<div class="caption-container float-left" style="margin-top:0.5em">
+	<div id="div_three_hands"><!--<script>document.write(`<img style="width: 180px" src="${file.three_hands}" />`)</script>--></div>
+	<div><script>write_caption("three_hands")</script></div>
+</div>
+
+
+
+<script>write_para("mix_types")</script>
+
+<!-- compass illustrates four elements x three modalities -->
+<div class="caption-container float-right">
+	<div><script>write_compass()</script></div>
+	<div><script>write_caption("compass")</script></div>
+</div>
+
+<script>write_para("mix_types_sample")</script>
+
+<script>write_para("two_modalities")</script>
+
+<div class="caption-container float-left">
+	<div style="margin-left:0.5em"><script>write_map()</script></div>
+	<div><script>write_caption("map")</script></div>
+</div>
+
+<div id="table-inline-sense-wrapper" class="para-margin-bottom">
+	<nw><b><script>document.write(text.caption.sense)</script></b>
+	= </nw><script>write_table_inline("sense")</script>
+</div>
+
+<div id="table-inline-modalities-wrapper" class="para-margin-bottom">
+	<nw><b><script>document.write(text.caption.modality)</script></b>
+	= </nw><script>write_table_inline("modalities")</script>
+</div>
+
+<div class="caption-container float-right">
+	<div><script>write_pallas()</script></div>
+	<div><script>write_caption("pallas")</script></div>
+</div>
+
+<script>write_para("club16")</script>
+
+<div id="table-inline-sense-wrapper" class="para-margin-bottom">
+	<nw><b><script>document.write(text.caption.move)</script></b>
+	= </nw><script>write_table_inline("move")</script>
+</div>
+
+<script>write_para("dress_opposite_color")</script>
+
+<div id="table-inline-sensexmove-wrapper" class="para-margin-bottom">
+	<script>document.write(text.caption.flowsquare)</script>
+	= <script>write_table_inline("sensexmove")</script>
+</div>
+
+<script>write_para("translation_bigfive")</script>
+
+<script>write_para("translation_mbti")</script>
+
+
+
+</div><!-- close .inner_content -->
+
+<div class="footer">
+	<script>write_para("page_footer", "para-page-footer para-page-footer-1")</script>
+</div>
+</div><!-- close .content -->
+</div><!-- close .page -->
+
+
+
+<!-- ######################################## -->
+
+
+
+<div class="page page2">
+<div class="content">
+<div class="inner_content"><!-- content above footer -->
+
+
+
+<script>write_para("header_page2")</script>
+
+<div class="caption-container float-right">
+	<div><script>write_double_pallas(M3)</script></div>
+	<div><script>write_caption("double_pallas")</script></div>
+</div>
+
+<script>write_para("monolog_bond")</script>
+
+<script>write_para("dialog_bonds")</script>
+
+<script>write_para("diagonal_bonds")</script>
+
+<script>write_para("four_truths")</script>
+
+<script>write_para("anti_nature")</script>
+
+<script>write_para("false_talking")</script>
+
+<script>write_para("false_hearing")</script>
+
+<script>write_para("right_feedback")</script>
+
+<div class="float-right" style="margin: 1em 1em 1em 0">
+	<script>write_balance("bal")</script>
+</div>
+
+<div class="caption-container float-left">
+	<div class="double-pallas-small-container">
+		<script>
+			//[M1, F1, M2, F2, M3, F3, M4, F4]
+			[F1, M1, F2, M2, F3, M3, F4, M4]
+			.forEach(pallas_origin => (
+				write_double_pallas_small(pallas_origin)
+			))
+		</script>
+	</div>
+	<div><script>write_caption("eight_double_pallas")</script></div>
+</div>
+
+<div class="caption-container float-right">
+	<div><script>write_map_6x6()</script></div>
+	<div><script>write_caption("map_6x6")</script></div>
+</div>
+
+
+<script>write_para("nature_vs_art")</script>
+
+<script>write_para("natural_order")</script>
+
+<script>write_para("made_order")</script>
+
+<script>write_para("mutable_modality")</script>
+
+<script>write_para("gender2_age3")</script>
+
+<div class="caption-container float-right">
+	<div><script>write_exchange()</script></div>
+	<div><script>write_caption("exchange")</script></div>
+</div>
+
+<script>write_para("gender_vs_modality")</script>
+
+<script>write_para("education_mothers")</script>
+
+<script>write_para("school_no_choice")</script>
+
+<script>write_para("works_everywhere")</script>
+
+<script>write_para("four_crosses")</script>
+
+<script>write_para("four_dots")</script>
+
+<script>write_para("in_case_of_doubt")</script>
+
+<script>write_para("post_script")</script>
+
+<script>write_para("post_script_2")</script>
+
+</div><!-- close .inner_content -->
+
+<!-- footer -->
+<div class="footer">
+	<script>write_para("page_footer", "para-page-footer")</script>
+</div>
+
+</div></div><!-- .content .page -->
+
+
+
+<script>
+
+// attached/inlined SVG files to have only one HTML file
+// TODO make SVGs smaller, inkscape is too verbose
+
+//color = {};
+color.middle = {};
+if (1) {
+	// variant: eigencolor is middle
+	color.middle.fire = "#ff0000";
+	color.middle.earth = "#00ff00";
+	color.middle.air = "#ffff00";
+	color.middle.water = "#0000ff";
+} else {
+	// variant: gegencolor is middle
+	color.middle.fire = "#00ff00";
+	color.middle.earth = "#ff0000";
+	color.middle.air = "#0000ff";
+	color.middle.water = "#ffff00";
+}
+
+// TODO verify leg positions. who has x-legs? wo has o-legs?
+// current variant: 14 have x-legs and 23 have o-legs
+// weak legs = x legs, strong legs = o legs
+
+// xml header only needed for standalone svg file
+const svg_four_bodies = `
+<!--
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+-->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="four-bodies.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg1005"
+   version="1.1"
+   viewBox="0 0 73.146881 36.105923"
+   height="36.105923mm"
+   width="73.146881mm">
+  <defs
+     id="defs999">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1205-3">
+      <!-- water: red blue green -->
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="0"
+         id="stop1201" />
+      <stop
+         id="stop971"
+         offset="0.05"
+         style="stop-color:${color.middle.water};stop-opacity:1" />
+      <!-- firefox prints 0.99 as sharp edge but 0.96 as gradient -->
+      <!-- chrome prints 0.95 as sharp edge but 0.99 is wrong color -->
+      <stop
+         id="stop969"
+         offset="0.95"
+         style="stop-color:${color.middle.water};stop-opacity:1" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1"
+         offset="1"
+         id="stop1203" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1168"
+       inkscape:collect="always">
+      <!-- earth: blue green yellow -->
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0"
+         id="stop1162" />
+      <stop
+         id="stop955"
+         offset="0.05"
+         style="stop-color:${color.middle.earth};stop-opacity:1" />
+      <stop
+         style="stop-color:${color.middle.earth};stop-opacity:1"
+         offset="0.95"
+         id="stop957" />
+      <stop
+         id="stop1164"
+         offset="1"
+         style="stop-color:#ffff00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1124">
+      <!-- fire: blue red yellow -->
+      <stop
+         id="stop1132"
+         offset="0"
+         style="stop-color:#0000ff;stop-opacity:1" />
+      <stop
+         style="stop-color:${color.middle.fire};stop-opacity:1"
+         offset="0.05"
+         id="stop925" />
+      <stop
+         id="stop927"
+         offset="0.95"
+         style="stop-color:${color.middle.fire};stop-opacity:1" />
+      <stop
+         style="stop-color:#ffff00;stop-opacity:1"
+         offset="1"
+         id="stop1134" />
+    </linearGradient>
+    <rect
+       id="rect1766"
+       height="22.613817"
+       width="1.7945622"
+       y="141.39067"
+       x="86.136185" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1168"
+       id="linearGradient1158"
+       x1="120.57774"
+       y1="38.886681"
+       x2="120.57774"
+       y2="33.754547"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientTransform="translate(0,-0.49254013)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient1205-3"
+       id="linearGradient1227"
+       x1="114.7877"
+       y1="148.13826"
+       x2="114.7877"
+       y2="145.40222"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       y2="33.689411"
+       x2="120.28236"
+       y1="38.821548"
+       x1="120.28236"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient953"
+       xlink:href="#linearGradient1124"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="835"
+     inkscape:window-width="1440"
+     fit-margin-bottom="1"
+     fit-margin-right="1"
+     lock-margins="true"
+     fit-margin-left="1"
+     fit-margin-top="1"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="85.135138"
+     inkscape:cx="142.11401"
+     inkscape:zoom="4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       id="guide933"
+       orientation="0,-1"
+       position="58.406772,26.962817" />
+    <sodipodi:guide
+       id="guide935"
+       orientation="0,-1"
+       position="48.905566,21.496227" />
+    <sodipodi:guide
+       id="guide937"
+       orientation="0,-1"
+       position="48.846455,18.760196" />
+    <sodipodi:guide
+       id="guide939"
+       orientation="0,-1"
+       position="47.707611,13.248413" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata1002">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-49.496701,-130.29999)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       transform="matrix(0.35499659,0,0,-0.53311774,35.565007,165.64086)"
+       inkscape:transform-center-y="-3.2714685"
+       inkscape:transform-center-x="1.1137021e-06"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="2.6179939"
+       sodipodi:arg1="1.5707963"
+       sodipodi:r2="8.4144154"
+       sodipodi:r1="16.828831"
+       sodipodi:cy="32.204994"
+       sodipodi:cx="120.20919"
+       sodipodi:sides="3"
+       id="path1354"
+       style="fill:url(#linearGradient1158);fill-opacity:1;stroke:#000000;stroke-width:0.574667;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="star"
+       d="M 120.20919,49.033825 105.635,23.790579 l 29.14839,-1e-6 z" />
+    <path
+       inkscape:transform-center-x="1.0041159e-06"
+       sodipodi:type="star"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.00573;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path1360"
+       sodipodi:sides="3"
+       sodipodi:cx="120.20919"
+       sodipodi:cy="32.204994"
+       sodipodi:r1="16.828831"
+       sodipodi:r2="8.4144154"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.6179939"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       inkscape:transform-center-y="-1.8692973"
+       transform="matrix(0.20284289,0,0,-0.30462022,53.855276,146.74714)"
+       d="M 120.20919,49.033825 105.635,23.790579 l 29.14839,-1e-6 z" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path2414"
+       d="m 79.168509,141.91816 c 1.934125,3.70083 4.022425,5.90565 5.851055,6.5019"
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 77.309218,141.91816 c -1.93412,3.70083 -4.022431,5.90565 -5.851059,6.5019"
+       id="path4798"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:monospace;-inkscape-font-specification:monospace;text-align:start;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1766);fill:#000000;fill-opacity:1;stroke:none;"
+       id="text1764"
+       xml:space="preserve" />
+    <!-- air middle -->
+    <ellipse
+       style="fill:${color.middle.air};fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="ellipse1816"
+       cx="96.767349"
+       cy="146.28188"
+       rx="2.4822698"
+       ry="1.534127" />
+    <!-- air bottom = green -->
+    <ellipse
+       ry="2.6319511"
+       rx="5.2639022"
+       cy="150.54318"
+       cx="96.767349"
+       id="ellipse1818"
+       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    <ellipse
+       ry="0.92686599"
+       rx="1.4997007"
+       cy="138.50757"
+       cx="96.767349"
+       id="ellipse1820"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    <!-- air top = red -->
+    <ellipse
+       style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="ellipse2412"
+       cx="96.767349"
+       cy="142.0704"
+       rx="5.2639022"
+       ry="2.6319511" />
+    <circle
+       r="3.0492694"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="circle1860"
+       cx="96.77066"
+       cy="134.47426" />
+    <path
+       sodipodi:type="star"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.00573;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path1025"
+       sodipodi:sides="3"
+       sodipodi:cx="120.20919"
+       sodipodi:cy="32.204994"
+       sodipodi:r1="16.828831"
+       sodipodi:r2="8.4144154"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.6179939"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       inkscape:transform-center-y="1.8692966"
+       transform="matrix(0.20284291,0,0,0.30462024,35.542288,124.69572)"
+       d="M 120.20919,49.033825 105.635,23.790579 l 29.14839,-1e-6 z" />
+    <path
+       transform="matrix(0.35499659,0,0,0.53311774,17.252018,126.94926)"
+       inkscape:transform-center-y="3.2714685"
+       inkscape:transform-center-x="1.1137021e-06"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="2.6179939"
+       sodipodi:arg1="1.5707963"
+       sodipodi:r2="8.4144154"
+       sodipodi:r1="16.828831"
+       sodipodi:cy="32.204994"
+       sodipodi:cx="120.20919"
+       sodipodi:sides="3"
+       id="path196"
+       style="fill:url(#linearGradient953);fill-opacity:1;stroke:#000000;stroke-width:0.574667;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="star"
+       d="M 120.20919,49.033825 105.635,23.790579 l 29.14839,-1e-6 z" />
+    <g
+       transform="translate(0,-0.23195425)"
+       id="g1005">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 60.952953,150.65508 c -0.795942,2.95292 -0.388135,9.12065 1.196325,13.61511"
+         id="path1009"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path1001"
+         d="m 58.899912,150.65508 c 0.795942,2.95292 0.388135,9.12065 -1.196325,13.61511"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path2212"
+       d="m 114.82582,139.48181 2.57522,6.72882 -2.57522,6.72881 -2.57521,-6.72881 z"
+       style="fill:url(#linearGradient1227);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 114.82582,131.79221 1.47147,3.8448 -1.47147,3.8448 -1.47146,-3.8448 z"
+       id="path2309"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4859"
+       d="m 115.75377,141.90647 c 1.93412,3.70083 4.02243,5.90565 5.85106,6.5019"
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 113.89448,141.90647 c -1.93412,3.70083 -4.02243,5.90565 -5.85106,6.5019"
+       id="path4861"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <g
+       transform="translate(0,-0.49254013)"
+       id="g1024">
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path1014"
+         d="m 115.89104,150.65508 c -0.79595,2.95292 -0.38814,9.12065 1.19632,13.61511"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 113.76108,150.65508 c 0.79595,2.95292 0.38814,9.12065 -1.19632,13.61511"
+         id="path1016"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g137">
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="151.64958"
+         cx="33.121284"
+         id="circle2182"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle2186"
+         cx="34.192848"
+         cy="156.75101"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="161.85565"
+         cx="33.121284"
+         id="circle2188"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 67.428238,141.22636 1.138883,2.46236"
+         id="path117" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 66.197057,141.7958 1.138884,2.46236"
+         id="path119" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 67.847489,146.31337 0.05249,2.71248"
+         id="path126" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 69.203727,146.28713 0.05249,2.71247"
+         id="path128" />
+    </g>
+    <g
+       transform="matrix(-1,0,0,1,119.8348,0)"
+       id="g153">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle139"
+         cx="33.121284"
+         cy="151.64958"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="156.75101"
+         cx="34.192848"
+         id="circle141"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle143"
+         cx="33.121284"
+         cy="161.85565"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <path
+         id="path145"
+         d="m 67.428238,141.22636 1.138883,2.46236"
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path147"
+         d="m 66.197057,141.7958 1.138884,2.46236"
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path149"
+         d="m 67.847489,146.31337 0.05249,2.71248"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path151"
+         d="m 69.203727,146.28713 0.05249,2.71247"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(36.559604)"
+       id="g169">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle155"
+         cx="33.121284"
+         cy="151.64958"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="156.75101"
+         cx="34.192848"
+         id="circle157"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle159"
+         cx="33.121284"
+         cy="161.85565"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <path
+         id="path161"
+         d="m 67.428238,141.22636 1.138883,2.46236"
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path163"
+         d="m 66.197057,141.7958 1.138884,2.46236"
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path165"
+         d="m 67.847489,146.31337 0.05249,2.71248"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path167"
+         d="m 69.203727,146.28713 0.05249,2.71247"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g185"
+       transform="matrix(-1,0,0,1,156.9543,0)">
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="151.64958"
+         cx="33.121284"
+         id="circle171"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle173"
+         cx="34.192848"
+         cy="156.75101"
+         r="1.37503"
+         transform="rotate(-12.964937)" />
+      <circle
+         transform="rotate(-12.964937)"
+         r="1.37503"
+         cy="161.85565"
+         cx="33.121284"
+         id="circle175"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 67.428238,141.22636 1.138883,2.46236"
+         id="path177" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 66.197057,141.7958 1.138884,2.46236"
+         id="path179" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 67.847489,146.31337 0.05249,2.71248"
+         id="path181" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 69.203727,146.28713 0.05249,2.71247"
+         id="path183" />
+    </g>
+    <g
+       transform="translate(-0.56042484,0.19809781)"
+       id="g210">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle1468"
+         cx="-74.280235"
+         cy="154.16206"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="159.2635"
+         cx="-73.208672"
+         id="circle1472"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle1474"
+         cx="-74.280235"
+         cy="164.36815"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 73.377004,155.26649 -0.557407,2.6551"
+         id="path192" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 74.704555,155.54519 -0.557407,2.6551"
+         id="path197" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 74.109734,160.31788 0.557407,2.6551"
+         id="path199" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 72.782182,160.59658 0.557408,2.6551"
+         id="path201" />
+    </g>
+    <g
+       transform="matrix(-1,0,0,1,157.04387,0.19809781)"
+       id="g226">
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="154.16206"
+         cx="-74.280235"
+         id="circle212"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle214"
+         cx="-73.208672"
+         cy="159.2635"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="164.36815"
+         cx="-74.280235"
+         id="circle216"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         id="path218"
+         d="m 73.377004,155.26649 -0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path220"
+         d="m 74.704555,155.54519 -0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path222"
+         d="m 74.109734,160.31788 0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path224"
+         d="m 72.782182,160.59658 0.557408,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g242"
+       transform="translate(17.968689,-0.59775811)">
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="154.16206"
+         cx="-74.280235"
+         id="circle228"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle230"
+         cx="-73.208672"
+         cy="159.2635"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="164.36815"
+         cx="-74.280235"
+         id="circle232"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         id="path234"
+         d="m 73.377004,155.26649 -0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path236"
+         d="m 74.704555,155.54519 -0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path238"
+         d="m 74.109734,160.31788 0.557407,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path240"
+         d="m 72.782182,160.59658 0.557408,2.6551"
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g258"
+       transform="matrix(-1,0,0,1,175.57298,-0.59775811)">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle244"
+         cx="-74.280235"
+         cy="154.16206"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <circle
+         transform="scale(-1,1)"
+         r="1.37503"
+         cy="159.2635"
+         cx="-73.208672"
+         id="circle246"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="circle248"
+         cx="-74.280235"
+         cy="164.36815"
+         r="1.37503"
+         transform="scale(-1,1)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 73.377004,155.26649 -0.557407,2.6551"
+         id="path250" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 74.704555,155.54519 -0.557407,2.6551"
+         id="path252" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 74.109734,160.31788 0.557407,2.6551"
+         id="path254" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 72.782182,160.59658 0.557408,2.6551"
+         id="path256" />
+    </g>
+  </g>
+</svg>
+
+`;
+
+
+
+// xml header only needed for standalone svg file
+const svg_three_hands = `
+<!--
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+-->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="158.22539mm"
+   height="113.21396mm"
+   viewBox="0 0 158.22539 113.21396"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="three-hands.svg"
+   inkscape:export-filename="/home/user/doc/alchi/alchi hands wrist size test 2019-04-03.svg.png"
+   inkscape:export-xdpi="199"
+   inkscape:export-ydpi="199">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1750"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1748"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path1135"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1129"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1590"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1588"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1514"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1512"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1450"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1448"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1410"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1408"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1126"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="367.64485"
+     inkscape:cy="255.66586"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="835"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2"
+     inkscape:document-rotation="0"
+     lock-margins="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-38.506274,-140.83657)">
+    <path
+       style="fill:#ffff41;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 65.734413,250.57877 c 0,0 1.37016,-29.31678 1.55915,-32.34059 0.0697,-1.11573 0.3025,-4.26463 0.5326,-5.79524 l 1.101647,-4.30403 c -0.439771,-0.26418 -1.437529,-0.90339 -1.99009,-1.6727 -2.139607,1.92645 -4.711031,2.57948 -5.443526,1.50721 -1.825734,-2.67263 4.114402,-6.09791 5.536307,-6.31638 0.389939,-0.0599 2.218211,0.17752 3.982475,0.68445 0.33073,-0.8032 1.430517,-3.71083 1.808487,-5.26998 0.37798,-1.55915 0.79984,-4.02787 0.89434,-6.24848 0.0945,-2.22061 0.0783,-3.10782 0.0783,-3.48579 0,-0.37798 0.2558,-2.45546 0.3503,-3.11692 0.0945,-0.66146 0.96856,-5.90587 1.06305,-7.27604 0.0945,-1.37016 0.47784,-4.03457 0.11812,-5.95312 -0.2209,-1.17817 -1.13393,-0.44885 -1.79538,0.80319 -0.67702,1.2815 -0.75596,1.96076 -1.32292,3.96876 -0.29528,1.04579 -1.13393,3.49627 -1.51191,4.81919 -0.37797,1.32292 -1.19124,5.58916 -1.75821,5.44742 -0.56697,-0.14174 0.81327,-5.21118 1.33299,-7.14831 0.51972,-1.93713 2.55855,-9.48765 2.87257,-11.17856 0.30711,-1.65364 0.67362,-4.25623 -0.18899,-4.53571 -1.11977,-0.3628 -2.17558,2.28516 -3.1183,5.05543 -0.70888,2.0831 -2.82532,8.62722 -3.2033,9.85564 -0.37798,1.22842 -2.26172,6.86205 -2.59245,6.67306 -0.33073,-0.18899 1.31678,-6.1061 1.60026,-7.66525 0.28348,-1.55915 0.99219,-4.44122 1.46466,-5.95313 0.47247,-1.5119 1.2048,-5.26804 1.34654,-6.77994 0.14174,-1.51191 0.15009,-3.17351 -0.59059,-3.28367 -0.76293,-0.11347 -1.62878,1.01644 -2.38597,2.50409 -1.12385,2.208 -1.88922,4.9313 -2.57497,7.32329 -0.39664,1.38356 -1.18117,3.96876 -1.65364,5.85864 -0.395628,1.58251 -1.730537,7.20759 -2.344748,6.92411 -0.614212,-0.28348 0.953291,-6.32201 1.541547,-8.53052 0.566386,-2.1264 0.666946,-2.7346 1.141051,-4.64454 0.48399,-1.94975 0.45821,-1.60378 0.67243,-2.98647 0.30596,-1.97482 0.86478,-3.3574 -0.2219,-3.82987 -1.086686,-0.47247 -1.63887,0.53623 -2.982297,2.86922 -1.393244,2.4195 -1.954731,4.02016 -2.663436,6.09903 -0.708705,2.07887 -2.814845,8.87729 -3.018216,9.57951 0.02456,-0.83167 0.100481,-1.55071 0.09262,-2.32876 -0.01146,-1.13393 0.188032,-2.32649 0.199466,-4.12434 0.01058,-1.6633 -0.12486,-3.12284 -0.362458,-3.78381 -0.286249,-0.79631 -0.676688,-1.71641 -1.881488,-1.19669 -1.13393,1.2048 -0.894919,2.24651 -1.464657,3.55875 -0.501025,1.15399 -1.067093,2.61911 -1.371555,3.95688 -0.251855,1.10661 -0.660069,4.20163 -1.038045,5.19382 -0.377976,0.99218 -1.181174,1.93712 -1.181174,2.97656 0,1.03943 1.181174,3.9215 1.511903,5.10268 0.330729,1.18117 0.992188,4.81919 1.417413,5.81138 0.425222,0.99219 1.322916,1.22842 1.842632,2.64583 0.740502,1.88953 0.129344,5.47625 0.129344,5.47625 3.289157,0.42904 4.402447,2.43948 3.77946,3.69718 -0.492722,0.99472 -1.419866,0.66661 -3.28694,0.34244 1.686528,0.3267 5.219787,1.29895 4.511551,3.52622 -0.601405,1.8913 -2.943749,0.76494 -4.899526,0.58395 2.744832,0.57413 6.213296,1.97738 5.429089,3.59873 -0.84458,1.74618 -4.832514,0.50845 -6.816517,0.12561 3.459791,0.7031 4.269615,1.8226 3.922403,2.52475 -0.572822,1.15838 -2.187951,1.81263 -5.149962,1.71265 -0.321051,1.157 -0.699205,3.00473 -1.080906,4.52772 -0.33073,1.93712 -0.969669,4.52686 -1.442138,7.50342 -0.472469,2.97657 -2.371849,11.64373 -2.844318,13.20289"
+       id="path95-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cscccsscscscsssssscssssssscssssssssssscssscsscsccccscscscsccsc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 53.434874,189.27789 c -0.712065,-2.93325 -0.232038,-4.44174 -0.160331,-5.38395 0.03341,-0.43899 0.07973,-1.3017 0.09583,-1.65817"
+       id="path97-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 45.874608,209.95817 c -1.365898,-3.76955 1.681117,-4.55145 4.5249,-4.49522 1.928055,0.0381 5.102898,1.13014 4.754445,3.35673 -0.299038,1.91083 -2.54633,1.05929 -3.957874,0.61883"
+       id="path54"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 47.373696,226.65364 c -2.17042,-0.78142 -3.385651,-1.75527 -3.847719,-3.81573 -0.811057,-4.89614 3.774646,-5.86667 6.758633,-5.39375 m -6.005255,1.54363 c -1.332617,-2.43868 -0.630183,-3.8034 0.993177,-4.86573 -0.914482,-1.34932 -0.801374,-2.23276 -0.442278,-2.9835 1.038364,-2.17084 5.090909,-2.05314 7.067211,-1.54749 1.390173,0.34066 4.931735,1.18252 4.302567,3.63592 -0.479788,1.8709 -4.342618,0.44904 -4.87136,0.44627 2.972242,0.85961 5.719354,1.78274 5.562005,3.16306 -0.290658,2.54975 -5.562895,0.71341 -6.606067,0.60784 1.430311,0.28365 4.002863,1.21503 3.659637,2.40145 -0.730798,2.1548 -5.269671,1.77197 -6.226678,1.76186 m -2.445037,-7.48541 c 1.71155,-1.1577 4.293745,-0.87123 6.05614,-0.4488"
+       id="path103-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccscscsccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 87.160843,214.68372 c -3.355865,0.0179 -7.926806,-1.22825 -8.77828,-1.92265 -0.968775,-0.79006 -2.845344,-7.86165 -4.027431,-8.99273 -1.182087,-1.13108 -6.077027,-2.17018 -7.268112,-2.16055 -1.891845,0.0153 -7.308394,4.40664 -5.598002,6.24831 1.190637,1.28202 3.463644,0.36351 5.36908,-1.39443 0.76135,0.64898 0.850881,1.04258 2.069712,1.67724 0,0 -1.279346,2.83185 -1.467077,7.91515 -0.03822,0.81626 -0.320242,3.64282 -0.367243,4.85271 -0.05636,1.4509 -0.334297,5.42759 -0.374473,8.72377 3.13887,-0.12885 16.989896,0.32711 19.832659,1.09016"
+       id="path115-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cszsscccscc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="m 64.982314,152.92736 -2.40543,7.75082"
+       id="path319"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:monospace;-inkscape-font-specification:monospace;letter-spacing:0px;word-spacing:0px;fill:#010101;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="58.454838"
+       y="197.80933"
+       id="text2134"><tspan
+         sodipodi:role="line"
+         id="tspan2132"
+         x="58.454838"
+         y="197.80933"
+         style="font-size:12px;stroke-width:0.264583">3</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 119.78299,249.73529 c 0,0 0.74958,-17.08094 0.93857,-20.10475 m 4.04268,-27.3526 c 0.33073,-0.8032 1.72783,-4.49076 2.10581,-6.04991 0.37797,-1.55915 1.13393,-5.19717 1.22842,-7.41778 0.0945,-2.22061 -0.18899,-2.74033 -0.18899,-3.1183 0,-0.37798 0.18899,-1.65365 0.28349,-2.31511 0.0945,-0.66146 1.27249,-5.96337 1.46465,-7.32329 0.3071,-2.17336 0.95441,-4.48428 0.0473,-5.62239 -0.41647,-0.5225 -1.93246,-0.79085 -2.55134,0.51971 -0.4016,0.85045 -1.03943,2.78758 -1.27567,4.1105 -0.19103,1.06976 -0.75595,3.35453 -1.13393,4.67745 -0.37797,1.32292 -0.60408,3.11226 -1.03943,2.92932 -0.42352,-0.17797 0.0945,-2.69308 0.61421,-4.63021 0.51972,-1.93713 1.79539,-7.41778 2.26786,-9.07143 0.47247,-1.65364 1.55915,-3.73252 -0.51972,-4.77195 -2.07887,-1.03943 -2.64583,2.50409 -3.59077,5.00818 -0.77687,2.05871 -1.98438,7.11068 -2.36235,8.3391 -0.37798,1.22842 -0.6117,2.3683 -1.06306,2.24424 -0.466,-0.12808 0.2008,-1.92532 0.62602,-3.44903 0.42597,-1.52639 1.004,-4.15774 1.47647,-5.66965 0.47247,-1.5119 2.22061,-6.14211 2.36235,-7.65401 0.14174,-1.51191 -0.56696,-2.45685 -1.6064,-2.78758 -1.03943,-0.33073 -2.07887,0 -2.97656,2.3151 -0.89769,2.31511 -2.03162,6.04763 -2.59859,7.37054 -0.56696,1.32292 -1.44103,4.016 -1.72451,5.6224 -0.28348,1.6064 -0.44216,2.8596 -0.87407,2.64583 -0.42886,-0.21226 0.11306,-2.21587 0.47247,-3.66165 0.41449,-1.66737 0.80805,-3.63905 1.32291,-5.5279 0.52231,-1.91617 1.17396,-4.21163 1.43264,-5.67468 0.17531,-0.99152 0.33983,-2.06978 -0.74686,-2.54225 -1.08668,-0.47247 -2.22298,-0.42042 -3.35691,2.13087 -1.13392,2.55134 -2.14805,6.6294 -2.85676,8.70827 -0.7087,2.07887 -1.22251,6.58506 -1.79541,7.24947 0.124,-1.10145 0.37795,-2.19403 0.47245,-3.98942 0.0945,-1.79539 -0.3241,-3.11647 -0.66146,-3.73252 -0.54334,-0.99218 -1.84439,-1.5934 -2.57497,-1.02762 -0.84617,0.65531 -0.9996,2.8669 -1.7083,3.80611 -0.75777,1.00423 -0.78708,1.67098 -1.20451,3.08825 -0.32065,1.08867 -0.55984,4.66935 -0.93782,5.66154 -0.37798,0.99218 -1.18117,1.93712 -1.18117,2.97656 0,1.03943 1.18117,3.9215 1.5119,5.10268 0.33073,1.18117 0.99219,4.81919 1.41741,5.81138 0.42522,0.99219 1.32292,1.22842 1.84263,2.64583 0.51972,1.41741 0.0897,6.30006 0.0897,6.30006 m -2.7862,16.12334 c 0,0 -0.42183,1.67259 -0.75256,3.60972 -0.33073,1.93712 -0.92608,4.5202 -1.3985,7.49676 -0.472467,2.97657 -2.42851,11.73277 -2.900979,13.29193"
+       id="path95"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccscscsssssscssssssccssccssssscsccsssscsccccccsc" />
+    <path
+       sodipodi:nodetypes="cac"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 108.46902,185.29399 c -0.4782,-1.12918 -0.7706,-2.10936 -0.81374,-3.21349 -0.0425,-1.08775 0.36324,-2.08477 0.55223,-3.2187"
+       id="path97"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 109.19498,155.70439 8.4961,3.15808 m 8.10683,3.06506 7.69014,2.8068"
+       id="path2130"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:monospace;-inkscape-font-specification:monospace;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="109.11175"
+       y="194.62601"
+       id="text2138"><tspan
+         sodipodi:role="line"
+         id="tspan2136"
+         x="109.11175"
+         y="194.62601"
+         style="font-size:11px;stroke-width:0.264583">12</tspan></text>
+    <path
+       sodipodi:nodetypes="cscccszcccscsssssscssssssssssssssssssscsssscsscscccccscscscsccsc"
+       inkscape:connector-curvature="0"
+       id="path295"
+       d="m 174.17303,250.39409 c 0,0 1.37016,-29.31678 1.55915,-32.34059 0.0697,-1.11573 0.34885,-3.15004 0.44535,-5.01473 l 1.22835,-4.89986 c -1.52163,-0.74498 -3.81726,-1.63227 -4.56389,-2.23475 -1.59467,0.73916 -8.89578,1.11221 -10.20469,-1.40073 -1.49064,-2.86185 10.46065,-3.00292 11.64789,-3.09786 1.18724,-0.0949 3.87249,0.57682 4.90905,0.88803 0.4643,-1.2466 1.68498,-3.85785 2.06585,-5.40677 0.38308,-1.5579 0.79984,-4.02787 0.89433,-6.24848 0.0945,-2.22061 0.0783,-3.10782 0.0783,-3.48579 0,-0.37798 2.26032,-9.67174 2.35482,-10.3332 0.0945,-0.66146 0.96856,-5.90587 1.06306,-7.27604 0.0945,-1.37016 0.47783,-4.03457 0.11811,-5.95312 -0.2209,-1.17817 -1.13392,-0.44885 -1.79538,0.80319 -0.67702,1.2815 -0.75596,1.96076 -1.32292,3.96876 -0.29528,1.04579 -1.13393,3.49627 -1.5119,4.81919 -0.37798,1.32292 -1.19125,5.58916 -1.75822,5.44742 -0.56696,-0.14174 0.81327,-5.21118 1.33299,-7.14831 0.51972,-1.93713 1.48947,-6.07996 1.8035,-7.77087 0.3071,-1.65364 0.67362,-4.25623 -0.18899,-4.53571 -1.11978,-0.3628 -2.17558,2.28516 -3.1183,5.05543 -0.70888,2.0831 -1.75625,5.21953 -2.13423,6.44795 -0.37797,1.22842 -2.26171,6.86205 -2.59244,6.67306 -0.33073,-0.18899 1.31677,-6.1061 1.60026,-7.66525 0.28348,-1.55915 1.12582,-4.77531 1.59829,-6.28722 0.47247,-1.5119 0.97853,-3.76957 1.34654,-5.44359 0.4359,-1.98284 0.28373,-3.9085 -0.45695,-4.01866 -0.76293,-0.11347 -1.42833,0.61554 -2.18553,2.10319 -1.12384,2.208 -1.42149,3.26086 -2.10724,5.65285 -0.39665,1.38356 -1.60782,5.55804 -2.255,7.39544 -0.86335,2.45114 -2.06462,7.47486 -2.67883,7.19138 -0.61422,-0.28348 0.95329,-6.32201 1.54154,-8.53052 0.56639,-2.1264 0.66695,-2.7346 1.14105,-4.64454 0.484,-1.94975 1.46522,-4.74223 1.67944,-6.12492 0.30596,-1.97482 0.86478,-3.3574 -0.2219,-3.82987 -1.08668,-0.47247 -1.50523,0.73668 -2.84866,3.06967 -1.39324,2.4195 -3.09537,6.95816 -3.80408,9.03703 -0.7087,2.07887 -4.68844,13.78741 -5.06642,14.16539 0.0141,-0.25976 0.0314,-0.47838 0.0314,-0.59843 0,-0.94494 0.1166,-2.20265 0.10498,-3.35216 -0.0115,-1.13393 0.18803,-2.32649 0.19946,-4.12434 0.0106,-1.6633 -0.12486,-3.12284 -0.36245,-3.78381 -0.28625,-0.79631 -0.67669,-1.71641 -1.88149,-1.19669 -1.13393,1.2048 -0.89492,2.24651 -1.46466,3.55875 -0.50102,1.15399 -1.06709,2.61911 -1.37155,3.95688 -0.25186,1.10661 -0.66007,4.20163 -1.03805,5.19382 -0.37798,0.99218 -1.18117,6.18935 -1.18117,7.22879 0,1.03943 1.18117,3.9215 1.5119,5.10268 0.33073,1.18117 0.99219,4.81919 1.41741,5.81138 0.42522,0.99219 1.32292,1.22842 1.84263,2.64583 0.51972,1.41741 0.78937,3.06869 0.78937,3.06869 l -0.45363,2.58237 c 5.0366,0.67658 14.94189,4.19709 13.33404,6.13948 -1.01841,1.2303 -4.0578,0.32565 -6.24015,-0.15176 0,0 5.43509,1.72195 4.97146,3.73358 -0.42656,1.85083 -7.47339,-0.26131 -7.47339,-0.26131 0,0 5.50948,1.81776 4.99789,3.38461 -0.6275,1.92187 -7.1969,0.0501 -7.1969,0.0501 0,0 5.37917,1.49419 4.57447,3.17197 -1.20074,2.50349 -9.63528,-0.44623 -9.77518,0.063 -0.36124,1.315 -0.73864,2.85567 -0.97705,4.25205 -0.33073,1.93712 -0.98269,4.60924 -1.45516,7.5858 -0.47247,2.97657 -2.37185,11.64373 -2.84432,13.20289"
+       style="fill:#0000c0;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path297"
+       d="m 161.95701,188.45844 c -0.6216,-2.56059 -0.28012,-7.44082 -0.18332,-9.22568"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1746"
+       d="m 173.98659,151.52845 2.40543,-7.75082"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1750)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:monospace;-inkscape-font-specification:monospace;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="167.42401"
+       y="193.33865"
+       id="text2142"><tspan
+         sodipodi:role="line"
+         id="tspan2140"
+         x="167.42401"
+         y="193.33865"
+         style="font-size:12px;fill:#fefefe;stroke-width:0.264583">4</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 66.858098,206.46167 0.742889,-0.77779"
+       id="path56" />
+    <path
+       sodipodi:nodetypes="cssc"
+       id="path58"
+       d="m 99.877151,209.95817 c -1.365898,-3.76955 1.681119,-4.55145 4.524899,-4.49522 1.92806,0.0381 8.64812,1.34366 8.29967,3.57025 -0.29904,1.91083 -6.09155,0.84577 -7.5031,0.40531"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="csccscscsccccccc"
+       inkscape:connector-curvature="0"
+       id="path60"
+       d="m 101.37624,226.65364 c -2.170421,-0.78142 -3.385652,-1.75527 -3.84772,-3.81573 -0.510589,-2.27683 0.459256,-3.47826 0.8043,-3.65357 -1.332617,-2.43868 -0.681105,-3.99995 0.942255,-5.06228 -0.914482,-1.34932 -0.801374,-2.23276 -0.442278,-2.9835 1.038364,-2.17084 5.090913,-2.05314 7.067213,-1.54749 1.39017,0.34066 7.97322,1.60075 7.34406,4.05415 -0.47979,1.8709 -7.38411,0.0308 -7.91285,0.028 2.97224,0.85961 5.96172,1.76787 5.80437,3.14819 -0.29066,2.54975 -6.00679,0.95064 -7.00737,0.6867 1.50407,0.16583 5.24141,1.62421 4.89819,2.81063 -0.7308,2.1548 -6.34929,1.2988 -7.3063,1.28869 m -2.445035,-7.48541 c 1.711555,-1.1577 4.293745,-0.87123 6.056145,-0.4488 m -6.83947,5.44709 c 1.169927,-1.2345 2.67864,-2.23895 5.7954,-1.67619"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cszsscccscc"
+       inkscape:connector-curvature="0"
+       id="path62"
+       d="m 141.16339,214.68372 c -3.35587,0.0179 -7.92681,-1.22825 -8.77828,-1.92265 -0.96878,-0.79006 -2.84535,-7.86165 -4.02743,-8.99273 -1.18209,-1.13108 -6.07703,-2.17018 -7.26812,-2.16055 -1.89184,0.0153 -9.56804,4.84062 -7.85765,6.68229 1.19064,1.28202 5.7233,-0.0705 7.62873,-1.82841 0.76135,0.64898 0.85088,1.04258 2.06971,1.67724 0,0 -1.27934,2.83185 -1.46707,7.91515 -0.0382,0.81626 -0.32025,3.64282 -0.36725,4.85271 -0.0564,1.4509 -0.33429,5.42759 -0.37447,8.72377 3.13887,-0.12885 16.9899,0.32711 19.83266,1.09016"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path64"
+       d="m 120.86064,206.46167 0.74289,-0.77779"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 154.35269,209.95817 c -1.3659,-3.76955 1.68111,-4.55145 4.52489,-4.49522 1.92806,0.0381 15.20167,3.24132 14.48739,5.96672 -0.60608,2.31255 -12.27927,-1.5507 -13.69082,-1.99116"
+       id="path66"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 155.85177,226.65364 c -2.17042,-0.78142 -3.38565,-1.75527 -3.84772,-3.81573 -0.51058,-2.27683 0.45926,-3.47826 0.8043,-3.65357 -1.33261,-2.43868 -0.6811,-3.99995 0.94226,-5.06228 -0.91448,-1.34932 -0.80137,-2.23276 -0.44228,-2.9835 1.03837,-2.17084 5.09091,-2.05314 7.06721,-1.54749 1.39017,0.34066 11.95873,2.65787 11.51553,5.55024 -0.33879,2.21101 -11.55558,-1.46528 -12.08432,-1.46805 2.97224,0.85961 9.98615,2.63959 9.72404,4.57936 -0.34365,2.54316 -10.01768,-0.57632 -11.01826,-0.84026 1.43638,0.42923 8.80722,1.83696 8.38504,4.16651 -0.7308,2.1548 -9.74492,0.0387 -10.70193,0.0286 m -2.44503,-7.48541 c 1.71155,-1.1577 4.29374,-0.87123 6.05614,-0.4488 m -6.83947,5.44709 c 1.16993,-1.2345 2.53591,-2.24487 5.65267,-1.68211"
+       id="path68"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csccscscsccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 195.63892,214.68372 c -3.35587,0.0179 -7.92681,-1.22825 -8.77828,-1.92265 -0.96878,-0.79006 -2.84535,-7.86165 -4.02743,-8.99273 -1.18209,-1.13108 -7.51321,-2.40393 -8.7043,-2.3943 -1.89184,0.0153 -13.27048,0.52191 -11.30391,3.38633 0.99028,1.44241 7.35841,2.41491 10.01699,1.14379 0.76135,0.64898 3.34506,1.60009 4.56389,2.23475 0,0 -1.27934,2.83185 -1.46707,7.91515 -0.0382,0.81626 -0.32025,3.64282 -0.36725,4.85271 -0.0564,1.4509 -0.33429,5.42759 -0.37447,8.72377 3.13887,-0.12885 16.9899,0.32711 19.83266,1.09016"
+       id="path70"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cszsscccscc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 172.84199,205.90416 0.67602,-0.39964"
+       id="path72"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 48.692274,221.82226 -1.180757,5.21477"
+       id="path74"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
+`;
+
+
+// post process
+
+// transform custom element <nw>content</nw>
+Array.from(document.getElementsByTagName("nw")).forEach(e => {
+	e.outerHTML = '<span class="nowrap-element">' + e.innerHTML + '</span>';
+});
+
+// https://stackoverflow.com/a/41886794/10440128
+const replaceOnDocument = (pattern, string, {target = document.body} = {}) => {
+  [ target, ...target.querySelectorAll(
+  	"*:not(script):not(noscript):not(style)")
+  ].forEach(({childNodes: [...nodes]}) => nodes.map(node => {
+  	if (node.nodeType === document.ELEMENT_NODE) {
+  		node.innerHTML = node.innerHTML.replace(pattern, string);
+}}));};
+
+// &square; = □
+replaceOnDocument(/□/g, '<span class="square-sign">&#x25A1;</span>');
+// &xmark; = &amp;xmark;
+replaceOnDocument(/&amp;xmark;/g, '<span class="xmark-sign">&#x2A2F;</span>');
+
+document.getElementById('div_four_bodies').innerHTML = svg_four_bodies;
+
+document.getElementById('div_three_hands').innerHTML = svg_three_hands;
+
+</script>
+
+</body>
+</html>
