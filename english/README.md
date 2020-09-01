@@ -24,7 +24,7 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 * 2020-03-10
   * [alcimaps html+svg+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alcimaps.2020-03-10.html) (130 KB)
   * [alcimaps preview webp](https://milahu.github.io/alchi/src/alchi-maps/dist/alcimaps-2020-03-10.html.preview.webp) (68 KB)
-  * [alcimaps source code](../src/alcimaps) (550 KB) for [svelte - the javascript compiler](https://svelte.dev/repl/hello-world)
+  * [alcimaps source code](../src/alchi-maps) (550 KB) for [svelte - the javascript compiler](https://svelte.dev/repl/hello-world)
 
 * 2019-05-13
   * [matrix viewer html+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-matrix-viewer.2019-05-13.html) (22 KB)
