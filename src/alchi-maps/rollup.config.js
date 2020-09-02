@@ -52,7 +52,7 @@ export default {
     production && terser()
   ],
   watch: {
-    //clearScreen: false
+    clearScreen: false, // keep build logs in terminal
     chokidar: false, // push all changes to browser
     // https://github.com/sveltejs/template/issues/77
   },
