@@ -28,7 +28,10 @@ print settings:
 		im using a Canon Pixma G5050
 		bottle ink printer
 		with a 250 sheet paper capacity
-		costing about 0,1 euro-cent per page
+		costing about 0.1 euro-cent per page
+		needing 30 seconds per color page
+		and 10 seconds per blackwhite page
+		= one reason to keep the second page blackwhite
 		print quality is only 600dpi
 		but we can optimize our document (pixel hinting)
 		for better print results
@@ -76,10 +79,17 @@ TODO
 
 	// din a4 = 210 x 297 mm2
 	const page_x = 210; // mm
+
 	//const page_y = 297; // mm
-	const page_y = 296.666666; // mm - bigger values add empty page
-	// TODO report bug to firefox? 297mm != 296.6666666mm - rounding error from inch conversion?
+	const page_y = 296.5; // mm
+	// bigger values add empty page
+
+	// TODO report bug to firefox?
+	// 297mm != 296.6666666mm
+	// rounding error from inch conversion?
 	// firefox print dialog: A4 = 8.27 inch x 11.69 inch
+	// also in firefox:
+	// "print page 1" prints one empty page
 
 	//const page_margin = 5; // mm
 	const page_margin = {
