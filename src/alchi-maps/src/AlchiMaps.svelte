@@ -861,39 +861,6 @@
 
 
 
-  // index 0 = foto url, index 1 = foto title
-  let fotoData = Array.from(Array(16)).map(x => ['data:image/jpeg,', 'empty foto']);
-  // TODO make fotoData editable
-
-  fotoData[D1] = ['/d1-bender.webp', 'Bender']; // D1 = fire father
-  
-  // south park
-  fotoData[A1] = ['/a1-kenny.webp', 'Kenny']; // A1 = fire son
-  fotoData[A2] = ['/a2-stan.webp', 'Stan']; // A2 = earth son
-  fotoData[A3] = ['/a3-cartman.webp', 'Cartman']; // A3 = air son
-  fotoData[A4] = ['/a4-kyle.webp', 'Kyle']; // A4 = water son
-  fotoData[C3] = ['/c3-heidi-turner.webp', 'Heidi Turner']; // C3 = air daughter
-  fotoData[B2] = ['/b2-sharon-marsh.webp', 'Sharon Marsh']; // B2 = earth mother
-  
-  // simpsons
-  fotoData[C4] = ['/c4-lisa.webp', 'Lisa']; // C4 = water daughter
-  fotoData[D2] = ['/d2-homer.webp', 'Homer']; // D2 = earth father
-  fotoData[B1] = ['/b1-marge.webp', 'Marge']; // B1 = fire mother
-
-  // american dad
-  fotoData[B3] = ['/b3-francine.webp', 'Francine']; // B3 = air mother
-  
-  // family guy
-  fotoData[D3] = ['/d3-peter.webp', 'Peter Griffin']; // D3 = air father
-  fotoData[B4] = ['/b4-lois.webp', 'Lois Griffin']; // B4 = water mother
-  fotoData[C2] = ['/c2-meg-griffin.webp', 'Meg Griffin']; // C2 = earth daughter
-
-  // disenchantment
-  fotoData[C1] = ['/c1-bean.webp', 'Bean']; // C1 = fire daughter
-  fotoData[D4] = ['/d4-odval.webp', 'Odval']; // D4 = water father
-
-
-
   // get url fragment ID and parse arguments
   const arg_sep = '_'
 
@@ -2881,7 +2848,6 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
 
 
-
   // TODO use CSS transition? possible with CSS variable?
 
   let lightSteps = preval(() => {
@@ -4282,6 +4248,7 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
   // TODO add more svg assets
 
+  /*
   const asset_svg = preval(
     () => (
       require('fs')
@@ -4292,7 +4259,102 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
       .replace(/#000000/sg, 'var(--fg)')
       .replace(/#ffffff/sg, 'var(--bg)')
     )
-  )
+  );
+  */
+
+
+
+  // TODO make fotoData editable
+
+  // keep inlined images at end of script
+  // for faster page loads
+
+  let fotoData = preval(function(options) {
+
+    // index 0 = foto url, index 1 = foto title
+    let fotoData = Array.from(Array(16))
+    .map(x => ['data:image/jpeg,', 'empty foto']);
+
+    // body + element = asmg
+    const C3 = 0b0000;
+    const A3 = 0b0001;
+    const C1 = 0b0010;
+    const A1 = 0b0011;
+    const C2 = 0b0100;
+    const A2 = 0b0101;
+    const C4 = 0b0110;
+    const A4 = 0b0111;
+    const B3 = 0b1000;
+    const D3 = 0b1001;
+    const B1 = 0b1010;
+    const D1 = 0b1011;
+    const B2 = 0b1100;
+    const D2 = 0b1101;
+    const B4 = 0b1110;
+    const D4 = 0b1111;
+
+    fotoData[D1] = ['/d1-bender.webp', 'Bender']; // D1 = fire father
+
+    // south park
+    fotoData[A1] = ['/a1-kenny.webp', 'Kenny']; // A1 = fire son
+    fotoData[A2] = ['/a2-stan.webp', 'Stan']; // A2 = earth son
+    fotoData[A3] = ['/a3-cartman.webp', 'Cartman']; // A3 = air son
+    fotoData[A4] = ['/a4-kyle.webp', 'Kyle']; // A4 = water son
+    fotoData[C3] = ['/c3-heidi-turner.webp', 'Heidi Turner']; // C3 = air daughter
+    fotoData[B2] = ['/b2-sharon-marsh.webp', 'Sharon Marsh']; // B2 = earth mother
+
+    // simpsons
+    fotoData[C4] = ['/c4-lisa.webp', 'Lisa']; // C4 = water daughter
+    fotoData[D2] = ['/d2-homer.webp', 'Homer']; // D2 = earth father
+    fotoData[B1] = ['/b1-marge.webp', 'Marge']; // B1 = fire mother
+
+    // american dad
+    fotoData[B3] = ['/b3-francine.webp', 'Francine']; // B3 = air mother
+
+    // family guy
+    fotoData[D3] = ['/d3-peter.webp', 'Peter Griffin']; // D3 = air father
+    fotoData[B4] = ['/b4-lois.webp', 'Lois Griffin']; // B4 = water mother
+    fotoData[C2] = ['/c2-meg-griffin.webp', 'Meg Griffin']; // C2 = earth daughter
+
+    // disenchantment
+    fotoData[C1] = ['/c1-bean.webp', 'Bean']; // C1 = fire daughter
+    fotoData[D4] = ['/d4-odval.webp', 'Odval']; // D4 = water father
+
+
+
+    // inline images to javascript
+    // TODO move to end of script for faster page load
+
+    const fs = require('fs');
+    const mime = require('mime-types');
+
+    return fotoData.map(([file, name]) => {
+
+      // options.baseDir is defined in rollup.config.js
+      const file_abs = options.baseDir + '/src/images' + file;
+
+      if (!fs.existsSync(file_abs)) {
+        console.log('error: no such file: '+file_abs);
+        console.log('baseDir: '+options.baseDir);
+        return [file, name];
+      }
+
+      const file_type = mime.lookup(file_abs)
+        || 'application/octet-stream';
+
+      const base64data = fs.readFileSync(
+        file_abs, {encoding: 'base64'}
+      );
+
+      const data_uri = 'data:'+file_type+';base64,'+base64data;
+
+      //console.log('good: inlining file: '+file_abs+' as '+data_uri.substring(0,100)+' ....');
+
+      return [data_uri, name];
+
+    });
+
+  });
 
 
 
