@@ -17,6 +17,7 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 * 2020-09-01
   * [alchi tables html](https://milahu.github.io/alchi/english/alchi-tables.html)
   * [alchi flyer html (german)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
+  * [alchi-maps 2020-09-02 html+svg+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np) (660 KB) - new: with fotos (format `e/bxfoto`)
 
 * 2020-08-10
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) is the most simple test for the three sheldon-types

@@ -31,6 +31,7 @@ Abonniere den [RSS feed](https://github.com/milahu/alchi/commits/master.atom) f√
 * 2020-09-01
   * [alchi flyer html (deutsch)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
   * [alchi tables html (englisch)](https://milahu.github.io/alchi/english/alchi-tables.html)
+  * [alchi-maps 2020-09-02 html+svg+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_de_np) (660 KB) - neu: mit fotos (format `e/bxfoto`)
 
 * 2020-08-10
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) ist der einfachste Test f√ºr die drei Sheldon-Typen
