@@ -1,5 +1,5 @@
 {
-  "name": "alcimaps",
+  "name": "alchi-maps",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -25,6 +25,7 @@
     "svelte": "^3.24.1",
     "svelte-preval": "github:milahu/svelte-preval",
     "tosource": "^2.0.0-alpha.2",
-    "uglify-js": "^3.10.2"
+    "terser": "^5.3.0",
+    "sync-rpc": "^1.3.6"
   }
 }
