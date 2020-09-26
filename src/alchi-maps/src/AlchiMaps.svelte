@@ -1550,7 +1550,7 @@
   // opposite of bodyPosStatic array
   let posInFromOut = preval(() => Array.from(Array(4).keys())
     .map((x) => Array.from(Array(4).keys())
-      .map((y) => [x, y])))
+      .map((y) => [x, y])));
 
 
 
@@ -4356,7 +4356,33 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
   });
 
-
+  window.sourceCode = preval(
+    ({baseDir}) => {
+      const sourceFileĹist = [
+        'src/AlchiMaps.svelte',
+        'src/main.js',
+        'src/alchi.js',
+        'src/colorTable.cjs',
+        'rollup.config.js',
+        'package.json',
+        'README.md',
+        'LICENSE',
+        'public/alchi-maps.html',
+        'public/index.html',
+      ];
+      const fs = require('fs');
+      return sourceFileĹist.reduce(
+        (acc, sourceFile) => {
+          acc[sourceFile] = fs.readFileSync(
+            baseDir+'/'+sourceFile, {
+            encoding: 'utf-8',
+          });
+          return acc;
+        },
+        {}
+      );
+    }
+  );
 
 </script>
 
