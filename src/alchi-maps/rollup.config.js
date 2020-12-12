@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import serve from 'rollup-plugin-serve';
+import css from 'rollup-plugin-css-only';
 
 import sveltePreval from 'svelte-preval';
 
@@ -19,9 +20,8 @@ export default {
   },
   plugins: [
     svelte({
-      dev: !production,
-      css: css => {
-        css.write('bundle.css');
+      compilerOptions: {
+        dev: !production,
       },
       preprocess: [
         sveltePreval({
@@ -30,9 +30,11 @@ export default {
       ],
     }),
 
+    css({ output: 'bundle.css' }),
+
     resolve({
       browser: true,
-      dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/')
+      dedupe: ['svelte'],
     }),
 
     commonjs(),

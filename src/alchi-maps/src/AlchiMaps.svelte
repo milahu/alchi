@@ -6,6 +6,41 @@
 
   TODO
 
+  SVG
+    replace
+      alignment-baseline="mathematical"
+      (not working in firefox)
+    with
+      dominant-baseline="central"
+
+  optimize SVG export
+    make grid visible
+    remove comments, whitespace, unneeded class/id attributes,
+    remove unneeded SVG defs (symbols, patterns), except <pattern id="same_class_lines"
+    remove empty attributes
+    define CSS variables
+      <style>
+        :root {
+          --fg: #000000;
+          --bg: #ffffff;
+        }
+      </style>
+    crop image. hide extra bg-pattern
+      quickfix: replace 'width="2400" height="2400"' with 'width="1600" height="1600"' (dont ask why)
+      remove: transform: translateX(800px) translateY(800px);
+      use: viewBox="0 0 800 800"
+
+  format "be" (body element)
+    more overlap for color rectangles, to avoid gaps with distance "zero"
+    81px -> 85px, or so
+
+  optimize SVG code
+    use more classes and CSS styles
+    rename id="same_class_lines" to id="bg_pattern_fill"
+
+  remove?
+    <rect id="bg-pattern" x="0" y="0" width="2400" height="2400" fill="url(#same_class_lines)" style=" " transform-origin="center"/>
+
   fix fast multi moves
     like right+right
     without waiting for the first move to finish
@@ -7360,13 +7395,13 @@ cannot rotate <g> around center?
 
 
 
-
+  /* TODO unused?
   tr.empty, tr.empty td {
     height: 0;
     padding: 0;
     margin: 0;
   }
-
+  */
 
 
   /* css variables. init here + change later in javascript */
@@ -7381,7 +7416,7 @@ cannot rotate <g> around center?
 
 
 
-  html, body {
+  :global(html, body) {
     margin: 0;
     padding: 0;
   }
@@ -7393,11 +7428,13 @@ cannot rotate <g> around center?
     min-height: 100%;
   }
 
+  /*
   p {
     margin-bottom: 2em;
   }
+  */
 
-  main, p, tt {
+  main /* , p, tt */ {
     font-size: 16px;
   }
 
@@ -7527,11 +7564,13 @@ cannot rotate <g> around center?
     display: block;
   }
 
+  /* TODO unused?
   .expand--expanded, .expand--collapsed {
     animation-name: a_expand;
     animation-duration: 0.5s;
     animation-timing-function: linear;
   }
+  */
 
 
 
@@ -7583,9 +7622,11 @@ cannot rotate <g> around center?
 
   }
 
+/* TODO unused?
   .control.collapsed > *:not(.nohide) {
     display: none;
   }
+*/
 
   .control.collapsed > .nohide button:not(.nohide) {
     display: none;
