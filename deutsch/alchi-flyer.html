@@ -38,6 +38,13 @@ print settings:
     con manual duplex: about 2% print errors (blank pages)
     auto duplex: 70 seconds per double-page print
 
+print larger:
+	1. print to PDF file alchi-flyer.pdf
+	2. run: pdfposter -mA4 -pA3 alchi-flyer.pdf alchi-flyer.poster.pdf
+	   this will scale pages from A4 to A3 = factor 1.4 larger
+	3. print the *.poster.pdf file with the option "shrink to printable area"
+	   skip empty pages 1 and 4, print: 2,3,5,6
+
 change text:
 	change 'const font_size = ....;'
 	to change font size, to fill pages
@@ -67,11 +74,6 @@ TODO
 	and print from a PDF viewer (not firefox)
 	- fixed?
 -->
-
-<!-- zoom to 80% gives ratio 1:1 on my screen -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=0.8">
-<!-- initial-scale ignored by firefox? -->
 
 <script>
 
@@ -361,7 +363,7 @@ TODO
 
 			Die zwei äusseren Modalitäten,
 			kindische Modalität (x13) und
-			erwachsene Modalität (x24)
+			erwachsene Modalität (x24),
 			entsprechen der Bindung
 			an bestimmte Mitmenschen
 			(Bindung als Ursache <b>oder</b> Wirkung
