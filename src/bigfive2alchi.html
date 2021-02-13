@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<title>alchi. big five to four elements</title>
+
+<script>
+
+// big five to alchi
+
+// M: maximum value. 1 or 100
+function elementOfBigfive({ o, c, e, a, n }, M=1) {
+  return {
+    e1: (   o  +    e  + (M-n) +    c  + (M-a))/5,
+    e2: ((M-o) + (M-e) +    n  + (M-c) + (M-a))/5,
+    e3: (   o  +    e  +    n  + (M-c) +    a )/5,
+    e4: ((M-o) + (M-e) + (M-n) +    c  +    a )/5,
+  };
+}
+
+const nameOfElement = {
+  e1: 'fire',
+  e2: 'earth',
+  e3: 'air',
+  e4: 'water',
+};
+
+function sortedElements(elementObject) {
+  const elementList = Object.keys(elementObject).map(elm => [elm, elementObject[elm]]);
+  elementList.sort((a, b) => b[1] - a[1]); // sort descending
+  return elementList.map(([elm, val]) => `${val} ${nameOfElement[elm]}`).join(' + ');
+}
+
+function handle_form_change(form) {
+  //console.dir(form);
+  const bigfive = Array.from(form).reduce((acc, input) => {
+    acc[input.name] = input.valueAsNumber;
+    document.getElementById(input.name).innerHTML = input.value;
+    return acc;
+  }, {});
+
+  const elements = elementOfBigfive(bigfive, 100);
+  const { o, c, e, a, n } = bigfive;
+  const { e1, e2, e3, e4 } = elements;
+  //console.log(`o ${o} + c ${c} + e ${e} + a ${a} + n ${n} -> e1 ${e1} + e2 ${e2} + e3 ${e3} + e4 ${e4}`);
+  
+  //document.getElementById('status').innerHTML = `o ${o} + c ${c} + e ${e} + a ${a} + n ${n} &rarr; e1 ${e1} + e2 ${e2} + e3 ${e3} + e4 ${e4}`;
+  //document.getElementById('status').innerHTML = `${o} open + ${c} conscient + ${e} extravert + ${a} agree + ${n} neuro &rarr; ${e1} fire + ${e2} earth + ${e3} air + ${e4} water`;
+
+  document.getElementById('status').innerHTML = `${o} open + ${c} conscient + ${e} extravert + ${a} agree + ${n} neuro &rarr; ${sortedElements(elements)}`;
+
+  //console.dir({ bigfive });
+  const outform = document.getElementById('output');
+  Array.from(outform).forEach(input => {
+    //console.dir({ input: { name: input.name, value: input.value, elm: input.name[1] } });
+    input.value = elements[input.name];
+    document.getElementById(input.name).innerHTML = input.value;
+  });
+}
+
+</script>
+
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 150%;
+  }
+  #main {
+    display: flex;
+  }
+  form span {
+    display: inline-block;
+    width: 2em;
+  }
+  form span[id] {
+    display: inline-block;
+    width: 1.5em;
+    text-align: right;
+  }
+</style>
+
+</head>
+
+<body>
+
+<h1>alchi: translate "the big five" to four elements</h1>
+
+<div id="main">
+
+  <div>
+    <div>Big Five</div>
+    <form id="input" onchange="handle_form_change(this)">
+      <div><input name="o" type="range" min="0" max="100" step="5"><span>O = </span><span id="o">50</span></div>
+      <div><input name="c" type="range" min="0" max="100" step="5"><span>C = </span><span id="c">50</span></div>
+      <div><input name="e" type="range" min="0" max="100" step="5"><span>E = </span><span id="e">50</span></div>
+      <div><input name="a" type="range" min="0" max="100" step="5"><span>A = </span><span id="a">50</span></div>
+      <div><input name="n" type="range" min="0" max="100" step="5"><span>N = </span><span id="n">50</span></div>
+    </form>
+  </div>
+
+  <div style="padding-left: 2em;">
+    <div>Four Elements</div>
+    <form id="output">
+      <div><input name="e1" type="range" min="0" max="100" disabled><span>1 = </span><span id="e1">50</span></div>
+      <div><input name="e2" type="range" min="0" max="100" disabled><span>2 = </span><span id="e2">50</span></div>
+      <div><input name="e3" type="range" min="0" max="100" disabled><span>3 = </span><span id="e3">50</span></div>
+      <div><input name="e4" type="range" min="0" max="100" disabled><span>4 = </span><span id="e4">50</span></div>
+    </form>
+  </div>
+
+</div>
+
+<div id="status" style="margin-bottom: 1em;"></div>
+
+<details>
+  <summary>Spoiler</summary>
+  <div>fire = 100 open + 100 conscient + 100 extravert + 0 agree + 0 neuro</div>
+  <div>earth = 0 open + 0 conscient + 0 extravert + 0 agree + 100 neuro</div>
+  <div>air = 100 open + 0 conscient + 100 extravert + 100 agree + 100 neuro</div>
+  <div>water = 0 open + 100 conscient + 0 extravert + 100 agree + 0 neuro</div>
+</details>
+
+<script>
+
+// init result
+handle_form_change(document.getElementById('input'));
+
+// add live update
+const inputForm = document.getElementById('input');
+Array.from(inputForm).forEach(input => {
+  input.oninput = (event) => {
+    const input = event.target;
+    const label = document.getElementById(input.name);
+    label.innerHTML = input.value;
+  };
+});
+
+</script>
+
+</body>
+</html>
