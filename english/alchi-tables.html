@@ -3,9 +3,16 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="version" value="2021-02-23">
+<meta name="version" value="2021-02-28">
 
 <title>alchi-tables</title>
+
+<script>
+  // title = title + version
+  window.onload = function () {
+    document.title = document.title + '.' + document.querySelector('meta[name=version]').getAttribute('value');
+  };
+</script>
 
 <style type="text/css">
 
@@ -292,7 +299,15 @@
   we propose an exact definition of "nature and nurture". nature translates to body type = element. nurture translates to the six friends of each body, and the three different bond types [three modalities] between one body and its six friends.
 </p>
 
-
+<p>
+  collisions of namespaces: different authors can have different definitions for the same words.
+  for example the contrast between "abstract" and "concrete",
+  where we have different definitions from a. carl jung (four cognitive functions, 34 abstract + 12 concrete),
+  and b. david kolb (four learning styles, 14 abstract + 23 concrete).
+  or take the contrast "extravert" and "introvert",
+  where we have different definitions from a. myers-briggs (mbti: 23 extravert + 14 introvert)
+  and b. hans eysenck (13 extravert + 24 introvert).
+</p>
 
 <table class="four-column" style="text-align: center; margin: 0 auto">
 
@@ -711,23 +726,12 @@
 
 
 
-  <tr class="colspan-four" style="height: 6em">
-    <td><div>
-
-      <a href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a>
-      (<a href="https://web.archive.org/web/http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">archive</a>)
-      (via <tt>Noam Chomsky - Propaganda And Control of The Public Mind/15 Free Trade.mp3</tt>).
-
-      two factors: age x diagonal.
-
-      integrationist = globalist = "free trade" (with protectionism as "exception") = large states = large groups = safety in numbers = majority vote = democracy = imperialism,
-      separatist = nationalist = small states = small groups = minority vote = aristocracy.
-      conservative = security = "safety net" = insurance = minimum wage = risk aversion.
-      liberal = freedom = "deathmatch" = all must fight for and earn their wealth/life = risk tolerance.
-
-    </div></td>
-    <td></td><td></td><td></td>
-  </tr>
+  <tr class="colspan-four" style="height: 6em"><td><div>
+    <a href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a>
+    (<a href="https://web.archive.org/web/http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">archive</a>)<br>
+    via <tt>Noam Chomsky - Propaganda And Control of The Public Mind/15 Free Trade.mp3</tt>.<br>
+    two factors: age x diagonal.
+  </div></td><td></td><td></td><td></td></tr>
 
   <tr>
     <td>liberal separatist</td>
@@ -738,7 +742,7 @@
 
 
 
-  <tr class="colspan-four" style="height: 5em">
+  <tr class="colspan-four" style="height: 4em">
     <td><div>
       political compass, four ideologies
       </div></td>
@@ -754,7 +758,7 @@
 
 
 
-  <tr class="colspan-four" style="height: 5em">
+  <tr class="colspan-four" style="height: 4em">
     <td><div>
       political spectrum, David Nolan, <a href="https://en.wikipedia.org/wiki/Nolan_Chart">Nolan Chart</a>
       </div></td>
@@ -2285,12 +2289,27 @@
   </tr>
 
   <tr>
+    <td>mentally young</td>
+    <td>mentally old</td>
+  </tr>
+
+  <tr>
     <td>son inside [1]<br>daughter inside [3]</td>
     <td>mother inside [2]<br>father inside [4]</td>
   </tr>
 
+  <tr>
+    <td>all solutions are equal</td>
+    <td>all problems are equal</td>
+  </tr>
 
-  
+  <tr>
+    <td>clear hierarchy of problems</td>
+    <td>clear hierarchy of solutions</td>
+  </tr>
+
+
+
   <!--
     TODO Openness vs Extroversion - whats the difference?
 
@@ -3289,8 +3308,13 @@
   </tr>
 
   <tr>
-    <td>"irrational", perceiving?</td>
-    <td>"rational", judging?</td>
+    <td>irrational</td>
+    <td>rational</td>
+  </tr>
+
+  <tr>
+    <td>perceiving</td>
+    <td>judging</td>
   </tr>
 
 
