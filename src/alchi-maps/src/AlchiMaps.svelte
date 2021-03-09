@@ -12,6 +12,7 @@
       (not working in firefox)
     with
       dominant-baseline="central"
+    avoid <foreignObject> for text, use <text> and <tspan> when possible
 
   optimize SVG export
     make grid visible
@@ -2941,6 +2942,23 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
 
 
 
+  // https://stackoverflow.com/questions/376373/pretty-printing-xml-with-javascript/49458964#49458964
+
+  function formatXML(xml, tab = '\t', nl = '\n') {
+    let formatted = '', indent = '';
+    const nodes = xml.slice(1, -1).split(/>\s*</);
+    if (nodes[0][0] == '?') formatted += '<' + nodes.shift() + '>' + nl;
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      if (node[0] == '/') indent = indent.slice(tab.length); // decrease indent
+      formatted += indent + '<' + node + '>' + nl;
+      if (node[0] != '/' && node[node.length - 1] != '/' && node.indexOf('</') == -1) indent += tab; // increase indent
+    }
+    return formatted;
+  }
+
+
+
   var exportOverlayHide = true;
   
   function exportSvg () {
@@ -2970,6 +2988,18 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
       ' viewBox="0 0 2400 2400" ',
       ' viewBox="800 800 1600 1600" '
     );
+
+    // indent
+    source = formatXML(source, '  ');
+
+    // remove svelte classes
+    source = source.replace(/class="(?:(.*?) )?svelte-.*?"/g, 'class="$1"').replace(/class=""/g, '');
+
+    // remove darkreader attributes
+    source = source.replace(/data-darkreader-inline-.+?=".*?"/g, '');
+
+    // remove darkreader styles
+    source = source.replace(/--darkreader-inline-.+?:.*?;/g, '');
 
     //convert svg source to URI data scheme.
     var url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
