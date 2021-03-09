@@ -334,6 +334,20 @@ const nameByLocaleData = {
       "I": "Introvert", //  = old inside
     },
 
+    // Robert Moore, Douglas Gillette: King, Warrior, Magician, Lover
+    // via Elliott Hulse, The-Four-Layers-of-Strength.pdf
+    moore_gillette: {
+      "A": "Son",
+      "B": "Mother",
+      "C": "Daughter",
+      "D": "Father",
+
+      "1": "Warrior",
+      "2": "Lover",
+      "3": "Magician",
+      "4": "King",
+    },
+
     mbti: {
       // first half = sense + move
       "N": "Ntuit", //  = extravert sense = young inside
@@ -1442,6 +1456,8 @@ const nameFormatSpecialChars = [
 
 export function tableNameFromN (nameFormat) {
 
+  // TODO replace if-branches with lookup-object (faster)
+
   // TODO move special cases to separate function
 
   // MBTI special case
@@ -1475,6 +1491,23 @@ export function tableNameFromN (nameFormat) {
     ].map(
       s => [[s, s.split('').map(s => localName(['mbti', s])).join(' ')]]
     )
+  }
+
+  // Robert Moore, Douglas Gillette: King, Warrior, Magician, Lover
+  // via Elliott Hulse, The-Four-Layers-of-Strength.pdf
+  // 1234 = warrior lover magician king
+  if (nameFormat == 'moore-gillette') {
+    return [                  // GMSA =
+      'C3', 'A3', 'C1', 'A1', // FNES, MNES, FPES, MPES,
+      'C2', 'A2', 'C4', 'A4', // FNIS, MNIS, FPIS, MPIS,
+      'B3', 'D3', 'B1', 'D1', // FNEL, MNEL, FPEL, MPEL,
+      'B2', 'D2', 'B4', 'D4', // FNIL, MNIL, FPIL, MPIL
+    ].map(
+      s => [
+        [s[1], localName(['moore_gillette', s[1]])],
+        [s[0], localName(['moore_gillette', s[0]])],
+      ]
+    );
   }
 
   if (nameFormat === 'a/s/m/gxbody') {
@@ -1533,7 +1566,6 @@ export function tableNameFromN (nameFormat) {
       /* MPIL */ ['randy|gerald|mackey', 'Randall "Randy" Marsh|Gerald Broflovski|Mr. Mackey'],
     ]
   }
-
 
   // Simpsons special case
   if (nameFormat === 'simpsons') {

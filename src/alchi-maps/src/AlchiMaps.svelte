@@ -2821,6 +2821,7 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
     'cg-jung': 'CG Jung. Element = function, pathos = "introvert" or "extravert"',
     'zodiac': 'Zodiac signs of astrology. Element = mutable signs, Neurotic pathos = cardinal signs, Psychotic pathos = fixed signs',
     'mbti': 'Myers Briggs Type Indicator. AB = element, CD = gender + age',
+    'moore-gillette': 'Four Archetypes (Robert Moore, Douglas Gillette)',
     '(ms)p': 'Move + Sense + Pathos: Move + Sense',
     'a/e/g': 'Age / Element / Gender',
     'a/s/m/g': 'Age / Sense / Move / Gender. split in four',
@@ -2848,9 +2849,7 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
     if (temp_nameFromN) {
       nameFromN = temp_nameFromN
       nameParts = nameFromN[0].length
-      console.log('nameFormat "'+nameFormat+'" is valid. nameFromN:')
-      //console.dir(nameFromN)
-      //console.log(`nameParts = ${nameParts}`)
+      console.log(`nameFormat "${nameFormat}" is valid. nameParts: ${nameParts}. nameFromN:`, nameFromN)
     } else {
 
       // special case
@@ -5834,7 +5833,7 @@ cannot rotate <g> around center?
 
 
 
-                      {:else if nameParts === 2 && nameFormat == 'e/bxinout'}
+                      {:else if nameParts === 2 && (nameFormat == 'e/bxinout' || nameFormat == 'moore-gillette')}
 
                         <!-- outside = age + gender = body, surface, outside --->
                         <path d="M 20 100 v 60 a 20 20 0 0 0 20 20 h 120 a 20 20 0 0 0 20 -20 v -120 a 20 20 0 0 0 -20 -20 h -120 a 20 20 0 0 0 -20 20 z"
@@ -6375,7 +6374,7 @@ cannot rotate <g> around center?
                       </foreignObject>
 
                       <!--
-                 -->{:else if nameParts === 2 && nameFormat === 'e/bxinout'}<!--
+                 -->{:else if nameParts === 2 && (nameFormat == 'e/bxinout' || nameFormat == 'moore-gillette')}<!--
 
                    --><foreignObject
                         x="20" y="20"
