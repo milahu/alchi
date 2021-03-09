@@ -10,6 +10,8 @@ import sveltePreval from 'svelte-preval';
 
 const production = !process.env.ROLLUP_WATCH;
 
+import findFreePort from 'find-free-port-sync';
+
 export default {
   input: 'src/main.js',
   output: {
@@ -46,7 +48,7 @@ export default {
       // Options used in setting up server
       //host: 'localhost',
       host: '0.0.0.0', // listen on all interfaces
-      port: 5000,
+      port: findFreePort({ start: 5000 }),
     }),
 
     !production && livereload('public'),
