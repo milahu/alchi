@@ -1,0 +1,1290 @@
+{
+  "meta": {
+    "name": "Big Five",
+    "sources": [
+      {
+        "npm": "@alheimsins/b5-johnson-120-ipip-neo-pi-r",
+        "url": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r"
+      },
+      {"url": "https://ipip.ori.org/"}
+    ],
+    "licenses": [{"id": "MIT", "name": "MIT License"}, {"name": "Public Domain"}],
+    "documents": [
+      {"name": "wikipedia", "url": "https://en.wikipedia.org/wiki/Big_Five_personality_traits", "lang": "en"}
+    ],
+    "tests": [{"name": "bigfive-test.com", "url": "https://bigfive-test.com/test", "lang": "en"}]
+  },
+  "defaultLanguage": "en",
+  "languageKeys": [
+    "en",
+    "ar",
+    "da",
+    "de",
+    "es",
+    "et",
+    "fi",
+    "fr",
+    "he",
+    "hi",
+    "hr",
+    "id",
+    "is",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "no",
+    "pl",
+    "pt-br",
+    "ru",
+    "sv",
+    "th",
+    "uk",
+    "ur",
+    "zh-cn"
+  ],
+  "domainKeys": ["o", "c", "e", "a", "n"],
+  "domainWidths": {"o": 2, "c": 2, "e": 2, "a": 2, "n": 2},
+  "domainNames": {
+    "en": {
+      "o": ["", "Openness for experience"],
+      "c": ["", "Conscientiousness"],
+      "e": ["", "Extraversion", "Introversion"],
+      "a": ["", "Agreeableness"],
+      "n": ["", "Neuroticism", "Emotional Stability"]
+    },
+    "de": {
+      "o": ["", "Offenheit für Erfahrungen (Aufgeschlossenheit)"],
+      "c": ["", "Gewissenhaftigkeit (Perfektionismus)"],
+      "e": ["", "Extraversion (Geselligkeit)", "Introversion"],
+      "a": ["", "Verträglichkeit (Rücksichtnahme, Kooperationsbereitschaft, Empathie)"],
+      "n": ["", "Neurotizismus (emotionale Verletzlichkeit)", "Emotionale Stabilität"]
+    }
+  },
+  "domainItems": {
+    "en": {
+      "o": [
+        ["", "Like to get lost in thought"],
+        ["", "See beauty in things that others might not notice", "Do not enjoy going to art museums"],
+        ["", "Feel others' emotions", "Don't understand people who get emotional"],
+        ["", "Prefer variety to routine", "Am attached to conventional ways"],
+        ["", "Love to read challenging material", "Am not interested in theoretical discussions"],
+        ["", "Believe that there is no absolute right and wrong", "Believe that we should be tough on crime"]
+      ],
+      "c": [
+        ["", "Know how to get things done"],
+        ["", "Like to tidy up", "Leave my belongings around"],
+        ["", "Tell the truth", "Break my promises"],
+        ["", "Do more than what's expected of me", "Put little time and effort into my work"],
+        ["", "Carry out my plans", "Have difficulty starting tasks"],
+        ["", "", "Act without thinking"]
+      ],
+      "e": [
+        ["", "Feel comfortable around people", "Keep others at a distance"],
+        ["", "Talk to a lot of different people at parties", "Avoid crowds"],
+        ["", "Take control of things", "Wait for others to lead the way"],
+        ["", "Do a lot in my spare time", "Like to take it easy"],
+        ["", "Act wild and crazy"],
+        ["", "Look at the bright side of life"]
+      ],
+      "a": [
+        ["", "Trust what people say", "Distrust people"],
+        ["", "", "Obstruct others' plans"],
+        ["", "Am concerned about others", "Take no time for others"],
+        ["", "", "Get back at others"],
+        ["", "", "Boast about my virtues"],
+        ["", "Feel sympathy for those who are worse off than myself", "Try not to think about the needy"]
+      ],
+      "n": [
+        ["", "Get stressed out easily"],
+        ["", "Lose my temper", "Am not easily annoyed"],
+        ["", "Am often down in the dumps", "Feel comfortable with myself"],
+        ["", "Only feel comfortable with friends", "Am not bothered by difficult social situations"],
+        ["", "Go on binges", "Am able to control my cravings"],
+        ["", "Feel that I'm unable to deal with things", "Remain calm under pressure"]
+      ]
+    },
+    "ar": {
+      "o": [
+        ["", "أحب أن أضيع في أفكاري"],
+        ["", "أرى جمالاً لا يلاحظه الآخرون في الأشياء", "لا أستمتع بالذهاب إلى المتاحف"],
+        ["", "أحس بمشاعر الآخرين", "لا أفهم الأناس العاطفيين"],
+        ["", "أُفضّل التغيير على الروتين", "أنا متعلق بالطرق التقليدية"],
+        ["", "أحب قراءة أشياء صعبة", "لا أهتم بالمناقشات النظرية"],
+        ["", "أؤمن أنه لا يوجد صح مطلق وخطأ مطلق", "أؤمن بأنه يجب أن نتعامل مع الإجرام بقسوة"]
+      ],
+      "c": [
+        ["", "أعرف كيف أنجز الأمور"],
+        ["", "أحب أن أرتب الأشياء", "أترك أغراضي هنا وهناك"],
+        ["", "أقول الحقيقة", "أخلف بوعودي"],
+        ["", "أعمل أكثر مما هو متوقع مني", "أبذل القليل من الوقت والجهد عندما أعمل"],
+        ["", "أنفذ خططي", "أجد صعوبة في أن أبدأ المهام"],
+        ["", "", "أتصرف بدون تفكير"]
+      ],
+      "e": [
+        ["", "أشعر بارتياح عند التواجد مع الناس", "لا أقترب من الناس كثيراً"],
+        ["", "أتحدث مع الكثير من الناس في المناسبات", "أتفادى الازدحامات البشرية"],
+        ["", "أسيطر على الأمور", "أنتظر حتى يأخذ غيري بزمام الأمور"],
+        ["", "أنجز الكثير في أوقات فراغي", "أحب الاسترخاء"],
+        ["", "أتصرف بجموح وجنون"],
+        ["", "أنظر إلى الجانب المشرق للحياة"]
+      ],
+      "a": [
+        ["", "أثق فيما يقوله الناس", "لا أثق بالناس"],
+        ["", "", "أعرقل خطط الآخرين"],
+        ["", "أقلق بشأن الآخرين", "لا أبذل من وقتي لأحد"],
+        ["", "", "أُسيء لمن أساء إليّ"],
+        ["", "", "أتباهى بأخلاقي"],
+        ["", "أتعاطف مع من حالهم أسوأ من حالي", "أحاول ألا أشغل بالي بالمحتاجين"]
+      ],
+      "n": [
+        ["", "أُجهَد نفسياً بسهولة"],
+        ["", "أفقد أعصابي", "ليس من السهل مضايقتي"],
+        ["", "عادة أشعر بالإحباط", "أشعر بارتياح لكوني على ما أنا عليه"],
+        ["", "لا أشعر بارتياح إلا مع أصدقائي", "لا أتضايق من المواقف الاجتماعية الصعبة"],
+        ["", "أفرط في إشباع رغبة ما", "أنا قادر على السيطرة على رغباتي"],
+        ["", "أشعر أنه ليس بإمكاني التعامل مع الأمور", "أحافظ على هدوئي تحت الضغوطات"]
+      ]
+    },
+    "da": {
+      "o": [
+        ["", "Falder gerne i staver"],
+        ["", "Ser en skønhed i ting som andre måske ikke lægger mærke til", "Kan ikke lide at gå på kunstmuseer"],
+        ["", "Mærker andres følelser", "Forstår ikke folk som bliver emotionelle"],
+        ["", "Foretrækker variation frem for rutine", "Foretrækker de traditionelle måder at leve på"],
+        ["", "Elsker at læse udforende materiale", "Er ikke interesseret i teoretiske diskussioner"],
+        [
+          "",
+          "Tror ikke på at der er noget der er absolut rigtigt eller forkert",
+          "Synes at vi skal sætte hårdt ind mod kriminalitet"
+        ]
+      ],
+      "c": [
+        ["", "Ved hvordan man får ting gjort"],
+        ["", "Kan godt lide at rydde op", "Lader mine ting ligge og flyde"],
+        ["", "Siger sandheden", "Bryder mine løfter"],
+        ["", "Gør mere end der forventes af mig", "Lægger hverken meget tid eller kræfter i mit arbejde"],
+        ["", "Fører mine planer ud i livet", "Har svært ved at komme i gang med opgaver"],
+        ["", "", "Handler uden at tænke"]
+      ],
+      "e": [
+        ["", "Er tilpas i andres selskab", "Holder andre på afstand"],
+        ["", "Taler med mange forskellige mennesker til fester", "Undgår menneskemængder"],
+        ["", "Tager kontrol med tingene", "Venter på at andre skal tage styringen"],
+        ["", "Laver en masse i min fritid", "Kan lide at tage det stille og roligt"],
+        ["", "Opfører mig vildt og skørt"],
+        ["", "Ser verden fra den lyse side"]
+      ],
+      "a": [
+        ["", "Stoler på hvad andre siger", "Stoler ikke på andre"],
+        ["", "", "Forstyrrer andres planer"],
+        ["", "Bekymrer mig om andre", "Har ikke tid til andre"],
+        ["", "", "Får hævn på andre"],
+        ["", "", "Praler af mine dyder"],
+        ["", "Føler sympati for dem der har det dårligere end mig selv", "Prøver ikke at tænke på de trængende"]
+      ],
+      "n": [
+        ["", "Bliver nemt stresset"],
+        ["", "Mister besindelsen", "Bliver ikke nemt irriteret"],
+        ["", "Er ofte nede i kulkælderen", "Har det godt med mig selv"],
+        ["", "Føler mig kun tilpas sammen med mine venner", "Er ikke generet af vanskelige sociale situationer"],
+        ["", "Går på drukture", "Kan styre mine lyster"],
+        ["", "Føler at jeg har svært ved at klare ting", "Forholder mig roligt under pres"]
+      ]
+    },
+    "de": {
+      "o": [
+        ["", "Ich mag es, mich in Gedanken zu verlieren"],
+        [
+          "",
+          "Ich sehe die Schönheit in Dingen, die anderen vielleicht gar nicht auffallen",
+          "Ich gehe nicht gern zu (Kunst-)Ausstellungen"
+        ],
+        [
+          "",
+          "Ich bin ein sehr einfühlsamer Mensch und ich spüre die Gefühle anderer",
+          "Ich habe kein Verständnis für Menschen, die emotional werden"
+        ],
+        ["", "Ich mag Abwechslung lieber als Routine", "Ich bediene mich gerne konventioneller Methoden"],
+        ["", "Ich lese gern anspruchsvolle Bücher und Artikel", "Theoretische Diskussionen interessieren mich nicht"],
+        [
+          "",
+          "Ich glaube, dass es kein „absolut richtig“ oder „absolut falsch“ gibt",
+          "Meiner Meinung nach müssen wir sehr hart gegen Verbrechen vorgehen"
+        ]
+      ],
+      "c": [
+        ["", "Ich weiß, wie ich Dinge geregelt bekomme"],
+        ["", "Ich mag keine Unordnung - Ich räume gern auf", "Ich lasse meinen Krimskrams herumliegen"],
+        ["", "Ich sage die Wahrheit", "Ich halte meine Versprechen nicht ein"],
+        ["", "Ich leiste mehr, als man von mir erwartet", "Ich stecke wenig Zeit und Aufwand in meine Arbeit"],
+        [
+          "",
+          "Ich erledige meine Arbeit und führe meine Pläne aus",
+          "Mir fällt es schwer, mit den mir übertragenen Aufgaben zu beginnen"
+        ],
+        ["", "", "Ich handle, ohne nachzudenken"]
+      ],
+      "e": [
+        ["", "Ich fühle mich wohl, wenn ich unter Menschen bin", "Ich halte andere auf Abstand"],
+        ["", "Ich unterhalte mich auf Partys immer mit vielen unterschiedlichen Leuten", "Ich meide Menschenmengen"],
+        ["", "Ich kontrolliere Situationen", "Ich warte darauf, dass andere Verantwortung übernehmen"],
+        ["", "Ich unternehme viel in meiner Freizeit", "Ich mag es gern relaxed"],
+        ["", "Ich verhalte mich ungestüm und unkontrolliert"],
+        ["", "Ich betrachte das Leben von seiner Sonnenseite"]
+      ],
+      "a": [
+        ["", "Ich glaube, was Leute sagen", "Ich misstraue Menschen"],
+        ["", "", "Ich bin nicht kooperativ – Ich blockiere Pläne anderer"],
+        ["", "Ich bin besorgt um andere", "Für andere nehme ich mir keine Zeit"],
+        ["", "", "Ich zahle es anderen heim"],
+        ["", "", "Ich brüste mich mit meinen Tugenden"],
+        [
+          "",
+          "Ich habe Mitleid mit Leuten, denen es schlechter geht als mir",
+          "Ich versuche, mir über Bedürftige keine Gedanken zu machen"
+        ]
+      ],
+      "n": [
+        ["", "Ich bin ziemlich schnell gestresst"],
+        ["", "Ich verliere häufig meine Beherrschung", "Ich bin nicht schnell verägert"],
+        ["", "Ich bin oft niedergeschlagen", "Ich komme gut mit mir selbst aus"],
+        [
+          "",
+          "Ich fühle mich nur unter Freunden wirklich wohl",
+          "Ich gehe schwierigen sozialen Situationen nicht aus dem Weg"
+        ],
+        ["", "Ich mache gerne einen drauf", "Ich bin in der Lage, heftiges Verlangen und Gelüste gut zu kontrollieren"],
+        ["", "Ich merke, wenn ich Dingen nicht gewachsen bin", "In Stresssituationen bleibe ich ruhig"]
+      ]
+    },
+    "es": {
+      "o": [
+        ["", "Me gusta perderme en mis pensamientos"],
+        ["", "Veo belleza en cosas que otros podrían no notar", "No me agrada ir a museos de arte"],
+        [
+          "",
+          "Puedo comprender bien las emociones de los demás",
+          "No comprendo a las personas que se emocionan fácilmente"
+        ],
+        ["", "Prefiero la variedad antes que la rutina", "Soy una persona mayormente conservadora"],
+        ["", "Me gusta mucho leer", "No me interesan las discusiones teóricas"],
+        [
+          "",
+          "No creo que haya acciones completamente correctas o incorrectas",
+          "Creo que deberíamos ser severos con el crimen"
+        ]
+      ],
+      "c": [
+        ["", "Generalmente sé cómo hacer las cosas"],
+        ["", "Me gusta mantener las cosas en orden", "Dejo mis pertenencias aquí y allá"],
+        ["", "Siempre digo la verdad", "No suelo cumplir mis promesas"],
+        ["", "Hago más de lo que se espera de mí", "Pongo poco tiempo y esfuerzo en mi trabajo"],
+        ["", "Llevo a cabo mis planes", "Tengo dificultad para comenzar tareas"],
+        ["", "", "Actúo sin pensar"]
+      ],
+      "e": [
+        ["", "Me siento cómodo con la gente", "Siempre mantengo cierta distancia con las personas"],
+        ["", "Me gusta hablar con muchas personas en las fiestas", "No me gusta mezclarme con la gente"],
+        ["", "Tomo el control de las cosas", "Espero que alguien más lleve la batuta en un grupo"],
+        ["", "Hago muchas cosas en mi tiempo libre", "Me gusta tomar las cosas con calma"],
+        ["", "Creo que soy una persona activa y vigorosa"],
+        ["", "Siempre miro el buen lado de la vida"]
+      ],
+      "a": [
+        ["", "Confío en lo que dicen las personas", "Desconfío de la gente"],
+        ["", "", "Sería capaz de sabotear los planes de otros"],
+        ["", "Me preocupo por los demás", "No tengo tiempo para los demás"],
+        ["", "", "No suelo apoyar a los otros"],
+        ["", "", "Me jacto de mis virtudes"],
+        [
+          "",
+          "Siento simpatía por aquellos que se encuentran en peores situaciones que yo",
+          "Trato de no pensar en los necesitados"
+        ]
+      ],
+      "n": [
+        ["", "Tiendo a estresarme con facilidad"],
+        ["", "A veces pierdo los estribos", "No me molesto fácilmente"],
+        ["", "A menudo me siento bajoneado", "Me siento cómodo conmigo mismo"],
+        ["", "Sólo me siento cómodo en compañía de amigos", "No me molestan las situaciones sociales difíciles"],
+        ["", "A menudo voy de borracheras", "Siempre puedo controlar mis antojos"],
+        ["", "A veces siento que no soy capaz de manejar situaciones", "Me mantengo tranquilo/a bajo presión"]
+      ]
+    },
+    "et": {
+      "o": [
+        ["", "Mulle meeldib olla oma mõttemaailmas"],
+        ["", "Ma näen ilu seal, kus teised ei pruugi seda märgata", "Ma ei armasta käia kunstimuuseumides"],
+        ["", "Ma tajun teiste inimeste tundeid", "Ma ei mõista tundelisi inimesi"],
+        ["", "Ma tahan vaheldust", "Ma teen asju harjumuspärasel viisil"],
+        [
+          "",
+          "Ma armastan lugeda mõtlema panevaid raamatuid",
+          "Mind ei huvita arutlused elu mõtte või maailma asjade üle"
+        ],
+        [
+          "",
+          "Minu arvates pole olemas ainuõiget tõde või valet",
+          "Ma usun, et me peaksime kuritegevuse suhtes olema karmid"
+        ]
+      ],
+      "c": [
+        ["", "Ma tean, kuidas asjad tehtud saab"],
+        ["", "Mulle meeldib asju korda seada", "Ma jätan oma asjad ripakile"],
+        ["", "Ma räägin tõtt", "Ma jätan lubadusi täitmata"],
+        ["", "Ma teen rohkem, kui minult oodatakse", "Ma kulutan tööle vähe aega ja jõudu"],
+        ["", "Ma viin alustatud tegemised lõpuni", "Ma lükkan tüütuid töid üha edasi"],
+        ["", "", "Ma tegutsen mõtlematult"]
+      ],
+      "e": [
+        ["", "Ma tunnen ennast inimeste keskel hästi", "Ma ei lase teisi endale lähedale"],
+        ["", "Ma räägin peol väga paljude inimestega", "Ma väldin rahvarohkeid kohti"],
+        ["", "Ma kontrollin suhtlemisel olukorda", "Ma ootan, et teised otsustaksid"],
+        ["", "Minu vaba aeg on sisustatud", "Mulle meeldib asju rahulikult võtta"],
+        ["", "Ma teen pööraseid ja hulljulgeid asju"],
+        ["", "Ma näen igas asjas midagi head"]
+      ],
+      "a": [
+        ["", "Ma usun teiste juttu", "Ma ei usalda inimesi"],
+        ["", "", "Ma rikun teiste plaane, kui see on mulle kasulik"],
+        ["", "Ma muretsen eelkõige teiste pärast", "Mul ei ole teiste jaoks aega"],
+        ["", "", "Ma maksan kätte"],
+        ["", "", "Ma kiitlen oma oskuste ja võimetega"],
+        ["", "Mul on kahju nendest, kes elavad minust halvemini", "Ma ei mõtle nendele, kes on hädas"]
+      ],
+      "n": [
+        ["", "Ma lähen kergesti pingesse"],
+        ["", "Ma kaotan tihti enesevalitsuse", "Mind on raske pahandada"],
+        ["", "Ma langen tihti masendusse", "Ma tunnen ennast mõnusalt"],
+        ["", "Ma tunnen ennast mugavalt vaid lähedaste seas", "Mind ei häiri suhtlemisel keerulised olukorrad"],
+        ["", "Mul on raske piiri pidada", "Ma olen võimeline oma tahtmisi kontrollima"],
+        ["", "Ma tunnen, et ei saa hakkama", "Ma jään rasketes olukordades rahulikuks"]
+      ]
+    },
+    "fi": {
+      "o": [
+        ["", "Pidän ajatuksiini hukkumisesta"],
+        ["", "Näen kauneutta asioissa, joissa muut eivät sitä huomaa", "En nauti taidemuseoissa käynnistä"],
+        ["", "Tunnen muiden tunteet", "En ymmärrä ihmisiä, jotka liikuttuvat"],
+        ["", "Pidän enemmän vaihtelusta kuin rutiinista", "Olen kiintynyt sovinnaisiin tapoihin"],
+        ["", "Rakastan vaikean aineiston lukemisesta", "En ole kiinnostunut teoreettisista keskusteluista"],
+        [
+          "",
+          "Uskon että ei ole absoluuttista oikeaa ja väärää",
+          "Uskon, että meidän pitäisi rangaista rikollisia ankarasti"
+        ]
+      ],
+      "c": [
+        ["", "Tiedän kuinka saada asioita tehtyä"],
+        ["", "Pidän paikkojen siistimisestä", "Jätän tavaroitani ympäriinsä"],
+        ["", "Kerron totuuden", "Rikon lupaukseni"],
+        ["", "Teen enemmän, kuin mitä minulta odotetaan", "Panostan vähän aikaa ja vaivaa työhöni"],
+        ["", "Toteutan suunnitelmani", "Minulla on vaikeuksia aloittaa tehtäviä"],
+        ["", "", "Toimin ajattelematta"]
+      ],
+      "e": [
+        ["", "Tunnen oloni mukavaksi muiden ympärillä", "Pidän muihin etäisyyttä"],
+        ["", "Puhun juhlissa monien eri ihmisten kanssa", "Välttelen väkijoukkoja"],
+        ["", "Otan asiat hallintaan", "Odotan, että muut näyttävät tien"],
+        ["", "Teen paljon vapaa-ajallani", "Suhtaudun asioihin rauhallisesti"],
+        ["", "Käyttäydyn villisti ja hullusti"],
+        ["", "Näen elämän valoisan puolen"]
+      ],
+      "a": [
+        ["", "Luotan siihen, mitä muut sanovat", "En luota ihmisiin"],
+        ["", "", "Estän muiden suunnitelmat"],
+        ["", "Olen huolissani muista", "En varaa aikaa muille"],
+        ["", "", "Kostan muille"],
+        ["", "", "Leuhkin hyveilläni"],
+        ["", "Tunnen sympatiaa heitä kohtaan, joilla menee huonommin kuin minulla", "Yritän olla ajattelematta köyhiä"]
+      ],
+      "n": [
+        ["", "Stressaannun helposti"],
+        ["", "Menetän malttini", "En ärsyynny helposti"],
+        ["", "Olen usein mieli mustana", "Tunnen oloni mukavaksi itseni kanssa"],
+        [
+          "",
+          "Tunnen oloni mukavaksi ainoastaan ystävien seurassa",
+          "En ole vaivautunut vaikeissa sosiaalisissa tilanteissa"
+        ],
+        ["", "Mässäilen", "Pystyn kontrolloimaan mielihalujani"],
+        ["", "Tunnen, että olen kykenemätön käsittelemään asioita", "Pysyn rauhallisena paineen alla"]
+      ]
+    },
+    "fr": {
+      "o": [
+        ["", "J'aime me perdre dans mes pensées"],
+        [
+          "",
+          "Je vois une beauté dans les choses que d'autres pourraient ne pas remarquer",
+          "Je n'apprécie pas visiter des musées d'art"
+        ],
+        ["", "Je ressens les émotions des autres", "Je ne comprends pas les gens émotifs"],
+        ["", "Je préfère la variété à la routine", "Je suis attaché aux méthodes conventionnelles"],
+        ["", "J'adore lire des documents stimulants", "Je ne suis pas intéressé par les discussions théoriques"],
+        [
+          "",
+          "Je crois qu'il n'y a pas de bon ou de mauvais absolu",
+          "Je crois que nous devrions être sévères à propos des crimes"
+        ]
+      ],
+      "c": [
+        ["", "Je sais comment faire avancer les choses"],
+        ["", "J'aime faire du rangement", "Je laisse traîner les choses"],
+        ["", "Je dis la vérité", "Je ne tiens pas mes promesses"],
+        ["", "Je fais plus que ce que l'on attend de moi", "Je mets peu de temps et d'efforts dans mon travail"],
+        ["", "Je réalise mes objectifs", "J'ai de la difficulté à commencer les tâches"],
+        ["", "", "J'agis sans penser"]
+      ],
+      "e": [
+        ["", "Je me sens confortable avec les gens", "Je garde les autres à distance"],
+        ["", "Je parle à beaucoup de personnes dans les fêtes", "J'évite les foules"],
+        ["", "Je prends le contrôle des choses", "J'attends que les autres prennent les devants"],
+        ["", "Je fais beaucoup de choses pendant mon temps libre", "J'aime prendre ça mollo"],
+        ["", "J'agis de façon téméraire"],
+        ["", "Je regarde le bon côté de la vie"]
+      ],
+      "a": [
+        ["", "J'ai confiance en ce que les gens disent", "Je ne fais pas confiance aux autres"],
+        ["", "", "J'entrave les plans des autres"],
+        ["", "Je me préoccupe des autres", "Je ne prends pas de temps pour les autres"],
+        ["", "", "Je m'en prends aux autres"],
+        ["", "", "Je me vante de mes vertus"],
+        [
+          "",
+          "J'ai de la sympathie pour les gens plus démunis que moi",
+          "Je tente de ne pas penser aux gens dans le besoin"
+        ]
+      ],
+      "n": [
+        ["", "Je deviens stressé facilement"],
+        ["", "Je perds patience", "Je ne suis pas facilement agacé"],
+        ["", "Il m'arrive souvent de broyer du noir", "Je suis à l'aise avec moi-même"],
+        [
+          "",
+          "Je me sens seulement à l'aise avec mes amis",
+          "Je ne suis pas dérangé par les situations sociales difficiles"
+        ],
+        ["", "Je fais des excès", "Je suis capable de contrôler mes envies"],
+        ["", "Je me sens incapable de gérer les choses", "Je demeure calme sous pression"]
+      ]
+    },
+    "he": {
+      "o": [
+        ["", "נהנה לנדוד עם המחשבות"],
+        ["", "רואה את היופי בדברים שאחרים אולי לא שמים לב", "לא נהנה ללכת למוזיאונים לאמנות"],
+        ["", "חש רגשות של אחרים", "לא מבין אנשים שנעשים רגשניים"],
+        ["", "מעדיף גיוון על שגרה", "מחובר לדרכים המקובלות"],
+        ["", "אוהב לקרוא חומרים מאתגרים", "לא מתעניין בדיונים תיאורטיים"],
+        ["", "מאמין שאין אמת אחת מוחלטת", "מאמין שצריך לנהוג בנוקשות כלפי פשיעה"]
+      ],
+      "c": [
+        ["", "יודע איך לסיים דברים"],
+        ["", "אוהב לסדר", "משאיר את החפצים שלי מסביב"],
+        ["", "אומר את האמת", "שובר הבטחות"],
+        ["", "עושה יותר ממה שמצופה ממני", "משקיע מעט זמן ומאמץ בעבודה שלי"],
+        ["", "מוציא את התכניות שלי לפועל", "חווה קושי להתחיל משימות"],
+        ["", "", "פועל בלי לחשוב"]
+      ],
+      "e": [
+        ["", "מרגיש בנוח בסביבת אנשים", "שומר מרחק מאחרים"],
+        ["", "מדבר להרבה אנשים שונים במסיבות", "נמנע מקהלים גדולים"],
+        ["", "לוקח שליטה על דברים", "מחכה שאחרים יובילו את הדרך"],
+        ["", "עושה הרבה בזמן הפנוי", "אוהב לקחת דברים בקלות"],
+        ["", "מתנהג בפראות ושיגעון"],
+        ["", "רואה את הצד החיובי של דברים"]
+      ],
+      "a": [
+        ["", "סומך על מה שאחרים אומרים", "לא סומך על אנשים"],
+        ["", "", "מקשה על תכניות של אחרים"],
+        ["", "דואג/חושש לגבי אחרים", "משקיע זמן באחרים"],
+        ["", "", "נוקם באחרים"],
+        ["", "", "משוויץ בחוזקות שלי"],
+        ["", "מרגיש סימפטיה כלפי אלו במצב קשה יותר ממני", "מנסה לא לחשוב על הנזקקים"]
+      ],
+      "n": [
+        ["", "נלחץ בקלות"],
+        ["", "מאבד את העשתונות", "לא מתעצבן בקלות"],
+        ["", "מבואס לעתים קרובות", "מרגיש בנוח עם עצמי"],
+        ["", "מרגיש בנוח רק עם חברים", "לא מוטרד ממצבים חברתיים קשים"],
+        ["", "נסחף בדברים (בינג'ים)", "מסוגל לשלוט בחשקים שלי"],
+        ["", "מרגיש לא מסוגל להתמודד עם דברים", "נשאר רגוע תחת לחץ"]
+      ]
+    },
+    "hi": {
+      "o": [
+        ["", "विचारों में खो जाना पसंद है"],
+        [
+          "",
+          "चीज़ों में सुंदरता देखते हैं, जो दूसरे नहीं देख पाते हैं",
+          "कला संग्रहालयों में जाने में आनंद नहीं आता है"
+        ],
+        ["", "दूसरों की भावनाओं को महसूस करते हैं", "समझ नहीं आता की लोग भावुक क्यों हो जाते हैं"],
+        ["", "दिनचर्या में विविधता पसंद है", "पारंपरिक तरीकों से जुड़े हैं"],
+        ["", "चुनौतीपूर्ण सामग्री पढ़ना पसंद है", "सैद्धांतिक चर्चा में दिलचस्पी नहीं है"],
+        ["", "मानते हैं की कुछ भी पूर्णतः सही या गलत नहीं होता है", "मानते हैं की हमें अपराधों पर कठोर होना चाहिए"]
+      ],
+      "c": [
+        ["", "काम निकलना जानते हैं"],
+        ["", "सफ़ाई करना पसंद है", "अपना सामान यहाँ वहां छोड़ देते हैं"],
+        ["", "सत्य कहते हैं", "अपने वादे तोड़ते हैं"],
+        ["", "अपेक्षा से अधिक करते हैं", "अपने काम में अल्प समय एवं प्रयास लगते हैं"],
+        ["", "योजनाओं को पूरा करते हैं", "कार्यों को प्रारम्भ करने में कठिनाई होती है"],
+        ["", "", "बिना सोचे-समझे कार्य करते हैं"]
+      ],
+      "e": [
+        ["", "लोगों के आसपास सहज महसूस करते हैं", "दूसरों को खुद से दूर रखते हैं"],
+        ["", "पार्टियों में बहुत से अलग-अलग लोगों से बात करते हैं", "भीड़ से बचते हैं"],
+        ["", "चीजों पर नियंत्रण लेते हैं", "प्रतीक्षा करते हैं की दूसरे नेतृत्व करें"],
+        ["", "अपने खाली समय में बहुत कुछ करते हैं", "जीवन को आराम से जीना पसंद है"],
+        ["", "जंगली और पागलों सा व्यवहार करते हैं"],
+        ["", "जीवन के उज्ज्वल पक्ष को देखते हैं"]
+      ],
+      "a": [
+        ["", "लोगों के कथनों पर विश्वासव करते हैं", "लोगों पर अविश्वास करते हैं"],
+        ["", "", "दूसरों की योजनाओं में बाधा डालते हैं"],
+        ["", "दूसरों के बारे में चिंतित रहते हैं", "दूसरों के लिए समय नहीं निकालते हैं"],
+        ["", "", "दूसरों से बदला लेते हैं"],
+        ["", "", "अपने गुणों के बारे में डींग हांकते हैं"],
+        [
+          "",
+          "उन लोगों के लिए सहानुभूति महसूस करते हैं, जो आपसे भी बदतर हैं",
+          "कोशिश करते हैं कि जरूरतमंदों के बारे में न सोचें"
+        ]
+      ],
+      "n": [
+        ["", "आसानी से तनाव होता है"],
+        ["", "अपना आप खो देते हैं", "आसानी से चिढ़ते नहीं हैं"],
+        ["", "अक्सर अत्यंत उदास रहते हैं", "खुद से सहज महसूस करते हैं"],
+        ["", "केवल दोस्तों के साथ सहज महसूस करते हैं", "कठिन सामाजिक परिस्थितियों से परेशान नहीं होते हैं"],
+        ["", "कुछ भी जरूरत से ज्यादा करते हैं", "अपनी तृष्णा को नियंत्रित करने में सक्षम हैं"],
+        ["", "अपने आप को चीज़ों से निपटने में असमर्थ महसूस करते हैं", "दबाव में स्थिर रहते हैं"]
+      ]
+    },
+    "hr": {
+      "o": [
+        ["", "Sviđa mi se kada se izgubim u mislima"],
+        ["", "Vidim ljepotu u stvarima koju drugi ne zamjećuju", "Ne uživam u posjećivanju muzeja umjetnosti"],
+        ["", "Osjećam tuđe emocije", "Ne razumijem ljude koji se prepuštaju osjećajima"],
+        ["", "Više volim raznolikost nego rutinu", "Privržen sam uhodanom načinu života"],
+        ["", "Volim čitati izazovne sadržaje", "Ne zanimaju me teorijske rasprave"],
+        ["", "Vjerujem da ne postoji apsolutna istina", "Smatram da zločin treba strogo kažnjavati"]
+      ],
+      "c": [
+        ["", "Znam kako obaviti stvari"],
+        ["", "Volim pospremati", "Ostavljam stvari uokolo"],
+        ["", "Govorim istinu", "Ne pridržavam se obećanja"],
+        ["", "Radim više nego što se od mene očekuje", "Ulažem malo vremena i truda u svoj posao"],
+        ["", "Izvršavam svoje planove", "Teško mi je započeti zadatke"],
+        ["", "", "Djelujem bez razmišljanja"]
+      ],
+      "e": [
+        ["", "Ugodno se osjećam među ljudima", "Držim druge ljude na distanci"],
+        ["", "Na zabavama razgovaram s puno različitih ljudi", "Izbjegavam gužvu"],
+        ["", "Preuzimam kontrolu nad događajima", "Čekam da drugi preuzmu vodstvo"],
+        ["", "Mnogo toga radim u slobodno vrijeme", "Ležerno pristupam stvarima"],
+        ["", "Ponašam se neobuzdano i luckasto"],
+        ["", "Gledam na život s optimizmom"]
+      ],
+      "a": [
+        ["", "Vjerujem onome što ljudi govore", "Nemam povjerenja u ljude"],
+        ["", "", "Ometam tuđe planove"],
+        ["", "Zabrinut sam za druge ljude", "Nemam vremena za druge"],
+        ["", "", "Osvećujem se"],
+        ["", "", "Ističem svoje vrline"],
+        ["", "Suosjećam s onima kojima je gore nego meni", "Trudim se ne razmišljati o ljudima u nevolji"]
+      ],
+      "n": [
+        ["", "Lako se uznemirim"],
+        ["", "Lako izgubim živce", "Ne gubim lako strpljenje"],
+        ["", "Često sam potišten", "Osjećam se ugodno u vlastitoj koži"],
+        ["", "Osjećam se ugodno samo u krugu prijatelja", "Ne opterećuju me teške socijalne situacije"],
+        ["", "Volim tulumariti", "Mogu kontrolirati svoje porive"],
+        ["", "Osjećam da se ne mogu nositi s nekim stvarima", "Smiren sam i pod pritiskom"]
+      ]
+    },
+    "id": {
+      "o": [
+        ["", "Suka tenggelam dalam pikiran"],
+        [
+          "",
+          "Melihat keindahan di suatu hal yang mungkin orang lain tidak lihat",
+          "Tidak menikmati pergi ke museum seni"
+        ],
+        ["", "Merasakan perasaan/emosi orang lain", "Tidak mengerti orang yang berperasaan"],
+        ["", "Lebih memilih variasi daripada rutinitas", "Saya terikat dengan cara pandang konvensional"],
+        ["", "Suka membaca materi yang menantang", "Saya tidak tertarik dengan diskusi teoretis"],
+        [
+          "",
+          "Percaya bahwa tidak ada kebenaran dan kesalahan yang absolut",
+          "Percaya bahwa kita harus tangguh menghadapi kejahatan"
+        ]
+      ],
+      "c": [
+        ["", "Tahu bagaimana menyelesaikan sesuatu"],
+        ["", "Suka merapikan", "Meninggalkan barang-barangku di sekitar"],
+        ["", "Berkata yang sebenarnya", "Mengingkari janji-janji"],
+        [
+          "",
+          "Melakukan lebih dari apa yang diharapkan kepada saya",
+          "Meluangkan sedikit waktu dan usaha dalam pekerjaan"
+        ],
+        ["", "Melaksanakan yang saya rencanakan", "Memiliki kesulitan untuk memulai suatu tugas"],
+        ["", "", "Bertindak tanpa berpikir"]
+      ],
+      "e": [
+        ["", "Merasa nyaman di sekitar orang", "Menjaga jarak dari orang lain"],
+        ["", "Bicara dengan banyak orang saat di pesta", "Mengindari keramaian"],
+        ["", "Mengendalikan hal-hal", "Menunggu orang lain memimpin jalan"],
+        ["", "Saya melakukan banyak hal di waktu luang", "Suka santai saja"],
+        ["", "Bertingkah liar dan gila"],
+        ["", "Melihat sisi kehidupan yang cerah"]
+      ],
+      "a": [
+        ["", "Percaya apa yang orang katakan", "Tidak percaya orang lain"],
+        ["", "", "Menghalangi rencana orang lain"],
+        ["", "Saya mengkhawatirkan orang lain", "Tidak ada waktu untuk orang lain"],
+        ["", "", "Kembali ke orang lain"],
+        ["", "", "Membanggakan tentang kebijaksanaanku"],
+        [
+          "",
+          "Merasa bersimpati kepada mereka yang lebih malang dari saya",
+          "Mencoba tidak memikirkan tentang orang yang membutuhkan"
+        ]
+      ],
+      "n": [
+        ["", "Dapat stres dengan mudah"],
+        ["", "Saya kehilangan kesabaran", "Saya tidak mudah terganggu"],
+        ["", "Saya sering tenggelam dalam kesedihan", "Merasa nyaman dengan diri sendiri"],
+        ["", "Hanya merasa nyaman dengan teman-teman", "Saya tidak terganggu oleh situasi sosial yang menyusahkan"],
+        ["", "Pergi minum-minum", "Saya mampu mengendalikan hasrat"],
+        ["", "Merasa bahwa saya tidak bisa menangani hal-hal", "Tetap tenang di bawah tekanan"]
+      ]
+    },
+    "is": {
+      "o": [
+        ["", "Like to get lost in thought"],
+        ["", "Ég sé fegurð í hlutum sem aðrir taka mögulega ekki eftir ", "Ég hef ekki gaman af listasöfnum"],
+        ["", "Ég er næm/ur fyrir tilfinningum annarra  ", "Ég skil ekki tilfinningasamt fólk"],
+        ["", "Prefer variety to routine", "Am attached to conventional ways"],
+        ["", "Ég nýt þess að lesa krefjandi lesefni", "Am not interested in theoretical discussions"],
+        ["", "Believe that there is no absolute right and wrong", "Believe that we should be tough on crime"]
+      ],
+      "c": [
+        ["", "Know how to get things done"],
+        ["", "Mér líkar að taka til", "Ég skil eigur mínar eftir út um allt"],
+        ["", "Tell the truth", "Break my promises"],
+        ["", "Do more than what's expected of me", "Put little time and effort into my work"],
+        ["", "Ég fylgi eftir áætlunum mínum", "Have difficulty starting tasks"],
+        ["", "", "Act without thinking"]
+      ],
+      "e": [
+        ["", "Mér líður vel innan um fólk", "Ég held öðrum í fjarlægð"],
+        ["", "Ég tala við marga í samkvæmum", "Avoid crowds"],
+        ["", "Take control of things", "Wait for others to lead the way"],
+        ["", "Do a lot in my spare time", "Like to take it easy"],
+        ["", "Act wild and crazy"],
+        ["", "Look at the bright side of life"]
+      ],
+      "a": [
+        ["", "Trust what people say", "Ég vantreysti fólki"],
+        ["", "", "Obstruct others' plans"],
+        ["", "Am concerned about others", "Take no time for others"],
+        ["", "", "Get back at others"],
+        ["", "", "Ég stæri mig af kostum mínum"],
+        ["", "Feel sympathy for those who are worse off than myself", "Try not to think about the needy"]
+      ],
+      "n": [
+        ["", "Ég verð auðveldlega stressuð/stressaður"],
+        ["", "Ég missi stjórn á skapi mínu", "Am not easily annoyed"],
+        ["", "Am often down in the dumps", "Ég er sátt/ur í eigin skinni"],
+        ["", "Only feel comfortable with friends", "Am not bothered by difficult social situations"],
+        ["", "Go on binges", "Am able to control my cravings"],
+        ["", "Feel that I'm unable to deal with things", "Ég held ró minni undir álagi"]
+      ]
+    },
+    "it": {
+      "o": [
+        ["", "Mi piace perdermi nei miei pensieri"],
+        [
+          "",
+          "Vedo la bellezza in cose che gli altri potrebbero non notare nemmeno",
+          "Non mi piace visitare i musei d'arte"
+        ],
+        ["", "Percepisco le emozioni degli altri", "Non riesco a comprendere le persone emotive"],
+        ["", "Preferisco la novità alla routine", "Sono attaccato ai metodi convenzionali"],
+        ["", "Mi piace fare letture impegnative", "Non sono interessato nelle discussioni teoriche"],
+        ["", "Non credo nel male e nel bene assoluti", "Credo che il crimine vada affrontato con determinazione"]
+      ],
+      "c": [
+        ["", "So come fare le cose"],
+        ["", "Mi piace mettere in ordine le cose", "Lascio le mie cose in giro"],
+        ["", "Sono sincero", "Infrango le promesse"],
+        ["", "Faccio più di quello che gli altri si aspettano da me", "Dedico poco tempo e impegno al mio lavoro"],
+        ["", "Metto a segno i miei piani", "Faccio difficoltà ad iniziare un lavoro"],
+        ["", "", "Agisco senza riflettere"]
+      ],
+      "e": [
+        ["", "Mi sento a mio agio in mezzo alla gente", "Tengo gli altri a distanza"],
+        ["", "Parlo con molte persone alle feste", "Evito le folle"],
+        ["", "Prendo il controllo delle cose", "Lascio che gli altri prendano in mano la situazione"],
+        ["", "Faccio molte cose nel mio tempo libero", "Mi piace prendermela comoda"],
+        ["", "Agisco in maniera istintiva e pazza"],
+        ["", "Guardo al lato positivo della vita"]
+      ],
+      "a": [
+        ["", "Mi fido di quello che dicono le persone", "Non mi fido delle persone"],
+        ["", "", "Ostacolo i piani degli altri"],
+        ["", "Mi preoccupo per gli altri", "Non dedico tempo agli altri"],
+        ["", "", "Sono un tipo vendicativo"],
+        ["", "", "Mi vanto delle mie virtù"],
+        ["", "Provo empatia per le persone inferiori a me", "Cerco di non pensare ai bisognosi"]
+      ],
+      "n": [
+        ["", "Mi stresso facilmente"],
+        ["", "Perdo le staffe", "Non mi infastidisco facilmente"],
+        ["", "Sono spesso giù di corda", "Mi sento a mio agio con me stesso"],
+        ["", "Mi sento a mio agio solo con gli amici", "Non sono preoccupato dalle difficoltà della società"],
+        ["", "Mi piace far baldoria", "Sono in grado di controllare i miei impulsi"],
+        ["", "Non mi sento in grado di affrontare le cose", "Mantengo la calma sotto pressione"]
+      ]
+    },
+    "ja": {
+      "o": [
+        ["", "考 え込むのが好きだ"],
+        ["", "他 人が気づかない美しさに気づく", "美 術館に行っても楽しめない"],
+        ["", "他 人に同情できる", "感 情的になる人が理解できない"],
+        ["", "い つも同じより変化がある方が良い", "従 来のやり方に固執する"],
+        ["", "難 しい読み物が好きだ", "理 論的な考え方には興味が無い"],
+        ["", "絶 対的な善や悪はないと思う", "犯 罪には厳しくするべきだと思う"]
+      ],
+      "c": [
+        ["", "要 領が良い"],
+        ["", "き れい好きである", "所 持品を放置する"],
+        ["", "真 実を言う", "約 束を破る"],
+        ["", "求 められていること以上のことをする", "仕 事に時間と労力を裂きたくない"],
+        ["", "計 画は実行する", "仕 事を始めるのが難しい"],
+        ["", "", "考 えずに動く"]
+      ],
+      "e": [
+        ["", "人 が周りにいると安心できる", "人 と距離を置く"],
+        ["", "パー ティでは色々な人と話す", "人 混みは避ける"],
+        ["", "指 揮をとるのは好きだ", "人 が導いてくれるのを待つ"],
+        ["", "自 由時間に様々なことをやる", "楽 な道を選ぶ"],
+        ["", "激 しくはしゃぐ"],
+        ["", "人 生の明るい面を見る"]
+      ],
+      "a": [
+        ["", "人 の言うことは信じる", "人 が信用できない"],
+        ["", "", "他 人の計画の邪魔をする"],
+        ["", "他 人のことを心配", "人 のために時間は割かない"],
+        ["", "", "人 に仕返しをする"],
+        ["", "", "自 分の美徳を誇示する"],
+        ["", "自 分より恵まれない人に同情する", "貧 しい人のことは考えないようにしている"]
+      ],
+      "n": [
+        ["", "す ぐにストレスがたまる"],
+        ["", "キ レやすい", "簡 単にムカつきはしない"],
+        ["", "気 分が沈んでいることが多い", "今 の自分で十分である"],
+        ["", "友 達としか安らげない", "困 難に負けない"],
+        ["", "暴 飲暴食をしてしまう", "欲 望を抑えることができる"],
+        ["", "物 事の対処が出来ないと思う", "プ レッシャーの中でも落ち着いている"]
+      ]
+    },
+    "ko": {
+      "o": [
+        ["", "나는 사색에 잠기는 것을 즐기는 편이다."],
+        ["", "나는 다른 사람들이 알아차리지 못하는 것에서 아름다움을 보는 편이다.", "나는 미술관에 가는 것을 좋아하지 않는 편이다."],
+        ["", "나는 다른 사람들의 감정에 공감하는 편이다.", "나는 감정적인 사람들이 이해 못 하는 편이다."],
+        ["", "나는 틀에 박히지 않은 것을 좋아하는 편이다.", "나는 전통적인 방식에 대해 애착을 가지고 있는 편이다."],
+        ["", "나는 도전적인 자료를 읽는 것을 좋아하는 편이다.", "나는 이론적인 토론에 대해 관심이 없는 편이다."],
+        ["", "나는 절대적으로 옮고 그름은 없다고 믿는 편이다.", "나는 우리가 범죄에 엄격해야한다고 믿는 편이다."]
+      ],
+      "c": [
+        ["", "나는 일을 어떻게 해나가야하는지 잘 아는 편이다."],
+        ["", "나는 정리하는 것을 좋아하는 편이다.", "나는 내 물건을 잘 잃어버리는 편이다."],
+        ["", "나는 진실대로 말하는 편이다.", "나는 약속을 어기는 편이다."],
+        ["", "나는 내게 기대했던 것 보다 더 많은 일을 하는 편이다.", "나는 내 일에 시간과 노력을 들이지 않는 편이다."],
+        ["", "나는 내 계획들을 잘 실행하는 편이다.", "나는 작업을 시작하는데 어려움이 있는 편이다."],
+        ["", "", "나는 별 생각 없이 행동하는 편이다."]
+      ],
+      "e": [
+        ["", "나는 다른 사람들 주변에 있을 때, 편안함을 느끼는 편이다.", "나는 남과 거리를 두는 편이다."],
+        ["", "나는 파티에서 많은 다른 사람들과 이야기를 하는 편이다.", "나는 다른 사람들이 많은 곳을 피하는 편이다."],
+        ["", "나는 일을 내가 원하는대로 추진하려고 하는 편이다.", "나는 남들이 앞서길 기다리는 편이다."],
+        ["", "나는 여가 시간에 많은 것을 하는 편이다.", "나는 느긋하게 지내는 것을 좋아하는 편이다."],
+        ["", "나는 미친 듯이 행동하는 편이다."],
+        ["", "나는 인생을 긍정적으로 바라보는 편이다."]
+      ],
+      "a": [
+        ["", "나는 다른 사람들이 말하는 것을 믿는 편이다.", "나는 다른 사람들을 잘 믿지 않는 편이다."],
+        ["", "", "나는 다른 사람들의 계획을 방해하는 편이다."],
+        ["", "나는 다른 사람들을 걱정하는 편이다.", "나는 남을 위해 시간을 들이지 않는 편이다."],
+        ["", "", "나는 당한 것에 대해 남들에게 (앙)갚는 편이다."],
+        ["", "", "나는 내 선행에 대해 자랑하는 편이다."],
+        ["", "나는 나보다 가난한 사람에게 동정을 느끼는 편이다.", "나는 가난한 사람에 대해 별로 생각하고 싶지 않아하는 편이다."]
+      ],
+      "n": [
+        ["", "나는 쉽게 스트레스를 받는 편이다."],
+        ["", "나는 화가날 때 평정을 유지하기 어려운 편이다.", "나는 쉽게 짜증 내지 않는 편이다."],
+        ["", "나는 자주 의기소침하는 편이다.", "나는 내 자신에 대해 편안함을 느끼는 편이다."],
+        ["", "나는 친구들과 함께 있을 때 편안함을 느끼는 편이다.", "나는 어려운 사회 상황에 개의치 않는 편이다."],
+        ["", "나는 폭식을 하는 편이다.", "나는 내 갈망을 조절 할 수 있는 편이다."],
+        ["", "나는 내가 일을 감당할 수 없다고 느끼는 편이다.", "나는 중압감 속에서 침착함을 유지하는 편이다."]
+      ]
+    },
+    "nl": {
+      "o": [
+        ["", "Ben graag in gedachten verzonken"],
+        ["", "Zie schoonheid in dingen die anderen ontgaat", "Hou er niet van musea te bezoeken"],
+        ["", "Voel emoties van anderen", "Begrijp mensen die emotioneel worden niet"],
+        ["", "Verkies afwisseling boven routine", "Ben gehecht aan traditionele gewoonten"],
+        ["", "Hou ervan om uitdagende stukken te lezen", "Ben niet geïnteresseerd in theoretische discussies"],
+        ["", "Geloof dat er geen absoluut goed of fout is", "Geloof dat we criminaliteit hard moeten aanpakken"]
+      ],
+      "c": [
+        ["", "Weet hoe ik dingen gedaan krijg"],
+        ["", "Hou van opruimen", "Laat mijn spullen rondslingeren"],
+        ["", "Spreek de waarheid", "Verbreek mijn beloften"],
+        ["", "Doe meer dan wat er van me verwacht wordt", "Stop weinig tijd en moeite in mijn werk"],
+        ["", "Voer mijn plannen uit", "Heb moeite ergens aan te beginnen"],
+        ["", "", "Handel zonder nadenken"]
+      ],
+      "e": [
+        ["", "Voel mij goed in het gezelschap van mensen", "Houd anderen op afstand"],
+        ["", "Praat op feestjes met veel verschillende mensen", "Vermijd menigten"],
+        ["", "Neem verantwoordelijkheid voor dingen", "Wacht tot anderen het voortouw nemen"],
+        ["", "Doe veel in mijn vrije tijd", "Doe het graag rustig aan"],
+        ["", "Doe wild en gek"],
+        ["", "Kijk naar de zonnige kant van het leven"]
+      ],
+      "a": [
+        ["", "Vertrouw wat mensen zeggen", "Wantrouw mensen"],
+        ["", "", "Belemmer plannen van anderen"],
+        ["", "Ben bezorgd over anderen", "Heb geen tijd voor anderen"],
+        ["", "", "Pak andere mensen terug"],
+        ["", "", "Schep op over mijn goede eigenschappen"],
+        ["", "Voel mee met degenen die slechter af zijn dan ik", "Probeer niet aan hulpbehoevenden te denken"]
+      ],
+      "n": [
+        ["", "Raak makkelijk gestrest"],
+        ["", "Verlies mijn humeur", "Erger me niet snel"],
+        ["", "Zit vaak in de put", "Zit lekker in mijn vel"],
+        ["", "Voel me alleen op mijn gemak met vrienden", "Heb geen moeite met lastige sociale situaties"],
+        ["", "Heb vreetbuien", "Kan mijn intense verlangens beheersen"],
+        ["", "Heb het gevoel dingen niet goed aan te kunnen", "Blijf onder druk kalm"]
+      ]
+    },
+    "no": {
+      "o": [
+        ["", "Liker å fortape meg i egne tanker"],
+        ["", "Ser skjønnheten i ting som andre kanskje ikke legger merke til", "Liker ikke å gå på kunstmuseer"],
+        ["", "Legger merke til andres følelser", "Forstår ikke folk som blir emosjonelle"],
+        ["", "Foretrekker variasjon framfor rutiner", "Vil helst ta tradisjonelle valg"],
+        ["", "Elsker å lese ting som krever noe av meg", "Er ikke interessert i teoretiske diskusjoner"],
+        [
+          "",
+          "Tror at det ikke er noe som er helt sant eller helt galt",
+          "Synes at vi skal slå hardt ned på kriminalitet"
+        ]
+      ],
+      "c": [
+        ["", "Vet hvordan ting skal gjøres"],
+        ["", "Liker å rydde opp", "Strør omkring meg med eiendelene mine"],
+        ["", "Forteller sannheten", "Bryter det jeg har lovet"],
+        ["", "Gjør mer enn det som forventes av meg", "Investerer lite tid og innsats i arbeidet mitt"],
+        ["", "Realiserer planene mine", "Har vanskeligheter med å komme i gang med oppgaver"],
+        ["", "", "Handler uten å tenke"]
+      ],
+      "e": [
+        ["", "Føler meg vel med andre mennesker", "Holder andre på avstand"],
+        ["", "Snakker med mange ulike folk i selskapslivet", "Unngår folkemengder"],
+        ["", "Tar kontroll på ting", "Venter på at andre skal lede an"],
+        ["", "Gjør mye i fritiden min", "Liker å ta det rolig"],
+        ["", "Oppfører meg hemningsløst og vilt"],
+        ["", "Ser lyst på livet"]
+      ],
+      "a": [
+        ["", "Stoler på det folk sier", "Mistror andre"],
+        ["", "", "Legger hindringer i veien for andres planer"],
+        ["", "Bryr meg om andre", "Bruker ikke tid på andre"],
+        ["", "", "Hevner meg på andre"],
+        ["", "", "Skryter av mine fortrinn"],
+        ["", "Føler sympati for de som er verre stilt enn meg selv", "Prøver ikke å tenke på de trengende"]
+      ],
+      "n": [
+        ["", "Blir fort stresset"],
+        ["", "Blir sint", "Blir ikke så lett ergerlig"],
+        ["", "Er ofte nede i følelsesmessige bølgedaler", "Føler meg vel med meg selv"],
+        [
+          "",
+          "Føler meg bare komfortabel når jeg er sammen med venner",
+          "Føler meg ikke brydd i vanskelige sosiale situasjoner"
+        ],
+        ["", "Lett for å overdrive ting", "Er i stand til kontrollere mine lyster"],
+        ["", "Føler at jeg ikke er i stand til å takle ting", "Er rolig hvis jeg blir presset"]
+      ]
+    },
+    "pl": {
+      "o": [
+        ["", "Lubię się zamyślać"],
+        ["", "Dostrzegam piękno tam, gdzie inni go nie widzą", "Nie lubię wizyt w muzeum"],
+        ["", "Odczuwam emocje innych", "Nie rozumiem emocjonalnych osób"],
+        ["", "Wolę różnorodność od rutyny", "Wolę konwencjonalne rozwiązania"],
+        ["", "Lubię czytać wymagające teksty", "Nie jestem zainteresowany teoretyczną dyskusją"],
+        ["", "Wierzę, że nie ma jedynie dobrych i złych odpowiedzi", "Przestępstwa powinny być surowo karane"]
+      ],
+      "c": [
+        ["", "Umiem załatwiać sprawy"],
+        ["", "Lubię sprzątać", "Rozrzucam wszędzie swoje rzeczy"],
+        ["", "Mówię prawdę", "Łamię obietnice"],
+        ["", "Robię więcej niż się ode mnie oczekuje", "Wkładam mało czasu i wysiłku w swoją pracę"],
+        ["", "Urzeczywistniam swoje plany", "Mam trudność z zaczynaniem zadań"],
+        ["", "", "Działam bez namysłu"]
+      ],
+      "e": [
+        ["", "Czuję się komfortowo otoczony ludźmi", "Trzymam innych na dystans"],
+        ["", "Rozmawiam z wieloma osobami na imprezach", "Unikam tłumów"],
+        ["", "Przejmuję inicjatywę", "Czekam na innych, by mnie poprowadzili"],
+        ["", "Dużo robię w wolnym czasie", "Lubię podejście na spokojnie"],
+        ["", "Zachowuję się szalenie i dziko"],
+        ["", "Patrzę na pozytywną stronę życia"]
+      ],
+      "a": [
+        ["", "Ufam temu, co mówią ludzie", "Nie ufam ludziom"],
+        ["", "", "Utrudniam innym plany"],
+        ["", "Troszczę się o innych", "Nie mam czasu dla innych"],
+        ["", "", "Mszczę się na innych"],
+        ["", "", "Przechwalam się swoimi zaletami"],
+        ["", "Współczuję ludziom w gorszej sytuacji", "Nie myślę o potrzebujących"]
+      ],
+      "n": [
+        ["", "Łatwo się stresuję"],
+        ["", "Tracę panowanie nad sobą", "Niełatwo mnie wkurzyć"],
+        ["", "Często mam chandrę", "Czuję się komfortowo ze sobą"],
+        ["", "Czuję się komfortowo jedynie z przyjaciółmi", "Nie przejmuję się trudnymi sytuacjami społecznymi"],
+        [
+          "",
+          "Brak mi umiaru w niektórych czynnościach (nie umiem przestać oglądać serialu, pić alkoholu itp.)",
+          "Umiem kontrolować moje zachcianki"
+        ],
+        ["", "Czuję się niezdolny do radzenia sobie z rzeczami", "Pomimo presji pozostaję spokojny"]
+      ]
+    },
+    "pt-br": {
+      "o": [
+        ["", "Me perco nos pensamentos"],
+        ["", "Vejo beleza em coisas que os outros não vêem", "Não gosto de ir ao museu de arte"],
+        ["", "Sinto as emoções dos outros", "Não entendo pessoas que agem emocionalmente"],
+        ["", "Prefiro variedade à rotina", "Sou tradicional"],
+        ["", "Gosto de ler textos desafiadores", "Não me interesso por discussões teóricas"],
+        ["", "Acredito que certo e errado são relativos", "Acredito que precisamos ser rígidos com o crime"]
+      ],
+      "c": [
+        ["", "Sei como fazer as coisas"],
+        ["", "Gosta de organizar as coisas", "Deixo minhas coisas espalhadas"],
+        ["", "Digo a verdade", "Quebro minhas promessas"],
+        ["", "Supero as expectativas", "Dedico pouco tempo e esforço no meu trabalho"],
+        ["", "Transformo meus planos em realidade", "Tenho dificuldade para começar as tarefas"],
+        ["", "", "Ajo sem pensar"]
+      ],
+      "e": [
+        ["", "Me sinto confortável no meio das pessoas", "Mantenho distância dos outros"],
+        ["", "Converso com muitas pessoas diferentes em festas", "Evito multidões"],
+        ["", "Assumo controle das coisas", "Aguardo outras pessoas tomarem a liderança"],
+        ["", "Faço muitas coisas no tempo livre", "Gosto de pegar leve"],
+        ["", "Ajo de forma descontrolada"],
+        ["", "Vejo o lado bom da vida"]
+      ],
+      "a": [
+        ["", "Confio no que dizem", "Desconfio das pessoas"],
+        ["", "", "Atrapalho os planos dos outros"],
+        ["", "Me preocupo com os outros", "Não tiro tempo para os outros"],
+        ["", "", "Entro em contato com os outros"],
+        ["", "", "Gosto de falar das minhas virtudes"],
+        ["", "Sinto pena dos que são piores do que eu", "Tento não pensar nos necessitados"]
+      ],
+      "n": [
+        ["", "Me irrito facilmente"],
+        ["", "Perco a cabeça", "Não sou incomodado facilmente"],
+        ["", "Estou sempre deprimido", "Me sinto confortável comigo"],
+        ["", "Só me sinto bem com meus amigos(as)", "Não sou incomodado(a) por situações sociais difíceis"],
+        ["", "Cometo exageros", "Controlo minhas vontades"],
+        ["", "Acho que sou incapaz de lidar com as coisas", "Fico calmo(a) sob pressão"]
+      ]
+    },
+    "ru": {
+      "o": [
+        ["", "Люблю потеряться в мыслях"],
+        ["", "Вижу красоту там, где другие не видят", "Не наслаждаюсь музеями искусства"],
+        ["", "Сопереживаю другим людям", "Не понимаю эмоциональных людей"],
+        ["", "Предпочитаю разнообразие рутине", "Придерживаюсь старых устоев"],
+        ["", "Люблю читать что-то посложнее", "Не заинтересован в теоретических рассуждениях"],
+        [
+          "",
+          "Верю, что нет абсолютного правильного и неправильного",
+          "Считаю, что наказания за преступления должны быть жестче"
+        ]
+      ],
+      "c": [
+        ["", "Знаю, как доводить дела до конца"],
+        ["", "Люблю прибраться", "Оставляю вещи где попало"],
+        ["", "Говорю правду", "Нарушаю мои обещания"],
+        ["", "Делаю больше, чем от меня ожидают", "Вкладываю мало времени и стараний в то, что делаю"],
+        ["", "Придерживаюсь своих планов", "С трудом что-либо начинаю"],
+        ["", "", "Действую необдуманно"]
+      ],
+      "e": [
+        ["", "Чувствую себя комфортно в окружении людей", "Держу других на дистанции"],
+        ["", "Разговариваю с разными людьми на вечеринках", "Избегаю толпу"],
+        ["", "Беру контроль", "Жду, что другие покажут мне путь"],
+        ["", "В свободное время занимаюсь много чем", "Люблю ничего не принимать близко к сердцу"],
+        ["", "Веду себя дико и безумно"],
+        ["", "Смотрю на положительную сторону жизни"]
+      ],
+      "a": [
+        ["", "Доверяю тому, что люди говорят мне", "Не доверяю людям"],
+        ["", "", "Мешаю планам других людей"],
+        ["", "Беспокоюсь за других людей", "Не уделяю времени другим людям"],
+        ["", "", "Мстителен"],
+        ["", "", "Хвастаюсь своими достоинствами"],
+        ["", "Сопереживаю тем, кому хуже, чем мне", "Стараюсь не думать о нуждающихся"]
+      ],
+      "n": [
+        ["", "Легко впадаю в стресс"],
+        ["", "Легко теряю самообладание", "Не раздражаюсь легко"],
+        ["", "Часто бывает очень грустно", "Чувствую себя комфортно с самим собой"],
+        ["", "Чувствую себя комфортно только с друзьями", "Проблемные социальные ситуации не беспокоят меня"],
+        ["", "Могу чрезмерно увлечься", "Способен контролировать свои желания"],
+        ["", "Чувствую себя неспособным справляться с делами", "Сохраняю самообладание в стрессовых ситуациях"]
+      ]
+    },
+    "sv": {
+      "o": [
+        ["", "Tycker om att förlora mig i tankar"],
+        ["", "Ser skönhet i sådant andra inte märker", "Gillar inte att gå på konstmuseum"],
+        ["", "Känner andra människors känslor", "Förstår inte människor som blir känslosamma"],
+        ["", "Föredrar variation framför rutin", "Är upphängd på konventionella metoder"],
+        ["", "Älskar att läsa tankeväckande skrifter", "Är inte intresserad av teoretiska diskussioner"],
+        [
+          "",
+          "Tror inte att det finns något som är absolut rätt och fel",
+          "Tycker att vi skall vara tuffa mot brottslighet  "
+        ]
+      ],
+      "c": [
+        ["", "Vet hur man får saker gjorda"],
+        ["", "Tycker om att städa upp", "Lämnar mina saker liggande överallt"],
+        ["", "Talar sanning", "Bryter mina löften"],
+        ["", "Gör mer än vad som förväntas av mig", "Lägger lite tid och kraft i mitt arbete"],
+        ["", "Genomför mina planer", "Har svårt att sätta igång med saker"],
+        ["", "", "Handlar utan att tänka"]
+      ],
+      "e": [
+        ["", "Trivs med människor omkring mig", "Håller andra på avstånd"],
+        ["", "Pratar med en massa olika människor på fester", "Undviker folksamlingar"],
+        ["", "Tar kontroll över situationen", "Väntar på att andra ska visa vägen"],
+        ["", "Gör massor på min fritid", "Tycker om att ta det lugnt"],
+        ["", "Agerar vilt och galet"],
+        ["", "Ser livet från den ljusa sidan"]
+      ],
+      "a": [
+        ["", "Litar på vad folk säger", "Misstror människor"],
+        ["", "", "Lägger hinder i vägen för andras planer"],
+        ["", "Är bekymrad över andra", "Tar mig inte tid för andra"],
+        ["", "", "Tar revansch på andra"],
+        ["", "", "Skryter om mina fördelar"],
+        ["", "Känner sympati med de som har det sämre än jag själv", "Försöker att inte tänka på de behövande"]
+      ],
+      "n": [
+        ["", "Blir lätt stressad"],
+        ["", "Tappar humöret", "Är svår att förarga"],
+        ["", "Är ofta nere (deppig)", "Känner mig trygg med mig själv"],
+        ["", "Känner mig bara tillfreds bland vänner", "Blir inte störd av besvärliga sociala situationer"],
+        ["", "Går ut och festar", "Kan hålla mina laster i styr"],
+        ["", "Tycker att jag har svårt att handskas med saker", "Håller mig lugn under stress och tidspress"]
+      ]
+    },
+    "th": {
+      "o": [
+        ["", "ชอบจมอยู่กับความคิด"],
+        ["", "เห็นความงดงามในสิ่งที่คนอื่นอาจไม่ได้สังเกตเห็น", "ไม่ชอบชมพิพิธภัณฑ์ศิลปะ"],
+        ["", "รู้สึกถึงอารมณ์ของผู้อื่น", "ไม่เข้าใจคนที่มีอารมณ์"],
+        ["", "ชอบความหลากหลายมากกว่ากิจวัตร", "ชอบทำตามประเพณีนิยม"],
+        ["", "ชอบอ่านเนื้อหาที่ท้าทาย", "ไม่สนใจในการอภิปรายทางทฤษฎี"],
+        ["", "เชื่อว่าไม่มีความถูกต้องหรือไม่ถูกต้องอย่างเด็ดขาด", "เชื่อว่าเราควรจะเอาจริงเอาจังกับการปราบอาชญากรรม"]
+      ],
+      "c": [
+        ["", "รู้วิธีทำสิ่งต่างๆให้เสร็จ"],
+        ["", "ชอบความเป็นระเบียบเรียบร้อย", "ทิ้งข้าวของของตัวเองเกลื่อนกลาด"],
+        ["", "พูดความจริง", "ผิดสัญญา"],
+        ["", "ทำมากกว่าที่ได้รับความคาดหวังไว้", "ไม่ให้เวลาและความทุ่มเทในการทำงาน"],
+        ["", "ดำเนินตามแผนการของตัวเอง", "มีปัญหาในการเริ่มงาน"],
+        ["", "", "ทำโดยไม่คิด"]
+      ],
+      "e": [
+        ["", "รู้สึกสบายใจเมื่ออยู่ท่ามกลางผู้คน", "ไม่ชอบให้คนอื่นเข้าใกล้"],
+        ["", "พูดคุยกับผู้คนจำนวนมากในงานปาร์ตี้", "หลีกเลี่ยงฝูงชน"],
+        ["", "ควบคุมสิ่งต่างๆ", "รอให้คนอื่นนำทาง"],
+        ["", "ทำหลายอย่างในเวลาว่างของตัวเอง", "ชอบทำสิ่งต่างๆให้ง่าย"],
+        ["", "ทำตัวคำนองและบ้าคลั่ง"],
+        ["", "มองด้านดีของชีวิต"]
+      ],
+      "a": [
+        ["", "เชื่อในสิ่งที่ผู้อื่นพูด", "ไม่ไว้ใจคน"],
+        ["", "", "ขัดขวางแผนการของผู้อื่น"],
+        ["", "กังวลเกี่ยวกับผู้อื่น", "ไม่ให้เวลาคนอื่น"],
+        ["", "", "แก้แค้น"],
+        ["", "", "โอ้อวดเกี่ยวกับคุณธรรมของตน"],
+        ["", "รู้สึกเห็นใจผู้ที่อยู่ในฐานะที่ด้อยกว่าตน", "พยายามไม่คิดถึงคนขัดสน"]
+      ],
+      "n": [
+        ["", "เครียดได้ง่าย"],
+        ["", "อารมณ์เสียง่าย", "ไม่ขี้รำคาญ"],
+        ["", "มักรู้สีกซึมเศร้า", "รู้สึกสบายใจกับตัวเอง"],
+        ["", "รู้สึกสบายใจกับเพื่อนเท่านั้น", "ไม่ยี่หระกับเหตุการณ์ในสังคมที่ยุ่งยาก"],
+        ["", "ชอบทำอะไรต่อเนื่องนานๆ", "สามารถควบคุมความอยากได้"],
+        ["", "รู้สึกว่าฉันไม่สามารถรับมือกับสิ่งต่างๆได้", "สงบภายใต้ความกดดัน"]
+      ]
+    },
+    "uk": {
+      "o": [
+        ["", "Люблю загубитися в думках"],
+        ["", "Бачу красу там, де інші не бачать", "Не насолоджуюся музеями мистецтва"],
+        ["", "Співпереживаю іншим людям", "Не розумію емоційних людей"],
+        ["", "Віддаю перевагу різноманітністі  перед рутиною", "Дотримуюся старих устоїв"],
+        ["", "Люблю читати щось поскладніше", "Не зацікавлений у теоретичних міркуваннях"],
+        [
+          "",
+          "Вірю, що немає абсолютного правильного і неправильного",
+          "Вважаю, що покарання за злочини мають бути жорсткішими"
+        ]
+      ],
+      "c": [
+        ["", "Знаю, як доводити справи до кінця"],
+        ["", "Люблю прибиратися", "Залишаю речі де попало"],
+        ["", "Кажу правду", "Порушую мої обіцянки"],
+        ["", "Роблю більше, ніж від мене очікують", "Вкладаю мало часу і старань в те, що роблю"],
+        ["", "Дотримуюся своїх планів", "Насилу що-небудь починаю"],
+        ["", "", "Дію необмірковано"]
+      ],
+      "e": [
+        ["", "Відчуваю себе комфортно в оточенні людей", "Тримаю інших на відстані"],
+        ["", "Розмовляю з різними людьми на вечірках", "Уникаю натовпу"],
+        ["", "Беру контроль", "Чекаю, що інші покажуть мені шлях"],
+        ["", "У вільний час займаюся багато чим", "Люблю нічого не приймати близько до серця"],
+        ["", "Веду себе дико і шалено"],
+        ["", "Дивлюся на позитивну сторону життя"]
+      ],
+      "a": [
+        ["", "Довіряю тому, що люди говорять мені", "Не довіряю людям"],
+        ["", "", "Заважаю планам інших людей"],
+        ["", "Турбуюся за інших людей", "Не приділяю часу іншим людям"],
+        ["", "", "Мстивий"],
+        ["", "", "Хизуюся своїми достоїнствами"],
+        ["", "Співпереживаю тим, кому гірше, ніж мені", "Намагаюся не думати про нужденних"]
+      ],
+      "n": [
+        ["", "Легко впадаю у стрес"],
+        ["", "Легко втрачаю самовладання", "Не дратуюся легко"],
+        ["", "Часто буває дуже сумно", "Відчуваю себе комфортно з самим собою"],
+        ["", "Відчуваю себе комфортно тільки з друзями", "Проблемні соціальні ситуації не турбують мене"],
+        ["", "Можу надмірно захопитися", "Здатний контролювати свої бажання"],
+        ["", "Відчуваю себе нездатним справлятися зі справами", "Зберігаю самовладання в стресових ситуаціях"]
+      ]
+    },
+    "ur": {
+      "o": [
+        ["", "تصوراتی دنیا میں رہنا پسند ہے۔"],
+        [
+          "",
+          "جو چیزیں لوگ نظر انداز کرتے ہیں ان میں اچھائی ڈھونڈتا  /ڈھونڈتی ہوں۔",
+          "عجائب گھروں کو شوق سے نہیں جاتا/ جاتی۔"
+        ],
+        ["", "دوسروں کی جذبات سمجھ سکتا /سکتی ہوں۔", "جذباتی لوگوں کو سمجھنا مشکل لگتا ہے۔"],
+        ["", "میں یکسانیت سے اکتا جاتا /جاتی ہوں۔", "میں قد آمت پسند ہوں۔"],
+        ["", "ادبی مواد پڑھنا پسند کرتا/کرتی ہوں", "مجھے مناظرے پسند نہیں۔"],
+        ["", "‏میرےنزدیک جزا اور سزا کا کوئی معیار نہیں ہے۔", "جرم کی سختی سے سرکوبی پر یقین رکھتا/رکھتی ہوں۔"]
+      ],
+      "c": [
+        ["", "معاملات نمٹانا جانتا /جانتی ہوں۔"],
+        ["", "میں  صفائی پسند ہوں۔", "میں اکثر  اپنی اشیاء بھول جاتا/جاتی ہوں۔"],
+        ["", "سچ بولتا /بولتی ہوں۔", "میں اپنے وعدے پورے نہیں کرتا/کرتی ۔"],
+        ["", "میں توقعات سے بڑھ کر کام  کرتا/کرتی ہوں۔", "مجھ میں حالات کا صحیح معنی میں مقابلہ کرنے کی سکت نہیں۔"],
+        ["", "اپنی معاملات کو منطقی انجام تک پہنچاتا /پہنچاتی ہوں۔", "کام کی شروعات مشکل لگتی ہیں۔"],
+        ["", "", "بلا سوچے سمجھے کام کرتا/کرتی ہوں۔"]
+      ],
+      "e": [
+        ["", "مجمع میں آسودگی محسوس ہوتی ہے۔", "لوگوں کو اپنی طرف متوجہ کرناناپسند ہے۔"],
+        [
+          "",
+          "محفل میں مختلف شعبہ زندگی  سےتعلق رکھنے والوں سےہم کلام ہو جاتا /جاتی ہوں۔",
+          "ہجوم سے دور رہتا/رہتی ہوں۔"
+        ],
+        ["", "حالات پر قابو رکھتا/رکھتی ہوں۔", "دوسروں کی رہنمائی میں کام کرتا/کرتی ہوں۔"],
+        ["", "میں فرصت کے لمحات کا بہترین استعمال کرتا/کرتی ہوں۔", "جذبات  کا اظہار  کم کرتا /کرتی ہوں۔"],
+        ["", "خطرہ مول لیتا /لیتی ہوں۔"],
+        ["", "زندگی کی روشن پہلوؤں پر نظر رکھتا/رکھتی ہوں۔"]
+      ],
+      "a": [
+        ["", "سنی سنائی باتوں پر یقین رکھتا/رکھتی ہوں۔", "دوسروں پر اعتبار نہیں کرتا/کرتی۔"],
+        ["", "", "دوسروں کے معاملات میں رکاوٹ ڈالتا/ڈالتی ہوں۔"],
+        ["", "دوسروں کی ضرورت کا خیال رہتا ہے۔", "دوسروں کےلئے میرےپاس وقت نہیں ۔"],
+        ["", "", "تعاون کرنے پر یقین نہیں رکھتا/رکھتی۔"],
+        ["", "", "اپنی تعریفیں کرتا/کرتی ہوں۔"],
+        ["", "غریبوں سے ہمدردی ہے۔", "ضرورت مند کا خیال نہیں کرتا/کرتی۔"]
+      ],
+      "n": [
+        ["", "آسانی سے دوسروں کے دباوٗ میں آجاتا /آجاتی ہوں"],
+        ["", "غصےپر قابو نہیں ہے۔", "آسانی سے  چڑچڑاہٹ  کا شکار نہیں ہوتا/ہوتی۔"],
+        ["", "اکثر افسردہ رہتا/رہتی ہوں۔", "Fمیں اپنے آپ سے بہت خوش ہوں۔"],
+        ["", "صرف دوستوں کی صحبت  خوشی دیتی ہے۔", "حادثات آسانی سے پریشان نہیں کرتے۔"],
+        ["", "کھیل کود اور تفریح کو وقت دیتا/دیتی ہوں۔", "اپنے نفس پر قابو پا سکتا ہوں۔"],
+        ["", "ناامیدی کا شکار ہوں", "مشکل حالات میں پرسکون رہتا /رہتی ہوں۔"]
+      ]
+    },
+    "zh-cn": {
+      "o": [
+        ["", "喜欢沉思"],
+        ["", "从别人可能不会注意到的事物中看到美", "不喜欢去艺术博物馆"],
+        ["", "感受别人的情绪", "不理解情绪化的人"],
+        ["", "喜欢多样化，不喜欢千篇一律", "古板守旧"],
+        ["", "喜爱挑战", "不喜欢讨论理论"],
+        ["", "相信没有绝对的对与错", "相信我们应该眼里打击犯罪"]
+      ],
+      "c": [
+        ["", "知道如何把事情做好"],
+        ["", "洁身自好", "忘记我的随身物品"],
+        ["", "诚实", "不守信"],
+        ["", "期望做的更多", "花很少时间和精力在工作上"],
+        ["", "执行我的计划", "很难开始一件事情"],
+        ["", "", "做事果断干脆"]
+      ],
+      "e": [
+        ["", "感觉周围的人很好", "与人保持距离"],
+        ["", "在聚会上会和很多不同的人交谈", "不随波逐流"],
+        ["", "掌控一切", "等待他人带路"],
+        ["", "在业余时间做很多事", "喜欢放松"],
+        ["", "表现得疯狂"],
+        ["", "对生活充满希望"]
+      ],
+      "a": [
+        ["", "相信别人所说的", "不相信他人"],
+        ["", "", "阻碍别人的计划"],
+        ["", "关心他人", "不为别人浪费时间"],
+        ["", "", "以牙还牙"],
+        ["", "", "有良好的道德感"],
+        ["", "同情那些比我糟糕的人", "忽视那些需要帮助的人"]
+      ],
+      "n": [
+        ["", "易感受到压力"],
+        ["", "开始发脾气", "不轻易生气"],
+        ["", "我经常情绪低落", "感觉自己挺好"],
+        ["", "只有和朋友在一起才觉得舒服", "没有社交困扰"],
+        ["", "狂欢作乐", "能够控制住我的冲动"],
+        ["", "觉得我无法处理事情", "在压力下保持冷静"]
+      ]
+    }
+  }
+}
