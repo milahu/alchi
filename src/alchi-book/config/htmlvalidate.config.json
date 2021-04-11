@@ -1,0 +1,12 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "element-name": "off",
+    "unrecognized-char-ref": "off",
+    "no-inline-style": "off",
+    "wcag/h37": "off",
+    "void-style": "off",
+    "prefer-tbody": "off",
+    "doctype-style": "off"
+  }
+}

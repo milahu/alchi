@@ -1,0 +1,7 @@
+{
+  "tags": "pages",
+
+  "permalink": false,
+  "permalint-false-comment": "this will disable writing the file to disk in your output folder. The file will still be processed normally (and present in collections) but will not be available in your output directory as a standalone template.",
+  "permalint-false-docs": "https://www.11ty.dev/docs/permalinks/#permalink-false"
+} 

@@ -1,0 +1,421 @@
+diff --git a/node_modules/@11ty/eleventy/src/Engines/Txt.js b/node_modules/@11ty/eleventy/src/Engines/Txt.js
+new file mode 100644
+index 0000000..aef38ca
+--- /dev/null
++++ b/node_modules/@11ty/eleventy/src/Engines/Txt.js
+@@ -0,0 +1,34 @@
++// based on Html.js
++
++const TemplateEngine = require("./TemplateEngine");
++
++class Txt extends TemplateEngine {
++  constructor(name, includesDir, config) {
++    super(name, includesDir, config);
++    this.cacheable = true;
++  }
++
++  async compile(str, inputPath, preTemplateEngine) {
++    if (preTemplateEngine) {
++      let engine = this.engineManager.getEngine(
++        preTemplateEngine,
++        super.getIncludesDir(),
++        this.extensionMap
++      );
++      let fnReady = engine.compile(str, inputPath);
++
++      return async function (data) {
++        let fn = await fnReady;
++
++        return fn(data);
++      };
++    } else {
++      return function () {
++        // do nothing with data if parseHtmlWith is falsy
++        return str;
++      };
++    }
++  }
++}
++
++module.exports = Html;
+diff --git a/node_modules/@11ty/eleventy/src/TemplateData.js b/node_modules/@11ty/eleventy/src/TemplateData.js
+index a1a55e2..a14feb5 100755
+--- a/node_modules/@11ty/eleventy/src/TemplateData.js
++++ b/node_modules/@11ty/eleventy/src/TemplateData.js
+@@ -485,7 +485,7 @@ class TemplateData {
+     // data suffix
+     paths.push(base + dataSuffix + ".js");
+     paths.push(base + dataSuffix + ".cjs");
+-    paths.push(base + dataSuffix + ".json");
++    paths.push(base + dataSuffix + ".json"); // default: .11tydata.json
+ 
+     // inject user extensions
+     this._pushExtensionsToPaths(paths, base + dataSuffix, extensions);
+@@ -514,6 +514,7 @@ class TemplateData {
+ 
+       let filePathNoExt = parsed.dir + "/" + fileNameNoExt;
+       let dataSuffix = this.config.jsDataFileSuffix;
++      // default dataSuffix: .11tydata, is appended in _addBaseToPaths
+       debug("Using %o to find data files.", dataSuffix);
+ 
+       this._addBaseToPaths(paths, filePathNoExt, userExtensions);
+@@ -530,6 +531,10 @@ class TemplateData {
+         }
+         if (!inputDir || (dir.indexOf(inputDir) === 0 && dir !== inputDir)) {
+           this._addBaseToPaths(paths, dirPathNoExt, userExtensions);
++          if (this.config.jsDataFileBase) {
++            let jsDataFile = dir + "/" + this.config.jsDataFileBase;
++            this._addBaseToPaths(paths, jsDataFile, userExtensions);
++          }
+         }
+       }
+ 
+@@ -542,6 +547,12 @@ class TemplateData {
+         if (lastInputDir !== "./") {
+           this._addBaseToPaths(paths, lastInputDir, userExtensions);
+         }
++        // also in root input dir, search for index.11tydata.json et al
++        if (this.config.jsDataFileBase) {
++          let jsDataFile = (TemplatePath.getDirFromFilePath(lastInputDir) +
++            "/" + this.config.jsDataFileBase);
++          this._addBaseToPaths(paths, jsDataFile, userExtensions);
++        }
+       }
+     }
+ 
+@@ -562,7 +573,7 @@ class TemplateData {
+   }
+ 
+   static cleanupData(data) {
+-    if ("tags" in data) {
++    if (typeof data === "object" && "tags" in data) {
+       if (typeof data.tags === "string") {
+         data.tags = data.tags ? [data.tags] : [];
+       } else if (data.tags === null) {
+diff --git a/node_modules/@11ty/eleventy/src/TemplatePassthrough.js b/node_modules/@11ty/eleventy/src/TemplatePassthrough.js
+index e3fa302..ef24d76 100644
+--- a/node_modules/@11ty/eleventy/src/TemplatePassthrough.js
++++ b/node_modules/@11ty/eleventy/src/TemplatePassthrough.js
+@@ -21,6 +21,8 @@ class TemplatePassthrough {
+     this.outputPath = path.outputPath;
+     this.outputDir = outputDir;
+ 
++    this.copyOptions = path.copyOptions; // custom options for recursive-copy
++
+     this.isDryRun = false;
+   }
+ 
+@@ -124,12 +126,19 @@ class TemplatePassthrough {
+       });
+     }
+ 
+-    const copyOptions = {
+-      overwrite: true,
+-      dot: true,
+-      junk: false,
++    // default options for recursive-copy
++    // see https://www.npmjs.com/package/recursive-copy#arguments
++    const copyOptionsDefault = {
++      overwrite: true, // overwrite output. fails when input is directory (mkdir) and output is file
++      dot: true, // copy dotfiles
++      junk: false, // copy cache files like Thumbs.db
+       results: false,
++      expand: false, // follow symlinks
++      debug: false,
+     };
++
++    const copyOptions = Object.assign(copyOptionsDefault, this.copyOptions);
++
+     let promises = [];
+ 
+     debug("Copying %o", this.inputPath);
+diff --git a/node_modules/@11ty/eleventy/src/TemplatePassthroughManager.js b/node_modules/@11ty/eleventy/src/TemplatePassthroughManager.js
+index d050fbf..5dacae2 100644
+--- a/node_modules/@11ty/eleventy/src/TemplatePassthroughManager.js
++++ b/node_modules/@11ty/eleventy/src/TemplatePassthroughManager.js
+@@ -54,21 +54,22 @@ class TemplatePassthroughManager {
+     this.incrementalFile = path;
+   }
+ 
+-  _normalizePaths(path, outputPath) {
++  _normalizePaths(path, outputPath, copyOptions = {}) {
+     return {
+       inputPath: TemplatePath.addLeadingDotSlash(path),
+       outputPath: outputPath
+         ? TemplatePath.stripLeadingDotSlash(outputPath)
+         : true,
++      copyOptions,
+     };
+   }
+ 
+   getConfigPaths() {
+-    let paths = [];
+-    let target = this.config.passthroughCopies || {};
+-    debug("`addPassthroughCopy` config API paths: %o", target);
+-    for (let path in target) {
+-      paths.push(this._normalizePaths(path, target[path]));
++    const paths = [];
++    const pathsRaw = this.config.passthroughCopies || {};
++    debug("`addPassthroughCopy` config API paths: %o", pathsRaw);
++    for (const [inputPath, { outputPath, copyOptions }] of Object.entries(pathsRaw)) {
++      paths.push(this._normalizePaths(inputPath, outputPath, copyOptions));
+     }
+     debug("`addPassthroughCopy` config API normalized paths: %o", paths);
+     return paths;
+@@ -175,23 +176,27 @@ class TemplatePassthroughManager {
+       return [this._normalizePaths(this.incrementalFile)];
+     }
+ 
+-    let normalizedPaths = [];
+-
+-    let pathsFromConfigurationFile = this.getConfigPaths();
+-    for (let path of pathsFromConfigurationFile) {
+-      debug("TemplatePassthrough copying from config: %o", path);
+-      normalizedPaths.push(path);
++    const normalizedPaths = this.getConfigPaths();
++    if (debug.enabled) {
++      for (const path of normalizedPaths) {
++        debug("TemplatePassthrough copying from config: %o", path);
++      }
+     }
+ 
+     if (paths && paths.length) {
+-      let passthroughPaths = this.getNonTemplatePaths(paths);
+-      for (let path of passthroughPaths) {
+-        let normalizedPath = this._normalizePaths(path);
+-        debug(
+-          `TemplatePassthrough copying from non-matching file extension: ${normalizedPath.inputPath}`
+-        );
++      const passthroughPaths = this.getNonTemplatePaths(paths);
++      for (const path of passthroughPaths) {
++        const normalizedPath = this._normalizePaths(path);
+         normalizedPaths.push(normalizedPath);
+       }
++      if (debug.enabled) {
++        for (const path of passthroughPaths) {
++          const normalizedPath = this._normalizePaths(path);
++          debug(
++            `TemplatePassthrough copying from non-matching file extension: ${normalizedPath.inputPath}`
++          );
++        }
++      }
+     }
+ 
+     return normalizedPaths;
+@@ -203,10 +208,8 @@ class TemplatePassthroughManager {
+   async copyAll(paths) {
+     debug("TemplatePassthrough copy started.");
+     let normalizedPaths = this.getAllNormalizedPaths(paths);
+-    let passthroughs = [];
+-    for (let path of normalizedPaths) {
+-      passthroughs.push(this.getTemplatePassthroughForPath(path));
+-    }
++
++    const passthroughs = normalizedPaths.map(path => this.getTemplatePassthroughForPath(path));
+ 
+     return Promise.all(
+       passthroughs.map((pass) => this.copyPassthrough(pass))
+diff --git a/node_modules/@11ty/eleventy/src/UserConfig.js b/node_modules/@11ty/eleventy/src/UserConfig.js
+index 083b44d..f832ff0 100644
+--- a/node_modules/@11ty/eleventy/src/UserConfig.js
++++ b/node_modules/@11ty/eleventy/src/UserConfig.js
+@@ -335,14 +335,20 @@ class UserConfig {
+    *
+    * @param {string|object} fileOrDir The path to the file or directory that should
+    * be copied. OR an object where the key is the input glob and the property is the output directory
++   * @param {object} copyOptions options for recursive-copy.
++   * see https://www.npmjs.com/package/recursive-copy#arguments
++   * default options are defined in TemplatePassthrough copyOptionsDefault
+    * @returns {any} a reference to the `EleventyConfig` object.
+    * @memberof EleventyConfig
+    */
+-  addPassthroughCopy(fileOrDir) {
++  addPassthroughCopy(fileOrDir, copyOptions = {}) {
+     if (typeof fileOrDir === "string") {
+-      this.passthroughCopies[fileOrDir] = true;
++      const inputPath = fileOrDir;
++      this.passthroughCopies[inputPath] = { outputPath: true, copyOptions };
+     } else {
+-      Object.assign(this.passthroughCopies, fileOrDir);
++      for (const [inputPath, outputPath] of Object.entries(fileOrDir)) {
++        this.passthroughCopies[inputPath] = { outputPath, copyOptions };
++      }
+     }
+ 
+     return this;
+diff --git a/node_modules/@11ty/eleventy/src/defaultConfig.js b/node_modules/@11ty/eleventy/src/defaultConfig.js
+index 20538b6..36f9f53 100644
+--- a/node_modules/@11ty/eleventy/src/defaultConfig.js
++++ b/node_modules/@11ty/eleventy/src/defaultConfig.js
+@@ -42,6 +42,8 @@ module.exports = function (config) {
+     dataTemplateEngine: false, // change in 1.0
+     htmlOutputSuffix: "-o",
+     jsDataFileSuffix: ".11tydata",
++    jsDataFileBase: null,
++    // set to 'index': in every folder use datafiles 'index.11tydata.json' et al
+     keys: {
+       package: "pkg",
+       layout: "layout",
+diff --git a/node_modules/@11ty/eleventy/test/TemplatePassthroughManagerTest.js b/node_modules/@11ty/eleventy/test/TemplatePassthroughManagerTest.js
+index 23f37ef..6d82447 100644
+--- a/node_modules/@11ty/eleventy/test/TemplatePassthroughManagerTest.js
++++ b/node_modules/@11ty/eleventy/test/TemplatePassthroughManagerTest.js
+@@ -8,18 +8,20 @@ const EleventyExtensionMap = require("../src/EleventyExtensionMap");
+ test("Get paths from Config", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    img: true,
++    img: { outputPath: true },
+   };
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+ 
+-  t.deepEqual(mgr.getConfigPaths(), [{ inputPath: "./img", outputPath: true }]);
++  t.deepEqual(mgr.getConfigPaths(), [
++    { inputPath: "./img", outputPath: true, copyOptions: {} }
++  ]);
+ });
+ 
+ test("isPassthroughCopyFile", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    img: true,
+-    fonts: true,
++    img: { outputPath: true },
++    fonts: { outputPath: true },
+   };
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+ 
+@@ -38,9 +40,9 @@ test("isPassthroughCopyFile", async (t) => {
+ test("Get glob paths from config", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    "test/stubs/img": true,
+-    "test/stubs/img/**": "./",
+-    "test/stubs/img/*.js": "./",
++    "test/stubs/img": { outputPath: true },
++    "test/stubs/img/**": { outputPath: "./" },
++    "test/stubs/img/*.js": { outputPath: "./" },
+   };
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+ 
+@@ -90,11 +92,11 @@ test("Get file paths (one image path)", async (t) => {
+ test("Naughty paths outside of project dir", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    "../static": true,
+-    "../*": "./",
+-    "./test/stubs/template-passthrough2/static/*.css": "./",
+-    "./test/stubs/template-passthrough2/static/*.js": "../../",
+-    "./test/stubs/template-passthrough2/img.jpg": "../../",
++    "../static": { outputPath: true },
++    "../*": { outputPath: "./" },
++    "./test/stubs/template-passthrough2/static/*.css": { outputPath: "./" },
++    "./test/stubs/template-passthrough2/static/*.js": { outputPath: "../../" },
++    "./test/stubs/template-passthrough2/img.jpg": { outputPath: "../../" },
+   };
+ 
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+@@ -128,28 +130,28 @@ test("Naughty paths outside of project dir", async (t) => {
+ test("getAllNormalizedPaths", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    img: true,
++    img: { outputPath: true },
+   };
+ 
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+   t.deepEqual(mgr.getAllNormalizedPaths(), [
+-    { inputPath: "./img", outputPath: true },
++    { inputPath: "./img", outputPath: true, copyOptions: {} },
+   ]);
+ });
+ 
+ test("getAllNormalizedPaths with globs", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    img: true,
+-    "img/**": "./",
+-    "img/*.js": "./",
++    img: { outputPath: true },
++    "img/**": { outputPath: "./" },
++    "img/*.js": { outputPath: "./" },
+   };
+ 
+   let mgr = new TemplatePassthroughManager(eleventyConfig);
+   t.deepEqual(mgr.getAllNormalizedPaths(), [
+-    { inputPath: "./img", outputPath: true },
+-    { inputPath: "./img/**", outputPath: "" },
+-    { inputPath: "./img/*.js", outputPath: "" },
++    { inputPath: "./img", outputPath: true, copyOptions: {} },
++    { inputPath: "./img/**", outputPath: "", copyOptions: {} },
++    { inputPath: "./img/*.js", outputPath: "", copyOptions: {} },
+   ]);
+ });
+ 
+@@ -157,7 +159,7 @@ test("Look for uniqueness on template passthrough paths #1677", async (t) => {
+   let formats = [];
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    "./test/stubs/template-passthrough-duplicates/**/*.png": "./",
++    "./test/stubs/template-passthrough-duplicates/**/*.png": { outputPath: "./", copyOptions: {} },
+   };
+ 
+   let files = new EleventyFiles(
+diff --git a/node_modules/@11ty/eleventy/test/TemplateWriterTest.js b/node_modules/@11ty/eleventy/test/TemplateWriterTest.js
+index b374b70..039e359 100644
+--- a/node_modules/@11ty/eleventy/test/TemplateWriterTest.js
++++ b/node_modules/@11ty/eleventy/test/TemplateWriterTest.js
+@@ -700,10 +700,10 @@ test.skip("JavaScript with alias", async (t) => {
+ test("Passthrough file output", async (t) => {
+   let eleventyConfig = new TemplateConfig();
+   eleventyConfig.userConfig.passthroughCopies = {
+-    "./test/stubs/template-passthrough/static": true,
+-    "./test/stubs/template-passthrough/static/": "./",
+-    "./test/stubs/template-passthrough/static/**/*": "./all/",
+-    "./test/stubs/template-passthrough/static/**/*.js": "./js/",
++    "./test/stubs/template-passthrough/static": { outputPath: true, copyOptions: {} },
++    "./test/stubs/template-passthrough/static/": { outputPath: "./", copyOptions: {} },
++    "./test/stubs/template-passthrough/static/**/*": { outputPath: "./all/", copyOptions: {} },
++    "./test/stubs/template-passthrough/static/**/*.js": { outputPath: "./js/", copyOptions: {} },
+   };
+   let tw = new TemplateWriter(
+     "./test/stubs/template-passthrough/",
+diff --git a/node_modules/@11ty/eleventy/test/UserConfigTest.js b/node_modules/@11ty/eleventy/test/UserConfigTest.js
+index 23e3897..aab1630 100644
+--- a/node_modules/@11ty/eleventy/test/UserConfigTest.js
++++ b/node_modules/@11ty/eleventy/test/UserConfigTest.js
+@@ -95,7 +95,7 @@ test("Set manual Pass-through File Copy (single call)", (t) => {
+   let userCfg = new UserConfig();
+   userCfg.addPassthroughCopy("img");
+ 
+-  t.is(userCfg.passthroughCopies["img"], true);
++  t.deepEqual(userCfg.passthroughCopies["img"], { outputPath: true, copyOptions: {} });
+ });
+ 
+ test("Set manual Pass-through File Copy (chained calls)", (t) => {
+@@ -106,10 +106,10 @@ test("Set manual Pass-through File Copy (chained calls)", (t) => {
+     .addPassthroughCopy({ "./src/static": "static" })
+     .addPassthroughCopy({ "./src/empty": "./" });
+ 
+-  t.is(userCfg.passthroughCopies["css"], true);
+-  t.is(userCfg.passthroughCopies["js"], true);
+-  t.is(userCfg.passthroughCopies["./src/static"], "static");
+-  t.is(userCfg.passthroughCopies["./src/empty"], "./");
++  t.deepEqual(userCfg.passthroughCopies["css"], { outputPath: true, copyOptions: {} });
++  t.deepEqual(userCfg.passthroughCopies["js"], { outputPath: true, copyOptions: {} });
++  t.deepEqual(userCfg.passthroughCopies["./src/static"], { outputPath: "static", copyOptions: {} });
++  t.deepEqual(userCfg.passthroughCopies["./src/empty"], { outputPath: "./", copyOptions: {} });
+ });
+ 
+ test("Set manual Pass-through File Copy (glob patterns)", (t) => {
+@@ -124,8 +124,8 @@ test("Set manual Pass-through File Copy (glob patterns)", (t) => {
+   t.is(userCfg.passthroughCopies["js/**"], undefined);
+ 
+   // exists
+-  t.is(userCfg.passthroughCopies["./src/static/**/*"], "renamed");
+-  t.is(userCfg.passthroughCopies["./src/markdown/*.md"], "");
++  t.deepEqual(userCfg.passthroughCopies["./src/static/**/*"], { outputPath: "renamed", copyOptions: {} });
++  t.deepEqual(userCfg.passthroughCopies["./src/markdown/*.md"], { outputPath: "", copyOptions: {} });
+ });
+ 
+ test("Set Template Formats (string)", (t) => {

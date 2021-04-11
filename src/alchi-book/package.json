@@ -1,0 +1,35 @@
+{
+  "name": "alchi-book",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "build": "node scripts/inline-eleventy.cli.js",
+    "build-splitfile": "cross-env NODE_ENV=production eleventy --config=config/eleventy.config.js",
+    "serve": "cross-env NODE_ENV=production eleventy --serve --config=config/eleventy.config.js",
+    "dev": "cross-env NODE_ENV=development eleventy --serve --config=config/eleventy.config.js",
+    "debug": "cross-env DEBUG=* eleventy --config=config/eleventy.config.js",
+    "test": "npm-run-all -s test:**",
+    "test:a:html": "html-validate --config=config/htmlvalidate.config.json src/pages/"
+  },
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@11ty/eleventy": "*",
+    "@fontsource/noto-mono": "^4.2.1",
+    "@fontsource/noto-sans": "^4.2.2",
+    "app-root-path": "^3.0.0",
+    "clean-css": "^5.1.1",
+    "cross-env": "*",
+    "eleventy-plugin-transformdom": "^1.0.1",
+    "fast-glob": "^3.2.5",
+    "find-free-port-sync": "^1.0.0",
+    "html-validate": "^4.6.1",
+    "inliner": "^1.13.1",
+    "luxon": "^1.25.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.2.5",
+    "node-html-parser": "link:/home/user/src/javascript/node-html-parser/node-html-parser/",
+    "npm-run": "^5.0.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

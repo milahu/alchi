@@ -1,0 +1,20 @@
+---
+layout: layouts/book.njk
+# exclude index.njk from collections.all
+#eleventyExcludeFromCollections: true
+#eleventyNavigation:
+#  key: Home
+#  order: 1
+---
+
+<div id="pages-container">
+
+  {%- for pageIndex, page in collections.pages.entries() -%}
+    <div class="page-container" id="page-{{ pageIndex + 1 }}"
+      data-inputpath="{{ page.inputPath | inputPathPretty }}"
+    >
+      {{ page.templateContent | safe }}
+    </div>
+  {%- endfor -%}
+
+</div>

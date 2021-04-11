@@ -1,0 +1,26 @@
+please use a proper FOSS code editor:
+notepad2, notepad++, sublime text 3, visual studio code, lighttable ...
+
+NOTE optimized for firefox
+
+print settings
+
+* page format: DIN A4 landscape
+* duplex on + flip on short edge
+* scale 100%, no margins, disable "fit to printable area"
+
+TODO sync colors: map, eight_colors
+TODO build a noscript version (jsdom + outerHTML?)
+
+TODO generate simple SVG graphs dynamically with javascript
+FIXME fix pixelated/blurry svg background patterns in chrome -> render lines without pattern
+
+TODO move text to start + style/script to end of file? currently text starts around line 1500
+or outsource script and style -> outsourcing script breaks file protocol in browser
+
+TODO leave white space on every pages, so readers can add hand-written comments. split pages in upper + lower half
+
+TODO export/import all text nodes for auto translation (google translate)
+-> remove html markup, make a large list of text nodes,
+so the list format is preserved by the auto translator,
+them import the text list back into our xml node format

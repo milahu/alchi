@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="{{ metadata.primarylanguage }}">
+<head>
+<meta charset="utf-8">
+
+{# metadata is defined in alchi/src/alchi-book/src/_data/metadata.json #}
+
+{# TODO change in set_language() #}
+<title>pallas.ich-und-meine-sechs-freunde</title>
+
+<meta name="description" content="{{ metadata.description }}">
+<meta name="keywords" content="{{ metadata.keywords }}">
+
+{# TODO loop over the metadata.basename object #}
+<meta name="basename.de" content="{{ metadata.basename.de }}">
+
+<meta name="version" content="{{ metadata.version }}">
+<meta name="author" content="{{ metadata.author.name }}">
+<meta name="author.email" content="{{ metadata.author.email }}">
+<!--<meta name="contributors" content="">-->
+
+{# TODO move to metadata.json #}
+<meta name="homepage" content="https://github.com/milahu/alchi">
+<meta name="homepage.webarchive" content="https://web.archive.org/web/*/https://github.com/milahu/alchi">
+<meta name="homepage.gitea" content="https://try.gitea.io/milahu/alchi">
+<meta name="homepage.gitlab" content="https://gitlab.com/milahu/alchi">
+<meta name="homepage.tor-rootgit" content="http://rootgit4rghbuenb.onion/milahu/alchi">
+<meta name="homepage.tor-galaxy" content="http://galaxy3m2mn5iqtn.onion/profile/milahu">
+<meta name="homepage.tor-email" content="mailto:milahu@torbox3uiot6wchz.onion">
+
+<meta name="color-scheme" content="light dark">
+<meta name="languages" content="{{ metadata.languages }}">
+<meta name="generator" content="eleventy @ https://www.11ty.dev/">
+
+<!-- legal stuff. short: zero limits and zero warranty -->
+<meta name="license" content="CC0-1.0">
+<meta name="license.shortname" content="CC-Zero-1.0">
+<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+<meta name="dcterms.rights" content="License is Creative Commons Zero Version 1.0">
+<link rel="copyright" href="https://creativecommons.org/publicdomain/zero/1.0/deed">
+
+<!--
+
+NOTE these metadata tags should be machine-readable and human-readable.
+[ hello to the few curious people who read HTML source code :) ]
+they are a mix of standard keywords
+and nonstandard keywords inspired by npm's package.json data format
+
+-->
+
+<!--
+
+{{ headcomment.str | safe }}
+
+-->
+
+<link rel="stylesheet" href="{{ "/css/noto-sans/latin.css" | url }}">
+<link rel="stylesheet" href="{{ "/css/noto-sans/latin-700.css" | url }}">
+<link rel="stylesheet" href="{{ "/css/noto-mono/latin.css" | url }}">
+<link rel="stylesheet" href="{{ "/css/index.css" | url }}">
+
+</head>
+
+<body>
+
+<div class="modal" id="printing">
+  <div class="box">
+    <a class="close" onclick="closeModal('printing')">X</a>
+    <p class="title">Print Settings</p>
+    <div class="content">
+      <span>
+        1. paper format = DIN A4 landscape<br>
+        2. disable margins, scale to 100%<br>
+        3. duplex on, with flip on short edge<br>
+        <br>
+        if you want to print to a different paper format,
+        see the javascipt source code and change the variables:
+        page_x, page_y, page_margin, font_size<br>
+        <br>
+        "audit mode" will add space for manual annotations.
+        (should be printed with "linear" layout).
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="screen-menu">
+  This menu is removed for <span class="link" onclick="openModal('printing')">printing</span>.
+  Set language:
+  <span class="language-menu"></span>
+  Set layout:
+  <span class="layout-menu"></span>
+  <!--
+    <span id="message-install-fonts">
+      Please run <code>npm install</code> to install font files.
+    </span>
+  -->
+</div>
+
+{{ content | safe }}
+
+<script src="{{ '/js/index.js' | url }}"></script>
+
+</body>
+</html>
