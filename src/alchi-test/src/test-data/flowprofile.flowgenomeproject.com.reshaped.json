@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "name": "Flow Profile",
+    "sources": [{"url": "https://flowgenomeproject.com/"}],
+    "licenses": [],
+    "documents": [
+      {
+        "name": "hard charger",
+        "url": "https://www.flowgenomeproject.com/flow-profile-results-hard-charger",
+        "lang": "en"
+      },
+      {"name": "flow goer", "url": "https://www.flowgenomeproject.com/flow-profile-flow-goer", "lang": "en"},
+      {"name": "crowd pleaser", "url": "https://www.flowgenomeproject.com/flow-profile-crowd-pleaser", "lang": "en"},
+      {"name": "deep thinker", "url": "https://www.flowgenomeproject.com/flow-profile-deep-thinker", "lang": "en"}
+    ],
+    "tests": [
+      {
+        "name": "flowgenomeproject.com",
+        "url": "https://www.flowgenomeproject.com/flow-profile#Take-quiz-now",
+        "lang": "en"
+      }
+    ]
+  },
+  "defaultLanguage": "en",
+  "languageKeys": ["en"],
+  "domainKeys": ["e", "s"],
+  "domainWidths": {"e": 4, "s": 2},
+  "domainNames": {
+    "en": {
+      "e": ["", "Hard Charger", "Flow Goer", "Crowd Pleaser", "Deep Thinker"],
+      "s": ["", "Hard Charger or Crowd Pleaser", "Flow Goer or Deep Thinker"]
+    }
+  },
+  "domainItems": {
+    "en": {
+      "e": [
+        [
+          "When I am in Flow, I am most often...",
+          "Pushing myself to my limit / In a high stimulation environment",
+          "Connected to my body",
+          "In a crowd with friends",
+          "Someplace quiet and reflective"
+        ],
+        [
+          "I value Flow most because it...",
+          "fuels my highest achievements",
+          "lets me feel like I'm at one with everything that's happening",
+          "lets me share amazing moments with others",
+          "inspires me to solve challenges creatively"
+        ],
+        [
+          "I find Flow when…",
+          "my heart's beating, adrenaline's pumping and it's make or break time",
+          "everything's beautiful and effortless--things happen perfectly",
+          "we're all swept up in the moment together and feel connected to something bigger than ourselves",
+          "hours go by and I lose myself in my work and come up with something amazing"
+        ],
+        [
+          "I find myself in Flow most often…",
+          "in a high stakes environments alone or with a tight crew",
+          "in serene settings where I feel connected to something bigger than myself",
+          "with people so we can build off each other's energy",
+          "when I'm alone and deeply focused or in deep conversation with like minds"
+        ],
+        [
+          "My primary way to get into Flow is…",
+          "challenging my body or career to its fullest",
+          "bringing my body and mind into balance",
+          "making and sharing experiences with friends",
+          "engaging my mind to create and solve things"
+        ],
+        [
+          "If I could take my dream Flow training course, it might be called:",
+          "Flow Big or Go Home: How to Huck Huge in the Zone",
+          "Flow: The Secret to Universal Awareness",
+          "Flow: How Peak Experiences Create Social Bonding",
+          "Flow: Harnessing Creativity for Your Next Breakthrough"
+        ],
+        [
+          "The main reason I value Flow is...",
+          "It helps me thrive in high-stress environments",
+          "It helps me develop my spiritual awareness",
+          "It gives me access to connections I don't normally have",
+          "It gives me access to information I don't normally have"
+        ],
+        [
+          "My Essential Flow Hacking Gear:",
+          "A dancefloor, stage or dinner table",
+          "A mat (altar and incense optional)",
+          "A board (must slide or roll)",
+          "A creative canvas (digital or actual)"
+        ],
+        [
+          "The word that I most associate with my path to Flow is",
+          "Intensity",
+          "Serenity [Peace]",
+          "Intimacy",
+          "Insight"
+        ]
+      ],
+      "s": [
+        [
+          "If I had to choose between Being and Doing, I'd pick...",
+          "Doing––If I wasn't moving I'd go crazy",
+          "Being––I'm happiest in peace and quiet"
+        ]
+      ]
+    }
+  }
+}
