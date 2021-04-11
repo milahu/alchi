@@ -1,4 +1,4 @@
 # jekyll config for github
 
 # dont build packages. we store build artifacts in the repo
-exclude: '*'
+exclude: '*.njk'
