@@ -26,8 +26,6 @@ which can be simply opened in any web browser,
 without [installing node.js](https://nodejs.org/en/download/package-manager/)
 and without starting a local web server
 
-todo: compile the alchi-book to a single file app
-
 [//]: # ( usually with `npm install` and `npm run start` or `npm run dev` )
 [//]: # ( cost: larger repository )
 
