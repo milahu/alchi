@@ -37,6 +37,10 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
 
+* 2021-04-11
+  * [alchi-book html](https://milahu.github.io/alchi/src/alchi-book/dist/pallas.me-and-my-six-friends.2021-04-11.html) - first public release - successor of the alchi-flyer
+  * [alchi-test html](https://milahu.github.io/alchi/src/alchi-test/public/) - first public release - combine multiple personality tests, show result with the four elements
+
 * 2020-09-01
   * [alchi tables html](https://milahu.github.io/alchi/english/alchi-tables.html)
   * [alchi flyer html (german)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)

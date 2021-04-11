@@ -4,6 +4,10 @@ project structure is based on [eleventy-base-blog](https://github.com/11ty/eleve
 
 ## todo
 
+* [src/pages/page-080.html](src/pages/page-080.html)
+  * fix svg image [images/svg_map_be_with_letters_and_numbers.svg](images/svg_map_be_with_letters_and_numbers.svg)
+  * "TODO more text"
+
 remove deps
  
 allow to add annotations to the html document
