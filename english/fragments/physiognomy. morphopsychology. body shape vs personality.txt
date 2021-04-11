@@ -1,0 +1,48 @@
+People that self-identify as liberals, for example, 
+were more likely to face the camera directly, 
+and were more likely to express “surprise” in their pictures. 
+
+Conservatives, meanwhile, on top of being on the whole more white, male, and old, 
+also ended up expressing more “disgust” in their photos than their liberal counterparts.
+
+https://gizmodo.com/a-new-stanford-study-uses-facial-recognition-to-figure-1846052406
+
+--> optimist vs pessimist, idealist vs realist
+
+
+
+Studies focusing on the objective characteristics of human faces 
+have found some associations between facial morphology and personality features. 
+
+For instance, facial symmetry predicts extraversion9. 
+
+Another widely studied indicator is the facial width to height ratio (fWHR), 
+which has been linked to various traits, such as 
+achievement striving10, deception11, dominance12, 
+aggressiveness13,14,15,16, and risk-taking17. 
+The fWHR can be detected with high reliability irrespective of facial hair. 
+The accuracy of fWHR-based judgements suggests that the human perceptual system 
+may have evolved to be sensitive to static facial features, such as the relative face width18.
+
+Trait intercorrelations
+
+The structure of the correlations between the scales 
+was generally similar for the observed test scores and the predicted values, 
+but some coefficients differed significantly (based on the z test) (see Table 3). 
+
+Most notably, predicted openness was more strongly associated 
+with conscientiousness (negatively) and extraversion (positively), 
+
+[ high openness ~ low conscientiousness ]
+[ high openness ~ high extraversion ]
+[ --> openness = extraversion versus conscientiousness ]
+
+whereas its [openness] association with agreeableness was negative rather than positive. 
+[ high openness ~ low agreeableness ]
+
+The associations of predicted agreeableness with conscientiousness and neuroticism 
+were stronger than those between the respective observed scores.
+
+https://www.nature.com/articles/s41598-020-65358-6
+
+

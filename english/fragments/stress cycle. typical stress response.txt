@@ -1,0 +1,44 @@
+stress cycle. typical stress response of four elements
+
+feminine and childish are similar in that they both are broad.
+masculine and mature both are long.
+
+this also makes test questions a bit similar,
+but the difference is:
+
+feminine/masculine = mental sex = gender = motorics = behavior in ABSENCE of stress (change or keep, active or passive)
+childish/mature = mental age = sensorics = behavior in PRESENCE of stress (change or keep, active or passive)
+
+we model "stress" as a square wave:
+on "stress start", the wave goes from zero to 100% in a vertical line.
+
+the first split is between the two sensorics:
+childish CHANGE their path to confront the stress source (easy to distract, easy to provoke, rise early, curious),
+and they hold the confrontation (they interact with the stress source).
+mature KEEP their path to avoid the stress source (ignore stress, repress, hard to distract, rise late),
+but they slowly get distracted more and more by the stress source, until they "explode" (rise late).
+
+now all four are at 100% stress,
+and our square wave drops back to zero stress.
+
+the second split is between the two motorics:
+masculine quickly relax back to zero stress,
+they CHANGE their path to confront the new "zero stress" state.
+feminine KEEP their path at 100% stress,
+they continue their activity in absence of stress.
+(air is active both in presence and absence of stress = hyper active),
+(earth is only active in absence of stress = "flow goer", and is blocked by presence of stress).
+the feminine elements slowly decrease their activity,
+and at the end of the cycle,
+all elements are back to zero stress (and zero activity).
+
+the next cycle continues with:
+stress goes back up to 100%,
+childish quickly CHANGE ther path to confront the stress (high activity),
+mature KEEP their path (low activity), only to later "join the party" (rise late).
+at half cycle, all are at 100% stress and 100% activity, and the stress jumps back to zero.
+masculine quickly CHANGE their path, and go back to zero activity.
+feminine KEEP their level of activity,
+and only slowly return back to zero.
+
+
