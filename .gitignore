@@ -1,3 +1,4 @@
-src/alchi-maps/node_modules
-src/alchi-maps/pnpm-lock.yaml
-src/alchi-maps/public/build
+node_modules
+pnpm-lock.yaml
+trash
+
