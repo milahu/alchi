@@ -8,6 +8,13 @@ project structure is based on [eleventy-base-blog](https://github.com/11ty/eleve
   * fix svg image [src/images/svg_map_be_with_letters_and_numbers.svg](src/images/svg_map_be_with_letters_and_numbers.svg)
   * "TODO more text"
 
+* [src/\_data/metadata.js](src/_data/metadata.js)
+  * add description
+  * set title in english
+
+* [src/\_includes/layouts/book.njk](src/_includes/layouts/book.njk)
+  * use title from metadata
+
 remove deps
  
 allow to add annotations to the html document
@@ -23,7 +30,7 @@ use faster bundler? vite?
 
 fix page up/low style
 
-copy only needed *.css font files?
+copy only needed \*.css font files?
 
 publish all patches for eleventy (see milahu's pull requests on github)
 https://github.com/11ty/eleventy/issues?q=author%3Amilahu
