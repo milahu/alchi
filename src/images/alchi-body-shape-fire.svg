@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96"
+   inkscape:export-xdpi="96"
+   inkscape:export-filename="/home/user/user-old/doc/alchi/git/alchi/src/images/alchi-body-shape-fire.svg.png"
+   sodipodi:docname="alchi-body-shape-fire.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 121.60646 129.89268"
+   height="129.89268mm"
+   width="121.60646mm">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     fit-margin-bottom="5"
+     fit-margin-right="5"
+     fit-margin-left="5"
+     fit-margin-top="5"
+     lock-margins="true"
+     inkscape:window-maximized="0"
+     inkscape:window-y="59"
+     inkscape:window-x="106"
+     inkscape:window-height="944"
+     inkscape:window-width="1814"
+     inkscape:snap-intersection-paths="true"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="301.81277"
+     inkscape:cx="-33.892463"
+     inkscape:zoom="0.7"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:snap-object-midpoints="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-28.777466,-85.16421)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       id="g926">
+      <path
+         id="path916"
+         d="m 143.63247,131.45235 c -1.25113,4.65255 -3.4853,9.08431 -6.89928,12.85188 -12.12811,13.38425 -38.707626,18.46291 -47.152836,44.53853 -8.445245,-26.07562 -35.042352,-31.16097 -47.152831,-44.53853 -3.420317,-3.77818 -5.656751,-8.22231 -6.906473,-12.88673"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         id="path869"
+         d="m 35.52105,131.4175 c -1.645169,-6.14036 -1.580386,-12.66247 -0.255471,-18.54957 1.299811,-5.77556 3.811137,-10.93875 7.107044,-14.527547 9.894401,-10.773667 38.019982,-13.042162 47.207732,12.136527 9.187752,-25.178689 37.313335,-22.910193 47.207735,-12.136527 3.29901,3.592177 5.81196,8.761707 7.11071,14.543847 1.32376,5.89348 1.38609,12.42336 -0.26633,18.56812"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path920"
+         d="m 143.65486,131.45294 c 0.0855,0.3386 0.16687,0.67955 0.24394,1.02267 2.32605,10.35576 0.75731,22.67648 -7.16561,31.42 -12.12811,13.38425 -38.707626,18.46291 -47.152836,44.53853 -8.445245,-26.07562 -35.042349,-31.16097 -47.152831,-44.53853 -7.922918,-8.75187 -9.493306,-21.07717 -7.161944,-31.4363 0.0766,-0.34038 0.157417,-0.67864 0.24235,-1.01457"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path837"
+         d="m 35.507929,131.44474 c 1.356197,-5.36411 3.763032,-10.13569 6.864694,-13.51297 9.894414,-10.77366 38.019982,-13.04217 47.207732,12.13652 9.187752,-25.17869 37.313325,-22.91018 47.207735,-12.13652 3.10324,3.37901 5.51095,8.15373 6.86677,13.52117"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
