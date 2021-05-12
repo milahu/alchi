@@ -5,6 +5,8 @@ const open = require('open');
 
 const pkg = require(appRoot+'/package.json');
 
+const waitSeconds = 10;
+
 const eleventy = {};
 eleventy.config = pkg.eleventy?.config || '.eleventy.js';
 eleventy.host = 'localhost';
@@ -69,11 +71,13 @@ else {
     detached: false,
     windowsHide: true,
   });
+
+  console.log(`[dev] wait ${waitSeconds} seconds for eleventy before open browser`);
   
   if (eleventy.open) {
     setTimeout(() => {
       console.log(`[dev] open ${eleventy.devserver}`);
       open(eleventy.devserver);
-    }, 4000);
+    }, waitSeconds * 1000);
   }
 }
