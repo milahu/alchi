@@ -35,6 +35,7 @@
     "fast-glob": "*",
     "find-free-port-sync": "*",
     "html-validate": "*",
+    "htmldiff": "github:mblink/htmldiff.js#3e2482bee852bb811f5cc1f2be8f93d6c56ddc0e",
     "inliner": "^*",
     "luxon": "*",
     "markdown-it": "*",
@@ -48,7 +49,6 @@
   },
   "dependencies": {
     "diff": "*",
-    "htmldiff": "github:inkling/htmldiff.js",
     "patch-package": "github:milahu/patch-package#pnpm-support-2",
     "xregexp": "*"
   }
