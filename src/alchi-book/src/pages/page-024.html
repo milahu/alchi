@@ -1,0 +1,218 @@
+<page>
+
+  <p>
+    <de>
+      <b>Symmetrie?</b>
+      Der Rest der Karte ist eine "Extrapolation"
+      von meinen persönlichen Erfahrungen,
+      also eine Vorhersage,
+      wie der Rest der Karte aussehen könnte.
+      Dafür habe ich mehrere Annahmen gemacht:
+    </de>
+  </p>
+
+<pre class="map16 float-right">
+_ _ 4 _ _
+_ _ _ _ _
+3 _ 1 _ 3
+_ _ _ _ _
+_ _ 4 _ _
+</pre>
+
+  <p>
+    <de>
+      1. Es gilt die "Ein Schritt weiter" Regel:
+      Jeder übernächste Punkt (in gerader Richtung)
+      muss "andere Klasse" haben.
+      (zwei Klassen: 12 und 34.)
+      Den übernächsten Punkt nennen wir <b>Modalität</b>.
+  
+      Beispiel: Ein Punkt mit Element 1 (Feuer)
+      muss in einer Richtung Element 4 als übernächste Punkte haben <nw>(4 _ 1 _ 4)</nw>
+      und in der anderen Richtung Element 3 als übernächste Punkte haben <nw>(3 _ 1 _ 3)</nw>.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      1.a.
+      Vier Schritte weiter (in gerader Richtung) muss wieder das gleiche Element sein,
+      also ist die Karte symmetrisch zu "Modulo 4"
+      = die ganze Karte wiederholt sich alle vier Schritte
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+      
+      1.b.
+      Die kleinste Darstellung der Karte ist eine 4 Mal 4 "Matrix" mit 16 Punkten.
+      Damit sind schon 25% der Karte festgelegt.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      1.c.
+      Jeder übernächste Punkt (in geraden Richtungen)
+      muss "andere Klasse" haben.
+
+      Beispiel:
+      Element 2 hat die Modalitäten 3 und 4.
+      Also: "2 1 2" darf nicht sein,
+      weil der übernächste Punkt ist die Modalität.
+      Also muss es sein "2 1 3" oder "2 1 4",
+      oder "3 1 2" oder "4 1 2".
+    </de>
+  </p>
+
+  <p>
+    <de>
+      2. Zwei Punkte, die direkt nebeneinander liegen,
+      müssen zwei verschiedene Elemente haben.
+
+      Zugegeben, das ist etwas willkürlich ...
+      aber diagonale Punkte dürfen das gleiche Element haben.
+      Daraus folgt (mit meinen persönlichen Erfahrungen):
+      Meine (Element 1) vier nächsten Punkte (in geraden Richtungen)
+      müssen Elemente 2 3 4 sein (aber nicht Element 1).
+    </de>
+  </p>
+
+  <p>
+    <de>
+      3. Der größte Unterschied zwischen den Elementen ist ihre "Klasse" (12 oder 34),
+      und beide Klassen sind gleich wichtig.
+    </de>
+  </p>
+
+<div class="float-right">
+
+<pre class="map16">
+_ 2 _
+4 1 2
+_ 3 _
+</pre>
+
+<pre class="map16">
+_ 2 1
+4 1 2
+_ 3 _
+</pre>
+
+</div>
+
+  <p>
+    <de>
+      3.a.
+      Für die vier nächsten Punkte gilt:
+      zwei Punkte müssen aus der Klasse 12 sein,
+      und zwei Punkte müssen aus der Klasse 34 sein.
+      Mit 2 folgt, zum Beispiel für Element 1:
+      Die vier nächsten Punkte sind 2 2 3 4.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      Hier ist auffällig:
+      Das Element 2 wird diagonal wiederholt.
+      Die einzig symmetrische Lösung dafür ist:
+      Auch das Element 1 muss diagonal wiederholt werden.
+    </de>
+  </p>
+
+<div class="float-right">
+
+<pre class="map16">
+_ _ _ 4 _ _
+_ _ 4 _ _ _
+_ 3 2 1 _ 3
+3 4 1 2 3 _
+_ _ 3 4 _ _
+_ _ 4 _ _ _
+</pre>
+
+<pre class="map16">
+_ _ 3 4 _ _
+_ _ 4 3 _ _
+4 3 2 1 4 3
+3 4 1 2 3 4
+_ _ 3 4 _ _
+_ _ 4 3 _ _
+</pre>
+
+</div>
+
+  <p>
+    <de>
+      Mit Regel 2 (keine direkte Wiederholung)
+      sind die übernächsten Punkte von Element 1 eindeutig festgelegt.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      Auch für Element 2 sind die übernächsten Punkte eindeutig.
+      Damit haben wir die Teil-Muster gefunden,
+      die wir <b>Flusskreis</b> nennen.
+      Ein Flusskreis besteht aus 1122 oder 3344,
+      und die gleichen Elemente liegen diagonal.
+    </de>
+  </p>
+
+<div class="float-right">
+
+<pre class="map16">
+_ _ _ _ 2 _ _ _ _ _
+_ _ _ _ _ 2 _ _ _ _
+_ _ _ _ 3 4 _ _ _ _
+_ _ 2 1 4 3 2 1 _ _
+_ 1 4 3 2 1 4 3 _ 1
+1 _ 3 4 1 2 3 4 1 _
+_ _ 1 _ 3 4 1 _ _ _
+_ _ _ 1 4 3 2 1 _ _
+_ _ _ _ 2 _ _ _ _ _
+_ _ _ _ _ 2 _ _ _ _
+</pre>
+
+<pre class="map16">
+_ _ _ _ 2 1 _ _ _ _
+_ _ _ _ 1 2 _ _ _ _
+_ _ 1 2 3 4 1 2 _ _
+_ _ 2 1 4 3 2 1 _ _
+2 1 4 3 2 1 4 3 2 1
+1 2 3 4 1 2 3 4 1 2
+_ _ 1 2 3 4 1 2 _ _
+_ _ 2 1 4 3 2 1 _ _
+_ _ _ _ 2 1 _ _ _ _
+_ _ _ _ 1 2 _ _ _ _
+</pre>
+
+</div>
+
+  <p>
+    <de>
+      Auch für Element 3 sind die übernächsten Punkte eindeutig.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      Auch für Element 4 sind die übernächsten Punkte eindeutig.
+    </de>
+  </p>
+
+  <p>
+    <de>
+      Damit sind die Vier Elemente festgelegt :)
+      Denn in Regel 1.b haben wir schon gesehen:
+      Die Karte muss "zyklisch" sein mit Modulo 4,
+      also in X-Richtung und in Y-Richtung
+      wiederholt sich das Muster nach vier Schritten.
+    </de>
+  </p>
+
+</page>
