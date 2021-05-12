@@ -1,0 +1,200 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="content" width="900px" height="900px" viewBox="0 0 800 800">
+
+<style>:root { --fg: #000000; --bg: #ffffff; --angleBack: 0deg; }</style>
+
+<defs class="svelte-yuvmp8">
+<pattern id="same_class_lines" width="800" height="800" x="0" y="0" patternUnits="userSpaceOnUse" class="svelte-yuvmp8">
+	<g stroke-width="8" fill="none" class="svelte-yuvmp8" style="stroke: var(--fg);">
+		<line x1="500" y1="500" x2="300" y2="300" class="svelte-yuvmp8"/>
+		<line x1="500" y1="300" x2="300" y2="500" class="svelte-yuvmp8"/>
+		<line x1="0" y1="0" x2="100" y2="100" class="svelte-yuvmp8"/>
+		<line x1="800" y1="800" x2="700" y2="700" class="svelte-yuvmp8"/>
+		<line x1="0" y1="800" x2="100" y2="700" class="svelte-yuvmp8"/>
+		<line x1="800" y1="0" x2="700" y2="100" class="svelte-yuvmp8"/>
+		<line x1="400" y1="0" x2="300" y2="100" class="svelte-yuvmp8"/>
+		<line x1="400" y1="0" x2="500" y2="100" class="svelte-yuvmp8"/>
+		<line x1="400" y1="800" x2="300" y2="700" class="svelte-yuvmp8"/>
+		<line x1="400" y1="800" x2="500" y2="700" class="svelte-yuvmp8"/>
+		<line x1="0" y1="400" x2="100" y2="300" class="svelte-yuvmp8"/>
+		<line x1="0" y1="400" x2="100" y2="500" class="svelte-yuvmp8"/>
+		<line x1="800" y1="400" x2="700" y2="300" class="svelte-yuvmp8"/>
+		<line x1="800" y1="400" x2="700" y2="500" class="svelte-yuvmp8"/>
+		<rect x="100" y="100" width="200" height="200" class="anim_dash1 svelte-yuvmp8" style="stroke-dashoffset: -280;"/>
+		<rect x="500" y="100" width="200" height="200" class="anim_dash2 svelte-yuvmp8" style="stroke-dashoffset: 280;"/>
+		<rect x="100" y="500" width="200" height="200" class="anim_dash1 svelte-yuvmp8" style="stroke-dashoffset: -280;"/>
+		<rect x="500" y="500" width="200" height="200" class="anim_dash2 svelte-yuvmp8" style="stroke-dashoffset: 280;"/>
+	</g>
+</pattern>
+</defs>
+
+<rect id="bg-pattern" x="0" y="0" width="1600" height="1600" fill="url(#same_class_lines)" style=" " transform-origin="center"/>
+
+<g id="grid_wrap" style=" padding: 2px; height: 300px; width: 300px; overflow: hidden;">
+<g id="grid" style=" ">
+
+<g style="transform: translateX(0px) translateY(0px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+	<svg x="0" y="0" width="200" height="200">
+	<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+	<rect x="20" y="20" width="85" height="160" fill="#00c000"/>
+	<rect x="100" y="20" width="80" height="160" fill="#c00000"/>
+	</g>
+	<g style="transform-origin: center center;">
+	</g>
+	</svg>
+</g>
+
+<g style="transform: translateX(200px) translateY(0px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+	<svg x="0" y="0" width="200" height="200">
+	<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+	<rect x="20" y="20" width="85" height="160" fill="#ffff00"/>
+	<rect x="100" y="20" width="80" height="160" fill="#00c000"/>
+	</g>
+	<g style="transform-origin: center center;">
+	</g>
+	</svg>
+</g>
+
+<g style="transform: translateX(400px) translateY(0px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#00c000"/>
+<rect x="100" y="20" width="80" height="160" fill="#ffff00"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(600px) translateY(0px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#ffff00"/>
+<rect x="100" y="20" width="80" height="160" fill="#000080"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(0px) translateY(200px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#000080"/>
+<rect x="100" y="20" width="80" height="160" fill="#00c000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(200px) translateY(200px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#c00000"/>
+<rect x="100" y="20" width="80" height="160" fill="#c00000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(400px) translateY(200px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#000080"/>
+<rect x="100" y="20" width="80" height="160" fill="#000080"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(600px) translateY(200px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#c00000"/>
+<rect x="100" y="20" width="80" height="160" fill="#ffff00"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(0px) translateY(400px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#00c000"/>
+<rect x="100" y="20" width="80" height="160" fill="#000080"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(200px) translateY(400px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#ffff00"/>
+<rect x="100" y="20" width="80" height="160" fill="#ffff00"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(400px) translateY(400px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#00c000"/>
+<rect x="100" y="20" width="80" height="160" fill="#00c000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(600px) translateY(400px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#ffff00"/>
+<rect x="100" y="20" width="80" height="160" fill="#c00000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(0px) translateY(600px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#000080"/>
+<rect x="100" y="20" width="80" height="160" fill="#ffff00"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(200px) translateY(600px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#c00000"/>
+<rect x="100" y="20" width="80" height="160" fill="#000080"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(400px) translateY(600px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#000080"/>
+<rect x="100" y="20" width="80" height="160" fill="#c00000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+<g style="transform: translateX(600px) translateY(600px) rotate3d(0, 1, 0, 0deg); transform-origin: 100px 100px;">
+<svg x="0" y="0" width="200" height="200">
+<g style="transform: rotate( var(--angleBack) );transform-origin: 100px 100px;">
+<rect x="20" y="20" width="85" height="160" fill="#c00000"/>
+<rect x="100" y="20" width="80" height="160" fill="#00c000"/>
+</g>
+<g style="transform-origin: center center;">
+</g>
+</svg>
+</g>
+</g>
+</g>
+</svg>

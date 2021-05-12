@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="seven-animal-cell.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 83.086662 72.616058"
+   height="72.616058mm"
+   width="83.086662mm">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="944"
+     inkscape:window-width="1814"
+     fit-margin-bottom="2"
+     fit-margin-right="2"
+     fit-margin-left="2"
+     lock-margins="true"
+     fit-margin-top="2"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="113.1732"
+     inkscape:cx="171.98721"
+     inkscape:zoom="1.979899"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base">
+    <sodipodi:guide
+       id="guide889"
+       orientation="1,0"
+       position="41.543328,36.308027" />
+    <sodipodi:guide
+       id="guide893"
+       orientation="0,-1"
+       position="80.870156,36.308025" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-56.298841,-72.100731)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <circle
+       r="34.058029"
+       cy="108.40876"
+       cx="97.842171"
+       id="path913"
+       style="fill:none;fill-opacity:0.376471;stroke:#000000;stroke-width:1;stroke-linejoin:bevel" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.524076;stroke-linejoin:bevel"
+       id="path891-3"
+       cx="97.842171"
+       cy="108.40877"
+       r="3.3407347" />
+  </g>
+</svg>

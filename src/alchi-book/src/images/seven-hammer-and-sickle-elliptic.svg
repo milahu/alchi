@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="74.116058mm"
+   height="83.230995mm"
+   viewBox="0 0 74.116058 83.230995"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="seven-hammer-and-sickle-elliptic.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="153.73061"
+     inkscape:cy="157.37382"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="2"
+     lock-margins="true"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2"
+     inkscape:window-width="1814"
+     inkscape:window-height="944"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-object-midpoints="true">
+    <sodipodi:guide
+       position="37.058026,41.326819"
+       orientation="1,0"
+       id="guide889" />
+    <sodipodi:guide
+       position="-2.2687952,41.326821"
+       orientation="0,-1"
+       id="guide933" />
+    <sodipodi:guide
+       id="guide12"
+       orientation="0,-1"
+       position="37.058027,80.653641" />
+    <sodipodi:guide
+       id="guide14"
+       orientation="1,0"
+       position="71.116057,60.990232" />
+    <sodipodi:guide
+       id="guide16"
+       orientation="1,0"
+       position="3,60.990232" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-60.784142,-66.504587)">
+    <path
+       sodipodi:nodetypes="cssscc"
+       d="m -63.785446,-88.748451 c 0,7.953107 -8.297973,15.1231 -21.024586,18.166622 -12.726614,3.043522 -27.375578,1.361204 -37.116108,-4.262492 -9.74053,-5.623696 -12.65439,-14.08128 -7.38285,-21.428992 5.27154,-7.347707 17.69033,-12.138547 31.466168,-12.136997 l 6.52e-4,-39.32527"
+       transform="scale(-1)"
+       style="fill:none;stroke:#000000;stroke-width:1"
+       id="path18" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 63.784142,128.07217 H 131.9002"
+       id="path937" />
+  </g>
+</svg>
