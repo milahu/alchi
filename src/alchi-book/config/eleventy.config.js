@@ -1,10 +1,22 @@
 const staticConfig = {
 
+  // https://github.com/fpapado/eleventy-with-vite/pull/2
+  //jsBundleDevServer: 'http://localhost:3000',
+  jsBundleEntryDir: "src/js/", // this prefix will be removed in production builds
+  jsBundleEntryFiles: [ "main.js" ],
+  jsBundleDevserver: null, // will be set on runtime
+  isProduction: (process.env.NODE_ENV == 'production'),
+
+  pathPrefix: "/", // This will change both Eleventy's pathPrefix, and the one output by the
+  // vite-related shortcodes below. Double-check if you change this, as this is only a demo :)
+
+
+
   dir: {
     input: "src",
     output: "eleventy-output",
 
-    // relative to input:
+    // relative to input https://github.com/11ty/eleventy/issues/232
     includes: "_includes",
     data: "_data",
   },
@@ -35,6 +47,8 @@ const staticConfig = {
   // eleventyConfig.jsDataFileBase = 'index';
   jsDataFileBase: 'index',
 
+  pathPrefix: '/',
+
 };
 
 module.exports = function(eleventyConfig) {
@@ -56,9 +70,9 @@ module.exports = function(eleventyConfig) {
 
   const { DateTime } = require("luxon");
   const fs = require("fs");
-  const pluginRss = require("@11ty/eleventy-plugin-rss");
-  const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-  const pluginNavigation = require("@11ty/eleventy-navigation");
+  //const pluginRss = require("@11ty/eleventy-plugin-rss");
+  //const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+  //const pluginNavigation = require("@11ty/eleventy-navigation");
   const markdownIt = require("markdown-it");
   const markdownItAnchor = require("markdown-it-anchor");
 
@@ -109,9 +123,9 @@ module.exports = function(eleventyConfig) {
 
 
 
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(pluginNavigation);
+  //eleventyConfig.addPlugin(pluginRss);
+  //eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  //eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.setDataDeepMerge(true);
 
@@ -208,16 +222,65 @@ module.exports = function(eleventyConfig) {
     return domTransformer;
   }
 
+  function getSvgInlineTransformer() {
+    const srcRoot = staticConfig.dir.input; // global
+    // https://stackoverflow.com/a/54579530/10440128
+    const getAllAttributes = el => (el.getAttributeNames()
+      .reduce((obj, name) => ({ ...obj, [name]: el.getAttribute(name) }), {}));
+    const domTransformer = {
+      selector: 'svg[src]', // <svg src="path/to/file.svg">
+      transform: ({ elements, document }) => {
+        for (const element of elements) {
+          const attributes = getAllAttributes(element);
+          //console.dir({ svg_src_attributes: attributes });
+          const srcPath = srcRoot + '/' + attributes.src;
+          delete attributes.src;
+          attributes['data-srcpath'] = srcPath;
+          // read svg file + remove xml header
+          const srcText = fs.readFileSync(srcPath, 'utf8').replace(/<\?xml.*?\?>/, '');
+          const elementTemp = document.createElement('div');
+          elementTemp.innerHTML = srcText;
+          const elementNew = elementTemp.querySelector('svg');
+          const { width, height } = attributes;
+          if (width || height) {
+            elementNew.removeAttribute('width');
+            elementNew.removeAttribute('height');
+            if (width) elementNew.setAttribute('width', width);
+            if (height) elementNew.setAttribute('height', height);
+            delete attributes.width;
+            delete attributes.height;
+          }
+          if (attributes.class) {
+            const c1 = elementNew.getAttribute('class');
+            const c2 = attributes.class;
+            elementNew.setAttribute('class', (c1 ? `${c1} ${c2}` : c2));
+            delete attributes.class;
+          }
+          for (const [key, val] of Object.entries(attributes)) {
+            elementNew.setAttribute(key, val);
+          }
+          element.replaceWith(elementNew);
+        }
+      },
+    };
+    return domTransformer;
+  }
+
   eleventyConfig.addPlugin(transformDomPlugin, [
     getElementTransformer('page', { class: 'page-element' }),
     getElementTransformer('nw', { name: 'span', class: 'nowrap-element' }),
+    
+    // TODO use language list from metadata.json
     ...(['de', 'en']).map(langKey => 
+
       getElementTransformer(langKey,
         { name: 'span', attributes: (e => ({ lang: e.localName })), class: (e => {
           e.parentNode.classList.add('langs');
           return false; // no extra class for the new element
         }) })
-    )
+    ),
+
+    getSvgInlineTransformer(),
   ]);
 
 
@@ -313,8 +376,21 @@ module.exports = function(eleventyConfig) {
 
   //eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("src/css");
-  eleventyConfig.addPassthroughCopy("src/js");
+  //eleventyConfig.addPassthroughCopy("src/js"); // -> jsbundler
 
+  /* -> jsbundler
+  eleventyConfig.addPassthroughCopy({
+    //"node_modules/diff/dist/diff.js": "js/lib/diff.js", // included in book.njk
+    //"node_modules/htmldiff/js/htmldiff.js": "js/lib/htmldiff.js", // included in book.njk
+    "patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js": "js/lib/htmldiff.js",
+    "patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js.map": "js/lib/htmldiff.js.map",
+
+    "node_modules/xregexp/": "js/lib/xregexp",
+    // FIXME bundle javascript https://github.com/fpapado/eleventy-with-vite
+
+  }, { expand: true });
+  */
+  
   // https://github.com/11ty/eleventy/issues/768
   // How to include node_modules for use in js files
   // https://www.11ty.dev/docs/copy/
@@ -352,14 +428,16 @@ module.exports = function(eleventyConfig) {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#"
-  });
+  })
+  .disable("code") // Disable whitespace-as-code-indicator, which breaks a lot of markup @ https://github.com/fpapado/eleventy-with-vite
+  ;
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('_site/404.html');
+        const content_404 = fs.readFileSync(staticConfig.dir.output + '/404.html');
 
         browserSync.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
@@ -372,5 +450,139 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
+
+
+  // https://github.com/fpapado/eleventy-with-vite/pull/2
+  staticConfig.jsBundleDevserver = process.env.NODE_BUNDLER_DEVSERVER;
+  new JsBundle(staticConfig).addNunjucksShortcodes(eleventyConfig);
+
+
+
   return staticConfig;
 };
+
+
+
+// https://github.com/fpapado/eleventy-with-vite/pull/2
+
+class JsBundle {
+
+  constructor(staticConfig) {
+    this.staticConfig = staticConfig;
+    if (this.staticConfig.jsBundleDevserver)
+      console.log(`use bundler on ${this.staticConfig.jsBundleDevserver}`)
+    else
+      console.log(`${__filename}: NODE_BUNDLER_DEVSERVER is empty`); // debug
+    this.manifest = this.staticConfig.isProduction && JSON.parse(
+      fs.readFileSync(this.staticConfig.dir.output + "/manifest.json")
+    );
+    // default entrypoint for the bundler. in practice you might have multiple entrypoints
+    // then in the template, use
+    // {% jsBundleHead "src/client/some-entrypoint.js" %}
+    // {% jsBundleFoot "src/client/some-entrypoint.js" %}
+
+    this.defaultFile = this.staticConfig.jsBundleEntryFiles[0];
+  }
+
+  chunk(file) {
+    if (!file) throw new Error("file is empty");
+    // file can be relative to project root, or relative to jsBundleEntryDir
+    const chunk = this.manifest[file] || this.manifest[this.staticConfig.jsBundleEntryDir + file];
+    if (chunk) return chunk;
+    const possibleEntries = JSON.stringify(Object.values(this.manifest).filter(chunk => chunk.isEntry).map(chunk => chunk.src));
+    throw new Error(`No entry for ${file} found in ${this.staticConfig.dir.output}/manifest.json. Valid entries in manifest: ${possibleEntries}`);
+  }
+
+  moduleScriptTag(file, attr) {
+    if (!file) file = this.defaultFile;
+    const chunk = this.chunk(file);
+    return `<script ${attr} src="${this.staticConfig.pathPrefix}${chunk.file}"></script>`;
+  }
+
+  moduleTag(file) { return this.moduleScriptTag(file, 'type="module"'); }
+
+  scriptTag(file) { return this.moduleScriptTag(file, 'nomodule'); }
+
+  styleTag(file) {
+    if (!file) file = this.defaultFile;
+    const chunk = this.chunk(file);
+    if (!chunk.css || chunk.css.length === 0) {
+      console.warn(`No css found for ${file} entry. Is that correct?`);
+      return "";
+    }
+    /* There can be multiple CSS files per entry, so assume many by default */
+    return chunk.css.map(cssFile => `<link rel="stylesheet" href="${this.staticConfig.pathPrefix}${cssFile}"></link>`).join("\n");
+  }
+
+  preloadTag(file) {
+    if (!file) file = this.defaultFile;
+    /* Generate link[rel=modulepreload] tags for a script's imports */
+    /* TODO(fpapado): Consider link[rel=prefetch] for dynamic imports, or some other signifier */
+    const chunk = this.chunk(file);
+    if (!chunk.imports || chunk.imports.length === 0) {
+      console.log(`The script for ${file} has no imports. Nothing to preload.`);
+      return "";
+    }
+    /* There can be multiple import files per entry, so assume many by default */
+    /* Each entry in .imports is a filename referring to a chunk in the manifest; we must resolve it to get the output path on disk.
+    */
+    return (chunk.imports.map((importfile) => {
+      const chunk = this.chunk(importfile);
+      return `<link rel="modulepreload" href="${this.staticConfig.pathPrefix}${chunk.file}"></link>`;
+    })).join("\n");
+  }
+
+  headTags(file) {
+    if (!file) file = this.defaultFile;
+    if (this.staticConfig.isProduction) {
+      return [
+        this.styleTag(file),
+        this.preloadTag(file)
+      ].join('\n');
+    } else return `<!-- JsBundle.headTags: no head includes in dev mode -->`;
+  }
+
+  footTags(file) {
+    if (!file) file = this.defaultFile;
+    // We must split development  and production scripts
+    // In development, vite runs a server to resolve and reload scripts
+    // In production, the scripts are statically replaced at build-time 
+    //
+    // The build.env variable is assigned in src/_data/build.js
+    // @see https://vitejs.dev/guide/backend-integration.html#backend-integration
+    // @see https://www.11ty.dev/docs/data-js/#example-exposing-environment-variables
+    if (this.staticConfig.isProduction) {
+      return [
+        this.moduleTag(file),
+        this.scriptTag("vite/legacy-polyfills"),
+        this.scriptTag(file.replace(/\.js$/, '-legacy.js'))
+      ].join('\n');
+    } else {
+      return [
+        `<!-- JsBundle.footTags: file = ${file} -->`,
+        `<script type="module" src="${this.staticConfig.jsBundleDevserver}/@vite/client"></script>`,
+        
+        // TODO verify
+        //`<script type="module" src="${this.staticConfig.jsBundleDevserver}/${file}"></script>`,
+        `<script type="module" src="${this.staticConfig.jsBundleDevserver}/${this.staticConfig.jsBundleEntryDir}${file}"></script>`,
+        
+      ].join('\n');
+    }
+  }
+
+  addNunjucksShortcodes(eleventyConfig, shortcode) {
+    const shortcodeDefault = {
+      //module: 'jsBundleModule', script: 'jsBundleScript',
+      //style: 'jsBundleStyle', preload: 'jsBundlePreload',
+      head: 'jsBundleHead', foot: 'jsBundleFoot',
+    };
+    shortcode = Object.assign({}, shortcodeDefault, shortcode || {});
+    //eleventyConfig.addNunjucksShortcode(shortcode.module, (...a) => this.moduleTag(...a));
+    //eleventyConfig.addNunjucksShortcode(shortcode.script, (...a) => this.scriptTag(...a));
+    //eleventyConfig.addNunjucksShortcode(shortcode.style, (...a) => this.styleTag(...a));
+    //eleventyConfig.addNunjucksShortcode(shortcode.preload, (...a) => this.preloadTag(...a));
+    eleventyConfig.addNunjucksShortcode(shortcode.head, (...a) => this.headTags(...a));
+    eleventyConfig.addNunjucksShortcode(shortcode.foot, (...a) => this.footTags(...a));
+    return this; // chainable
+  }
+}

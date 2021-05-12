@@ -1,6 +1,9 @@
 // TODO add <table> contents to auto-translate
 // see page-170.html and page-180.html in src/pages
 
+// alternative to google translate:
+// https://www.deepl.com/Translator
+
 const fs = require('fs');
 //const net = require('net');
 //const child_process = require('child_process');

@@ -54,10 +54,18 @@ and nonstandard keywords inspired by npm's package.json data format
 
 -->
 
+
+
+<!-- TODO move fonts to bundle -->
+
 <link rel="stylesheet" href="{{ "/css/noto-sans/latin.css" | url }}">
 <link rel="stylesheet" href="{{ "/css/noto-sans/latin-700.css" | url }}">
 <link rel="stylesheet" href="{{ "/css/noto-mono/latin.css" | url }}">
 <link rel="stylesheet" href="{{ "/css/index.css" | url }}">
+
+
+
+{% jsBundleHead %}{# vite js bundle #}
 
 </head>
 
@@ -74,6 +82,7 @@ and nonstandard keywords inspired by npm's package.json data format
         3. duplex on, with flip on short edge<br>
         <br>
         if you want to print to a different paper format,
+        or if you need to calibrate the page sizes and offsets,
         see the javascipt source code and change the variables:
         page_x, page_y, page_margin, font_size<br>
         <br>
@@ -99,7 +108,25 @@ and nonstandard keywords inspired by npm's package.json data format
 
 {{ content | safe }}
 
-<script src="{{ '/js/index.js' | url }}"></script>
+<!--
+  <script src="{{ '/js/lib/htmldiff.js' | url }}"></script>
+-->
+
+<!--
+  <script type="module">
+    export * as htmldiff from '{{ '/js/lib/htmldiff.js' | url }}';
+  </script>
+-->
+
+<!--
+<script type="module">
+  export * as xregexp from '{{ '/js/lib/xregexp/lib/xregexp.js' | url }}';
+</script>
+
+<script type="module" src="{{ '/js/index.js' | url }}"></script>
+-->
+
+{% jsBundleFoot %}{# vite js bundle #}
 
 </body>
 </html>
