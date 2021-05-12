@@ -81,8 +81,17 @@ body {
 }
 
 #book-subtitle {
-  font-size: 8mm;
-  line-height: 8mm;
+  font-size: 6mm;
+  line-height: 6mm;
+  height: auto;
+  text-align: center;
+  margin-bottom: 4mm;
+}
+
+
+#book-subsubtitle {
+  font-size: 5mm;
+  line-height: 5mm;
   height: auto;
   text-align: center;
   margin-bottom: 4mm;
@@ -383,6 +392,29 @@ span.d4 { text-decoration-color: var(--medium4) }
   display: inline-block;
   text-align: center;
 }
+.caption-container > *:first-child {
+  margin-bottom: 0.5em;
+}
+
+/* live diff text editor */
+ins {
+  background-color: rgba(0, 255, 0, 0.5);
+  text-decoration: none;
+}
+del {
+  background-color: rgba(255, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+pre.map16 span.color-1 { color: var(--text1); }
+pre.map16 span.color-2 { color: var(--text2); }
+pre.map16 span.color-3 { color: var(--text3); }
+pre.map16 span.color-4 { color: var(--text4); }
+
+pre.map16 span.color-A { color: var(--text1); }
+pre.map16 span.color-B { color: var(--text2); }
+pre.map16 span.color-C { color: var(--text3); }
+pre.map16 span.color-D { color: var(--text4); }
 
 /*
   https://stackoverflow.com/a/19735997/10440128
@@ -615,7 +647,9 @@ pre {
 
 
 #pages-container.audit-mode p {
-  line-height: 270%; /* add room for manual annotations */
+  font-size: 110%; /* add room for manual annotations */
+  line-height: 220%; /* add room for manual annotations */
+  /*line-height: 270%; /* add room for manual annotations */
 }
 
 #pages-container.audit-mode {

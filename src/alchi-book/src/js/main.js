@@ -1,5 +1,9 @@
 // TODO split into smaller files
 
+import * as htmldiff from '../../patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js';
+import * as Diff from 'diff';
+
+
 function get_meta() {
 
   const meta = Array.from(document.querySelectorAll('meta[name]')).reduce((acc, meta) => (
@@ -37,7 +41,8 @@ const { print_size, print_orient, print_scale, page_x, page_y } =
     //page_x: 147.5, // mm = DIN A5
     page_x: 149.5, // mm = DIN A5 + 2mm
 
-    page_y: 209.5, // mm = DIN A5
+    //page_y: 209.5, // mm = DIN A5
+    page_y: 211.1, // mm = DIN A5 + 1.6mm (calibrate page offset. TODO why? better solution?)
 
     // DIN A4
     //page_x: 209.5, page_y: 296.5, // mm
@@ -54,10 +59,24 @@ const { print_size, print_orient, print_scale, page_x, page_y } =
     // firefox print dialog: A5 = 8.27 x 5.83 inch2 = 211.712 x 149.248 mm2
   };
 
+// TODO change page layout here
 //const page_margin = { top: 5, right: 5, bottom: 5, left: 5 }; // mm
 //const page_margin = { top: 10, right: 10, bottom: 10, left: 10 }; // mm
 //const page_margin = { top: 5, right: 10, bottom: 5, left: 10 }; // mm
-const page_margin = { top: 5, bottom: 5, inside: 10, outside: 5 }; // mm
+//const page_margin = { top: 5, bottom: 5, inside: 10, outside: 5 }; // mm 
+
+//const offset_top = 0; // calibrate for screen and PDF-print
+//const offset_inside_only = 0; // calibrate for screen and PDF-print
+//const offset_top = 2.75; // calibrate for paper-print
+const offset_top = 1; // calibrate for paper-print
+const offset_inside_only = 1.5; // calibrate for paper-print
+const margin_size = 6; // mm. 5 mm margin -> content is too large for printing area
+const page_margin = {
+  top: margin_size + offset_top,
+  bottom: margin_size - offset_top,
+  inside: 1.5*margin_size + offset_inside_only,
+  outside: margin_size
+};
 
 //const content_x = page_x - page_margin.left - page_margin.right;
 const content_x = page_x - page_margin.inside - page_margin.outside;
@@ -144,6 +163,14 @@ const color = {
     4: "#000080", // dark blue
   },
 
+  text: {
+    1: "#ff0000", // red
+    2: "#008000", // dark green
+    3: "#b2b200", // dark yellow (35% lightness)
+    //3: "#cdcd00", // dark yellow (40% lightness) -> too light on white ground
+    4: "#0000ff", // blue
+  },
+
   medium: {
     1: "#ff0000", // red
     2: "#00ff00", // green
@@ -196,6 +223,7 @@ function sesc(s) {
   return s.replace("#", "%23");
 }
 
+// define css colors: --medium1: red;
 function cssVarsOfColorMap(mapname){
   const mapval = color[mapname];
   return Object.keys(mapval).reduce((acc, key) => {
@@ -257,6 +285,7 @@ function setRootStyle() {
       ${cssVarsOfColorMap("light")}
       ${cssVarsOfColorMap("dark")}
       ${cssVarsOfColorMap("medium")}
+      ${cssVarsOfColorMap("text")}
 
     }
   `);
@@ -537,7 +566,7 @@ function set_language(lang) {
         if (node.lang) node.style.display = 'none';
       });
       children.forEach(node => {
-        if (node.lang == lang) node.style.display = '';
+        if (node.lang == lang) node.style.display = ''; // TODO inline-block?
       });
     }
   });
@@ -568,6 +597,8 @@ function openModal(id) {
 function closeModal(id) {
   toggleModal(id, 'close');
 }
+window.openModal = openModal; // global
+window.closeModal = closeModal; // global
 
 
 
@@ -575,6 +606,20 @@ function add_language_menu() {
   document.querySelector('.language-menu').innerHTML = meta.languages.split(/\s+/).map(lang =>
     `<button class="language-button" id="language-button-${lang}" onclick="add_query({ lang: '${lang}' })">${lang}</button>`
   ).join('\n');
+  /* not working. why?
+  const langMenu = document.querySelector('.language-menu');
+  meta.languages.split(/\s+/).forEach(lang => {
+    const button = document.createElement('button');
+    button.classList.add('language-button');
+    button.id = `language-button-${lang}`;
+    button.onclick = (event) => {
+      console.log('onclick', event.target)
+      add_query({ lang })
+    };
+    button.innerHTML = lang;
+    langMenu.appendChild(button);
+  })
+  */
 
   // scroll to change language
 
@@ -594,6 +639,7 @@ function add_language_menu() {
     }
   });
 
+  /* this would interfere with the text editor
   document.addEventListener('keydown', event => {
     if (event.key == 'l') {
       event.preventDefault();
@@ -602,6 +648,7 @@ function add_language_menu() {
       set_language(next_lang);
     }
   });
+  */
 
 }
 
@@ -755,6 +802,7 @@ function handleChangeAuditMode(target) {
     setPrintStyle(); // reset
   }
 }
+window.handleChangeAuditMode = handleChangeAuditMode; // global
 
 // TODO add "two language" layout: compare two languages side by side
 
@@ -769,6 +817,7 @@ function handleChangeShowFiles(target) {
     document.querySelector('#pages-container').classList.remove('show-files');
   }
 }
+window.handleChangeShowFiles = handleChangeShowFiles; // global
 
 
 
@@ -807,11 +856,13 @@ function add_layout_menu() {
 // TODO add function set_query, add_query
 
 function add_query(obj) {
+  //console.log('add_query', obj)
   const new_query = Object.assign(query, obj);
   document.location.hash = '#' + Object.keys(new_query).map(k => {
     return k + '=' + new_query[k];
   }).join('&');
 }
+window.add_query = add_query; // global
 
 function get_query() {
   const query = Object.fromEntries(
@@ -828,7 +879,284 @@ function get_query() {
 
 
 
-function handle_body_loaded() {
+// https://stackoverflow.com/a/62700928/10440128
+// restore cursor position after edit
+class Cursor {
+  static getCurrentCursorPosition(parentElement) {
+      var selection = window.getSelection(),
+          charCount = -1,
+          node;
+      
+      if (selection.focusNode) {
+          if (Cursor._isChildOf(selection.focusNode, parentElement)) {
+              node = selection.focusNode; 
+              charCount = selection.focusOffset;
+              
+              while (node) {
+                  if (node === parentElement) {
+                      break;
+                  }
+
+                  if (node.previousSibling) {
+                      node = node.previousSibling;
+                      charCount += node.textContent.length;
+                  } else {
+                      node = node.parentNode;
+                      if (node === null) {
+                          break;
+                      }
+                  }
+              }
+          }
+      }
+      
+      return charCount;
+  }
+  
+  static setCurrentCursorPosition(chars, element) {
+      if (chars >= 0) {
+          var selection = window.getSelection();
+          
+          let range = Cursor._createRange(element, { count: chars });
+
+          if (range) {
+              range.collapse(false);
+              selection.removeAllRanges();
+              selection.addRange(range);
+          }
+      }
+  }
+  
+  static _createRange(node, chars, range) {
+      if (!range) {
+          range = document.createRange()
+          range.selectNode(node);
+          range.setStart(node, 0);
+      }
+
+      if (chars.count === 0) {
+          range.setEnd(node, chars.count);
+      } else if (node && chars.count >0) {
+          if (node.nodeType === Node.TEXT_NODE) {
+              if (node.textContent.length < chars.count) {
+                  chars.count -= node.textContent.length;
+              } else {
+                  range.setEnd(node, chars.count);
+                  chars.count = 0;
+              }
+          } else {
+              for (var lp = 0; lp < node.childNodes.length; lp++) {
+                  range = Cursor._createRange(node.childNodes[lp], chars, range);
+
+                  if (chars.count === 0) {
+                  break;
+                  }
+              }
+          }
+      } 
+
+      return range;
+  }
+  
+  static _isChildOf(node, parentElement) {
+      while (node !== null) {
+          if (node === parentElement) {
+              return true;
+          }
+          node = node.parentNode;
+      }
+
+      return false;
+  }
+}
+
+
+
+// text editor
+
+const debugTextEditor = false;
+const debugTextEditor2 = false;
+
+const lastDiffMap = new Map();
+const editHistoryMap = new Map();
+let ignoreNextInput = false;
+let lastInputWasUndo = false;
+
+function addTextEditor() {
+
+  document.querySelectorAll('span[lang]').forEach(editable => {
+
+    // FIXME? we use 'display: hidden' to hide unused languages
+    if (editable.style.display == 'none') return;
+    //editable.style.display = 'inline-block'; // fix chrome bug https://stackoverflow.com/a/62700928/10440128
+    // problem: 'display: inline-block' breaks float
+
+    editable.setAttribute('data-start-html', editable.innerHTML);
+    editable.setAttribute('contenteditable', 'true');
+
+    const editHistory = [];
+    editHistoryMap.set(editable, editHistory);
+
+    // TODO add input handler only on demand -> editable.onclick
+
+    editable.onkeydown = function(keyboardEvent) {
+      if (debugTextEditor) console.dir(keyboardEvent);
+      const editable = keyboardEvent.target;
+      if (keyboardEvent.ctrlKey && keyboardEvent.key == 'z') { // ctrl + z
+        const editHistory = editHistoryMap.get(editable);
+        if (debugTextEditor) console.log('undo edit on', editable, editHistory.slice());
+        ignoreNextInput = true;
+        if (!lastInputWasUndo) editHistory.pop(); // fix "off by one" bug
+        lastInputWasUndo = true;
+        if (editHistory && editHistory.length > 0) {
+          const { diffHtml, cursor } = editHistory.pop();
+          editable.innerHTML = diffHtml;
+          Cursor.setCurrentCursorPosition(cursor, editable);
+          editable.focus();
+        }
+        else {
+          editable.innerHTML = editable.getAttribute('data-start-html');
+        }
+      }
+    }
+
+    editable.oninput = function(inputEvent) {
+
+      // TODO use InputEvent and cursor
+      // always better than a diff algo
+      // diff algos will always produce false diffs ...
+      // https://developer.mozilla.org/en-US/docs/Web/API/InputEvent
+      const inputEventRelevant = {
+        data: inputEvent.data,
+        dataTransfer: inputEvent.dataTransfer,
+        inputType: inputEvent.inputType,
+        // deleteContentBackward
+        // deleteByCut
+        // insertText: insert or replace
+        // insertFromPaste
+        // historyUndo = ctrl + z (todo move handler)
+        // historyRedo = ctrl + y (also without handler)
+
+        isComposing: inputEvent.isComposing,
+      };
+      console.log('inputEventRelevant = ' + JSON.stringify(inputEventRelevant));
+
+
+
+      if (ignoreNextInput) {
+        ignoreNextInput = false;
+        if (debugTextEditor) console.log(`ignore input`);
+        return;
+      }
+      lastInputWasUndo = false;
+
+      if (debugTextEditor) console.dir(inputEvent);
+
+      const editable = inputEvent.target;
+
+      // save cursor position
+      let cursor = Cursor.getCurrentCursorPosition(editable);
+      // NOTE cursor includes html whitespace
+      if (debugTextEditor) console.log(`----`)
+      if (debugTextEditor) console.log(`cursor = ${cursor}`)
+
+      if (debugTextEditor && debugTextEditor2) document.querySelector('textarea[title="diff html"]').innerText = editable.innerHTML.replace(/\n/g, '\\n').replace(/ /g, '·');
+
+      // https://stackoverflow.com/a/23030157/10440128
+      function getText(node) {
+        if (node.nodeType == 3) return node.data; // text node
+        if (!node.childNodes) return '';
+        let s = '';
+        for (let i = 0; i < node.childNodes.length; i++) {
+          s += getText(node.childNodes[i]);
+        }
+        return s;
+      }
+
+      // FIXME inserting into a <del> should be a noop
+      // currently this will move the cursor to the next white-or-green and then start inserting
+
+      if (debugTextEditor && debugTextEditor2) {
+        // FIXME '&nbsp;' is printed as ' '
+        // no effect: .replace(/&/g, '&amp;')
+        document.querySelector('textarea[title="diff text"]').innerText = (
+          getText(editable).slice(0, cursor) + '[cursor]' + getText(editable).slice(cursor)
+        ).replace(/\n/g, '\\n').replace(/ /g, '·');
+      }
+
+      // diff -> after
+      editable.querySelectorAll('ins').forEach(ins => (ins.outerHTML = ins.innerHTML));
+      editable.querySelectorAll('del').forEach(del => del.remove());
+
+      const htmlA = editable.getAttribute('data-start-html');
+      const htmlB = editable.innerHTML;
+
+      if (debugTextEditor && debugTextEditor2) {
+        document.querySelector('textarea[title="a"]').innerText = htmlA.replace(/\n/g, '\\n').replace(/ /g, '·');
+        document.querySelector('textarea[title="b"]').innerText = htmlB.replace(/\n/g, '\\n').replace(/ /g, '·');
+      }
+
+      const tokensA = htmldiff.htmlToTokens(htmlA);
+      const tokensB = htmldiff.htmlToTokens(htmlB);
+      const diffOps = htmldiff.calculateOperations(tokensA, tokensB);
+      const diffHtml = htmldiff.renderOperations(tokensA, tokensB, diffOps);
+
+
+
+      // get unidiff - quick n dirty
+      const diffUnified = Diff.createTwoFilesPatch('a/file.html', 'b/file.html', htmlA, htmlB)
+        .replace(/^===================================================================\n/s, '');
+      if (debugTextEditor) {
+        document.querySelector('textarea[title="diff -u"]').innerHTML = diffUnified; // .replace(/\n/g, '<br>\n').replace(/ /g, '·');
+        console.log(`diffUnified:\n${diffUnified}`)
+      }
+
+
+
+      //if (debugTextEditor) console.log('diffOps', { diffOps, tokensA, tokensB });
+
+      const lastDiff = lastDiffMap.get(editable);
+      lastDiffMap.set(editable, { tokensA, tokensB, diffOps });
+
+      function getDelsLen(ops, cursor) {
+        return (ops
+          .filter(o => (o.action[0] == 'r' || o.action[0] == 'd'))
+          .map(o => ({
+            posA1: tokensA[o.startInBefore].pos,
+            posA2: tokensA[o.endInBefore].pos + tokensA[o.endInBefore].str.length,
+          }))
+          .filter(o => (o.posA1 <= cursor))
+          .map(o => (o.posA2 - o.posA1))
+          .reduce((acc, val) => (acc + val), 0)
+        );
+      }
+      const cursorOffset = getDelsLen(diffOps, cursor) - (lastDiff ? getDelsLen(lastDiff.diffOps, cursor) : 0);
+      
+      if (debugTextEditor) {
+        console.log(`getDelsLen: ${getDelsLen(diffOps, cursor)}, last getDelsLen: ${(lastDiff ? getDelsLen(lastDiff.diffOps, cursor) : 0)}`)
+        console.dir({ diffOps, tokensA, tokensB });
+        console.log(`tok a: |${tokensA.map(t => t.str).join('|').replace(/\n/g, '\\n')}|`)
+        console.log(`tok b: |${tokensB.map(t => t.str).join('|').replace(/\n/g, '\\n')}|`)
+        console.log(`ops:${diffOps.map(o => `\n * ${o.action} ${o.startInBefore}-${o.endInBefore} |${tokensA.slice(o.startInBefore, 1+o.endInBefore).map(t => t.str).join('|').replace(/\n/g, '\\n')}| -> ${o.startInAfter}-${o.endInAfter} |${tokensB.slice(o.startInAfter, 1+o.endInAfter).map(t => t.str).join('|').replace(/\n/g, '\\n')}|`).join('')}`)
+        console.log(`cursorOffset: ${cursorOffset}, cursor: ${cursor} -> ${cursor + cursorOffset}`);
+      }
+
+      cursor += cursorOffset;
+
+      // FIXME if cursor is too lage, we lose focus on the editable
+
+      editHistoryMap.get(editable).push({ diffHtml, cursor })
+
+      editable.innerHTML = diffHtml;
+      Cursor.setCurrentCursorPosition(cursor, editable);
+      editable.focus();
+    };
+  });
+}
+
+
+
+document.body.onload = function handle_body_loaded() {
 
   console.log('body loaded');
 
@@ -840,6 +1168,28 @@ function handle_body_loaded() {
 
   const userLang = query.lang || navigator.language || navigator.userLanguage;
   set_language(userLang); // must run after add_layout_menu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   add_footers();
 
@@ -1082,6 +1432,17 @@ function handle_body_loaded() {
 
 
 
+
+
+
+  // postprocess: colorize <pre class="map16">
+  document.querySelectorAll('pre.map16').forEach(pre => {
+    //const fragment = document.createDocumentFragment();
+    pre.innerHTML = pre.innerHTML.replace(/[1234ABCD]/g, char => {
+      return `<span class="color-${char}">${char}</span>`;
+    });
+  });
+
   // reorder pages for booklet printing
   // TODO solve with CSS only?
   // print settings:
@@ -1123,19 +1484,18 @@ function handle_body_loaded() {
 
   // detect darkreader style
   // https://github.com/darkreader/darkreader/issues/4342
-  (
-    head = document.querySelector('head'),
-    handleMutation = () => (
-      darkreaderSelector = 'meta[name="darkreader"]',
+  (() => {
+    const head = document.querySelector('head');
+    const handleMutation = () => {
+      const darkreaderSelector = 'meta[name="darkreader"]';
       //darkreaderSelector = 'style#dark-reader-style',
-      darkreaderActive = (head.querySelector(darkreaderSelector) != null),
+      const darkreaderActive = (head.querySelector(darkreaderSelector) != null);
       //console.log(`darkreader active? ` + darkreaderActive),
-      document.body.classList.toggle('dark-reader', darkreaderActive)
-    ),
-    handleMutation(),
-    new MutationObserver(handleMutation)
-      .observe(head, { childList: true })
-  );
+      document.body.classList.toggle('dark-reader', darkreaderActive);
+    };
+    handleMutation();
+    new MutationObserver(handleMutation).observe(head, { childList: true });
+  })();
 
   /*
   (new MutationObserver(() => document.body.classList.toggle('dark-reader',
@@ -1143,7 +1503,16 @@ function handle_body_loaded() {
   )).observe(document.querySelector('head'), { childList: true }));
   */
 
-}
 
-document.body.onload = handle_body_loaded;
-//handle_body_loaded();
+  /*
+  https://gitter.im/tinymce/tinymce?at=5a8f4dd10202dc012e70e7c7
+  Mike Botsko @viveleroi Feb 23 2018 00:10
+  is there a plugin that shows a "live" diff? For example if a user deletes a word, that word remains visually with a strike-through style, but the resulting textarea value is purely the final result of their edits?
+  if not, is that even remotely possible with the API?
+  */
+
+
+  addTextEditor(); // must run after set_language
+
+
+} // handle_body_loaded
