@@ -1,6 +1,6 @@
 // TODO split into smaller files
 
-import * as htmldiff from '../../patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js';
+import * as htmldiff from 'htmldiff';
 import * as Diff from 'diff';
 
 
