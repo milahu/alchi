@@ -49,8 +49,6 @@ const staticConfig = {
   // eleventyConfig.jsDataFileBase = 'index';
   jsDataFileBase: 'index',
 
-  pathPrefix: '/',
-
 };
 
 
@@ -522,7 +520,9 @@ class JsBundle {
   moduleScriptTag(file, attr) {
     if (!file) file = this.defaultFile;
     const chunk = this.chunk(file);
-    return `<script ${attr} src="${this.staticConfig.pathPrefix}${chunk.file}"></script>`;
+    const html = `<script ${attr} src="${this.staticConfig.pathPrefix}${chunk.file}"></script>`;
+    console.log(`JsBundle moduleScriptTag: html = ${html}`)
+    return html;
   }
 
   moduleTag(file) { return this.moduleScriptTag(file, 'type="module"'); }
@@ -561,6 +561,7 @@ class JsBundle {
   headTags(file) {
     if (!file) file = this.defaultFile;
     if (this.staticConfig.isProduction) {
+      console.log(`JsBundle headTags: file = ${file}`)
       return [
         this.styleTag(file),
         this.preloadTag(file)
@@ -570,6 +571,7 @@ class JsBundle {
 
   footTags(file) {
     if (!file) file = this.defaultFile;
+    console.log(`JsBundle footTags: file = ${file}`)
     // We must split development  and production scripts
     // In development, vite runs a server to resolve and reload scripts
     // In production, the scripts are statically replaced at build-time 
