@@ -74,15 +74,15 @@ body {
 }
 
 #book-title {
-  font-size: 12mm;
-  line-height: 12mm;
+  font-size: 14mm;
+  line-height: 100%;
   height: auto;
   text-align: center;
 }
 
 #book-subtitle {
-  font-size: 6mm;
-  line-height: 6mm;
+  font-size: 8mm;
+  line-height: 100%;
   height: auto;
   text-align: center;
   margin-bottom: 4mm;
@@ -177,6 +177,8 @@ a {
   position: sticky;
   top: 0; left: 0; right: 0;
   background-color: white;
+
+  font-size: 110%;
 }
 
 button {
@@ -405,6 +407,16 @@ del {
   background-color: rgba(255, 0, 0, 0.5);
   text-decoration: none;
 }
+
+/* fiduswriter ModTrack */
+span.approved-insertion {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+span.approved-deletion {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+
 
 pre.map16 span.color-1 { color: var(--text1); }
 pre.map16 span.color-2 { color: var(--text2); }

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const staticConfig = {
 
   // https://github.com/fpapado/eleventy-with-vite/pull/2
@@ -14,7 +16,7 @@ const staticConfig = {
 
   dir: {
     input: "src",
-    output: "eleventy-output",
+    output: "build", // not consistent with "default NPM folder layout" where /build contains helper scripts for the build process
 
     // relative to input https://github.com/11ty/eleventy/issues/232
     includes: "_includes",
@@ -50,6 +52,8 @@ const staticConfig = {
   pathPrefix: '/',
 
 };
+
+
 
 module.exports = function(eleventyConfig) {
 
@@ -407,17 +411,39 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     // source paths are relative to the project root
     // we must copy all files, so css includes can be resolved
-    "node_modules/@fontsource/noto-sans": "css/noto-sans",
-    "node_modules/@fontsource/noto-mono": "css/noto-mono",
+    
+    // this would copy too many files
+    //"node_modules/@fontsource/noto-sans": "css/noto-sans",
+    //"node_modules/@fontsource/noto-mono": "css/noto-mono",
+
+    // copy only needed files
+    // what files are needed? see output of: npm run dev
+    "node_modules/@fontsource/noto-sans/latin.css": "css/noto-sans/latin.css",
+    "node_modules/@fontsource/noto-sans/latin-700.css": "css/noto-sans/latin-700.css", // bold font
+    "node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff2": "css/noto-sans/files/noto-sans-latin-400-normal.woff2",
+    "node_modules/@fontsource/noto-mono/latin.css": "css/noto-mono/latin.css",
   }, { expand: true });
 
   eleventyConfig.addPassthroughCopy({
     // source paths are relative to the project root
     // we must copy all files, so css includes can be resolved
-    "src/images": "images",
+    
+    // this would copy too many files
+    //"src/images": "images",
+    // svg images are inlined in the build process
+    // raster images (jpg, png, gif) could also be inlined as base64 data urls ...
+    // but for now, we keep them as external files
+    // we only need to inline svg files to fix svg viewports
+    // that would be broken with <img src="img/file.svg">
+    // TODO: make the svg files better accessible in the web interface
+    // -> click to zoom
+    // -> allow to share only the svg image: add public URL to https://milahu.github.io/alchi/src/alchi-book/images/...
+
+    // copy only needed files
+    // what files are needed? see output of: npm run dev
+    "src/images/should-vs-is.disgust-fight.disgusto-pelea.more-contrast.turc-orange.gif": "images/should-vs-is.disgust-fight.disgusto-pelea.more-contrast.turc-orange.gif",
+    "src/images/milahu-orange.jpg": "images/milahu-orange.jpg",
   }, { expand: true });
-
-
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
@@ -554,8 +580,11 @@ class JsBundle {
     if (this.staticConfig.isProduction) {
       return [
         this.moduleTag(file),
-        this.scriptTag("vite/legacy-polyfills"),
-        this.scriptTag(file.replace(/\.js$/, '-legacy.js'))
+
+        // TODO only needed with @vitejs/plugin-legacy -> auto detect?
+        //this.scriptTag("vite/legacy-polyfills"),
+        //this.scriptTag(file.replace(/\.js$/, '-legacy.js'))
+
       ].join('\n');
     } else {
       return [

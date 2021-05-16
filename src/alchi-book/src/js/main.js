@@ -1,8 +1,5 @@
 // TODO split into smaller files
 
-import * as htmldiff from 'htmldiff';
-import * as Diff from 'diff';
-
 
 function get_meta() {
 
@@ -639,17 +636,6 @@ function add_language_menu() {
     }
   });
 
-  /* this would interfere with the text editor
-  document.addEventListener('keydown', event => {
-    if (event.key == 'l') {
-      event.preventDefault();
-      const sign = +1;
-      const next_lang = lang_list[(lang_list.indexOf(current_lang) + sign) % lang_list.length];
-      set_language(next_lang);
-    }
-  });
-  */
-
 }
 
 
@@ -972,190 +958,6 @@ class Cursor {
 
 
 
-// text editor
-
-const debugTextEditor = false;
-const debugTextEditor2 = false;
-
-const lastDiffMap = new Map();
-const editHistoryMap = new Map();
-let ignoreNextInput = false;
-let lastInputWasUndo = false;
-
-function addTextEditor() {
-
-  document.querySelectorAll('span[lang]').forEach(editable => {
-
-    // FIXME? we use 'display: hidden' to hide unused languages
-    if (editable.style.display == 'none') return;
-    //editable.style.display = 'inline-block'; // fix chrome bug https://stackoverflow.com/a/62700928/10440128
-    // problem: 'display: inline-block' breaks float
-
-    editable.setAttribute('data-start-html', editable.innerHTML);
-    editable.setAttribute('contenteditable', 'true');
-
-    const editHistory = [];
-    editHistoryMap.set(editable, editHistory);
-
-    // TODO add input handler only on demand -> editable.onclick
-
-    editable.onkeydown = function(keyboardEvent) {
-      if (debugTextEditor) console.dir(keyboardEvent);
-      const editable = keyboardEvent.target;
-      if (keyboardEvent.ctrlKey && keyboardEvent.key == 'z') { // ctrl + z
-        const editHistory = editHistoryMap.get(editable);
-        if (debugTextEditor) console.log('undo edit on', editable, editHistory.slice());
-        ignoreNextInput = true;
-        if (!lastInputWasUndo) editHistory.pop(); // fix "off by one" bug
-        lastInputWasUndo = true;
-        if (editHistory && editHistory.length > 0) {
-          const { diffHtml, cursor } = editHistory.pop();
-          editable.innerHTML = diffHtml;
-          Cursor.setCurrentCursorPosition(cursor, editable);
-          editable.focus();
-        }
-        else {
-          editable.innerHTML = editable.getAttribute('data-start-html');
-        }
-      }
-    }
-
-    editable.oninput = function(inputEvent) {
-
-      // TODO use InputEvent and cursor
-      // always better than a diff algo
-      // diff algos will always produce false diffs ...
-      // https://developer.mozilla.org/en-US/docs/Web/API/InputEvent
-      const inputEventRelevant = {
-        data: inputEvent.data,
-        dataTransfer: inputEvent.dataTransfer,
-        inputType: inputEvent.inputType,
-        // deleteContentBackward
-        // deleteByCut
-        // insertText: insert or replace
-        // insertFromPaste
-        // historyUndo = ctrl + z (todo move handler)
-        // historyRedo = ctrl + y (also without handler)
-
-        isComposing: inputEvent.isComposing,
-      };
-      console.log('inputEventRelevant = ' + JSON.stringify(inputEventRelevant));
-
-
-
-      if (ignoreNextInput) {
-        ignoreNextInput = false;
-        if (debugTextEditor) console.log(`ignore input`);
-        return;
-      }
-      lastInputWasUndo = false;
-
-      if (debugTextEditor) console.dir(inputEvent);
-
-      const editable = inputEvent.target;
-
-      // save cursor position
-      let cursor = Cursor.getCurrentCursorPosition(editable);
-      // NOTE cursor includes html whitespace
-      if (debugTextEditor) console.log(`----`)
-      if (debugTextEditor) console.log(`cursor = ${cursor}`)
-
-      if (debugTextEditor && debugTextEditor2) document.querySelector('textarea[title="diff html"]').innerText = editable.innerHTML.replace(/\n/g, '\\n').replace(/ /g, '·');
-
-      // https://stackoverflow.com/a/23030157/10440128
-      function getText(node) {
-        if (node.nodeType == 3) return node.data; // text node
-        if (!node.childNodes) return '';
-        let s = '';
-        for (let i = 0; i < node.childNodes.length; i++) {
-          s += getText(node.childNodes[i]);
-        }
-        return s;
-      }
-
-      // FIXME inserting into a <del> should be a noop
-      // currently this will move the cursor to the next white-or-green and then start inserting
-
-      if (debugTextEditor && debugTextEditor2) {
-        // FIXME '&nbsp;' is printed as ' '
-        // no effect: .replace(/&/g, '&amp;')
-        document.querySelector('textarea[title="diff text"]').innerText = (
-          getText(editable).slice(0, cursor) + '[cursor]' + getText(editable).slice(cursor)
-        ).replace(/\n/g, '\\n').replace(/ /g, '·');
-      }
-
-      // diff -> after
-      editable.querySelectorAll('ins').forEach(ins => (ins.outerHTML = ins.innerHTML));
-      editable.querySelectorAll('del').forEach(del => del.remove());
-
-      const htmlA = editable.getAttribute('data-start-html');
-      const htmlB = editable.innerHTML;
-
-      if (debugTextEditor && debugTextEditor2) {
-        document.querySelector('textarea[title="a"]').innerText = htmlA.replace(/\n/g, '\\n').replace(/ /g, '·');
-        document.querySelector('textarea[title="b"]').innerText = htmlB.replace(/\n/g, '\\n').replace(/ /g, '·');
-      }
-
-      const tokensA = htmldiff.htmlToTokens(htmlA);
-      const tokensB = htmldiff.htmlToTokens(htmlB);
-      const diffOps = htmldiff.calculateOperations(tokensA, tokensB);
-      const diffHtml = htmldiff.renderOperations(tokensA, tokensB, diffOps);
-
-
-
-      // get unidiff - quick n dirty
-      const diffUnified = Diff.createTwoFilesPatch('a/file.html', 'b/file.html', htmlA, htmlB)
-        .replace(/^===================================================================\n/s, '');
-      if (debugTextEditor) {
-        document.querySelector('textarea[title="diff -u"]').innerHTML = diffUnified; // .replace(/\n/g, '<br>\n').replace(/ /g, '·');
-        console.log(`diffUnified:\n${diffUnified}`)
-      }
-
-
-
-      //if (debugTextEditor) console.log('diffOps', { diffOps, tokensA, tokensB });
-
-      const lastDiff = lastDiffMap.get(editable);
-      lastDiffMap.set(editable, { tokensA, tokensB, diffOps });
-
-      function getDelsLen(ops, cursor) {
-        return (ops
-          .filter(o => (o.action[0] == 'r' || o.action[0] == 'd'))
-          .map(o => ({
-            posA1: tokensA[o.startInBefore].pos,
-            posA2: tokensA[o.endInBefore].pos + tokensA[o.endInBefore].str.length,
-          }))
-          .filter(o => (o.posA1 <= cursor))
-          .map(o => (o.posA2 - o.posA1))
-          .reduce((acc, val) => (acc + val), 0)
-        );
-      }
-      const cursorOffset = getDelsLen(diffOps, cursor) - (lastDiff ? getDelsLen(lastDiff.diffOps, cursor) : 0);
-      
-      if (debugTextEditor) {
-        console.log(`getDelsLen: ${getDelsLen(diffOps, cursor)}, last getDelsLen: ${(lastDiff ? getDelsLen(lastDiff.diffOps, cursor) : 0)}`)
-        console.dir({ diffOps, tokensA, tokensB });
-        console.log(`tok a: |${tokensA.map(t => t.str).join('|').replace(/\n/g, '\\n')}|`)
-        console.log(`tok b: |${tokensB.map(t => t.str).join('|').replace(/\n/g, '\\n')}|`)
-        console.log(`ops:${diffOps.map(o => `\n * ${o.action} ${o.startInBefore}-${o.endInBefore} |${tokensA.slice(o.startInBefore, 1+o.endInBefore).map(t => t.str).join('|').replace(/\n/g, '\\n')}| -> ${o.startInAfter}-${o.endInAfter} |${tokensB.slice(o.startInAfter, 1+o.endInAfter).map(t => t.str).join('|').replace(/\n/g, '\\n')}|`).join('')}`)
-        console.log(`cursorOffset: ${cursorOffset}, cursor: ${cursor} -> ${cursor + cursorOffset}`);
-      }
-
-      cursor += cursorOffset;
-
-      // FIXME if cursor is too lage, we lose focus on the editable
-
-      editHistoryMap.get(editable).push({ diffHtml, cursor })
-
-      editable.innerHTML = diffHtml;
-      Cursor.setCurrentCursorPosition(cursor, editable);
-      editable.focus();
-    };
-  });
-}
-
-
-
 document.body.onload = function handle_body_loaded() {
 
   console.log('body loaded');
@@ -1168,26 +970,6 @@ document.body.onload = function handle_body_loaded() {
 
   const userLang = query.lang || navigator.language || navigator.userLanguage;
   set_language(userLang); // must run after add_layout_menu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1496,23 +1278,5 @@ document.body.onload = function handle_body_loaded() {
     handleMutation();
     new MutationObserver(handleMutation).observe(head, { childList: true });
   })();
-
-  /*
-  (new MutationObserver(() => document.body.classList.toggle('dark-reader',
-    document.querySelector('style#dark-reader-style') != null
-  )).observe(document.querySelector('head'), { childList: true }));
-  */
-
-
-  /*
-  https://gitter.im/tinymce/tinymce?at=5a8f4dd10202dc012e70e7c7
-  Mike Botsko @viveleroi Feb 23 2018 00:10
-  is there a plugin that shows a "live" diff? For example if a user deletes a word, that word remains visually with a strike-through style, but the resulting textarea value is purely the final result of their edits?
-  if not, is that even remotely possible with the API?
-  */
-
-
-  addTextEditor(); // must run after set_language
-
 
 } // handle_body_loaded

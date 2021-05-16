@@ -76,19 +76,27 @@ and nonstandard keywords inspired by npm's package.json data format
     <a class="close" onclick="closeModal('printing')">X</a>
     <p class="title">Print Settings</p>
     <div class="content">
-      <span>
+      <p>
         1. paper format = DIN A4 landscape<br>
         2. disable margins, scale to 100%<br>
         3. duplex on, with flip on short edge<br>
-        <br>
+      </p>
+      <p>
         if you want to print to a different paper format,
         or if you need to calibrate the page sizes and offsets,
-        see the javascipt source code and change the variables:
+        see the javascipt source code in <code>alchi-book/src/js/main.js</code>
+        and change the variables:
         page_x, page_y, page_margin, font_size<br>
-        <br>
+      </p>
+      <p>
         "audit mode" will add space for manual annotations.
         (should be printed with "linear" layout).
-      </span>
+      </p>
+      <p>
+        Print with manual duplex (can be faster than auto duplex):
+        1. print even pages in forward direction.
+        2. print odd pages in reverse direction.
+      </p>
     </div>
   </div>
 </div>
