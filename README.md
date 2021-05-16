@@ -1,8 +1,5 @@
 # alchi
 
-status 2021-05-16 github pages is [broken](https://github.community/t/unable-to-build-page-please-try-again-later/122613),
-one mirror is at gitlab, see [recent publications](#recent-publications)
-
 **humans and their relations** are the last secret of this world ...
 
 lets decode this last secret!
