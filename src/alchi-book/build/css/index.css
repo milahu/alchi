@@ -1,0 +1,679 @@
+
+
+:root {
+  /* use same font in all browsers */
+  --sans-font: "Noto Sans"; /* NPM: @fontsource/noto-sans */
+  --mono-font: "Noto Mono"; /* NPM: @fontsource/noto-mono */
+}
+
+span.tt {
+  font-family: var(--mono-font);
+}
+
+body {
+  font-family: var(--sans-font);
+  font-size: var(--font-size);
+  line-height: 125%; /* default 121% in firefox */
+  
+  /* display: flex; */
+}
+
+.para-page-footer {
+  font-family: var(--mono-font);
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--page-margin-top);
+  padding-bottom: var(--page-margin-bottom);
+  box-sizing: border-box; /* padding will keep width/height */
+}
+
+.page-container:nth-child(even) {
+  padding-left: var(--page-margin-outside);
+  padding-right: var(--page-margin-inside);
+}
+
+.page-container:nth-child(odd) {
+  padding-left: var(--page-margin-inside);
+  padding-right: var(--page-margin-outside);
+}
+
+/* first page */
+.page-container:nth-child(1) > .page-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-container > .page-element {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden !important;
+}
+
+.page.uplow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* empty space between up and low */
+}
+
+.page-container > .footer {
+  margin-top: 1em;
+  flex-grow: 0;
+}
+
+.page-container > .footer {
+  height: 1em;
+  flex-grow: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#book-title {
+  font-size: 14mm;
+  line-height: 100%;
+  height: auto;
+  text-align: center;
+}
+
+#book-subtitle {
+  font-size: 8mm;
+  line-height: 100%;
+  height: auto;
+  text-align: center;
+  margin-bottom: 4mm;
+}
+
+
+#book-subsubtitle {
+  font-size: 5mm;
+  line-height: 5mm;
+  height: auto;
+  text-align: center;
+  margin-bottom: 4mm;
+}
+
+#book-logo {
+  margin: 5em 0;
+  text-align: center;
+}
+
+#book-logo > svg {
+  height: 20em;
+  float: none; /* TODO remove default float from svg */
+}
+
+.pallas-sign-list > div {
+  display: inline-block;
+}
+
+.pallas-sign-list > div > svg {
+  width: 3em !important;
+  height: 3em !important;
+  float: none !important; /* TODO remove default float from svg */
+}
+
+#div_map_be > svg {
+  width: 80mm;
+  height: 80mm;
+  float: none;
+}
+
+#div_map_be {
+  text-align: center;
+  margin: 10mm 0;
+}
+
+
+#div_map_be_with_letters_and_numbers > svg {
+  width: 40mm;
+  height: 40mm;
+  float: none;
+}
+#div_map_be_with_letters_and_numbers {
+  text-align: center;
+  margin: 0 2mm;
+  float: left;
+}
+
+
+/* debug on screen, hide for print */
+@media screen {
+  .page-container {
+  outline: solid 1px black;
+  }
+}
+
+/* workaround. print borders are too thick */
+@media print {
+  * {
+  /* no effect in firefox, but working in chrome */
+  border-width: 0.5pt !important;
+  }
+  
+  #screen-menu {
+    display: none; /* This menu is removed for printing. */
+  }
+
+  a {
+    color: black !important;
+  }
+}
+
+a {
+  /*color: #3391ff; /* light blue */
+  color: #005ecc; /* dark blue */
+}
+
+#screen-menu {
+  border-bottom: solid 1px grey;
+  /* margin-bottom: 1em; */
+  padding: 0.2em;
+  text-align: center;
+  position: sticky;
+  top: 0; left: 0; right: 0;
+  background-color: white;
+
+  font-size: 110%;
+}
+
+button {
+  border: solid 1px grey;
+  padding: 0 0.2em;
+}
+
+body.dark-reader #screen-menu {
+  background-color: var(--darkreader-neutral-background);
+}
+
+
+
+/* css modal windows -> #printing */
+/* https://webdesignerhut.com/pure-css-modal-window-effect/ */
+
+.modal {
+  /** Hide the lightbox */
+  display: none;
+  /** Apply basic lightbox styling */
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color:#333333;
+}
+.modal.show {
+  /** Show lightbox when it is target */
+  display: block;
+  outline: none;
+}
+.modal .box {
+  width: min-content;
+  min-width:500px;
+  margin: 2% auto;
+  padding:20px;
+  background-color:#FFF;
+  /*box-shadow: 0 0 0 1000px #80808080;*/
+  outline: solid 1000px #80808080; /* 50% grey + 50% transparent */
+}
+.modal .title {
+  margin:0;
+  padding:0 0 10px 0px;
+  border-bottom:1px #ccc solid;
+  font-size:22px;
+}
+.modal .content {
+  display:block;
+  padding:10px 0 0 0px;
+  font-size:18px;
+  line-height:22px;
+}
+.modal .close {
+  float:right;
+  display:block;
+  text-decoration:none;
+  font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:22px;
+  color:#858585;
+}
+
+
+
+span.link {
+  color: blue;
+}
+span.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
+/*
+  hidden margins are a pain .... !
+  child-margins affect margins of parent ??
+  blame margin-collapsing
+  solve with - overflow: auto
+  https://stackoverflow.com/questions/1762539/margin-on-child-element-moves-parent-element
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  always hide script source
+  <script style="display: none">
+  https://stackoverflow.com/questions/21440225
+  the-javascript-code-is-visible-on-the-browser
+*/
+script {
+  display: none !important;
+}
+
+.page-container {
+  page-break-after: always; /* TODO remove? */
+
+  width: var(--page-width);
+  height: var(--page-height);
+
+  /*outline: solid 1px blue;*/
+
+  overflow: auto; /* disable css margin collapsing */
+}
+
+html {
+  background: white;
+}
+
+p#h1 {
+  margin-bottom: .5em;
+}
+
+.para-margin-bottom {
+  margin-bottom: .5em;
+
+  display: inline;
+  margin-right: 2em;
+}
+
+table {
+  margin-bottom: 0.5em;
+}
+
+
+
+svg {
+  float: right;
+  clear: right; /* stack vertical */
+}
+
+svg.map {
+  /*
+  margin: 1em;
+  */
+}
+
+span.a1,
+span.b2,
+span.c3,
+span.d4 {
+  text-decoration: underline;
+  text-decoration-thickness: 1pt;
+  /*text-decoration-color: transparent;*/ /* TODO remove? */
+}
+
+span.a1 { text-decoration-color: var(--medium1) }
+span.b2 { text-decoration-color: var(--medium2) }
+span.c3 { text-decoration-color: var(--medium3) }
+span.d4 { text-decoration-color: var(--medium4) }
+
+.balance {
+  display: inline-flex;
+  /*
+  float: right;
+  margin: 1em 0 1em 1em;
+  */
+  flex-direction: column;
+
+  width: 23em; /* TODO */
+}
+.balance > .title {
+  margin-bottom: .5em;
+}
+.balance > .f, .balance > .m {
+  display: flex;
+  flex-direction: row;
+}
+.balance > .f {
+  padding-bottom: .25em;
+
+  border-bottom: solid 1px black;
+  /* TODO smaller border in firefox print */
+}
+.balance > .m {
+  padding-top: .25em;
+}
+.balance > div > div {
+  display: flex;
+  flex-basis: 25%;
+}
+.balance > .f > div {
+  flex-direction: column-reverse;
+}
+.balance > .m > div {
+  flex-direction: column;
+}
+.balance > div > div > div {
+  text-align: center;
+}
+.balance > .f > div > .h2 {
+  margin-top: .25em;
+}
+.balance > .m > div > .h2 {
+  margin-bottom: .25em;
+}
+
+.caption-container.four_bodies > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.caption-container {
+  display: inline-flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0.5em 0;
+}
+.caption-container > div {
+  display: inline-block;
+  text-align: center;
+}
+.caption-container > *:first-child {
+  margin-bottom: 0.5em;
+}
+
+/* live diff text editor */
+ins {
+  background-color: rgba(0, 255, 0, 0.5);
+  text-decoration: none;
+}
+del {
+  background-color: rgba(255, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+/* fiduswriter ModTrack */
+span.approved-insertion {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+span.approved-deletion {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+
+
+pre.map16 span.color-1 { color: var(--text1); }
+pre.map16 span.color-2 { color: var(--text2); }
+pre.map16 span.color-3 { color: var(--text3); }
+pre.map16 span.color-4 { color: var(--text4); }
+
+pre.map16 span.color-A { color: var(--text1); }
+pre.map16 span.color-B { color: var(--text2); }
+pre.map16 span.color-C { color: var(--text3); }
+pre.map16 span.color-D { color: var(--text4); }
+
+/*
+  https://stackoverflow.com/a/19735997/10440128
+  for vertical-stacked floats, use style="float: right; clear: right"
+*/
+
+.float-right {
+  float: right;
+  clear: right; /* stack vertical */
+  margin-left: 1em;
+}
+
+.float-left {
+  float: left;
+  clear: left; /* stack vertical */
+  margin-right: 1em;
+}
+
+#div_four_bodies > svg {
+  width: 175px;
+  height: auto;
+}
+
+#div_three_hands > svg {
+  width: 160px;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* not working, solve in javascript
+.suffix {
+  text-decoration: none !important;
+}
+*/
+
+/* square sign */
+.square-sign {
+  position: relative;
+  top: -0.5px;
+}
+
+/* cross sign */
+.xmark-sign {
+  font-size: 125%;
+  position: relative;
+  top: 0.5px;
+}
+
+.diamond-sign {
+  /*font-weight: bold; no effect */
+  display: inline-block;
+  /*transform: rotate(45deg);*/
+  font-size: 150%;
+  line-height: 50%;
+  margin-left: -0.1em;
+  margin-right: -0.1em;
+  
+  position: relative;
+  top: 0.1em;
+}
+.plus-sign {
+  font-weight: bold;
+}
+
+.rarr {
+  color: red;
+}
+
+.nowrap-element, b {
+  white-space: nowrap;
+}
+
+.page-element {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.double-pallas-small-container > svg {
+  border-bottom: solid 1px black;
+  /* TODO smaller border in firefox print */
+}
+
+.double-pallas-small-container > svg:last-child {
+  border-bottom: none;
+}
+
+#pages-container.booklet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, var(--page-width));
+}
+
+/* helper line to stitch booklet together */
+#pages-container.booklet-grid .page-container.booklet-center-left {
+  border-right: solid 0.1pt grey;
+}
+
+span.url {
+  font-family: monospace;
+  font-size: 90%; /* compensate: monospace font is larger */
+}
+
+table {
+  border-collapse: collapse;
+}
+td {
+  border: solid 1px black;
+  padding: 0.25em 0.5em;
+}
+td:nth-child(2) {
+  border-right: none;
+}
+td:nth-child(3) {
+  border-left: none;
+}
+
+
+
+#pages-container.show-files .page-container::before {
+  content: attr(data-inputpath);
+  text-align: center;
+  font-family: monospace;
+  height: 1.5em;
+  margin-top: -1.5em;
+}
+
+
+
+.layout-button {
+  padding: .1em .2em;
+}
+
+.layout-button:hover {
+  background-color: #80808060; /* 50% grey + 40% alpha */
+}
+
+button.active {
+  background-color: #0000ff60; /* blue + 40% alpha */
+}
+
+.layout-menu label {
+  margin: 0 0.2em;
+}
+
+
+
+p { margin-bottom: 0.5em; }
+
+.smile {
+  display: inline-block;
+  transform: rotate(90deg);
+  letter-spacing: 1pt;
+  margin: 0 0.2em;
+}
+
+#message-install-fonts {
+  border: solid 1px red;
+  padding: 0.5em;
+  display: inline-block;
+}
+
+code {
+  padding: 0.2em;
+  border: solid 1px grey;
+}
+
+/* Dark mode */
+/*
+  https://stackoverflow.com/questions/50840168/how-to-detect-if-the-os-is-in-dark-mode-in-browsers
+  https://github.com/darkreader/darkreader/issues/4342
+  https://github.com/darkreader/darkreader/issues/4494
+*/
+
+@media screen {
+  body.dark-reader img.dark-invert {
+    filter: invert(1);
+  }
+  body.dark-reader svg path[stroke=black] {
+    stroke: white;
+  }
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+  img.dark-invert {
+  filter: invert(1);
+  }
+}
+*/
+
+/* TODO use .float-left and .float-right */
+.left {
+  margin-right: 1em;
+  float: left;
+  
+  clear: both;
+}
+.right {
+  float: right;
+  margin-left: 1em;  
+}
+p.clear, div.clear {
+  clear: both; /* clear float left/right */
+}
+
+pre.xo {
+  line-height: 90%;
+}
+
+pre {
+  padding: 0.5em;
+  margin: 0.5em;
+  margin-left: 0;
+  margin-top: 0;
+  
+  border: solid 1px grey;
+  display: inline-block;
+
+}
+
+.caption {
+  /* compensate margin of pre */
+  margin-top: -0.25em;
+  margin-left: -0.25em;
+}
+
+
+
+
+#pages-container.audit-mode p {
+  font-size: 110%; /* add room for manual annotations */
+  line-height: 220%; /* add room for manual annotations */
+  /*line-height: 270%; /* add room for manual annotations */
+}
+
+#pages-container.audit-mode {
+  /* 1.4142 = Math.sqrt(2) */
+  --page-width: calc(1.4142 * var(--page-width-base));
+  --page-height: calc(1.4142 * var(--page-height-base));
+}
+
+
+code {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
