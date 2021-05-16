@@ -1,5 +1,8 @@
 # alchi
 
+status 2021-05-16 github pages is [broken](https://github.community/t/unable-to-build-page-please-try-again-later/122613),
+one mirror is at gitlab, see [recent publications](#recent-publications)
+
 **humans and their relations** are the last secret of this world ...
 
 lets decode this last secret!
@@ -32,19 +35,23 @@ and without starting a local web server
 we can open markdown files offline with (for example) the [Markdown Preview Plus](https://www.crx4chrome.com/extensions/febilkbfcbhebfnokafefeacimjdckgl/) chrome extension  
 (in `chrome://extensions` enable `Allow access to file URLs`)
 
+### recent publications
+
 <details>
-<summary>recent publications</summary>
 
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
 
+* 2021-05-16
+  * alchi book html: [github](https://milahu.gitlab.io/alchi/src/alchi-book/build/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/)
+
 * 2021-04-11
-  * [alchi-book html](https://milahu.github.io/alchi/src/alchi-book/dist/pallas.me-and-my-six-friends.2021-04-11.html) - first public release - successor of the alchi-flyer
-  * [alchi-test html](https://milahu.github.io/alchi/src/alchi-test/public/) - first public release - combine multiple personality tests, show result with the four elements
+  * alchi-book html: [github](https://milahu.github.io/alchi/src/alchi-book/dist/pallas.me-and-my-six-friends.2021-04-11.html), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/dist/pallas.me-and-my-six-friends.2021-04-11.html) - first public release - successor of the alchi-flyer
+  * alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - first public release - combine multiple personality tests, show result with the four elements
 
 * 2020-09-01
-  * [alchi tables html](https://milahu.github.io/alchi/english/alchi-tables.html)
-  * [alchi flyer html (german)](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
-  * [alchi-maps 2020-09-02 html+svg+js](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np) (660 KB) - new: with fotos (format `e/bxfoto`)
+  * alchi tables html: [github](https://milahu.github.io/alchi/english/alchi-tables.html), [gitlab](https://milahu.gitlab.io/alchi/english/alchi-tables.html)
+  * alchi flyer html (german): [github](https://milahu.github.io/alchi/deutsch/alchi-flyer.html), [gitlab](https://milahu.github.io/alchi/deutsch/alchi-flyer.html)
+  * alchi-maps 2020-09-02 html+svg+js: [github](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np) - new: with fotos (format `e/bxfoto`)
 
 * 2020-08-10
   * [finger test - three hands svg](../src/images/finger%20test%20-%20three%20hands.svg) (25 KB) is the most simple test for the three sheldon-types
