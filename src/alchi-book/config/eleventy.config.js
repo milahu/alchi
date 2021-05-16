@@ -9,7 +9,7 @@ const staticConfig = {
   jsBundleDevserver: null, // will be set on runtime
   isProduction: (process.env.NODE_ENV == 'production'),
 
-  pathPrefix: "/", // This will change both Eleventy's pathPrefix, and the one output by the
+  pathPrefix: "", // This will change both Eleventy's pathPrefix, and the one output by the
   // vite-related shortcodes below. Double-check if you change this, as this is only a demo :)
 
 
