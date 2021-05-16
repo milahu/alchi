@@ -59,11 +59,11 @@ export default defineConfig({
     // for anything else, consider renaming assetsDir.
     // This can help you set cache headers for hashed output more easily.
     // assetsDir: "assets",
-    // Sourcemaps are nice, but not critical for this to work
-    sourcemap: true,
-    // This is critical: generate manifest.json in outDir
-    manifest: true,
-    
+
+    sourcemap: false, // save 50 KByte
+
+    manifest: true, // required for eleventy JsBundle
+
     // https://vitejs.dev/guide/build.html#multi-page-app
     rollupOptions,
   },
