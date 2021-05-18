@@ -1,3 +1,6 @@
+// FIXME export and import are out of sync
+// first paragraph of page-005 is imported to page-000 <div id="book-subtitle">
+
 // TODO add <table> contents to auto-translate
 // see page-170.html and page-180.html in src/pages
 
@@ -70,14 +73,14 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
           // encode html for translator service
           // encode html markup
           .replace(/<\/(.+?)>/sg, (_, m) => ( // close tags
-            ` ${mark.tagZ1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagZ2} `;
+            ` ${mark.tagZ1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagZ2} `
           ))
           .replace(/<(.+?)>/sg, (_, m) => ( // open tags
-            ` ${mark.tagA1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagA2} `;
+            ` ${mark.tagA1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagA2} `
           ))
           // encode html entities
           .replace(/&([^ ]+);/g, (_, m) => (
-            ` ${mark.enti1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.enti2} `;
+            ` ${mark.enti1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.enti2} `
           ))
         ;
         const tp = `${mark.node1} ${fileIdx} ${pi} ${ni} ${mark.node2} ${s} ${mark.node3}`;
@@ -126,7 +129,10 @@ next steps:
 2. click the first link
 3. scroll down, on the bottom right: copy translation
 4. paste the translation to your text editor
-5. repeat for all links
+5. repeat for all links (append to the text file)
+6. save the text file, for example as translate-${sourceLang}2${targetLang}.txt
+7. run this script again with the text file, for example:
+node ${process.argv[1]} ${sourceLang} ${targetLang} translate-${sourceLang}2${targetLang}.txt
 
 note:
 translators will change the order of words,
@@ -138,7 +144,7 @@ will be in a wrong position.
 function dateTime(date = null) {
   // sample result: '2021-03-21.21-05-36'
   if (!date) date = new Date();
-  return date.toLocaleString('af').replace(/:/g, '-').replace(' ', '.');
+  return date.toLocaleString('lt').replace(/:/g, '-').replace(' ', '.');
 }
 
 //function importLang(sourceLang, targetLang, inputFile, tagName) {
@@ -220,7 +226,7 @@ function importLang(sourceLang, targetLang, inputFile) {
           o.node == ni
         ));
         if (!textNode) {
-          console.log(`warning: no imported translation for ${fileIdx} ${pi} ${ni} ${n.toString().slice(0, 100)} ...`);
+          //console.log(`warning: no imported translation for ${fileIdx} ${pi} ${ni} ${n.toString().slice(0, 100)} ...`);
           return; // continue
         }
         const indent = n.toString().split('\n').slice(-1)[0].match(/^\s*/)[0];
@@ -249,11 +255,13 @@ else {
   console.log(
     'usage:\n' +
     `node ${scriptName} <sourceLang> <targetLang>\n` +
-    `node ${scriptName} <sourceLang> <targetLang> <translationFile> <tagName>\n` +
+    `node ${scriptName} <sourceLang> <targetLang> <translationFile>\n` +
     '\n' +
     'sample:\n' +
     `node ${scriptName} de en # from source files, generate translate-de2en.html\n` +
-    `node ${scriptName} de en translate-de2en.txt en+ # add <en+>...</en+> tags to source files\n`
+    `# manually create translate-de2en.txt\n` +
+    `node ${scriptName} de en translate-de2en.txt # add <en auto t="${dateTime()}">...</en> tags to source files\n` +
+    `# manually fix the translations, and replace <en auto t="${dateTime()}"> with <en>\n`
     //`node ${scriptName} translate-de2en.txt en\n`
   )
 }
