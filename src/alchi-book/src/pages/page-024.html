@@ -9,6 +9,14 @@
       wie der Rest der Karte aussehen könnte.
       Dafür habe ich mehrere Annahmen gemacht:
     </de>
+    <en>
+      <b>symmetry?</b>
+      The rest of the map is an "extrapolation"
+      from my personal experiences,
+      so a prediction,
+      what the rest of the map might look like.
+      I made several assumptions for this:
+    </en>
   </p>
 
 <pre class="map16 float-right">
@@ -24,13 +32,24 @@ _ _ 4 _ _
       1. Es gilt die "Ein Schritt weiter" Regel:
       Jeder übernächste Punkt (in gerader Richtung)
       muss "andere Klasse" haben.
-      (zwei Klassen: 12 und 34.)
+      (zwei "Klassen": 12 und 34.)
       Den übernächsten Punkt nennen wir <b>Modalität</b>.
   
       Beispiel: Ein Punkt mit Element 1 (Feuer)
       muss in einer Richtung Element 4 als übernächste Punkte haben <nw>(4 _ 1 _ 4)</nw>
       und in der anderen Richtung Element 3 als übernächste Punkte haben <nw>(3 _ 1 _ 3)</nw>.
     </de>
+    <en>
+      1. We follow the "one step further" rule:
+      Every second-next point (in a straight line)
+      must have "other class".
+      (two "classes": 12 and 34.)
+      We call the point after that <b>modality</b>.
+  
+      Sample: A point with element 1 (fire)
+      must have element 4 as the next-plus-one point in one direction<nw>(4 _ 1 _ 4)</nw>
+      and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
+    </en>
   </p>
 
   <p>
@@ -46,11 +65,28 @@ _ _ _ _
 4 _ 2 _
 _ _ _ _
 </pre>
-      
+
       1.b.
       Die kleinste Darstellung der Karte ist eine 4 Mal 4 "Matrix" mit 16 Punkten.
       Damit sind schon 25% der Karte festgelegt.
     </de>
+    <en>
+      1.a.
+      Four steps further (in a straight line) must be the same element again,
+      so the map is symmetrical to "Modulo 4"
+      = the whole map repeats every four steps
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1.b.
+      The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
+      This means that 25% of the map is already set.
+    </en>
   </p>
 
   <p>
@@ -61,11 +97,23 @@ _ _ _ _
 
       Beispiel:
       Element 2 hat die Modalitäten 3 und 4.
-      Also: "2 1 2" darf nicht sein,
+      Also: "2 1 2" ist nicht erlaubt,
       weil der übernächste Punkt ist die Modalität.
       Also muss es sein "2 1 3" oder "2 1 4",
       oder "3 1 2" oder "4 1 2".
     </de>
+    <en>
+      1.c.
+      Every second-next point (in straight directions)
+      must have "other class".
+
+      Sample:
+      Element 2 has modalities 3 and 4.
+      So: "2 1 2" is not allowed,
+      because the second-next point is the modality.
+      So it has to be "2 1 3" or "2 1 4",
+      or "3 1 2" or "4 1 2".
+    </en>
   </p>
 
   <p>
@@ -79,6 +127,16 @@ _ _ _ _
       Meine (Element 1) vier nächsten Punkte (in geraden Richtungen)
       müssen Elemente 2 3 4 sein (aber nicht Element 1).
     </de>
+    <en>
+      2. Two points that are right next to each other,
+      must have two different elements.
+
+      Granted, that's a bit arbitrary ...
+      but diagonal points may have the same element.
+      From this it follows (with my personal experience):
+      My (Element 1) four nearest points (in straight directions)
+      must be elements 2 3 4 (but not element 1).
+    </en>
   </p>
 
   <p>
@@ -86,6 +144,10 @@ _ _ _ _
       3. Der größte Unterschied zwischen den Elementen ist ihre "Klasse" (12 oder 34),
       und beide Klassen sind gleich wichtig.
     </de>
+    <en>
+      3. The biggest difference between the elements is their "class" (12 or 34),
+      and both classes are equally important.
+    </en>
   </p>
 
 <div class="float-right">
@@ -113,6 +175,14 @@ _ 3 _
       Mit 2 folgt, zum Beispiel für Element 1:
       Die vier nächsten Punkte sind 2 2 3 4.
     </de>
+    <en>
+      3.a.
+      The following applies to the next four points:
+      two points must be from class 12,
+      and two points must be from class 34.
+      With 2 follows, for example for element 1:
+      The next four points are 2 2 3 4.
+    </en>
   </p>
 
   <p>
@@ -122,6 +192,12 @@ _ 3 _
       Die einzig symmetrische Lösung dafür ist:
       Auch das Element 1 muss diagonal wiederholt werden.
     </de>
+    <en>
+      Here is noticeable:
+      Element 2 is repeated diagonally.
+      The only symmetrical solution for this is:
+      Element 1 must also be repeated diagonally.
+    </en>
   </p>
 
 <div class="float-right">
@@ -151,6 +227,10 @@ _ _ 4 3 _ _
       Mit Regel 2 (keine direkte Wiederholung)
       sind die übernächsten Punkte von Element 1 eindeutig festgelegt.
     </de>
+    <en>
+      With rule 2 (no direct repetition)
+      The next-plus-one points of element 1 are clearly defined.
+    </en>
   </p>
 
   <p>
@@ -161,6 +241,13 @@ _ _ 4 3 _ _
       Ein Flusskreis besteht aus 1122 oder 3344,
       und die gleichen Elemente liegen diagonal.
     </de>
+    <en>
+      The next-plus-one points are also clear for element 2.
+      With this we have found the partial pattern,
+      which we call<b>Flusskreis</b>.
+      A river circle consists of 1122 or 3344,
+      and the same elements lie diagonally.
+    </en>
   </p>
 
 <div class="float-right">
@@ -197,22 +284,35 @@ _ _ _ _ 1 2 _ _ _ _
     <de>
       Auch für Element 3 sind die übernächsten Punkte eindeutig.
     </de>
+    <en>
+      The next-plus-one points are also clear for element 3.
+    </en>
   </p>
 
   <p>
     <de>
       Auch für Element 4 sind die übernächsten Punkte eindeutig.
     </de>
+    <en>
+      The next-plus-one points are also clear for element 4.
+    </en>
   </p>
 
   <p>
     <de>
-      Damit sind die Vier Elemente festgelegt :)
+      Damit sind die Vier Elemente auf der Karte festgelegt :)
       Denn in Regel 1.b haben wir schon gesehen:
       Die Karte muss "zyklisch" sein mit Modulo 4,
       also in X-Richtung und in Y-Richtung
       wiederholt sich das Muster nach vier Schritten.
     </de>
+    <en>
+      This defines the four elements on the map :)
+      Because in rule 1.b we have already seen:
+      The map must be "cyclical" with modulo 4,
+      that is, in the X direction and in the Y direction
+      the pattern is repeating every four steps.
+    </en>
   </p>
 
 </page>
