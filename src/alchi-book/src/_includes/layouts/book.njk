@@ -73,8 +73,10 @@ and nonstandard keywords inspired by npm's package.json data format
 
 <div class="modal" id="printing">
   <div class="box">
-    <a class="close" onclick="closeModal('printing')">X</a>
-    <p class="title">Print Settings</p>
+    <div class="head">
+      <a class="close" onclick="closeModal('printing')">X</a>
+      <p class="title">Print Settings</p>
+    </div>
     <div class="content">
       <p>
         1. paper format = DIN A4 landscape<br>
@@ -94,8 +96,26 @@ and nonstandard keywords inspired by npm's package.json data format
       </p>
       <p>
         Print with manual duplex (can be faster than auto duplex):
+        0. collate on (print 12341234, not 11223344).
         1. print even pages in forward direction.
         2. print odd pages in reverse direction.
+
+        <!-- NOT
+          note:
+          there is a bug in chrome browser (maybe also firefox)
+          where an <b>empty page is added</b> to the print result.
+          this empty page must be removed before
+          re-inserting the printed pages
+          to print the backsides (manual duplex),
+          otherwise all the sheets are "off by one",
+          and your whole booklet is broken.
+          workaround:
+          print to PDF,
+          and then print PDF to paper
+          with a custom page range (excluding the last empty page),
+          or use a tool like <code>pdfselect</code>
+          to remove the last empty page from the PDF file.
+        -->
       </p>
     </div>
   </div>
