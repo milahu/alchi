@@ -1,6 +1,10 @@
 // FIXME export and import are out of sync
 // first paragraph of page-005 is imported to page-000 <div id="book-subtitle">
 
+// TODO detect when translations get out of sync
+// -> extract text fragments to separate database file
+// and watch for changes
+
 // TODO add <table> contents to auto-translate
 // see page-170.html and page-180.html in src/pages
 
@@ -138,6 +142,11 @@ note:
 translators will change the order of words,
 so in some cases, html markup tags like <b>....</b>
 will be in a wrong position.
+
+note:
+the ${htmlFile} file is valid only for one iteration.
+if you added nodes to the html files,
+then you must generate a new ${htmlFile} file
 `)
 }
 

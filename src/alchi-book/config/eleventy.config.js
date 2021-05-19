@@ -1,3 +1,6 @@
+// TODO compile to markdown? one file per language
+// -> easy to host on gitlab, gitea, etc. - no need for static html hosting
+
 const fs = require('fs');
 
 const staticConfig = {
