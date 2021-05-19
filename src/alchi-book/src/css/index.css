@@ -201,37 +201,41 @@ body.dark-reader #screen-menu {
   /** Apply basic lightbox styling */
   position: fixed;
   z-index: 9999;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  /*top: 0;*/
   top: 0;
+  bottom: 0;
   left: 0;
   color:#333333;
 }
 .modal.show {
   /** Show lightbox when it is target */
-  display: block;
+  display: flex;
   outline: none;
 }
 .modal .box {
-  width: min-content;
-  min-width:500px;
-  margin: 2% auto;
-  padding:20px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: calc(100% - 30px);
   background-color:#FFF;
   /*box-shadow: 0 0 0 1000px #80808080;*/
   outline: solid 1000px #80808080; /* 50% grey + 50% transparent */
 }
-.modal .title {
+.modal .head {
   margin:0;
-  padding:0 0 10px 0px;
+  /*padding:0 0 10px 0px;*/
   border-bottom:1px #ccc solid;
-  font-size:22px;
+  font-size:16px;
 }
 .modal .content {
   display:block;
   padding:10px 0 0 0px;
-  font-size:18px;
+  font-size:16px;
   line-height:22px;
+  overflow: auto;
 }
 .modal .close {
   float:right;
@@ -670,6 +674,9 @@ pre {
   --page-height: calc(1.4142 * var(--page-height-base));
 }
 
+#pages-container.audit-mode td {
+  padding-bottom: 1.5em;
+}
 
 code {
   border: none;
