@@ -12,7 +12,7 @@
 
 <meta name="basename.de" content="pallas.ich-und-meine-sechs-freunde">
 
-<meta name="version" content="2021-05-18">
+<meta name="version" content="2021-05-19">
 <meta name="author" content="Milan Hauth">
 <meta name="author.email" content="milahu@gmail.com">
 <!--<meta name="contributors" content="">-->
@@ -98,8 +98,10 @@ them import the text list back into our xml node format
 
 <div class="modal" id="printing">
   <div class="box">
-    <a class="close" onclick="closeModal('printing')">X</a>
-    <p class="title">Print Settings</p>
+    <div class="head">
+      <a class="close" onclick="closeModal('printing')">X</a>
+      <p class="title">Print Settings</p>
+    </div>
     <div class="content">
       <p>
         1. paper format = DIN A4 landscape<br>
@@ -119,8 +121,26 @@ them import the text list back into our xml node format
       </p>
       <p>
         Print with manual duplex (can be faster than auto duplex):
+        0. collate on (print 12341234, not 11223344).
         1. print even pages in forward direction.
         2. print odd pages in reverse direction.
+
+        <!-- NOT
+          note:
+          there is a bug in chrome browser (maybe also firefox)
+          where an <b>empty page is added</b> to the print result.
+          this empty page must be removed before
+          re-inserting the printed pages
+          to print the backsides (manual duplex),
+          otherwise all the sheets are "off by one",
+          and your whole booklet is broken.
+          workaround:
+          print to PDF,
+          and then print PDF to paper
+          with a custom page range (excluding the last empty page),
+          or use a tool like <code>pdfselect</code>
+          to remove the last empty page from the PDF file.
+        -->
       </p>
     </div>
   </div>
@@ -817,7 +837,7 @@ them import the text list back into our xml node format
 </div>
 
     </div><div class="page-container" id="page-4" data-inputpath="src/pages/page-020.html">
-      <div class="uplow page-element" style="font-size: 90%">
+      <div class="uplow page-element" style="font-size: 95%">
 
   <div class="up">
 
@@ -1172,9 +1192,9 @@ D1 A2 D3
     </div><div class="page-container" id="page-5" data-inputpath="src/pages/page-022.html">
       <div class="page-element">
 
-  <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 64.969788 103.11084" version="1.1" id="svg8" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" sodipodi:docname="alchi-think-positive-map-of-sixteen-types.svg" width="70px" class="float-right" data-srcpath="src/images/alchi-think-positive-map-of-sixteen-types.svg">
+  <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="alchi-think-positive-map-of-sixteen-types.svg" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" id="svg8" version="1.1" viewBox="0 0 64.969788 103.11084" width="60px" class="float-right" data-srcpath="src/images/alchi-think-positive-map-of-sixteen-types.svg">
   <defs id="defs2"></defs>
-  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="1.4" inkscape:cx="266.62519" inkscape:cy="165.21473" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" showguides="true" inkscape:guide-bbox="true" inkscape:window-width="1814" inkscape:window-height="944" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:snap-object-midpoints="true" fit-margin-top="5" lock-margins="true" fit-margin-left="5" fit-margin-right="5" fit-margin-bottom="5"></sodipodi:namedview>
+  <sodipodi:namedview fit-margin-bottom="5" fit-margin-right="5" fit-margin-left="5" lock-margins="true" fit-margin-top="5" inkscape:snap-object-midpoints="true" inkscape:window-maximized="0" inkscape:window-y="0" inkscape:window-x="0" inkscape:window-height="944" inkscape:window-width="1814" inkscape:guide-bbox="true" showguides="true" showgrid="false" inkscape:document-rotation="0" inkscape:current-layer="layer1" inkscape:document-units="mm" inkscape:cy="269.70199" inkscape:cx="-74.316616" inkscape:zoom="1.979899" inkscape:pageshadow="2" inkscape:pageopacity="0.0" borderopacity="1.0" bordercolor="#666666" pagecolor="#ffffff" id="base"></sodipodi:namedview>
   <metadata id="metadata5">
     <rdf:rdf>
       <cc:work rdf:about="">
@@ -1184,35 +1204,33 @@ D1 A2 D3
       </cc:work>
     </rdf:rdf>
   </metadata>
-  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(126.78186,-31.77369)">
-    <g id="g1194" transform="translate(0.53955523,-11.892276)">
-      <circle r="14.596157" cy="126.68065" cx="-96.116142" id="circle1106" style="fill:none;stroke:#000000;stroke-width:1"></circle>
-      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m -104.57825,122.92366 c 2.19399,-2.50997 5.365105,-2.4913 7.374125,0" id="path1108" sodipodi:nodetypes="cc"></path>
-      <path sodipodi:nodetypes="cc" id="path1110" d="m -94.946485,122.92366 c 2.194,-2.50997 5.36511,-2.4913 7.37414,0" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"></path>
-      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m -103.5982,132.07513 c 5.001705,3.77046 10.246125,3.62704 15.063275,0" id="path1112" sodipodi:nodetypes="cc"></path>
-    </g>
-    <g transform="translate(-196.67826,-11.741185)" id="g1152">
-      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 116.27572,55.947622 c 7.6096,-3.138273 15.46565,7.975735 9.51799,16.400342 6.55384,3.688756 3.79032,20.439355 -5.85785,17.737141 -1.43389,8.028572 -15.33337,9.478618 -19.8957,1.69031 -6.312416,7.316368 -19.321566,0.225023 -16.707256,-8.835494 -10.186643,-1.456753 -10.487151,-18.879929 -1.362279,-19.645953 -3.41721,-7.822572 7.797093,-16.444172 15.416203,-8.911631 5.116812,-9.397945 18.042472,-4.892252 18.888892,1.565285 z" id="path1114" sodipodi:nodetypes="cccccccc"></path>
-      <g id="g1150" transform="translate(1.702104,-1.5812873)">
-        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" inkscape:tile-h="3.1320683" inkscape:tile-w="3.1320683" inkscape:tile-cy="65.393538" inkscape:tile-cx="92.592123" r="1.5660342" cy="65.393539" cx="92.592125" id="circle1116" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1118" cx="92.592125" cy="65.393539" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1120" cx="92.592125" cy="71.657677" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1122" cx="92.592125" cy="77.921814" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1124" cx="92.592125" cy="84.185951" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1126" cx="98.856262" cy="65.393539" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1128" cx="98.856262" cy="71.657677" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1130" cx="98.856262" cy="77.921814" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1132" cx="98.856262" cy="84.185951" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1134" cx="105.1204" cy="65.393539" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1136" cx="105.1204" cy="71.657677" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1138" cx="105.1204" cy="77.921814" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1140" cx="105.1204" cy="84.185951" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1142" cx="111.38454" cy="65.393539" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1144" cx="111.38454" cy="71.657677" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1146" cx="111.38454" cy="77.921814" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
-        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="use1148" cx="111.38454" cy="84.185951" r="1.5660342" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
+  <g transform="translate(126.78186,-31.77369)" id="layer1" inkscape:groupmode="layer" inkscape:label="Layer 1">
+    <circle r="14.596157" cy="114.78838" cx="-95.576584" id="circle1106" style="fill:none;stroke:#000000;stroke-width:1"></circle>
+    <path sodipodi:nodetypes="cc" id="path1110" d="m -92.621579,111.03138 c 1.727253,-1.89645 3.930604,-1.90841 5.47618,0" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"></path>
+    <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m -103.05864,119.68646 c 5.0017,3.77046 10.24612,3.62704 15.06327,0" id="path1112" sodipodi:nodetypes="cc"></path>
+    <g id="g1152" transform="translate(-196.67826,-11.741185)">
+      <path sodipodi:nodetypes="cccccccc" id="path1114" d="m 116.27572,55.947622 c 7.6096,-3.138273 15.46565,7.975735 9.51799,16.400342 6.55384,3.688756 3.79032,20.439355 -5.85785,17.737141 -1.43389,8.028572 -15.33337,9.478618 -19.8957,1.69031 -6.312416,7.316368 -19.321566,0.225023 -16.707256,-8.835494 -10.186643,-1.456753 -10.487151,-18.879929 -1.362279,-19.645953 -3.41721,-7.822572 7.797093,-16.444172 15.416203,-8.911631 5.116812,-9.397945 18.042472,-4.892252 18.888892,1.565285 z" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"></path>
+      <g transform="translate(1.702104,-1.5812873)" id="g1150">
+        <circle style="fill:#000000;stroke:none;stroke-width:0.808836" id="circle1116" cx="92.592125" cy="65.393539" r="1.5660342" inkscape:tile-cx="92.592123" inkscape:tile-cy="65.393538" inkscape:tile-w="3.1320683" inkscape:tile-h="3.1320683" inkscape:tile-x0="91.026089" inkscape:tile-y0="63.827504"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="65.393539" cx="92.592125" id="use1118" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="71.657677" cx="92.592125" id="use1120" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="77.921814" cx="92.592125" id="use1122" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="84.185951" cx="92.592125" id="use1124" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="65.393539" cx="98.856262" id="use1126" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="71.657677" cx="98.856262" id="use1128" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="77.921814" cx="98.856262" id="use1130" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="84.185951" cx="98.856262" id="use1132" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="65.393539" cx="105.1204" id="use1134" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="71.657677" cx="105.1204" id="use1136" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="77.921814" cx="105.1204" id="use1138" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="84.185951" cx="105.1204" id="use1140" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="65.393539" cx="111.38454" id="use1142" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="71.657677" cx="111.38454" id="use1144" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="77.921814" cx="111.38454" id="use1146" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
+        <circle inkscape:tile-y0="63.827504" inkscape:tile-x0="91.026089" r="1.5660342" cy="84.185951" cx="111.38454" id="use1148" style="fill:#000000;stroke:none;stroke-width:0.808836"></circle>
       </g>
     </g>
+    <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m -104.15619,111.03138 c 1.72725,-1.89645 3.9306,-1.90841 5.476182,0" id="path36" sodipodi:nodetypes="cc"></path>
   </g>
 </svg>
 
@@ -1330,7 +1348,7 @@ D1 A2 D3
 </div>
 
     </div><div class="page-container" id="page-6" data-inputpath="src/pages/page-024.html">
-      <div class="page-element langs">
+      <div style="font-size: 90%" class="page-element langs">
 
   <p class="langs">
     <span lang="de">
@@ -2368,7 +2386,7 @@ _ _ _ _ 1 2 _ _ _ _
 </div>
 
     </div><div class="page-container" id="page-10" data-inputpath="src/pages/page-060.html">
-      <div class="uplow page-element">
+      <div class="uplow page-element" style="font-size: 90%">
 
   <div class="up">
 
@@ -2420,7 +2438,7 @@ _ _ _ _ 1 2 _ _ _ _
     </p>
 
     <div class="right caption-container">
-      <div><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="alchi-child-exchange.svg" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" id="svg849" version="1.1" viewBox="0 0 95.169655 127.75243" width="80px" title="synchronous child exchange between two families" data-srcpath="src/images/alchi-child-exchange.svg">
+      <div><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="alchi-child-exchange.svg" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" id="svg849" version="1.1" viewBox="0 0 95.169655 127.75243" width="70px" title="synchronous child exchange between two families" data-srcpath="src/images/alchi-child-exchange.svg">
   <defs id="defs843">
     <marker inkscape:stockid="Arrow2Mend" orient="auto" refY="0" refX="0" id="marker2772" style="overflow:visible" inkscape:isstock="true">
       <path id="path2770" style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="scale(-0.6)"></path>
@@ -2613,7 +2631,7 @@ _ _ _ _ 1 2 _ _ _ _
   <div class="low">
 
     <div class="right caption-container">
-      <div><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 187.3842 187.3842" version="1.1" id="svg849" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" sodipodi:docname="alchi-child-market.svg" width="120px" title="non-synchronous child market between multiple families" data-srcpath="src/images/alchi-child-market.svg">
+      <div><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 187.3842 187.3842" version="1.1" id="svg849" inkscape:version="1.0 (4035a4fb49, 2020-05-01)" sodipodi:docname="alchi-child-market.svg" width="100px" title="non-synchronous child market between multiple families" data-srcpath="src/images/alchi-child-market.svg">
   <defs id="defs843">
     <marker inkscape:isstock="true" style="overflow:visible" id="marker4216" refX="0" refY="0" orient="auto" inkscape:stockid="Arrow2Mend">
       <path transform="scale(-0.6)" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1" id="path4214"></path>
@@ -7240,6 +7258,72 @@ _ _ _ _ 1 2 _ _ _ _
       <span lang="de">
         Eine solche "allgemeine Theorie der zwischenpersönlichen Kompatibilität"
         ist die "Karte der 16 Ich".
+      </span>
+      <span lang="en">
+        Such a "general theory of interpersonal compatibility"
+        is the "card of the 16 I".
+      </span>
+    </p>
+
+    <p class="langs">
+      <span lang="de">
+        <b>Meine letzten Worte</b>, mein Testament.
+        Stell dir vor,
+        du hast noch vier Monate zu leben,
+        und musst dann sterben.
+        Was machst du in deinen letzten Tagen?
+        Was ist deine "Henkersmahlzeit"?
+        Meine Antwort:
+        Ich will endlich mein Buch fertig schreiben,
+        damit wenigstens meine Ideen überleben.
+      </span>
+    </p>
+
+    <p class="langs">
+      <span lang="de">
+        Ich rechne damit:
+        Ab Oktober 2021 wird die Inflation eskalieren
+        (Stichworte: <span class="nowrap-element">Geldmenge EUR</span>, Insolvenzverschleppung, Venezuela),
+        Geld wird absolut wertlos
+        (wer kauft eine Semmel für <span class="nowrap-element">10 000 000 EUR</span>?),
+        alle Lieferketten werden zusammenbrechen,
+        alle Supermärkte werden schließen,
+        Wasser, Heizung, Strom werden ausfallen,
+        alle Wohnungen werden aufgebrochen und geplündert,
+        und keiner wird kommen und "uns" retten,
+        keine Angela, kein Putin, kein Biden, keine UN ... keiner wird kommen.
+        Auch Polizei und Militär werden "ihren eigenen Arsch retten".
+        Spätestens dann wird sich rächen,
+        dass wir alle Produktion ausgelagert haben nach Irgendwo,
+        und dass wir alle Verwaltung ausgelagert an Irgendwen.
+        Was bringen uns Gewächshäuser in Spanien,
+        wenn kein Benzin mehr da ist für den Transport?
+        Was bringen und Vorgesetzte, die uns nicht helfen,
+        und die alle Probleme nur schönreden?
+      </span>
+    </p>
+
+    <p class="langs">
+      <span lang="de">
+        Überleben werden nur die Menschen mit:
+        1. Großfamilie
+        2. Waffen
+        3. Vorrat (Essen, Wasseraufbereitung, Winterversteck, Saatgut, Tierzucht)
+        4. Wissen (Pflanzen, Tiere, Hausbau).
+        In meinem Buch geht es nur um Teil 1 - Großfamilie.
+        Alleine überleben? Keine Chance.
+        "Wer einschläft der verliert!"
+        Alleine kann man keine Nachtwache organisieren.
+        Alleine kann man sich nicht wehren gegen Angriffe von Gruppen.
+        Naturordnung heisst auch:
+        Tribalismus, Tribe Wars, Kleinkriege, Bandenkriege.
+        Weil warum nicht?
+        Wer solls verhindern?
+        Weil irgendwo steht "das ist verboten"?
+        Weil Wunschdenken? Naja ...
+        Wie gesagt, Polizei und Militär
+        werden komplett überfordert sein,
+        und werden höchstens noch die Leichen von der Straße räumen.
       </span>
       <span lang="en">
         Such a "general theory of interpersonal compatibility"
