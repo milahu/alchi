@@ -161,11 +161,11 @@ const color = {
   },
 
   text: {
-    1: "#ff0000", // red
-    2: "#008000", // dark green
-    3: "#b2b200", // dark yellow (35% lightness)
-    //3: "#cdcd00", // dark yellow (40% lightness) -> too light on white ground
-    4: "#0000ff", // blue
+    1: "#cc0000", // red (40% lightness in HSL)
+    2: "#008000", // dark green (25% lightness in HSL)
+    3: "#808000", // dark yellow (25% lightness in HSL)
+    //3: "#cdcd00", // dark yellow (40% lightness in HSL) -> too light on white ground
+    4: "#0000cb", // blue (40% lightness in HSL)
   },
 
   medium: {
