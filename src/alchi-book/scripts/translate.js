@@ -10,6 +10,17 @@
 
 // alternative to google translate:
 // https://www.deepl.com/Translator
+// https://www.deepl.com/translator#cs/en/ahoi!%20jak%20se%20mas%3F%0A
+
+// TODO store backup files in /backup/ -> keep /src/pages/ clean
+
+// FIXME should not insert whitespace after closing tags
+// FIXME indent before opening tags should be preserved correctly
+
+//const translatorName = 'google';
+const translatorName = 'deepl';
+
+const previewTextLength = 500;
 
 const fs = require('fs');
 //const net = require('net');
@@ -36,6 +47,8 @@ const mark = {
   node3: '985 986',
   tagZ1: '987 988',
   tagZ2: '989 990',
+  //tagZ3: '989 990', // close tag + space after
+  //tagA0: '', // open tag + space before
   tagA1: '991 992',
   tagA2: '993 994',
   enti1: '995 996',
@@ -52,6 +65,9 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
   const htmlFile = `translate-${sourceLang}2${targetLang}.html`;
   if (fs.existsSync(htmlFile)) {
     console.log(`error: output file exists: ${htmlFile}`);
+    console.log(`\nsolutions:`);
+    console.log(`mv ${htmlFile} ${htmlFile}.${dateTime()}.bak`);
+    console.log(`rm ${htmlFile}`);
     process.exit(1);
   }
 
@@ -62,7 +78,7 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
   glob.sync(infilesGlob)
   //([glob.sync(infilesGlob)[4]]) // debug
   .forEach((file, fileIdx) => {
-    console.log(`file: ${file}`);
+    console.log(`input: ${file}`);
     const root = parse(fs.readFileSync(file, 'utf8'));
 
     const childSelectors = langCodes;
@@ -76,11 +92,12 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
         const s = n.innerHTML
           // encode html for translator service
           // encode html markup
-          .replace(/<\/(.+?)>/sg, (_, m) => ( // close tags
-            ` ${mark.tagZ1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagZ2} `
+          // spaceBefore and spaceAfter can be removed by the translator service -> we encode them
+          .replace(/<\/(.+?)>(\s*)/sg, (_, m, spaceAfter) => ( // close tags
+            ` ${mark.tagZ1} `+(m.trim() + spaceAfter).split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagZ2} `
           ))
-          .replace(/<(.+?)>/sg, (_, m) => ( // open tags
-            ` ${mark.tagA1} `+m.split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagA2} `
+          .replace(/(\s*)<(.+?)>/sg, (_, spaceBefore, m) => ( // open tags
+            ` ${mark.tagA1} `+(spaceBefore + m.trim()).split('').map(c => c.charCodeAt(0)).join(' ')+` ${mark.tagA2} `
           ))
           // encode html entities
           .replace(/&([^ ]+);/g, (_, m) => (
@@ -98,7 +115,7 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
 
   // generate links
   // google translate: 5000 character limit
-  const charLimit = 5000;
+  const charLimit = 5000; // google, deepl
 
   // https://translate.google.com/?sl=en&tl=de&text=mass%20versus%20class&op=translate
   const textGroups = textParts.reduce((acc, val) => {
@@ -108,34 +125,59 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     return acc;
   }, ['']);
 
-  const translateLinks = textGroups.map(t => (
-    //`https://translate.google.com/?sl=en&tl=de&text=${encodeURIComponent(t)}&op=translate`
-    `<li><a target="_blank" href="https://translate.google.com/?sl=${sourceLang}&tl=${targetLang}&text=${encodeURIComponent(t)}&op=translate">${t.slice(0, 160)} ...</a></li>`
-  ));
+  // https://github.com/iansan5653/unraw/issues/29
+  // deepl.com:
+  //   / -> \/
+  //   \ -> \\
+  function deeplBackslashEncode(str) {
+    let res = '';
+    for (let i = 0; i < str.length; i++) {
+      const char16bit = str[i];
+      const code = char16bit.charCodeAt(0);
+      res += (
+        (code == 47) ? '\\/' : // forward slash
+        (code == 92) ? '\\\\' : // backslash
+        char16bit
+      );
+    }
+    return res;
+  }
 
+  const translateUrl = t => (
+    translatorName == 'google' ? `https://translate.google.com/?sl=${sourceLang}&tl=${targetLang}&text=${encodeURIComponent(t)}&op=translate` :
+    translatorName == 'deepl' ? `https://www.deepl.com/translator#${sourceLang}/${targetLang}/${encodeURIComponent(deeplBackslashEncode(t))}` :
+    '#invalid-translatorName'
+  );
+
+  const translateLinks = textGroups.map(t => (
+    `<li><a target="_blank" href="${translateUrl(t)}">${t.slice(0, previewTextLength)} ...</a></li>`
+  ));
 
   const htmlSrc = (
     '<style>' +
       'a:visited { color: green; }' +
       'a { text-decoration: none; }' +
       'a:hover { text-decoration: underline; }' +
+      'li { margin-bottom: 1em; }' +
     '</style>' +
     '<ol>\n\n' + translateLinks.join('\n\n') + '</ol>\n'
   );
 
   fs.writeFileSync(htmlFile, htmlSrc, 'utf8');
   const htmlFileUrl = encodeURI('file://' + require('path').resolve(htmlFile));
-  console.log(`done: ${htmlFile}`);
+  console.log(`output: ${htmlFile}`);
   console.log(`
 next steps:
 
 1. open in your browser: ${htmlFileUrl}
 2. click the first link
-3. scroll down, on the bottom right: copy translation
-4. paste the translation to your text editor
-5. repeat for all links (append to the text file)
-6. save the text file, for example as translate-${sourceLang}2${targetLang}.txt
-7. run this script again with the text file, for example:
+3. fix the translation on the translator website,
+   so the translator can learn to translate better
+4. scroll down, on the bottom right: copy translation
+5. paste the translation to your text editor
+6. repeat for all links (append to the text file)
+7. save the text file, for example as translate-${sourceLang}2${targetLang}.txt
+8. run this script again with the text file, for example:
 node ${process.argv[1]} ${sourceLang} ${targetLang} translate-${sourceLang}2${targetLang}.txt
 
 note:
@@ -154,6 +196,12 @@ function dateTime(date = null) {
   // sample result: '2021-03-21.21-05-36'
   if (!date) date = new Date();
   return date.toLocaleString('lt').replace(/:/g, '-').replace(' ', '.');
+}
+
+function dateStr(date = null) {
+  // sample result: '2021-03-21'
+  if (!date) date = new Date();
+  return date.toLocaleString('lt').split(' ')[0];
 }
 
 //function importLang(sourceLang, targetLang, inputFile, tagName) {
@@ -181,13 +229,21 @@ function importLang(sourceLang, targetLang, inputFile) {
         .replace(
           // close tag: consume whitespace before
           new RegExp(` ?${mark.tagZ1} ([0-9 ]+?) ${mark.tagZ2}`, 'g'),
-          (_, m) => '</'+m.split(' ').map(c => String.fromCharCode(c)).join('')+'>',
+          (_, m) => {
+            const decStr = m.split(' ').map(c => String.fromCharCode(c)).join('');
+            const [, tag, spaceAfter] = decStr.match(/^(.*\S)(\s*)$/);
+            return `</${tag}>${spaceAfter}`;
+          }
         )
         .replace(
           // open tag: consume whitespace after
           //new RegExp(`${mark.tagA1} ([0-9 ]+?) ${mark.tagA2} ?`, 'g'), // TODO restore
           new RegExp(` ?${mark.tagA1} ([0-9 ]+?) ${mark.tagA2} ?`, 'g'),
-          (_, m) => '<'+m.split(' ').map(c => String.fromCharCode(c)).join('')+'>',
+          (_, m) => {
+            const decStr = m.split(' ').map(c => String.fromCharCode(c)).join('');
+            const [, spaceBefore, tag] = decStr.match(/^(\s*)(\S.*)$/);
+            return `${spaceBefore}<${tag}>`;
+          }
         )
         // decode html entities
         .replace(
@@ -216,9 +272,9 @@ function importLang(sourceLang, targetLang, inputFile) {
       console.log(`error: backup file != source file: ${backupFile}`);
       return; // next file
     }
-    console.log(`done: ${backupFile}`);
+    //console.log(`done: ${backupFile}`);
 
-    console.log(`file: ${file}`);
+    //console.log(`input: ${file}`);
     const root = parse(fs.readFileSync(file, 'utf8'));
 
     const childSelectors = langCodes;
@@ -246,7 +302,7 @@ function importLang(sourceLang, targetLang, inputFile) {
     //const outFile = file + '.add-' + targetLang + '.txt'; // use *.txt extension to avoid *.html glob match
     const outFile = file; // replace input file (after creating a backup copy)
     fs.writeFileSync(outFile, root.toString(), 'utf8');
-    console.log(`done: ${outFile}`);
+    console.log(`output: ${outFile}`);
   });
 }
 
