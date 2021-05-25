@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-for f in "$@"
+backupDir=backup/fix-trailing-whitespace/$(date +%Y-%m-%d.%H-%M-%S)
+
+#for f in "$@"
+for f in src/pages/*.html
 do
-  t=$(date +%s)
-  sed -i.$t.bak -E 's/\s+$//' "$f"
-  echo "$f -> $f.$t.bak"
+  backupFile="${backupDir}/${f}"
+  mkdir -p "$(dirname "$backupFile")"
+  cp -v "$f" "$backupFile"
+  sed -i -E 's/\s+$//' "$f"
 done
