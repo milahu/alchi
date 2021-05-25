@@ -1,6 +1,6 @@
 <page style="font-size: 90%">
 
-  <p>
+  <langs>
     <de>
       <b>Symmetrie?</b>
       Der Rest der Karte ist eine "Extrapolation"
@@ -17,7 +17,15 @@
       what the rest of the map might look like.
       I made several assumptions for this:
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      <b>Szimmetria?</b>
+      A térkép többi része egy "extrapoláció".
+      személyes tapasztalataimból,
+      tehát egy jóslat,
+      hogy a térkép többi része hogyan nézhet ki.
+      Ehhez több feltételezést is tettem:
+    </hu>
+  </langs>
 
 <pre class="map16 float-right">
 _ _ 4 _ _
@@ -27,14 +35,14 @@ _ _ _ _ _
 _ _ 4 _ _
 </pre>
 
-  <p>
+  <langs>
     <de>
       1. Es gilt die "Ein Schritt weiter" Regel:
       Jeder übernächste Punkt (in gerader Richtung)
       muss "andere Klasse" haben.
       (zwei "Klassen": 12 und 34.)
       Den übernächsten Punkt nennen wir <b>Modalität</b>.
-  
+
       Beispiel: Ein Punkt mit Element 1 (Feuer)
       muss in einer Richtung Element 4 als übernächste Punkte haben <nw>(4 _ 1 _ 4)</nw>
       und in der anderen Richtung Element 3 als übernächste Punkte haben <nw>(3 _ 1 _ 3)</nw>.
@@ -45,14 +53,25 @@ _ _ 4 _ _
       must have "other class".
       (two "classes": 12 and 34.)
       We call the point after that <b>modality</b>.
-  
+
       Sample: A point with element 1 (fire)
       must have element 4 as the next-plus-one point in one direction <nw>(4 _ 1 _ 4)</nw>
       and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      1. Követjük az "egy lépéssel tovább" szabályt:
+      Minden második legközelebbi pont (egyenes vonalban)
+      "más osztályú" kell, hogy legyen.
+      (Két "osztály": 12 és 34.)
+      Az ezt követő pontot <b>modalitásnak</b> nevezzük.
 
-  <p>
+      Példa: A "modalitást" a következő módon állítjuk be: "A modalitást nem lehet megadni: Az 1. elemű pont (tűz)
+      egy irányban a következő plusz egy pontnak a 4-es elemmel kell rendelkeznie <nw>(4 _ 1 _ 4)</nw>.
+      a másik irányban pedig a 3. elemnek kell lennie a következő plusz egy pontnak <nw>(3 _ 1 _ 3)</nw>.
+    </hu>
+  </langs>
+
+  <langs>
     <de>
       1.a.
       Vier Schritte weiter (in gerader Richtung) muss wieder das gleiche Element sein,
@@ -87,9 +106,26 @@ _ _ _ _
       The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
       This means that 25% of the map is already set.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      1.a.
+      Négy lépéssel arrébb (egyenes vonalban) ismét ugyanannak az elemnek kell lennie,
+      így a leképezés szimmetrikus a "Modulo 4"-re.
+      = az egész térkép négy lépésenként ismétlődik
 
-  <p>
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1.b.
+      A térkép legkisebb ábrázolása egy 4 x 4-es "mátrix" 16 ponttal.
+      Ez azt jelenti, hogy a térkép 25%-a már be van állítva.
+    </hu>
+  </langs>
+
+  <langs>
     <de>
       1.c.
       Jeder übernächste Punkt (in geraden Richtungen)
@@ -114,9 +150,21 @@ _ _ _ _
       So it has to be "2 1 3" or "2 1 4",
       or "3 1 2" or "4 1 2".
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      1.c.
+      Minden másodikként következő pont (egyenes irányban)
+      "egyéb osztályúnak" kell lennie.
 
-  <p>
+      Minta:
+      A 2. elemnek 3. és 4. modalitása van.
+      Tehát: "2 1 2" nem megengedett,
+      mert a második következő pont a modalitás.
+      Tehát "2 1 3" vagy "2 1 4" kell lennie,
+      vagy "3 1 2" vagy "4 1 2".
+    </hu>
+  </langs>
+
+  <langs>
     <de>
       2. Zwei Punkte, die direkt nebeneinander liegen,
       müssen zwei verschiedene Elemente haben.
@@ -137,9 +185,19 @@ _ _ _ _
       My (Element 1) four nearest points (in straight directions)
       must be elements 2 3 4 (but not element 1).
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      2. Két pont, amelyek közvetlenül egymás mellett vannak,
+      két különböző elemmel kell rendelkeznie.
 
-  <p>
+      Igaz, ez egy kicsit önkényes ...
+      de az átlós pontoknak lehet ugyanaz az elemük.
+      Ebből következik (személyes tapasztalataimmal):
+      Az én (1. elem) négy legközelebbi pontom (egyenes irányban)
+      a 2. 3. 4. elemnek kell lennie (de az 1. elemnek nem).
+    </hu>
+  </langs>
+
+  <langs>
     <de>
       3. Der größte Unterschied zwischen den Elementen ist ihre "Klasse" (12 oder 34),
       und beide Klassen sind gleich wichtig.
@@ -148,7 +206,11 @@ _ _ _ _
       3. The biggest difference between the elements is their "class" (12 or 34),
       and both classes are equally important.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      3. Az elemek közötti legnagyobb különbség az "osztályuk" (12 vagy 34),
+      és mindkét osztály egyformán fontos.
+    </hu>
+  </langs>
 
 <div class="float-right">
 
@@ -166,7 +228,7 @@ _ 3 _
 
 </div>
 
-  <p>
+  <langs>
     <de>
       3.a.
       Für die vier nächsten Punkte gilt:
@@ -183,9 +245,17 @@ _ 3 _
       With 2 follows, for example for element 1:
       The next four points are 2 2 3 4.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      3.a.
+      A következő négy pontra a következők vonatkoznak:
+      Két pontnak a 12. osztályból kell származnia,
+      és két pontnak a 34. osztályból kell származnia.
+      A 2-vel következik például az 1. elem esetében:
+      A következő négy pont a 2 2 3 3 4.
+    </hu>
+  </langs>
 
-  <p>
+  <langs>
     <de>
       Hier ist auffällig:
       Das Element 2 wird diagonal wiederholt.
@@ -198,7 +268,13 @@ _ 3 _
       The only symmetrical solution for this is:
       Element 1 must also be repeated diagonally.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      Itt észrevehető:
+      A 2. elem átlósan ismétlődik.
+      Erre az egyetlen szimmetrikus megoldás a következő:
+      Az 1. elemnek is átlósan kell ismétlődnie.
+    </hu>
+  </langs>
 
 <div class="float-right">
 
@@ -222,7 +298,7 @@ _ _ 4 3 _ _
 
 </div>
 
-  <p>
+  <langs>
     <de>
       Mit Regel 2 (keine direkte Wiederholung)
       sind die übernächsten Punkte von Element 1 eindeutig festgelegt.
@@ -231,9 +307,13 @@ _ _ 4 3 _ _
       With rule 2 (no direct repetition)
       The next-plus-one points of element 1 are clearly defined.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      A 2. szabállyal (nincs közvetlen ismétlés)
+      Az 1. elem következő plusz egy pontjai egyértelműen meghatározottak.
+    </hu>
+  </langs>
 
-  <p>
+  <langs>
     <de>
       Auch für Element 2 sind die übernächsten Punkte eindeutig.
       Damit haben wir die Teil-Muster gefunden,
@@ -248,7 +328,18 @@ _ _ 4 3 _ _
       A flowsquare consists of 1122 or 3344,
       and the same elements lie diagonally.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      A következő plusz egy pontok a 2. elem esetében is egyértelműek.
+      Ezzel megtaláltuk a részmintát,
+      amelyet<b>Flusskreis</b>-nek nevezünk.
+      A Folyáskör 1122 vagy 3344 darabból áll,
+      és ugyanezek az elemek átlósan helyezkednek el.
+
+
+
+      A következő plusz egy pontok a 3. elem esetében is egyértelműek.
+    </hu>
+  </langs>
 
 <div class="float-right">
 
@@ -280,25 +371,31 @@ _ _ _ _ 1 2 _ _ _ _
 
 </div>
 
-  <p>
+  <langs>
     <de>
       Auch für Element 3 sind die übernächsten Punkte eindeutig.
     </de>
     <en>
       The next-plus-one points are also clear for element 3.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      A következő plusz egy pontok a 3. elem esetében is egyértelműek.
+    </hu>
+  </langs>
 
-  <p>
+  <langs>
     <de>
       Auch für Element 4 sind die übernächsten Punkte eindeutig.
     </de>
     <en>
       The next-plus-one points are also clear for element 4.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      A következő plusz egy pontok a 4. elem esetében is egyértelműek.
+    </hu>
+  </langs>
 
-  <p>
+  <langs>
     <de>
       Damit sind die Vier Elemente auf der Karte festgelegt :)
       Denn in Regel 1.b haben wir schon gesehen:
@@ -313,6 +410,13 @@ _ _ _ _ 1 2 _ _ _ _
       that is, in the X direction and in the Y direction
       the pattern is repeating every four steps.
     </en>
-  </p>
+    <hu generator="deepl" t="2021-05-21.16-35-16">
+      Ez meghatározza a négy elemet a térképen :)
+      Mert az 1.b szabályban már láttuk:
+      A térképnek "ciklikusnak" kell lennie modulo 4-gyel,
+      azaz X irányban és Y irányban is.
+      A minta négy lépésenként ismétlődik.
+    </hu>
+  </langs>
 
 </page>
