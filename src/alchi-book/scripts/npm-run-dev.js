@@ -30,7 +30,7 @@ const envVars = [
 ];
 
 const modeName = eleventy.staticConfig.isProduction ? 'build' : 'dev';
-console.log(`[${modeName}] chdir ${appRoot}`);
+console.log(`[${modeName.padEnd(4, ' ')}] chdir ${appRoot}`);
 process.chdir(appRoot);
 
 // enable debug: npm run dev -- --debug
@@ -55,7 +55,7 @@ if (eleventy.staticConfig.isProduction) {
 }
 else {
   // start devserver
-  console.log(`[dev] start bundler on ${bundler.devserver}`);
+  console.log(`[${modeName.padEnd(4, ' ')}] start bundler on ${bundler.devserver}`);
   //console.dir({ envVars });
   const devProcess = npmRun.spawn(
     'cross-env', [
@@ -72,11 +72,11 @@ else {
     windowsHide: true,
   });
 
-  console.log(`[dev] wait ${waitSeconds} seconds for eleventy before open browser`);
+  console.log(`[${modeName.padEnd(4, ' ')}] wait ${waitSeconds} seconds for eleventy before open browser`);
   
   if (eleventy.open) {
     setTimeout(() => {
-      console.log(`[dev] open ${eleventy.devserver}`);
+      console.log(`[${modeName.padEnd(4, ' ')}] open ${eleventy.devserver}`);
       open(eleventy.devserver);
     }, waitSeconds * 1000);
   }
