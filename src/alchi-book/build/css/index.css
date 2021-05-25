@@ -11,9 +11,6 @@ span.tt {
 }
 
 body {
-  font-family: var(--sans-font);
-  font-size: var(--font-size);
-  line-height: 125%; /* default 121% in firefox */
   
   /* display: flex; */
 }
@@ -74,14 +71,14 @@ body {
 }
 
 #book-title {
-  font-size: 14mm;
+  font-size: 4.66rem;
   line-height: 100%;
   height: auto;
   text-align: center;
 }
 
 #book-subtitle {
-  font-size: 8mm;
+  font-size: 2.66rem;
   line-height: 100%;
   height: auto;
   text-align: center;
@@ -90,8 +87,8 @@ body {
 
 
 #book-subsubtitle {
-  font-size: 5mm;
-  line-height: 5mm;
+  font-size: 1.66rem;
+  line-height: 100%;
   height: auto;
   text-align: center;
   margin-bottom: 4mm;
@@ -178,7 +175,8 @@ a {
   top: 0; left: 0; right: 0;
   background-color: white;
 
-  font-size: 110%;
+  font-size: calc(1.1 * var(--font-size));
+  z-index: 1; /* otherwise .pallas-sign-list is above the screen-menu */
 }
 
 button {
@@ -579,7 +577,10 @@ button.active {
 
 
 
-p { margin-bottom: 0.5em; }
+/*p { margin-bottom: 0.5em; }*/
+.page-element > .langs,
+.page-element > .up > .langs,
+.page-element > .low > .langs { margin-bottom: 0.5em; }
 
 .smile {
   display: inline-block;
@@ -661,26 +662,45 @@ pre {
 
 
 
-
-#pages-container.audit-mode p {
-  font-size: 110%; /* add room for manual annotations */
-  line-height: 220%; /* add room for manual annotations */
-  /*line-height: 270%; /* add room for manual annotations */
+html {
+  font-family: var(--sans-font);
+  font-size: var(--font-size);
+  line-height: 125%; /* default 121% in firefox */
 }
 
-#pages-container.audit-mode {
+/* audit mode: add room for manual annotations */
+
+html.audit-mode {
+  font-size: calc(1.1 * var(--font-size));
+}
+
+html.audit-mode .langs > div {
+  line-height: 220%;
+}
+
+html.audit-mode #pages-container {
   /* 1.4142 = Math.sqrt(2) */
   --page-width: calc(1.4142 * var(--page-width-base));
   --page-height: calc(1.4142 * var(--page-height-base));
 }
 
-#pages-container.audit-mode td {
-  padding-bottom: 1.5em;
+html.audit-mode #pages-container td {
+  padding-bottom: 1.4em;
 }
+
+
 
 code {
   border: none;
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.langs > div {
+  display: inline;
+}
+
+.langs > .hidden {
+  display: none;
 }
