@@ -2,6 +2,7 @@
 
 import { defineConfig } from "vite";
 import legacy from "@vitejs/plugin-legacy";
+import babel from "@rollup/plugin-babel";
 
 // defined in .eleventy.js
 const eleventyDirOutput = process.env.NODE_ELEVENTY_DIR_OUTPUT;
@@ -14,12 +15,12 @@ if (!bundlerEntryFiles || bundlerEntryFiles.length == 0) throw new Error('error:
 // This is critical: overwrite default index.html entry
 // https://vitejs.dev/guide/build.html#multi-page-app
 const assetPath = path => path.replace(/\.[^./]+$/, '');
+
 const rollupOptions = {
+
   input: Object.fromEntries(bundlerEntryFiles.map(entryFile => (
     [assetPath(entryFile), (bundlerEntryDir + entryFile)]
   ))),
-
-  plugins: [],
 
   // disable "filenames with hash" for assets
   // so we can commit the "build" folder
@@ -31,8 +32,8 @@ const rollupOptions = {
     chunkFileNames: `assets/[name].js`,
     assetFileNames: `assets/[name].[ext]`
   },
-
 };
+
 // debug
 Object.entries(rollupOptions.input).forEach(([key, path]) => {
   console.log(`build.rollupOptions.input[${JSON.stringify(key)}]: ${path}`);
@@ -42,13 +43,24 @@ console.log(`build.outDir: ${eleventyDirOutput}`);
 // https://vitejs.dev/config/
 export default defineConfig({
 
-  // This is not critical, but I include it because there are more HTML transforms via plugins, that templates must handle
-  // TODO: For legacy() to work without a hitch, we set a known @babel/standalone version in package.json
-  // Remove that once https://github.com/vitejs/vite/issues/2442 is fixed
-  //plugins: [legacy()],
-  // disabled the legacy plugin cos it generates "filenames with hash" for asset files
-  // https://github.com/vitejs/vite/issues/378
-  // sync with: alchi-book/config/eleventy.config.js footTags(file) {
+  plugins: [
+
+    // This is not critical, but I include it because there are more HTML transforms via plugins, that templates must handle
+    // TODO: For legacy() to work without a hitch, we set a known @babel/standalone version in package.json
+    // Remove that once https://github.com/vitejs/vite/issues/2442 is fixed
+    //legacy(),
+    // disabled the legacy plugin cos it generates "filenames with hash" for asset files
+    // https://github.com/vitejs/vite/issues/378
+    // sync with: alchi-book/config/eleventy.config.js footTags(file) {
+
+    babel({
+      // https://github.com/rollup/plugins/tree/master/packages/babel
+      // babel config is in /.babelrc
+      babelHelpers: "bundled",
+      include: ["src/js/main.js"],
+    }),
+
+  ],
 
   build: {
     // This is important: Generate directly to _site and then assetsDir.

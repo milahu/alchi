@@ -1,5 +1,12 @@
 // TODO split into smaller files
 
+// this is transformed by babel-plugin-preval
+// see /config/vite.config.js and /.babelrc
+const metadata = preval`
+  module.exports = require("../_data/metadata.js");
+`;
+
+console.log('metadata', metadata);
 
 function get_meta() {
 
@@ -503,7 +510,10 @@ function add_footers() {
   const booklet_last_idx = (Math.ceil(num_pages / 4) * 4) - 1;
   page_array.forEach((page_div, page_idx) => {
     if (page_idx == 0 || page_idx == booklet_last_idx) return; // skip first and last page
+    
+    // TODO translate
     const span_page = `<span>Seite ${page_idx + 1}</span>`;
+
     const span_license = `<span>${meta['license.shortname']}</span>`;
     //const span_title = `<span>${meta.filename}</span>`;
     const span_title = (page_idx % 2 == 0)
@@ -549,25 +559,35 @@ function set_language(lang) {
   current_lang = lang;
 
   document.querySelectorAll('.langs').forEach(fragment => {
-    const children = Array.from(fragment.children);
-    const fragmentLanguages = children.reduce((acc, node) => {
-      if (node.lang) acc.add(node.lang);
-      return acc;
-    }, new Set());
-    if (fragment.localName == 'tr') {
-      console.dir(fragment);
+    // TODO more efficient?
+    // only change css class of body -> show/hide lang fragments with css
+    let langFound = 0;
+    Array.prototype.forEach.apply(fragment.children, [node => {
+      if (node.lang) {
+        if (node.lang == lang) {
+          node.classList.remove('hidden');
+          langFound++;
+        }
+        else node.classList.add('hidden');
+      }
+    }]);
+    if (langFound == 0) {
+      // set default lang
+      Array.prototype.forEach.apply(fragment.children, [node => {
+        if (node.lang) {
+          if (node.lang == metadata.defaultLanguage) {
+            node.classList.remove('hidden');
+            langFound++;
+          }
+          else node.classList.add('hidden');
+        }
+      }]);
     }
-    //console.dir(fragment);
-    if (fragmentLanguages.has(lang)) {
-      children.forEach(node => {
-        if (node.lang) node.style.display = 'none';
-      });
-      children.forEach(node => {
-        if (node.lang == lang) node.style.display = ''; // TODO inline-block?
-      });
+    else if (langFound > 1) {
+      console.warn(`found multiple translations for lang "${lang}" in`, fragment);
     }
-  });
 
+  });
 
   document.querySelectorAll('.language-menu button').forEach(b => b.classList.remove('active'));
   document.querySelector('#language-button-'+lang).classList.add('active');
@@ -779,12 +799,12 @@ function handleChangeAuditMode(target) {
   state.auditMode = target.checked;
   //console.log(`audit mode: target.checked = ${target.checked}`);
   if (state.auditMode) {
-    document.querySelector('#pages-container').classList.add('audit-mode');
+    document.querySelector('html').classList.add('audit-mode');
     setPrintStyle({ print_orient: 'portrait' });
     // TODO force "linear" layout
   }
   else {
-    document.querySelector('#pages-container').classList.remove('audit-mode');
+    document.querySelector('html').classList.remove('audit-mode');
     setPrintStyle(); // reset
   }
 }

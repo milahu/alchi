@@ -61,6 +61,8 @@ module.exports = function(eleventyConfig) {
   // make staticConfig reusable outside of eleventy
   if (!eleventyConfig) return staticConfig;
 
+  const appRoot = require('app-root-path').path;
+
   // https://v0-6-0.11ty.dev/docs/collections/
   eleventyConfig.addCollection("pages", collection => (
     collection
@@ -179,41 +181,45 @@ module.exports = function(eleventyConfig) {
   // https://www.npmjs.com/package/eleventy-plugin-transformdom
 
   /*
-            for (let a = 0; a < element.attributes.length; a++) {
-               const attr = element.attributes[a];
-               elementNew.setAttribute(attr.name, attr.value); // copy attribute
-            }
   */
 
 
   function getElementTransformer(selector, options = {}) {
-    const defaultOptions = {
-      name: 'div',
-      attributes: (e => Object.fromEntries(Array.from(e.attributes).map(a => [a.name, a.value]))),
-      class: (e => e.localName),
-    };
-    options = Object.assign(defaultOptions, options);
-    const getName = (typeof options.name == 'function') ? (e => options.name(e)) : (() => options.name);
-    const getAttributes = (
-      (typeof options.attributes == 'function') ? (e => options.attributes(e)) :
-      (typeof options.attributes == 'object') ? (() => options.attributes) :
-      (() => false)
-    );
-    const getExtraClass = (
-      (typeof options.class == 'function') ? (e => options.class(e)) :
-      (typeof options.class == 'string') ? (() => options.class) :
-      (() => false)
-    );
     const domTransformer = {
       selector,
       transform: ({ elements, document }) => {
+
+        const defaultOptions = {
+          name: 'div',
+          attributes: (e => Object.fromEntries(Array.from(e.attributes).map(a => [a.name, a.value]))),
+          class: (e => e.localName),
+        };
+        options = Object.assign(defaultOptions, options);
+        const getName = (typeof options.name == 'function') ? (e => options.name(e, document)) : (() => options.name);
+        const getAttributes = (
+          (typeof options.attributes == 'function') ? (e => options.attributes(e, document)) :
+          (typeof options.attributes == 'object') ? (() => options.attributes) :
+          (() => false)
+        );
+        const getExtraClass = (
+          (typeof options.class == 'function') ? (e => options.class(e, document)) :
+          (typeof options.class == 'string') ? (() => options.class) :
+          (() => false)
+        );
+
         for (let e = 0; e < elements.length; e++) {
           const element = elements[e];
           const nameNew = getName(element);
-          if (!nameNew) continue; // no replace
+          if (!nameNew || nameNew == e.localName) continue; // no replace
           const attributesNew = getAttributes(element) || {};
           const extraClassNew = getExtraClass(element);
           const elementNew = document.createElement(nameNew);
+
+          for (let a = 0; a < element.attributes.length; a++) {
+            const attr = element.attributes[a];
+            elementNew.setAttribute(attr.name, attr.value); // copy attribute
+          }
+
           for (const [name, value] of Object.entries(attributesNew)) {
             elementNew.setAttribute(name, value);
           }
@@ -271,19 +277,62 @@ module.exports = function(eleventyConfig) {
     return domTransformer;
   }
 
+  const metadata = require(appRoot + '/src/_data/metadata.js');
+
   eleventyConfig.addPlugin(transformDomPlugin, [
+
     getElementTransformer('page', { class: 'page-element' }),
+
+    // <langs> -> <div class="langs">
+    getElementTransformer('langs', {
+      attributes: (e, document) => {
+        //e.children.forEach(cn => {
+        Array.prototype.forEach.apply(e.children, [ cn => {
+          // <en> -> <div lang="en"> etc.
+          const elementNew = document.createElement('div');
+          const langCode = cn.localName;
+          if (cn.attributes) {
+            for (let a = 0; a < cn.attributes.length; a++) {
+              const attr = cn.attributes[a];
+              elementNew.setAttribute(attr.name, attr.value); // copy attribute
+            }
+          }
+          elementNew.setAttribute('lang', langCode);
+          if (langCode != metadata.defaultLanguage) {
+            elementNew.setAttribute('class', 'hidden');
+          }
+          elementNew.innerHTML = cn.innerHTML;
+          cn.replaceWith(elementNew);
+        } ]);
+      }}
+    ),
+
     getElementTransformer('nw', { name: 'span', class: 'nowrap-element' }),
-    
-    // TODO use language list from metadata.json
-    ...(['de', 'en']).map(langKey => 
+
+    /*
+    // use language list from metadata.json
+    ...(metadata.languages.split(' ')).map(langKey => 
 
       getElementTransformer(langKey,
-        { name: 'span', attributes: (e => ({ lang: e.localName })), class: (e => {
-          e.parentNode.classList.add('langs');
-          return false; // no extra class for the new element
-        }) })
+        //{ name: 'span', attributes: (e => ({ lang: e.localName })), class: (e => {
+        // <span> tag is too limiting, e.g. cannot contain <pre> tags -> use <div> tags
+        {
+          name: 'div',
+          attributes: e => {
+            const attrs = {};
+            attrs.lang = e.localName;
+            return attrs;
+          },
+          class: e => {
+            e.parentNode.classList.add('langs');
+            if (e.localName != metadata.defaultLanguage) {
+              return 'hidden';
+            }
+            return false; // no extra class for the new element
+          },
+        })
     ),
+    */
 
     getSvgInlineTransformer(),
   ]);

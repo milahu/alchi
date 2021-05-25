@@ -7,6 +7,9 @@
     "wcag/h37": "off",
     "void-style": "off",
     "prefer-tbody": "off",
-    "doctype-style": "off"
+    "doctype-style": "off",
+    "svg-focusable": "off",
+    "wcag/h67": "off",
+    "element-permitted-content": "error"
   }
 }

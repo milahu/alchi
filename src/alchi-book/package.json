@@ -4,6 +4,7 @@
   "license": "CC0-1.0",
   "private": true,
   "description": "",
+  "type-zzzzzz": "module",
   "scripts": {
     "build": "cross-env NODE_ENV=production node scripts/npm-run-dev.js",
     "build:vite": "vite build",
@@ -17,6 +18,7 @@
     "dev:vite": "vite",
     "test": "npm-run-all -s test:**",
     "test:a:html": "html-validate --config=config/htmlvalidate.config.json src/pages/",
+    "test-build": "html-validate --config=config/htmlvalidate.config.json build/index.html",
     "postinstall": "patch-package"
   },
   "eleventy": {
@@ -24,10 +26,13 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "github:11ty/eleventy#8a5162785c58864ef65308c0f0d890cade0b407f",
+    "@babel/core": "*",
     "@fontsource/noto-mono": "*",
     "@fontsource/noto-sans": "*",
+    "@rollup/plugin-babel": "*",
     "@vitejs/plugin-legacy": "*",
     "app-root-path": "*",
+    "babel-plugin-preval": "*",
     "clean-css": "*",
     "concurrently": "*",
     "cross-env": "*",
@@ -45,10 +50,12 @@
     "npm-run-all": "*",
     "open": "*",
     "sirv-cli": "*",
-    "vite": "*"
+    "vite": "*",
+    "vite-babel-plugin": "*"
   },
   "dependencies": {
     "diff": "*",
+    "he": "*",
     "patch-package": "github:milahu/patch-package#pnpm-support-2",
     "xregexp": "*"
   }

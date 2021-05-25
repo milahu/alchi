@@ -25,36 +25,42 @@ const version = glob.sync(appRoot + '/src/pages/page-*.html')
 
 console.log(`metadata.js: version = ${version}`)
 
-module.exports = {
 
-  "languages": "de en", // TODO add new languages here
-  "primarylanguage": "de", // TODO change to en when en translation is complete
 
-  "title": "Your Blog Name", // TODO
+const metadata = {};
 
-  //"version": "2021-03-15",
-  version,
+metadata.languages = "en de hu"; // TODO add new languages here
 
-  "basename": {
-    "de": "pallas.ich-und-meine-sechs-freunde"
-  },
+metadata.defaultLanguage = "en";
+metadata.primarylanguage = metadata.defaultLanguage; // TODO rename to defaultLanguage
 
-  "url": "https://example.com/",
-  "description": "TODO",
-  "keywords": "TODO",
-  "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://example.com/"
-  },
-  "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
-  },
-  "author": {
-    "name": "Milan Hauth",
-    "email": "milahu@gmail.com",
-    "url": ""
-  },
-};
+// TODO translate
+metadata.basename = {};
+metadata.basename.de = "pallas.ich-und-meine-sechs-freunde";
+
+metadata.title = "Your Blog Name"; // TODO
+metadata.version = version;
+
+metadata.url = "https://example.com/";
+
+// TODO SEO
+metadata.description = "description"; // TODO
+metadata.keywords = "keywords"; // TODO
+
+metadata.feed = {};
+metadata.feed.subtitle = "I am writing about my experiences as a naval navel-gazer.";
+metadata.feed.filename = "feed.xml";
+metadata.feed.path = "/feed/feed.xml";
+metadata.feed.id = "https://example.com/";
+
+metadata.jsonfeed = {};
+metadata.jsonfeed.path = "/feed/feed.json";
+metadata.jsonfeed.url = "https://example.com/feed/feed.json";
+
+metadata.author = {};
+metadata.author.name = "Milan Hauth";
+metadata.author.email = "milahu@gmail.com";
+metadata.author.url = "https://github.com/milahu";
+
+//export default metadata;
+module.exports = metadata;
