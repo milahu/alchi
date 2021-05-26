@@ -17,6 +17,14 @@
       what the rest of the map might look like.
       I made several assumptions for this:
     </en>
+    <lang.tr rev="en#YDMSzfDl">
+      <b>Simetri?</b>
+      Haritanın geri kalanı bir "ekstrapolasyondur"
+      kişisel deneyimlerimden
+      yani bir tahmin
+      haritanın geri kalanı nasıl görünebilir.
+      Bunun için birkaç varsayımda bulundum:
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       <b>Szimmetria?</b>
       A térkép többi része egy "extrapoláció".
@@ -58,6 +66,17 @@ _ _ 4 _ _
       must have element 4 as the next-plus-one point in one direction <nw>(4 _ 1 _ 4)</nw>
       and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
     </en>
+    <lang.tr rev="en#6cAWR91e">
+      1. "Bir adım daha ileri" kuralını uygularız:
+      Her saniye-sonraki nokta (düz bir çizgide)
+      "diğer sınıf" olmalıdır.
+      (iki "sınıf": 12 ve 34.)
+      Ondan sonra noktayı arıyoruz <b>modalite</b>.
+
+      Örnek: 1. öğeli bir nokta (ateş)
+      bir yönde sonraki artı bir noktası olarak öğe 4'e sahip olmalıdır <nw>(4 _ 1 _ 4)</nw>
+      ve diğer yönde de sonraki artı bir noktası olarak 3. öğeye sahip olmalıdır <nw>(3 _ 1 _ 3)</nw>.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       1. Követjük az "egy lépéssel tovább" szabályt:
       Minden második legközelebbi pont (egyenes vonalban)
@@ -106,6 +125,23 @@ _ _ _ _
       The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
       This means that 25% of the map is already set.
     </en>
+    <lang.tr rev="en#UjmzsjiA">
+      1 A.
+      Dört adım daha ileri (düz bir çizgide) yine aynı unsur olmalıdır,
+      bu nedenle harita "Modulo 4" e simetriktir
+      = tüm harita her dört adımda bir tekrar eder
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1.b.
+      Haritanın en küçük temsili 16 noktalı 4'e 4 "matris" dir.
+      Bu, haritanın% 25'inin zaten ayarlanmış olduğu anlamına gelir.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       1.a.
       Négy lépéssel arrébb (egyenes vonalban) ismét ugyanannak az elemnek kell lennie,
@@ -150,6 +186,18 @@ _ _ _ _
       So it has to be "2 1 3" or "2 1 4",
       or "3 1 2" or "4 1 2".
     </en>
+    <lang.tr rev="en#zdXPXgya">
+      1.c.
+      Her saniye-sonraki nokta (düz yönlerde)
+      "diğer sınıf" olmalıdır.
+
+      Örneklem:
+      Öğe 2, modaliteler 3 ve 4'e sahiptir.
+      Yani: "2 1 2" ye izin verilmez,
+      çünkü ikinci-sonraki nokta modalitedir.
+      Yani "2 1 3" veya "2 1 4" olmalı,
+      veya "3 1 2" veya "4 1 2".
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       1.c.
       Minden másodikként következő pont (egyenes irányban)
@@ -185,6 +233,16 @@ _ _ _ _
       My (Element 1) four nearest points (in straight directions)
       must be elements 2 3 4 (but not element 1).
     </en>
+    <lang.tr rev="en#WzBjtfZN">
+      2. Yan yana duran iki nokta,
+      iki farklı unsura sahip olmalıdır.
+
+      Verilmiş, bu biraz keyfi ...
+      ancak köşegen noktalar aynı öğeye sahip olabilir.
+      Bundan (kişisel deneyimlerimle) şu sonuç çıkar:
+      My (Element 1) en yakın dört nokta (düz yönlerde)
+      öğe 2 3 4 olmalıdır (ancak öğe 1 olmamalıdır).
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       2. Két pont, amelyek közvetlenül egymás mellett vannak,
       két különböző elemmel kell rendelkeznie.
@@ -206,6 +264,10 @@ _ _ _ _
       3. The biggest difference between the elements is their "class" (12 or 34),
       and both classes are equally important.
     </en>
+    <lang.tr rev="en#ujN+xy+7">
+      3. Öğeler arasındaki en büyük fark "sınıfları" dır (12 veya 34),
+      ve her iki sınıf da eşit derecede önemlidir.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       3. Az elemek közötti legnagyobb különbség az "osztályuk" (12 vagy 34),
       és mindkét osztály egyformán fontos.
@@ -245,6 +307,14 @@ _ 3 _
       With 2 follows, for example for element 1:
       The next four points are 2 2 3 4.
     </en>
+    <lang.tr rev="en#sRjhfesO">
+      3 A.
+      Aşağıdaki, sonraki dört nokta için geçerlidir:
+      iki puan sınıf 12'den olmalıdır,
+      ve iki puan 34. sınıftan olmalıdır.
+      2 ile, örneğin 1. eleman için:
+      Sonraki dört nokta 2 2 3 4'tür.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       3.a.
       A következő négy pontra a következők vonatkoznak:
@@ -268,6 +338,12 @@ _ 3 _
       The only symmetrical solution for this is:
       Element 1 must also be repeated diagonally.
     </en>
+    <lang.tr rev="en#ctcsUyLU">
+      İşte dikkat çekicidir:
+      Eleman 2, çapraz olarak tekrarlanır.
+      Bunun için tek simetrik çözüm şudur:
+      Öğe 1 ayrıca çapraz olarak tekrarlanmalıdır.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       Itt észrevehető:
       A 2. elem átlósan ismétlődik.
@@ -307,6 +383,10 @@ _ _ 4 3 _ _
       With rule 2 (no direct repetition)
       The next-plus-one points of element 1 are clearly defined.
     </en>
+    <lang.tr rev="en#pOwCBrCT">
+      2. kural ile (doğrudan tekrar yok)
+      1. öğenin sonraki artı bir noktaları açıkça tanımlanmıştır.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       A 2. szabállyal (nincs közvetlen ismétlés)
       Az 1. elem következő plusz egy pontjai egyértelműen meghatározottak.
@@ -328,6 +408,13 @@ _ _ 4 3 _ _
       A flowsquare consists of 1122 or 3344,
       and the same elements lie diagonally.
     </en>
+    <lang.tr rev="en#R/tlW1/4">
+      Sonraki artı bir puanları da 2. öğe için açıktır.
+      Bununla kısmi modeli bulduk,
+      biz ararız <b>Flowsquare</b>.
+      Bir akış karesi 1122 veya 3344'ten oluşur,
+      ve aynı unsurlar çapraz olarak uzanmaktadır.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       A következő plusz egy pontok a 2. elem esetében is egyértelműek.
       Ezzel megtaláltuk a részmintát,
@@ -378,6 +465,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 3.
     </en>
+    <lang.tr rev="en#7m+JlSgT">
+      Sonraki artı bir puan da 3. öğe için açıktır.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       A következő plusz egy pontok a 3. elem esetében is egyértelműek.
     </hu>
@@ -390,6 +480,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 4.
     </en>
+    <lang.tr rev="en#S11/2lqR">
+      Sonraki artı bir puan da 4. öğe için açıktır.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       A következő plusz egy pontok a 4. elem esetében is egyértelműek.
     </hu>
@@ -410,6 +503,13 @@ _ _ _ _ 1 2 _ _ _ _
       that is, in the X direction and in the Y direction
       the pattern is repeating every four steps.
     </en>
+    <lang.tr rev="en#LL2teKpd">
+      Bu, haritadaki dört unsuru tanımlar :)
+      Çünkü kural 1.b'de daha önce görmüştük:
+      Harita, modulo 4 ile "döngüsel" olmalıdır,
+      yani X yönünde ve Y yönünde
+      desen her dört adımda bir tekrar ediyor.
+    </lang.tr>
     <hu generator="deepl" t="2021-05-21.16-35-16">
       Ez meghatározza a négy elemet a térképen :)
       Mert az 1.b szabályban már láttuk:
