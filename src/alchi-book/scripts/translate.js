@@ -20,6 +20,8 @@
 // con: text fragments are small -> use one large database file, e.g. jsonlines format
 // collision safety? git uses short IDs of only 7 chars in base16
 
+// TODO support transliterated translations, e.g. to arabic, japanese, russian
+
 const codeNumKey = "'*+-/=@\\^_"; // 10 digits
 const codeNumRegexCharClass = "'*+-/=@\\\\\\^_"; // escape \ and ^ for regex character class
 
@@ -268,10 +270,6 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
 
         const wrap = (n.hasAttribute('lang') == false);
 
-        // TODO verify
-        const nClone = n.cloneNode(true);
-        nClone.setAttribute("lang", targetLang);
-
         const nodeStart = n._source.start; // only in patched version of html parser
         const lineStart = inputHtml.lastIndexOf('\n', n._source.start) + 1;
         const indent = inputHtml.slice(lineStart, nodeStart).match(/^\s*/)[0];
@@ -284,15 +282,10 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
         const base = `${sourceLang}#${sha1sum(n.innerHTML).slice(0, 8)}`;
         const extraAttrs = `rev="${base}"`; // add revision ID
 
-        // TODO parse + replace attributes if wrap == false
-        // -> dont duplicate attrs
-
-        // TODO never wrap -> add <${targetLang}> on export
+        // TODO properly parse + replace attributes if wrap == false
         const sBase = indent + (wrap
-          //? `<${tagName} ${tagAttrs} ${extraAttrs}>${n.innerHTML}</${tagName}>`
-          // skip tagAttrs:
           ? `<${tagName} ${extraAttrs}>${n.innerHTML}</${tagName}>`
-          : nClone.outerHTML // TODO verify
+          : n.outerHTML.replace(new RegExp(`^<([^>\\s]+)\\s+[^>]*lang="${sourceLang}"[^>]*>`, 's'), `<$1 lang="${targetLang}" ${extraAttrs}>`)
         );
 
         if (showDebug) console.dir({ indent, wrap, tagName, extraAttrs });
