@@ -289,8 +289,9 @@ module.exports = function(eleventyConfig) {
         //e.children.forEach(cn => {
         Array.prototype.forEach.apply(e.children, [ cn => {
           // <en> -> <div lang="en"> etc.
+          // <lang.en> -> <div lang="en"> etc.
           const elementNew = document.createElement('div');
-          const langCode = cn.localName;
+          const langCode = cn.localName.startsWith('lang.') ? cn.localName.slice(5) : cn.localName;
           if (cn.attributes) {
             for (let a = 0; a < cn.attributes.length; a++) {
               const attr = cn.attributes[a];

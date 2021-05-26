@@ -1,37 +1,9 @@
-// FIXME export and import are out of sync
-// first paragraph of page-005 is imported to page-000 <div id="book-subtitle">
+// TODO translate svg files
 
-// FIXME translate <table> and <svg>
-
-// TODO detect when translations get out of sync
-// -> extract text fragments to separate database file
-// and watch for changes
-
-// TODO add <table> contents to auto-translate
-// see page-170.html and page-180.html in src/pages
-
-// alternative to google translate:
-// https://www.deepl.com/Translator
-// https://www.deepl.com/translator#cs/en/ahoi!%20jak%20se%20mas%3F%0A
-
-// TODO store backup files in /backup/ -> keep /src/pages/ clean
-
-// FIXME should not insert whitespace after closing tags
-// FIXME indent before opening tags should be preserved correctly
-
-// TODO backup: keep file names, use folder to store date + time
-
-// TODO automate rollback:
-//   move /src/pages/*.html to /trash/
-//   move /backup/*.${lastDate}.bak back to /src/pages/
-
-// TODO verify/find source node location with checksum
-
-// TODO store "extra state" in separate json file, e.g. checksums of input nodes
+// TODO refactor src/pages/*.html to use <lang.de> instead of <de> etc. -> make tags unambiguous
+// e.g. <tr> can be turkish or table row
 
 // TODO avoid double inserts
-
-// TODO fix whitespace around tags, fix indents
 
 // TODO allow to reduce charLimit to 1000 for google translate
 // to make semi-automatic translations easier
@@ -39,19 +11,43 @@
 
 // TODO verify: all text-fragments are inserted
 
-// NOTE bug in deepl: in few cases, deepl translates xml tags, e.g. </fragment> -> </fragmentum> (en -> hu)
-// -> use <html>
-// TODO verify number of fragments, or verify valid xml
+// TODO auto-detect sourceLangList from files in src/pages/*.html
 
-// FIXME indent of one-line inserts, like
-// <hu auto t="2021-05-21.16-35-16">Realista kontra idealista</hu>
-// <hu auto t="2021-05-21.16-35-16">Támadás és menekülés</hu>
+// TODO post-process old and manual translations
+// -> add/update rev="en#xxxxxxxx" (revision ID) to keep translations in sync
+// use different encoding than base64? base32 or base16 (hex) -> better for filenames
+// -> easier to build a content-addressable store to cache old versions
+// con: text fragments are small -> use one large database file, e.g. jsonlines format
+// collision safety? git uses short IDs of only 7 chars in base16
 
-const dryRun = false;
-//const dryRun = true; // debug: dont edit files
+const codeNumKey = "'*+-/=@\\^_"; // 10 digits
+const codeNumRegexCharClass = "'*+-/=@\\\\\\^_"; // escape \ and ^ for regex character class
 
-const showDebug = true;
+const removeRegexCharClass = [
+  '\u200B', // ZERO WIDTH SPACE from google https://stackoverflow.com/questions/36744793
+].join('');
+const artifactsRegexCharClass = removeRegexCharClass + [
+  ' ', // space
+].join('');
+const codeNumRegexCharClassImport = codeNumRegexCharClass + artifactsRegexCharClass;
 
+const encodeNumTable = Object.fromEntries(codeNumKey.split('').map((c, i) => [i, c]));
+function encodeNum(num) {
+  return num.toString().split('').map(i => encodeNumTable[i]).join('');
+}
+const decodeNumTable = Object.fromEntries(codeNumKey.split('').map((c, i) => [c, i]));
+function decodeNum(str) {
+  return parseInt(str.replace(/\s+/sg, '').split('').map(c => decodeNumTable[c]).join(''));
+}
+
+
+
+const dryRunExport = 0;
+const dryRunImport = 0;
+const showDebug = 0;
+
+const charLimit = 5000; // limit of google, deepl
+//const charLimit = 1000; // good page size for manual translations or debugging
 
 let useXml = false;
 let translatorName = 'google';
@@ -73,6 +69,9 @@ function main() {
   // DEBUG
   translatorName = 'google';
 
+  // xml is broken in all translators
+  // -> encode to "symbols in square braces"
+  // which are preserved by all translators
   const xmlTranslators = [
     //'deepl', // not really. some xml is preserved, some xml is translated -> not usable
   ];
@@ -101,8 +100,8 @@ function showHelp() {
     'sample:\n' +
     `node ${scriptName} de en # from source files, generate translate-de2en.html\n` +
     `# manually create translate-de2en.txt\n` +
-    `node ${scriptName} de en translate-de2en.txt # add <en auto t="${dateTime()}">...</en> tags to source files\n` +
-    `# manually fix the translations, and replace <en auto t="${dateTime()}"> with <en>\n`
+    `node ${scriptName} de en translate-de2en.txt # add <en auto t="${nowDate}">...</en> tags to source files\n` +
+    `# manually fix the translations, and replace <en auto t="${nowDate}"> with <en>\n`
     //`node ${scriptName} translate-de2en.txt en\n`
   )
 }
@@ -120,44 +119,22 @@ const translatorLangs = {
 const previewTextLength = 500;
 
 const fs = require('fs');
-//const net = require('net');
-//const child_process = require('child_process');
 const appRoot = require('app-root-path').path;
-//const npmRun = require('npm-run');
 const path = require('path');
 const glob = require('fast-glob');
 const { parse } = require('node-html-parser');
 const htmlEntities = require('he');
 
 const elevConf = require(appRoot + '/config/eleventy.config.js')();
-//console.dir({ elevConf });
 
 process.chdir(appRoot);
 
 const scriptPath = path.relative(appRoot, process.argv[1]);
 
-//const inputDir = appRoot + '/' + elevConf.dir.input;
 const inputDir = elevConf.dir.input;
 const infilesGlob = inputDir + '/pages/*.html';
 
 const sourceLangList = ['de', 'en']; // TODO get from 11ty metadata
-
-// group numbers in three (translator services can split long numbers)
-// use numbers > 256 to avoid collisions with ascii charcodes (matching is non-greedy)
-// note. regex special chars like ()[]{}.*+? are not yet supported
-const mark = {
-  node1: '981 982',
-  node2: '983 984',
-  node3: '985 986',
-  tagZ1: '987 988',
-  tagZ2: '989 990',
-  //tagZ3: '989 990', // close tag + space after
-  //tagA0: '', // open tag + space before
-  tagA1: '991 992',
-  tagA2: '993 994',
-  enti1: '995 996',
-  enti2: '997 998',
-};
 
 
 
@@ -185,11 +162,7 @@ function dateTime(date = null) {
   return date.toLocaleString('lt').replace(/:/g, '-').replace(' ', '.');
 }
 
-function dateStr(date = null) {
-  // sample result: '2021-03-21'
-  if (!date) date = new Date();
-  return date.toLocaleString('lt').split(' ')[0];
-}
+const nowDate = dateTime();
 
 const crypto = require("crypto");
 
@@ -198,6 +171,8 @@ function sha1sum(str) {
 }
 
 
+
+/////////////////////// export ////////////////////////////
 
 function exportLang(sourceLang = 'de', targetLang = 'en') {
 
@@ -209,10 +184,10 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
   }
 
   const htmlFile = `translate-${sourceLang}2${targetLang}.html`;
-  if (fs.existsSync(htmlFile)) {
+  if (!dryRunExport && fs.existsSync(htmlFile)) {
     console.log(`error: output file exists: ${htmlFile}`);
     console.log(`\nsolutions:`);
-    console.log(`mv ${htmlFile} ${htmlFile}.${dateTime()}.bak`);
+    console.log(`mv ${htmlFile} ${htmlFile}.${nowDate}.bak`);
     console.log(`rm ${htmlFile}`);
     process.exit(1);
   }
@@ -220,7 +195,12 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
   console.log(`glob: ${infilesGlob}`);
 
   const textParts = [];
-  const replacementList = [];
+  //const replacementList = [];
+
+  const replacementData = {};
+  replacementData.replacementList = []; // sparse array due to "safe" ids, see getNextSafeId
+  replacementData.indentList = [];
+  replacementData.lastId = -1;
 
   // NOTE in right-to-left scripts (arabic, ...)
   // the order of groups will *appear* to be reversed
@@ -234,19 +214,30 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     return `${num}`.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
   }
 
+  // google can translate -- to -
+  // so we use "safe" ids without repetition
+  function getNextSafeId(lastId) {
+    for (let id = (lastId + 1); ; id++) {
+      let idStr = id.toString();
+      let idSafe = true;
+      for (let charIdx = 0; charIdx < (idStr.length - 1); charIdx++) {
+        if (idStr[charIdx] == idStr[charIdx + 1]) {
+          // found repetition
+          idSafe = false;
+          //if (showDebug) console.log(`skip unsafe id ${id}`);
+          break;
+        }
+      }
+      if (idSafe) return id;
+    }
+  }
+
   function getReplace(match) {
-    replacementId = replacementList.length;
-    replacementList.push(match);
-    return `\n[${fmtNum(replacementId)}]\n`;
-    // google translate will fail if replacements and text are in one line
-    // e.g. when translating to japanese:
-    // (123 456) hello world (563 323) -> (123 456) hello world (563 323)
-    // (123 456) \n hello world \n (563 323) ->（123 456）\n こんにちは世界 \n（563 323）
-
-    // kurdish breaks with round braces (adds "Polonî"):
-    // (123 456) \n hello world \n (563 323) -> Polonî (123 456) \n silav dinya \n (563 323)
-    // [123 456] \n hello world \n [563 323] -> [123 456] \n silav dinya \n [563 323]
-
+    // global: replacementData
+    const replacementId = getNextSafeId(replacementData.lastId);
+    replacementData.lastId = replacementId;
+    replacementData.replacementList[replacementId] = match;
+    return `\n[${encodeNum(replacementId)}]\n`;
   }
 
   // loop input files
@@ -255,7 +246,8 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
   .forEach((file, fileIdx) => {
 
     console.log(`input: ${file}`);
-    const root = parse(fs.readFileSync(file, 'utf8'));
+    const inputHtml = fs.readFileSync(file, 'utf8');
+    const root = parse(inputHtml);
 
     /*
     const childSelectors = sourceLangList;
@@ -271,55 +263,96 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     // loop parentNodes -> get textParts
     for (const [pi, p] of parentNodes.entries()) {
 
+      // loop nodes
       p.querySelectorAll(`${sourceLang}, *[lang="${sourceLang}"]`).forEach((n, ni) => {
 
         const wrap = (n.hasAttribute('lang') == false);
-        const sBase = wrap ? n.innerHTML : n.outerHTML;
 
+        // TODO verify
+        const nClone = n.cloneNode(true);
+        nClone.setAttribute("lang", targetLang);
+
+        const nodeStart = n._source.start; // only in patched version of html parser
+        const lineStart = inputHtml.lastIndexOf('\n', n._source.start) + 1;
+        const indent = inputHtml.slice(lineStart, nodeStart).match(/^\s*/)[0];
+        //if (showDebug) console.log(`indent = ${JSON.stringify(indent)}`);
+
+        //const tagName = targetLang;
+        const tagName = `lang.${targetLang}`;
+        //const tagAttrs = `generator="${translatorName}" t="${nowDate}"`;
+        // base of translation = sourceText
         const base = `${sourceLang}#${sha1sum(n.innerHTML).slice(0, 8)}`;
+        const extraAttrs = `rev="${base}"`; // add revision ID
 
-        const sXml = `<html f="${fileIdx}" p="${pi}" n="${ni}" w="${wrap ? 1 : 0}" b="${base}">${sBase}</html>`;
+        // TODO parse + replace attributes if wrap == false
+        // -> dont duplicate attrs
 
-        const textPart = (
-          useXml
-          ? sXml
-          : sXml
-          // replace xml
-          // space can be removed by the translator -> replace
-
-          .replace(/\s*(\([\d ]+\)|<(.+?)>|&([^ ]+);)\s*/sg, match => getReplace(match))
-
-          //.replace(/\s*\([\d ]+\)\s*/sg, match => getReplace(match)) // numbers in braces. we use this pattern for replacements
-          //.replace(/\s*<\/(.+?)>\s*/sg, match => getReplace(match)) // close tags
-          //.replace(/\s*<(.+?)>\s*/sg, match => getReplace(match)) // open tags
-          //.replace(/\s*&([^ ]+);\s*/g, match => getReplace(match)) // html entities
+        // TODO never wrap -> add <${targetLang}> on export
+        const sBase = indent + (wrap
+          //? `<${tagName} ${tagAttrs} ${extraAttrs}>${n.innerHTML}</${tagName}>`
+          // skip tagAttrs:
+          ? `<${tagName} ${extraAttrs}>${n.innerHTML}</${tagName}>`
+          : nClone.outerHTML // TODO verify
         );
 
-        if (1 && showDebug) console.log(`textPart:\n${textPart}\n`);
+        if (showDebug) console.dir({ indent, wrap, tagName, extraAttrs });
+
+        const sXml = `<html f="${fileIdx}" p="${pi}" n="${ni}">\n${sBase}\n</html>`;
+
+        if (showDebug) console.log(`textPart before replace:\n${sXml}`);
+
+        // encode: "symbols in square braces", html tags, html entities
+        // replace with "symbols in square braces"
+        let textPart = sXml.replace(
+          new RegExp(`\\s*(?:\\[[${codeNumRegexCharClassImport}]+\\]|<.+?>|&[^ ]+;)\\s*`, 'sg'),
+          match => getReplace(match)
+        );
+
+        // encode indents between replacements
+        // use lookahead (?=...) to include delimiter as prefix
+        if (1) {
+        textPart = (
+          textPart
+          .split(new RegExp(`(?=\\n\\[[${codeNumRegexCharClass}]+\\]\\n)`))
+          .map(str => {
+            //console.dir({ str });
+            let [_, replacement, idxStr, rest] = str.match(new RegExp(`(\\n\\[([${codeNumRegexCharClass}]+)\\]\\n)(.*)$`, 's'));
+            const replaceId = decodeNum(idxStr);
+            //console.dir({ rest });
+            replacementData.indentList[replaceId] = [];
+            // remove indents
+            rest = rest.split('\n').map(line => {
+              const [_, indent, lineRest] = line.match(/^(\s*)(.*)/);
+              replacementData.indentList[replaceId].push(indent);
+              return lineRest;
+            }).join('\n');
+            return replacement + rest;
+          })
+        ).join('');
+        }
+
+        if (showDebug) console.log(`textPart after replace:\n${textPart}`);
 
         textParts.push(textPart);
       })
     } // done loop parentNodes
 
-    // DEBUG
-    return;
+    //console.dir(replacementData.indentList);
+    //if (fileIdx > 1) process.exit(0); // DEBUG
 
   }); // done loop input files
 
-  if (0 && showDebug) {
-    for (let i = 0; i < replacementList.length; i++) {
-      console.log(`[${fmtNum(i)}] = ${replacementList[i]}`)
+  if (1 && showDebug) {
+    for (const id of Object.keys(replacementData.replacementList)) { // sparse array
+      console.log(`[${encodeNum(id)}] = id ${id} = ${replacementData.replacementList[id]}`)
     }
   }
 
-
+  if (dryRunExport) return;
 
   // generate links
-  const charLimit = 5000; // google, deepl
 
 
-
-  // TODO remove <meta> ... but how to encode?
 
   let lastGroupSize = 0;
 
@@ -327,21 +360,15 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     textParts.reduce((acc, val) => {
       const nextLen = acc[acc.length - 1].length + val.length + 3*(`\n\n<meta attrrrrrrrr="vallll"/>\n\n`.length);
       if (nextLen >= charLimit) {
-        if (useXml) {
-          const nextNumber = acc.length + 1;
-          acc[acc.length - 1] += `<meta lastsize="${lastGroupSize}"/>\n\n<meta nextpage="${nextNumber}"/>\n\n`;
-          acc.push(`<meta page="${nextNumber}"/>\n\n`);
-        }
-        else {
-          acc.push('');
-        }
+        acc.push('');
         lastGroupSize = 0;
       }
       acc[acc.length - 1] += val + '\n\n';
       lastGroupSize++;
       return acc;
-    }, [useXml ? `<meta nextpage="1"/>\n\n` : ''])
+    }, [''])
 
+    /* DEBUG is this broken?
     // group siblings
     .map(textGroup => textGroup.replace(/\n(?:\[[\d ]+\]\s*){2,}\n/sg, matchStr => {
       const replaceIdList = [];
@@ -363,14 +390,11 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
       }
       return `\n[${fmtNum(firstId)}]\n`;
     }))
+    */
   );
 
   if (showDebug) {
     console.log(textGroups.map((s, i) => `textGroup ${i}:\n${s}\n`).join('\n'));
-  }
-
-  if (useXml) {
-    textGroups[textGroups.length - 1] += `<meta end/>\n\n`;
   }
 
   const translateUrl = t => (
@@ -392,9 +416,9 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     '</style>' +
     '<ol>\n\n' + translateLinks.join('\n\n') + '</ol>\n' +
     // embed replacements in html comment
-    '<!-- replacementList = ' +
-    JSON.stringify(replacementList) +
-    ' = replacementList -->'
+    '<!-- replacementData = ' +
+    JSON.stringify(replacementData, null, 2) +
+    ' = replacementData -->'
   );
 
   fs.writeFileSync(htmlFile, htmlSrc, 'utf8');
@@ -433,28 +457,14 @@ then you must generate a new ${htmlFile} file
 
 
 
-//function importLang(sourceLang, targetLang, inputFile, tagName) {
+/////////////////////// import ////////////////////////////
+
 function importLang(sourceLang, targetLang, inputFile) {
+
   let input = fs.readFileSync(inputFile, 'utf8');
-  const inputTime = dateTime(fs.statSync(inputFile).birthtime);
 
-  //if (!tagName) tagName = `${targetLang}-${sourceLang}2${targetLang}`;
-  const tagName = targetLang;
-  const tagAttrs = `generator="${translatorName}" t="${inputTime}"`;
-
-  // validate
-  if (useXml) {
-    const numOpen = input.match(/<html/g).length;
-    const numClose = input.match(/<\/html>/g).length;
-    if (numOpen != numClose) {
-      console.log(`ERROR in ${inputFile}: tags mismatch`);
-      console.log(`open   <html> tags: ${numOpen}`);
-      console.log(`close </html> tags: ${numClose}`);
-      process.exit(1);
-    }
-  }
-
-
+  // remove unwanted characters
+  input = input.replace(new RegExp(`[${removeRegexCharClass}]`, 'g'), '');
 
   // decode replacements
   const htmlFile = `translate-${sourceLang}2${targetLang}.html`;
@@ -464,77 +474,127 @@ function importLang(sourceLang, targetLang, inputFile) {
     process.exit(1);
   }
   const htmlSrc = fs.readFileSync(htmlFile, 'utf8');
-  const replacementListMatch = htmlSrc.match(/<!-- replacementList = (.*) = replacementList -->/s);
-  if (replacementListMatch == null) {
-    console.log(`parse error: replacementList not found in ${htmlFile}`);
+  const replacementDataMatch = htmlSrc.match(/<!-- replacementData = (.*) = replacementData -->/s);
+  if (replacementDataMatch == null) {
+    console.log(`parse error: replacementData not found in ${htmlFile}`);
     process.exit(1);
   }
-  console.dir({ replacementListMatch }); // huuuuge
-  const replacementList = JSON.parse(replacementListMatch[1]);
+  const replacementData = JSON.parse(replacementDataMatch[1]);
+  console.log(`loaded ${replacementData.replacementList.length} replacements from ${htmlFile}`);
 
-  input = input.replace(/\n\[([\d ]+)\]\n/sg, (_match, idStr) => {
-    const replaceId = parseInt(idStr.replace(/ /g, ''));
-    return replacementList[replaceId];
-  });
+  if (1 && showDebug) {
+    for (const id of Object.keys(replacementData.replacementList)) { // sparse array
+      console.log(`[${encodeNum(id)}] = id ${id} = ${replacementData.replacementList[id]}`)
+    }
+  }
+
+  // decode indents and replacements
+  // copy pasta ...
+  // use lookahead (?=...) to include delimiter as prefix
+  // \n? -> allow missing newlines around replacements -> parse errors! -> revoke
+  input = (
+    //input
+    ('\n' + input + '\n')
+    //.split(new RegExp(`(?=\\n?\\[[${codeNumRegexCharClassImport}]+\\]\\n?)`)) // optional \n
+    .split(new RegExp(`(?=\\n\\[[${codeNumRegexCharClassImport}]+\\]\\n)`)) // require \n
+    .map(str => {
+      console.dir({ blockStr: str });
+      //const m = str.match(new RegExp(`(\\n?\\[([${codeNumRegexCharClassImport}]+)\\]\\n?)(.*)$`, 's')); // optional \n
+      const m = str.match(new RegExp(`(\\n\\[([${codeNumRegexCharClassImport}]+)\\]\\n)(.*)$`, 's')); // require \n
+      if (!m) return str; // no replace
+      let [_, _replacement, idxStr, rest] = m;
+      const replaceId = decodeNum(idxStr);
+      // restore indents
+      //console.dir({ indentsForBlock: replacementData.indentList[replaceId] });
+      rest = rest.split('\n').map((lineRest, lineIdx) => {
+        const indent = replacementData.indentList[replaceId][lineIdx] || '';
+        //console.dir({ replaceId, lineIdx, indent, lineRest });
+        return indent + lineRest;
+      }).join('\n');
+      // decode replacement
+      const replacement = replacementData.replacementList[replaceId];
+      //console.dir({ replaceId, replacement, rest });
+      return replacement + rest;
+    })
+  ).join('');
+
+  if (showDebug) {
+    console.log('decoded html:');
+    console.log(input);
+    //return; // DEBUG
+  }
+
+
+
+  // validate html
+  const numOpen = input.match(/<html/g).length;
+  const numClose = input.match(/<\/html>/g).length;
+  if (numOpen != numClose) {
+    console.log(`WARNING: html tags mismatch in ${inputFile}:`);
+    console.log(`open   <html> tags: ${numOpen}`);
+    console.log(`close </html> tags: ${numClose}`);
+
+    // locate first mismatch
+    // assume: html tags are not nested
+    const idxList = {};
+    input.replace(/<html/g, (_, idx) => (idxList[idx] = 1));
+    input.replace(/<\/html>/g, (_, idx) => (idxList[idx] = 0));
+    let level = 0;
+    // this is a mess :D
+    const idxIdxList = Object.keys(idxList);
+    //for (const idxStr of Object.keys(idxList)) {
+    for (let idxIdx = 0; idxIdx < idxIdxList.length; idxIdx++) {
+      const idxStr = idxIdxList[idxIdx];
+      const isOpen = (idxList[idxStr] == 1);
+      if (isOpen) level++;
+      else level--;
+      if (level < 0 || 1 < level) {
+        const idx = parseInt(idxStr);
+        // TODO handle idxIdx out of range ...
+        const last2Idx = parseInt(idxIdxList[idxIdx - 2]);
+        const lastIdx = parseInt(idxIdxList[idxIdx - 1]);
+        const nextIdx = parseInt(idxIdxList[idxIdx + 1]);
+        const next2Idx = parseInt(idxIdxList[idxIdx + 2]);
+        const m = '='.repeat(30);
+        console.log(`html tags mismatch starts at position ${idxStr}. context:`);
+        console.log(`${m} pos -2 = ${last2Idx} ${m}`);
+        console.log(input.slice(last2Idx, lastIdx));
+        console.log(`${m} pos -1 = ${lastIdx} ${m}`);
+        console.log(input.slice(lastIdx, idx));
+        console.log(`${m} pos 0 = ${idxStr} ${m}`);
+        console.log(input.slice(idx, nextIdx));
+        console.log(`${m} pos +1 = ${nextIdx} ${m}`);
+        console.log(input.slice(nextIdx, next2Idx));
+        console.log(`${m} pos +2 = ${next2Idx} ${m}`);
+        break; // show only first
+      }
+    }
+    console.log(`fatal error: html tags mismatch. translation was not imported`)
+    process.exit(1);
+  }
 
 
 
   // parse
-  // TODO escape special regex chars in `mark.node1` etc
-  // FIXME positions are wrong (en2hu)
   const textParts = [];
   const inputRest = input.replace(
-    ///(?:<!-- .+? -->\n\n)?<html f="([0-9]+)" p="([0-9]+)" n="([0-9]+)" w="([0-9]+)" b="([^"]+)">(.+?)<\/html>(?:\n\n<!-- .+? -->)?/sg,
-    /<html f="([0-9]+)" p="([0-9]+)" n="([0-9]+)" w="([0-9]+)" b="([^"]+)">(.+?)<\/html>/sg,
-    (_, file, pi, ni, wrap, base, str) => {
+    /<html f="([0-9]+)" p="([0-9]+)" n="([0-9]+)">\n(.+?)\n<\/html>/sg,
+    (_, file, part, node, str) => {
       file = parseInt(file);
       part = parseInt(part);
       node = parseInt(node);
-      wrap = (wrap == '0') ? false : true;
-      str = (
-        true
-        ? str // no decode
-
-        // old stuff:
-        : str
-        // FIXME whitespace around braces/numbers/... its a mess!
-        // decode html markup
-        .replace(
-          // close tag: consume whitespace before
-          new RegExp(` ?\\(${mark.tagZ1} ([0-9 ]+?) ${mark.tagZ2}\\)`, 'g'),
-          (_, m) => {
-            const decStr = m.split(' ').map(c => String.fromCharCode(c)).join('');
-            const [, tag, spaceAfter] = decStr.match(/^(.*\S)(\s*)$/sg);
-            return `</${tag}>${spaceAfter}`;
-          }
-        )
-        .replace(
-          // open tag: consume whitespace after
-          //new RegExp(`${mark.tagA1} ([0-9 ]+?) ${mark.tagA2} ?`, 'g'), // TODO restore
-          new RegExp(` ?\\(${mark.tagA1} ([0-9 ]+?) ${mark.tagA2}\\) ?`, 'g'),
-          (_, m) => {
-            const decStr = m.split(' ').map(c => String.fromCharCode(c)).join('');
-            //console.log(`DEBUG decStr = ${JSON.stringify(decStr)}`)
-            //console.log(`DEBUG decStr match:`); console.dir(decStr.match(/^(\s*)(\S.*)$/sg))
-            const [, spaceBefore, tag] = decStr.match(/^(\s*)(\S.*)$/sg);
-            return `${spaceBefore}<${tag}>`;
-          }
-        )
-        // decode html entities
-        .replace(
-          new RegExp(` ?\\(${mark.enti1} ([0-9 ]+?) ${mark.enti2}\\) ?`, 'g'),
-          (_, m) => '&'+m.split(' ').map(c => String.fromCharCode(c)).join('')+';',
-        )
-      );
-      textParts.push({ file, part, node, str, wrap, base });
+      textParts.push({ file, part, node, str });
       return ''; // remove from input
     }
-  ); // done parse
+  );
 
-  //console.dir(textParts);
-  console.log(`inputRest = ${JSON.stringify(inputRest.replace(/\n+/sg, '\n'))}`);
+  // should be empty ...
+  const inputRestTrimmed = inputRest.trim();
+  if (inputRestTrimmed.length > 0) {
+    console.log(`inputRest = ${JSON.stringify(inputRestTrimmed.replace(/\n+/sg, '\n'))}`);
+  }
 
-  const backupDir = `backup/translate/${dateTime()}-${sourceLang}2${targetLang}`;
+  const backupDir = `backup/translate/${nowDate}.${sourceLang}2${targetLang}`;
 
   const rollbackScriptPath = `${backupDir}/rollback.sh`;
   let rollbackScript = [
@@ -582,25 +642,18 @@ function importLang(sourceLang, targetLang, inputFile) {
           return; // continue
         }
 
-        const extraAttrs = `base="${base}"`;
-
-        // FIXME indent is wrong for one-liners
-        const indent = n.toString().split('\n').slice(-1)[0].match(/^\s*/)[0];
-        const newHtml = textNode.wrap
-          ? `\n${indent}<${tagName} ${tagAttrs} ${extraAttrs}>${textNode.str}</${tagName}>`
-          : `\n${indent}${textNode.str.replace(/^<([^>]+)>/, `<$1 ${tagAttrs} ${extraAttrs}>`)}`
-        ;
-        n.insertAdjacentHTML('afterend', newHtml);
+        n.insertAdjacentHTML('afterend', '\n' + textNode.str);
         insertedNodes++;
 
-        if (dryRun == true) {
-          console.log(`old node:`); console.dir({ ...textNode, str: '', file }); console.log(n.toString())
-          console.log(`new node:`); console.log(`\n${indent}<${tagName} ${tagAttrs}>${textNode.str}</${tagName}>`)
+        if (dryRunImport) {
+          const indent = textNode.str.match(/^\s*/)[0]; // quick n dirty ...
+          console.log(`old node:`); console.dir({ ...textNode, str: '', file }); console.log(indent + n.toString())
+          console.log(`new node:`); console.log(textNode.str)
         }
       })
     }
 
-    if (dryRun == false && insertedNodes > 0) {
+    if (!dryRunImport && insertedNodes > 0) {
       // move original to backup
       const backupFile = `${backupDir}/${file}`;
       fs.mkdirSync(path.dirname(backupFile), { recursive: true });
@@ -617,7 +670,8 @@ function importLang(sourceLang, targetLang, inputFile) {
     }
   });
 
-  if (dryRun == false && changedFiles > 0) {
+  if (!dryRunImport && changedFiles > 0) {
+    rollbackScript += `mv ${backupDir} ${backupDir}.rolled-back\n`
     fs.writeFileSync(rollbackScriptPath, rollbackScript, 'utf8');
     console.log(`output: ${rollbackScriptPath}`);
     fs.writeFileSync(diffScriptPath, diffScript, 'utf8');
