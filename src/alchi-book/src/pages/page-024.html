@@ -17,6 +17,14 @@
       what the rest of the map might look like.
       I made several assumptions for this:
     </en>
+    <lang.es rev="en#YDMSzfDl">
+      <b>¿Simetría?</b>
+      El resto del mapa es una "extrapolación".
+      de mis experiencias personales,
+      así que una predicción,
+      cómo se vería el resto del mapa.
+      Hice varias suposiciones para esto:
+    </lang.es>
     <lang.ru rev="en#YDMSzfDl">
       <b>Simmetriya?</b>
       Ostal'naya chast' karty - eto «ekstrapolyatsiya».
@@ -90,6 +98,17 @@ _ _ 4 _ _
       must have element 4 as the next-plus-one point in one direction <nw>(4 _ 1 _ 4)</nw>
       and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
     </en>
+    <lang.es rev="en#6cAWR91e">
+      1. Seguimos la regla "un paso más allá":
+      Cada segundo-siguiente punto (en línea recta)
+      debe tener "otra clase".
+      (dos "clases": 12 y 34.)
+      Llamamos al punto después de eso <b>modalidad</b>.
+
+      Muestra: un punto con el elemento 1 (fuego)
+      debe tener el elemento 4 como el siguiente punto más uno en una dirección <nw>(4 _ 1 _ 4)</nw>
+      y en la otra dirección debe tener el elemento 3 como el siguiente punto más uno <nw>(3 _ 1 _ 3)</nw>.
+    </lang.es>
     <lang.ru rev="en#6cAWR91e">
       1. My sleduyem pravilu «na shag dal'she»:
       Kazhdaya vtoraya-sleduyushchaya tochka (po pryamoy)
@@ -182,6 +201,23 @@ _ _ _ _
       The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
       This means that 25% of the map is already set.
     </en>
+    <lang.es rev="en#UjmzsjiA">
+      1.a.
+      Cuatro pasos más (en línea recta) debe ser el mismo elemento nuevamente,
+      por lo que el mapa es simétrico a "Módulo 4"
+      = todo el mapa se repite cada cuatro pasos
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1.b.
+      La representación más pequeña del mapa es una "matriz" de 4 por 4 con 16 puntos.
+      Esto significa que el 25% del mapa ya está configurado.
+    </lang.es>
     <lang.ru rev="en#UjmzsjiA">
       1.a.
       Na chetyre shaga dal'she (po pryamoy) snova dolzhen byt' tot zhe element,
@@ -294,6 +330,18 @@ _ _ _ _
       So it has to be "2 1 3" or "2 1 4",
       or "3 1 2" or "4 1 2".
     </en>
+    <lang.es rev="en#zdXPXgya">
+      1.c.
+      Cada segundo punto siguiente (en direcciones rectas)
+      debe tener "otra clase".
+
+      Muestra:
+      El elemento 2 tiene las modalidades 3 y 4.
+      Entonces: "2 1 2" no está permitido,
+      porque el segundo y siguiente punto es la modalidad.
+      Entonces tiene que ser "2 1 3" o "2 1 4",
+      o "3 1 2" o "4 1 2".
+    </lang.es>
     <lang.ru rev="en#zdXPXgya">
       1.c.
       Kazhdaya vtoraya-sleduyushchaya tochka (po pryamym napravleniyam)
@@ -377,6 +425,16 @@ _ _ _ _
       My (Element 1) four nearest points (in straight directions)
       must be elements 2 3 4 (but not element 1).
     </en>
+    <lang.es rev="en#WzBjtfZN">
+      2. Dos puntos que están uno al lado del otro,
+      debe tener dos elementos diferentes.
+
+      De acuerdo, eso es un poco arbitrario ...
+      pero los puntos diagonales pueden tener el mismo elemento.
+      De esto se sigue (con mi experiencia personal):
+      Mis (Elemento 1) cuatro puntos más cercanos (en direcciones rectas)
+      deben ser elementos 2 3 4 (pero no elemento 1).
+    </lang.es>
     <lang.ru rev="en#WzBjtfZN">
       2. Dve tochki, kotoryye raspolozheny ryadom drug s drugom,
       dolzhen imet' dva raznykh elementa.
@@ -438,6 +496,10 @@ _ _ _ _
       3. The biggest difference between the elements is their "class" (12 or 34),
       and both classes are equally important.
     </en>
+    <lang.es rev="en#ujN+xy+7">
+      3. La mayor diferencia entre los elementos es su "clase" (12 o 34),
+      y ambas clases son igualmente importantes.
+    </lang.es>
     <lang.ru rev="en#ujN+xy+7">
       3. Samaya bol'shaya raznitsa mezhdu elementami - eto ikh «klass» (12 ili 34),
       i oba klassa odinakovo vazhny.
@@ -493,6 +555,14 @@ _ 3 _
       With 2 follows, for example for element 1:
       The next four points are 2 2 3 4.
     </en>
+    <lang.es rev="en#sRjhfesO">
+      3.a.
+      Lo siguiente se aplica a los siguientes cuatro puntos:
+      dos puntos deben ser de la clase 12,
+      y dos puntos deben ser de la clase 34.
+      Con 2 sigue, por ejemplo para el elemento 1:
+      Los siguientes cuatro puntos son 2 2 3 4.
+    </lang.es>
     <lang.ru rev="en#sRjhfesO">
       3.a.
       Sleduyushcheye otnositsya k sleduyushchim chetyrem tochkam:
@@ -548,6 +618,12 @@ _ 3 _
       The only symmetrical solution for this is:
       Element 1 must also be repeated diagonally.
     </en>
+    <lang.es rev="en#ctcsUyLU">
+      Aquí se nota:
+      El elemento 2 se repite en diagonal.
+      La única solución simétrica para esto es:
+      El elemento 1 también debe repetirse en diagonal.
+    </lang.es>
     <lang.ru rev="en#ctcsUyLU">
       Zdes' zametno:
       Element 2 povtoryayetsya po diagonali.
@@ -611,6 +687,10 @@ _ _ 4 3 _ _
       With rule 2 (no direct repetition)
       The next-plus-one points of element 1 are clearly defined.
     </en>
+    <lang.es rev="en#pOwCBrCT">
+      Con la regla 2 (sin repetición directa)
+      Los puntos siguientes más uno del elemento 1 están claramente definidos.
+    </lang.es>
     <lang.ru rev="en#pOwCBrCT">
       S pravilom 2 (bez pryamogo povtoreniya)
       Sleduyushchiye plyus odin tochki elementa 1 chetko opredeleny.
@@ -648,6 +728,13 @@ _ _ 4 3 _ _
       A flowsquare consists of 1122 or 3344,
       and the same elements lie diagonally.
     </en>
+    <lang.es rev="en#R/tlW1/4">
+      Los puntos siguientes más uno también son claros para el elemento 2.
+      Con esto hemos encontrado el patrón parcial,
+      que llamamos <b>Cuadrado de flujo</b>.
+      Un cuadrado de flujo consta de 1122 o 3344,
+      y los mismos elementos se encuentran en diagonal.
+    </lang.es>
     <lang.ru rev="en#R/tlW1/4">
       Tochki "sleduyushchiy plyus odin" takzhe ochevidny dlya elementa 2.
       Takim obrazom, my nashli chastichnyy obrazets,
@@ -726,6 +813,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 3.
     </en>
+    <lang.es rev="en#7m+JlSgT">
+      Los puntos siguientes más uno también son claros para el elemento 3.
+    </lang.es>
     <lang.ru rev="en#7m+JlSgT">
       Tochki "sleduyushchiy plyus odin" takzhe ochevidny dlya elementa 3.
     </lang.ru>
@@ -750,6 +840,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 4.
     </en>
+    <lang.es rev="en#S11/2lqR">
+      Los puntos siguientes más uno también son claros para el elemento 4.
+    </lang.es>
     <lang.ru rev="en#S11/2lqR">
       Tochki "sleduyushchiy plyus odin" takzhe ochevidny dlya elementa 4.
     </lang.ru>
@@ -782,6 +875,13 @@ _ _ _ _ 1 2 _ _ _ _
       that is, in the X direction and in the Y direction
       the pattern is repeating every four steps.
     </en>
+    <lang.es rev="en#LL2teKpd">
+      Esto define los cuatro elementos en el mapa :)
+      Porque en la regla 1.b ya hemos visto:
+      El mapa debe ser "cíclico" con módulo 4,
+      es decir, en la dirección X y en la dirección Y
+      el patrón se repite cada cuatro pasos.
+    </lang.es>
     <lang.ru rev="en#LL2teKpd">
       Eto opredelyayet chetyre elementa na karte :)
       Potomu chto v pravile 1.b my uzhe videli:
