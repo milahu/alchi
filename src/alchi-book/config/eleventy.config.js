@@ -291,7 +291,13 @@ module.exports = function(eleventyConfig) {
           // <en> -> <div lang="en"> etc.
           // <lang.en> -> <div lang="en"> etc.
           const elementNew = document.createElement('div');
-          const langCode = cn.localName.startsWith('lang.') ? cn.localName.slice(5) : cn.localName;
+          let langCode = cn.localName.startsWith('lang.') ? cn.localName.slice(5) : cn.localName;
+          // fix case. html tag names are either lowercase (localName) or uppercase (tagName, nodeName)
+          if (langCode.includes('-')) {
+            const p = langCode.split('-');
+            langCode = [p[0], ...p.slice(1).map(s => s.toUpperCase())].join('-');
+          }
+          console.dir({ langCode, localName: cn.localName })
           if (cn.attributes) {
             for (let a = 0; a < cn.attributes.length; a++) {
               const attr = cn.attributes[a];

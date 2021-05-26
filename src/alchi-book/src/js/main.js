@@ -502,6 +502,17 @@ const M4 = 0b10111;
 
 
 
+// sync with /scripts/translate.js
+const langMap = {
+  zh: 'zh-CN', // simplified chinese
+};
+
+function getLang(str) {
+  if (str && str in langMap) return langMap[str];
+  return str;
+}
+
+
 
 function add_footers() {
   // add page footers
@@ -510,7 +521,7 @@ function add_footers() {
   const booklet_last_idx = (Math.ceil(num_pages / 4) * 4) - 1;
   page_array.forEach((page_div, page_idx) => {
     if (page_idx == 0 || page_idx == booklet_last_idx) return; // skip first and last page
-    
+
     // TODO translate
     const span_page = `<span>Seite ${page_idx + 1}</span>`;
 
@@ -547,16 +558,24 @@ var current_lang = 'en';
 
 function set_language(lang) {
   //<div class="fragment">
+
+  current_lang = lang;
+
+  const fullLang = getLang(lang);
   
   const languages = new Set(meta.languages.split(' ')); // TODO move to init
 
+  //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+  //console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
+  /* how was this useful? i dont know.
   if (!languages.has(lang)) {
     const shortLang = (lang || '').split('-')[0];
     if (languages.has(shortLang)) lang = shortLang;
     else lang = 'en'; // fallback
   }
+  */
 
-  current_lang = lang;
 
   document.querySelectorAll('.langs').forEach(fragment => {
     // TODO more efficient?
@@ -564,7 +583,7 @@ function set_language(lang) {
     let langFound = 0;
     Array.prototype.forEach.apply(fragment.children, [node => {
       if (node.lang) {
-        if (node.lang == lang) {
+        if (node.lang == fullLang) {
           node.classList.remove('hidden');
           langFound++;
         }
@@ -651,7 +670,10 @@ function add_language_menu() {
     if (event.target.classList.contains('language-button')) {
       event.preventDefault();
       const sign = Math.sign(event.deltaY);
-      const next_lang = lang_list[(lang_list.indexOf(current_lang) + sign) % lang_list.length];
+      //const next_lang_id = (lang_list.indexOf(current_lang) + sign) % lang_list.length;
+      const next_lang_id = (lang_list.indexOf(current_lang) + sign).mod(lang_list.length);
+      const next_lang = lang_list[next_lang_id];
+      //console.log(`onwheel: next_lang = ${next_lang}, next_lang_id = ${next_lang_id}, current_lang_id = ${lang_list.indexOf(current_lang)}`)
       set_language(next_lang);
     }
   });
