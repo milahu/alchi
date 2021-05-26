@@ -17,6 +17,14 @@
       what the rest of the map might look like.
       I made several assumptions for this:
     </en>
+    <lang.fa rev="en#YDMSzfDl">
+      <b>تقارن؟</b>
+      بقیه نقشه یک "برون یابی" است
+      از تجربیات شخصی من ،
+      بنابراین یک پیش بینی ،
+      بقیه نقشه به چه صورت است.
+      من چندین فرض برای این کار کردم:
+    </lang.fa>
     <lang.es rev="en#YDMSzfDl">
       <b>¿Simetría?</b>
       El resto del mapa es una "extrapolación".
@@ -98,6 +106,17 @@ _ _ 4 _ _
       must have element 4 as the next-plus-one point in one direction <nw>(4 _ 1 _ 4)</nw>
       and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
     </en>
+    <lang.fa rev="en#6cAWR91e">
+      1. ما قانون "یک قدم جلوتر" را دنبال می کنیم:
+      هر نقطه دوم-بعدی (در یک خط مستقیم)
+      باید "کلاس دیگر" داشته باشد.
+      (دو "کلاس": 12 و 34)
+      ما بعد از آن نقطه را فراخوانی می کنیم <b>حالت</b>.
+
+      نمونه: یک نقطه با عنصر 1 (آتش)
+      باید عنصر 4 را بعنوان نقطه بعدی بعلاوه یک در یک جهت داشته باشد <nw>(4 _ 1 _ 4)</nw>
+      و در جهت دیگر باید عنصر 3 را بعنوان نقطه بعدی بعلاوه یک داشته باشد <nw>(3 _ 1 _ 3)</nw>.
+    </lang.fa>
     <lang.es rev="en#6cAWR91e">
       1. Seguimos la regla "un paso más allá":
       Cada segundo-siguiente punto (en línea recta)
@@ -201,6 +220,23 @@ _ _ _ _
       The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
       This means that 25% of the map is already set.
     </en>
+    <lang.fa rev="en#UjmzsjiA">
+      1.a.
+      چهار قدم جلوتر (در یک خط مستقیم) باید دوباره همان عنصر باشد ،
+      بنابراین نقشه متقارن "Modulo 4" است
+      = کل نقشه هر چهار مرحله تکرار می شود
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1. ب
+      کوچکترین نمایش نقشه "ماتریس" 4 در 4 با 16 امتیاز است.
+      این بدان معناست که 25٪ نقشه از قبل تنظیم شده است.
+    </lang.fa>
     <lang.es rev="en#UjmzsjiA">
       1.a.
       Cuatro pasos más (en línea recta) debe ser el mismo elemento nuevamente,
@@ -330,6 +366,18 @@ _ _ _ _
       So it has to be "2 1 3" or "2 1 4",
       or "3 1 2" or "4 1 2".
     </en>
+    <lang.fa rev="en#zdXPXgya">
+      1.C
+      هر نقطه دوم-بعدی (در جهت مستقیم)
+      باید "کلاس دیگر" داشته باشد.
+
+      نمونه:
+      عنصر 2 دارای 3 و 4 است.
+      بنابراین: "2 1 2" مجاز نیست ،
+      زیرا دومین نکته بعدی حالت است.
+      بنابراین باید "2 1 3" یا "2 1 4" باشد ،
+      یا "3 1 2" یا "4 1 2".
+    </lang.fa>
     <lang.es rev="en#zdXPXgya">
       1.c.
       Cada segundo punto siguiente (en direcciones rectas)
@@ -425,6 +473,16 @@ _ _ _ _
       My (Element 1) four nearest points (in straight directions)
       must be elements 2 3 4 (but not element 1).
     </en>
+    <lang.fa rev="en#WzBjtfZN">
+      2. دو نقطه درست در کنار یکدیگر ،
+      باید دو عنصر مختلف داشته باشد.
+
+      مسلم است که این کمی خودسرانه است ...
+      اما نقاط مورب ممکن است همان عنصر را داشته باشند.
+      از این (با تجربه شخصی من) نتیجه می شود:
+      من (عنصر 1) چهار نزدیکترین نقطه (در جهت مستقیم)
+      باید عناصر 2 3 4 باشد (اما عنصر 1 نیست).
+    </lang.fa>
     <lang.es rev="en#WzBjtfZN">
       2. Dos puntos que están uno al lado del otro,
       debe tener dos elementos diferentes.
@@ -496,6 +554,10 @@ _ _ _ _
       3. The biggest difference between the elements is their "class" (12 or 34),
       and both classes are equally important.
     </en>
+    <lang.fa rev="en#ujN+xy+7">
+      3. بزرگترین تفاوت بین عناصر "طبقه" آنها (12 یا 34) است ،
+      و هر دو کلاس به یک اندازه مهم هستند.
+    </lang.fa>
     <lang.es rev="en#ujN+xy+7">
       3. La mayor diferencia entre los elementos es su "clase" (12 o 34),
       y ambas clases son igualmente importantes.
@@ -555,6 +617,14 @@ _ 3 _
       With 2 follows, for example for element 1:
       The next four points are 2 2 3 4.
     </en>
+    <lang.fa rev="en#sRjhfesO">
+      3. الف
+      موارد زیر برای چهار نکته بعدی اعمال می شود:
+      دو امتیاز باید از کلاس 12 باشد ،
+      و دو امتیاز باید از کلاس 34 باشد.
+      با 2 دنبال کردن ، به عنوان مثال برای عنصر 1:
+      چهار امتیاز بعدی 2 2 3 4 است.
+    </lang.fa>
     <lang.es rev="en#sRjhfesO">
       3.a.
       Lo siguiente se aplica a los siguientes cuatro puntos:
@@ -618,6 +688,12 @@ _ 3 _
       The only symmetrical solution for this is:
       Element 1 must also be repeated diagonally.
     </en>
+    <lang.fa rev="en#ctcsUyLU">
+      در اینجا قابل توجه است:
+      عنصر 2 به صورت مورب تکرار می شود.
+      تنها راه حل متقارن برای این موارد:
+      عنصر 1 نیز باید به صورت مورب تکرار شود.
+    </lang.fa>
     <lang.es rev="en#ctcsUyLU">
       Aquí se nota:
       El elemento 2 se repite en diagonal.
@@ -687,6 +763,10 @@ _ _ 4 3 _ _
       With rule 2 (no direct repetition)
       The next-plus-one points of element 1 are clearly defined.
     </en>
+    <lang.fa rev="en#pOwCBrCT">
+      با قانون 2 (بدون تکرار مستقیم)
+      نقاط بعدی بعلاوه یک عنصر 1 به وضوح مشخص شده است.
+    </lang.fa>
     <lang.es rev="en#pOwCBrCT">
       Con la regla 2 (sin repetición directa)
       Los puntos siguientes más uno del elemento 1 están claramente definidos.
@@ -728,6 +808,13 @@ _ _ 4 3 _ _
       A flowsquare consists of 1122 or 3344,
       and the same elements lie diagonally.
     </en>
+    <lang.fa rev="en#R/tlW1/4">
+      نقاط بعدی بعلاوه یک نیز برای عنصر 2 مشخص است.
+      با این الگوی جزئی پیدا کردیم ،
+      که ما آنها را صدا می کنیم <b>مربع جریان</b>.
+      یک میدان جریان از 1122 یا 3344 تشکیل شده است ،
+      و همان عناصر به صورت مورب نهفته اند.
+    </lang.fa>
     <lang.es rev="en#R/tlW1/4">
       Los puntos siguientes más uno también son claros para el elemento 2.
       Con esto hemos encontrado el patrón parcial,
@@ -813,6 +900,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 3.
     </en>
+    <lang.fa rev="en#7m+JlSgT">
+      نکات بعدی بعلاوه یک برای عنصر 3 نیز مشخص است.
+    </lang.fa>
     <lang.es rev="en#7m+JlSgT">
       Los puntos siguientes más uno también son claros para el elemento 3.
     </lang.es>
@@ -840,6 +930,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 4.
     </en>
+    <lang.fa rev="en#S11/2lqR">
+      نقاط بعدی بعلاوه یک نیز برای عنصر 4 مشخص است.
+    </lang.fa>
     <lang.es rev="en#S11/2lqR">
       Los puntos siguientes más uno también son claros para el elemento 4.
     </lang.es>
@@ -875,6 +968,13 @@ _ _ _ _ 1 2 _ _ _ _
       that is, in the X direction and in the Y direction
       the pattern is repeating every four steps.
     </en>
+    <lang.fa rev="en#LL2teKpd">
+      این چهار عنصر روی نقشه را تعریف می کند :)
+      زیرا در قانون 1.b قبلاً دیده ایم:
+      نقشه باید "مدور" با مدول 4 باشد ،
+      یعنی در جهت X و در جهت Y
+      این الگو هر چهار مرحله تکرار می شود.
+    </lang.fa>
     <lang.es rev="en#LL2teKpd">
       Esto define los cuatro elementos en el mapa :)
       Porque en la regla 1.b ya hemos visto:
