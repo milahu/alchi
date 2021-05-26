@@ -29,7 +29,7 @@ console.log(`metadata.js: version = ${version}`)
 
 const metadata = {};
 
-metadata.languages = "en de tr ar hu zh"; // TODO add new languages here
+metadata.languages = "en de tr ru ar hu zh"; // TODO add new languages here
 
 metadata.defaultLanguage = "en";
 metadata.primarylanguage = metadata.defaultLanguage; // TODO rename to defaultLanguage
