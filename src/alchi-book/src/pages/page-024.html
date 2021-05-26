@@ -17,6 +17,14 @@
       what the rest of the map might look like.
       I made several assumptions for this:
     </en>
+    <lang.cs rev="en#YDMSzfDl">
+      <b>Symetrie?</b>
+      Zbytek mapy je „extrapolace“
+      z mých osobních zkušeností,
+      takže předpověď,
+      jak by mohl zbytek mapy vypadat.
+      Udělal jsem pro to několik předpokladů:
+    </lang.cs>
     <lang.fa rev="en#YDMSzfDl">
       <b>تقارن؟</b>
       بقیه نقشه یک "برون یابی" است
@@ -106,6 +114,17 @@ _ _ 4 _ _
       must have element 4 as the next-plus-one point in one direction <nw>(4 _ 1 _ 4)</nw>
       and in the other direction must have element 3 as the next-plus-one point <nw>(3 _ 1 _ 3)</nw>.
     </en>
+    <lang.cs rev="en#6cAWR91e">
+      1. Řídíme se pravidlem „o krok dále“:
+      Každý druhý-další bod (v přímce)
+      musí mít „jinou třídu“.
+      (dvě „třídy“: 12 a 34.)
+      Říkáme tomu bod poté <b>modalita</b>.
+
+      Ukázka: Bod s prvkem 1 (oheň)
+      musí mít prvek 4 jako další plus-jeden bod v jednom směru <nw>(4 _ 1 _ 4)</nw>
+      a v opačném směru musí mít prvek 3 jako bod další plus jedna <nw>(3 _ 1 _ 3)</nw>.
+    </lang.cs>
     <lang.fa rev="en#6cAWR91e">
       1. ما قانون "یک قدم جلوتر" را دنبال می کنیم:
       هر نقطه دوم-بعدی (در یک خط مستقیم)
@@ -220,6 +239,23 @@ _ _ _ _
       The smallest representation of the map is a 4 by 4 "matrix" with 16 points.
       This means that 25% of the map is already set.
     </en>
+    <lang.cs rev="en#UjmzsjiA">
+      1.a.
+      O čtyři kroky dále (v přímce) musí být znovu stejný prvek,
+      takže mapa je symetrická k "Modulo 4"
+      = celá mapa se opakuje každé čtyři kroky
+
+<pre class="map16 float-right">
+1 _ 3 _
+_ _ _ _
+4 _ 2 _
+_ _ _ _
+</pre>
+
+      1.b.
+      Nejmenší zastoupení mapy je matice 4 x 4 se 16 body.
+      To znamená, že 25% mapy je již nastaveno.
+    </lang.cs>
     <lang.fa rev="en#UjmzsjiA">
       1.a.
       چهار قدم جلوتر (در یک خط مستقیم) باید دوباره همان عنصر باشد ،
@@ -366,6 +402,18 @@ _ _ _ _
       So it has to be "2 1 3" or "2 1 4",
       or "3 1 2" or "4 1 2".
     </en>
+    <lang.cs rev="en#zdXPXgya">
+      1.c.
+      Každý druhý-další bod (v přímých směrech)
+      musí mít „jinou třídu“.
+
+      Vzorek:
+      Prvek 2 má modality 3 a 4.
+      Takže „2 1 2“ není povoleno,
+      protože druhým a dalším bodem je modalita.
+      Musí to tedy být „2 1 3“ nebo „2 1 4“,
+      nebo „3 1 2“ nebo „4 1 2“.
+    </lang.cs>
     <lang.fa rev="en#zdXPXgya">
       1.C
       هر نقطه دوم-بعدی (در جهت مستقیم)
@@ -473,6 +521,16 @@ _ _ _ _
       My (Element 1) four nearest points (in straight directions)
       must be elements 2 3 4 (but not element 1).
     </en>
+    <lang.cs rev="en#WzBjtfZN">
+      2. Dva body, které jsou hned vedle sebe,
+      musí mít dva různé prvky.
+
+      Je pravda, že je to trochu svévolné ...
+      ale úhlopříčné body mohou mít stejný prvek.
+      Z toho vyplývá (s mými osobními zkušenostmi):
+      Moje (prvek 1) čtyři nejbližší body (v přímých směrech)
+      musí být prvky 2 3 4 (ale ne prvek 1).
+    </lang.cs>
     <lang.fa rev="en#WzBjtfZN">
       2. دو نقطه درست در کنار یکدیگر ،
       باید دو عنصر مختلف داشته باشد.
@@ -554,6 +612,10 @@ _ _ _ _
       3. The biggest difference between the elements is their "class" (12 or 34),
       and both classes are equally important.
     </en>
+    <lang.cs rev="en#ujN+xy+7">
+      3. Největším rozdílem mezi prvky je jejich „třída“ (12 nebo 34),
+      a obě třídy jsou stejně důležité.
+    </lang.cs>
     <lang.fa rev="en#ujN+xy+7">
       3. بزرگترین تفاوت بین عناصر "طبقه" آنها (12 یا 34) است ،
       و هر دو کلاس به یک اندازه مهم هستند.
@@ -617,6 +679,14 @@ _ 3 _
       With 2 follows, for example for element 1:
       The next four points are 2 2 3 4.
     </en>
+    <lang.cs rev="en#sRjhfesO">
+      3.a.
+      Pro další čtyři body platí toto:
+      dva body musí být ze třídy 12,
+      a dva body musí být ze třídy 34.
+      S 2 následuje, například pro prvek 1:
+      Další čtyři body jsou 2 2 3 4.
+    </lang.cs>
     <lang.fa rev="en#sRjhfesO">
       3. الف
       موارد زیر برای چهار نکته بعدی اعمال می شود:
@@ -688,6 +758,12 @@ _ 3 _
       The only symmetrical solution for this is:
       Element 1 must also be repeated diagonally.
     </en>
+    <lang.cs rev="en#ctcsUyLU">
+      Zde je patrné:
+      Prvek 2 se opakuje úhlopříčně.
+      Jediným symetrickým řešením je:
+      Prvek 1 musí být také opakován úhlopříčně.
+    </lang.cs>
     <lang.fa rev="en#ctcsUyLU">
       در اینجا قابل توجه است:
       عنصر 2 به صورت مورب تکرار می شود.
@@ -763,6 +839,10 @@ _ _ 4 3 _ _
       With rule 2 (no direct repetition)
       The next-plus-one points of element 1 are clearly defined.
     </en>
+    <lang.cs rev="en#pOwCBrCT">
+      S pravidlem 2 (žádné přímé opakování)
+      Body next-plus-one prvku 1 jsou jasně definovány.
+    </lang.cs>
     <lang.fa rev="en#pOwCBrCT">
       با قانون 2 (بدون تکرار مستقیم)
       نقاط بعدی بعلاوه یک عنصر 1 به وضوح مشخص شده است.
@@ -808,6 +888,13 @@ _ _ 4 3 _ _
       A flowsquare consists of 1122 or 3344,
       and the same elements lie diagonally.
     </en>
+    <lang.cs rev="en#R/tlW1/4">
+      Body next-plus-one jsou také jasné pro prvek 2.
+      S tímto jsme našli dílčí vzorec,
+      kterému říkáme <b>Flowsquare</b>.
+      Průběžný čtverec se skládá z 1122 nebo 3344,
+      a stejné prvky leží úhlopříčně.
+    </lang.cs>
     <lang.fa rev="en#R/tlW1/4">
       نقاط بعدی بعلاوه یک نیز برای عنصر 2 مشخص است.
       با این الگوی جزئی پیدا کردیم ،
@@ -900,6 +987,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 3.
     </en>
+    <lang.cs rev="en#7m+JlSgT">
+      Body next-plus-one jsou také jasné pro prvek 3.
+    </lang.cs>
     <lang.fa rev="en#7m+JlSgT">
       نکات بعدی بعلاوه یک برای عنصر 3 نیز مشخص است.
     </lang.fa>
@@ -930,6 +1020,9 @@ _ _ _ _ 1 2 _ _ _ _
     <en>
       The next-plus-one points are also clear for element 4.
     </en>
+    <lang.cs rev="en#S11/2lqR">
+      Body next-plus-one jsou také jasné pro prvek 4.
+    </lang.cs>
     <lang.fa rev="en#S11/2lqR">
       نقاط بعدی بعلاوه یک نیز برای عنصر 4 مشخص است.
     </lang.fa>
@@ -968,6 +1061,13 @@ _ _ _ _ 1 2 _ _ _ _
       that is, in the X direction and in the Y direction
       the pattern is repeating every four steps.
     </en>
+    <lang.cs rev="en#LL2teKpd">
+      To definuje čtyři prvky na mapě :)
+      Protože v pravidle 1.b jsme již viděli:
+      Mapa musí být „cyklická“ s modulo 4,
+      to znamená ve směru X a ve směru Y.
+      vzor se opakuje každé čtyři kroky.
+    </lang.cs>
     <lang.fa rev="en#LL2teKpd">
       این چهار عنصر روی نقشه را تعریف می کند :)
       زیرا در قانون 1.b قبلاً دیده ایم:
