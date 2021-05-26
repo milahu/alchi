@@ -297,7 +297,7 @@ module.exports = function(eleventyConfig) {
             const p = langCode.split('-');
             langCode = [p[0], ...p.slice(1).map(s => s.toUpperCase())].join('-');
           }
-          console.dir({ langCode, localName: cn.localName })
+          //console.dir({ langCode, localName: cn.localName })
           if (cn.attributes) {
             for (let a = 0; a < cn.attributes.length; a++) {
               const attr = cn.attributes[a];
