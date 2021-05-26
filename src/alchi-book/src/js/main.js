@@ -554,27 +554,31 @@ function add_footers() {
 
 
 
-var current_lang = 'en';
+var current_lang = 'en'; // global state
+const languages = new Set(metadata.languages.split(' '));
 
 function set_language(lang) {
-  //<div class="fragment">
 
-  current_lang = lang;
+  if (!lang) lang = metadata.defaultLanguage;
 
-  const fullLang = getLang(lang);
-  
-  const languages = new Set(meta.languages.split(' ')); // TODO move to init
-
-  //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
-  //console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
-
-  /* how was this useful? i dont know.
+  // lang can be 'en-US' or similar from browser language settings
   if (!languages.has(lang)) {
     const shortLang = (lang || '').split('-')[0];
     if (languages.has(shortLang)) lang = shortLang;
     else lang = 'en'; // fallback
   }
-  */
+
+  if (current_lang == lang) return; // noop
+
+  current_lang = lang;
+
+  // language code as used in html sources
+  // e.g. en, de, ru, zh-CN, ...
+  const fullLang = getLang(lang);
+
+  //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+  console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
 
 
   document.querySelectorAll('.langs').forEach(fragment => {
