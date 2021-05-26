@@ -151,7 +151,7 @@ publish my work to online communities (doomsday preppers, personality psychology
 where my work can at least be preserved for future generations,
 and where my work can be reviewed (at least superficially) by other psychology scholars
 
-the [alchi-books](src/alchi-books/) package is the current focus of my work.
+the [alchi-book](src/alchi-book/) package is the current focus of my work.
 the english and german versions are about 80% ready.
 i have already added auto-translations for:
 chinese, spanish, russian, turkish, farsi, arabic, czech, hungarian.
