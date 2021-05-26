@@ -151,17 +151,20 @@ publish my work to online communities (doomsday preppers, personality psychology
 where my work can at least be preserved for future generations,
 and where my work can be reviewed (at least superficially) by other psychology scholars
 
-the `alchi-books` package has content in english and german,
-with support for other languages. see:
+the [alchi-books](src/alchi-books/) package is the current focus of my work.
+the english and german versions are about 80% ready.
+i have already added auto-translations for:
+chinese, spanish, russian, turkish, farsi, arabic, czech, hungarian.
+adding a new auto-translation with [translate.js](src/alchi-book/scripts/translate.js)
+can now be done in five minutes or less.
 
 * [src/alchi-book/scripts/translate.js](src/alchi-book/scripts/translate.js)  
 node.js script to export text fragments to [google translate](http://translate.google.com/),
 and to import translations back to [src/alchi-book/src/pages/](src/alchi-book/src/pages/).
-the imported text fragments look like `<en auto t="2021-03-21.18-34-45">`
+the imported text fragments look like `<lang.ar rev="en#L1S/h9eR">`
 and must be fixed manually, since auto-translate is never perfect.
-after manual correction, change the text fragment to `<en>` (remove the `auto t="2021-03-21.18-34-45"`)
 * [src/alchi-book/src/\_data/metadata.js](src/alchi-book/src/_data/metadata.js) - see `languages`.
-this is a space-separeted list of all languages codes, that should be visible in the language menu
+this is a space-separeted list of all languages codes for the language menu
 
 ## mirrors
 
@@ -172,14 +175,31 @@ only some mirrors allow users to send feedback, for example `gitlab.com` or `gal
 
 ### repo mirrors
 
-our git repository is mirrored to
+the `github.com/milahu/alchi` repository is mirrored to
 
-* gitlab: https://gitlab.com/milahu/alchi  
-download: `git clone https://gitlab.com/milahu/alchi.git`
-* gitea.io: https://try.gitea.io/milahu/alchi  
-download: `git clone https://try.gitea.io/milahu/alchi.git`
-* rootgit (with Tor Browser): `http://rootgit4rghbuenb.onion/milahu/alchi`  
-download: `torsocks git clone http://rootgit4rghbuenb.onion/milahu/alchi.git`
+* gitlab: https://gitlab.com/milahu/alchi
+* gitea.io: https://try.gitea.io/milahu/alchi
+* darktea (with Tor Browser): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
+* ~~rootgit (with Tor Browser): [http://rootgit4rghbuenb.onion/milahu/alchi](http://rootgit4rghbuenb.onion/milahu/alchi)~~ offline since [2021-05-23](http://auutohrgxfoc4zap.onion/cap.php?cat=1&pageno=1)
+
+### clone commands
+
+```
+# github.com
+git clone https://github.com/milahu/alchi.git
+
+# gitlab.com
+git clone https://gitlab.com/milahu/alchi.git
+
+# gitea.io
+git clone https://try.gitea.io/milahu/alchi.git
+
+# darktea
+torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi.git
+
+# rootgit - offline since 2021-05-23
+torsocks git clone http://rootgit4rghbuenb.onion/milahu/alchi.git
+```
 
 ### static mirrors
 
