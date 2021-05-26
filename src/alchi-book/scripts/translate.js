@@ -16,9 +16,9 @@
 // con: text fragments are small -> use one large database file, e.g. jsonlines format
 // collision safety? git uses short IDs of only 7 chars in base16
 
-// 14 safe symbols: '*+-/=_^<>[]{}
-const codeNumKey = "'*+-/=_^{}"; // 10 digits
-const codeNumRegexCharClass = "'*+-/=_\\^{}"; // escape ^ for regex character class
+// 12 safe symbols: []^'*-/_{}<>
+const codeNumKey = "^'*-/_{}<>"; // 10 digits
+const codeNumRegexCharClass = "\\^'*-/_{}<>"; // escape ^ for regex character class
 
 const removeRegexCharClass = [
   '\u200B', // ZERO WIDTH SPACE from google https://stackoverflow.com/questions/36744793
@@ -176,6 +176,24 @@ function sha1sum(str) {
   return crypto.createHash("sha1").update(str).digest("base64");
 }
 
+// google can translate -- to -
+// so we use "safe" ids without repetition
+function getNextSafeId(lastId) {
+  for (let id = (lastId + 1); ; id++) {
+    let idStr = id.toString();
+    let idSafe = true;
+    for (let charIdx = 0; charIdx < (idStr.length - 1); charIdx++) {
+      if (idStr[charIdx] == idStr[charIdx + 1]) {
+        // found repetition
+        idSafe = false;
+        //if (showDebug) console.log(`skip unsafe id ${id}`);
+        break;
+      }
+    }
+    if (idSafe) return id;
+  }
+}
+
 
 
 /////////////////////// export ////////////////////////////
@@ -212,24 +230,6 @@ function exportLang(sourceLang = 'de', targetLang = 'en') {
     // split long number in groups of three digits
     // https://stackoverflow.com/a/6786040/10440128
     return `${num}`.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
-  }
-
-  // google can translate -- to -
-  // so we use "safe" ids without repetition
-  function getNextSafeId(lastId) {
-    for (let id = (lastId + 1); ; id++) {
-      let idStr = id.toString();
-      let idSafe = true;
-      for (let charIdx = 0; charIdx < (idStr.length - 1); charIdx++) {
-        if (idStr[charIdx] == idStr[charIdx + 1]) {
-          // found repetition
-          idSafe = false;
-          //if (showDebug) console.log(`skip unsafe id ${id}`);
-          break;
-        }
-      }
-      if (idSafe) return id;
-    }
   }
 
   function getReplace(match) {
@@ -447,7 +447,15 @@ next steps:
 8. run this script again with the text file, for example:
 node ${scriptPath} ${sourceLang} ${targetLang} translate-${sourceLang}2${targetLang}.txt
 9. add the new language code to src/_data/metadata.js -> metadata.languages
-10. restart the dev server (hot reload is not working here)
+10. restart the dev server (to reload metadata.js. hot reload is not working here)
+11. commit the new translation:
+    git add src/pages/ src/_data/metadata.js
+    git commit -m 'alchi-book: add ${targetLang} translation'
+12. commit the new build:
+    # stop the dev server
+    npm run build
+    git add build/
+    git commit -m 'alchi-book: update build'
 
 note:
 translators will change the order of words,
@@ -506,7 +514,7 @@ function importLang(sourceLang, targetLang, inputFile) {
   input = (
     input
     .split(new RegExp(`(?=\\n\\[[${codeNumRegexCharClassImport}]+\\]\\n)`)) // add \n to match
-    .map(str => {
+    .map((str, blockIdx) => {
       console.dir({ blockStr: str });
       const m = str.match(new RegExp(`(\\n?\\[([${codeNumRegexCharClassImport}]+)\\]\\n?)(.*)$`, 's')); // optional \n
       //const m = str.match(new RegExp(`(\\n\\[([${codeNumRegexCharClassImport}]+)\\]\\n)(.*)$`, 's')); // require \n
@@ -519,8 +527,37 @@ function importLang(sourceLang, targetLang, inputFile) {
         console.log(`lastReplaceId = ${lastReplaceId}`)
         console.log(`replaceId     = ${replaceId}`)
       }
-      lastReplaceId = replaceId;
-      console.dir({ _replacement, idxStr, replaceId, rest });
+      if (showDebug) console.dir({ _replacement, idxStr, replaceId, rest });
+
+      if (!replacementData.replacementList[replaceId]) {
+        console.log(`error: invalid replaceId ${replaceId}. did the translator break our code?`)
+        console.dir({ _replacement, idxStr, replaceId, rest });
+        console.log(`last valid replaceId was ${lastReplaceId}`)
+        // TODO show context in sourceText?
+        // we are looking for the original replacement-code
+        // TODOODODOODODOODOD
+        const nextSafeId = getNextSafeId(lastReplaceId);
+        console.log(`next safe replaceId would be ${nextSafeId}:`)
+        console.dir(replacementData.replacementList[nextSafeId])
+        console.log(`wild guess: the translator translated our code ${idxStr} to ${replacementData.replacementList[nextSafeId].code}`)
+        console.dir({ originalCode: replacementData.replacementList[nextSafeId].code, translatedCode: idxStr });
+        console.log(`error: failed to decode replacements`);
+        process.exit(1); // fatal error
+        // its a bad solution to guess the right replaceId
+        // cos in many cases, this will fail silently, and produce errors in the result
+        // we can reduce the change of "false positives"
+        // by making the replacement ids more sparse, or random
+      }
+
+      if (replacementData.replacementList[replaceId].consumed) {
+        console.log(`error: duplicate replaceId ${replaceId}`);
+        console.dir({ _replacement, idxStr, replaceId, rest });
+        console.log(`replacement was already consumed in:`);
+        console.dir(replacementData.replacementList[replaceId].consumedBy);
+        console.log(`error: failed to decode replacements`);
+        process.exit(1); // fatal error
+      }
+
       // restore indents
       // FIXME make this more robust against newline removing (transliterated translations)
       //console.dir({ indentsForBlock: replacementData.indentList[replaceId] });
@@ -532,7 +569,10 @@ function importLang(sourceLang, targetLang, inputFile) {
       }).join('\n');
       // decode replacement
       const replacement = replacementData.replacementList[replaceId].value;
+      replacementData.replacementList[replaceId].consumed = true; // prevent collisions
+      replacementData.replacementList[replaceId].consumedBy = { blockIdx, blockStr: str };
       //console.dir({ replaceId, replacement, rest });
+      lastReplaceId = replaceId;
       return replacement + rest;
     })
   ).join('');

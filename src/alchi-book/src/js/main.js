@@ -554,6 +554,10 @@ function add_footers() {
 
 
 
+function isRtlLang(lang) {
+  return lang == 'fa'; // TODO more ...
+}
+
 var current_lang = 'en'; // global state
 const languages = new Set(metadata.languages.split(' '));
 
@@ -571,6 +575,9 @@ function set_language(lang) {
   if (current_lang == lang) return; // noop
 
   current_lang = lang;
+
+  // right to left -- left to right
+  document.dir = isRtlLang(lang) ? 'rtl' : 'ltr';
 
   // language code as used in html sources
   // e.g. en, de, ru, zh-CN, ...
@@ -678,7 +685,8 @@ function add_language_menu() {
       const next_lang_id = (lang_list.indexOf(current_lang) + sign).mod(lang_list.length);
       const next_lang = lang_list[next_lang_id];
       //console.log(`onwheel: next_lang = ${next_lang}, next_lang_id = ${next_lang_id}, current_lang_id = ${lang_list.indexOf(current_lang)}`)
-      set_language(next_lang);
+      //set_language(next_lang);
+      add_query({ lang: next_lang })
     }
   });
 
