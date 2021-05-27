@@ -38,7 +38,7 @@ metadata.primarylanguage = metadata.defaultLanguage; // TODO rename to defaultLa
 metadata.basename = {};
 metadata.basename.de = "pallas.aufbau-von-groosfamilien";
 
-metadata.iconPngPath = "alchi-pallas-symbol.small.svg";
+metadata.iconSvgPath = "alchi-pallas-symbol.small.svg";
 
 metadata.title = "Your Blog Name"; // TODO
 metadata.version = version;
