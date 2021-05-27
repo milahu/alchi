@@ -10,6 +10,12 @@
     "doctype-style": "off",
     "svg-focusable": "off",
     "wcag/h67": "off",
-    "element-permitted-content": "error"
+    "element-permitted-content": "error",
+
+"attr-spacing": "off",
+"attr-case": "off",
+"close-attr": "off",
+"no-dup-attr": "off"
+
   }
 }
