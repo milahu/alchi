@@ -435,33 +435,11 @@ module.exports = function(eleventyConfig) {
 
 
 
-  //eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("src/css");
-  //eleventyConfig.addPassthroughCopy("src/js"); // -> jsbundler
-
-  /* -> jsbundler
-  eleventyConfig.addPassthroughCopy({
-    //"node_modules/diff/dist/diff.js": "js/lib/diff.js", // included in book.njk
-    //"node_modules/htmldiff/js/htmldiff.js": "js/lib/htmldiff.js", // included in book.njk
-    "patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js": "js/lib/htmldiff.js",
-    "patched_modules/mblink--htmldiff.js/htmldiff.js/dist/htmldiff.js.map": "js/lib/htmldiff.js.map",
-
-    "node_modules/xregexp/": "js/lib/xregexp",
-    // FIXME bundle javascript https://github.com/fpapado/eleventy-with-vite
-
-  }, { expand: true });
-  */
-  
-  // https://github.com/11ty/eleventy/issues/768
-  // How to include node_modules for use in js files
-  // https://www.11ty.dev/docs/copy/
-  eleventyConfig.setUseGitIgnore (false);
-  //eleventyConfig.addPassthroughCopy("node_modules/@fontsource/noto-sans", { expand: true });
-  //eleventyConfig.addPassthroughCopy("node_modules/@fontsource/noto-mono", { expand: true });
+  eleventyConfig.addPassthroughCopy("src/css"); // copy all styles
 
 
 
-  // wait for https://github.com/11ty/eleventy/pull/1686
+  // using patch from https://github.com/11ty/eleventy/pull/1686
   // when we use pnpm to install npm packages,
   // the node_modules/@fontsource/noto-sans is a symlink
   // and we must pass { expand: true } to recursive-copy
@@ -481,9 +459,9 @@ module.exports = function(eleventyConfig) {
     "node_modules/@fontsource/noto-mono/latin.css": "css/noto-mono/latin.css",
   }, { expand: true });
 
+
+
   eleventyConfig.addPassthroughCopy({
-    // source paths are relative to the project root
-    // we must copy all files, so css includes can be resolved
     
     // this would copy too many files
     //"src/images": "images",
@@ -500,7 +478,10 @@ module.exports = function(eleventyConfig) {
     // what files are needed? see output of: npm run dev
     "src/images/should-vs-is.disgust-fight.disgusto-pelea.more-contrast.turc-orange.gif": "images/should-vs-is.disgust-fight.disgusto-pelea.more-contrast.turc-orange.gif",
     "src/images/milahu-orange.jpg": "images/milahu-orange.jpg",
+    "src/images/alchi-pallas-symbol.small.svg": "alchi-pallas-symbol.small.svg",
   }, { expand: true });
+
+
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

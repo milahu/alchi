@@ -36,7 +36,9 @@ metadata.primarylanguage = metadata.defaultLanguage; // TODO rename to defaultLa
 
 // TODO translate
 metadata.basename = {};
-metadata.basename.de = "pallas.ich-und-meine-sechs-freunde";
+metadata.basename.de = "pallas.aufbau-von-groosfamilien";
+
+metadata.iconPngPath = "alchi-pallas-symbol.small.svg";
 
 metadata.title = "Your Blog Name"; // TODO
 metadata.version = version;

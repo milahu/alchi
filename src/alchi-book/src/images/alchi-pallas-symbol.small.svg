@@ -1,0 +1,44 @@
+<svg
+  viewBox="0 0 16 16"
+  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <!--
+    svg 2.0 is not yet supported by inkscape :(
+
+    svg 1.1: <use xlink:href="#alchi-pallas-symbol" />
+    svg 2.0: <use href="#alchi-pallas-symbol" />
+  -->
+  <defs>
+    <pattern id="pixel-pattern" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+      <rect fill="#404040" x="0" y="0" width="2" height="2" /><!-- 75% black -->
+      <rect fill="#808080" x="0" y="0" width="1" height="1" /><!-- 50% black -->
+      <rect fill="#808080" x="1" y="1" width="1" height="1" /><!-- 50% black -->
+    </pattern>
+    <symbol id="alchi-pallas-symbol-top">
+      <path
+        fill="none"
+        stroke-linejoin="round" stroke-linecap="round"
+        d="
+          M8+10 l4-4 l-4-4 l-4+4 z
+          M8+10 v4
+        "
+      ></path>
+    </symbol>
+    <symbol id="alchi-pallas-symbol-bottom">
+      <path
+        fill="none"
+        stroke-linejoin="round" stroke-linecap="round"
+        d="
+          M5+12 h6
+        "
+      ></path>
+    </symbol>
+  </defs>
+    <rect x="3" y="3" width="10" height="10" fill="white" stroke="white" stroke-width="6" stroke-linejoin="round" />
+  <!-- -x->
+    <rect x="0" y="0" width="16" height="16" fill="black" />
+    <rect x="0" y="0" width="16" height="16" fill="url(#pixel-pattern)" />
+  <!-x- -->
+  <use xlink:href="#alchi-pallas-symbol-top" stroke="black" stroke-width="1.4"/>
+  <use xlink:href="#alchi-pallas-symbol-bottom" stroke="black" stroke-width="1"/>
+</svg>

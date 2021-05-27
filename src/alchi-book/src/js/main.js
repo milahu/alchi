@@ -1110,25 +1110,6 @@ document.body.onload = function handle_body_loaded() {
   //replaceOnDocument(/&rarr;/g, '<span class="rarr">&rarr;</span>');
   // not working. why?
 
-  //    width="${120 * 0.5}mm" height="${120 * 0.5}mm"
-
-  var svg_pallas_sign = `
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 220 220"
-    >
-      <g transform="translate(110, 110)">
-        <path fill="none" stroke="black" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" d="
-          M0+0 l50-50 l-50-50 l-50+50 z
-          M0+0 v100
-          M-50+50 h100
-        "/>
-      </g>
-    </svg>
-  `;
-  document.querySelectorAll('div.pallas-sign').forEach(div => div.innerHTML = svg_pallas_sign);
-
-
 
   // variant 1
   // pro:

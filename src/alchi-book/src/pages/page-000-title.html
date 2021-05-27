@@ -2,7 +2,21 @@
 
 <div id="book-title">Pallas</div>
 
-<div id="book-logo" class="pallas-sign"></div>
+<!--
+  define the svg symbol
+  #alchi-pallas-symbol
+  globally for all other pages
+  (currently only used on page-030.html)
+-->
+<svg src="images/alchi-pallas-symbol.svg" style="display: none"></svg>
+
+<svg
+  id="book-logo"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 220 220"
+>
+  <use href="#alchi-pallas-symbol"/>
+</svg>
 
 <langs id="book-subtitle">
   <de>
