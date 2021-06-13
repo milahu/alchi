@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="en">
+
+<!--
+  TODO embed font (see alchi-book)
+-->
+
+<head>
+
+<title>alchi-interview</title>
+
+<script>
+
+  //var forceLanguage = 'de';
+  var forceLanguage = null;
+
+  const metadata = {};
+  //metadata.defaultLanguage = 'en';
+  metadata.defaultLanguage = document.querySelector(':root').lang;
+  metadata.languages = 'en de hu';
+
+
+
+  // sync with /scripts/translate.js
+  const langMap = {
+    zh: 'zh-CN', // simplified chinese
+  };
+
+  function getLang(str) {
+    if (str && str in langMap) return langMap[str];
+    return str;
+  }
+
+
+  function isRtlLang(lang) {
+    return lang == 'fa'; // TODO more ...
+  }
+
+  var current_lang = metadata.defaultLanguage; // global state
+  const languages = new Set(metadata.languages.split(' '));
+
+  function set_language(lang) {
+
+    if (!lang) lang = metadata.defaultLanguage;
+
+    // lang can be 'en-US' or similar from browser language settings
+    if (!languages.has(lang)) {
+      const shortLang = (lang || '').split('-')[0];
+      if (languages.has(shortLang)) lang = shortLang;
+      else lang = 'en'; // fallback
+    }
+
+    if (current_lang == lang) return; // noop
+
+    current_lang = lang;
+
+    // right to left -- left to right
+    document.dir = isRtlLang(lang) ? 'rtl' : 'ltr';
+
+    // language code as used in html sources
+    // e.g. en, de, ru, zh-CN, ...
+    const fullLang = getLang(lang);
+
+    //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+    console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
+    document.querySelector('#lang-code').innerHTML = fullLang;
+
+    document.querySelectorAll('.langs').forEach(fragment => {
+      // TODO more efficient?
+      // only change css class of body -> show/hide lang fragments with css
+      let langFound = 0;
+      Array.prototype.forEach.apply(fragment.children, [node => {
+        if (node.lang) {
+          if (node.lang == fullLang) {
+            node.classList.remove('hidden');
+            langFound++;
+          }
+          else node.classList.add('hidden');
+        }
+      }]);
+      if (langFound == 0) {
+        // set default lang
+        Array.prototype.forEach.apply(fragment.children, [node => {
+          if (node.lang) {
+            if (node.lang == metadata.defaultLanguage) {
+              node.classList.remove('hidden');
+              langFound++;
+            }
+            else node.classList.add('hidden');
+          }
+        }]);
+      }
+      else if (langFound > 1) {
+        console.warn(`found multiple translations for lang "${lang}" in`, fragment);
+      }
+
+    });
+
+    // TODO add .language-menu
+    //document.querySelectorAll('.language-menu button').forEach(b => b.classList.remove('active'));
+    //document.querySelector('#language-button-'+lang).classList.add('active');
+
+  }
+
+
+
+
+
+
+
+  window.onload = function() {
+    console.log('load done');
+    console.log(`metadata.defaultLanguage = ${metadata.defaultLanguage}`);
+
+    if (0) {
+      // loop languages
+      function next_lang() {
+        set_language(current_lang == 'en' ? 'de' : 'en');
+        setTimeout(next_lang, 4000); // recursion
+      }
+      setTimeout(next_lang, 4000);
+    }
+
+    // TODO add language menu
+    //set_language('en');
+    //set_language('hu');
+    if (forceLanguage) set_language(forceLanguage);
+    else document.querySelector('#lang-code').innerHTML = metadata.defaultLanguage;
+  };
+
+</script>
+
+<style>
+
+  @page {
+    /* print settings */
+    /* note: set scale=default */
+    margin: 0; /* no print margin */
+    size: A4 portrait;
+  }
+  @media print {
+    .page {
+      /* hide outline for printing */
+      /*outline: none !important;*/
+    }
+  }
+  :root {
+    font-family: sans-serif;
+    font-size: 10.5pt; /* = 1rem */
+  }
+  body {
+    margin: 0;
+  }
+  .page {
+    margin: 0; padding: 10mm;
+    width: 210mm; height: 297mm;
+    box-sizing: border-box;
+    outline: solid 1px lightgrey;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .page > .page-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .page > .page-footer {
+  }
+  div.para {
+    line-height: 125%;
+    margin-block: 0.75em;
+  }
+  hr {
+    margin-block: 0.75em;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0;
+  }
+  .test-table > tbody > tr > td {
+    line-height: 125%;
+  }
+  .test-table > tbody > tr > td:nth-child(2),
+  .test-table > tbody > tr > td:nth-child(3),
+  .test-table > tbody > tr > td:nth-child(4),
+  .test-table > tbody > tr > td:nth-child(5),
+  .test-table > tbody > tr > td:nth-child(6) {
+    border: solid 1px black;
+    width: 1em;
+    text-align: center;
+  }
+  .test-table > tbody > tr > td:first-child {
+    text-align: right;
+    padding-right: 0.5em;
+  }
+  .test-table > tbody > tr > td:last-child {
+    text-align: left;
+    padding-left: 0.5em;
+  }
+
+  table.friend-circle td {
+    padding: 1em;
+    text-align: center;
+    vertical-align: center;
+  }
+  table.friend-circle {
+    /* note: background svg is not working with darkreader */
+    /* FIXME: background svg is rendered blurry in chrome print, missing completely in firefox print */
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="20" stroke-width="1" fill="none" stroke="black" /></svg>');
+    background-position: center;
+  }
+
+  div[lang] {
+    display: inline;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .strong {
+    font-weight: bold;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+<div class="page-content">
+
+  <table width="100%">
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Interview mit drei Fragen</div>
+        <div lang="en" rev="de#XTORJF7j">Interview with three questions</div>
+        <div lang="hu" class="hidden" rev="en#JZiV3jNR">Interjú három kérdéssel</div>
+      </td>
+      <td style="text-align: right">
+        <span id="version">2021-06-09</span>
+        <span id="lang-code"></span>
+      </td>
+    </tr>
+  </table>
+  <div class="langs para">
+    <div lang="de" class="hidden">1. Wie ist deine Weltsicht: <b>Neugier oder Geduld?</b> (oder Beides?)</div>
+    <div lang="en" rev="de#0t5usphb">1. What is your world view: <b>Curiosity or patience?</b> (or both?)</div>
+    <div lang="hu" class="hidden" rev="en#aYPI+Lp5">1. Mi a világnézeted: <b>Kíváncsiság vagy türelem?</b> (vagy mindkettő?)</div>
+    
+  </div>
+  <!--
+    <div class="langs para">
+      <div lang="de" class="hidden">
+        Oder: Lässt du dich leicht ablenken, oder kannst du lange bei einem Thema bleiben?
+        <br>
+        Oder: Was fällt dir leichter: Etwas Neues anfangen, oder etwas Altes fertigmachen?
+      </div>
+      <div lang="en" rev="de#gEpNMqLl">
+        Or: are you easily distracted or can you stick to one topic for a long time?
+        <br>
+        Or: What do you find easier: start something new or finish something old?
+      </div>
+    </div>
+  -->
+  <div class="langs para">
+    <div lang="de" class="hidden">2. Wie sind deine Bewegungen: <b>Grobmotorik oder Feinmotorik?</b> (oder Beides?)</div>
+    <div lang="en" rev="de#/eIDa5iI">2. How are your movements: <b>Gross motor skills or fine motor skills?</b> (or both?)</div>
+    <div lang="hu" class="hidden" rev="en#qDh42dRd">2. Milyenek a mozgásaid: <b>Bruttó motoros vagy finom motoros készségek?</b> (vagy mindkettő?)</div>
+    
+  </div>
+  <!--
+    <div class="langs para">
+      <div lang="de" class="hidden">
+        Oder: Bist du ein "Trampeltier" oder bist du "handwerklich geschickt"?
+        <br>
+        Oder: Was machst du lieber beim Tanzen: Folgen oder Führen?
+      </div>
+      <div lang="en" rev="de#+SvCPqDR">
+        Or: Are you a "trample" or are you "technically skilled"?
+        <br>
+        Or: What do you prefer to do while dancing: following or leading?
+      </div>
+    </div>
+  -->
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Fragen 1 und 2 waren zu einfach? Oder du sagt zwei Mal "Beides"? Auf der Rückseite steht mehr.
+      <br>
+      Frage 3 ist etwas komplizierter:
+    </div>
+    <div lang="en" rev="de#oY6Y0AvA">
+      Questions 1 and 2 were too easy? Or do you say "both" twice? There is more on the back.
+      <br>
+      Question 3 is a little more complicated:
+    </div>
+    <div lang="hu" class="hidden" rev="en#FeNXt2Fv">
+      Az 1. és a 2. kérdés túl könnyű volt? Vagy kétszer mondod a "mindkettőt"? A hátlapon több van.
+      <br>
+      A 3. kérdés egy kicsit bonyolultabb:
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden">3. Wer sind deine <b>Freunde: Gleiches Alter oder Gleiches Geschlecht?</b> (oder Beides?)</div>
+    <div lang="en" rev="de#DltHN2j9">3. Who are yours <b>Friends: Same Age or Same Sex?</b> (or both?)</div>
+    <div lang="hu" class="hidden" rev="en#E8lqNi79">3. Kik a tiéd <b>Barátok: azonos korú vagy azonos nemű?</b> (vagy mindkettő?)</div>
+    
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Stell dir vor: Du sitzt an einem Tisch mit deinen Freunden, insgesamt vier Personen.
+      <br>
+      Haben die vier Personen <b>Gleiches Alter</b> oder <b>Gleiches Geschlecht</b>?
+      <br>
+      Gleiches Alter heisst → Gemischtes Geschlecht: 2 Frauen + 2 Männer
+      <br>
+      Gleiches Geschlecht heisst → Gemischtes Alter: 2 Junge + 2 Alte
+    </div>
+    <div lang="en" rev="de#cObkeJZv">
+      Imagine: You are sitting at a table with your friends, four people in total.
+      <br>
+      Do the four people have <b>Same age</b> or <b>Same sex</b>?
+      <br>
+      Same age means → Mixed gender: 2 women + 2 men
+      <br>
+      Same sex means → mixed age: 2 young + 2 old
+    </div>
+    <div lang="hu" class="hidden" rev="en#agdA+Y1q">
+      Képzelje el: Ön egy asztalnál ül barátaival, összesen négy emberrel.
+      <br>
+      Van-e a négy embernek <b>Azonos korú</b> vagy <b>Azonos nemű</b>?
+      <br>
+      Ugyanazon életkor: → Vegyes nem: 2 nő + 2 férfi
+      <br>
+      Az azonos neműek jelentése → vegyes életkor: 2 fiatal + 2 öreg
+    </div>
+    
+  </div>
+  <hr>
+  <div class="langs para">
+    <div lang="de" class="hidden">Auswertung</div>
+    <div lang="en" rev="de#t5TIxbZU">Evaluation</div>
+    <div lang="hu" class="hidden" rev="en#/3UThTUI">Értékelés</div>
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden"><b>Fragen 1 und 2</b> zeigen dein Element:</div>
+    <div lang="en" rev="de#kbd4j8JX"><b>Questions 1 and 2</b> show your element:</div>
+    <div lang="hu" class="hidden" rev="en#Xomt/ZAy"><b>1. és 2. kérdés</b> mutasd meg az elemedet:</div>
+    
+  </div>
+  <table width="100%">
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">1. Feuer = Neugier + Feinmotorik</div>
+        <div lang="en" rev="de#pJ3RmVyI">1. Fire = curiosity + fine motor skills</div>
+        <div lang="hu" class="hidden" rev="en#XCi8Lhln">1. Tűz = kíváncsiság + finommotorika</div>
+      </td>
+      <td class="langs">
+        <div lang="de" class="hidden">3. Luft = Neugier + Grobmotorik</div>
+        <div lang="en" rev="de#22Tl8UxM">3. Air = curiosity + gross motor skills</div>
+        <div lang="hu" class="hidden" rev="en#qhLPtRWr">3. Levegő = kíváncsiság + durva motorikus képességek</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">2. Erde = Geduld + Grobmotorik</div>
+        <div lang="en" rev="de#yEXdt0gs">2. Earth = patience + gross motor skills</div>
+        <div lang="hu" class="hidden" rev="en#K/NiCOXl">2. Föld = türelem + durva motorikus képességek</div>
+      </td>
+      <td class="langs">
+        <div lang="de" class="hidden">4. Wasser = Geduld + Feinmotorik</div>
+        <div lang="en" rev="de#DdwQOZ3L">4. Water = patience + fine motor skills</div>
+        <div lang="hu" class="hidden" rev="en#9aBykFRM">4. Víz = türelem + finommotorika</div>
+      </td>
+    </tr>
+  </table>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Wenn du Frage 1 oder Frage 2 mit <b>"Beides"</b> beantwortet hast,
+      dann stehen zwei Elemente zur Auswahl.
+      <br>
+      Beispiel:
+      Neugier und Beides → Feuer oder Luft (die zwei neugierigen Elemente).
+      <br>
+      Dann stellt sich die Frage:
+      Welches von den zwei Elementen ist stärker?
+      <!--
+        (Dein Element ist lebenslang gleich.)
+        <br>
+        Daraus folgt → Das Schwächere von den zwei Elementen ist dein Subtyp.
+        <br>
+        Beispiel: Luft ist stärker, dann ist dein Typ "Luft spielt Feuer" = Element Luft "spielt" Subtyp Feuer
+      -->
+    </div>
+    <div lang="en" rev="de#Vo7ly75B">
+      If you have answered question 1 or question 2 with <b>"Both"</b>
+      then you must choose one from two elements.
+      <br>
+      Example:
+      Curiosity and both → fire or air (the two curious elements).
+      <br>
+      New question:
+      Which of the two elements is stronger?
+    </div>
+    <div lang="hu" class="hidden" rev="en#6wydxHmq">
+      Ha az 1. vagy a 2. kérdésre válaszolt <b>"Mindkét"</b>
+      akkor két elem közül egyet kell választania.
+      <br>
+      Példa:
+      Kíváncsiság és mindkettő → tűz vagy levegő (a két kíváncsi elem).
+      <br>
+      Új kérdés:
+      A két elem közül melyik erősebb?
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Jedes Element kann zwei Subtypen spielen:
+      3 ← 1 → 4 || 3 ← 2 → 4 || 1 ← 3 → 2 || 1 ← 4 → 2
+      <br>
+      Dein Subtyp kann sich ändern,
+      abhängig davon, welche Menschen in deiner Nähe sind.
+      <br>
+      Wo genau spiele ich welchen Subtyp?
+      Eine Antwort gibt mein Buch
+      "Pallas - Aufbau von Großfamilien"
+      <!--
+        Eine mögliche Antwort gibt meine "Karte der 16 Menschen"
+        in meinem Buch "Pallas - Aufbau von Großfamilien".
+      -->
+    </div>
+    <div lang="en" rev="de#aalKQcQ9">
+      Each element can play two subtypes:
+      3 ← 1 → 4 || 3 ← 2 → 4 || 1 ← 3 → 2 || 1 ← 4 → 2
+      <br>
+      Your subtype can change
+      depending on which people are around you.
+      <br>
+      Where exactly do I play which subtype?
+      An answer gives my book
+      "Pallas - Construction of Extended Families"
+    </div>
+    <div lang="hu" class="hidden" rev="en#qjCQuGuh">
+      Minden elem két altípust játszhat le:
+      3 ← 1 → 4 || 3 ← 2 → 4 || 1 ← 3 → 2 || 1 ← 4 → 2
+      <br>
+      Az altípusa megváltozhat
+      attól függően, hogy mely emberek vannak körülötted.
+      <br>
+      Melyik altípust játszom pontosan?
+      Válasz adja meg a könyvemet
+      "Pallas - Nagycsaládok építése"
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      <b>Frage 3</b> zeigt deinen Subtyp:
+      <br>
+      Dein Subtyp liegt auf der Diagonale in deinem Freundeskreis.
+      <br>
+      Wenn zwei Elemente zur Auswahl stehen,
+      dann müssen die hier auf einer Diagonale liegen.
+      <br>
+      Beispiel: Feuer oder Luft → Freunde haben Gleiches Geschlecht (nur hier liegen 1 und 3 diagonal)
+    </div>
+    <div lang="en" rev="de#cO/slRmA">
+      <b>Question 3</b> shows your subtype:
+      <br>
+      Your subtype is on the diagonal in your circle of friends.
+      <br>
+      If you must choose one from two elements,
+      then here, the two elements must be on a diagonal.
+      <br>
+      Example: fire or air → friends have same gender (only here 1 and 3 are diagonal)
+    </div>
+    <div lang="hu" class="hidden" rev="en#K+kl1ci0">
+      <b>3. kérdés</b> megmutatja az altípusodat:
+      <br>
+      Az altípusod az átlón van a baráti körödben.
+      <br>
+      Ha két elem közül egyet kell választania,
+      akkor itt a két elemnek átlón kell lennie.
+      <br>
+      Példa: tűz vagy levegő → barátok azonos neműek (csak itt az 1. és a 3. átlós)
+    </div>
+  </div>
+  <table width="100%">
+    <tr>
+      <td width="50%" class="langs para">
+        <div lang="de" class="hidden">Freunde haben Gleiches Alter<br>("Normale" Erziehung)</div>
+        <div lang="en" rev="de#qXQJyTci">Friends have same age<br>("Normal" education)</div>
+        <div lang="hu" class="hidden" rev="en#pJoa2Lb/">A barátok egyidősek<br>("Normál" oktatás)</div>
+      </td>
+      <td width="50%" class="langs para">
+        <div lang="de" class="hidden">Freunde haben Gleiches Geschlecht</div>
+        <div lang="en" rev="de#iq3UfvIK">Friends have same sex</div>
+        <div lang="hu" class="hidden" rev="en#nXW+CwzW">A barátok azonos neműek</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="langs para">
+          <div lang="de" class="hidden">Dein Freundeskreis:</div>
+          <div lang="en" rev="de#owfTpXhw">Your friend-circle:</div>
+          <div lang="hu" class="hidden" rev="en#Inxm12Ee">A baráti kör:</div>
+        </div>
+        <table width="60%">
+          <tr>
+            <td>
+              <table class="friend-circle">
+                <tr>
+                  <td>M1</td>
+                  <td>F2</td>
+                </tr>
+                <tr>
+                  <td>F3</td>
+                  <td>M4</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <div class="langs para">
+                <div lang="de" class="hidden">oder</div>
+                <div lang="en" rev="de#S5N9vGF4">or</div>
+                <div lang="hu" class="hidden" rev="en#F1g1bbIX">vagy</div>
+              </div>
+            </td>
+            <td>
+              <table class="friend-circle">
+                <tr>
+                  <td>F1</td>
+                  <td>M2</td>
+                </tr>
+                <tr>
+                  <td>M3</td>
+                  <td>F4</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <div class="langs para">
+          <div lang="de" class="hidden">
+            MF = Mann Frau
+            <br>
+            1234 = Feuer Erde Luft Wasser
+          </div>
+          <div lang="en" rev="de#pSq1g1dV">
+            MF = Male Female
+            <br>
+            1234 = Fire Earth Air Water
+          </div>
+          <div lang="hu" class="hidden" rev="en#Z0i7BWTn">
+            <span class="notranslate">MF = Male Female</span> = Férfi Nő
+            <br>
+            1234 = Tűz földi levegő víz
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="langs para">
+          <div lang="de" class="hidden">Dein Freundeskreis:</div>
+          <div lang="en" rev="de#owfTpXhw">Your friend-circle:</div>
+          <div lang="hu" class="hidden" rev="en#Inxm12Ee">A baráti kör:</div>
+        </div>
+        <table width="60%">
+          <tr>
+            <td>
+              <table class="friend-circle">
+                <tr>
+                  <td>S1</td>
+                  <td>L2</td>
+                </tr>
+                <tr>
+                  <td>L4</td>
+                  <td>S3</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <div class="langs para">
+                <div lang="de" class="hidden">oder</div>
+                <div lang="en" rev="de#S5N9vGF4">or</div>
+                <div lang="hu" class="hidden" rev="en#F1g1bbIX">vagy</div>
+              </div>
+            </td>
+            <td>
+              <table class="friend-circle">
+                <tr>
+                  <td>L1</td>
+                  <td>S2</td>
+                </tr>
+                <tr>
+                  <td>S4</td>
+                  <td>L3</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <div class="langs para">
+          <div lang="de" class="hidden">
+            SL = Small Large = jung alt
+            <br>
+            1234 = Feuer Erde Luft Wasser
+          </div>
+          <div lang="en" rev="de#ttN6LZBp">
+            SL = Small Large = young old
+            <br>
+            1234 = Fire Earth Air Water
+          </div>
+          <div lang="hu" class="hidden" rev="en#/79mhE+v">
+            <span class="notranslate">SL = Small Large</span> = fiatal öreg
+            <br>
+            1234 = Tűz földi levegő víz
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Beispiel: Element Feuer + Mann → M1,
+      <br>
+      Freunde haben Gleiches Alter → Freundeskreis <u>M1</u>-F2-M4-F3-<u>M1</u> → Subtyp ist M4
+    </div>
+    <div lang="en" rev="de#NIw6Hkwz">
+      Example: element fire + man → M1,
+      <br>
+      Friends have same age → friend-circle <u>M1</u>-F2-M4-F3-<u>M1</u> → Subtype is M4
+    </div>
+    <div lang="hu" class="hidden" rev="en#IBwZUn3q">
+      Példa: elem tűz + ember → M1,
+      <br>
+      A barátok azonos korúak → baráti kör <u>M1</u>-F2-M4-F3-<u>M1</u> → altípusa M4
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Wie funktioniert ein Freundeskreis? - Partnertausch:
+      <br>
+      Die zwei Freunde auf einer Diagonale teilen sich die zwei anderen Freunde
+      <br>
+      Beispiel: Freunde haben Gleiches Alter
+    </div>
+    <div lang="en" rev="de#6mYE0otv">
+      How does a friend-circle work? - Partner exchange:
+      <br>
+      The two friends on a diagonal are shared by the other two friends
+      <br>
+      Example: Friends have same age
+    </div>
+    <div lang="hu" class="hidden" rev="en#URD61hS1">
+      Hogyan működik a baráti kör? - Partnercsere:
+      <br>
+      Az átlós két barátot a másik két barát megosztja
+      <br>
+      Példa: A barátok azonos korúak
+    </div>
+  </div>
+  <div style="text-align: center">
+    <svg width="110mm" version="1.1" viewBox="0 0 315.89 52.652" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+      <marker id="Arrow1Mend" overflow="visible" orient="auto">
+        <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"></path>
+      </marker>
+      </defs>
+      <g transform="translate(40.897 -151.98)">
+      <g font-family="sans-serif" font-size="10.583px" stroke-width=".26458" style="line-height:1.25">
+        <!-- for darkreader, we must set fill on each text node. inheritance is not working -->
+        <text fill="#000" x="-32.289978" y="159.59422"><tspan x="-32.289978" y="159.59422" stroke-width=".26458">1</tspan></text>
+        <text fill="#000" x="-20.905762" y="159.64714"><tspan x="-20.905762" y="159.64714" stroke-width=".26458">2</tspan></text>
+        <text fill="#000" x="-20.928345" y="204.54965"><tspan x="-20.928345" y="204.54965" stroke-width=".26458">4</tspan></text>
+        <text fill="#000" x="-32.899872" y="204.53058"><tspan x="-32.899872" y="204.53058" stroke-width=".26458">3</tspan></text>
+        <text fill="#000" x="33.525215" y="176.04561"><tspan x="33.525215" y="176.04561" stroke-width=".26458">1</tspan></text>
+        <text fill="#000" x="77.805824" y="176.09613"><tspan x="77.805824" y="176.09613" stroke-width=".26458">2</tspan></text>
+        <text fill="#000" x="77.780006" y="188.09933"><tspan x="77.780006" y="188.09933" stroke-width=".26458">4</tspan></text>
+        <text fill="#000" x="32.91349" y="188.08597"><tspan x="32.91349" y="188.08597" stroke-width=".26458">3</tspan></text>
+        <text fill="#000" x="132.23744" y="159.59424"><tspan x="132.23744" y="159.59424" stroke-width=".26458">1</tspan></text>
+        <text fill="#000" x="143.62166" y="159.64716"><tspan x="143.62166" y="159.64716" stroke-width=".26458">2</tspan></text>
+        <text fill="#000" x="143.59908" y="204.54967"><tspan x="143.59908" y="204.54967" stroke-width=".26458">4</tspan></text>
+        <text fill="#000" x="131.62758" y="204.53058"><tspan x="131.62758" y="204.53058" stroke-width=".26458">3</tspan></text>
+        <text fill="#000" x="198.05263" y="176.04561"><tspan x="198.05263" y="176.04561" stroke-width=".26458">1</tspan></text>
+        <text fill="#000" x="242.33324" y="176.09613"><tspan x="242.33324" y="176.09613" stroke-width=".26458">2</tspan></text>
+        <text fill="#000" x="242.30742" y="188.09933"><tspan x="242.30742" y="188.09933" stroke-width=".26458">4</tspan></text>
+        <text fill="#000" x="197.4409" y="188.08597"><tspan x="197.4409" y="188.08597" stroke-width=".26458">3</tspan></text>
+      </g>
+      <g fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6">
+        <circle cx="-23.92" cy="178.28" r="16.447"></circle>
+        <circle cx="58.343" cy="178.28" r="16.447"></circle>
+        <circle cx="140.61" cy="178.28" r="16.447"></circle>
+        <circle cx="222.87" cy="178.28" r="16.447"></circle>
+      </g>
+      <g fill="none" stroke="#000" stroke-width=".565">
+        <path d="m7.3378 178.28h19.748" marker-end="url(#Arrow1Mend)"></path>
+        <path d="m89.602 178.28h19.748" marker-end="url(#Arrow1Mend)"></path>
+        <path d="m171.87 178.28h19.748" marker-end="url(#Arrow1Mend)"></path>
+        <path d="m254.13 178.28h19.748" marker-end="url(#Arrow1Mend)"></path>
+      </g>
+      </g>
+    </svg>
+  </div>
+</div>
+<div class="page-footer langs">
+  <div lang="de" class="hidden">
+    Wer schreibt hier? - Milan Hauth, Element Feuer, Jägerstr. 10, Trostberg
+    <br>
+    Tel 0151 7205 9978, Mail <tt>milahu@gmail.com</tt>,
+    Web <tt>github.com/milahu/alchi</tt>, Lizenz <tt>CC0-1.0</tt>
+  </div>
+  <div lang="en" rev="de#KGB9ooGI">
+    Who is the writer? - Milan Hauth, Element Fire, Jägerstr. 10, Trostberg, Germany
+    <br>
+    Tel +49 151 7205 9978, Mail <tt>milahu@gmail.com</tt>,
+    Web <tt>github.com/milahu/alchi</tt>, License <tt>CC0-1.0</tt>
+  </div>
+  <div lang="hu" class="hidden" rev="en#TPujNxvc">
+    Ki az író? - Milan Hauth, Element Fire, Jägerstr. 10, Trostberg, Németország
+    <br>
+    Tel. +49 151 7205 9978, Mail <tt>milahu@gmail.com</tt>,
+    Web <tt>github.com/milahu/alchi</tt>, Licenc <tt>CC0-1.0</tt>
+  </div>
+</div>
+</div>
+
+<div class="page" style="font-size: 1rem">
+<div class="page-content">
+  <div class="langs para">
+    <div lang="de" class="hidden">
+      Die Antworten waren zu kurz? Hier sind <b>die gleichen Antworten, nur mit anderen Worten</b>.
+      <br>
+      Theoretisch: eine Seite sollte immer stärker sein, praktisch: dein Subtyp wird die Antworten verzerren.
+      <br>
+      Dein <b>Subtyp sollte mehr Einfluss haben auf geistige Merkmale</b>, weniger auf Körper-Merkmale.
+      <br>
+      "Normale" Erziehung produziert eher neutrale Neugier/Geduld und deutliche Feinmotorik/Grobmotorik.
+      <br>
+      Fünf Kästchen: -2 -1 0 +1 +2 = deutlich links, eher links, neutral, eher rechts, deutlich rechts (nicht politisch)
+    </div>
+    <div lang="en" rev="de#s71BFZYD">
+      The answers were too short? Here are <b>the same answers, just in different words</b>.
+      <br>
+      In theory: one side should always be stronger, in practice: your subtype will skew the answers.
+      <br>
+      Your <b>Subtype should have more influence on mental characteristics</b>, less on body-characteristics.
+      <br>
+      "Normal" education produces rather neutral curiosity/patience and clear fine/gross motor skills.
+      <br>
+      Five boxes: -2 -1 0 +1 +2 = clearly left, more likely to the left, neutral, more likely to the right, clearly to the right (not political)
+    </div>
+    <div lang="hu" class="hidden" rev="en#rgxhqpw0">
+      A válaszok túl rövidek voltak? Itt vannak <b>ugyanazok a válaszok, csak más szavakkal</b>.
+      <br>
+      Elméletileg: az egyik félnek mindig erősebbnek kell lennie, a gyakorlatban: az altípusa torzítja a válaszokat.
+      <br>
+      A te <b>Az altípusnak nagyobb befolyással kell lennie a mentális tulajdonságokra</b>, kevésbé a testjellemzőkről.
+      <br>
+      A "normális" oktatás meglehetősen semleges kíváncsiságot / türelmet és egyértelmű finom / durva motorikus képességeket eredményez.
+      <br>
+      Öt doboz: -2 -1 0 +1 +2 = egyértelműen bal, inkább balra, semleges, jobbra, egyértelműen jobbra (nem politikai)
+    </div>
+  </div>
+
+  <!-- ######################################################################## -->
+
+  <table class="test-table"><tbody>
+    <tr>
+      <td width="46%" class="langs strong">
+        <div lang="de" class="hidden">Neugier ist meine Stärke</div>
+        <div lang="en" rev="de#GBMc2q3l">Curiosity is my strength</div>
+        <div lang="hu" class="hidden" rev="en#oXd9VjCr">A kíváncsiság az erősségem</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td width="46%" class="langs strong">
+        <div lang="de" class="hidden">Geduld ist meine Stärke</div>
+        <div lang="en" rev="de#wXdA/Uvx">Patience is my strength</div>
+        <div lang="hu" class="hidden" rev="en#aHfyxHHD">A türelem az erősségem</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin risikofreudig beim Denken (Freigeist)</div>
+        <div lang="en" rev="de#34wTTdsL">I take risks in thinking (free spirit)</div>
+        <div lang="hu" class="hidden" rev="en#tCbiLCgu">Kockázatot vállalok a gondolkodásban (szabad szellem)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin vorsichtig beim Denken (Sicherheit)</div>
+        <div lang="en" rev="de#6J6Hrdqu">I am careful in thinking (safety)</div>
+        <div lang="hu" class="hidden" rev="en#fNLHwoB7">Óvatosan gondolkodom (biztonság)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich denke in großen Schritten</div>
+        <div lang="en" rev="de#b21betey">I think in big steps</div>
+        <div lang="hu" class="hidden" rev="en#dY5+0ES8">Nagy lépésekben gondolkodom</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich denke in kleinen Schritten</div>
+        <div lang="en" rev="de#rh707bPy">I think in small steps</div>
+        <div lang="hu" class="hidden" rev="en#FjSyo2NB">Kis lépésekben gondolkodom</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Geduldige Menschen sind langweilig</div>
+        <div lang="en" rev="de#cAiIs+YI">Patient people are boring</div>
+        <div lang="hu" class="hidden" rev="en#eTW5RNDK">A türelmes emberek unalmasak</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Neugierige Menschen sind nervig und untreu</div>
+        <div lang="en" rev="de#ENUD9xTl">Curious people are annoying and unloyal</div>
+        <div lang="hu" class="hidden" rev="en#MaDIaDJB">A kíváncsi emberek bosszantóak és hűtlenek</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich lasse mich leicht ablenken (viele Themen)</div>
+        <div lang="en" rev="de#6agIMfQO">I get distracted easily (many subjects)</div>
+        <div lang="hu" class="hidden" rev="en#F0sVJGvp">Könnyen elterelődöm (sok téma)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich kann für lange Zeit ein Thema festhalten</div>
+        <div lang="en" rev="de#ukAX9EN0">I can hold onto one topic for a long time</div>
+        <div lang="hu" class="hidden" rev="en#jkk3NeVv">Sokáig ragaszkodhatok egy témához</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin lieber Generalist (Grundwissen)</div>
+        <div lang="en" rev="de#xe+NyAAZ">I prefer to be a generalist (basic knowledge)</div>
+        <div lang="hu" class="hidden" rev="en#hcobvnz0">Inkább generalista vagyok (alapismeretek)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Spezialisierung fällt mir leicht (Konzentration)</div>
+        <div lang="en" rev="de#+Lq0Qa37">Specialization is easy for me (concentration)</div>
+        <div lang="hu" class="hidden" rev="en#j+ZO5RGX">A szakosodás számomra könnyű (koncentráció)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Lieber etwas Neues anfangen (Abwechslung)</div>
+        <div lang="en" rev="de#rvZdO+wm">Start something new (variety)</div>
+        <div lang="hu" class="hidden" rev="en#cgBNjv35">Kezdj valami újat (változatosság)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Etwas Altes weitermachen (Disziplin, Treue)</div>
+        <div lang="en" rev="de#YGIFWkJs">Continue something old (discipline, loyalty)</div>
+        <div lang="hu" class="hidden" rev="en#gqkCgkv8">Folytass valami régit (fegyelem, hűség)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Neue Rezepte suchen (Forschung)</div>
+        <div lang="en" rev="de#rv/jZ/Bn">Find new recipes (research)</div>
+        <div lang="hu" class="hidden" rev="en#EcV64Ii/">Új receptek keresése (kutatás)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Bewährte Rezepte anwenden (Produktion)</div>
+        <div lang="en" rev="de#TwlSjjsU">Use proven recipes (production)</div>
+        <div lang="hu" class="hidden" rev="en#Mj48Gbh7">Használjon bevált recepteket (gyártás)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich fühle mich jung (für mein Alter)</div>
+        <div lang="en" rev="de#fW3Pt0HA">I feel young (for my age)</div>
+        <div lang="hu" class="hidden" rev="en#dB/GdgQl">Fiatalnak érzem magam (a koromnak megfelelően)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich fühle mich alt (für mein Alter)</div>
+        <div lang="en" rev="de#qHqBFr+5">I feel old (for my age)</div>
+        <div lang="hu" class="hidden" rev="en#VE6zjdMF">Öregnek érzem magam (a koromnak megfelelően)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe mehr Respekt für Kinder (Gefühl)</div>
+        <div lang="en" rev="de#bOPL9otL">I have more respect for children (feeling)</div>
+        <div lang="hu" class="hidden" rev="en#ujlcB+i7">Jobban tisztelem a gyerekeket (érzés)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe mehr Respekt für Eltern (Erfahrung)</div>
+        <div lang="en" rev="de#ieshcKKn">I have more respect for parents (experience)</div>
+        <div lang="hu" class="hidden" rev="en#2uZfnbGW">Jobban tisztelem a szülőket (tapasztalat)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe starke Meinungen (suggestiv)</div>
+        <div lang="en" rev="de#vbh03MW6">I have strong opinions (suggestive)</div>
+        <div lang="hu" class="hidden" rev="en#BojHrLNA">Erős véleményem van (szuggesztív)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <!-- TODO "deskriptiv"? (kennt kein mensch das wort ...) -->
+        <div lang="de" class="hidden">Ich lasse Anderen ihre Meinungen (defensiv)</div>
+        <div lang="en" rev="de#ONcz4EtT">I let others have their opinions (defensive)</div>
+        <div lang="hu" class="hidden" rev="en#wMU5LlUs">Hagytam mások véleményét (védekező)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich sage die Wahrheit, auch wenns weh tut</div>
+        <div lang="en" rev="de#UeLH3EeZ">I tell the truth, even if it hurts</div>
+        <div lang="hu" class="hidden" rev="en#yeri70es">Igazat mondok, még ha fáj is</div>
+        
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Notlügen bringen Ruhe, sind höflich</div>
+        <div lang="en" rev="de#KLFhJNwh">White lies bring peace and are polite</div>
+        <div lang="hu" class="hidden" rev="en#gHkgVH91">A fehér hazugságok békét hoznak és udvariasak</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Lieber bei Anderen einmischen</div>
+        <div lang="en" rev="de#1xZeV/9m">I like to interfere with others</div>
+        <div lang="hu" class="hidden" rev="en#PKd4iWou">Szeretek zavarni másokat</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Lieber Andere in Ruhe lassen</div>
+        <div lang="en" rev="de#D75oolZz">Better to leave others alone</div>
+        <div lang="hu" class="hidden" rev="en#1bqDrIVl">Jobb, ha másokat magára hagy</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe Geduld mit Problemen</div>
+        <div lang="en" rev="de#IMQDbfqR">I am patient with problems</div>
+        <div lang="hu" class="hidden" rev="en#J6Hh4eXn">Türelmes vagyok a problémákkal kapcsolatban</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich will schnell zu einer Lösung kommen</div>
+        <div lang="en" rev="de#7gbIeniu">I want to come to a solution quickly</div>
+        <div lang="hu" class="hidden" rev="en#/39keLO0">Gyorsan szeretnék megoldást találni</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">bekannte Fehler meiden (Minus mal Minus)</div>
+        <div lang="en" rev="de#zdmit7R6">avoid known errors (minus times minus)</div>
+        <div lang="hu" class="hidden" rev="en#5fjWAAc3">kerülje az ismert hibákat (mínusz szor mínusz)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">bekannte Erfolge wiederholen (Plus mal Plus)</div>
+        <div lang="en" rev="de#H3XeOY8g">repeat known successes (plus times plus)</div>
+        <div lang="hu" class="hidden" rev="en#kDC0SU3a">ismételje meg az ismert sikereket (pluszszor plusz)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Erst machen, dann denken (Fühlen)</div>
+        <div lang="en" rev="de#BlyO0Ctr">Act first, think later (feelings)</div>
+        <div lang="hu" class="hidden" rev="en#P7hcdSQ8">Először cselekedj, gondolj később (érzések)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Erst denken, dann machen (Wissen)</div>
+        <div lang="en" rev="de#HFsIV2oR">Think first, act later (knowledge)</div>
+        <div lang="hu" class="hidden" rev="en#KrW92MXX">Gondolkodj először, cselekedj később (tudás)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Alle Lösungen sind gleich gut</div>
+        <div lang="en" rev="de#JM7JUvJJ">All solutions are equally good</div>
+        <div lang="hu" class="hidden" rev="en#X+2jwHXw">Minden megoldás egyformán jó</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Alle Probleme sind gleich schlecht</div>
+        <div lang="en" rev="de#ncHO/95B">All problems are equally bad</div>
+        <div lang="hu" class="hidden" rev="en#Ca5hFDhz">Minden probléma egyformán rossz</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Andere unterscheiden Lösungen</div>
+        <div lang="en" rev="de#UxC4yO+Z">Others distinguish solutions</div>
+        <div lang="hu" class="hidden" rev="en#7pD3Gy9d">Mások megkülönböztetik a megoldásokat</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich unterscheide große und kleine Lösungen</div>
+        <div lang="en" rev="de#7f+2kPs8">I distinguish large and small solutions</div>
+        <div lang="hu" class="hidden" rev="en#FZV8lg5U">Megkülönböztetem a nagy és a kis megoldásokat</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich unterscheide große und kleine Probleme</div>
+        <div lang="en" rev="de#gjhVDjDa">I distinguish big and small problems</div>
+        <div lang="hu" class="hidden" rev="en#9OOUidAr">Megkülönböztetem a nagy és a kis problémákat</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Andere unterscheiden Probleme</div>
+        <div lang="en" rev="de#HMCuBwPy">Others distinguish problems</div>
+        <div lang="hu" class="hidden" rev="en#tRhe5m5G">Mások megkülönböztetik a problémákat</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe großen Brustkorb (oben breit)</div>
+        <div lang="en" rev="de#y9QhkBO2">I have a big chest (wide top)</div>
+        <div lang="hu" class="hidden" rev="en#xFiMkj+H">Van egy nagy mellkasom (széles felső)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe kleinen Brustkorb (oben lang)</div>
+        <div lang="en" rev="de#LRLIYkxA">I have a small chest (long top)</div>
+        <div lang="hu" class="hidden" rev="en#yFTQNcVW">Van egy kis mellkasom (hosszú felső)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Zu mir passen Kurzhaar-Frisuren</div>
+        <div lang="en" rev="de#Jy+tS+bG">Short hairstyles suit me</div>
+        <div lang="hu" class="hidden" rev="en#5c0hmbxn">A rövid frizurák nekem megfelelnek</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Zu mir passen Langhaar-Frisuren</div>
+        <div lang="en" rev="de#IyaD6qXE">Long hairstyles suit me</div>
+        <div lang="hu" class="hidden" rev="en#cg5lAmL6">A hosszú frizurák nekem megfelelnek</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">An meinen Armen habe ich feine Haare</div>
+        <div lang="en" rev="de#umG5JHpU">I have fine hair on my arms</div>
+        <div lang="hu" class="hidden" rev="en#CmEsyn+c">Finom hajam van a karjaimon</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">An meinen Armen habe ich kräftige Haare</div>
+        <div lang="en" rev="de#ZuqWRm8k">I have strong hair on my arms</div>
+        <div lang="hu" class="hidden" rev="en#6HY5rlET">Erős haja van a karjaimnak</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Mein Oberkörper ist empfindlich</div>
+        <div lang="en" rev="de#HrZV+Ri/">My upper body is sensitive</div>
+        <div lang="hu" class="hidden" rev="en#Fh6JQHF1">A felsőtestem érzékeny</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Mein Oberkörper ist belastbar</div>
+        <div lang="en" rev="de#RmzgVUwI">My upper body is resilient</div>
+        <div lang="hu" class="hidden" rev="en#0ikiZWSL">A felsőtestem rugalmas</div>
+      </td>
+    </tr>
+  </tbody></table>
+
+  <hr> <!-- ######################################################################## -->
+
+  <table class="test-table"><tbody>
+    <tr>
+      <td width="46%" class="langs strong">
+        <div lang="de" class="hidden">Feinmotorik fällt mir leichter</div>
+        <div lang="en" rev="de#8saL4TdW">Fine motor skills are easier for me</div>
+        <div lang="hu" class="hidden" rev="en#/5gfI50D">A finommotorika könnyebb nekem</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td width="46%" class="langs strong">
+        <div lang="de" class="hidden">Grobmotorik fällt mir leichter</div>
+        <div lang="en" rev="de#hOzJ8oYR">Gross motor skills are easier for me</div>
+        <div lang="hu" class="hidden" rev="en#jF8lSQwO">A bruttó motorikus képességek könnyebbek nekem</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin risikofreudig beim Machen</div>
+        <div lang="en" rev="de#+bJe+e72">I take risks when doing</div>
+        <div lang="hu" class="hidden" rev="en#lDqH8Qem">Kockáztatok, amikor csinálok</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin vorsichtig beim Machen</div>
+        <div lang="en" rev="de#KOCXcY8v">I am careful when doing</div>
+        <div lang="hu" class="hidden" rev="en#qxh99v55">Óvatos vagyok, amikor csinálok</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich führe lieber beim Tanzen</div>
+        <div lang="en" rev="de#aiwNsERH">I prefer to lead while dancing</div>
+        <div lang="hu" class="hidden" rev="en#cz1EuFG6">Inkább vezetni tánc közben</div>
+        
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich folge lieber beim Tanzen</div>
+        <div lang="en" rev="de#CaK4OlKL">I prefer to follow while dancing</div>
+        <div lang="hu" class="hidden" rev="en#mc5YxtKF">Inkább tánc közben követem</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich fahre mein Fahrrad (Ich behalte Kontrolle)</div>
+        <div lang="en" rev="de#Caf22ozf">I ride my bike (I keep control)</div>
+        <div lang="hu" class="hidden" rev="en#Emdr87xk">Biciklizem (megtartom az irányítást)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Mein Fahrrad fährt mich (Kontrollverlust)</div>
+        <div lang="en" rev="de#yJxs4TN5">My bike rides me (loss of control)</div>
+        <div lang="hu" class="hidden" rev="en#jphr5g0i">A motorom velem jár (az irányítás elvesztése)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe starke Selbstbeherrschung</div>
+        <div lang="en" rev="de#iG75y2Ox">I have strong self-control</div>
+        <div lang="hu" class="hidden" rev="en#TeSrws3S">Erős az önuralmam</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich kann leicht die Kontrolle verlieren</div>
+        <div lang="en" rev="de#K8B4JYOM">I can easily lose control</div>
+        <div lang="hu" class="hidden" rev="en#e0SKscWc">Könnyen elveszíthetem az irányítást</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin "handwerklich geschickt"</div>
+        <div lang="en" rev="de#PQZDWOE2">I am "technically skilled"</div>
+        <div lang="hu" class="hidden" rev="en#ksYQXatv">"Technikailag jártas vagyok"</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin ein "Trampeltier" und "Tollpatsch"</div>
+        <div lang="en" rev="de#grQ5tqI0">I am a "trample" and "clumsy"</div>
+        <div lang="hu" class="hidden" rev="en#LD4TDp4I">"Tapos" és "esetlen" vagyok</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Neue Bewegungen kann ich schnell lernen</div>
+        <div lang="en" rev="de#bz0Avg2Z">new movements I can learn quickly</div>
+        <div lang="hu" class="hidden" rev="en#vYl3AOHp">új mozdulatokat gyorsan megtanulhatok</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Neue Bewegungen muss ich langsam lernen</div>
+        <div lang="en" rev="de#biPwP7fL">new movements i must learn slowly</div>
+        <div lang="hu" class="hidden" rev="en#7uscGFSj">új mozgásokat lassan meg kell tanulnom</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Etwas Neues machen? → Ich mache es</div>
+        <div lang="en" rev="de#NSUdWl9O">Do something new? → I do it</div>
+        <div lang="hu" class="hidden" rev="en#YerWfY/V">Csinálj valami újat? → én csinálom</div>
+        
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Etwas Neues machen? → Ich lasse machen</div>
+        <div lang="en" rev="de#qNmVfNCc">Do something new? → I let others do it</div>
+        <div lang="hu" class="hidden" rev="en#ny4qoc+m">Csinálj valami újat? → Hagytam, hogy mások csinálják</div>
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Dinge sind interessanter (Task Focus)</div>
+        <div lang="en" rev="de#EE3kGOG7">Things are more interesting (Task Focus)</div>
+        <div lang="hu" class="hidden" rev="en#iCUuzMub">A dolgok érdekesebbek (Task Focus)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Menschen sind interessanter (People Focus)</div>
+        <div lang="en" rev="de#+c4qWwMl">People are more interesting (People Focus)</div>
+        <div lang="hu" class="hidden" rev="en#IDHK0esF">Az emberek érdekesebbek (People Focus)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich arbeite lieber alleine (Einsiedler, Prophet)</div>
+        <div lang="en" rev="de#WDWfzg0q">I prefer to work alone (Hermit, Prophet)</div>
+        <div lang="hu" class="hidden" rev="en#37Y3U+Jn">Inkább egyedül dolgozom (Remete, Próféta)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich arbeite lieber mit anderen Menschen</div>
+        <div lang="en" rev="de#GqrJp3+Q">I prefer to work with other people</div>
+        <div lang="hu" class="hidden" rev="en#9CpahWqu">Inkább más emberekkel dolgozom</div>
+      </td>
+    </tr>
+    <!-- TODO innendienst/aussendienst? hausarbeit/feldarbeit? -->
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich lerne selbstständig (Ich bin Autodidakt)</div>
+        <div lang="en" rev="de#E7y3HoXF">I learn independently (I am self-taught)</div>
+        <div lang="hu" class="hidden" rev="en#nA7cXm9A">Önállóan tanulok (autodidakta vagyok)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich brauche Mitschüler zum Lernen</div>
+        <div lang="en" rev="de#mcxzS6a/">I need classmates to study</div>
+        <div lang="hu" class="hidden" rev="en#0DAu1TCf">Szükségem van osztálytársakra a tanuláshoz</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Einzelhaft ist für mich erträglich</div>
+        <div lang="en" rev="de#ORbQThEt">Solitary confinement is tolerable for me</div>
+        <div lang="hu" class="hidden" rev="en#iZIh9Cdv">A magánzárkázat számomra elviselhető</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Einzelhaft ist für mich Folter (Verlustangst)</div>
+        <div lang="en" rev="de#V0pw9lze">Solitary confinement is torture for me</div>
+        <div lang="hu" class="hidden" rev="en#lR58FIku">A magánzárkázat kínzás számomra</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Geheimnisse behalten fällt mir leicht</div>
+        <div lang="en" rev="de#2Dx9lQ8c">Keeping secrets is easy for me</div>
+        <div lang="hu" class="hidden" rev="en#fQwOrMDN">A titkok őrzése nekem könnyű</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Geheimnisse sind bei mir nicht sicher</div>
+        <div lang="en" rev="de#pqGIM+k8">Secrets are not safe with me</div>
+        <div lang="hu" class="hidden" rev="en#jRAJDnAd">A titkok nem biztonságosak velem</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich rede in kurzen Sätzen (Dichter)</div>
+        <div lang="en" rev="de#HAyqekbL">I speak in short sentences (poet)</div>
+        <div lang="hu" class="hidden" rev="en#Ax2D2kDD">Rövid mondatokban beszélek (költő)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich brauche Zeit zum Reden (Erzähler)</div>
+        <div lang="en" rev="de#bqJT6kJ8">I need time to talk (narrator)</div>
+        <div lang="hu" class="hidden" rev="en#3torhyHb">Időre van szükségem a beszélgetéshez (narrátor)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Stichworte benennen fällt mir leicht</div>
+        <div lang="en" rev="de#Voy0TkKh">Naming keywords is easy for me</div>
+        <div lang="hu" class="hidden" rev="en#JSbaSof7">A kulcsszavak elnevezése nekem könnyű</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich meide große und starke Worte</div>
+        <div lang="en" rev="de#uFrSP1UY">I avoid big and strong words</div>
+        <div lang="hu" class="hidden" rev="en#OXaQAPL1">Kerülöm a nagy és erős szavakat</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich bin ein schlechter Erzähler</div>
+        <div lang="en" rev="de#qw4uqaZO">I am a bad storyteller</div>
+        <div lang="hu" class="hidden" rev="en#dzwqQgnr">Rossz mesemondó vagyok</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Geschichten erzählen fällt mir leicht</div>
+        <div lang="en" rev="de#6kH14rFI">Telling stories is easy for me</div>
+        <div lang="hu" class="hidden" rev="en#ki0LJpZw">A történetek elmondása nekem könnyű</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich gebe meinem Kind genau einen Namen</div>
+        <div lang="en" rev="de#aI0IQ9k1">I give my child exactly one name</div>
+        <div lang="hu" class="hidden" rev="en#2PvFuFk6">Pontosan egy nevet adok a gyermekemnek</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich gebe meinem Kind mehrere Namen</div>
+        <div lang="en" rev="de#KcIMtTmf">I give my child multiple names</div>
+        <div lang="hu" class="hidden" rev="en#cTxyA0Tc">Több nevet adok a gyermekemnek</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe schmales Becken (unten lang)</div>
+        <div lang="en" rev="de#uM7jTsBI">I have a narrow pelvis (long bottom)</div>
+        <div lang="hu" class="hidden" rev="en#ULc5KPEv">Keskeny medencém van (hosszú alja)</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Ich habe breites Becken (unten breit)</div>
+        <div lang="en" rev="de#mXmX1Hlb">I have a wide pelvis (wide bottom)</div>
+        <div lang="hu" class="hidden" rev="en#C/BRXg4t">Széles medencém van (széles alja)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">An meinen Beinen habe ich kräftige Haare</div>
+        <div lang="en" rev="de#m6rt/wUo">I have strong hair on my legs</div>
+        <div lang="hu" class="hidden" rev="en#6ebrUr1Y">Erős hajam van a lábamon</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">An meinen Beinen habe ich feine Haare</div>
+        <div lang="en" rev="de#bVHRyYed">I have fine hair on my legs</div>
+        <div lang="hu" class="hidden" rev="en#AQL3xzDu">Finom hajam van a lábamon</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Mein Unterkörper ist belastbar</div>
+        <div lang="en" rev="de#KqW0MCpp">My lower body is resilient</div>
+        <div lang="hu" class="hidden" rev="en#DRilpgxw">Az alsó testem rugalmas</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Mein Unterkörper ist empfindlich</div>
+        <div lang="en" rev="de#hXcxg04S">My lower body is sensitive</div>
+        <div lang="hu" class="hidden" rev="en#dPaQG7HP">Az alsó testem érzékeny</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Meine Fingernägel haben lange Nagelbetten</div>
+        <div lang="en" rev="de#SrA4S6Lo">My fingernails have long nailbeds</div>
+        <div lang="hu" class="hidden" rev="en#7jEI0/Yy">A körmöm hosszú köröm</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Meine Fingernägel haben kurze Nagelbetten</div>
+        <div lang="en" rev="de#VRieZEV2">My fingernails have short nailbeds</div>
+        <div lang="hu" class="hidden" rev="en#zdlqGLKl">A körmömnek rövid a körme</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="langs">
+        <div lang="de" class="hidden">Kann <b>ganzen</b> Daumen senkrecht abspreizen</div>
+        <div lang="en" rev="de#+XGFjo9N">I can spread my <b>whole</b> thumb orthogonal</div>
+        <div lang="hu" class="hidden" rev="en#bmRA/YOt">Szét tudom teríteni <b>egész</b> hüvelykujj derékszögű</div>
+      </td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td class="langs">
+        <div lang="de" class="hidden">Kann nur Daumenspitze senkrecht halten</div>
+        <div lang="en" rev="de#90IpbOeR">I can hold only my thumb-tip orthogonal</div>
+        <div lang="hu" class="hidden" rev="en#Ui0mzmyV">Csak a hüvelykujjam hegyét tarthatom ortogonálisnak</div>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+</div>
+
+</body>
+</html>
+
