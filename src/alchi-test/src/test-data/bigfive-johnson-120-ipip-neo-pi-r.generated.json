@@ -1,6 +1,7 @@
 {
   "meta": {
     "name": "Big Five",
+    "description": "\n\nSimplified Big Five test with only three domains: ANE (Agreeableness, Neuroticism, Extraversion)\n\n<details>\n\n<div>\nMost people are balanced in EOC (Extraversion, Openness, Conscientiousness).\nThis is why the Big Five test spends three dimensions to find a signal (tendency),\nwhere most people say \"neutral\" or \"both\".\n</div>\n\n<div>\nWhy are most people balanced in EOC?\nThis is a result of \"normal\" education,\nwhere children are primarily grouped by <b>same age</b>\nin pre-school, school, university, even later in work.\nThis will push people to become extreme in Neuroticism (either High or Low),\nand to become balanced in EOC (Extraversion, Openness, Conscientiousness).\n</div>\n\n<div>\nIn this <b>Simplified Big Five</b> test,\nwe reduce EOC to one dimension,\nso in total, we have only three dimensions:\n</div>\n\n<ul>\n  <li>A</li>\n  <li>N</li>\n  <li>EOC (high E = high O = low C)</li>\n</ul>\n\n<div>\nSince most people will say \"neutral\" for EOC,\nwe place this dimension as the last question.\n</div>\n\n<div>\nWe use Extraversion and Neuroticism,\njust like Hans Eysenck does\nin his two-factor model of personality.\n</div>\n\n<div>\nThis Simplified Big Five test is still <b>redundant</b>,\nsince high A = (high E and high N) or (low E and low N) = Air or Water.\n</div>\n\n<div>\nBut we need this third dimension to measure <b>subtype</b>.\nWhy?\nWhen either E or N are balanced, then the result is ambiguous.\nThis means we must choose one from two elements.\nOne element will be the \"base\" element,\nand the other element will be the subtype (\"modality\" in astrology).\n</div>\n\n<div>\nWith High Agreeableness,\nthe \"base\" element must be either Air or Water,\nand the subtype element must be either Fire or Earth.\n</div>\n\n<div>\nand vice versa:\nLow Agreeableness &rarr;\nbase element is Fire or Earth,\nsubtype element is Air or Water.\n</div>\n\n</details>\n\n",
     "sources": [
       {
         "npm": "@alheimsins/b5-johnson-120-ipip-neo-pi-r",
@@ -43,14 +44,14 @@
     "ur",
     "zh-cn"
   ],
-  "domainKeys": ["o", "c", "e", "a", "n"],
+  "domainKeys": ["a", "n", "e"],
   "domainWidths": {"o": 2, "c": 2, "e": 2, "a": 2, "n": 2},
   "domainNames": {
     "en": {
       "o": ["", "Openness for experience"],
       "c": ["", "Conscientiousness"],
       "e": ["", "Extraversion", "Introversion"],
-      "a": ["", "Agreeableness"],
+      "a": ["", "Agreeableness", "Individualism"],
       "n": ["", "Neuroticism", "Emotional Stability"]
     },
     "de": {
@@ -59,6 +60,15 @@
       "e": ["", "Extraversion (Geselligkeit)", "Introversion"],
       "a": ["", "Verträglichkeit (Rücksichtnahme, Kooperationsbereitschaft, Empathie)"],
       "n": ["", "Neurotizismus (emotionale Verletzlichkeit)", "Emotionale Stabilität"]
+    }
+  },
+  "domainDescriptions": {
+    "en": {
+      "o": "",
+      "c": "",
+      "e": "note: in this domain, most people are balanced",
+      "a": "note: this domain has more weight than the other domains",
+      "n": ""
     }
   },
   "domainItems": {

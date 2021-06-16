@@ -101,7 +101,7 @@
   const data = {
     questions: [],
     questions_dfk: {},
-    result_df: {},
+    //result_df: {},
     query: {},
     state: {},
   };
@@ -111,6 +111,8 @@
   let colorDegreesInput = 100;
 
   //$: console.log('colorDegreesInput = ', colorDegreesInput);
+
+  
 
   const testData = {
     bigfive: bigfiveData,
@@ -242,15 +244,17 @@
   let bigfive2alchiResultElement;
   let svg_of_bigfive = '';
 
-  function update_sum_real() {
-    Object.keys(result.test).forEach(testKey => {
+  async function update_sum_real() {
+    console.log(`update_sum_real`);
+    for (const testKey of Object.keys(result.test)) {
       const test = testData[testKey];
       const testResult = result.test[testKey];
-      Object.keys(testResult.domain).forEach(domainKey => {
+      for (const domainKey of Object.keys(testResult.domain)) {
 
         const domainWidth = testData[testKey].domainWidths[domainKey];
         // circular domains (width > 2) need `NaN` as neutral value
-        const neutralValue = domainWidth == 2 ? 0 : NaN;
+        //const neutralValue = domainWidth == 2 ? 0 : NaN;
+        const neutralValue = domainWidth == 2 ? 50 : NaN;
 
         //console.log(`update_sum_real: test ${testKey} domain ${domainKey} facetList:`, facetList(test, domainKey));
 
@@ -297,37 +301,56 @@
           // TODO generalize? this assumes an input value range of -2 to +2:
           //domainResult.score = Math.round(50 + (domainResult.sum / facetCount(test, domainKey) * 25));
           // TODO convert circular value to degrees. width is 3 or 4 -> period 400, width is 6 or 8 -> period 800
+
           domainResult.score = facetValues.length == 0 ? neutralValue :
-            Math.round(50 + (domainResult.sum / facetCount(test, domainKey) * 25));
+            Math.round(50 + (domainResult.sum / facetCount(test, domainKey) * 25))
+          ;
+        }
 
-          }
-
-          else {
-            console.warn(`update_sum_real: test ${testKey} domain ${domainKey}: TODO handle domainWidth ${domainWidth}`)
-          }
-      });
-    });
+        else {
+          console.warn(`update_sum_real: test ${testKey} domain ${domainKey}: TODO handle domainWidth ${domainWidth}`)
+        }
+      }
+    }
 
     writeHash();
 
-    /*
-    // TODO
     const bigfive = {
-      o: data.result_df.O.score,
-      c: data.result_df.C.score,
-      e: data.result_df.E.score,
-      a: data.result_df.A.score,
-      n: data.result_df.N.score,
+      // EOC is one domain
+      o: result.test['bigfive'].domain['e'].score,
+      c: (100 - result.test['bigfive'].domain['e'].score),
+      e: result.test['bigfive'].domain['e'].score,
+
+      a: result.test['bigfive'].domain['a'].score,
+      n: result.test['bigfive'].domain['n'].score,
     };
 
     svg_of_bigfive = bigfive2alchi.svg_of_bigfive(bigfive);
 
-    bigfive2alchi.handle_new_bigfive(bigfive, bigfive2alchiResultElement);
-    */
+    //bigfive2alchi.handle_new_bigfive(bigfive, bigfive2alchiResultElement);
 
   }
 
   $: (result), update_sum();
+
+  Math._sumArray = array => array.reduce((a, v) => (a + v), 0);
+
+  function sleepMs(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function setDomainAverage(domain, changeEvent) {
+    const averageValue = changeEvent.target.valueAsNumber / domain.facetCount;
+    console.log('setDomainAverage', { domain, averageValue });
+    domain.result.facet = Array.from({ length: domain.facetCount }).reduce((acc) => {
+      const accAvg = (acc.length == 0) ? 0 : Math._sumArray(acc) / acc.length;
+      if (accAvg < averageValue) acc.push(Math.ceil(averageValue));
+      else acc.push(Math.floor(averageValue));
+      return acc;
+    }, []);
+
+    result = result; // trigger update_sum()
+  }
 
 
 
@@ -668,7 +691,7 @@
         return obj[keyList[i]];
       }
       const firstKey = keyList.shift();
-      if (lang in test[firstKey]) {
+      if (test[firstKey] && lang in test[firstKey]) {
         const val = getVal(test, [firstKey, lang, ...keyList]);
         if (val !== undefined) return val;
       }
@@ -851,6 +874,10 @@ const style_var = {
 
   <ol class="domain-list">
 
+  <!-- loop tests -->
+
+  
+
   {#each Object.keys(testData).map(testKey => {
       const test = {};
       test.key = testKey;
@@ -862,10 +889,15 @@ const style_var = {
 
     <li class="test">
       <h3>{test.data.meta.name}</h3>
+      {#if test.data.meta.description}
+        <div class="description">{@html test.data.meta.description}</div>
+      {/if}
     </li>
 
-    {#each test.data.domainKeys.map(domainKey => { // TODO rename to domainKey
-        
+    <!-- loop domains -->
+
+    {#each test.data.domainKeys.map(domainKey => {
+
         /*
         // init domain object
         testResult.domain[domain] = {
@@ -891,45 +923,52 @@ const style_var = {
 
       <li class="domain domain-width-{domain.width}">
 
+        <!-- domain head: average value -->
+
         {#if domain.width == 4}
 
           <div class="knob-facet">
-            <div class="text top">
-              <span class="value">{formatNumber(domain.result.scoreArray[2-1])}</span>
-              <span class="answer">{translate(test, 'domainNames', domain.key, 2)}</span>
-            </div>
-            <div class="body">
-              <div class="text left">
-                <span class="value">{formatNumber(domain.result.scoreArray[4-1])}</span>
-                <span class="answer">{translate(test, 'domainNames', domain.key, 4)}</span>
+            <div class="knob-facet-body">
+              <div class="text top">
+                <span class="value">{formatNumber(domain.result.scoreArray[2-1])}</span>
+                <span class="answer">{translate(test, 'domainNames', domain.key, 2)}</span>
               </div>
+              <div class="middle">
+                <div class="text left">
+                  <span class="value">{formatNumber(domain.result.scoreArray[4-1])}</span>
+                  <span class="answer">{translate(test, 'domainNames', domain.key, 4)}</span>
+                </div>
 
-<!--
-                bind:value={domain.result.scoreDegrees}
-                readonly={true}
--->
+                <!-- TODO bind value: set average -> change precise values -->
+                <Knob
+                  class="center"
+                  value={domain.result.scoreDegrees}
+                  circular={true} min={0} max={16} modulo={16} step={1}
+                  showNumber={false} allowUndefined={true}
+                  strokeWidth={16} strokeWidthBack={4}
+                  readonly={false}
+                  primaryColor="#808080"
+                />
 
-              <Knob
-                class="center"
-                value={domain.result.scoreDegrees}
-                circular={true} min={0} max={16} modulo={16} step={1}
-                showNumber={false} allowUndefined={true}
-                strokeWidth={16} strokeWidthBack={4}
-                readonly={true}
-                primaryColor="#808080"
-              />
-
-              <div class="text right">
-                <span class="value">{formatNumber(domain.result.scoreArray[3-1])}</span>
-                <span class="answer">{translate(test, 'domainNames', domain.key, 3)}</span>
+                <div class="text right">
+                  <span class="value">{formatNumber(domain.result.scoreArray[3-1])}</span>
+                  <span class="answer">{translate(test, 'domainNames', domain.key, 3)}</span>
+                </div>
               </div>
-            </div>
-            <div class="text bottom">
-              <span class="value">{formatNumber(domain.result.scoreArray[1-1])}</span>
-              <span class="answer">{translate(test, 'domainNames', domain.key, 1)}</span>
+              <div class="text bottom">
+                <span class="value">{formatNumber(domain.result.scoreArray[1-1])}</span>
+                <span class="answer">{translate(test, 'domainNames', domain.key, 1)}</span>
+              </div>
             </div>
           </div>
-        {:else}
+
+        {:else if domain.width == 2}
+
+          <!--
+            // index 0: neutral
+            // index 1: positive
+            // index 2: negative
+          -->
           <h4>{
             translate(test, 'domainNames', domain.key, 0) ||
             (
@@ -938,15 +977,25 @@ const style_var = {
               : translate(test, 'domainNames', domain.key).slice(1).join(' ↔ ')
             ) 
           }</h4>
+
+          <!-- "with" block -->
+          {#each [translate(test, 'domainDescriptions', domain.key)].filter(Boolean) as domainDescription}
+            <div class="domain-description">{domainDescription}</div>
+          {/each}
+
         {/if}
 
         <ol class="facet-list">
 
           {#if domain.width == 4}
+
             <!-- TODO initial value should be undefined
               = neutral value in even answer count
               ... but also odd answer count can need a undef value
             -->
+
+            <!-- domain body: exact values -->
+
             {#each facetList(test.data, domain.key).map(facetId => {
 
               //console.log(`test ${test.key} : domain ${domain.key} : result = `, domain.result);
@@ -963,6 +1012,9 @@ const style_var = {
                 result: domain.result.facet[facetId],
               }
             }) as facet}
+
+              <!-- domain body -> facet: exact value -->
+
               <li class="knob-facet">
                 {#if facet.question}
                   <div class="knob-facet-head">{facet.question}</div>
@@ -1003,9 +1055,12 @@ const style_var = {
                   </div>
                 </div>
               </li>
+
             {/each}
 
           {:else if domain.width == 2}
+
+            <!-- domain head: average value -->
 
             <li class="facet domain-result">
               {#if domain.isPositive}
@@ -1014,8 +1069,21 @@ const style_var = {
                   {translate(test, 'domainNames', domain.key, 2)}
                   <!--{100 - data.result_df[domain].score}-->
                 </span>
-                <input type="range" min="{-2 * domain.facetCount}" max="{2 * domain.facetCount}" disabled
-                  bind:value={domain.result.sum}>
+
+                <!-- average disabled:
+                  <input type="range" min="{-2 * domain.facetCount}" max="{2 * domain.facetCount}" disabled
+                    bind:value={domain.result.sum}>
+                -->
+
+                <!-- average editable: -->
+                <!-- TODO reactive assign: domain.result.sum -> domain.result.facet[facet.id] -->
+                <input type="range" min="{-2 * domain.facetCount}" max="{2 * domain.facetCount}"
+                  value={domain.result.sum} on:input={event => setDomainAverage(domain, event)}>
+
+                <!-- exact value:
+                  <input type="range" min="-2" max="2" step="1" bind:value={domain.result.facet[facet.id]}>
+                -->
+
                 <span class="text result">
                   {domain.result.score}
                   {translate(test, 'domainNames', domain.key, 1)}
@@ -1036,6 +1104,8 @@ const style_var = {
               {/if}
             </li>
 
+            <!-- domain body: exact values -->
+
             <!--{#each facetList(test, domain.key) as facet}-->
             {#each facetList(test.data, domain.key).map(facetId => {
               return {
@@ -1048,6 +1118,8 @@ const style_var = {
               }
             }) as facet}
 
+              <!-- domain body -> facet: exact value -->
+
               <li class="facet">
                 {#if domain.isPositive}
                   <span class="text minus">{facet.answers.minus}</span>
@@ -1059,7 +1131,9 @@ const style_var = {
                   <span class="text minus">{facet.answers.minus}</span>
                 {/if}
               </li>
+
             {/each}
+
           {/if}
 
           <!--
@@ -1080,12 +1154,14 @@ const style_var = {
 
         </ol>
       </li>
+
     {/each}
+
     <li class="domain total-result">
       <h4>Result: {test.data.meta.name}</h4>
       <p>
         {test.data.domainKeys.join('')}
-        <!-- TODO -->
+        <!-- TODO support flowprofile -->
         {#each test.data.domainKeys as domainKey}
           {test.result.domain[domainKey].score}{' '}
         {/each}
@@ -1094,6 +1170,7 @@ const style_var = {
         {#each test.data.domainKeys as domainKey}
           <li class="facet total-result">
             <span>&nbsp;</span><!-- workaround for chrome bug: empty span creates extra top-margin -->
+            <!-- TODO support flowprofile -->
             <input type="range" min="{-2 * facetCount(test.data, domainKey)}" max="{2 * facetCount(test.data, domainKey)}" disabled bind:value={test.result.domain[domainKey].sum}>
             <span class="text result">
               {test.result.domain[domainKey].score}
@@ -1153,6 +1230,25 @@ const style_var = {
     display: flex;
     flex-direction: column;
     text-align: center;
+  }
+
+  li.test div.description :global(details) {
+    text-align: left;
+  }
+
+  /* TODO prettier
+  li.test div.description :global(details) :global(summary) {
+    text-align: center;
+  }
+  */
+
+  li.test div.description :global(details) > :global(*) {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .domain-description{
+    margin-bottom: 1.5em;
   }
 
   li.domain {
@@ -1351,16 +1447,21 @@ const style_var = {
     bottom: 0.5em;
     left: 0.5em;
     
+    /*
     width: 4em; height: 4em;
     background: transparent;
-  }
+    */
+
+    width: 16em; height: 16em;
+    background: white;
+}
 
   .result-svg-container:hover {
     display: inline-block;
     position: fixed;
     bottom: 0.5em;
     left: 0.5em;
-    
+
     width: 16em; height: 16em;
     background: white;
   }
