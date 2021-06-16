@@ -245,7 +245,7 @@
   let svg_of_bigfive = '';
 
   async function update_sum_real() {
-    console.log(`update_sum_real`);
+    //console.log(`update_sum_real`);
     for (const testKey of Object.keys(result.test)) {
       const test = testData[testKey];
       const testResult = result.test[testKey];
@@ -341,7 +341,7 @@
 
   async function setDomainAverage(domain, changeEvent) {
     const averageValue = changeEvent.target.valueAsNumber / domain.facetCount;
-    console.log('setDomainAverage', { domain, averageValue });
+    //console.log('setDomainAverage', { domain, averageValue });
     domain.result.facet = Array.from({ length: domain.facetCount }).reduce((acc) => {
       const accAvg = (acc.length == 0) ? 0 : Math._sumArray(acc) / acc.length;
       if (accAvg < averageValue) acc.push(Math.ceil(averageValue));
@@ -1398,7 +1398,9 @@ const style_var = {
   }
 
   main {
+    /* TODO switch darkmode / lightmode
     background-color: var(--theme-opposite-color);
+    */
   }
 
   .menu {
