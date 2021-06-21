@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<title>bigfive2face: generate average face from big five values</title>
+
+<script>
+
+  // data source:
+  // Assessing the Big Five personality traits using real-life static facial images
+  // https://www.semanticscholar.org/paper/Assessing-the-Big-Five-personality-traits-using-Kachur-Osin/48f8f554f107420a79fdf3f6e85c71765da484be
+  // https://iq.hse.ru/en/news/370140916.html
+
+  // interpretation:
+  // the strongest difference is between elements air and water
+  // air = endomorph = roundface = high OCEA + low N
+  // water = ectomorph = longface = low OCEA + high N
+  // expected values:
+  // air = (high OE + low C) + high N + high A
+  // water = (low OE + high C) + low N + high A
+  // fire = (high OE + low C) + low N + low A
+  // earth = (low OE + high C) + high N + low A
+  // this error is produced by the verbal tests,
+  // which are designed to give five "orthogonal" dimensions,
+  // but in this case, only give one dimension (roundface vs longface)
+  // maybe elements air and water prefer "one dimensional thinking"?
+
+  // license: CC0-1.0
+
+  // TODO use <canvas> for better animation-performance
+
+  let state = {};
+  state.ocean = [];
+  state.ocean[0] = { o: 0, c: 0, e: 0, a: 0, n: 0 };
+  state.ocean[1] = { o: 0, c: 0, e: 0, a: 0, n: 0 };
+
+  let cutImgState = null;
+  let cutImgControl = null;
+
+  window.onload = function () {
+
+    cutImgState = document.querySelector('#cut-img-state');
+    cutImgControl = document.querySelector('div.cut-img-control');
+
+
+
+    query = get_query();
+    if (!query.v) query.v = 1;
+    parse_query();
+    window.addEventListener('hashchange', event => parse_query(), {});
+
+
+
+    cutImgControl.querySelectorAll('input[type=checkbox]').forEach(input => {
+      input.onchange = function (event) {
+        const checked = event.target.checked;
+
+        const faceId = event.target.classList.contains('left') ? 0 : 1;
+        const domainKey = event.target.name.slice('domain-'.length);
+        state.ocean[faceId][domainKey] = checked ? 100 : 0;
+        const f = state.ocean[faceId];
+
+        add_query({ [`ocean.${faceId}`]: `${f.o}.${f.c}.${f.e}.${f.a}.${f.n}` })        
+
+        const domainClass = event.target.name; // domain-a, etc.
+        const faceClass = event.target.className.replace(/ /g, '.');
+        var sel = `.${faceClass} > .repeat > .${domainClass}`;
+        //console.log(`sel = ${sel}`);
+        cutImgState.querySelectorAll(sel).forEach(cutImg => {
+          if (checked)
+            cutImg.classList.add('high');
+          else
+            cutImg.classList.remove('high');
+        });
+        //console.log(`high = ${checked}`, cutImg)
+      }
+    });
+    cutImgControl.querySelector('button.animation-start').onclick = animationStart;
+    cutImgControl.querySelector('button.animation-stop').onclick = animationStop;
+
+    cutImgControl.querySelector('input#layer-opacity').oninput = event => {
+      const newOpacityStr = event.target.value;
+      console.log(`layer-opacity: ${newOpacityStr}%`);
+      cutImgState.style = `--layer-opacity: ${newOpacityStr}%`;
+    };
+    cutImgControl.querySelector('input#layer-opacity').value = 15;
+    cutImgControl.querySelector('input#layer-opacity').dispatchEvent(new Event('input'));
+
+    cutImgControl.querySelector('input#repeat-count').oninput = event => {
+      const newRepeatCount = event.target.valueAsNumber;
+      console.log(`repeat-count: ${newRepeatCount}`);
+      Array.prototype.forEach.apply(
+        cutImgState.children, [
+        faceDiv => {
+          if (faceDiv.children.length < newRepeatCount) {
+            // increase repeat
+            for (let i = faceDiv.children.length; i < newRepeatCount; i++) {
+              faceDiv.appendChild(faceDiv.firstElementChild.cloneNode(true));
+            }
+          }
+          else {
+            // decrease repeat
+            for (let i = faceDiv.children.length; i > newRepeatCount; i--) {
+              faceDiv.removeChild(faceDiv.lastElementChild);
+            }
+          }
+        }
+      ]);
+    };
+    cutImgControl.querySelector('input#repeat-count').value = 4;
+    cutImgControl.querySelector('input#repeat-count').dispatchEvent(new Event('input'));
+
+
+
+    const domainKeys = "ocean".split("");
+    let currentDomainId = -1;
+    const currentDomainIdMax = domainKeys.length;
+
+    // TODO make animation more efficient?
+    function changeDomainNext() {
+      Array.prototype.forEach.apply(
+        cutImgState.children, [
+        faceDiv => {
+          Array.prototype.forEach.apply(
+            faceDiv.children, [
+            repeatDiv => {
+              repeatDiv.appendChild(repeatDiv.firstElementChild)
+            }
+          ]);
+        }
+      ]);
+    }
+
+    let animationStep;
+    function animationStepOn() {
+      changeDomainNext();
+      requestAnimationFrame(animationStep);
+    }
+    function animationStepOff() {
+      return;
+    }
+    animationStep = animationStepOff;
+
+    function animationStart() {
+      animationStep = animationStepOn;
+      animationStep();
+    }
+
+    function animationStop() {
+      animationStep = animationStepOff;
+    }
+
+  };
+
+
+
+  // copy paste from alchi-book/src/js/main.js
+  let query = {
+    v: 1, // API version
+  };
+  function add_query(obj) {
+    //console.log('add_query', obj)
+    const new_query = Object.assign(query, obj);
+    document.location.hash = '#' + Object.keys(new_query).map(k => {
+      return k + '=' + new_query[k];
+    }).join('&');
+  }
+  window.add_query = add_query; // global
+
+  function get_query() {
+    const query = Object.fromEntries(
+      document.location.hash.slice(1).split('&').map(kv => {
+        const i = kv.indexOf('=');
+        const k = kv.slice(0, i);
+        const v = kv.slice(i + 1);
+        return [k, v];
+      })
+      .filter(kv => Boolean(kv[0]))
+    );
+    return query;
+  }
+
+  function parse_query() {
+  
+    const query = get_query();
+    
+    console.log(`query: ${Object.keys(query).map(key => `${key} = ${query[key]}`).join(' & ')}`);
+
+    function parseOcean(str) {
+      return str.split('.').map(s => parseInt(s)).reduce((acc, val, idx) => {
+        acc['ocean'[idx]] = val;
+        return acc;
+      }, {});
+    }
+
+    function setFace(faceName, oceanStr, faceId) {
+      const f = parseOcean(oceanStr);
+      state.ocean[faceId] = f;
+      for (const domainKey of 'ocean'.split('')) {
+        const domainClass = `domain.${domainKey}`;
+        const faceClass = `face.${faceName}`;
+
+        // TODO more efficient? use less DOM operations
+        var sel = `.${faceClass} > .repeat > .${domainClass}`;
+        //console.log(`sel = ${sel}`);
+        cutImgState.querySelectorAll(sel).forEach(cutImg => {
+          if (f[domainKey] == 100)
+            cutImg.classList.add('high');
+          else
+            cutImg.classList.remove('high');
+        });
+
+        // set control
+        cutImgControl.querySelector(`input[type=checkbox][name="domain.${domainKey}"].face.${faceName}`).checked = (f[domainKey] == 100);
+      }
+    }
+
+    if (query['ocean.0']) setFace('left', query['ocean.0'], 0);
+    if (query['ocean.1']) setFace('right', query['ocean.1'], 1);
+    
+  }
+
+</script>
+
+<style>
+
+  .cut-img-control {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
+
+  #cut-img-state {
+    transform: translateY(2em);
+    position: absolute;
+  }
+  #cut-img-state > .face {
+    position: absolute;
+  }
+  #cut-img-state > .face > .repeat {
+    position: absolute; top: 0; left: 0;
+  }
+  #cut-img-state > .face:nth-child(1) {
+    left: 0;
+  }
+  #cut-img-state > .face:nth-child(2) {
+    left: 407px; /* images: 407 px width */
+  }
+  #cut-img-state > .face > .repeat > .domain > img:first-child {
+    display: none;
+    position: absolute; top: 0; left: 0;
+  }
+  #cut-img-state > .face > .repeat > .domain {
+    position: absolute; top: 0; left: 0;
+    opacity: var(--layer-opacity);
+  }
+  :root {
+    --layer-opacity: 15%;
+  }
+
+  #cut-img-state.o > .face > .repeat > .domain.o,
+  #cut-img-state.c > .face > .repeat > .domain.c,
+  #cut-img-state.e > .face > .repeat > .domain.e,
+  #cut-img-state.a > .face > .repeat > .domain.a,
+  #cut-img-state.n > .face > .repeat > .domain.n,
+  #cut-img-state > .face > .repeat > .domain.high > img:first-child {
+    display: block;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+  <div class="cut-img-control">
+    face left: high ...
+    <label><input type="checkbox" class="face left" name="domain.o"> O</label>
+    <label><input type="checkbox" class="face left" name="domain.c"> C</label>
+    <label><input type="checkbox" class="face left" name="domain.e"> E</label>
+    <label><input type="checkbox" class="face left" name="domain.a"> A</label>
+    <label><input type="checkbox" class="face left" name="domain.n"> N</label>
+    face right: high ...
+    <label><input type="checkbox" class="face right" name="domain.o"> O</label>
+    <label><input type="checkbox" class="face right" name="domain.c"> C</label>
+    <label><input type="checkbox" class="face right" name="domain.e"> E</label>
+    <label><input type="checkbox" class="face right" name="domain.a"> A</label>
+    <label><input type="checkbox" class="face right" name="domain.n"> N</label>
+    layer opacity:
+    <input type="range" min="5" max="95" step="5" id="layer-opacity">
+    repeat count:
+    <input type="range" min="1" max="10" step="1" id="repeat-count">
+    <button class="animation-start">Play</button>
+    <button class="animation-stop">Stop</button>
+  </div>
+
+  <div id="cut-img-state" class="a">
+    <div class="face left">
+      <div class="repeat">
+        <div class="domain a"><img src="images/iq.hse.ru/a-high.webp"><img src="images/iq.hse.ru/a-low.webp"></div>
+        <div class="domain e"><img src="images/iq.hse.ru/e-high.webp"><img src="images/iq.hse.ru/e-low.webp"></div>
+        <div class="domain c"><img src="images/iq.hse.ru/c-high.webp"><img src="images/iq.hse.ru/c-low.webp"></div>
+        <div class="domain o"><img src="images/iq.hse.ru/o-high.webp"><img src="images/iq.hse.ru/o-low.webp"></div>
+        <div class="domain n"><img src="images/iq.hse.ru/n-high.webp"><img src="images/iq.hse.ru/n-low.webp"></div>
+      </div>
+    </div>
+    <div class="face right">
+      <div class="repeat">
+        <div class="domain a"><img src="images/iq.hse.ru/a-high.webp"><img src="images/iq.hse.ru/a-low.webp"></div>
+        <div class="domain e"><img src="images/iq.hse.ru/e-high.webp"><img src="images/iq.hse.ru/e-low.webp"></div>
+        <div class="domain c"><img src="images/iq.hse.ru/c-high.webp"><img src="images/iq.hse.ru/c-low.webp"></div>
+        <div class="domain o"><img src="images/iq.hse.ru/o-high.webp"><img src="images/iq.hse.ru/o-low.webp"></div>
+        <div class="domain n"><img src="images/iq.hse.ru/n-high.webp"><img src="images/iq.hse.ru/n-low.webp"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
