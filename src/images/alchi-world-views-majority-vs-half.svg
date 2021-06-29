@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 246.55 224.12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <marker id="Arrow1Mend" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <g transform="translate(-16.46 -56.074)">
+  <circle id="path833" cx="28.973" cy="68.588" r="2.2133" fill-opacity=".99814"/>
+  <circle cx="28.973" cy="68.588" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="28.973" cy="90.721" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(0 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="28.973" cy="134.99" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="28.973" cy="157.12" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="51.106" cy="68.588" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(22.133 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(22.133 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(22.133 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="51.106" cy="157.12" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(44.266 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="73.239" cy="112.85" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(44.266 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(44.266 88.533)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="95.372" cy="68.588" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(66.4 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(66.4 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(66.4 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="95.372" cy="157.12" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="117.51" cy="68.588" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="117.51" cy="90.721" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(88.533 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="117.51" cy="134.99" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="117.51" cy="157.12" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <g fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".7">
+   <circle cx="73.239" cy="112.85" r="22.133"/>
+   <circle cx="73.239" cy="112.85" r="44.266"/>
+   <circle cx="73.239" cy="112.85" r="31.459"/>
+  </g>
+  <g fill-opacity=".99814">
+   <circle cx="51.106" cy="201.58" r="2.2133" fill="#f00"/>
+   <circle cx="51.106" cy="223.71" r="2.2133"/>
+   <circle cx="51.106" cy="245.85" r="2.2133"/>
+   <circle cx="51.106" cy="267.98" r="2.2133" fill="#f00"/>
+   <circle cx="73.239" cy="201.58" r="2.2133"/>
+   <circle cx="73.239" cy="223.71" r="2.2133"/>
+   <circle cx="73.239" cy="245.85" r="2.2133" fill="#f00"/>
+   <circle cx="73.239" cy="267.98" r="2.2133"/>
+   <circle cx="95.372" cy="201.58" r="2.2133" fill="#f00"/>
+   <circle cx="95.372" cy="223.71" r="2.2133" fill="#f00"/>
+   <circle cx="95.372" cy="245.85" r="2.2133"/>
+   <circle cx="95.372" cy="267.98" r="2.2133"/>
+   <circle cx="117.51" cy="201.58" r="2.2133" fill="#f00"/>
+   <circle cx="117.51" cy="223.71" r="2.2133" fill="#f00"/>
+   <circle cx="117.51" cy="245.85" r="2.2133"/>
+   <circle cx="117.51" cy="267.98" r="2.2133" fill="#f00"/>
+  </g>
+  <path id="path951" d="m73.239 223.71 22.133 22.133v22.133h-22.133l-22.133-22.133v-22.133z" fill="none" stroke="#000" stroke-width=".765"/>
+  <circle cx="161.96" cy="68.588" r="2.2133" fill-opacity=".99814"/>
+  <circle cx="161.96" cy="68.588" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="161.96" cy="90.721" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(132.99 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="161.96" cy="134.99" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="161.96" cy="157.12" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="184.1" cy="68.588" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(155.12 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(155.12 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(155.12 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="184.1" cy="157.12" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(177.26)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(177.26 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="206.23" cy="112.85" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(177.26 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(177.26 88.533)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="228.36" cy="68.588" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(199.39 22.133)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(199.39 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <use transform="translate(199.39 66.4)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="228.36" cy="157.12" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="250.5" cy="68.588" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="250.5" cy="90.721" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <use transform="translate(221.52 44.266)" width="100%" height="100%" xlink:href="#path833"/>
+  <circle cx="250.5" cy="134.99" r="2.2133" fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6"/>
+  <circle cx="250.5" cy="157.12" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <g fill="none" stroke="#000" stroke-width=".765">
+   <path d="m161.96 112.85 44.266-44.266 44.266 44.266-44.266 44.266-44.266-44.266"/>
+   <path d="m184.1 90.721h44.266v44.266h-44.266z"/>
+   <path d="m206.23 90.721 22.133 22.133-22.133 22.133-22.133-22.133z"/>
+  </g>
+  <circle cx="161.96" cy="201.58" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <circle cx="161.96" cy="223.71" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <g fill-opacity=".99814">
+   <circle cx="161.96" cy="245.85" r="2.2133"/>
+   <circle cx="161.96" cy="267.98" r="2.2133"/>
+   <circle cx="184.1" cy="201.58" r="2.2133"/>
+   <circle cx="184.1" cy="223.71" r="2.2133"/>
+  </g>
+  <g fill-opacity=".99814">
+   <circle cx="184.1" cy="245.85" r="2.2133" fill="#f00"/>
+   <circle cx="184.1" cy="267.98" r="2.2133"/>
+   <circle cx="206.23" cy="201.58" r="2.2133" fill="#f00"/>
+   <circle cx="206.23" cy="223.71" r="2.2133"/>
+   <circle cx="206.23" cy="245.85" r="2.2133"/>
+  </g>
+  <g fill="#f00" fill-opacity=".99814">
+   <circle cx="206.23" cy="267.98" r="2.2133"/>
+   <circle cx="228.36" cy="201.58" r="2.2133"/>
+   <circle cx="228.36" cy="223.71" r="2.2133"/>
+  </g>
+  <circle cx="228.36" cy="245.85" r="2.2133" fill-opacity=".99814"/>
+  <circle cx="228.36" cy="267.98" r="2.2133" fill="#f00" fill-opacity=".99814"/>
+  <path id="path1637" d="m73.239 245.85-1e-6 -41.438" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000" stroke-dasharray="2.295, 0.765" stroke-width=".765"/>
+  <use id="use1825" transform="rotate(90 73.239 245.85)" width="100%" height="100%" xlink:href="#path1637"/>
+  <use transform="translate(110.86)" width="100%" height="100%" xlink:href="#use1825"/>
+  <use transform="translate(110.86)" width="100%" height="100%" xlink:href="#path1637"/>
+  <use transform="rotate(90 128.67 301.28)" width="100%" height="100%" xlink:href="#path951"/>
+ </g>
+</svg>
