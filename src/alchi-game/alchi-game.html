@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="de">
+
+<!--
+  TODO embed font (see alchi-book)
+-->
+
+<head>
+
+<title>alchi-game</title>
+
+<script>
+
+  //var forceLanguage = 'de';
+  var forceLanguage = null;
+
+  const metadata = {};
+  //metadata.defaultLanguage = 'en';
+  metadata.defaultLanguage = document.querySelector(':root').lang;
+  metadata.languages = 'de';
+
+
+
+  // sync with /scripts/translate.js
+  const langMap = {
+    zh: 'zh-CN', // simplified chinese
+  };
+
+  function getLang(str) {
+    if (str && str in langMap) return langMap[str];
+    return str;
+  }
+
+
+  function isRtlLang(lang) {
+    return lang == 'fa'; // TODO more ...
+  }
+
+  var current_lang = metadata.defaultLanguage; // global state
+  const languages = new Set(metadata.languages.split(' '));
+
+  function set_language(lang) {
+
+    if (!lang) lang = metadata.defaultLanguage;
+
+    // lang can be 'en-US' or similar from browser language settings
+    if (!languages.has(lang)) {
+      const shortLang = (lang || '').split('-')[0];
+      if (languages.has(shortLang)) lang = shortLang;
+      else lang = 'en'; // fallback
+    }
+
+    if (current_lang == lang) return; // noop
+
+    current_lang = lang;
+
+    // right to left -- left to right
+    document.dir = isRtlLang(lang) ? 'rtl' : 'ltr';
+
+    // language code as used in html sources
+    // e.g. en, de, ru, zh-CN, ...
+    const fullLang = getLang(lang);
+
+    //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+    console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
+    document.querySelector('#lang-code').innerHTML = fullLang;
+
+    document.querySelectorAll('.langs').forEach(fragment => {
+      // TODO more efficient?
+      // only change css class of body -> show/hide lang fragments with css
+      let langFound = 0;
+      Array.prototype.forEach.apply(fragment.children, [node => {
+        if (node.lang) {
+          if (node.lang == fullLang) {
+            node.classList.remove('hidden');
+            langFound++;
+          }
+          else node.classList.add('hidden');
+        }
+      }]);
+      if (langFound == 0) {
+        // set default lang
+        Array.prototype.forEach.apply(fragment.children, [node => {
+          if (node.lang) {
+            if (node.lang == metadata.defaultLanguage) {
+              node.classList.remove('hidden');
+              langFound++;
+            }
+            else node.classList.add('hidden');
+          }
+        }]);
+      }
+      else if (langFound > 1) {
+        console.warn(`found multiple translations for lang "${lang}" in`, fragment);
+      }
+
+    });
+
+    // TODO add .language-menu
+    //document.querySelectorAll('.language-menu button').forEach(b => b.classList.remove('active'));
+    //document.querySelector('#language-button-'+lang).classList.add('active');
+
+  }
+
+
+
+
+
+
+
+  window.onload = function() {
+    console.log('load done');
+    console.log(`metadata.defaultLanguage = ${metadata.defaultLanguage}`);
+
+    if (0) {
+      // loop languages
+      function next_lang() {
+        set_language(current_lang == 'en' ? 'de' : 'en');
+        setTimeout(next_lang, 4000); // recursion
+      }
+      setTimeout(next_lang, 4000);
+    }
+
+    // TODO add language menu
+    //set_language('en');
+    //set_language('hu');
+    if (forceLanguage) set_language(forceLanguage);
+    else document.querySelector('#lang-code').innerHTML = metadata.defaultLanguage;
+  };
+
+</script>
+
+<style>
+
+  @page {
+    /* print settings */
+    /* note: set scale=default */
+    margin: 0; /* no print margin */
+    size: A4 portrait;
+  }
+  @media print {
+    .page {
+      /* hide outline for printing */
+      /*outline: none !important;*/
+    }
+  }
+  :root {
+    font-family: sans-serif;
+    font-size: 10.5pt; /* = 1rem */
+  }
+  body {
+    margin: 0;
+  }
+  .page {
+    margin: 0; padding: 10mm;
+    width: 210mm; height: 297mm;
+    box-sizing: border-box;
+    outline: solid 1px lightgrey;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .page > .page-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .page > .page-footer {
+  }
+  div.para {
+    line-height: 125%;
+    margin-block: 0.5em;
+  }
+  hr {
+    margin-block: 0.5em;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0;
+  }
+  .test-table > tbody > tr > td {
+    line-height: 125%;
+  }
+  .test-table > tbody > tr > td:nth-child(2),
+  .test-table > tbody > tr > td:nth-child(3),
+  .test-table > tbody > tr > td:nth-child(4),
+  .test-table > tbody > tr > td:nth-child(5),
+  .test-table > tbody > tr > td:nth-child(6) {
+    border: solid 1px black;
+    width: 1em;
+    text-align: center;
+  }
+  .test-table > tbody > tr > td:first-child {
+    text-align: right;
+    padding-right: 0.5em;
+  }
+  .test-table > tbody > tr > td:last-child {
+    text-align: left;
+    padding-left: 0.5em;
+  }
+
+  table.friend-circle td {
+    padding: 1em;
+    text-align: center;
+    vertical-align: center;
+  }
+  table.friend-circle {
+    /* note: background svg is not working with darkreader */
+    /* FIXME: background svg is rendered blurry in chrome print, missing completely in firefox print */
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="20" stroke-width="1" fill="none" stroke="black" /></svg>');
+    background-position: center;
+  }
+
+  div[lang] {
+    display: inline;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .strong {
+    font-weight: bold;
+  }
+
+  div.map36.e_bxface {
+    display: grid;
+    width: calc(6 * 70px + 5 * 20px); /* = 520 px */
+    grid-gap: 20px;
+    grid-template-columns: auto auto auto auto auto auto;
+    /*grid-template-rows: auto auto auto auto auto;*/
+    font-size: 0.8rem;
+    margin: 10px;
+  }
+  .map-container {
+    float: right;
+    margin-right: -10px
+  }
+  .map-container > .title {
+    text-align: center;
+  }
+  .map-container > .map-shapes {
+    margin: 10px;
+  }
+  div.map36.e_bxface > div {
+    /* too dark
+    outline: solid 1px #606060;
+    */
+    border: solid 1px #808080;
+    margin: -1px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+  }
+  div.map36.e_bxface > div > div {
+    transform: rotate(-90deg);
+    transform-origin: 35px 34px;
+    /*
+    outline: solid 1px red;
+    */
+    margin-right: -50px;
+    padding-top: 2px;
+    padding-left: 2px;
+    width: 68px;
+    height: 18px;
+    box-sizing: border-box;
+  }
+  div.map36.e_bxface img {
+    /* fix print layout in chrome */
+    max-height: 70px;
+  }
+  div.map36.e_bxface > div {
+    width: 70px;
+    height: 70px;
+  }
+
+
+</style>
+
+</head>
+
+<body>
+
+<!-- page 1 -->
+<div class="page">
+<div class="page-content">
+
+  <table width="100%">
+    <tr>
+      <td class="langs">
+        <div lang="de">
+          Hey!
+          Hast du Lust auf ein Spiel?
+        </div>
+      </td>
+      <td style="text-align: right">
+        <span id="version">2021-06-26</span>
+        <span id="lang-code"></span>
+      </td>
+    </tr>
+  </table>
+  <div class="langs para">
+    <div lang="de">
+      Vielleicht. Welches Spiel?
+      ← Das Spiel heisst "Kleinstaat".
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Kleinstaat?
+      ← Ja, hab ich erfunden, kennt kein Mensch.
+      Geht ähnlich wie das Spiel "Stille Post".
+      (Jeder flüstert eine Nachricht an seinen Nächsten,
+      und der Letzte muss laut sagen, was er verstanden hat.)
+      Das Ziel von Stille Post sind lustige Missverständnisse.
+      Kleinstaat ist das Gegenteil:
+      Das Ziel vom Kleinstaat-Spiel ist bessere Kommunikation.
+      Jeder soll reden und verstanden werden,
+      und jeder soll hören und verstehen.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Also einfach miteinander Reden?
+      ← Damit zwei Menschen gut miteinander Reden können,
+      brauchen wir zwei Dinge:
+      1. Die zwei Menschen müssen gut zusammen passen.
+      2. Die zwei Menschen brauchen die richtige Technik zum Reden und Hören.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Gut zusammen passen?
+      ← Dafür brauchen wir einen gute gute Analyse (Persönlichkeits-Test)
+      und eine gute Synthese (Kompatibilität zwischen verschiedenen Persönlichkeiten).
+      Beide Teile sind überraschend kompliziert.
+      Eine mögliche Synthese zeigt mein Buch "Pallas - Aufbau von Kleinstaaten".
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Die richtige Technik?
+      ← Hier (beim Kleinstaat-Spiel) geht es vor allem um Punkt zwei:
+      Die richtige Technik zum Reden und Hören.
+      (Weil Irgendwo muss ich anfangen ...)
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Warum vier Spieler?
+      ← Ich glaube:
+      In der echten Welt sind Dialoge eine Ausnahme,
+      und die meisten Menschen führen Monologe.
+      Das heisst:
+      Wenn zwei Menschen miteinander reden,
+      dann gibt es eine natürliche Arbeitsteilung
+      zwischen Redner und Hörer.
+      Ein Mensch wird mehr Reden,
+      der andere Mensch wird mehr Hören.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Einfach die Rollen tauschen?
+      ← In einem Monolog ist ein Rollentausch nicht möglich,
+      und produziert viele Missverständnisse.
+      Sprich: "Mit Tauben soll man nicht Reden."
+      In einem Kleinstaat nutzen wir <b>gemeinsame Freunde</b>,
+      um trotzdem mit den "Tauben" zu reden.
+      Man könnte auch sagen "Gossip mit System",
+      oder "über Andere reden, aber richtig",
+      oder "Monolog und Feedback"
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      <!-- game states: state 1 vs state 2 -->
+      <svg style="float: right; margin: 0.5em" margin: 0.5em" width="24em" viewBox="0 0 500 280">
+        <defs>
+          <marker id="Arrow1Mend" overflow="visible" orient="auto">
+            <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"></path>
+          </marker>
+        </defs>
+        <g transform="translate(10 10)">
+          <!-- total width 570 -->
+          <!-- width 240 -->
+          <g transform="translate(120 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+            <rect x="-120" y="-90" width="240" height="180" fill="none" stroke="#606060" stroke-width="1" />
+            
+            <circle cx="70" cy="35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+            <circle cx="-70" cy="-35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+            <circle cx="-70" cy="35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+            <circle cx="70" cy="-35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+
+            <text fill="#000" x="70" y="35">c</text>
+            <text fill="#000" x="-70" y="-35">a</text>
+            <text fill="#000" x="-70" y="35">b</text>
+            <text fill="#000" x="70" y="-35">d</text>
+
+            <text fill="#000" x="70" y="65">Redner</text>
+            <text fill="#000" x="-70" y="-65">Redner</text>
+            <text fill="#000" x="-70" y="65">Hörer</text>
+            <text fill="#000" x="70" y="-65">Hörer</text>
+
+            <text fill="#000" x="0" y="115">Zustand 1</text>
+
+            <path stroke="#000" stroke-width="2" d="M 70 15 l 0 -30" marker-end="url(#Arrow1Mend)" />
+            <path stroke="#000" stroke-width="2" d="M -70 -15 l 0 30" marker-end="url(#Arrow1Mend)" />
+          </g>
+          <!-- width 60 -->
+          <g transform="translate(270 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+            <path stroke="#000" stroke-width="2" d="M -20 -40 l 40 0" marker-end="url(#Arrow1Mend)" />
+            <path stroke="#000" stroke-width="2" d="M 20 40 l -40 0" marker-end="url(#Arrow1Mend)" />
+          </g>
+          <!-- width 180 -->
+          <g transform="translate(390 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+
+            <rect x="-90" y="-120" width="180" height="240" fill="none" stroke="#606060" stroke-width="1" />
+            
+              <circle cx="35" cy="70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+              <circle cx="-35" cy="-70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+              <circle cx="-35" cy="70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+              <circle cx="35" cy="-70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+
+            <text fill="#000" x="35" y="70">c</text>
+            <text fill="#000" x="-35" y="-70">a</text>
+            <text fill="#000" x="-35" y="70">b</text>
+            <text fill="#000" x="35" y="-70">d</text>
+
+            <text fill="#000" x="40" y="100">Hörer</text>
+            <text fill="#000" x="-40" y="-100">Hörer</text>
+            <text fill="#000" x="-40" y="100">Redner</text>
+            <text fill="#000" x="40" y="-100">Redner</text>
+
+            <text fill="#000" x="0" y="145">Zustand 2</text>
+
+            <path stroke="#000" stroke-width="2" d="M -15 70 l 30 0" marker-end="url(#Arrow1Mend)" />
+            <path stroke="#000" stroke-width="2" d="M 15 -70 l -30 0" marker-end="url(#Arrow1Mend)" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Wie geht Kleinstaat?
+      ← Vier Personen bilden ein Quadrat.
+      Jeder spielt zwei Rollen: Redner und Hörer.
+      Das Spiel hat zwei Zustände, siehe Bild.
+      Im Zustand 1 gilt: AC spielen Redner, BD spielen Hörer.
+      Im Zustand 2 wechseln die Rollen:
+      BD spielen Redner, AC spielen Hörer.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Pfeile?
+      ← Die Pfeile gehen immer von Redner zu Hörer.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Redner und Hörer?
+      ← Ein Redner redet viel, ein Hörer redet wenig.
+      Ein Redner spricht viele lange Sätze, ein Hörer spricht kurze Sätze.
+      Auch diese Anleitung ist ein Monolog zwischen mir und dir.
+      Ich bin der Redner, der in langen Sätzen ein Thema beschreibt.
+      Du bist der Hörer, der mit wenigen Worten das nächste Thema vorgibt.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Also Viel-Reden und Wenig-Reden?
+      ← Quantität, aber auch Qualität der Kommunikation ist schief:
+      Ein Hörer kann mühelos dem Redner zuhören, den Redner verstehen, den Redner ernst nehmen.
+      Ein Redner kann mühelos den Hörer beeinflussen, den Hörer überreden, den Hörer überzeugen (Wortführer).
+      Umgekehrt gilt:
+      Alles was der Hörer sagt,
+      wird vom Redner nicht ernst genommen,
+      wird abgewehrt,
+      wird dann erst recht falsch gemacht,
+      nur um dem Hörer zu zeigen:
+      "du hast mir nichts zu sagen!"
+      Ein Hörer kann seine Gedanken/Gefühle besser ausdrücken beim Schreiben (Schriftführer),
+      oder mit dem Finger drauf zeigen (Zeiger, stumm, unmündig).
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Puuh. Und wo bleibt das Spiel?
+      ← Wenn zwei Spieler sich noch nicht kennen,
+      dann werden sie am Anfang die falschen Rollen spielen:
+      <!--
+        dann machen sie am Anfang einen Rollentausch:
+      -->
+      Redner spielt Hörer, Hörer spielt Redner.
+      In dieser Phase vom Spiel
+      soll der Hörer erzählen, was er später hören will.
+      Der Redner unterbricht den Hörer nur kurz,
+      um herauszufinden:
+      Welche Themen findet der Hörer interessant?
+      Diese Anfangs-Phase geht so lange,
+      bis dem Hörer nichts mehr einfällt.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Wie lange dauert dieses Kennenlernen?
+      ← Keine Ahnung.
+      So lange wie es dauern muss.
+      Irgendwas zwischen mehrere Stunden und wenige Tage.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Und dann?
+      ← Dann kommt die Regel-Phase vom Spiel:
+      Der Redner spielt Redner,
+      der Hörer spielt Hörer.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      Wann wechselt der Zustand?
+      ← Regelmäßig.
+      Ein Zustand dauert vielleicht zwei bis fünf Minuten,
+      vielleicht aber auch mehrere Stunden.
+      Das müssen die vier Spieler selber klären.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Wechselt der Zustand auch in der Anfangs-Phase?
+      ← Keine Ahnung.
+      Das müssen die Spieler selbst herausfinden.
+      Das Kleinstaat-Spiel habe ich gerade erst erfunden,
+      es gibt noch keine Erfahrungswerte.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Wer schreibt hier? ← Milan Hauth, Element Feuer, Jägerstr. 10, Trostberg
+      <br>
+      Tel +49 151 7205 9978, Mail <tt>milahu@protonmail.com</tt>,
+      Web <tt>github.com/milahu/alchi</tt>, Lizenz <tt>CC0-1.0</tt>
+    </div>
+    <div lang="en" class="hidden" rev="de#KGB9ooGI">
+      Who is the writer? ← Milan Hauth, Element Fire, Jägerstr. 10, Trostberg, Germany
+      <br>
+      Tel +49 151 7205 9978, Mail <tt>milahu@protonmail.com</tt>,
+      Web <tt>github.com/milahu/alchi</tt>, License <tt>CC0-1.0</tt>
+    </div>
+  </div>
+
+
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+<!-- page 2 -->
+<div class="page">
+<div class="page-content">
+
+  <div class="langs para">
+    <div lang="de">
+      Du siehst aus wie:
+      <br>
+      Willst du wissen was das heisst?
+      Die "Landkarte der 16 Menschen" zeigt deine vier Freunde:
+      <br>
+      Oben + gleiches Alter + anderes Geschlecht:
+      <br>
+      Unten + gleiches Alter + anderes Geschlecht:
+      <br>
+      Links + gleiches Geschlecht + anderes Alter:
+      <br>
+      Rechts + gleiches Geschlecht + anderes Alter:
+      <br>
+      Und die Landkarte zeigt deine zwei Subtypen ("ein Schritt weiter"):
+      <br>
+      Waagrecht (2x links = 2x rechts):
+      <br>
+      Senkrecht (2x hoch = 2x runter):
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Welche Inhalte sollen wir bereden?
+      ← Aufbau von Kleinstaaten:
+      Home Schooling (Lerngruppen, echte Privatschulen, private Kindergärten),
+      Selbstverwaltung (Selbstorganisation, organisiertes Privatleben),
+      Wohngemeinschaften (Wohnraum effizient nutzen, Fernbindungen meiden),
+      Selbstversorgung (Pflanzen und Tiere, Fernhandel meiden),
+      Selbstverteidigung (Kampfsport),
+      Selbstvertretung (Diplomatie, Fernhandel).
+    </div>
+  </div>
+
+  <!--
+  <div class="langs para">
+    <div lang="de">
+      Was ist schlecht an Großstaaten?
+      ← Entkopplung von Forschung und Produktion (Einseitigkeit, keine Symbiose),
+      zu wenig Partizipation (Fassaden-Demokratie, Fremdherrschaft, Fernsteuerung),
+      zu lange Dienstwege (Spiel auf Zeit, Selektion für Geduld),
+      Machtmissbrauch (Lügen, Geheimpolitik, Organized Crime, White-Collar Crime),
+      Einseitigkeit (geistige Inzucht, Corpsgeist, Vorurteile, falsche Erwartungen),
+      für Alle frustrierend (jeder ist gefangen im System, jeder hat zu wenig Kontrolle),
+      Sklavenmoral (Schönreden von Schwäche, Untertanen werden dumm und schwach gehalten,
+      damit die "Herren" leichter ausbeuten können),
+      Masse statt Klasse (Quantität statt Qualität, Einigung auf niedrigstem Niveau),
+      Kleinstaaten sind Privileg (Mehrheit soll im Chaos leben, Melting Pot)
+
+    </div>
+  </div>
+  -->
+
+  <!-- TODO why need margin-right? -->
+  <div class="map-container">
+
+    <div class="title">
+      Landkarte der 16 Menschen (mit Wiederholung → 36 Menschen)
+    </div>
+
+    <!-- map shapes: squares and crosses -->
+    <svg class="map-shapes" style="position: absolute" width="520px" viewBox="20 20 520 520">
+      <!--
+        <rect x="0" y="0" width="560" height="560" fill="none" stroke="black" stroke-width="2" />
+      -->
+      <g fill="none" stroke="black" stroke-width="1">
+        <!-- squares -->
+        <rect x="182" y="182" width="16" height="16" />
+        <rect x="362" y="182" width="16" height="16" />
+        <rect x="362" y="362" width="16" height="16" />
+        <rect x="182" y="362" width="16" height="16" />
+        <!-- crosses -->
+        <path transform="translate(92 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(92 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(92 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+
+        <path transform="translate(272 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(272 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(272 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+
+        <path transform="translate(452 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(452 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+        <path transform="translate(452 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
+      </g>
+    </svg>
+
+    <div class="map36 e_bxface">
+
+      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
+      <div><div>A4. Kyle</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1. Bender</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
+
+      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2. Meg</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3. Francine</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
+
+      <div><div>A3. Bart</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2. Homer</div><img src="images/d2-homer.webp"/></div>
+      <div><div>A1. Kenny</div><img src="images/a1-kenny.webp"/></div>
+      <div><div>D4. Rick</div><img src="images/d4-rick-sanchez.webp"/></div>
+      <div><div>A3. Bart</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2. Homer</div><img src="images/d2-homer.webp"/></div>
+
+      <div><div>C1. Bean</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4. Lois</div><img src="images/b4-lois.webp"/></div>
+      <div><div>C3. Heidi</div><img src="images/c3-heidi-turner.webp"/></div>
+      <div><div>B2. Sharon</div><img src="images/b2-sharon-marsh.webp"/></div>
+      <div><div>C1. Bean</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4. Lois</div><img src="images/b4-lois.webp"/></div>
+
+      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
+      <div><div>A4. Kyle</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1. Bender</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
+
+      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2. Meg</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3. Francine</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
+
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Welche Menschen sind kompatibel?
+      ← Die lange Antwort gibt mein Buch "Pallas - Aufbau von Kleinstaaten".
+      Die kurze Antwort:
+      Angenommen, wir haben einen guten Persönlichkeits-Test,
+      und wir haben unsere Mitmenschen in vier Schubladen sortiert:
+      Feuer Erde Luft Wasser.
+      Manche Vierer-Gruppen brauchen alle vier Elemente,
+      andere Vierer-Gruppen brauchen nur zwei Elemente.
+      Insgesamt sehe ich vier Vierer-Gruppen.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Vierer-Gruppe 1?
+      ← Die vier Spieler haben gleiches Geschlecht,
+      und gemischtes Alter (2 Junge + 2 Alte).
+      Alle vier Elemente werden gebraucht.
+      Elemente im Kreis: 1-2-3-4-[1].
+      Beispiel: 4 Männer, E13 sind jünger, E24 sind älter (Elemente 2 und 4).
+      Beispiel: E1234 = Marge Meg Francine Lisa
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Vierer-Gruppe 2?
+      ← Die vier Spieler haben gleiches Alter,
+      und gemischtes Geschlecht (2 Männer + 2 Frauen).
+      Alle vier Elemente werden gebraucht.
+      Elemente im Kreis: 1-2-4-3-[1].
+      Beispiel: E1243 = Bender Sharon Rick Francine
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Vierer-Gruppe 3?
+      ← Die vier Spieler haben gemischtes Geschlecht (2 Männer + 2 Frauen),
+      und gemischtes Alter (2 Junge + 2 Alte).
+      Alle vier Elemente werden gebraucht.
+      Elemente im Kreis: 1-3-2-4-[1].
+      Beispiel: E1324 = Kenny Heidi Sharon Rick.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      Vierer-Gruppe 4?
+      ← Die vier Spieler haben gemischtes Geschlecht (2 Männer + 2 Frauen),
+      und gemischtes Alter (2 Junge + 2 Alte).
+      Zwei Elemente werden gebraucht.
+      Elemente im Kreis: 1-2-1-2-[1] oder 3-4-3-4-[3].
+      Beispiel: E1212 = Marge Homer Kenny Meg.
+      Beispiel: E3434 = Peter Lois Heidi Kyle.
+    </div>
+  </div>
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+
+</body>
+</html>
+
