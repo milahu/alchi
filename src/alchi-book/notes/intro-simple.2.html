@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="de">
+
+<!--
+  TODO embed font (see alchi-book)
+-->
+
+<head>
+
+<title>alchi-flyer</title>
+
+<script>
+
+  //var forceLanguage = 'de';
+  var forceLanguage = null;
+
+  const metadata = {};
+  //metadata.defaultLanguage = 'en';
+  metadata.defaultLanguage = document.querySelector(':root').lang;
+  metadata.languages = 'de';
+
+
+
+  // sync with /scripts/translate.js
+  const langMap = {
+    zh: 'zh-CN', // simplified chinese
+  };
+
+  function getLang(str) {
+    if (str && str in langMap) return langMap[str];
+    return str;
+  }
+
+
+  function isRtlLang(lang) {
+    return lang == 'fa'; // TODO more ...
+  }
+
+  var current_lang = metadata.defaultLanguage; // global state
+  const languages = new Set(metadata.languages.split(' '));
+
+  function set_language(lang) {
+
+    if (!lang) lang = metadata.defaultLanguage;
+
+    // lang can be 'en-US' or similar from browser language settings
+    if (!languages.has(lang)) {
+      const shortLang = (lang || '').split('-')[0];
+      if (languages.has(shortLang)) lang = shortLang;
+      else lang = 'en'; // fallback
+    }
+
+    if (current_lang == lang) return; // noop
+
+    current_lang = lang;
+
+    // right to left -- left to right
+    document.dir = isRtlLang(lang) ? 'rtl' : 'ltr';
+
+    // language code as used in html sources
+    // e.g. en, de, ru, zh-CN, ...
+    const fullLang = getLang(lang);
+
+    //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+    console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
+    document.querySelector('#lang-code').innerHTML = fullLang;
+
+    document.querySelectorAll('.langs').forEach(fragment => {
+      // TODO more efficient?
+      // only change css class of body → show/hide lang fragments with css
+      let langFound = 0;
+      Array.prototype.forEach.apply(fragment.children, [node => {
+        if (node.lang) {
+          if (node.lang == fullLang) {
+            node.classList.remove('hidden');
+            langFound++;
+          }
+          else node.classList.add('hidden');
+        }
+      }]);
+      if (langFound == 0) {
+        // set default lang
+        Array.prototype.forEach.apply(fragment.children, [node => {
+          if (node.lang) {
+            if (node.lang == metadata.defaultLanguage) {
+              node.classList.remove('hidden');
+              langFound++;
+            }
+            else node.classList.add('hidden');
+          }
+        }]);
+      }
+      else if (langFound > 1) {
+        console.warn(`found multiple translations for lang "${lang}" in`, fragment);
+      }
+
+    });
+
+    // TODO add .language-menu
+    //document.querySelectorAll('.language-menu button').forEach(b => b.classList.remove('active'));
+    //document.querySelector('#language-button-'+lang).classList.add('active');
+
+  }
+
+
+
+
+
+
+
+  window.onload = function() {
+    console.log('load done');
+    console.log(`metadata.defaultLanguage = ${metadata.defaultLanguage}`);
+
+    if (0) {
+      // loop languages
+      function next_lang() {
+        set_language(current_lang == 'en' ? 'de' : 'en');
+        setTimeout(next_lang, 4000); // recursion
+      }
+      setTimeout(next_lang, 4000);
+    }
+
+    // TODO add language menu
+    //set_language('en');
+    //set_language('hu');
+    if (forceLanguage) set_language(forceLanguage);
+    else document.querySelector('#lang-code').innerHTML = metadata.defaultLanguage;
+  };
+
+</script>
+
+<style>
+
+  @page {
+    /* print settings */
+    /* note: set scale=default */
+    margin: 0; /* no print margin */
+    size: A4 portrait;
+  }
+  @media print {
+    .page {
+      /* hide outline for printing */
+      /*outline: none !important;*/
+    }
+  }
+  :root {
+    font-family: sans-serif;
+    font-size: 10.5pt; /* = 1rem */
+  }
+  body {
+    margin: 0;
+  }
+  .page {
+    margin: 0; padding: 10mm;
+    width: 210mm; height: 297mm;
+    box-sizing: border-box;
+    outline: solid 1px lightgrey;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    text-align: justify;
+
+    padding-left: 10mm; /* druck-rand */
+    padding-right: 30mm; /* korrektur-rand */
+  }
+  .page > .page-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .page > .page-footer {
+  }
+  div.para {
+    line-height: 125%;
+    /*margin-block: 0.5em;*/
+    display: inline;
+    margin-right: 1em;
+  }
+  div.nowrap {
+    display: inline;
+    white-space: nowrap;
+  }
+  hr {
+    /*margin-block: 0.5em;*/
+    border: none;
+    border-bottom: solid 0.5pt black;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0;
+  }
+  .test-table > tbody > tr > td {
+    line-height: 125%;
+  }
+  .test-table > tbody > tr > td:nth-child(2),
+  .test-table > tbody > tr > td:nth-child(3),
+  .test-table > tbody > tr > td:nth-child(4),
+  .test-table > tbody > tr > td:nth-child(5),
+  .test-table > tbody > tr > td:nth-child(6) {
+    border: solid 1px black;
+    width: 1em;
+    text-align: center;
+  }
+  .test-table > tbody > tr > td:first-child {
+    text-align: right;
+    padding-right: 0.5em;
+  }
+  .test-table > tbody > tr > td:last-child {
+    text-align: left;
+    padding-left: 0.5em;
+  }
+
+  table.friend-circle td {
+    padding: 1em;
+    text-align: center;
+    vertical-align: center;
+  }
+  table.friend-circle {
+    /* note: background svg is not working with darkreader */
+    /* FIXME: background svg is rendered blurry in chrome print, missing completely in firefox print */
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="20" stroke-width="1" fill="none" stroke="black" /></svg>');
+    background-position: center;
+  }
+
+  div[lang] {
+    display: inline;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .strong {
+    font-weight: bold;
+  }
+
+  :root {
+    --map-image-width: 50px;
+    --map-image-spacing: 10px;
+    --map-image-aspect: calc(50 / 70);
+    --map-font-size: 0.8rem;
+    --map36-width: calc(6 * var(--map-image-width) + 5 * var(--map-image-spacing));
+  }
+
+  div.map36.e_bxface {
+    display: grid;
+    width: var(--map36-width); /* = 520 px */
+    grid-gap: var(--map-image-spacing);
+    grid-template-columns: auto auto auto auto auto auto;
+    font-size: var(--map-font-size);
+    margin: 10px; /* todo ? */
+  }
+  .map-container {
+    float: right;
+    /*margin-right: -50px; */
+  }
+  .map-container > .title {
+    text-align: center;
+  }
+  .map-container > .map-shapes {
+    margin: 10px;
+  }
+  div.map36.e_bxface > div {
+    /* too dark
+    outline: solid 1px #606060;
+    */
+    border: solid 1px #808080;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+  }
+  div.map36.e_bxface > div > div {
+    /*
+    transform: rotate(-90deg);
+    transform-origin: calc(var(--map-image-width) / 2) calc(var(--map-image-width) / 2);
+    margin-right: -50px;
+    padding-top: 2px;
+    padding-left: 2px;
+    width: calc(var(--map-image-width) + 15px);
+    height: 18px;
+    box-sizing: border-box;
+    */
+    /** /
+    outline: solid 1px red;
+    /**/
+    position: absolute;
+    bottom: 2px; left: 2px;
+  }
+  div.map36.e_bxface img {
+    /* fix print layout in chrome */
+    max-height: var(--map-image-width);
+    margin-left: calc(var(--map-image-width) * (1 - var(--map-image-aspect)) + 2px);
+  }
+  div.map36.e_bxface > div {
+    width: var(--map-image-width);
+    height: var(--map-image-width);
+    box-sizing: border-box;
+  }
+
+  .lineheight150 {
+    line-height: 150%;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- page 1 -->
+<div class="page">
+<div class="page-content">
+
+  <div class="langs para">
+    <div lang="de">
+      einladung zum PROJEKT KLEINSTAAT.
+      version <span id="version">2021-07-15</span> <span id="lang-code"></span>.
+    </div>
+  </div>
+  <div class="langs para">
+    <div lang="de">
+      was? wir erforschen den <div class="nowrap">aufbau von kleinstaaten</div>.
+      wann? sommerferien 2021 (1.8. bis 12.9.).
+      <div class="nowrap">wo? irgendwo in trostberg</div>,
+        genaue treffpunkte müssen wir noch ausmachen.
+      <div class="nowrap">wer? milan hauth</div>,
+      <div class="nowrap">jägerstraße 10</div>,
+      <div class="nowrap">+49 151 7205 9978</div>,
+      <code>milahu@gmail.com</code>,
+      <code>github.com/milahu/alchi</code>
+      zielgruppe? vor allem junge menschen (alter 10 bis 30),
+      weil junge menschen können leichter etwas neues lernen.
+    </div>
+  </div>
+
+  <hr><!-- ============================================================ -->
+
+  <div class="langs para">
+    <div lang="de">
+      <div class="nowrap">was heisst KLEINSTAAT?</div>
+      1. eine gruppe von vier oder acht oder sechzehn menschen.
+      2. die menschen müssen bestimmte eigenschaften erfüllen, damit sie zusammen passen.
+      3. die menschen müssen bestimmte paare bilden.
+      4. die menschen müssen auf bestimmten wegen miteinander reden und arbeiten.
+      <div class="nowrap">5. arbeitsteilung</div>: jeder ist arbeit-nehmer und arbeit-geber.
+      <div class="nowrap">6. die menschen</div> sollen miteinander wohnen, lernen, arbeiten.
+      <!--
+        ziel ist ein GESCHLOSSENES system,
+        in dem ALLE abhängigkeiten aufgelöst sind.
+        -> maximale autarkie, unabhängigkeit, selbstversorgung, selbstverwaltung,
+        keine abhängigkeit von import / export / fernhandel / fremderrschaft.
+      -->
+    </div>
+  </div>
+
+  <hr><!-- ============================================================ -->
+
+  <div class="langs para">
+    <div lang="de">
+      aufgabe 1: aktiv lesen:
+      1. mein text ist nur ein anfang,
+      und ich brauche deine hilfe (feedback, fragen, ideen),
+      damit ich einen besseren text schreiben kann
+      2. nimm einen stift
+      3. lies meinen text
+      (die reihenfolge ist egal, du kannst auch teile überspringen)
+      4. markiere die text-stellen, die du NICHT verstehst
+      (ja, du darfst bei meinem text reinschreiben)
+      5. wenn dir eine frage oder idee einfällt, dann schreibe sie SOFORT dazu
+      (sonst wirst du sie vergessen und nie wieder finden)
+      (was fehlt? was können wir besser schreiben?)
+      6. ALLE fragen und ideen sind wichtig
+      7. ob eine frage oder idee gut oder schlecht ist, das sehen wir SPÄTER
+      8. nutze deine freunde, um den text zu verstehen:
+      "<div class="nowrap">verstehst du das?</div> erklär mir das mal ..."
+    </div>
+  </div>
+
+  <hr><!-- ============================================================ -->
+
+  <div class="langs para">
+    <div lang="de">
+      aufbau von kleinstaaten.
+
+      wer bin ich?
+      wer sind meine freunde?
+      was sollen wir tun?
+
+      ich glaube:
+    </div>
+  </div>
+
+  <div class="para langs">
+    <div lang="de">
+      1.&nbsp;jeder mensch hat zwei hälften: körper und geist.
+      (aussenseite und innenseite, körper und gehirn)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      2.&nbsp;diese zwei hälften sind gleich wichtig.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      3.
+      wir sagen:
+      ein körper "verkörpert" einen geist.
+      ein geist "wohnt" in einem körper.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      4.
+      jeder mensch braucht ECHTE freunde.
+      ohne freunde wird jeder mensch krank oder nutzlos.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      5.
+      jeder mensch kann andere menschen nur dann nutzen
+      (als freunde haben, als arbeit-geber oder arbeit-nehmer),
+      wenn die zwei menschen zusammen passen,
+      also wenn die körper und geister zusammen passen.
+      vergleich: zwei puzzle-teile können nur dann nebeneinander liegen,
+      wenn ihre stecker und buchsen zusammen passen.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      6.
+      jeder mensch kann andere geister nur dann nutzen,
+      wenn sie im "richtigen" körper wohnen.
+    </div>
+  </div>
+
+  <div class="para langs">
+    <div lang="de">
+      7.
+      was passiert, wenn zwei menschen NICHT zusammen passen?
+      dann entstehen immer wieder Missverständnisse, streit, schlechte stimmung,
+      <div class="nowrap">"psychische" probleme</div> (die aber eigentlich "soziale" probleme sind),
+      scheinbar grundlose trauer, frust, wut, blockaden, schwäche.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      8.
+      welche körper und geister sind "richtig"?
+      das ist für jeden mensch anders (subjektives weltbild).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      9.
+      aber ich glaube: wir können alle subjektiven weltbilder
+      zusammenfassen zu EINEM "system" (OBJEKTIVES WELTBILD).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      10.
+      wie funktioniert so ein <div class="nowrap">objektives weltbild</div>?
+      wenn wir von einem mensch den körper und geist kennen
+      (beispiel: mensch x hat den <div class="nowrap">körper A</div>
+      und den <div class="nowrap">geist 1</div> → A1)
+      dann liefert unser system seine abstrakten freunde
+      (beispiel: <div class="nowrap">A1 → C2 D2 C3 D4</div>)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      11.
+      ... und mit seinen abstrakten freunden
+      können wir dann seine <div class="nowrap">konkreten freunde</div> finden
+      (beispiel: C2&nbsp;→&nbsp;mensch y hat den körper C und den geist 2)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      12.
+      hier suchen wir dieses objektive weltbild,
+      mit dem JEDER mensch seine echten freunde finden kann.
+    </div>
+  </div>
+
+  <hr><!-- ============================================================ -->
+  
+  <div class="para langs">
+    <div lang="de">
+      13.
+      wie sieht dieses objektive weltbild aus?
+      mein lösungs-vorschlag ist die "karte der 16 menschen".
+      aber das ist nur ein vorschlag,
+      und ich weiß noch nicht, ob diese lösung funktioniert.
+
+      TODO karte der 16 menschen
+    </div>
+  </div>
+
+
+
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+<!-- page 2 -->
+<div class="page">
+<div class="page-content">
+
+  <div class="langs para">
+    <div lang="de">
+      aufgabe 2: effizient lernen:
+      1. lerne JEDEN TAG für 10 bis 60 minuten. (besser nur 10 minuten als gar nicht.)
+      2. fokus: schaffe abstand zu ablenkungen (andere themen).
+      3. zerlege dein lernobjekt in kleine schritte.
+      4. schreib tagebuch mit KURZEN zusammenfassungen: was habe ich heute gelernt? was will ich morgen lernen?
+      durch das aufschreiben kannst du ein thema besser loslassen. (debriefing)
+      5. lies dein tagebuch: was will ich heute lernen? (briefing)
+      6. insgesamt brauchst du 1200 minuten (20 stunden), um die GRUNDLAGEN für etwas neues zu lernen.
+      7. beispiel: 1200 minuten / 40 minuten pro tag = 30 tage.
+      8. auch beziehungen funktionieren so am besten: regelmäßig, kurz, intensiv.
+      9. wenn du mehrere einheiten pro tag lernen willst,
+      dann musst du pausen machen: debriefing, etwas anderes machen, briefing und weiter machen.
+    </div>
+  </div>
+  <!--
+    Josh Kaufman | 20 Hours to Learn Anything (Key Points Talk)
+    https://www.youtube.com/watch?v=isrgSDjrprg
+
+    The first 20 hours -- how to learn anything | Josh Kaufman | TEDxCSU
+    https://www.youtube.com/watch?v=5MgBikgcWnY
+  -->
+
+  <hr><!-- ============================================================ -->
+
+  <div class="para langs">
+    <div lang="de">
+      14.&nbsp;wie können wir diese lösung prüfen?
+      (wie können wir herausfinden: funktioniert diese lösung?)
+      dazu müssen wir die lösung "einfach ausprobieren":
+      wir brauchen 4 oder 8 oder 16 menschen,
+      die auf der "karte der 16 menschen" nebeneinander liegen,
+      und wir versammeln diese menschen an einem ort.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      15.
+      was sollen wir tun?
+      die 4/8/16 menschen bilden immer zweier-paare.
+      die zwei menschen reden und arbeiten miteinander,
+      so lange bis alles gesagt und getan ist,
+      oder bis einer keine lust mehr hat.
+      dann kommt der partnertausch.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      16.
+      beim partnertausch werden neue paare gebildet,
+      mit einem anderen freund auf der "karte der 16 menschen".
+      beim partnertausch wechselt auch der subtyp:
+      redner werden hörer, und hörer werden redner.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      17.
+      manche paare reden durch monolog,
+      andere paare reden durch dialog.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      18.
+      MONOLOG heisst:
+      ein mensch kann besser reden (REDNER),
+      der andere mensch kann besser zuhören (HÖRER).
+      dafür kann der redner besser sehen (<div class="nowrap">arbeiten lassen</div>, lesen),
+      und der hörer kann besser zeigen (arbeiten, schreiben).
+      (redner: <div class="nowrap">extravertierter subtyp</div>, <div class="nowrap">sehen und reden</div>)
+      (hörer: <div class="nowrap">introvertierter subtyp</div>, <div class="nowrap">hören und zeigen</div>).
+      in einer monolog-beziehung spielt jeder immer die gleiche rolle (redner oder hörer).
+      wenn ich meine rolle wechseln will, dann muss ich auch meinen partner wechseln.
+      deswegen:
+      monolog-beziehungen funktionieren nur mit
+      <div class="nowrap">GEMEINSAME FREUNDE</div> und PARTNERTAUSCH.
+      wenn wir vier monolog-beziehungen zu einem viereck verbinden,
+      dann bilden diese vier menschen einen FLUSSKREIS (feedback loop),
+      und die zwei flüsse (reden und zeigen) fließen im kreis.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      19.
+      DIALOG heisst:
+      beide menschen können gleich gut reden und zuhören.
+      in einer dialog-beziehung kann ich meine rolle ändern.
+      das heisst, ich kann redner und hörer spielen,
+      und ich kann bei meinem partner bleiben.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      20.&nbsp;unser system können wir übertragen auf andere menschen,
+      aber dafür müssen wir die geister sehen,
+      die in diesen menschen wohnen.
+    </div>
+  </div>
+
+  <div class="para langs">
+    <div lang="de">
+      nur manche menschen können "geister sehen"
+      und die anderen menschen sind "blind für geister".
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      die "geist-blinden" brauchen freunde, die geister sehen können,
+      und die "geist-seher" brauchen freunde, die geist-blind sind.
+      (arbeitsteilung, ergänzung, symbiose, mutual completion)
+      vergleich:
+      menschen nutzen hunde als "spürhunde",
+      weil hunde haben bessere nasen.
+      wenn ein hund einen geruch riecht,
+      dann zeigt er das mit seiner körpersprache,
+      und der mensch kann diese körpersprache lesen.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      die "geist-seher" produzieren hypothesen
+      (idee, hoffnung, lösungs-vorschlag, potenzielle lösung)
+      (gutes gefühl, gute leise stimme),
+      und die "geist-blinden" prüfen diese hypothesen.
+      (arbeitsteilung zwischen schwachen menschen und starken menschen)
+      (arbeitsteilung zwischen leisen stimmen und lauten stimmen)
+      (arbeitsteilung zwischen gefühl und gewissen)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      es gibt zwei verschiedene geist-seher: [TODO: luft/wasser/erde?] und feuer.
+      element [TODO] produziert konkrete hypothesen.
+      element feuer produziert abstrakte hypothesen.
+      das heisst:
+      element [TODO] sieht "direkt" wenn zwei menschen zusammen passen,
+      aber kann NICHT begründen "warum genau?"
+      sondern hat nur den "einfachen" grund "das sagt mir mein Gefühl"
+      oder "ich habe ein gutes Gefühl bei diesen zwei Menschen."
+      element feuer sieht "indirekt" wenn zwei menschen zusammen passen,
+      und kann begründen "warum genau?" (analyse und synthese)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      es gibt zwei verschiedene hypothesen:
+      konkrete hypothesen und abstrakte hypothesen.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      konkrete hypothese: "Mensch x passt zu Mensch y."
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      abstrakte hypothesen bestehen aus analyse und synthese:
+      analyse 1: "Mensch x hat den Körper A und den Geist 1."
+      analyse 2: "Mensch y hat den Körper C und den Geist 2."
+      synthese 1: "Unser system sagt: A1 und C2 passen zusammen"
+      synthese 2: "Daraus folgt: Mensch x passt zu Mensch y."
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      konkrete hypothesen sind "dumm"
+      und abstrakte hypothesen sind "schlau",
+      wenn wir "schlauheit" definieren
+      als die fähigkeit zur übertragung
+      → analyse und synthese = übertragungs-leistung
+      das heisst: "schlaue" menschen können MUSTER sehen
+      und können diese muster übertragen auf andere situationen.
+      beispiel:
+      "y = 2*x^1" beschreibt die steigung der funktion "y = x^2"
+      "y = 3*x^2" beschreibt die steigung der funktion "y = x^3"
+      "y = 4*x^3" beschreibt die steigung der funktion "y = x^4"
+      → abstraktes muster mit neuer variable a:
+      "y = a*x^(a-1)" beschreibt die steigung der funktion "y = x^a"
+      → übertragung auf neue situationen:
+      "y = 100*x^99" beschreibt die steigung der funktion "y = x^100"
+      "y = 1000*x^999" beschreibt die steigung der funktion "y = x^1000"
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      was ist mein geist?
+      dafür nutzen wir persönlichkeits-tests.
+      beispiele: david keirsey, helen fisher, DISC, MBTI, big five, ...
+      jeder von diesen tests liefert ein ergebnis.
+      dieses ergebnis können wir übersetzen in die "vier elemente" theorie:
+      1234 = feuer erde luft wasser.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      auch subtypen beschreiben wir durch vier elemente.
+      beispiel: "feuer spielt wasser"
+      = grundtyp feuer und subtyp wasser
+      = introvertierte Ntuition (Ni) bei Carl Jung
+      = sternzeichen löwe (festes feuer)
+      (aber: kalender-astrologie ist falsch!)
+      (geburtstag sagt NICHTS über den geist.)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      warum vier elemente?
+      wir könnten auch sagen "typ 1, typ 2, typ 3, typ4"
+      aber der namensraum "feuer erde luft wasser"
+      sagt sich leicht, ist über 2000 jahre alt und ist weltweit bekannt.
+      wir könnten auch farben nehmen (rot grün gelb blau),
+      aber farben sind mehrdeutig, also schlechte symbole.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      neben persönlichkeits-tests nutzen wir physiognomie:
+      luft ist endomorph (rund, breit, sanduhr),
+      wasser ist ectomorph (lang, dünn, raute),
+      feuer und erde sind mesomorph (athletisch, herz oder birne).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      warum finden manche menschen keine freunde?
+      vielleicht:
+      weil "freunde" werden gesehen als mangelware,
+      als etwas seltenes und besonderes,
+      und wenn man freunde findet,
+      dann klammert man mit aller kraft (verlustangst),
+      und das letzte was man will ist: freunde teilen.
+      und: "jeder muss seine freunde selber finden"
+      damit schleichen sich erzieher aus ihrer verantwortung,
+      nur weil sie selber keinen plan haben,
+      wie echte freundschaft funktioniert,
+      wer welche menschen als freunde braucht,
+      und was man mit seinen freunden macht.
+      auch durch Missverständnis vom grundsatz
+      "freundschaft muss natürlich wachsen",
+      also hat man angst vor jedem eingriff in beziehungen,
+      und keiner hat lust auf "experimente",
+      weil man könnte fehler machen und sich blamieren ...
+      wer nichts macht, der macht nichts falsch!
+      und wer nichts falsch macht, der wird befördert ...
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      beim "problem streit" scheiden sich die geister.
+      es gibt zwei strategien: erfolge wiederholen oder fehler meiden.
+      welche strategie ist besser? dafür gibt es vor allem PERSÖNLICHE gründe.
+      das heisst: der geist, der in meinem körper wohnt, bevorzugt eine strategie.
+      welcher geist bevorzugt welche strategie?
+      die elemente wasser und luft bevorzugen die strategie "erfolge wiederholen",
+      die elemente feuer und erde bevorzugen die strategie "fehler meiden".
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      strategie "erfolge wiederholen":
+      das ist die bevorzugte strategie von element wasser und luft.
+      element wasser ist hier der "stratege".
+      wasser hat "schlechte gefühle" und "gutes gewissen".
+      wasser = deskriptiver geist, passiver geist, introvertierter psychotiker
+      also viele neue probleme und wenige bekannte lösungen.
+      probleme werden nur "gefühlt", also nur unterbewusst/diffus wahrgenommen.
+      das heisst: wenig geduld mit problemen, ungenaue analyse von problemen,
+      voreiliger schluss zu bekannten lösungen (profitgier).
+      = "linke" strategie, left hand path, "linkshänder", heißblütig, flüssiger humor,
+      nutzen überschätzen und kosten unterschätzen,
+      "lösungszentriertes" denken,
+      sympathiker (kampf oder flucht), frühe reaktion, hyperaktiv, "manisch",
+      ungeduld mit problemen, gutes gewissen, arbeiter, macher (erst machen dann denken),
+      flaggen rot und grün, produktion (wiederholen alte lösungen).
+      die strategie "erfolge wiederholen" produziert "schlampige" lösungen,
+      weil die negativen ursachen nur schlampig/oberflächlich/kurz analysiert werden
+      (nur negative SYMPTOME werden gesehen)
+      und weil die lösungen bevorzugt werden, die schon bekannt und "bewährt" sind.
+      wenn problem und lösung NICHT zusammen passen,
+      dann ist die lösung nur eine ablenkung,
+      die das problem nur verdrängt (unsichtbar macht),
+      und energie verschwendet (ignoranz).
+      (zielstrebig, profitgier, effekthascherei)
+      (ein gutes ziel heiligt alle wege, hauptsache das ziel erreichen)
+      (mechanisch, grob, "konventionell", muss gelernt werden, geduld, spiel auf zeit)
+      (evolution, development, überschätzen von erziehung)
+      (hauptsache, krampfhaft, zwanghaft)
+      (empirische begründung, stur, engstirnig)
+      (utilitaristisch, realistisch, Teleologisch, Machiavelli)
+      (das ende ist die hauptsache, der anfang ist nur eine nebensache)
+      (das ende ist wichtiger als der anfang)
+      (erfolge wiederholen = plus mal plus, element wasser, konservative strategie)
+      (notlösungen, billige tricks, toleranz für schlechte wege)
+      "vom gewünschten ergebnis aus argumentieren"
+      rückwärts-argumentation:
+      deduktiv, top-down, konvergent: wenige ziele und viele anfänge
+      realistisch? pragmatisch, teleologisch, 
+      Jesuiten, Machiavelli, Napoleon
+      vorsichtig und rückblind
+      voreilige schlüsse, "jumping to conclusions"
+      blinder aktionismus
+      erziehung: feindschaft ignorieren, verdrängen, gewöhnen, toleranz, geduld,
+      "mit menschen auskommen die man nicht mag"
+      → theoretische lösung, schlaue lösung, verkopfte lösung,
+      "introvertierte" lösung (änderung nach innen), LERNEN,
+      konservativ (äussere struktur konservieren, innere struktur ändern),
+      "probleme schönreden", weltflucht,
+      überschätzen von ERFAHRUNG und unterschätzen von gefühl,
+      kinderfeindlich (kinder = gefühl),
+      realität ist dekorativ und geister sind funktional,
+      paradies im himmel (kopf, spirituell reich, gelehrt, schlau, geistwissenschaftler)
+      und hölle auf erden (materiell arm, nutzlos, UNPRODUKTIV, destruktiv, parasitär)
+      gesinnungsethik: "die richtige einstellung" ist wichtiger als ...
+      konstruktivismus
+      schnelle lösungen, unüberlegt, impulsiv, ungeduldig, voreilig
+      billige tricks für arme leute
+      das leben mit tagen füllen
+      zeit verschwenden
+      einfach nur den tag ÜBERLEBEN ("pass the day", china: guarhe zhe, zeit absitzen, warten)
+      anspruchlos
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      strategie "fehler meiden":
+      das ist die bevorzugte strategie von element feuer und erde.
+      element feuer ist hier der "stratege".
+      feuer hat "schlechtes gewissen" und "gute gefühle".
+      also wenige bekannte probleme und viele neue lösungen.
+      probleme werden bewusst wahrgenommen.
+      das heisst: viel geduld mit problemen, genaue analyse von problemen,
+      langsamer schluss zu neuen lösungen (innovativ, kreativ).
+      = "rechte" strategie, right hand path, "rechtshänder",
+      kosten überschätzen und nutzen unterschätzen,
+      "problemzentriertes" denken,
+      kaltblütig (blaues blut), trockener humor,
+      vagotoniker (ruhen und verdauen), späte reaktion,
+      hyperpassiv, "depressiv", "faul", denker (erst denken dann machen),
+      flaggen blau und gelb, forschung (erforschen neue lösungen).
+      die strategie "fehler meiden" produziert "radikale" lösungen,
+      weil das bewusstsein die negativen ursachen analysiert
+      und für diese ursachen optimale auswege findet.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      für das "problem streit" gibt es also
+      grundsätzlich zwei lösungen: verdrängen oder lösen.
+      mit anderen worten: oberflächlich oder radikal.
+      mit anderen worten: symptome verstecken oder ursachen angreifen.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      vergleich:
+      "lach doch mal!" - "dann gib mir nen grund ..."
+      ein "externer" grund zum lachen ist:
+      jemand kitzelt mich an einer stelle wo ich kitzlig bin (wenige gründe)
+      also jemand zwingt mich zum lachen.
+      (gezwungen, fremdbestimmt, künstlich, gemacht, fremdwert, altruistisch)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      ein "interner" grund zum lachen ist:
+      ich spiele oder rede mit einem freund,
+      und NEBENBEI finde ich viele gründe zum lachen
+      (freiwillig, entspannt, natürlich gewachsen, naturrichtig, "biologisch")
+      (selbstwert, egoistisch)
+      (ergonomisch, lässig, idealistisch, ergebnisoffen, wahrheit)
+      (der anfang ist wichtiger als das ende)
+      (minimalistisch, effizient, "hirnlos", minimal-erziehung, minimal-kultur)
+      (zero knowledge, zero configuration, plug and play, "dumm und nackt")
+      (funktioniert auch für kleinstkinder, ab null jahren, hier und jetzt, ungeduld)
+      (fehler meiden = minus mal minus, elemente feuer, liberale strategie).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      verdrängen heisst: wir verdrängen aggression.
+      das heisst: wenn ein mensch "aggressiv" ist, dann bestrafen wir ihn,
+      und wenn ein menschen "lieb" ist, dann belohnen wir ihn.
+      dabei nutzen wir "EXTERNE" motivation zum liebsein:
+      ein "externer" erzieher (über-ich, richter, chef, lehrer)
+      verteilt strafen und belohnungen.
+      jeder mensch soll: strafen vermeiden und belohnungen suchen
+      (strategie der spannung).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      aber die lösung "aggression verdrängen" hat mehrere nachteile:
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      nachteil 1:
+      verdrängen funktioniert immer nur für kurze zeit.
+      deswegen gehen wir "nur" acht stunden zu schule oder arbeit,
+      und brauchen danach acht stunden "freizeit",
+      zum ausruhen von dem "ganz normalen" stress.
+      durch diese ineffiziente lösung verlieren wir viel energie,
+      die wir besser nutzen sollten.
+      in dieser ineffizienten lösung sind wir blockiert durch "persönliche" probleme,
+      und wir haben weniger energie, um "sachliche" probleme zu lösen.
+      (liebig law, minimum law)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      polemik:
+      weil "warum richtig machen, wenns falsch auch geht?"
+      und "perfektion wäre ja langweilig ..."
+      und "im paradies leben wollen wir erst nach dem tod"
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      nachteil 2:
+      das "problem aggression" wird immer EINSEITIG begründet:
+      "mensch a ist schuld, dass streit ist zwischen mensch a und mensch b."
+      aber die komplizierte wahrheit ist:
+      es gehören immer zwei dazu, "täter" und "opfer".
+      BEIDE menschen sind "schuld",
+      dass die zwei menschen nicht zusammen passen und streit haben.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      nachteil 3:
+      die lösung "aggression verdrängen" produziert "falsche" freunde,
+      die sich "eigentlich" nicht mögen,
+      aber die gezwungen werden, ihren streit "zivilisiert" auszutragen
+      (sublimieren von aggression, sigmund freud, herrschaft durch angst, kunstordnung).
+      → Missverständnisse, pseudoprobleme
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      hier entwickeln wir eine "radikale" lösung.
+      wir wollen das grundproblem lösen,
+      damit das gewünschte ergebnis (freundschaft)
+      von selber kommen kann (aber nicht muss).
+      anders gesagt:
+      wir schaffen die grundlage für freundschaft.
+      (naturordnung)
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      statt "externe" motivation nutzen wir "INTERNE" motivation.
+      wir wollen verschiedene menschen so verbinden,
+      dass sie VON SELBER "lieb" sind,
+      also gut miteinander arbeiten können,
+      ohne Missverständnisse oder streit.
+      wenn zwei menschen streiten, dann trennen wir sie,
+      und wir suchen "echte" freunde für beide menschen.
+      (analyse und synthese).
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      hier nutzen wir ein "optimistisches" menschenbild:
+      wir glauben, jeder mensch ist fähig zu "gutem" verhalten,
+      wenn wir ihm die richtigen grundlagen zur verfügung stellen,
+      das heisst:
+      wir erlauben nähe zu seinen freunden,
+      und abstand von seinen feinden.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      sorry, aber: wir werden NIE alle freunde sein.
+      um natürliche freundschaft und feindschaft zu verdrängen,
+      müssen wir auch alle anderen gefühle verdrängen,
+      und das produziert schwache und kranke menschen ...
+      nur wer die natur versteht, der kann sie effizient nutzen.
+    </div>
+  </div>
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+
+</body>
+</html>
+
+  
+  
+  
+
+
+
+
+
+
+
+
