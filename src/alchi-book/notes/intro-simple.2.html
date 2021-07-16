@@ -64,7 +64,7 @@
     //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
     console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
 
-    document.querySelector('#lang-code').innerHTML = fullLang;
+    //document.querySelector('#lang-code').innerHTML = fullLang;
 
     document.querySelectorAll('.langs').forEach(fragment => {
       // TODO more efficient?
@@ -186,6 +186,7 @@
     /*margin-block: 0.5em;*/
     border: none;
     border-bottom: solid 0.5pt black;
+    margin: 1pt 0;
   }
   table {
     border-collapse: collapse;
@@ -316,22 +317,32 @@
   <div class="langs para">
     <div lang="de">
       einladung zum PROJEKT KLEINSTAAT.
-      version <span id="version">2021-07-15</span> <span id="lang-code"></span>.
+      <!--
+        TODO move to footer
+        version <span id="version">2021-07-15</span><!-XXX- <span id="lang-code"></span>-XXX->.
+      -->
     </div>
   </div>
   <div class="langs para">
     <div lang="de">
       was? wir erforschen den <div class="nowrap">aufbau von kleinstaaten</div>.
-      wann? sommerferien 2021 (1.8. bis 12.9.).
-      <div class="nowrap">wo? irgendwo in trostberg</div>,
-        genaue treffpunkte müssen wir noch ausmachen.
+      <div class="nowrap">wann? sommerferien 2021</div> (1.8. bis 12.9.).
+      <div class="nowrap">wo? genaue treffpunkte</div> müssen wir noch ausmachen.
+      <div class="nowrap">zielgruppe? vor allem</div> junge menschen (alter 10 bis 30),
+      weil junge menschen können leichter etwas neues lernen.
       <div class="nowrap">wer? milan hauth</div>,
-      <div class="nowrap">jägerstraße 10</div>,
+      <div class="nowrap">jägerstraße 10</div>, trostberg,
       <div class="nowrap">+49 151 7205 9978</div>,
       <code>milahu@gmail.com</code>,
       <code>github.com/milahu/alchi</code>
-      zielgruppe? vor allem junge menschen (alter 10 bis 30),
-      weil junge menschen können leichter etwas neues lernen.
+      <!--
+      geld? ja, ich biete einen gewinn von 160 eur
+      für den ERSTEN kleinstaat mit 16 menschen,
+      der meine kriterien erfüllt (10% toleranz beim alter,
+      mindestens 2 jahre abstand zwischen den zwei generationen).
+      bewerbungen müssen öffentlich sein und werden von mir persönlich bewertet.
+      (zu wenig? sponsoren sind willkommen ...)
+      -->
     </div>
   </div>
 
@@ -359,21 +370,25 @@
 
   <div class="langs para">
     <div lang="de">
-      aufgabe 1: aktiv lesen:
+      aktiv lesen:
       1. mein text ist nur ein anfang,
       und ich brauche deine hilfe (feedback, fragen, ideen),
       damit ich einen besseren text schreiben kann
       2. nimm einen stift
       3. lies meinen text
       (die reihenfolge ist egal, du kannst auch teile überspringen)
-      4. markiere die text-stellen, die du NICHT verstehst
-      (ja, du darfst bei meinem text reinschreiben)
+      4. markiere die stellen, die du NICHT verstehst
+      <!--(ja, du darfst bei meinem text reinschreiben)-->
       5. wenn dir eine frage oder idee einfällt, dann schreibe sie SOFORT dazu
-      (sonst wirst du sie vergessen und nie wieder finden)
-      (was fehlt? was können wir besser schreiben?)
+      <!--
+        (sonst wirst du sie vergessen und nie wieder finden)
+        (was fehlt? was können wir besser schreiben?)
+      -->
       6. ALLE fragen und ideen sind wichtig
-      7. ob eine frage oder idee gut oder schlecht ist, das sehen wir SPÄTER
-      8. nutze deine freunde, um den text zu verstehen:
+      <!--
+        7. ob eine frage oder idee gut oder schlecht ist, das sehen wir SPÄTER
+      -->
+      <div class="nowrap">7. nutze</div> deine freunde, um den text zu verstehen:
       "<div class="nowrap">verstehst du das?</div> erklär mir das mal ..."
     </div>
   </div>
@@ -441,11 +456,14 @@
     <div lang="de">
       7.
       was passiert, wenn zwei menschen NICHT zusammen passen?
-      dann entstehen immer wieder Missverständnisse, streit, schlechte stimmung,
+      dann entstehen immer wieder MISSVERSTÄNDNISSE, streit, schlechte stimmung,
       <div class="nowrap">"psychische" probleme</div> (die aber eigentlich "soziale" probleme sind),
       scheinbar grundlose trauer, frust, wut, blockaden, schwäche.
     </div>
   </div>
+
+  <hr><!-- ============================================================ -->
+
   <div class="para langs">
     <div lang="de">
       8.
@@ -455,9 +473,10 @@
   </div>
   <div class="para langs">
     <div lang="de">
-      9.
-      aber ich glaube: wir können alle subjektiven weltbilder
-      zusammenfassen zu EINEM "system" (OBJEKTIVES WELTBILD).
+      <div class="nowrap">9. aber ich glaube:</div>
+      wir können alle subjektiven weltbilder
+      zusammenfassen zu EINEM system
+      <div class="nowrap">→ OBJEKTIVES WELTBILD</div>.
     </div>
   </div>
   <div class="para langs">
@@ -465,18 +484,19 @@
       10.
       wie funktioniert so ein <div class="nowrap">objektives weltbild</div>?
       wenn wir von einem mensch den körper und geist kennen
-      (beispiel: mensch x hat den <div class="nowrap">körper A</div>
+      (beispiel: mensch x hat den <div class="nowrap">körper A</div>,
       und den <div class="nowrap">geist 1</div> → A1)
-      dann liefert unser system seine abstrakten freunde
-      (beispiel: <div class="nowrap">A1 → C2 D2 C3 D4</div>)
+      dann liefert unser system seine abstrakten freunde.
+      beispiel: <div class="nowrap">A1 → C2 D2 C3 D4</div>
     </div>
   </div>
   <div class="para langs">
     <div lang="de">
       11.
       ... und mit seinen abstrakten freunden
-      können wir dann seine <div class="nowrap">konkreten freunde</div> finden
-      (beispiel: C2&nbsp;→&nbsp;mensch y hat den körper C und den geist 2)
+      können wir dann seine <div class="nowrap">konkreten freunde</div> finden.
+      beispiel: C2&nbsp;→&nbsp;mensch y hat den körper C und den geist 2
+      → Mensch x und Mensch y können Freunde sein
     </div>
   </div>
   <div class="para langs">
@@ -484,6 +504,18 @@
       12.
       hier suchen wir dieses objektive weltbild,
       mit dem JEDER mensch seine echten freunde finden kann.
+    </div>
+  </div>
+  <div class="para langs">
+    <div lang="de">
+      13.
+      der schwierigste teil ist:
+      wir müssen die geister richtig schätzen,
+      und wir müssen die qualität von beziehungen schätzen.
+      für dieses schätzen brauchen wir "sensible" menschen, vermutlich elemente feuer und luft.
+      aber diese sensiblen menschen können nur von ihren freunden verstanden werden.
+      hier sehen wir ein "henne und ei problem":
+      zum aufbau von einem kleinstaat darf jeder nur mit seinen freunden reden.
     </div>
   </div>
 
@@ -495,7 +527,8 @@
       wie sieht dieses objektive weltbild aus?
       mein lösungs-vorschlag ist die "karte der 16 menschen".
       aber das ist nur ein vorschlag,
-      und ich weiß noch nicht, ob diese lösung funktioniert.
+      und ich weiß NOCH nicht, ob das die richtige lösung ist,
+      die für ALLE menschen funktioniert.
 
       TODO karte der 16 menschen
     </div>
@@ -511,6 +544,7 @@
 <div class="page">
 <div class="page-content">
 
+  <!--
   <div class="langs para">
     <div lang="de">
       aufgabe 2: effizient lernen:
@@ -523,19 +557,23 @@
       6. insgesamt brauchst du 1200 minuten (20 stunden), um die GRUNDLAGEN für etwas neues zu lernen.
       7. beispiel: 1200 minuten / 40 minuten pro tag = 30 tage.
       8. auch beziehungen funktionieren so am besten: regelmäßig, kurz, intensiv.
-      9. wenn du mehrere einheiten pro tag lernen willst,
-      dann musst du pausen machen: debriefing, etwas anderes machen, briefing und weiter machen.
     </div>
   </div>
+  -->
   <!--
     Josh Kaufman | 20 Hours to Learn Anything (Key Points Talk)
     https://www.youtube.com/watch?v=isrgSDjrprg
 
     The first 20 hours -- how to learn anything | Josh Kaufman | TEDxCSU
     https://www.youtube.com/watch?v=5MgBikgcWnY
-  -->
 
-  <hr><!-- ============================================================ -->
+    vergleich: intervalltraining, high intensity interval training = HIIT
+    siehe auch: forgetting curve, learning curve, spaced repetition
+
+    schlechte idee?
+    9. wenn du mehrere einheiten pro tag lernen willst,
+    dann musst du pausen machen: debriefing, etwas anderes machen, briefing und weiter machen.
+  -->
 
   <div class="para langs">
     <div lang="de">
@@ -717,6 +755,16 @@
       (geburtstag sagt NICHTS über den geist.)
     </div>
   </div>
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+
+
+<!-- page 3 -->
+<div class="page">
+<div class="page-content">
+
   <div class="para langs">
     <div lang="de">
       warum vier elemente?
@@ -795,8 +843,9 @@
       dann ist die lösung nur eine ablenkung,
       die das problem nur verdrängt (unsichtbar macht),
       und energie verschwendet (ignoranz).
-      (zielstrebig, profitgier, effekthascherei)
+      (zielstrebig, profitgier, effekthascherei, pfusch)
       (ein gutes ziel heiligt alle wege, hauptsache das ziel erreichen)
+      (billigster hinweg um ein bestimmtes ziel zu erreichen)
       (mechanisch, grob, "konventionell", muss gelernt werden, geduld, spiel auf zeit)
       (evolution, development, überschätzen von erziehung)
       (hauptsache, krampfhaft, zwanghaft)
@@ -835,6 +884,16 @@
       anspruchlos
     </div>
   </div>
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+
+
+<!-- page 4 -->
+<div class="page">
+<div class="page-content">
+
   <div class="para langs">
     <div lang="de">
       strategie "fehler meiden":
@@ -848,6 +907,7 @@
       = "rechte" strategie, right hand path, "rechtshänder",
       kosten überschätzen und nutzen unterschätzen,
       "problemzentriertes" denken,
+      (billigster ausweg um ein bestimmtes problem zu lösen)
       kaltblütig (blaues blut), trockener humor,
       vagotoniker (ruhen und verdauen), späte reaktion,
       hyperpassiv, "depressiv", "faul", denker (erst denken dann machen),
