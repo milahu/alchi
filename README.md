@@ -37,7 +37,14 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 
 <details>
 
-subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits.
+subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
+or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
+
+* 2021-07-29
+  * alchi flyer html: [github](https://milahu.github.io/alchi/src/alchi-flyer/alchi-flyer.html)
+
+* 2021-07-06
+  * alchi game html: [github](https://milahu.github.io/alchi/src/alchi-flyer/alchi-game.html)
 
 * 2021-05-16
   * alchi book html: [github](https://milahu.github.io/alchi/src/alchi-book/build/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/)
