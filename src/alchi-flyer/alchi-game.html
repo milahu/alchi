@@ -221,18 +221,25 @@
     font-weight: bold;
   }
 
+  :root {
+    --map-image-width: 50px;
+    --map-image-spacing: 10px;
+    --map-image-aspect: calc(50 / 70);
+    --map-font-size: 0.8rem;
+    --map36-width: calc(6 * var(--map-image-width) + 5 * var(--map-image-spacing));
+  }
+
   div.map36.e_bxface {
     display: grid;
-    width: calc(6 * 70px + 5 * 20px); /* = 520 px */
-    grid-gap: 20px;
+    width: var(--map36-width); /* = 520 px */
+    grid-gap: var(--map-image-spacing);
     grid-template-columns: auto auto auto auto auto auto;
-    /*grid-template-rows: auto auto auto auto auto;*/
-    font-size: 0.8rem;
-    margin: 10px;
+    font-size: var(--map-font-size);
+    margin: 10px; /* todo ? */
   }
   .map-container {
     float: right;
-    margin-right: -10px
+    /*margin-right: -50px; */
   }
   .map-container > .title {
     text-align: center;
@@ -245,31 +252,38 @@
     outline: solid 1px #606060;
     */
     border: solid 1px #808080;
-    margin: -1px;
     border-radius: 8px;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    position: relative;
   }
   div.map36.e_bxface > div > div {
-    transform: rotate(-90deg);
-    transform-origin: 35px 34px;
     /*
-    outline: solid 1px red;
-    */
+    transform: rotate(-90deg);
+    transform-origin: calc(var(--map-image-width) / 2) calc(var(--map-image-width) / 2);
     margin-right: -50px;
     padding-top: 2px;
     padding-left: 2px;
-    width: 68px;
+    width: calc(var(--map-image-width) + 15px);
     height: 18px;
     box-sizing: border-box;
+    */
+    /** /
+    outline: solid 1px red;
+    /**/
+    position: absolute;
+    bottom: 2px; left: 2px;
   }
   div.map36.e_bxface img {
     /* fix print layout in chrome */
-    max-height: 70px;
+    max-height: var(--map-image-width);
+    margin-left: calc(var(--map-image-width) * (1 - var(--map-image-aspect)) + 2px);
   }
   div.map36.e_bxface > div {
-    width: 70px;
-    height: 70px;
+    width: var(--map-image-width);
+    height: var(--map-image-width);
+    box-sizing: border-box;
   }
 
   .lineheight150 {
@@ -295,7 +309,7 @@
         </div>
       </td>
       <td style="text-align: right">
-        <span id="version">2021-06-30</span>
+        <span id="version">2021-07-06</span>
         <span id="lang-code"></span>
       </td>
     </tr>
@@ -310,7 +324,7 @@
     <div lang="de">
       Kleinstaat?
       ← Ja, hab ich erfunden, kennt kein Mensch.
-      Geht ähnlich wie das Spiel "Stille Post".
+      Geht ähnlich wie das Spiel "Stille Post"
       (Jeder flüstert eine Nachricht an seinen Nächsten,
       und der Letzte muss laut sagen, was er verstanden hat.)
       Das Ziel von Stille Post sind lustige Missverständnisse.
@@ -329,21 +343,142 @@
       2. Die zwei Menschen brauchen die richtige Technik zum Reden und Hören.
     </div>
   </div>
+
+
+
+
+
+  <!-- TODO why need margin-right? -->
+  <div class="map-container">
+
+    <div class="title">
+      Landkarte der 16 Menschen
+      <!-- (mit Wiederholung → 36 Menschen) -->
+      <div style="font-size: 0.8rem">
+        A1 Kenny,
+        A2 Stan Marsh,
+        A3 Bart Simpson,
+        A4 Kyle
+        <br>
+        B1 Marge,
+        B2 Sharon Marsh,
+        B3 Francine Smith,
+        B4 Lois Griffin
+        <br>
+        C1 Princess Bean,
+        C2 Meg Griffin,
+        C3 Heidi Turner,
+        C4 Lisa
+        <br>
+        D1 Bender,
+        D2 Homer,
+        D3 Peter Griffin,
+        D4 Rick Sanchez
+      </div>
+    </div>
+
+    <!-- map shapes: squares and crosses -->
+    <svg class="map-shapes" style="position: absolute /* FIXME scroll in overflow */; width: var(--map36-width)" viewBox="10 10 350 350">
+      <!--
+        <rect x="0" y="0" width="560" height="560" fill="none" stroke="black" stroke-width="2" />
+      -->
+      <g fill="none" stroke="black" stroke-width="1" transform="translate(1 1)">
+        <!-- squares -->
+        <rect x="120" y="120" width="8" height="8" />
+        <rect x="240" y="120" width="8" height="8" />
+        <rect x="240" y="240" width="8" height="8" />
+        <rect x="120" y="240" width="8" height="8" />
+
+        <!-- crosses -->
+        <path transform="translate(60 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(60 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(60 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+
+        <path transform="translate(180 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(180 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(180 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+
+        <path transform="translate(300 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(300 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(300 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+      </g>
+    </svg>
+
+    <div class="map36 e_bxface">
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-peter.webp"/></div>
+      <div><div>A4</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-peter.webp"/></div>
+
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+
+      <div><div>A3</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2</div><img src="images/d2-homer.webp"/></div>
+      <div><div>A1</div><img src="images/a1-kenny.webp"/></div>
+      <div><div>D4</div><img src="images/d4-rick-sanchez.webp"/></div>
+      <div><div>A3</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2</div><img src="images/d2-homer.webp"/></div>
+
+      <div><div>C1</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4</div><img src="images/b4-lois.webp"/></div>
+      <div><div>C3</div><img src="images/c3-heidi-turner.webp"/></div>
+      <div><div>B2</div><img src="images/b2-sharon-marsh.webp"/></div>
+      <div><div>C1</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4</div><img src="images/b4-lois.webp"/></div>
+
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-peter.webp"/></div>
+      <div><div>A4</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-peter.webp"/></div>
+
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+
+    </div>
+  </div>
+
+
+
   <div class="langs para">
     <div lang="de">
       Gut zusammen passen?
-      ← Dafür brauchen wir einen gute gute Analyse (Persönlichkeits-Test)
+      ← Dafür brauchen wir einen gute gute Analyse (Persönlichkeits-Test, siehe Rückseite)
       und eine gute Synthese (Kompatibilität zwischen verschiedenen Persönlichkeiten).
       Beide Teile sind überraschend kompliziert.
-      Eine mögliche Synthese zeigt mein Buch "Pallas - Aufbau von Kleinstaaten".
+      Eine mögliche Synthese zeigt meine "Landkarte der 16 Menschen".
+      (Kann sein, dass die Landkarte falsch ist ... wir werden sehen.
+      Aber wenn wir die 16 Menschen an einem Ort versammeln,
+      dann können sie die richtige Ordnung finden)
     </div>
   </div>
+
+
+
+
+
   <div class="langs para">
     <div lang="de">
-      Die richtige Technik?
-      ← Hier (beim Kleinstaat-Spiel) geht es vor allem um Punkt zwei:
-      Die richtige Technik zum Reden und Hören.
-      (Weil Irgendwo muss ich anfangen ...)
+      Die richtige Technik zum Reden und Hören?
+      ← Das Ziel vom Kleinstaat-Spiel ist:
+      Redner und Hörer verbinden
+      und "natürliche Monologe" schaffen
+      (Monolog, Interview, Verhör)
+      (natürlich, freiwillig, mühelos).
+      Der Rückweg geht über drei andere Monologe,
+      so dass die Sprache im Kreis fließt.
     </div>
   </div>
   <div class="langs para">
@@ -495,6 +630,26 @@
 
   <div class="langs para">
     <div lang="de">
+      Wer schreibt hier? ← Milan Hauth, Element Feuer, Jägerstr. 10, Trostberg, Mail <tt>milahu@protonmail.com</tt>
+      <br>
+      Tel/Telegram +49 151 7205 9978,
+      Web <tt>github.com/milahu/alchi</tt>, Lizenz <tt>CC0-1.0</tt>
+    </div>
+  </div>
+
+
+
+</div><!-- page-content -->
+</div><!-- page -->
+
+<!-- page 2 -->
+<div class="page">
+<div class="page-content">
+
+
+
+  <div class="langs para">
+    <div lang="de">
       Puuh. Und wo bleibt das Spiel?
       ← Wenn zwei Spieler sich noch nicht kennen,
       dann werden sie am Anfang die falschen Rollen spielen:
@@ -546,23 +701,7 @@
     </div>
   </div>
 
-  <div class="langs para">
-    <div lang="de">
-      Wer schreibt hier? ← Milan Hauth, Element Feuer, Jägerstr. 10, Trostberg, Mail <tt>milahu@protonmail.com</tt>
-      <br>
-      Tel/Telegram +49 151 7205 9978,
-      Web <tt>github.com/milahu/alchi</tt>, Lizenz <tt>CC0-1.0</tt>
-    </div>
-  </div>
 
-
-
-</div><!-- page-content -->
-</div><!-- page -->
-
-<!-- page 2 -->
-<div class="page">
-<div class="page-content">
 
   <div class="langs para">
     <div lang="de">
@@ -633,85 +772,11 @@
   </div>
   -->
 
-  <!-- TODO why need margin-right? -->
-  <div class="map-container">
 
-    <div class="title">
-      Landkarte der 16 Menschen (mit Wiederholung → 36 Menschen)
-    </div>
 
-    <!-- map shapes: squares and crosses -->
-    <svg class="map-shapes" style="position: absolute" width="520px" viewBox="20 20 520 520">
-      <!--
-        <rect x="0" y="0" width="560" height="560" fill="none" stroke="black" stroke-width="2" />
-      -->
-      <g fill="none" stroke="black" stroke-width="1">
-        <!-- squares -->
-        <rect x="182" y="182" width="16" height="16" />
-        <rect x="362" y="182" width="16" height="16" />
-        <rect x="362" y="362" width="16" height="16" />
-        <rect x="182" y="362" width="16" height="16" />
-        <!-- crosses -->
-        <path transform="translate(92 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(92 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(92 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
 
-        <path transform="translate(272 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(272 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(272 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
 
-        <path transform="translate(452 92)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(452 272)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-        <path transform="translate(452 452)" d="M 0 0 L 16 16 M 16 0 L 0 16" />
-      </g>
-    </svg>
 
-    <div class="map36 e_bxface">
-
-      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
-      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
-      <div><div>A4. Kyle</div><img src="images/a4-kyle.webp"/></div>
-      <div><div>D1. Bender</div><img src="images/d1-bender.webp"/></div>
-      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
-      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
-
-      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
-      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
-      <div><div>C2. Meg</div><img src="images/c2-meg-griffin.webp"/></div>
-      <div><div>B3. Francine</div><img src="images/b3-francine.webp"/></div>
-      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
-      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
-
-      <div><div>A3. Bart</div><img src="images/a3-bart.webp"/></div>
-      <div><div>D2. Homer</div><img src="images/d2-homer.webp"/></div>
-      <div><div>A1. Kenny</div><img src="images/a1-kenny.webp"/></div>
-      <div><div>D4. Rick</div><img src="images/d4-rick-sanchez.webp"/></div>
-      <div><div>A3. Bart</div><img src="images/a3-bart.webp"/></div>
-      <div><div>D2. Homer</div><img src="images/d2-homer.webp"/></div>
-
-      <div><div>C1. Bean</div><img src="images/c1-bean.webp"/></div>
-      <div><div>B4. Lois</div><img src="images/b4-lois.webp"/></div>
-      <div><div>C3. Heidi</div><img src="images/c3-heidi-turner.webp"/></div>
-      <div><div>B2. Sharon</div><img src="images/b2-sharon-marsh.webp"/></div>
-      <div><div>C1. Bean</div><img src="images/c1-bean.webp"/></div>
-      <div><div>B4. Lois</div><img src="images/b4-lois.webp"/></div>
-
-      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
-      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
-      <div><div>A4. Kyle</div><img src="images/a4-kyle.webp"/></div>
-      <div><div>D1. Bender</div><img src="images/d1-bender.webp"/></div>
-      <div><div>A2. Stan</div><img src="images/a2-stan.webp"/></div>
-      <div><div>D3. Peter</div><img src="images/d3-peter.webp"/></div>
-
-      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
-      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
-      <div><div>C2. Meg</div><img src="images/c2-meg-griffin.webp"/></div>
-      <div><div>B3. Francine</div><img src="images/b3-francine.webp"/></div>
-      <div><div>C4. Lisa</div><img src="images/c4-lisa.webp"/></div>
-      <div><div>B1. Marge</div><img src="images/b1-marge.webp"/></div>
-
-    </div>
-  </div>
 
   <div class="langs para">
     <div lang="de">
@@ -729,7 +794,7 @@
     <div lang="de">
       2.
       Die vier Spieler haben <b>gleiches Alter</b>,
-      und gemischtes Geschlecht (2 Männer + 2 Frauen).
+      und gemischtes Geschlecht (2 Männer + 2 Frauen, "Garcia Octets").
       Alle <b>vier Elemente</b> werden gebraucht.
       Elemente im Kreis: 1-2-4-3-[1].
       Beispiel: E1243 = Bender Sharon Rick Francine
