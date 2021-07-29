@@ -1,0 +1,2695 @@
+<!doctype html>
+<html lang="de">
+
+<!--
+  TODO embed font (see alchi-book)
+-->
+
+<head>
+
+<title>alchi-flyer</title>
+
+<!--
+  NOTE please use a proper text editor with code folding, for example VSCodium
+-->
+
+<link rel="stylesheet" href="css/noto-sans/latin.css">
+<!-- latin-700.css = bold font -->
+<!--<link rel="stylesheet" href="css/noto-sans/latin-700.css">-->
+
+<script>
+
+  //var forceLanguage = 'de';
+  var forceLanguage = null;
+
+  const metadata = {};
+  //metadata.defaultLanguage = 'en';
+  metadata.defaultLanguage = document.querySelector(':root').lang;
+  metadata.languages = 'de';
+
+
+
+  // sync with /scripts/translate.js
+  const langMap = {
+    zh: 'zh-CN', // simplified chinese
+  };
+
+  function getLang(str) {
+    if (str && str in langMap) return langMap[str];
+    return str;
+  }
+
+
+  function isRtlLang(lang) {
+    return lang == 'fa'; // TODO more ...
+  }
+
+  var current_lang = metadata.defaultLanguage; // global state
+  const languages = new Set(metadata.languages.split(' '));
+
+  function set_language(lang) {
+
+    if (!lang) lang = metadata.defaultLanguage;
+
+    // lang can be 'en-US' or similar from browser language settings
+    if (!languages.has(lang)) {
+      const shortLang = (lang || '').split('-')[0];
+      if (languages.has(shortLang)) lang = shortLang;
+      else lang = 'en'; // fallback
+    }
+
+    if (current_lang == lang) return; // noop
+
+    current_lang = lang;
+
+    // right to left -- left to right
+    document.dir = isRtlLang(lang) ? 'rtl' : 'ltr';
+
+    // language code as used in html sources
+    // e.g. en, de, ru, zh-CN, ...
+    const fullLang = getLang(lang);
+
+    //const shortLang = (fullLang || '').split('-')[0]; // = lang before getLang ...
+    console.log(`set_language: lang = ${lang}, fullLang = ${fullLang}`)
+
+    //document.querySelector('#lang-code').innerHTML = fullLang;
+
+    document.querySelectorAll('.langs').forEach(fragment => {
+      // TODO more efficient?
+      // only change css class of body → show/hide lang fragments with css
+      let langFound = 0;
+      Array.prototype.forEach.apply(fragment.children, [node => {
+        if (node.lang) {
+          if (node.lang == fullLang) {
+            node.classList.remove('hidden');
+            langFound++;
+          }
+          else node.classList.add('hidden');
+        }
+      }]);
+      if (langFound == 0) {
+        // set default lang
+        Array.prototype.forEach.apply(fragment.children, [node => {
+          if (node.lang) {
+            if (node.lang == metadata.defaultLanguage) {
+              node.classList.remove('hidden');
+              langFound++;
+            }
+            else node.classList.add('hidden');
+          }
+        }]);
+      }
+      else if (langFound > 1) {
+        console.warn(`found multiple translations for lang "${lang}" in`, fragment);
+      }
+
+    });
+
+    // TODO add .language-menu
+    //document.querySelectorAll('.language-menu button').forEach(b => b.classList.remove('active'));
+    //document.querySelector('#language-button-'+lang).classList.add('active');
+
+  }
+
+
+
+
+
+
+
+  window.onload = function() {
+    console.log('load done');
+    console.log(`metadata.defaultLanguage = ${metadata.defaultLanguage}`);
+
+    if (0) {
+      // loop languages
+      function next_lang() {
+        set_language(current_lang == 'en' ? 'de' : 'en');
+        setTimeout(next_lang, 4000); // recursion
+      }
+      setTimeout(next_lang, 4000);
+    }
+
+    // TODO add language menu
+    //set_language('en');
+    //set_language('hu');
+    if (forceLanguage) set_language(forceLanguage);
+    else document.querySelector('#lang-code').innerHTML = metadata.defaultLanguage;
+  };
+
+</script>
+
+<style>
+
+  .debug {
+    outline: solid 1px red; /* debug */
+  }
+
+  @page {
+    /* print settings */
+    /* note: set scale=default */
+    margin: 0; /* no print margin */
+    size: A4 portrait;
+  }
+  @media print {
+    .page {
+      /* hide outline for printing */
+      /*outline: none !important;*/
+    }
+  }
+  :root {
+    font-family: sans-serif; /* TODO use chrome font also in firefox. chrome font: condensed sans-serif */
+    font-size: 9.5pt; /* = 1rem */
+
+    /*font-family: "Noto Sans"; /* NPM: @fontsource/noto-sans */
+    /*font-size: 9pt; /* = 1rem */
+
+  }
+  body {
+    margin: 0;
+  }
+  .page {
+    margin: 0;
+
+    /* druck-rand, print margin */
+    padding: 8mm;
+    /*padding: 5mm;*/
+    padding-left: 15mm; /* korrektur-rand */
+    padding-right: 15mm; /* korrektur-rand */
+
+    width: 210mm; height: 297mm;
+    box-sizing: border-box;
+    outline: solid 1px lightgrey;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    text-align: justify;
+
+  }
+  .page > .page-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .page > .page-footer {
+    /*flex-basis: 2em;*/
+    /*outline: solid 1px red;*/
+  }
+
+  div.para {
+    line-height: 125%;
+    /*margin-block: 0.5em;*/
+    display: inline;
+    /*margin-right: 1em;*/
+  }
+  div.page-content > div.para ~ div.para:before {
+    content: "●";
+    /* content: "●\00A0"; /* no help. 00A0 = &nbsp; No-Break Space */
+    /* FIXME: avoid linebreak after bullet */
+    /* white-space: nowrap; /* no help */
+    /* float: left; /* wrong position */
+    /* workaround: add the bullet to html */
+  }
+  /* disable bullets after <hr> */
+  div.page-content > hr + div.para:before {
+    content: "" !important;
+  }
+  /**/
+  div.page-content > div.four-elements + div.para:before {
+    content: "" !important;
+  }
+  div.para.nobullet:before {
+    content: "" !important;
+  }
+  /*
+    https://stackoverflow.com/questions/12971187
+    • BULLET 2022
+    ● BLACK CIRCLE        25CF
+    ⏺ - &#9210; - Black Circle for Record
+    ⬤ BLACK LARGE CIRCLE  2B24
+
+    ⚫ MEDIUM BLACK CIRCLE 26AB
+    🌑 NEW MOON SYMBOL   1F311
+  */
+
+  div.nowrap {
+    display: inline;
+    white-space: nowrap;
+  }
+  hr {
+    /*margin-block: 0.5em;*/
+    border: none;
+    border-bottom: solid 0.5pt black;
+    margin: 1pt 0;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0;
+  }
+  .test-table > tbody > tr > td {
+    line-height: 125%;
+  }
+  .test-table > tbody > tr > td:nth-child(2),
+  .test-table > tbody > tr > td:nth-child(3),
+  .test-table > tbody > tr > td:nth-child(4),
+  .test-table > tbody > tr > td:nth-child(5),
+  .test-table > tbody > tr > td:nth-child(6) {
+    border: solid 1px black;
+    width: 1em;
+    text-align: center;
+  }
+  .test-table > tbody > tr > td:first-child {
+    text-align: right;
+    padding-right: 0.5em;
+  }
+  .test-table > tbody > tr > td:last-child {
+    text-align: left;
+    padding-left: 0.5em;
+  }
+
+  table.friend-circle td {
+    padding: 1em;
+    text-align: center;
+    vertical-align: center;
+  }
+  table.friend-circle {
+    /* note: background svg is not working with darkreader */
+    /* FIXME: background svg is rendered blurry in chrome print, missing completely in firefox print */
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="20" stroke-width="1" fill="none" stroke="black" /></svg>');
+    background-position: center;
+  }
+
+  div[lang] {
+    display: inline;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .strong {
+    font-weight: bold;
+  }
+
+  :root {
+    --map-image-width: 50px;
+    --map-image-spacing: 10px;
+    --map-image-aspect: calc(50 / 70);
+    --map-font-size: 0.8rem;
+    --map36-width: calc(6 * var(--map-image-width) + 5 * var(--map-image-spacing));
+  }
+
+  div.map36.e_bxface {
+    display: grid;
+    width: var(--map36-width); /* = 520 px */
+    grid-gap: var(--map-image-spacing);
+    grid-template-columns: auto auto auto auto auto auto;
+    font-size: var(--map-font-size);
+    margin: 0; /* sync with: <svg viewBox="20 20 350 350"> */
+  }
+  .map-container {
+    float: left;
+    margin-right: 15px;
+    /*margin-right: -10px;*/
+    /*margin-right: -2cm;*/
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .map-container > .title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .map-container > .subtitle {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+  .map-container > .map-shapes {
+    margin: 10px;
+  }
+
+
+
+  .game-states-container {
+    float: right;
+    margin-left: 15px;
+    /*margin-right: -10px;*/
+    /*margin-right: -2cm;*/
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .game-states-container > .title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+
+  div.map36.e_bxface > div {
+    /* too dark
+    outline: solid 1px #606060;
+    */
+    border: solid 1px #808080;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+  }
+  div.map36.e_bxface > div > div {
+    /*
+    transform: rotate(-90deg);
+    transform-origin: calc(var(--map-image-width) / 2) calc(var(--map-image-width) / 2);
+    margin-right: -50px;
+    padding-top: 2px;
+    padding-left: 2px;
+    width: calc(var(--map-image-width) + 15px);
+    height: 18px;
+    box-sizing: border-box;
+    */
+    /** /
+    outline: solid 1px red;
+    /**/
+    position: absolute;
+    bottom: 2px; left: 2px;
+  }
+  div.map36.e_bxface img {
+    /* fix print layout in chrome */
+    max-height: var(--map-image-width);
+    margin-left: calc(var(--map-image-width) * (1 - var(--map-image-aspect)) + 2px);
+  }
+  div.map36.e_bxface > div {
+    width: var(--map-image-width);
+    height: var(--map-image-width);
+    box-sizing: border-box;
+  }
+
+  .lineheight150 {
+    line-height: 150%;
+  }
+
+  div.mark {
+    display: inline;
+    border-bottom: solid 1pt darkblue;
+  }
+
+  div.note {
+    position: absolute;
+    left: 18.2cm;
+    margin-top: -1.25em;
+    font-family: cursive;
+    color: darkblue;
+  }
+
+  div.mark:hover, div.mark:hover > div.note {
+    background-color: lightblue;
+  }
+
+  div.four-elements {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+
+    grid-template-rows: 13em 13em; /* workaround. otherwise height is too small in second row */
+    /* TODO sync with content height */
+
+    /**/box-sizing: border-box;/**/
+    margin-block: 0.5em;
+
+    --center-circle-radius-inner: 20mm;
+    --content-margin: 2mm;
+    --content-margin-negative: calc(-1 * var(--content-margin));
+    --center-circle-radius: calc(var(--center-circle-radius-inner) + var(--content-margin));
+    --border-width: 1px;
+  }
+  div.four-elements.bodies {
+    /*grid-template-rows: 2.8em 2.7em; /* workaround. otherwise height is too small in second row */
+    grid-template-rows: 2.25em 2.25em;
+    /* TODO sync with content height */
+    --center-circle-radius-inner: 10mm;
+    --content-margin: 2mm;
+    --content-margin-negative: calc(-1 * var(--content-margin));
+    --center-circle-radius: calc(var(--center-circle-radius-inner) + var(--content-margin));
+    --border-width: 1px;
+  }
+  div.four-elements > div {
+    /*border: solid 1px red; /* debug */
+    /*height: 65mm; /* debug */
+    position: relative;
+    /*box-shadow:0 0 0 1px black; /* problem: not working with darkreader */
+    border: solid var(--border-width) black;
+    padding: var(--content-margin);
+    box-sizing: border-box;
+  }
+  div.four-elements > div > div.center-circle {
+    width: var(--center-circle-radius);
+    height: 100%;
+    /*border: solid 1px blue; /* debug */
+    position: relative;
+  }
+  div.four-elements > div.bottom.left { border-top: none; }
+  div.four-elements > div.bottom.right { border-top: none; border-left: none; }
+  div.four-elements > div.top.right { border-left: none; }
+  div.four-elements > div.top.left > div.center-circle { float: right; shape-outside: circle(var(--center-circle-radius) at calc(100% + var(--content-margin)) calc(100% + var(--content-margin))); }
+  div.four-elements > div.top.right > div.center-circle { float: left; shape-outside: circle(var(--center-circle-radius) at var(--content-margin-negative) calc(100% + var(--content-margin))); }
+  div.four-elements > div.bottom.left > div.center-circle { float: right; shape-outside: circle(var(--center-circle-radius) at calc(100% + var(--content-margin)) var(--content-margin-negative)); }
+  div.four-elements > div.bottom.right > div.center-circle { float: left; shape-outside: circle(var(--center-circle-radius) at var(--content-margin-negative) var(--content-margin-negative)); }
+
+  /*div.four-elements > div > div.center-circle::before {
+    content: "";
+    width: var(--center-circle-radius);
+    height: var(--center-circle-radius);
+    border: solid 1px green;
+    position: absolute;
+  } /* debug */
+  div.four-elements > div.top.left > div.center-circle::before { bottom: var(--content-margin-negative); right: var(--content-margin-negative); border-radius: var(--center-circle-radius) 0 0 0; border-right: none; border-bottom: none; }
+  div.four-elements > div.top.right > div.center-circle::before { bottom: var(--content-margin-negative); left: var(--content-margin-negative); border-radius: 0 var(--center-circle-radius) 0 0; border-left: none; border-bottom: none; }
+  div.four-elements > div.bottom.left > div.center-circle::before { top: var(--content-margin-negative); right: var(--content-margin-negative); border-radius: 0 0 0 var(--center-circle-radius); border-right: none; border-top: none; }
+  div.four-elements > div.bottom.right > div.center-circle::before { top: var(--content-margin-negative); left: var(--content-margin-negative); border-radius: 0 0 var(--center-circle-radius) 0; border-left: none; border-top: none; }
+
+  div.four-elements > div.top.left > div.center-circle > svg {
+    width: calc(2 * var(--center-circle-radius-inner));
+    height: calc(2 * var(--center-circle-radius-inner));
+    /*border: solid 1px blue; /* debug */
+    position: relative;
+    top: calc(100% - var(--center-circle-radius-inner) + var(--content-margin) + 0.5 * var(--border-width));
+    left: calc(100% - var(--center-circle-radius-inner) + var(--content-margin) + 0.5 * var(--border-width));
+    /*border: solid 1px yellow; /* debug */
+    background: white;
+    z-index: +10;
+    border-radius: var(--center-circle-radius-inner);
+  }
+
+  div.two-properties {
+    display: flex;
+    /*border: solid 2px blue;*/
+    width: 100%;
+    margin-block: 0.5em;
+    --label-width: 1.5em;
+    --label-height: 3em;
+    --label-margin: 0.5em;
+    --padding: 0.5em;
+  }
+
+  div.two-properties > div {
+    flex-basis: 50%;
+    border: solid 1px black;
+    position: relative;
+    padding: var(--padding);
+    min-height: var(--label-height);
+    /*
+    box-sizing: border-box;
+    */
+  }
+
+  /*
+  div.two-properties > div.left {
+    padding-right: 0;
+  }
+  div.two-properties > div.right {
+    padding-left: 0;
+  }
+  */
+
+  div.two-properties > div:first-child {
+    border-right: none;
+  }
+
+  div.two-properties > div > div.label {
+    /*border: solid 2px yellow;*/
+    /*width: calc(var(--label-margin) + var(--label-width));*/
+    width: var(--label-width);
+    /*
+    height: calc(2 * var(--label-width)); line-height: calc(2 * var(--label-width));
+    top: 50%;
+    */
+    height: 100%;
+    text-align: center;
+    line-height: calc(0.5 * var(--label-height));
+    position: relative;
+
+    shape-outside:
+      polygon(
+        0 calc(50% - 0.5 * var(--label-height)),
+        100% calc(50% - 0.5 * var(--label-height)),
+        100% calc(50% + 0.5 * var(--label-height)),
+        0 calc(50% + 0.5 * var(--label-height))
+      );
+    text-align: center;
+    /* vertical center text */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  div.two-properties > div > div.label::before {
+    content: "";
+    border: solid 1px black;
+    height: var(--label-height); width: var(--label-width);
+    position: absolute;
+    /*border-radius: calc(2 * var(--label-width));*/
+  }
+  div.two-properties > div.left > div.label::before { border-right: none; }
+  div.two-properties > div.right > div.label::before { border-left: none; }
+
+  div.two-properties > div.left > div.label { float: right; padding-left: var(--label-margin); margin-right: calc(-1 * var(--padding)); }
+  div.two-properties > div.right > div.label { float: left; padding-right: var(--label-margin); margin-left: calc(-1 * var(--padding)); }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- page 1 -->
+<div class="page">
+<div class="page-content">
+
+  <!--
+  <div class="langs para">
+    <div lang="de">
+      organisationstheorie für anfänger.
+    </div>
+  </div>
+  -->
+
+  <!--
+  <div class="langs para">
+    <div lang="de">
+      wer sagt "OT ist schädlicher aberglaube"
+      der will andere menschen einsperren in sklavenmoral,
+      mit falschen freunden.
+    </div>
+  </div>
+  -->
+      <!--
+        allgemein: falsche hoffnungen, falsche erwartungen, falsche vorbilder
+        -> idealismus, wunschdenken, profitgier, der "linke" weg
+      -->
+
+      <!--
+  <div class="langs para">
+    <div lang="de">
+      hier predigen wir herrenmoral
+      und wir sagen "OT ist nützliches geheimwissen",
+      zum finden von echten freunden.
+    </div>
+  </div>
+  -->
+
+    <!--
+    allgemein: realistische hoffnungen, realistische erwartungen, realistische vorbilder
+    -> realismus, der "rechte" weg
+  -->
+
+  <!--
+    körper = ABCD = sohn mutter tochter vater.
+    geist = 1234 = feuer erde luft wasser.
+  -->
+  
+  <div class="langs para">
+    <div lang="de">
+      mehr echte freunde und weniger falsche freunde! ein forschungsprojekt.
+    </div>
+  </div>
+  
+  <div class="langs para">
+    <div lang="de">
+      hier beantworten wir 3 fragen:
+      <div class="nowrap">1. wer</div> bin ich?
+      <div class="nowrap">2. wer</div> sind meine freunde?
+      <div class="nowrap">3. was</div> sollen wir tun?
+    </div>
+  </div>
+  
+  <div class="langs para">
+    <div lang="de">
+      frage 1 und frage 2 sind wie die 2 seiten von einer münze.
+      <!--
+      antwort 1 können wir übersetzen zu antwort 2, und umgekehrt.
+      -->
+      die übersetzung zwischen antwort 1 und antwort 2 liefert unsere "landkarte der 16 menschen".
+    </div>
+  </div>
+
+  <!--
+  <div class="langs para">
+    <div lang="de">
+        manchmal ist frage 1 leichter,
+        manchmal ist frage 2 leichter.
+
+        wenn dir selbst-einschätzung (wer bin ich?) schwer fällt,
+
+      überfordert?
+      dann lass dich von deinen freunden schätzen.
+    </div>
+  </div>
+  -->
+
+  <div class="langs para nobullet">
+    <div lang="de">
+      ●&nbsp;wer bin ich? eine mischung aus zwei hälften: körper und geist.
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      <!--● -->
+      was ist mein körper?
+      das ist die hälfte vom ich, die alle menschen sehen können.
+      (grobstruktur, große unterschiede)
+      <!-- öffentlich, offen, deutlich, überschwellig -->
+    </div>
+  </div>
+
+  <div class="four-elements bodies">
+    <div class="son top left">
+      <div class="center-circle">
+        <svg viewBox="-60 -60 120 120">
+          <circle cx="0" cy="0" r="60" fill="white" stroke="black" stroke-width="2" />
+          <path
+            d="
+              M -100 0 h 200
+              M 0 -100 v 200
+            "
+            stroke="black"
+          />
+          <circle cx="0" cy="0" r="32" fill="white" stroke="black" />
+          <g text-anchor="middle" dominant-baseline="middle" transform="scale(0.95)" font-size="20">
+
+            <text x="0" y="0" fill="black">Körper</text>
+
+            <text x="-34" y="-34" fill="black">A</text>
+            <text x="34" y="34" fill="black">B</text>
+            <text x="-34" y="34" fill="black">C</text>
+            <text x="34" y="-34" fill="black">D</text>
+
+          </g>
+        </svg>
+      </div>
+      <div class="langs">
+        <div lang="de">
+          Sohn. jung und männlich. kleiner Stecker.
+
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              margin-right: -0.5em; /* workaround. margin of center-circle is too large */
+              height: 1.8em;
+              margin-top: -0.4em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-150 -150 300 300"
+          >
+            <g fill="none" stroke-width="10">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 75 50 v -100 h -150 v 100 h 60 v 30 a 15 15 0 0 0 30 0 v -30 z
+
+                  M 0 -50 v -30
+
+                  M 75 50 L 75 90
+                  M -75 50 L -75 90
+
+                  M 75 -50 L 100 10
+                  M -75 -50 L -100 10
+                "
+                stroke="black"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-100" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="75" cy="100" r="10" stroke="black" />
+              <circle cx="-75" cy="100" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="105" cy="20" r="10" stroke="black" />
+              <circle cx="-105" cy="20" r="10" stroke="black" />
+
+            </g>
+          </svg>
+
+        </div>
+      </div>
+    </div>
+    <div class="water top right">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          Vater. alt und männlich. großer Stecker.
+
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              margin-left: -0.5em; /* workaround. margin of center-circle is too large */
+              height: 1.8em;
+              margin-top: -0.4em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="10">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 50 80 v -150 h -100 v 150 h 35 v 30 a 15 15 0 0 0 30 0 v -30 z
+
+                  M 0 -70 v -30
+
+                  M 50 80 L 50 120
+                  M -50 80 L -50 120
+
+                  M 50 -70 L 80 10
+                  M -50 -70 L -80 10
+                "
+                stroke="black"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="50" cy="130" r="10" stroke="black" />
+              <circle cx="-50" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="82" cy="20" r="10" stroke="black" />
+              <circle cx="-82" cy="20" r="10" stroke="black" />
+            </g>
+          </svg>
+
+        </div>
+      </div>
+    </div>
+    <div class="air bottom left">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          Tochter. jung und weiblich. kleine Buchse.
+
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              margin-right: -0.5em; /* workaround. margin of center-circle is too large */
+              height: 1.8em;
+              margin-top: -0.4em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-150 -150 300 300"
+          >
+            <g fill="none" stroke-width="10">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 75 50 v -100 h -150 v 100 h 60 v -30 a 15 15 0 0 1 30 0 v 30 z
+
+                  M 0 -50 v -30
+
+                  M 75 50 L 75 90
+                  M -75 50 L -75 90
+
+                  M 75 -50 L 100 10
+                  M -75 -50 L -100 10
+                "
+                stroke="black"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-100" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="75" cy="100" r="10" stroke="black" />
+              <circle cx="-75" cy="100" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="105" cy="20" r="10" stroke="black" />
+              <circle cx="-105" cy="20" r="10" stroke="black" />
+
+            </g>
+          </svg>
+
+        </div>
+      </div>
+    </div>
+    <div class="earth bottom right">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          Mutter. alt und weiblich. große Buchse.
+
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              margin-left: -0.5em; /* workaround. margin of center-circle is too large */
+              height: 1.8em;
+              margin-top: -0.4em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="10">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                M 50 80 v -150 h -100 v 150 h 35 v -30 a 15 15 0 0 1 30 0 v 30 z
+
+                  M 0 -70 v -30
+
+                  M 50 80 L 50 120
+                  M -50 80 L -50 120
+
+                  M 50 -70 L 80 10
+                  M -50 -70 L -80 10
+                "
+                stroke="black"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="50" cy="130" r="10" stroke="black" />
+              <circle cx="-50" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="82" cy="20" r="10" stroke="black" />
+              <circle cx="-82" cy="20" r="10" stroke="black" />
+            </g>
+          </svg>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      alter ist relativ.
+      für kinder bin ich alt,
+      für eltern bin ich jung,
+      für gleichalte bin ich gleichalt.
+      <!--
+      beispiel:
+      ich bin 30 jahre alt.
+      im vergleich zu einem 50-jährigen bin ich jung.
+      im vergleich zu einem 10-jährigen bin ich alt.
+      -->
+      wenn wir das alter weglassen, haben wir 8 typen:
+      MF x 1234 = M1 M2 M3 M4 + F1 F2 F3 F4.
+      <!--
+        M1 F1 M2 F2 M3 F3 M4 F4.
+      -->
+    </div>
+  </div>
+
+  <div class="langs para">
+    <div lang="de">
+      was ist mein geist?
+      das ist die hälfte vom ich, die nur sensible menschen (1?) sehen können.
+       <!-- sensible menschen: feuer und ... ? im "worst case" nur feuer. -->
+      (feinstruktur, kleine unterschiede)
+
+      keine ahnung?
+      dann lass dich von deinen freunden schätzen.
+
+      <!-- privat, geschlossen, heimlich, unterschwellig -->
+      <!--
+        stress response = sprungantwort = antwort auf einen sprung/schock/bruch.
+        zwei sprünge: stress an + stress aus.
+        https://de.wikipedia.org/wiki/Sprungantwort
+        https://en.wikipedia.org/wiki/Step_response
+
+        https://de.wikipedia.org/wiki/Impulsantwort
+        https://en.wikipedia.org/wiki/Impulse_response
+        Bei der experimentellen Analyse dagegen
+        werden LTI-Systeme häufig mit der Sprungfunktion angeregt
+        und die Sprungantwort gemessen,
+        die das Übertragungsverhalten eines solchen Systems
+        ebenfalls vollständig beschreibt.
+
+        https://de.wikipedia.org/wiki/%C3%9Cbertragungsfunktion
+        https://en.wikipedia.org/wiki/Transfer_function
+        Die Übertragungsfunktion oder auch Systemfunktion
+        beschreibt in der ingenieurwissenschaftlichen Systemtheorie
+        mathematisch die Beziehung zwischen dem Ein- und Ausgangssignal
+        eines linearen dynamischen Systems in einem Bildraum.
+
+        https://temperamenttest.org/en-gb/temperament/
+        Stress response
+        Choleric [fire]:
+        Quickly gets angry and irritated; openly expresses their emotions.
+        Calms down quickly as well. Seeks to solve the problem.
+        Sanguine [air]:
+        Ignores the problem or finds advantages in it.
+        Finds the one who can solve the problem or switches to another task.
+        Phlegmatic [water]:
+        Reflects on the causes of the problem.
+        Ponders the decision for a long time, then executes it systematically.
+        Melancholic [earth]:
+        Gets lost and panicked; looks for support and help.
+        If they are not found, they often give up and spend a long time to worrying about it.
+
+        overdamped system = low volatility = high inertia = high dampening = steady -> break = break late
+        underdamped system = high volatility = low inertia = low dampening = break -> steady = break early
+      -->
+    </div>
+  </div>
+
+  <div class="four-elements">
+    <div class="fire top left">
+      <div class="center-circle">
+        <svg viewBox="-100 -100 200 200">
+          <circle cx="0" cy="0" r="100" fill="white" stroke="black" stroke-width="2" />
+          <path
+            d="
+              M -100 0 h 200
+              M 0 -100 v 200
+
+              M -100 -58 L 100 58
+              M -58 -100 L 58 100
+              M 58 -100 L -58 100
+              M 100 -58 L -100 58
+            "
+            stroke="black"
+          />
+          <circle cx="0" cy="0" r="60" fill="white" stroke="black" />
+          <path
+            d="
+              M -100 0 h 200
+              M 0 -100 v 200
+            "
+            stroke="black"
+          />
+          <circle cx="0" cy="0" r="30" fill="white" stroke="black" />
+          <g text-anchor="middle" dominant-baseline="middle" transform="scale(0.93)" font-size="20">
+
+            <text x="0" y="0" fill="black">Geist</text>
+
+            <text x="-34" y="-34" fill="black">1</text>
+            <text x="34" y="34" fill="black">2</text>
+            <text x="-34" y="34" fill="black">3</text>
+            <text x="34" y="-34" fill="black">4</text>
+
+            <text x="-61" y="-61" fill="black">1x1</text>
+            <text x="61" y="61" fill="black">2x2</text>
+            <text x="-61" y="61" fill="black">3x3</text>
+            <text x="61" y="-61" fill="black">4x4</text>
+
+            <text x="-21" y="-82" fill="black">1x4</text>
+            <text x="21" y="-82" fill="black">4x1</text>
+            <text x="21" y="82" fill="black">2x3</text>
+            <text x="-21" y="82" fill="black">3x2</text>
+
+            <text x="82" y="21" fill="black">2x4</text>
+            <text x="82" y="-21" fill="black">4x2</text>
+            <text x="-82" y="-21" fill="black">1x3</text>
+            <text x="-82" y="21" fill="black">3x1</text>
+
+
+          </g>
+        </svg>
+      </div>
+      <div class="langs">
+        <div lang="de">
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              height: 4em;
+              margin-top: 0.2em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 400 300"
+          >
+            <g fill="none" stroke-width="4">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 0 80 L 60 -70 L -60 -70 z
+
+                  M 0 -70 v -30
+
+                  M 20 30 L 30 120
+                  M -20 30 L -30 120
+
+                  M 55 -55 L 70 20
+                  M -55 -55 L -70 20
+                "
+                stroke="black"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="30" cy="130" r="10" stroke="black" />
+              <circle cx="-30" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="72" cy="30" r="10" stroke="black" />
+              <circle cx="-72" cy="30" r="10" stroke="black" />
+
+              <g transform="translate(240 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 1 50 50
+                    v 50
+                    a 50 50 0 0 0 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+
+              </g>
+            </g>
+          </svg>
+
+          hohe Stress-Toleranz.
+          schafft auch schwere Arbeit.
+          <!-- täter, töter, schwache tötungshemmung, killer instinkt -->
+          <!-- unterfordert, gelangweilt -->
+          <!-- braucht neue fragen und neue antworten. improvisieren -->
+          Wenn ich mir etwas vorgenommen habe, dann schaffe ich es auch.
+          Ich habe keine Angst vor Streit.
+          <!--
+            Ich bin in der Lage, meine Meinung durchzusetzen.
+            Häufig gerate ich mit anderen Menschen aneinander und kann dabei auch laut werden.
+          -->
+          Es regt mich auf, wenn andere vermeidbare Fehler machen.
+          Ich bin stolz auf mein Selbstbewusstsein.
+          Ich kann andere überzeugen und motivieren.
+          Mein Umfeld sagt, ich bin ein Alphatier.
+
+          Tier.
+          Feuer.
+          Herz, Vau.
+          Choleriker.
+          Neugier.
+          breiter Geist.
+          Sohn-Rolle.
+          <!--
+            A1 Kenny, B1 Marge, C1 Bean, D1 Bender.
+          -->
+        </div>
+      </div>
+    </div>
+    <div class="water top right">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              height: 4em;
+              margin-top: 0.2em;
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 400 300"
+          >
+            <g fill="none" stroke-width="4">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 0 -80 L 30 0 L 0 80 L -30 0 z
+
+                  M 0 -70 v -30
+
+                  M 20 30 L 30 120
+                  M -20 30 L -30 120
+
+                  M 10 -55 L 60 0
+                  M -10 -55 L -60 0
+                "
+                stroke="black" fill="white"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="30" cy="130" r="10" stroke="black" />
+              <circle cx="-30" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="65" cy="6" r="10" stroke="black" />
+              <circle cx="-65" cy="6" r="10" stroke="black" />
+
+              <g transform="translate(240 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 0 50 50
+                    v 50
+                    a 50 50 0 0 0 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+            </g>
+          </svg>
+
+          Fertigmacher.
+          Antworter.
+          Ich meide Veränderungen und Experimente.
+          Ich handle überlegt.
+          <!--
+            , ich möchte nichts überstürzen.
+            Auf Außenstehende wirke ich manchmal abwesend.
+          -->
+          <!--
+            Ich bin nicht faul, finde es aber auch nicht schlimm, wenn es nichts zu tun gibt.
+          -->
+          Wirklich wütend oder aufgebracht bin ich eigentlich nie.
+          In Diskussionen halte ich mich mit der eigenen Meinung zurück und vermittele eher zwischen anderen.
+          <!--
+          Ich bin kein Freund von Streitigkeiten, sondern freue mich über Harmonie in meinem Umfeld.
+          -->
+          Phlegmatiker.
+          Vater-Rolle.
+          Mond.
+          Wasser.
+          Raute, Diamant, Spargel, konvex, lange Knochen, ectomorph.
+          Ausdauer.
+          langer Körper.
+        </div>
+      </div>
+    </div>
+    <div class="air bottom left">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          Anfänger.
+          Frager.
+          Risiken finde ich spannend und bin gerne bereit, diese einzugehen.
+          <!--
+            Ich gehe immer davon aus, dass sich alles zum Besten wendet.
+          -->
+          Fast immer bin ich gut gelaunt.
+          Genießer.
+          Ich habe viele Freunde.
+          Am liebsten möchte ich immer etwas Neues erleben.
+          Es fällt mir schwer, mich lange zu konzentrieren.
+          Ich kämpfe mit mir selbst, da ich meine Ziele nicht erreiche.
+
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              height: 4em;
+              margin-top: 0.5em; /* broken on screen, works on print */
+              /*margin-top: 1.5em; /* workaround */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 400 300"
+          >
+            <g fill="none" stroke-width="4">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 60 70 L -60 70 L -30 0 L -60 -70 L 60 -70 L 30 0 z
+
+                  M 0 -70 v -30
+
+                  M 30 70 L 30 120
+                  M -30 70 L -30 120
+
+                  M 53 -55 L 65 0
+                  M -53 -55 L -65 0
+                "
+                stroke="black" fill="white"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="30" cy="130" r="10" stroke="black" />
+              <circle cx="-30" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="67" cy="8" r="10" stroke="black" />
+              <circle cx="-67" cy="8" r="10" stroke="black" />
+
+              <g transform="translate(240 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 1 50 50
+                    v 50
+                    a 50 50 0 0 1 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+
+            </g>
+          </svg>
+
+
+          Sanguiniker.
+          Tochter-Rolle.
+          Sonne.
+          Luft.
+          Sanduhr, Acht, konkav, breite Gelenke, endomorph.
+          Schnellkraft.
+          breiter Körper.
+        </div>
+      </div>
+    </div>
+    <div class="earth bottom right">
+      <div class="center-circle"></div>
+      <div class="langs">
+        <div lang="de">
+          niedrige Stress-Toleranz.
+          braucht leichte Arbeit.
+          <!-- opfer, schöpfer, gebährer -->
+          <!-- überfordert, abgehängt, hasst überraschungen -->
+          <!-- flowprofile: flow goer -->
+          <!-- braucht bekannte fragen und bekannte antworten -->
+
+          Mir ist wichtig, was andere von mir halten und versuche, es allen recht zu machen.
+          Ich meide fremde Menschen und unbekannte Situationen.
+          <!--
+            Auf fremde Menschen gehe ich nur ungern zu.
+            In unbekannten Situationen bin ich zurückhaltend.
+          -->
+          
+          <!--
+            Ich nehme Dinge meist persönlich.
+          -->
+
+          <!--
+          Ich reagiere emotional.
+          Man könnte sagen, ich bin ein Schwarzseher.
+          -->
+          <!-- zyniker, hund -->
+
+          Es fällt mir schwer, Vertrauen aufzubauen.
+          Ich gebe alles für Menschen, denen ich nahe stehe.
+
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              height: 4em;
+              margin-top: 0.5em; /* broken on screen, works on print */
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 400 300"
+          >
+            <g fill="none" stroke-width="4">
+              <!-- torso, neck, legs, arms -->
+              <path
+                d="
+                  M 0 -80 L 60 70 L -60 70 z
+
+                  M 0 -70 v -30
+
+                  M 30 70 L 30 120
+                  M -30 70 L -30 120
+
+                  M 10 -55 L 60 0
+                  M -10 -55 L -60 0
+                "
+                stroke="black" fill="white"
+              />
+              <!-- head -->
+              <circle cx="0" cy="-120" r="20" stroke="black"/>
+              <!-- feet -->
+              <circle cx="30" cy="130" r="10" stroke="black" />
+              <circle cx="-30" cy="130" r="10" stroke="black" />
+              <!-- hands -->
+              <circle cx="65" cy="6" r="10" stroke="black" />
+              <circle cx="-65" cy="6" r="10" stroke="black" />
+
+              <g transform="translate(240 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 0 50 50
+                    v 50
+                    a 50 50 0 0 1 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <!--
+                    M 0 50
+                    a 50 50 0 0 1 -50 50
+                    v 50
+                    a 50 50 0 0 0 50 50
+                -->
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+
+            </g>
+          </svg>
+
+          Melancholiker.
+          Mutter-Rolle.
+          Pflanze.
+          Erde.
+          Birne, Pyramide, Delta, Glocke.
+          Geduld.
+          langer Geist.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="langs para">
+    <div lang="de">
+      mischtyp = grundtyp x subtyp.
+      1x4 = feuer spielt wasser,
+      3x2 = luft spielt erde,
+      ...
+    </div>
+  </div>
+  
+  <div class="langs para nobullet">
+    <div lang="de">
+      ●&nbsp;was ist mein geist? die vier geister 1234 können wir vergleichen mit 3 eigenschaften.
+      ●&nbsp;mein geist ist die schnittmenge aus diesen eigenschaften.
+      beispiel: 34 und 23 → 3.
+    </div>
+  </div>
+  
+  <div class="langs para nobullet">
+    <div lang="de">
+      ●&nbsp;eigenschaft "diagonale":
+    </div>
+  </div>
+
+  <div class="two-properties">
+    <div class="left">
+      <div class="label">
+        1
+        <br>
+        2
+      </div>
+      <div class="langs">
+        <div lang="de">
+          mesomorph.
+          <!--Sohn- oder Mutter-Rolle.-->
+          <!--von Natur aus athletisch-->sportlich.
+          Mittelgewicht.
+          <!--
+            Ich kann zunehmen und abnehmen.
+          -->
+          Individualist.
+          politisch "rechts".
+          <!--
+            Naturwissenschaftler.
+          -->
+          Das Gute liegt nah.
+          <!--
+            Heimatverbunden.
+          -->
+          <!-- exact sciences -->
+          <!--
+            Klassiker.
+          -->
+          <!--
+          Primitivkultur.
+            Versorger.
+          -->
+          Ich habe wenige Freunde (wählerisch).
+          <!--
+          Ich kann nur mit wenigen Menschen gut umgehen.
+
+          -->
+          Ich arbeite lieber in kleinen Gruppen oder alleine.
+          <!--
+          Ich meide Plätze mit vielen Menschen.
+          -->
+          <!-- agoraphobie -->
+          Task Focus.
+          <!-- erst die arbeit (task), dann das vergnügen (people, freunde) -->
+          Ich brauche greifbare Ergebnisse. <!-- results culture -->
+          <!--
+            Ich bin passiv, lässig, gehemmt, "depressiv"
+          -->
+          <!-- introverted subtype?
+            Bei Stress: Essen oder Brüten.
+            Niedriger Blutdruck.
+          -->
+          <!-- Parasympathisches Nervensystem -->
+          Erst Denken, dann Handeln.
+          Erst Gründe, dann Menschen.
+          Ich reagiere oft zu spät.
+          Ich brauche stabile Grundlagen, damit ich weiter arbeiten kann (gründlich, streng).
+          <!-- perfektionismus -->
+          <!-- anfang ist wichtiger als ende, weg ist wichtiger als ziel -->
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <!-- FIXME extra space in print: from div.label -->
+      <div class="label">
+        3
+        <br>
+        4
+      </div>
+      <div class="langs">
+        <div lang="de">
+          <!-- FIXME extra space in print: before "endomorph (3)" -->
+          <div class="nowrap">endomorph (3)</div>
+          oder <div class="nowrap">ectomorph (4)</div>.
+          <!--Tochter- und Vater-Rolle.-->
+          <div class="nowrap">Schwergewicht (3)</div>
+          oder <div class="nowrap">Leichtgewicht (4)</div>.
+          politisch "links".
+          Sozialist.
+          Humanist.
+          <!--
+            Romantiker.
+          -->
+          <!--
+          Hochkultur.
+            Dienstleister.
+          -->
+          Das Gute liegt fern.
+          <!--
+          Exotik.
+          Fernreisen.
+          Ich kann mit allen Menschen gut umgehen.
+          -->
+          Ich habe viele Freunde.
+          People Focus.
+          <!-- erst das vergnügen (people, freunde), dann die arbeit (task) -->
+          <!--Ich bin glücklich, wenn ich viel mit Menschen zu tun habe.-->
+          <!-- caring culture -->
+          <!--
+          -->
+          <!-- extraverted subtype?
+            Bei Stress: Kampf oder Flucht.
+            Hoher Blutdruck.
+            Ich bin aktiv, nervös, getrieben, manisch.
+          -->
+          <!-- Sympathisches Nervensystem-->
+          <!-- heissblütig, rotes blut -->
+          <!--
+          Ich arbeite gerne in einem Großkonzern.
+          Ich bin Mitglied in einer Kirche.
+          -->
+          Höflichkeit ist wichtig.
+          Alle Menschen sollten zusammen arbeiten.
+          Erst Menschen, dann Gründe.
+          Alleine arbeiten fällt mir schwer.
+          Ich kann schnell reagieren.
+          Erst Handeln, dann Denken.
+          <!-- Alleine arbeiten -> mehr fehler, sich verlieren in breitensuche (luft) oder tiefensuche (wasser) -->
+          <!--Ein gutes Ziel heiligt alle Wege, auch Abkürzungen (Betrug, Tricks).-->
+
+          <!-- workaround. otherwise box size is too small for text -->
+          <br>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="langs">
+    <div lang="de">
+      eigenschaft "inneres geschlecht":
+      die meisten menschen haben hier eine starke neigung (gleichaltrige gruppen).
+      antwort "beides" → mischtypen 1x3 3x1 (extrem kindisch) oder 2x4 4x2 (extrem erwachsen)
+      <!--
+        erziehung in same-age-groups -> mittel-alt + extrem männlich oder extrem weiblich
+      -->
+    </div>
+  </div>
+
+  <div class="two-properties">
+    <div class="left">
+      <div class="label">
+        1
+        <br>
+        4
+      </div>
+      <div class="langs">
+        <div lang="de">
+
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              height: 4em;
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="4">
+
+              <g transform="translate(40 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    l 50 50
+                    v 50
+                    a 50 50 0 0 0 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+            </g>
+          </svg>
+
+          männlich.
+          langes Becken.
+          <!--
+            starke selbstbeherrschung. [ungenau. was genau wird beherrscht?]
+          kann seine erregung selbst steuern.
+          ist leicht zu beruhigen.
+          -->
+          ich kann meine erregung schnell beenden (bruch),
+          aber ich kann lange nachtragen (stetig).
+          zusammenfassen.
+          verdichten.
+          ich fasse mich kurz.
+          ich gebe stichworte.
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="label">
+        2
+        <br>
+        3
+      </div>
+      <div class="langs">
+        <div lang="de">
+
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              height: 4em;
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="4">
+
+              <g transform="translate(40 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    l 50 50
+                    v 50
+                    a 50 50 0 0 1 -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+            </g>
+          </svg>
+
+          weiblich.
+          breites Becken.
+          <!--
+          schwache selbstbeherrschung.
+          wird seine erregung von anderen steuern lassen.
+          ist schwer zu beruhigen.
+          -->
+          ich werde lange an meiner erregung festhalten (stetig)
+          (bis ein anderer meine erregung beendet oder bis zu meiner erschöpfung),
+          aber ich werde schnell vergessen (bruch).
+          <!--
+            redet mit vielen schwachen worten.
+          zeigt mit vielen schwachen gesten.
+          -->
+          <!-- erschöpfung: burnout, hard limit, kollaps -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="langs">
+    <div lang="de">
+      eigenschaft "inneres alter": die meisten menschen sagen hier "beides",
+      weil erziehung in gleichaltrigen gruppen.
+      antwort "beides" → mischtypen 1x4 4x1 (extrem männlich) oder 2x3 3x2 (extrem weiblich)
+      <!--
+        erziehung in same-age-groups -> mittel-alt + extrem männlich oder extrem weiblich
+        = "sexismus"
+        = segregation nach geschlecht
+        = subtyp wird selektiert nach geschlecht
+      -->
+    </div>
+  </div>
+
+  <div class="two-properties">
+    <div class="left">
+      <div class="label">
+        1
+        <br>
+        3
+      </div>
+      <div class="langs">
+        <div lang="de">
+
+          <svg
+            style="
+              float: left; margin-right: 0.5em;
+              height: 4em;
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="4">
+
+              <g transform="translate(40 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 1 50 50
+                    v 50
+                    l -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+            </g>
+          </svg>
+
+          kindisch.
+          breiter Brustkorb.
+          ich bin leicht zu erregen (bruch),
+          ich kann meine erregung leicht halten (stetig).
+          <!-- erregen: beeindrucken, begeistern --> <!-- starke lust -->
+          Forschung.
+          Breitensuche.
+          Generalist.
+          Schlechtes Gewissen und gute Gefühle.
+          <!--
+          kreativ.
+          Neue Lösungen suchen.
+          Ich habe starke Meinungen.
+          -->
+          <!--
+            kann seine ruhe schnell verlassen.
+          -->
+
+          <!-- kann seine ruhe schnell "verlieren" -->
+          <!--
+            Neugier.
+            Leise Stimme. (infantil = unmündig, sprachlos)
+            viele Interessen.
+            leicht erregbar, leicht ablenkbar.
+            schwache konzentration.
+            Ich meide Wiederholung.
+            Ich erfinde neue Sprüche und Namen.
+            Grundstimmung negativ.
+          -->
+
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="label">
+        2
+        <br>
+        4
+      </div>
+      <div class="langs">
+        <div lang="de">
+
+          <svg
+            style="
+              float: right; margin-left: 0.5em;
+              height: 4em;
+              /* outline: solid 1px red; /* debug */
+            "
+            viewBox="-100 -150 200 300"
+          >
+            <g fill="none" stroke-width="4">
+
+              <g transform="translate(40 -125)">
+
+                <!-- stress input curve = square wave -->
+                <path
+                  d="
+                    M -50 0
+                    v 50
+                    l -50 50
+                    v 50
+                    l 50 50
+                    v 50
+
+                    v 10
+                    l -10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="-50" cy="200" r="5" stroke="black" fill="black" />
+                <circle cx="-50" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="-100" cy="150" r="5" stroke="black" fill="black" />
+
+                <!-- stress response curve -->
+                <path
+                  d="
+                    M 0 0 v 50
+                    a 50 50 0 0 0 50 50
+                    v 50
+                    l -50 50
+                    v 50
+
+                    v 10
+                    l 10 -20
+                  "
+                  stroke="black"
+                />
+                <circle cx="0" cy="50" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="100" r="5" stroke="black" fill="black" />
+                <circle cx="50" cy="150" r="5" stroke="black" fill="black" />
+                <circle cx="0" cy="200" r="5" stroke="black" fill="black" />
+              </g>
+            </g>
+          </svg>
+
+          erwachsen.
+          langer Brustkorb.
+          ich bin schwer zu erregen (stetig),
+          ich erlebe kontrollverlust bei erregung (bruch).
+          Produktion.
+          Tiefensuche.
+          Spezialist.
+          Gutes Gewissen und schlechte Gefühle.
+          <!--
+          Bekannte Lösungen anwenden und optimieren.
+          Routine.
+          konzentriert.
+          Ich habe schwache Meinungen.
+
+          -->
+          <!-- erregen: beeindrucken, begeistern -->
+          <!-- schwache lust -->
+          <!--
+            wird lange an seiner ruhe festhalten
+          -->
+          <!-- (bis zur erschöpfung) (bis zum burnout) (bis zum hard limit) -->
+          <!--
+          Laute Stimme.
+          schwer erregbar, schwer ablenkbar.
+          Ich wiederhole mich gerne.
+          Ich nutze alte Sprüche und Namen.
+          Grundstimmung positiv.
+          -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- page-content -->
+
+<div class="page-footer">
+
+  <tt>alchi-flyer.2021-07-29.html</tt>
+  @
+  <tt>github.com/milahu/alchi</tt>
+  Lizenz <tt>CC0-1.0</tt>
+
+</div><!-- page-footer -->
+
+</div><!-- page -->
+
+
+
+<!-- page 2 -->
+<div class="page">
+<div class="page-content">
+
+
+
+<!--
+  <div class="langs para">
+    <div lang="de">
+      <div class="nowrap">wer? milan hauth</div>,
+      <div class="nowrap">jägerstraße 10</div>, trostberg,
+      <div class="nowrap">+49 151 7205 9978</div>,
+      <code>milahu@gmail.com</code>,
+      <code>github.com/milahu/alchi</code>
+      <!-x- nein, kein geld. 1. ich hab kein geld. 2. dieser köder skaliert nicht.
+      geld? ja, ich biete einen gewinn von 160 eur
+      für den ERSTEN kleinstaat mit 16 menschen,
+      der meine kriterien erfüllt (10% toleranz beim alter,
+      mindestens 2 jahre abstand zwischen den zwei generationen).
+      bewerbungen müssen öffentlich sein und werden von mir persönlich bewertet.
+      (zu wenig? sponsoren sind willkommen ...)
+      -x->
+    </div>
+  </div>
+-->
+
+
+
+
+
+<div class="langs para">
+  <div lang="de">
+    wer sind meine freunde?
+    das ist subjektiv für meinem körper und geist.
+    aber ich hoffe:
+    es gibt ein objektives weltbild,
+    mit dem alle menschen ihre wahren freunde finden können.
+    <!--
+      echte freunde vs falsche freunde
+      kompatibel, beide sind "schuld"
+      
+      vergleich: zwei puzzle-teile können nur dann nebeneinander liegen,
+      wenn ihre stecker und buchsen zusammen passen.
+
+      jeder mensch
+      kann andere geister nur dann nutzen,
+      wenn sie im "richtigen" körper wohnen.
+
+    -->
+  </div>
+</div>
+
+
+
+
+
+
+<!--
+
+<div class="para langs">
+  <div lang="de">
+    4.
+    jeder mensch braucht ECHTE freunde.
+    ohne freunde wird jeder mensch krank oder nutzlos.
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    5.
+    jeder mensch kann andere menschen nur dann nutzen
+    (als freunde haben, als arbeit-geber oder arbeit-nehmer),
+    wenn die zwei menschen zusammen passen,
+    also wenn die körper und geister zusammen passen.
+    vergleich: zwei puzzle-teile können nur dann nebeneinander liegen,
+    wenn ihre stecker und buchsen zusammen passen.
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    <div class="nowrap">6. jeder mensch</div>
+    kann andere geister nur dann nutzen,
+    wenn sie im "richtigen" körper wohnen.
+  </div>
+</div>
+
+<div class="para langs">
+  <div lang="de">
+    <div class="nowrap">7. was passiert,</div>
+    wenn zwei menschen NICHT zusammen passen?
+    dann entstehen immer wieder MISSVERSTÄNDNISSE, streit, schlechte stimmung,
+    <div class="nowrap">"psychische" probleme</div> (die aber eigentlich "soziale" probleme sind),
+    scheinbar grundlose trauer, frust, wut, blockaden, schwäche.
+  </div>
+</div>
+
+
+
+<hr>
+
+
+
+<div class="para langs">
+  <div lang="de">
+    8.
+    welche körper und geister sind "richtig"?
+    das ist für jeden mensch anders (subjektives weltbild).
+  </div>
+</div>
+<div class="para langs nobullet">
+  <div lang="de">
+    <div class="nowrap">● 9. aber ich glaube:</div>
+    wir können alle subjektiven weltbilder
+    zusammenfassen zu EINEM system
+    <div class="nowrap">→ OBJEKTIVES WELTBILD</div>.
+  </div>
+</div>
+
+
+-->
+
+
+<div class="para langs">
+  <div lang="de">
+    wie funktioniert so ein <div class="nowrap">objektives weltbild</div>?
+    wenn wir von einem mensch den körper und geist kennen
+    (beispiel: mensch x hat den <div class="nowrap">körper A</div>,
+    und den <div class="nowrap">geist 1</div> → A1)
+    <!--dann liefert unser system seine abstrakten freunde.-->
+    dann liefert unser system die körper und geister seiner freunde.
+    beispiel: <div class="nowrap">A1 → C2 D2 C3 D4</div>
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    <!--
+      ... und mit seinen abstrakten freunden (beispiel: C2 D2 C3 D4)
+      können wir dann seine <div class="nowrap">konkreten freunde</div> finden.
+    -->
+    ... und diese körper und geister (beispiel: C2 D2 C3 D4)
+    können wir dann in der echten welt suchen.
+    beispiel: C2&nbsp;→&nbsp;mensch y hat den körper C und den geist 2
+    → Mensch x und Mensch y können Freunde sein
+  </div>
+</div>
+
+
+
+
+<div class="para langs">
+  <div lang="de">
+    hier <!--(beim projekt kleinstaat)--> suchen wir dieses objektive weltbild,
+    mit dem JEDER mensch seine echten freunde finden kann.
+  </div>
+</div>
+<div class="para langs nobullet">
+  <div lang="de">
+    <div class="nowrap">● der schwierigste teil ist:</div>
+    wir müssen die geister richtig schätzen,
+    und wir müssen die qualität von beziehungen schätzen.
+    für dieses schätzen brauchen wir "sensible" menschen &rarr; element feuer?
+    <!--
+      die "geduldigen" menschen (erde und wasser) haben eher angst vor gefühlen und geistern.
+    -->
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    <div class="nowrap">... aber</div>
+    diese sensiblen menschen können nur von ihren freunden verstanden werden.
+    hier haben wir ein "henne und ei problem":
+    <!--
+      zum aufbau von einem kleinstaat darf jeder nur mit seinen freunden reden.
+    -->
+    jeder darf nur mit seinen freunden reden,
+    und "fernsprechen" <!--(telekommunikation)--> geht nur über gemeinsame freunde.
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  <!-- TODO why need margin-right? -->
+  <div class="map-container">
+
+    <div class="title">
+      Landkarte der 16 Menschen
+      <!-- (mit Wiederholung → 36 Menschen) -->
+    </div>
+
+    <!-- map shapes: squares and crosses -->
+    <svg class="map-shapes" style="position: absolute /* FIXME scroll in overflow */; width: var(--map36-width)" viewBox="20 20 350 350">
+      <!--
+        <rect x="0" y="0" width="560" height="560" fill="none" stroke="black" stroke-width="2" />
+      -->
+      <g fill="none" stroke="black" stroke-width="1" transform="translate(1 1)">
+        <!-- squares -->
+        <rect x="120" y="120" width="8" height="8" />
+        <rect x="240" y="120" width="8" height="8" />
+        <rect x="240" y="240" width="8" height="8" />
+        <rect x="120" y="240" width="8" height="8" />
+
+        <!-- crosses -->
+        <path transform="translate(60 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(60 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(60 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+
+        <path transform="translate(180 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(180 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(180 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+
+        <path transform="translate(300 60)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(300 180)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+        <path transform="translate(300 300)" d="M 0 0 L 8 8 M 8 0 L 0 8" />
+      </g>
+    </svg>
+
+    <div class="map36 e_bxface">
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-fry.webp"/></div>
+      <div><div>A4</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-fry.webp"/></div>
+
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+
+      <div><div>A3</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2</div><img src="images/d2-homer.webp"/></div>
+      <div><div>A1</div><img src="images/a1-kenny.webp"/></div>
+      <div><div>D4</div><img src="images/d4-rick-sanchez.webp"/></div>
+      <div><div>A3</div><img src="images/a3-bart.webp"/></div>
+      <div><div>D2</div><img src="images/d2-homer.webp"/></div>
+
+      <div><div>C1</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4</div><img src="images/b4-lois.webp"/></div>
+      <div><div>C3</div><img src="images/c3-heidi-turner.webp"/></div>
+      <div><div>B2</div><img src="images/b2-sharon-marsh.webp"/></div>
+      <div><div>C1</div><img src="images/c1-bean.webp"/></div>
+      <div><div>B4</div><img src="images/b4-lois.webp"/></div>
+
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-fry.webp"/></div>
+      <div><div>A4</div><img src="images/a4-kyle.webp"/></div>
+      <div><div>D1</div><img src="images/d1-bender.webp"/></div>
+      <div><div>A2</div><img src="images/a2-stan.webp"/></div>
+      <div><div>D3</div><img src="images/d3-fry.webp"/></div>
+
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+      <div><div>C2</div><img src="images/c2-meg-griffin.webp"/></div>
+      <div><div>B3</div><img src="images/b3-francine.webp"/></div>
+      <div><div>C4</div><img src="images/c4-lisa.webp"/></div>
+      <div><div>B1</div><img src="images/b1-marge.webp"/></div>
+
+    </div>
+
+    <!--
+    <div class="subtitle">
+      A1 Kenny,
+      A2 Stan Marsh,
+      A3 Bart Simpson,
+      A4 Kyle
+      <br>
+      B1 Marge,
+      B2 Sharon Marsh,
+      B3 Francine Smith,
+      B4 Lois Griffin
+      <br>
+      C1 Princess Bean,
+      C2 Meg Griffin,
+      C3 Heidi Turner,
+      C4 Lisa
+      <br>
+      D1 Bender,
+      D2 Homer,
+      D3 Philip J. Fry,
+      D4 Rick Sanchez
+    </div>
+    -->
+    <div class="subtitle">
+      A1 Kenny,
+      B1 Marge Simpson,
+      C1 Princess Bean,
+      D1 Bender
+      <br>
+      A2 Stan Marsh,
+      B2 Sharon Marsh,
+      C2 Meg Griffin,
+      D2 Homer Simpson
+      <br>
+      A3 Bart Simpson,
+      B3 Francine Smith,
+      C3 Heidi Turner,
+      D3 Philip J. Fry
+      <br>
+      A4 Kyle,
+      B4 Lois Griffin,
+      C4 Lisa Simpson,
+      D4 Rick Sanchez
+    </div>
+  </div>
+
+
+
+
+<hr>
+
+
+
+
+<div class="para langs">
+  <div lang="de">
+    wie sieht dieses objektive weltbild aus?
+    mein lösungs-vorschlag ist die "landkarte der 16 menschen".
+    aber das ist nur ein vorschlag,
+    und ich weiss NOCH nicht, ob das die richtige lösung ist,
+    die für ALLE menschen funktioniert.
+  </div>
+</div>
+<div class="para langs nobullet">
+  <div lang="de">
+    <div class="nowrap">● wie können wir</div>
+    diese lösung prüfen?
+    <!--
+      (wie können wir herausfinden: funktioniert diese lösung?)
+    -->
+    dazu müssen wir die lösung "einfach mal ausprobieren":
+    wir brauchen 4 oder 8 oder 16 menschen,
+    die auf der "landkarte der 16 menschen" nebeneinander liegen,
+    und wir versammeln diese menschen an einem ort.
+  </div>
+</div>
+
+
+<div class="para langs">
+  <div lang="de">
+    was wenn meine lösung falsch ist?
+    dann habe ich die hoffnung:
+    die lösung ist nur teilweise falsch,
+    und wenn wir alle 16 menschen an einem ort versammeln,
+    dann können sie die richtige lösung von selbst finden (selbstorganisation).
+  </div>
+</div>
+
+<!--
+<div class="langs para">
+  <div lang="de">
+    aufgabe 2: effizient lernen:
+    1. lerne JEDEN TAG für 10 bis 60 minuten. (besser nur 10 minuten als gar nicht.)
+    2. fokus: schaffe abstand zu ablenkungen (andere themen).
+    3. zerlege dein lernobjekt in kleine schritte.
+    4. schreib tagebuch mit KURZEN zusammenfassungen: was habe ich heute gelernt? was will ich morgen lernen?
+    durch das aufschreiben kannst du ein thema besser loslassen. (debriefing)
+    5. lies dein tagebuch: was will ich heute lernen? (briefing)
+    6. insgesamt brauchst du 1200 minuten (20 stunden), um die GRUNDLAGEN für etwas neues zu lernen.
+    7. beispiel: 1200 minuten / 40 minuten pro tag = 30 tage.
+    8. auch beziehungen funktionieren so am besten: regelmäßig, kurz, intensiv.
+  </div>
+</div>
+-->
+<!--
+  Josh Kaufman | 20 Hours to Learn Anything (Key Points Talk)
+  https://www.youtube.com/watch?v=isrgSDjrprg
+
+  The first 20 hours -- how to learn anything | Josh Kaufman | TEDxCSU
+  https://www.youtube.com/watch?v=5MgBikgcWnY
+
+  vergleich: intervalltraining, high intensity interval training = HIIT
+  siehe auch: forgetting curve, learning curve, spaced repetition
+
+  schlechte idee?
+  9. wenn du mehrere einheiten pro tag lernen willst,
+  dann musst du pausen machen: debriefing, etwas anderes machen, briefing und weiter machen.
+-->
+
+
+
+
+
+<hr>
+
+
+
+<div class="para langs">
+  <div lang="de">
+    was sollen wir tun?
+    die 4/8/16 menschen bilden immer zweier-paare.
+    die zwei menschen reden und arbeiten miteinander,
+    so lange bis alles gesagt und getan ist,
+    oder bis einer keine lust mehr hat.
+    dann kommt der partnertausch.
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    beim partnertausch werden neue paare gebildet,
+    mit einem anderen freund auf der "landkarte der 16 menschen".
+    beim partnertausch kann der subtyp wechseln:
+    <div class="nowrap">redner werden hörer</div>,
+    und <div class="nowrap">hörer werden redner</div>.
+  </div>
+</div>
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<div class="para langs">
+  <div lang="de">
+    manche paare reden durch monolog,
+    andere paare reden durch dialog.
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    MONOLOG heisst:
+    ein mensch kann besser reden (REDNER),
+    der andere mensch kann besser zuhören (HÖRER).
+    dafür kann der redner besser sehen (<div class="nowrap">arbeiten lassen</div>, lesen),
+    und der hörer kann besser zeigen (arbeiten, schreiben).
+    (redner: <div class="nowrap">extravertierter subtyp</div>, <div class="nowrap">sehen und reden</div>)
+    (hörer: <div class="nowrap">introvertierter subtyp</div>, <div class="nowrap">hören und zeigen</div>).
+  </div>
+</div>
+
+<div class="para langs">
+  <div lang="de">
+    in einer monolog-beziehung spielt jeder immer die gleiche rolle (redner oder hörer).
+    wenn ich meine rolle wechseln will, dann muss ich auch meinen partner wechseln.
+    deswegen:
+    monolog-beziehungen funktionieren nur mit
+    <div class="nowrap">GEMEINSAME FREUNDE</div> und PARTNERTAUSCH
+    (sonst folgt einseitigkeit, frust, trennung).
+    wenn wir vier monolog-beziehungen zu einem viereck verbinden,
+    dann bilden diese vier menschen einen FLUSSKREIS (feedback loop),
+    und die zwei flüsse (reden und zeigen) fliessen im kreis.
+  </div>
+</div>
+
+<div class="para langs">
+  <div lang="de">
+    DIALOG heisst:
+    beide menschen können gleich gut reden und zuhören.
+    in einer dialog-beziehung kann ich meine rolle ändern.
+    das heisst, ich kann redner und hörer spielen,
+    und ich kann bei meinem partner bleiben.
+  </div>
+</div>
+
+
+
+
+<div class="game-states-container">
+
+  <div class="title">
+    Partnertausch im Flusskreis
+  </div>
+
+  <!-- game states: state 1 vs state 2 -->
+  <svg
+    style="
+      /*float: right; margin: 0.5em*/
+    "
+    width="24em"
+    viewBox="0 0 500 280"
+  >
+    <defs>
+      <marker id="Arrow1Mend" overflow="visible" orient="auto">
+        <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"></path>
+      </marker>
+    </defs>
+    <g transform="translate(10 10)">
+      <!-- total width 570 -->
+      <!-- width 240 -->
+      <g transform="translate(120 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+        <rect x="-120" y="-90" width="240" height="180" fill="none" stroke="#606060" stroke-width="1" />
+        
+        <circle cx="70" cy="35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="-70" cy="-35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="-70" cy="35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="70" cy="-35" r="15" fill="none" stroke="#000" stroke-width="2"/>
+
+        <text fill="#000" x="70" y="35">c</text>
+        <text fill="#000" x="-70" y="-35">a</text>
+        <text fill="#000" x="-70" y="35">b</text>
+        <text fill="#000" x="70" y="-35">d</text>
+
+        <text fill="#000" x="70" y="65">Redner</text>
+        <text fill="#000" x="-70" y="-65">Redner</text>
+        <text fill="#000" x="-70" y="65">Hörer</text>
+        <text fill="#000" x="70" y="-65">Hörer</text>
+
+        <text fill="#000" x="0" y="115">Zustand 1</text>
+
+        <path stroke="#000" stroke-width="2" d="M 70 15 l 0 -30" marker-end="url(#Arrow1Mend)" />
+        <path stroke="#000" stroke-width="2" d="M -70 -15 l 0 30" marker-end="url(#Arrow1Mend)" />
+      </g>
+      <!-- width 60 -->
+      <g transform="translate(270 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+        <path stroke="#000" stroke-width="2" d="M -20 -40 l 40 0" marker-end="url(#Arrow1Mend)" />
+        <path stroke="#000" stroke-width="2" d="M 20 40 l -40 0" marker-end="url(#Arrow1Mend)" />
+      </g>
+      <!-- width 180 -->
+      <g transform="translate(390 120)" text-anchor="middle" dominant-baseline="middle" font-size="20">
+
+        <rect x="-90" y="-120" width="180" height="240" fill="none" stroke="#606060" stroke-width="1" />
+        
+          <circle cx="35" cy="70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+          <circle cx="-35" cy="-70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+          <circle cx="-35" cy="70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+          <circle cx="35" cy="-70" r="15" fill="none" stroke="#000" stroke-width="2"/>
+
+        <text fill="#000" x="35" y="70">c</text>
+        <text fill="#000" x="-35" y="-70">a</text>
+        <text fill="#000" x="-35" y="70">b</text>
+        <text fill="#000" x="35" y="-70">d</text>
+
+        <text fill="#000" x="40" y="100">Hörer</text>
+        <text fill="#000" x="-40" y="-100">Hörer</text>
+        <text fill="#000" x="-40" y="100">Redner</text>
+        <text fill="#000" x="40" y="-100">Redner</text>
+
+        <text fill="#000" x="0" y="145">Zustand 2</text>
+
+        <path stroke="#000" stroke-width="2" d="M -15 70 l 30 0" marker-end="url(#Arrow1Mend)" />
+        <path stroke="#000" stroke-width="2" d="M 15 -70 l -30 0" marker-end="url(#Arrow1Mend)" />
+      </g>
+    </g>
+  </svg>
+
+</div>
+
+
+
+<hr><!-- ============================================================ -->
+
+<div class="para langs">
+  <div lang="de">
+    unser system können wir übertragen auf andere menschen,
+    aber dafür müssen wir die geister sehen,
+    die in diesen menschen wohnen.
+  </div>
+</div>
+
+<div class="para langs">
+  <div lang="de">
+    nur manche menschen können "geister sehen"
+    und die anderen menschen sind "blind für geister".
+  </div>
+</div>
+<div class="para langs">
+  <div lang="de">
+    die "geist-blinden" brauchen freunde, die geister sehen können,
+    und die "geist-seher" brauchen freunde, die geist-blind sind.
+    (arbeitsteilung, ergänzung)
+    <!--
+      , gegensätze, symbiose, mutual completion
+    -->
+    vergleich:
+    menschen nutzen hunde als "spürhunde",
+    weil hunde haben bessere nasen.
+    wenn ein hund einen geruch riecht,
+    dann zeigt er das mit seiner körpersprache,
+    und der mensch kann diese körpersprache lesen.
+  </div>
+</div>
+
+<hr>
+
+<div class="para langs">
+  <div lang="de">
+    wer ist der beste erzieher/vormund für ein kind?
+    vermutlich: gleiches element und anderer körper
+    = diagonale im flusskreis.
+    beispiel: A3 → B3.
+    aber dieser erzieher braucht auch die zwei anderen im flusskreis
+    für eine "perfekte" familie.
+    beispiel: A3 → C4 D4.
+  </div>
+</div>
+
+<div class="para langs">
+  <div lang="de">
+    wer ist krampus?
+    ein kinderräuber, der "böse" kinder holt,
+    weg von ihren blutverwandten (falsche freunde),
+    hin zu ihren geistverwandten (echten freunde).
+
+    wer ist schuld wenn kinder "böse" sind? beide! also kind und eltern.
+    beide seiten fühlen:
+    wir sind nur blutverwandt, aber nicht geistverwandt.
+    auf diese falsche freundschaft reagiert das kind mit "böse" sein.
+
+    also: die beste lösung für das "tauschkind"-problem ist kindertausch<!-- (wechselbalg und balgwechsel)-->.
+
+    <!--
+      wechselbalg
+      https://de.wikipedia.org/wiki/Wechselbalg
+      teufelskind
+      satansbraten
+      gesellschaftliche Außenseiter
+      fehlendes Sprachvermögen
+      Schwachsinn
+      geringe Anteilnahme
+      ausdruckslose Augen
+      rastloser Blick
+      unkontrollierte Verhaltensweisen
+      tierische Essgewohnheiten
+      stereotype Bewegungen
+      redet in fremden sprachen (erfindet seine eigenen wörter)
+
+      teufel und hexe = feuer und erde
+
+      stress: ungeheure Gefräßigkeit, unaufhörliches Schreien
+      großer Kopf
+      schadenfroh
+      Solche Kinder sollten nach Luthers Ansicht getötet werden.
+      bleibt dumm (ohne gehörigen Verstand)
+      hässlich (sehr ungestaltet)
+      austreibung: Prügel und üble Behandlung des Wechselbalgs sollten oft bewirken, daß die Hexen ihr teufelskind wieder nahmen und "das wirkliche kind" zurückbrachten
+    -->
+  </div>
+</div>
+
+
+
+
+
+
+</div><!-- page-content -->
+
+<div class="page-footer">
+  Fragen? Ideen? &rarr;
+  Milan Hauth (M1, 30 Jahre),
+  Jägerstr. 10, Trostberg,
+  Mail <tt>milahu@protonmail.com</tt>
+  <br>
+  Tel/Telegram +49 151 7205 9978,
+  Web <tt>github.com/milahu/alchi</tt>,
+  Lizenz <tt>CC0-1.0</tt>
+
+</div><!-- page-footer -->
+
+</div><!-- page -->
+
+
+
+</body>
+</html>
+
+  
+  
+  
+
+
+
+
+
+
+
+
