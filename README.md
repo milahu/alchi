@@ -13,6 +13,7 @@ this one science is the science of mental chemistry, in short: alchemy
 this repository is organized as a monorepo of multiple packages
 
 * [src/alchi-book/](src/alchi-book/)
+* [src/alchi-flyer/](src/alchi-flyer/)
 * [src/alchi-tables/](src/alchi-tables/)
 * [src/alchi-maps/](src/alchi-maps/)
 * [src/alchi-test/](src/alchi-test/)
