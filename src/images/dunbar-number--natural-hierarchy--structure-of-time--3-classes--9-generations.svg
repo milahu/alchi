@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="135.9mm" height="160.1mm" version="1.1" viewBox="0 0 135.9 160.1" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-53.92 -92.63)">
+  <g fill="#000000" font-family="sans-serif">
+   <text transform="scale(.2646)" font-size="40px" style="line-height:1.25;shape-inside:url(#rect1523);white-space:pre" xml:space="preserve"/>
+   <text x="180.3642" y="110.29907" font-size="10.58px" stroke-width=".2646" text-anchor="end" style="line-height:1.25" xml:space="preserve"><tspan x="180.3642" y="110.29907" text-align="end">50</tspan><tspan x="180.3642" y="123.5282" text-align="end">45</tspan><tspan x="180.3642" y="136.75732" text-align="end">40</tspan><tspan x="180.3642" y="149.98645" text-align="end"/><tspan x="180.3642" y="163.21558" text-align="end">30</tspan><tspan x="180.3642" y="176.4447" text-align="end">25</tspan><tspan x="180.3642" y="189.67381" text-align="end">20</tspan><tspan x="180.3642" y="202.90294" text-align="end"/><tspan x="180.3642" y="216.13206" text-align="end">10</tspan><tspan x="180.3642" y="229.36119" text-align="end">5</tspan><tspan x="180.3642" y="242.59032" text-align="end">0</tspan></text>
+   <text x="127.39671" y="110.29907" font-size="10.58px" stroke-width=".2646" text-anchor="end" style="line-height:1.25" xml:space="preserve"><tspan x="127.39671" y="110.29907" text-align="end"/><tspan x="127.39671" y="123.5282" text-align="end">45</tspan><tspan x="127.39671" y="136.75732" text-align="end"/><tspan x="127.39671" y="149.98645" text-align="end"/><tspan x="127.39671" y="163.21558" text-align="end"/><tspan x="127.39671" y="176.4447" text-align="end">25</tspan><tspan x="127.39671" y="189.67381" text-align="end"/><tspan x="127.39671" y="202.90294" text-align="end"/><tspan x="127.39671" y="216.13206" text-align="end"/><tspan x="127.39671" y="229.36119" text-align="end">5</tspan></text>
+  </g>
+  <g fill="none" stroke="#000">
+   <path d="m164 119.9h-32.44l32.44-8.693"/>
+   <path d="m131.6 119.9 32.44 8.693"/>
+  </g>
+  <g transform="translate(0 52.58)" fill="none" stroke="#000">
+   <path d="m164 119.9h-32.44l32.44-8.693"/>
+   <path d="m131.6 119.9 32.44 8.693"/>
+  </g>
+  <g transform="translate(0 105.4)" fill="none" stroke="#000">
+   <path d="m164 119.9h-32.44l32.44-8.693"/>
+   <path d="m131.6 119.9 32.44 8.693"/>
+  </g>
+  <path d="m111 119.9-30.36 52.58h30.36" fill="none" stroke="#000"/>
+  <path d="m80.68 172.5 30.36 52.58" fill="none" stroke="#000"/>
+  <text x="75.517654" y="110.29907" fill="#000000" font-family="sans-serif" font-size="10.58px" stroke-width=".2646" text-anchor="end" style="line-height:1.25" xml:space="preserve"><tspan x="75.517654" y="110.29907" text-align="end"/><tspan x="75.517654" y="123.5282" text-align="end"/><tspan x="75.517654" y="136.75732" text-align="end"/><tspan x="75.517654" y="149.98645" text-align="end"/><tspan x="75.517654" y="163.21558" text-align="end"/><tspan x="75.517654" y="176.4447" text-align="end">25</tspan><tspan x="75.517654" y="189.67381" text-align="end"/><tspan x="75.517654" y="202.90294" text-align="end"/><tspan x="75.517654" y="216.13206" text-align="end"/><tspan x="75.517654" y="229.36119" text-align="end"/></text>
+ </g>
+</svg>
