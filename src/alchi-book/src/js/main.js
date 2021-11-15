@@ -104,7 +104,11 @@ const bgpat_w = content_x / 5 / 4;
 
 // TODO scale with content
 //const font_size = 3.35; // firefox
-const font_size = 3; // firefox
+//const font_size = 3; // too small
+//const font_size = 5; // too large
+//const font_size = 4; // a bit too large
+//const font_size = 3.5; // a bit too small
+const font_size = 3.8;
 
 
 const font_size_page2 = font_size;
