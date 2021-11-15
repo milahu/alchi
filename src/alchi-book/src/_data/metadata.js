@@ -36,7 +36,7 @@ metadata.primarylanguage = metadata.defaultLanguage; // TODO rename to defaultLa
 
 // TODO translate
 metadata.basename = {};
-metadata.basename.de = "pallas.aufbau-von-groosfamilien";
+metadata.basename.de = "alchi-book";
 
 metadata.iconSvgPath = "alchi-pallas-symbol.small.svg";
 
