@@ -1,4 +1,8 @@
 
+/*
+note:
+--font-size is set in javascript -> alchi-book/src/js/main.js -> function setRootStyle
+*/
 
 :root {
   /* use same font in all browsers */
@@ -49,7 +53,8 @@ body {
 .page-container > .page-element {
   flex-grow: 1;
   flex-shrink: 1;
-  overflow: hidden !important;
+  /*overflow: hidden !important;*/
+  overflow: auto; /* show scrollbars on demand */
 }
 
 .page.uplow {
@@ -679,7 +684,7 @@ html.audit-mode #pages-container {
 }
 
 html.audit-mode #pages-container td {
-  padding-bottom: 1.4em;
+  padding-bottom: 1em;
 }
 
 
