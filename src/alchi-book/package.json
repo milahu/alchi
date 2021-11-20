@@ -27,8 +27,6 @@
   "devDependencies": {
     "@11ty/eleventy": "github:11ty/eleventy#8a5162785c58864ef65308c0f0d890cade0b407f",
     "@babel/core": "*",
-    "@fontsource/noto-mono": "*",
-    "@fontsource/noto-sans": "*",
     "@rollup/plugin-babel": "*",
     "@vitejs/plugin-legacy": "*",
     "app-root-path": "*",
