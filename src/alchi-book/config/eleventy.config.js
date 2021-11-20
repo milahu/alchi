@@ -279,6 +279,8 @@ module.exports = function(eleventyConfig) {
 
   const metadata = require(appRoot + '/src/_data/metadata.js');
 
+  // compile source files
+
   eleventyConfig.addPlugin(transformDomPlugin, [
 
     getElementTransformer('page', { class: 'page-element' }),
@@ -453,10 +455,17 @@ module.exports = function(eleventyConfig) {
 
     // copy only needed files
     // what files are needed? see output of: npm run dev
+
+    /*
+    "node_modules/@fontsource/noto-sans": "css/noto-sans", // full font has 2.6 MByte :/
+    "node_modules/@fontsource/noto-mono": "css/noto-mono",
+    */
+    /*
     "node_modules/@fontsource/noto-sans/latin.css": "css/noto-sans/latin.css",
     "node_modules/@fontsource/noto-sans/latin-700.css": "css/noto-sans/latin-700.css", // bold font
     "node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff2": "css/noto-sans/files/noto-sans-latin-400-normal.woff2",
     "node_modules/@fontsource/noto-mono/latin.css": "css/noto-mono/latin.css",
+    */
   }, { expand: true });
 
 
