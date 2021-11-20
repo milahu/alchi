@@ -74,6 +74,8 @@ export default defineConfig({
 
     sourcemap: false, // save 50 KByte
 
+    minify: false, // make diffs smaller (build result is in git)
+
     manifest: true, // required for eleventy JsBundle
 
     // https://vitejs.dev/guide/build.html#multi-page-app
