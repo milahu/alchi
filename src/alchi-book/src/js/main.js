@@ -24,7 +24,7 @@ function get_meta() {
 
   Object.keys(meta).forEach(k => console.log(`meta: ${k}: ${meta[k]}`));
 
-  return meta;  
+  return meta;
 }
 
 // page size. exact values add empty page (TODO why? firefox bug?)
@@ -67,7 +67,7 @@ const { print_size, print_orient, print_scale, page_x, page_y } =
 //const page_margin = { top: 5, right: 5, bottom: 5, left: 5 }; // mm
 //const page_margin = { top: 10, right: 10, bottom: 10, left: 10 }; // mm
 //const page_margin = { top: 5, right: 10, bottom: 5, left: 10 }; // mm
-//const page_margin = { top: 5, bottom: 5, inside: 10, outside: 5 }; // mm 
+//const page_margin = { top: 5, bottom: 5, inside: 10, outside: 5 }; // mm
 
 //const offset_top = 0; // calibrate for screen and PDF-print
 //const offset_inside_only = 0; // calibrate for screen and PDF-print
@@ -110,6 +110,8 @@ const bgpat_w = content_x / 5 / 4;
 //const font_size = 3.5; // a bit too small
 const font_size = 3.8;
 
+
+// FIXME font also for non-latin charsets (lang: cs, ...)
 
 const font_size_page2 = font_size;
 
@@ -184,7 +186,7 @@ const color = {
     2: "#00ff00", // green
     3: "#ffff00", // yellow
     4: "#0000ff", // blue
-    
+
     // deviations from "exact" values come from print color matching
     // printer = canon G5000
 
@@ -193,13 +195,13 @@ const color = {
 
     //24: "#00ffff", // turc 180deg
     24: "#00ffee", // turc 176deg
-    
+
     //14: "#ff00ff", // purple 300deg
     14: "#ea00ff", // purple 295deg
 
     //23: "#80ff00", // lime 90deg
     23: "#aaff00", // lime 80deg
-    
+
   },
 
 };
@@ -751,7 +753,7 @@ function make_booklet() {
     //console.log(`page ${page_num}: ${top_idx} top + ${left_idx} left. ${is_sheet_back(page_idx)} back. ${is_right_page(page_idx)} right`);
     page.style.gridColumn = `${left_idx+1}`;
     page.style.gridRow = `${top_idx+1}`;
-    
+
     if (is_page_center_left(page_idx)) {
       page.classList.add('booklet-center-left');
     }
@@ -1061,6 +1063,7 @@ document.body.onload = function handle_body_loaded() {
 
 
   // post process
+  // TODO do this on compile time!
 
   // transform custom element <nw>content</nw>
   Array.from(document.getElementsByTagName("nw")).forEach(e => {
@@ -1076,6 +1079,13 @@ document.body.onload = function handle_body_loaded() {
       if (node.nodeType === document.ELEMENT_NODE) {
         node.innerHTML = node.innerHTML.replace(pattern, string);
   }}));};
+
+  // protect indent from text editors
+  document.querySelectorAll('pre').forEach(pre => {
+    pre.innerHTML = pre.innerHTML
+      .replace(/^\./gm, ' ')
+    ;
+  });
 
   // XO = X and square
   document.querySelectorAll('pre.xo').forEach(pre => {

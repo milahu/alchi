@@ -3,23 +3,23 @@
   <div class="right caption-container">
     <pre class="xo map16">
 x     x      x      x     x
-B1 C2 B3 C4   B1 C2 B3 C4
-  o     o       o     o
-D2 A1 D4 A3   D2 A1 D4 A3
+.B1 C2 B3 C4   B1 C2 B3 C4
+.  o     o       o     o
+.D2 A1 D4 A3   D2 A1 D4 A3
 x     x      x      x     x
-B4 C3 B2 C1   B4 C3 B2 C1
-  o     o       o     o
-D3 A4 D1 A2   D3 A4 D1 A2
+.B4 C3 B2 C1   B4 C3 B2 C1
+.  o     o       o     o
+.D3 A4 D1 A2   D3 A4 D1 A2
 
 x     x      x      x     x
 
-B1 C2 B3 C4   B1 C2 B3 C4
-  o     o       o     o
-D2 A1 D4 A3   D2 A1 D4 A3
+.B1 C2 B3 C4   B1 C2 B3 C4
+.  o     o       o     o
+.D2 A1 D4 A3   D2 A1 D4 A3
 x     x      x      x     x
-B4 C3 B2 C1   B4 C3 B2 C1
-  o     o       o     o
-D3 A4 D1 A2   D3 A4 D1 A2
+.B4 C3 B2 C1   B4 C3 B2 C1
+.  o     o       o     o
+.D3 A4 D1 A2   D3 A4 D1 A2
 x     x      x      x     x</pre>
     <langs class="caption">
       <de>Karte mit Wiederholung</de>
@@ -38,9 +38,9 @@ x     x      x      x     x</pre>
 
   <pre class="xo right map16">
 B2 C1
-o
+. o
 D1 A2
-    x
+.    x
 </pre>
 
   <langs>
@@ -160,12 +160,17 @@ D1 A2
   </langs>
 
   <div class="right caption-container">
+    <!--
+      we use . at start-of-line to protect indent from text editors
+      the dots are removed in alchi-book/src/js/main.js
+      see document.querySelectorAll('pre')
+    -->
     <pre class="xo map16">
 B2 C1
-o
+. o
 D1 A2 D3
-    x
-  C4 B1</pre>
+.    x
+.  C4 B1</pre>
     <langs class="caption">
       <de>Pallas für A2</de>
       <en>Pallas for A2</en>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="315.89mm" height="52.652mm" version="1.1" viewBox="0 0 315.89 52.652" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <marker id="marker2389" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker2313" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker2239" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="Arrow1Mend" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <g transform="translate(40.897 -151.98)">
+  <g fill="#000000" font-family="sans-serif" font-size="10.583px" stroke-width=".26458" style="line-height:1.25">
+   <text x="-32.289978" y="159.59422"><tspan x="-32.289978" y="159.59422" stroke-width=".26458">1</tspan></text>
+   <text x="-20.905762" y="159.64714"><tspan x="-20.905762" y="159.64714" stroke-width=".26458">2</tspan></text>
+   <text x="-20.928345" y="204.54965"><tspan x="-20.928345" y="204.54965" stroke-width=".26458">4</tspan></text>
+   <text x="-32.899872" y="204.53058"><tspan x="-32.899872" y="204.53058" stroke-width=".26458">3</tspan></text>
+   <text x="33.525215" y="176.04561"><tspan x="33.525215" y="176.04561" stroke-width=".26458">1</tspan></text>
+   <text x="77.805824" y="176.09613"><tspan x="77.805824" y="176.09613" stroke-width=".26458">2</tspan></text>
+   <text x="77.780006" y="188.09933"><tspan x="77.780006" y="188.09933" stroke-width=".26458">4</tspan></text>
+   <text x="32.91349" y="188.08597"><tspan x="32.91349" y="188.08597" stroke-width=".26458">3</tspan></text>
+   <text x="132.23744" y="159.59424"><tspan x="132.23744" y="159.59424" stroke-width=".26458">1</tspan></text>
+   <text x="143.62166" y="159.64716"><tspan x="143.62166" y="159.64716" stroke-width=".26458">2</tspan></text>
+   <text x="143.59908" y="204.54967"><tspan x="143.59908" y="204.54967" stroke-width=".26458">4</tspan></text>
+   <text x="131.62758" y="204.53058"><tspan x="131.62758" y="204.53058" stroke-width=".26458">3</tspan></text>
+   <text x="198.05263" y="176.04561"><tspan x="198.05263" y="176.04561" stroke-width=".26458">1</tspan></text>
+   <text x="242.33324" y="176.09613"><tspan x="242.33324" y="176.09613" stroke-width=".26458">2</tspan></text>
+   <text x="242.30742" y="188.09933"><tspan x="242.30742" y="188.09933" stroke-width=".26458">4</tspan></text>
+   <text x="197.4409" y="188.08597"><tspan x="197.4409" y="188.08597" stroke-width=".26458">3</tspan></text>
+  </g>
+  <g fill="none" stroke="#000" stroke-linejoin="round" stroke-width=".6">
+   <circle cx="-23.92" cy="178.28" r="16.447"/>
+   <circle cx="58.343" cy="178.28" r="16.447"/>
+   <circle cx="140.61" cy="178.28" r="16.447"/>
+   <circle cx="222.87" cy="178.28" r="16.447"/>
+  </g>
+  <g fill="none" stroke="#000" stroke-width=".565">
+   <path d="m7.3378 178.28h19.748" marker-end="url(#Arrow1Mend)"/>
+   <path d="m89.602 178.28h19.748" marker-end="url(#marker2239)"/>
+   <path d="m171.87 178.28h19.748" marker-end="url(#marker2313)"/>
+   <path d="m254.13 178.28h19.748" marker-end="url(#marker2389)"/>
+  </g>
+ </g>
+</svg>
