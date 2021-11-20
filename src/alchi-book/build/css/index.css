@@ -6,8 +6,12 @@ note:
 
 :root {
   /* use same font in all browsers */
-  --sans-font: "Noto Sans"; /* NPM: @fontsource/noto-sans */
-  --mono-font: "Noto Mono"; /* NPM: @fontsource/noto-mono */
+  /*--sans-font: "Noto Sans"; /* NPM: @fontsource/noto-sans */
+  /*--mono-font: "Noto Mono"; /* NPM: @fontsource/noto-mono */
+  /* custom fonts are loaded in alchi-book/config/eleventy.config.js */
+  /* use system fonts -> smaller bundle */
+  --sans-font: sans-serif;
+  --mono-font: monospace;
 }
 
 span.tt {
@@ -53,7 +57,6 @@ body {
 .page-container > .page-element {
   flex-grow: 1;
   flex-shrink: 1;
-  /*overflow: hidden !important;*/
   overflow: auto; /* show scrollbars on demand */
 }
 

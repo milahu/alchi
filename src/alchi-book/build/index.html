@@ -14,7 +14,7 @@
 
 <meta name="basename.de" content="alchi-book">
 
-<meta name="version" content="2021-11-15">
+<meta name="version" content="2021-11-20">
 <meta name="author" content="Milan Hauth">
 <meta name="author.email" content="milahu@gmail.com">
 <!--<meta name="contributors" content="">-->
@@ -2729,28 +2729,30 @@ them import the text list back into our xml node format
 
   <div class="left caption-container">
     <de>
-      <pre class="xod" style="line-height: 150%">b
+    <!--
+      we use . at start-of-line to protect indent from text editors
+      the dots are removed in alchi-book/src/js/main.js
+      see document.querySelectorAll('pre')
+    -->
+    <pre class="xod" style="line-height: 150%">. b
 a o c
-Ich
+.Ich
 d + f
-e<!--
-    --></pre>
+. e</pre>
     </de>
     <en>
-      <pre class="xod" style="line-height: 150%">b
+      <pre class="xod" style="line-height: 150%">. b
 a o c
-I
+. I
 d + f
-e<!--
-    --></pre>
+. e</pre>
     </en>
     <hu generator="deepl" t="2021-05-21.16-35-16">
-      <pre class="xod" style="line-height: 150%">b
+      <pre class="xod" style="line-height: 150%">. b
 a o c
-I
+. I
 d + f
-e<!--
-    --></pre>
+. e</pre>
     </hu>
     <div class="caption">
       Pallas
@@ -2960,13 +2962,13 @@ e<!--
 
   <div class="right caption-container">
     <pre class="xo map16">x     x     x
-B1 C2 B3 C4
-  o     o
-D2 A1 D4 A3
+.B1 C2 B3 C4
+.  o     o
+.D2 A1 D4 A3
 x     x     x
-B4 C3 B2 C1
-  o     o
-D3 A4 D1 A2
+.B4 C3 B2 C1
+.  o     o
+.D3 A4 D1 A2
 x     x     x</pre>
     <div class="caption langs">
       <div lang="de" class="hidden">Karte der 16 Ich</div>
@@ -3179,10 +3181,10 @@ x     x     x</pre>
 
   <div class="right caption-container">
     <pre class="xo map16">B1 C2
-o
+. o
 D2 A1 D4
-    x
-  C3 B2
+.    x
+.  C3 B2
 </pre>
     <div class="caption langs">
       <div lang="de" class="hidden">Pallas für A1</div>
@@ -3366,23 +3368,23 @@ D2 A1 D4
 
   <div class="right caption-container">
     <pre class="xo map16">x     x      x      x     x
-B1 C2 B3 C4   B1 C2 B3 C4
-  o     o       o     o
-D2 A1 D4 A3   D2 A1 D4 A3
+.B1 C2 B3 C4   B1 C2 B3 C4
+.  o     o       o     o
+.D2 A1 D4 A3   D2 A1 D4 A3
 x     x      x      x     x
-B4 C3 B2 C1   B4 C3 B2 C1
-  o     o       o     o
-D3 A4 D1 A2   D3 A4 D1 A2
+.B4 C3 B2 C1   B4 C3 B2 C1
+.  o     o       o     o
+.D3 A4 D1 A2   D3 A4 D1 A2
 
 x     x      x      x     x
 
-B1 C2 B3 C4   B1 C2 B3 C4
-  o     o       o     o
-D2 A1 D4 A3   D2 A1 D4 A3
+.B1 C2 B3 C4   B1 C2 B3 C4
+.  o     o       o     o
+.D2 A1 D4 A3   D2 A1 D4 A3
 x     x      x      x     x
-B4 C3 B2 C1   B4 C3 B2 C1
-  o     o       o     o
-D3 A4 D1 A2   D3 A4 D1 A2
+.B4 C3 B2 C1   B4 C3 B2 C1
+.  o     o       o     o
+.D3 A4 D1 A2   D3 A4 D1 A2
 x     x      x      x     x</pre>
     <div class="caption langs">
       <div lang="de" class="hidden">Karte mit Wiederholung</div>
@@ -3400,9 +3402,9 @@ x     x      x      x     x</pre>
   </div>
 
   <pre class="xo right map16">B2 C1
-o
+. o
 D1 A2
-    x
+.    x
 </pre>
 
   <div class="langs">
@@ -3522,11 +3524,16 @@ D1 A2
   </div>
 
   <div class="right caption-container">
+    <!--
+      we use . at start-of-line to protect indent from text editors
+      the dots are removed in alchi-book/src/js/main.js
+      see document.querySelectorAll('pre')
+    -->
     <pre class="xo map16">B2 C1
-o
+. o
 D1 A2 D3
-    x
-  C4 B1</pre>
+.    x
+.  C4 B1</pre>
     <div class="caption langs">
       <div lang="de" class="hidden">Pallas für A2</div>
       <div lang="en">Pallas for A2</div>
