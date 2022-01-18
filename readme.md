@@ -8,6 +8,30 @@ in our view, **psychology and sociology** must be seen as one science.
 both psychology and sociology are only two sides of one coin.  
 this one science is the science of mental chemistry, in short: alchemy
 
+## abstract
+
+our main hypothesis is our compatibility chart:
+
+<img src="./src/images/alchi-compatibility-chart-gender-element.svg">
+
+the compatibility chart works in two ways:
+
+1. i know who i am, but who are my friends?
+2. i know my friends, but who am i?
+
+the validity of the compatibility chart can be verified  
+in a scientific experiment (experimental psychology).
+
+challenges:
+
+1. measuring of personality type (four basetypes)
+2. measuring of "relationship quality" (sympathy, understanding, interpersonal compatibility)
+3. invasive experiment. invading into "private" matters, "unethical", therapy by force?
+4. city environment is inherently toxic, reinforcing bad habits. ecovillages can provide a better setting,  
+but usually, personality types are **not** balanced (the usual "mental incest" and "confirm bias".  
+"balanced types" is a hard requirement for this experiment.)
+5. our time is running out. world war 3 is only weeks away. (now you can call me a pessimist.)
+
 ## packages
 
 this repository is organized as a monorepo of multiple packages
@@ -35,10 +59,13 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 
 ### recent publications
 
-<details>
-
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
+
+* alchi-book html: [github](https://milahu.github.io/alchi/src/alchi-book/build/)
+* alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - combination of multiple personality tests, show result with the four elements (four basetypes)
+
+<details>
 
 * 2021-07-29
   * alchi flyer html: [github](https://milahu.github.io/alchi/src/alchi-flyer/alchi-flyer.html)
