@@ -11,7 +11,7 @@
 
   <meta name="author" content="Milan Hauth">
 
-  <meta name="dcterms.modified" content="2022-02-12">
+  <meta name="dcterms.modified" content="2022-02-13">
 
   <link rel="canonical" href="https://milahu.github.io/whoaremyfriends/whoaremyfriends.html#/cas/git/commit/31f073abb5c5933c7543c3ab5f492a5ebbe22695">
 
@@ -105,6 +105,7 @@
   <meta name="author.email" content="milahu@gmail.com">
   <meta name="author.chat.matrix" content="@milahu:matrix.org">
   <meta name="author.social.reddit" content="https://www.reddit.com/user/milahu">
+  <meta name="author.social.reddit.censored" content="https://www.reveddit.com/y/milahu/">
   <meta name="author.social.gab" content="https://gab.com/milahu">
   <meta name="author.social.facebook" content="https://www.facebook.com/mila.nautikus"><!-- note: "You must log in to continue" -->
   <meta name="author.email.tor" content="milahu@torbox36ijlcevujx7mjb4oiusvwgvmue7jfn2cvutwa6kl6to3uyqad.onion">
@@ -177,6 +178,9 @@
         display: none !important;
       }
     }
+    .smalltext {
+      font-size: 60%;
+    }
   </style>
 
   <!--
@@ -204,7 +208,9 @@
           size: { width: '148mm', height: '209mm' }, // A5. height -1mm to avoid pagebreak https://github.com/evnbr/bindery/issues/109
           margin: { top: '10mm', inner: '20mm', outer: '10mm', bottom: '10mm' },
         },
-        view: Bindery.View.LINEAR, // LINEAR PREVIEW PRINT FLIPBOOK // note: cannot select text in PRINT view
+        //view: Bindery.View.PREVIEW, // LINEAR PREVIEW PRINT FLIPBOOK // note: cannot select text in PRINT view
+        // "responsive" layout: set initial view from screen width
+        view: (window.innerWidth < 960) ? Bindery.View.LINEAR : Bindery.View.PREVIEW,
       };
     }
   </script>
@@ -536,149 +542,26 @@
   1234 = Ntuiting Sensing Feeling Thinking.
 </p>
 
-<p>
-  These four basetypes are the result of my two-factor model of personality.
-  I call these two factors "sense" and "move".
-  Sense encodes the natural bias of the sensory nervous systems.
-  Move encodes the natural bias of the motory nervous systems.
-</p>
 
-<p>
-  Basetype is the constant part of personality.
-  The basetype is chosen before birth,
-  and is stable for life.
-</p>
-
-<p>
-  The basetype is NOT related to birthday,
-  as suggested by calendar-astrology.
-  Veto argument:
-  Calendar-astrology fails completely when the birthday is unknown.
-</p>
-
-<p>
-  How do we find the basetype?
-  The basetype can be tested with one-year-old children.
-  In psychology, this is known as The Strange Situation.
-</p>
-
-<h4>The Strange Situation</h4>
-
-<ol>
-  <li>A child and its mother visit an unknown place.</li>
-  <li>We let the child play for some time.</li>
-  <li>An unknown mother joins the scene.</li>
-  <li>We let the child play for some time.</li>
-  <li>The mother quickly leaves the child, without saying bye.</li>
-  <li>When does the child start crying? Now or later?</li>
-  <li>We let the child cry for some time.</li>
-  <li>The mother returns.</li>
-  <li>When does the child stop crying? Now or later?</li>
-</ol>
-
-<p>
-  Here we see two decisions: start crying and stop crying.
-  For each decision, we have two choices: now or later.
-  The two decisions represent the two-factor model of personality.
-</p>
 
 <!--
-  TODO decision tree
-  two factors = two dimensions
+  <h4>Body shapes</h4>
 
-                   start
-                   crying
-                    now
-stop crying now 1----+----3 stop crying later
-                     |
-                     |
-                     o
-                     |
-                     |
-stop crying now 4----+----2 stop crying later
-                   start
-                   crying
-                   later
-
+  <p>
+    In my "holistic" world view,
+    I see how "body and mind" are connected.
+    Both mind (behavior, weak evidence)
+    and body (visible, strong evidence)
+    are expressions/symptoms/signs of the same Personality Type.
+    This traditional view of Physiognomy
+    is confirmed by the modern science of Morphopsychology.
+  </p>
 -->
 
-<ul>
-  <li>13 = broad sense = start crying now</li>
-  <li>
-    24 = long sense = start crying later.
-    These children inhibit their own crying,
-    and when their inhibition breaks, they start crying.
-  </li>
-  <li>14 = long move = stop crying now</li>
-  <li>
-    23 = broad move = stop crying later.
-    These children are so "involved" in their crying,
-    that they will act angry (3) or avoidant (2) when the mother returns.
-  </li>
-</ul>
+
 
 <p>
-  The Strange Situation is part of Attachment Theory.
-  The authors of Attachment Theory believe
-  that the children's behavior is learned (nurture over nature, mind over matter),
-  and they believe that type 1 (secure attachment) is the ideal type,
-  and all other types should be made (educated) more like type 1.
-</p>
-
-<h4>Nature or nurture?</h4>
-
-<p>
-  Short answer: both.
-  Long answer:
-  50 of 100 people naturally believe in a Natural Order (nature is stronger),
-  and the other 50 of 100 people naturally believe in a Mader Order (education is stronger).
-  We can call it a cruel joke, that "nature" creates humans,
-  who seriously believe that humans are stronger than nature.
-</p>
-
-<p>
-  But for the "Made Order" humans,
-  the other side (Natural Order) is equally ridiculous.
-  They say, "you must be crazy to believe in destiny."
-  In the justice system, we see this as the conflict
-  between "legitimate" (inborn rights) and "legal" (earned rights).
-  Morpheus: Do you believe in fate, Neo?
-  Neo: No.
-  Morpheus: Why not?
-  Neo: Because I don't like the idea, that I'm not in control of my life.
-</p>
-
-<p>
-  This is a universal pattern:
-  What is serious to some people, is a joke to other people.
-  This is why we associate "humor" with joking and laughing,
-  but originally, "humorlogy" was Personality Psychology.
-  And it still works today.
-  To test someone's personality type,
-  observe where he draws the line between "serious" and "funny".
-</p>
-
-<p>
-  TODO self assessment can be wrong
-  ("youre mistyped")
-</p>
-
-
-
-<h4>Body shapes</h4>
-
-<p>
-  In my "holistic" world view,
-  I see how "body and mind" are connected.
-  Both mind (behavior, weak evidence)
-  and body (visible, strong evidence)
-  are expressions/symptoms/signs of the same Personality Type.
-  This traditional view of Physiognomy
-  is confirmed by the modern science of Morphopsychology.
-</p>
-
-<p>
-  Here are the four body shapes of the four basetypes
+  The four basetypes translate to four body shapes
 </p>
 
 
@@ -788,49 +671,161 @@ stop crying now 4----+----2 stop crying later
 
 
 
+<p>
+  These four basetypes are the result of my two-factor model of personality.
+  I call these two factors "sense" and "move".
+  Sense encodes the natural bias of the sensory nervous systems.
+  Move encodes the natural bias of the motory nervous systems.
+</p>
+
+<p>
+  Basetype is the constant part of personality.
+  The basetype is chosen before birth,
+  and is stable for life.
+</p>
+
+<p>
+  The basetype is NOT related to birthday,
+  as suggested by calendar-astrology.
+  Veto argument:
+  Calendar-astrology fails completely when the birthday is unknown.
+</p>
+
+
+
+<hr>
+
+
+
+<h4>The Strange Situation</h4>
+
+<p>
+  How do we find the basetype?
+  The basetype can be tested with one-year-old children.
+  In psychology, this is known as The Strange Situation.
+</p>
+
+<ol>
+  <li>A child and its mother visit an unknown place.</li>
+  <li>We let the child play for some time.</li>
+  <li>An unknown mother joins the scene.</li>
+  <li>We let the child play for some time.</li>
+  <li>The mother quickly leaves the child, without saying bye.</li>
+  <li>When does the child start crying? Now or later?</li>
+  <li>We let the child cry for some time.</li>
+  <li>The mother returns.</li>
+  <li>When does the child stop crying? Now or later?</li>
+</ol>
+
+<p>
+  Here we see two decisions: start crying and stop crying.
+  For each decision, we have two choices: now or later.
+  The two decisions represent the two-factor model of personality.
+</p>
+
+<!--
+  TODO decision tree
+  two factors = two dimensions
+
+                   start
+                   crying
+                    now
+stop crying now 1----+----3 stop crying later
+                     |
+                     |
+                     o
+                     |
+                     |
+stop crying now 4----+----2 stop crying later
+                   start
+                   crying
+                   later
+
+-->
+
+<ul>
+  <li>13 = broad sense = start crying now</li>
+  <li>
+    24 = long sense = start crying later.
+    These children inhibit their own crying,
+    and when their inhibition breaks, they start crying.
+  </li>
+  <li>14 = long move = stop crying now</li>
+  <li>
+    23 = broad move = stop crying later.
+    These children are so "involved" in their crying,
+    that they will act angry (3) or avoidant (2) when the mother returns.
+  </li>
+</ul>
+
+<p>
+  The Strange Situation is part of Attachment Theory.
+  The authors of Attachment Theory believe
+  that the children's behavior is learned (nurture over nature, mind over matter),
+  and they believe that type 1 (secure attachment) is the ideal type,
+  and all other types should be made (educated) more like type 1.
+</p>
+
+<h4>Nature or nurture?</h4>
+
+<p>
+  Short answer: both.
+  Long answer:
+  50 of 100 people naturally believe in a Natural Order (nature is stronger),
+  and the other 50 of 100 people naturally believe in a Mader Order (education is stronger).
+  We can call it a cruel joke, that "nature" creates humans,
+  who seriously believe that humans are stronger than nature.
+</p>
+
+<p>
+  But for the "Made Order" humans,
+  the other side (Natural Order) is equally ridiculous.
+  They say, "you must be crazy to believe in destiny."
+  In the justice system, we see this as the conflict
+  between "legitimate" (inborn rights) and "legal" (earned rights).
+  Morpheus: Do you believe in fate, Neo?
+  Neo: No.
+  Morpheus: Why not?
+  Neo: Because I don't like the idea, that I'm not in control of my life.
+</p>
+
+<p>
+  This is a universal pattern:
+  What is serious to some people, is a joke to other people.
+  This is why we associate "humor" with joking and laughing,
+  but originally, "humorology" was Personality Psychology.
+  And it still works today.
+  To test someone's personality type,
+  observe where he draws the line between "serious" and "funny".
+</p>
+
+<p>
+  TODO self assessment can be wrong
+  ("youre mistyped")
+</p>
+
+<p>
+  TODO more text
+</p>
+
+<p>
+  TODO more graphics
+</p>
+
+
+
+<hr>
+
+
+
 <h3>Four Properties</h3>
 
 <p>
   Every basetype is the combination of two properties.
   Every property can be described as the "common ground" of two basetypes.
-  Translations to Hans Eysenck
 </p>
 
-<ul>
-  <li>13 = broad sense = extravert</li>
-  <li>24 = long sense = introvert</li>
-  <li>23 = broad move = neurotic</li>
-  <li>14 = long move = psychotic</li>
-</ul>
 
-<p>
-  13, 24, 23, 14:
-  These are pairs of two basetypes.
-  One and Three, Two and Four, Two and Three, One and Four.
-  Short: One-Three, Two-Four, Two-Three, One-Four.
-</p>
-
-<p>
-  These are not just mental properties,
-  but they also influence the body shape.
-  sense = upper body,
-  move = lower body.
-</p>
-
-<p>
-  This means
-</p>
-
-<ul>
-  <li>13 = broad sense = broad shoulders = young brain</li>
-  <li>24 = long sense = narrow shoulders = old brain</li>
-  <li>23 = broad move = broad hips = feminine brain</li>
-  <li>14 = narrow move = narrow hips = masculine brain</li>
-</ul>
-
-
-
-<h3>Basetypes and Properties</h3>
 
 <!-- note: code folding -->
 
@@ -997,7 +992,47 @@ stop crying now 4----+----2 stop crying later
 
 
 
+<p>
+  Translations to Hans Eysenck
+</p>
+
+<ul>
+  <li>13 = broad sense = extravert</li>
+  <li>24 = long sense = introvert</li>
+  <li>23 = broad move = neurotic</li>
+  <li>14 = long move = psychotic</li>
+</ul>
+
+<p>
+  13, 24, 23, 14:
+  These are pairs of two basetypes.
+  One and Three, Two and Four, Two and Three, One and Four.
+  Short: One-Three, Two-Four, Two-Three, One-Four.
+</p>
+
+<p>
+  These are not just mental properties,
+  but they also influence the body shape.
+  sense = upper body,
+  move = lower body.
+</p>
+
+<p>
+  This means
+</p>
+
+<ul>
+  <li>13 = broad sense = broad shoulders = young brain</li>
+  <li>24 = long sense = narrow shoulders = old brain</li>
+  <li>23 = broad move = broad hips = feminine brain</li>
+  <li>14 = narrow move = narrow hips = masculine brain</li>
+</ul>
+
+
+
 <hr>
+
+
 
 <!-- page 4 -->
 
@@ -1349,6 +1384,292 @@ stop crying now 4----+----2 stop crying later
 
 
 <!-- page TODO -->
+
+
+<h3>What goes up, must come down</h3>
+
+<p>
+  Population is a hot topic.
+  The upper class want to control the population,
+  the lower class wants to overgrow the upper class.
+  It's the conflict between Quality and Quantity,
+  between Long and Broad.
+</p>
+
+<p>
+  Why "control the population"? Just look at this graph
+</p>
+
+<!-- World Population -->
+<!-- based on http://econosystemics.com/?p=9 -->
+<svg
+  width="100%"
+  style="margin-left: 0%"
+  version="1.1"
+  viewBox="0 0 182.38 123.17"
+  xmlns="http://www.w3.org/2000/svg"
+  >
+  <!-- FIXME arrowheads are not visible. generated by inkscape + svgo -->
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig-world-population .stroke {
+      stroke-width: 0.26458px;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+      fill: none;
+    }
+    .nofill {
+      fill: none;
+    }
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <defs>
+    <marker id="b" overflow="visible" orient="auto">
+      <path class="stroke" transform="matrix(.4 0 0 .4 4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd"  stroke-width="1pt"/>
+    </marker>
+    <marker id="a" overflow="visible" orient="auto">
+      <path class="stroke" transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill-rule="evenodd" stroke-width="1pt"/>
+    </marker>
+  </defs>
+  <g class="fig-world-population" transform="translate(-20.087 -85.282)">
+    <path class="stroke" d="m27.95 197.15 151.88 8e-3v-108.91" marker-end="url(#a)" marker-start="url(#b)"/>
+    <path class="stroke" d="m27.967 179.92c4.6979-0.48077 9.4302-0.94554 12.031-1.1459 6.391-0.49229 31.661 1.3488 41.037 0.35546 9.3767-0.99333 20.433-6.0141 26.023-9.8855 5.5896-3.8715 27.816-13.35 31.601-16.932 3.7852-3.5816 10.042-14.69 10.794-15.455s1.0906 0.27165 2.2671 0.14623c1.1765-0.12543 1.6419-1.9407 2.8587-1.7594 1.2168 0.18132 1.465 1.8066 3.1014 1.8054 1.6364-1e-3 3.3858-0.65495 3.9685-0.53959 0.58265 0.11535 0.54481-1.3118 1.3918-1.3118 0.84694 0 1.4028 0.52057 1.6411-0.19593 0.23834-0.71651-0.15303-3.2821 0.85768-3.5507 1.0107-0.26858 0.6776 0.77154 1.464 0.68183 0.78639-0.0897 0.56411-3.7512 1.5424-3.7301 0.97828 0.0211 1.4138 1.8013 2.3313 1.7948 0.91749-7e-3 1.4274-5.3566 2.547-5.2809 1.1197 0.0757 0.62212 1.2338 1.3256 1.2338s3.1254-11.29 3.6072-14.805c0.48177-3.5153 1.3125-14.903 1.3125-14.903"/>
+    <g transform="translate(-1.0876)" class="stroke">
+      <path d="m180.92 189.23h3.7607"/>
+      <path d="m180.92 184.58h3.7607"/>
+      <path d="m180.92 181.33h3.7607"/>
+      <path d="m180.92 178.72h3.7607"/>
+      <path d="m180.92 176.63h3.7607"/>
+      <path d="m180.92 174.94h3.7607"/>
+      <path d="m180.92 173.43h3.7607"/>
+      <path d="m180.92 172.11h3.7607"/>
+      <path d="m180.92 170.85h3.7607"/>
+      <g transform="translate(0 -26.368)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+      <g transform="translate(0 -52.645)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+      <g transform="translate(0 -78.917)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+    </g>
+    <path d="m173.12 125.03v72.122" class="stroke"/>
+    <path d="m149.43 136.89v60.26" class="stroke"/>
+    <g transform="translate(.27565)">
+      <g transform="matrix(1 0 0 2.5604 0 -307.6)" class="stroke">
+        <path d="m179.55 197.13v0.85321"/>
+        <path d="m165.77 197.13v0.85321"/>
+        <path d="m151.99 197.13v0.85321"/>
+        <path d="m138.21 197.13v0.85321"/>
+        <path d="m124.43 197.13v0.85321"/>
+        <path d="m110.64 197.13v0.85321"/>
+        <path d="m83.079 197.13v0.85321"/>
+        <path d="m96.861 197.13v0.85321"/>
+        <path d="m69.297 197.13v0.85321"/>
+        <path d="m55.514 197.13v0.85321"/>
+        <path d="m41.732 197.13v0.85321"/>
+      </g>
+      <g class="fillfg" font-family="sans-serif" font-size="3.5278px" text-anchor="middle" text-align="center">
+        <text x="179.55566" y="203.48607">0</text>
+        <text x="165.77254" y="203.53603">1000</text>
+        <text x="151.99026" y="203.53603">2000</text>
+        <text x="138.19594" y="203.53603">3000</text>
+        <text x="124.40849" y="203.53603">4000</text>
+        <text x="110.67445" y="203.53603">5000</text>
+        <text x="96.842216" y="203.53603">6000</text>
+        <text x="83.072861" y="203.53603">7000</text>
+        <text x="69.296608" y="203.53603">8000</text>
+        <text x="55.514324" y="203.53603">9000</text>
+        <text x="41.738075" y="203.53603">10000</text>
+        <text x="27.949768" y="203.53603">Time</text>
+      </g>
+    </g>
+    <g class="fillfg" font-family="sans-serif" text-anchor="left" text-align="center">
+      <g font-size="3.5278px">
+        <text x="188.37381" y="198.43936">1</text>
+        <text x="188.37381" y="172.13287">10</text>
+        <text x="188.37381" y="145.76482">100</text>
+        <text x="188.37381" y="119.48749">1000</text>
+        <text x="188.37381" y="93.216339">10000</text>
+      </g>
+      <text x="27.785782" y="97.292755" font-size="5px">World Population</text>
+      <text x="27.488127" y="110.53831" font-size="4px">in Million Humans, logarithmic scale</text>
+      <text x="27.488127" y="117.02924" font-size="4px">over the last 10000 years</text>
+      <text x="27.488127" y="137.44823" font-size="3.5px">(c) 2009 Bryan K. Long</text>
+      <text x="27.488127" y="143.30658" font-size="3.5px">http://econosystemics.com/?p=9</text>
+    </g>
+    <g transform="translate(-21.936)">
+      <text class="fillfg" x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" text-align="center" text-anchor="middle">8000 Million Humans in year 2020</text>
+      <path class="stroke" d="m168.3 94.379h8.2931" marker-end="url(#a)"/>
+    </g>
+    <g class="fillfg" font-family="sans-serif" font-size="4.2333px" text-anchor="middle" text-align="center">
+      <text x="51.604794" y="188.05453">Semi-Nomadic Era</text>
+      <text x="119.68132" y="176.08015">City States</text>
+      <text x="159.93082" y="154.6176">Empires</text>
+      <text transform="rotate(-90)" x="-138.52907" y="177.94925">Global</text>
+    </g>
+    <path d="m90.08 177.21v19.942" class="stroke"/>
+    <g class="fillfg" font-family="sans-serif" font-size="3.5278px" text-anchor="middle" text-align="center">
+      <text x="42.339771" y="175.02097">Early Agriculture</text>
+      <text x="64.002998" y="168.44278">Copper</text>
+      <text x="90.966606" y="170.53709">Wheel</text>
+      <text x="101.05252" y="153.35725">Irrigation</text>
+      <text x="100.27689" y="159.16676">Wood Plow</text>
+      <text x="117.46384" y="146.5674">Bronze</text>
+      <text x="127.57859" y="139.46359">Iron</text>
+      <text x="141.02661" y="133.228">Metal Plow</text>
+      <text x="154.90468" y="123.79401">Water Mills</text>
+      <text x="154.91161" y="128.19908">Wind Mills</text>
+      <text x="170.3678" y="122.80343">Coal</text>
+      <text x="170.31664" y="115.85435">Steam</text>
+      <text x="169.13686" y="107.78757">Electricity</text>
+      <text x="168.94328" y="101.43417">Oil + Gas</text>
+      <text x="168.90126" y="95.930222">Fertilizer</text>
+    </g>
+  </g>
+</svg>
+
+<p>
+  We know this growth pattern from cancer or bacteria,
+  which grow and grow, until all resources are burned out,
+  until the host dies.
+  Humans have defeated all systems of self-regulation,
+  for example by criminalizing serial murder (thou shalt not kill),
+  so we grow and grow, until we kill the whole planet,
+  including most animals and plants.
+</p>
+
+<p>
+  So, why "control the population"?
+  Kill humans, save planet.
+  Kill majority, save minority.
+  There are two solutions:
+  1. Do nothing, keep growing until ecosystem collapse,
+  then all humans die within the next 100 years.
+  2. Kill 90 Percent of today's population
+  to get down to 100 Million people,
+  so that humans can survive another 10000 years.
+  Some call this a "moral dilemma",
+  but it's just another Personality Test.
+  The choice was already made by your Personality Type.
+<hr>
+
+
+
+
+<h3>Legal stuff</h3>
+
+<p>
+  Copyright (c) 2022 Milan Hauth
+</p>
+
+<p>
+  I release this book under the MIT License.
+  In short, you have all freedoms and zero security.
+  Long version:
+</p>
+
+<p class="smalltext">
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+</p>
+
+<p class="smalltext">
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+</p>
+
+<p class="smalltext">
+  The software is provided "as is", without warranty of any kind, express or
+  implied, including but not limited to the warranties of merchantability,
+  fitness for a particular purpose and noninfringement. In no event shall the
+  authors or copyright holders be liable for any claim, damages or other
+  liability, whether in an action of contract, tort or otherwise, arising from,
+  out of or in connection with the software or the use or other dealings in the
+  software.
+</p>
+
+
+
+<h3>Contact</h3>
+
+<p>
+  Milan Hauth, Jaegerstraase 10, 83308 Trostberg, Germany
+  <br>
+  Web: github.com/milahu/whoaremyfriends
+  <br>
+  E-Mail: milahu@gmail.com + milahu@protonmail.com
+  <br>
+  Chat: @milahu:matrix.org
+</p>
+
+
+
+<h3>Last Words</h3>
+
+<p>
+  You met me at a very strange time in my life.
+  In a few days, they will start World War 3.
+  90 Percent of all humans will die.
+</p>
+
+<p>
+  I hope that the 10 Percent survivors
+  will find my book,
+  and use it, to build a truly better world.
+</p>
 
 
 
@@ -4519,9 +4840,16 @@ stop crying now 4----+----2 stop crying later
     .bindery-view-linear .bindery-zoom-content {
       min-width: calc(20px + var(--bindery-page-width));
     }
+
     .bindery-view-linear .bindery-page {
-      zoom: 2.0; /* quickfix */
+      zoom: 2; /* quickfix */ /* FIXME this breaks on mobile screens. pages overflow, overflow is hidden */
     }
+    @media screen and (max-width: 960px) {
+      .bindery-view-linear .bindery-page {
+        zoom: 1; /* quickfix for mobile screens */
+      }
+    }
+
     .bindery-view-print .bindery-zoom-content {
       min-width: calc(20px + var(--bindery-sheet-width));
     }
