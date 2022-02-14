@@ -304,6 +304,8 @@
         content: '#content',
         rules: [
           Bindery.PageBreak({ selector: 'hr', position: 'after' }),
+          Bindery.PageBreak({ selector: 'h2:not(.nopagebreak)', position: 'before' }),
+          Bindery.PageBreak({ selector: 'h3:not(.nopagebreak)', position: 'before' }),
           // https://github.com/evnbr/bindery/issues/7
           Bindery.Footnote({
             selector: "a:not(.nofootnote)",
@@ -401,7 +403,7 @@
 
 <h1>Who<br>are<br>my<br>friends</h1>
 
-<h2>Team composition<br>by<br>personality type</h2>
+<h2 class="nopagebreak">Team composition<br>by<br>personality type</h2>
 
 <!-- vertical space -->
 <div style="height: 50mm"></div>
@@ -818,7 +820,7 @@
 
 
 
-<h3>Four Basetypes</h3>
+<h3 class="nopagebreak">Four Basetypes</h3>
 
 <p>
   In my compatibility chart,
@@ -2154,7 +2156,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3>Contact</h3>
+<h3 class="nopagebreak">Contact</h3>
 
   Milan Hauth,
   <a class="nofootnote" href="https://www.openstreetmap.org/?mlat=48.02665&mlon=12.56405#map=3/48.02665/12.56405"
@@ -2174,7 +2176,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3>Last Words</h3>
+<h3 class="nopagebreak">Last Words</h3>
 
 <p>
   You met me at a very strange time in my life.
