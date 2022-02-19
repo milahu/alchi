@@ -11,18 +11,20 @@
 
   <meta name="author" content="Milan Hauth">
 
-  <meta id="version" name="dcterms.modified" content="2022-02-14">
+  <meta id="version" name="dcterms.modified" content="2022-02-19">
 
+  <!-- document ID for hypothesis annotations -->
   <link rel="canonical" href="https://milahu.github.io/whoaremyfriends/whoaremyfriends.html#/cas/git/commit/31f073abb5c5933c7543c3ab5f492a5ebbe22695">
 
   <!--
     content starts at <article id="content">
 
     all assets are inlined into this html file
-    i hope you have a good code editor, with code folding
+    i hope you have a good code editor, with code folding.
+    folding suggestions: class="foldme"
   -->
 
-  <meta name="keywords" content="
+  <meta class="foldme" name="keywords" content="
     who are my friends,
     team composition,
     matchmaking,
@@ -61,6 +63,8 @@
     love algorithm,
     love formula,
     dunbar's number,
+    utopia,
+    paradise on earth,
     real communism,
     small communism,
     village communism,
@@ -110,6 +114,26 @@
     gang culture,
     alternative culture,
     alternative religion,
+    postcollapse,
+    post-collapse culture,
+    postcollapse culture,
+    postmodern culture,
+    subjectivity,
+    nietzsche,
+    friedrich nietzsche,
+    ayn rand,
+    individualism,
+    liberalism,
+    liberal,
+    classical liberal,
+    classic liberal,
+    liberation ideology,
+    liberation theology,
+    abuse of power,
+    toxic rational,
+    toxic rationality,
+    balance,
+    justice,
   ">
 
   <!-- files/alchi-pallas-symbol.small.svg -->
@@ -138,7 +162,7 @@
   <meta name="related.alchi" content="https://github.com/milahu/alchi"><!-- whoaremyfriends is based on alchi -->
 
   <!-- legal stuff. short: zero limits and zero warranty -->
-  <meta name="dc.rights" content='
+  <meta class="foldme" name="dc.rights" content='
 
     MIT License
 
@@ -164,7 +188,7 @@
 
   '>
 
-  <style>
+  <style class="foldme">
     /* FIXME width 1105px, zoom 100%, dpi 144? -> horizontal scrollbar in grid view */
     body.js-enabled hr {
       height: 0;
@@ -192,6 +216,7 @@
     }
     .bindery-sup {
       vertical-align: baseline;
+      font-size: 100% !important;
     }
     .bindery-sup:before {
       content: " [";
@@ -296,7 +321,7 @@
     <script src="./node_modules/bindery/dist/bindery.umd.js"></script>
   -->
 
-  <script>
+  <script title="binderyOptions" class="foldme">
     // called at end of file: Bindery.makeBook(binderyOptions(Bindery))
     // FIXME bindery bug: cannot select text in print view = cannot create annotations
     function binderyOptions(Bindery) {
@@ -318,19 +343,24 @@
             render: (page) => {
               if (page.isEmpty) return "";
               //if (page.number <= 2) return "";
-              if (page.number <= 3) return "";
+              //if (page.number <= 3) return "";
+              if (page.number <= 1) return "";
               //if (page.element.querySelector("h1")) return "";
               //if (page.isLeft) return `<div class="running-header"><span class="page-number">${ page.number }</span> ${ page.heading.h1 }</div>`;
+              /*
+              // show only page number, no link, no version
               if (page.number <= 3) {
                 headerTitle = '<div></div>';
                 if (page.isLeft) return `<div class="running-header"><div class="page-number">${ page.number }</div>${headerTitle}</div>`;
                 if (page.isRight) return `<div class="running-header">${headerTitle}<span class="page-number">${ page.number }</span></div>`;
               }
+              */
               var linkLeftList = [
                 'github.com/milahu/',
                 'gitlab.com/milahu/',
               ];
-              var linkLeftIdx = Math.floor(page.number / 2) % linkLeftList.length;
+              var linkLeftOffset = 1; // which link is first in linkLeftList
+              var linkLeftIdx = (Math.floor(page.number / 2) + linkLeftOffset) % linkLeftList.length;
               var linkLeft = linkLeftList[linkLeftIdx];
               var linkRight = 'whoaremyfriends';
               var href = `https://${linkLeft}${linkRight}`;
@@ -347,8 +377,14 @@
                 : `<div class="running-header-title running-header-title-right">${version}</div>`
               ;
 
+              var lastPage = 14;
+
               // FIXME get num pages
-              if (page.number >= 10) return '';
+              if (page.number == lastPage) return '';
+              if (page.number > lastPage) {
+                console.log(`FIXME increase lastPage`);
+                return '';
+              }
 
               if (page.isLeft) return `<div class="running-header"><div class="page-number">${ page.number }</div>${headerTitle}</div>`;
               if (page.isRight) return `<div class="running-header">${headerTitle}<span class="page-number">${ page.number }</span></div>`;
@@ -420,7 +456,7 @@
   via https://wiki.evilmadscientist.com/Capturing_Handwriting#Centerline_Tracing
 -->
 
-<svg
+<svg class="foldme" title="handwrite firstpage: early release, feedback please"
   version="1.1"
   viewBox="0 0 475.46 270.36"
   width="60%"
@@ -529,13 +565,13 @@
 
 <!-- page 2 -->
 
-<h3>Introduction</h3>
+<h3 id="intro">Introduction</h3>
 
 <p>Here is my Compatibility Chart</p>
 
 <!-- i told ya ... code folding -->
 
-<script>
+<script class="foldme" title="Compatibility Chart">
   if (false) {
 
     // generate svg
@@ -629,7 +665,7 @@
 
 </script>
 
-<svg
+<svg class="foldme" title="Compatibility Chart"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   viewBox="0 0 800 800"
@@ -820,7 +856,7 @@
 
 
 
-<h3 class="nopagebreak">Four Basetypes</h3>
+<h3 id="basetypes" class="nopagebreak">Four Basetypes</h3>
 
 <p>
   In my compatibility chart,
@@ -853,7 +889,7 @@
 
 
 
-<svg
+<svg class="foldme" title="four body shapes"
   width="80%"
   style="margin-left: 10%"
   version="1.1"
@@ -1144,6 +1180,13 @@ stop crying now 4----+----2 stop crying later
       <td>Long</td>
     </tr>
     <tr>
+      <th>Cylinder Geometry</th>
+      <td>Top</td>
+      <td>Bottom</td>
+      <td>Outside</td>
+      <td>Inside</td>
+    </tr>
+    <tr>
       <th><a href="https://en.wikipedia.org/wiki/Jungian_cognitive_functions">Carl Jung</a></th>
       <td>Ntuiting</td>
       <td>Sensing</td>
@@ -1312,7 +1355,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3>Four Properties</h3>
+<h3 id="properties">Four Properties</h3>
 
 <p>
   Every basetype is the combination of two properties.
@@ -1325,7 +1368,7 @@ stop crying now 4----+----2 stop crying later
 
 <!-- TODO add a second graphic to use the whitespace -->
 
-<script>
+<script class="foldme" title="Four Properties">
   if (false) {
     // generate svg
     // run this manually, copy-paste the result
@@ -1391,7 +1434,7 @@ stop crying now 4----+----2 stop crying later
   }
 </script>
 
-<svg
+<svg class="foldme" title="Four Properties"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   viewBox="-400 -400 800 800"
@@ -1534,7 +1577,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3>Subtypes</h3>
+<h3 id="subtypes">Subtypes</h3>
 
 <p>
   Every basetype has three subtypes
@@ -1569,7 +1612,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<script>
+<script class="foldme" title="twelve mixtypes">
   if (false) {
     // generate svg
     // run this manually, copy-paste the result
@@ -1728,7 +1771,7 @@ stop crying now 4----+----2 stop crying later
   }
 </script>
 
-<svg
+<svg class="foldme" title="twelve mixtypes"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   viewBox="-450 -450 900 900"
@@ -1879,10 +1922,561 @@ stop crying now 4----+----2 stop crying later
 
 
 
+<hr>
+
+
+
+<p>
+  TODO text: next page should be on left side
+</p>
+
+
+
+<!-- TODO should start on left page -->
+
+<h3 id="devil-child">Devil Child</h3>
+
+<p>
+  Imagine you are a Socialist,
+  but your child wants to be a Capitalist.
+  What do you do?
+  Hold On or Let Go?
+</p>
+
+
+
+<!-- TODO hands bigger -->
+
+<svg class="foldme fig-parent-child-pulling-opposite-directions"
+  width="50%"
+  style="margin-left: 25%"
+  version="1.1" viewBox="0 0 134.79 78.715" xmlns="http://www.w3.org/2000/svg"
+  >
+  <!--
+    based on
+    animals-pets-pet_owners-dogs-dog_owners-animals-CC37666_low.jpg
+    https://www.cartoonstock.com/cartoon?searchID=CC37666
+    Dog and owner pulling in different directions
+    Published in: New Yorker (3/3/1986)
+    Cartoonist: Gahan Wilson
+  -->
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig-parent-child-pulling-opposite-directions .stroke {
+      stroke-width: 0.5px;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+      fill: none;
+    }
+    .nofill {
+      fill: none;
+    }
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <g class="fig-parent-child-pulling-opposite-directions" transform="translate(-11.799 -75.629)">
+    <g transform="rotate(-15.404 55.801 57.994)" class="stroke nofill">
+      <ellipse cx="43.673" cy="82.881" rx="6.5073" ry="8.5751"/>
+      <path d="m43.541 153.31v-61.721"/>
+    </g>
+    <g transform="rotate(25.816 119.31 101.74)" class="stroke nofill">
+      <path d="m130.7 153.31v-32.29"/>
+      <circle cx="130.83" cy="113.11" r="7.7744"/>
+    </g>
+    <g class="stroke nofill">
+      <path d="m114.13 138.59 9.6538 5.2084 2.0673 9.5152"/>
+      <path d="m61.102 123.39-17.444 9.8978-5.3195 20.022"/>
+      <path d="m54.975 101.15h-42.176"/>
+      <path d="m118.44 129.69h27.146"/>
+      <path d="m45.597 81.887 3.3103 0.90005"/>
+      <path d="m54.702 81.303-3.0446 1.4255"/>
+      <path d="m47.094 89.594c2.1789-1.0247 5.0356-1.7804 7.3599-0.78618"/>
+    </g>
+    <g class="fillfg">
+      <circle cx="54.512" cy="83.141" r=".47041"/>
+      <circle cx="48.517" cy="83.924" r=".47041"/>
+      <circle cx="120.11" cy="114.41" r=".47041"/>
+      <circle cx="127.5" cy="116.12" r=".47041"/>
+    </g>
+    <path d="m120.28 112.57 2.8218 2.2297" class="stroke nofill"/>
+    <path d="m130.03 114.03-3.0914 1.0245" class="stroke nofill"/>
+    <path d="m119.64 120.21c2.9924-1.7124 5.7517-2.0622 8.7188 0.37897" class="stroke nofill"/>
+    <g class="stroke nofill">
+      <path d="m92.505 119.36s-0.37716 0.31492-0.74531 0.62109"/>
+      <path d="m118.84 129.86-22.874-10.281"/>
+      <path d="m89.83 121.82s0.99181-2.156 1.9294-1.8379c0.73421 0.18604 0.17646 2.0998 0.17646 2.0998"/>
+      <path d="m54.975 101.15 37.406 16.82"/>
+      <path d="m92.549 117.89c-1.0196 1.1471 2.3985 2.8534 3.0308 1.5217s-2.0091-2.6711-3.0308-1.5217z"/>
+    </g>
+  </g>
+</svg>
+
+
+
+
+<p>
+  Hold On to your devil child,
+  and force it to become a socialist?
+  "Children are always compatible with their parents."
+  "What does not fit, is made to fit."
+  "Parents who give away their child for adoption are bad parents."
+  "All mental illness can be cured."
+  "No child left behind."
+  "Criminals are stupid, and should be educated."
+  "Majority is right, individuals are sick."
+</p>
+
+<p>
+  Let Go of your devil child,
+  and allow it to become a capitalist?
+  "Friends are better than family."
+  "Compatibility are better than loyalty."
+  "One radical cut is better than a million small cuts."
+  "Better a horrible end than endless horror."
+  "Better no friends than fake friends."
+  "Some people are born with criminal tendencies."
+  "Smart kids should drop out of school."
+  "Society is sick, individuals are right."
+</p>
+
+<p>
+  Hold On is the simple solution,
+  that's why it's so popular<!--  in our "simple culture" -->.
+  <!-- Don't we all love our simple solutions? -->
+  But how can the Let Go solution work in reality?
+</p>
+
+<p>
+  Let me add some context to my picture.
+  We live in a village of 150 people.
+  In total, there are 25 families.
+  Each family has 2 grandparents, 2 parents, 2 children.
+  So we have 50 children in our village.
+  Let's say 50% of all children are "devil children".
+</p>
+
+<p>
+  To solve the devil child problem,
+  we need the concept of Subjectivity.
+  The "devilness" of the devil child is subjective.
+  This means, the devil child appears as "evil" only to some people,
+  but to other people, it appears as "good".
+  Now, my goal is to move all devil kids
+  from their biological parents to their "spiritual" parents.
+</p>
+
+<p>
+  School is doing something similar:
+  School removes children away from their biological parents,
+  and forces kids to be educated by teachers.
+  Who are these teachers?
+  Government licensed professionals.
+  So these people are chosen based on "rational" criteria:
+  most teachers are "normies" who have good experience with the government,
+  so of course they spread government propaganda.
+</p>
+
+<p>
+  What's the problem with school?
+  Only "rational" choice of teachers,
+  no "emotional" choice of teachers.
+  School is just another forced community,<!-- forced community -> DE: zwangs-gemeinschaft -->
+  just like the biological parent-child relation.
+  The kids are trapped in these relations,
+  and if the kids are incompatible with their teachers,
+  both sides suffer.
+  <!-- from this permanent conflict. -->
+  Some kids are lucky: they are naturally compatible with their teachers.
+  Other kids have bad luck: they are naturally incompatible with their teachers.
+  For the lucky kids, school is heaven.
+  For the unlucky kids, school is prison.
+  Subjectivity: "Your paradise is our hell, and your hell is our paradise."
+</p>
+
 <!-- page TODO -->
 
 
-<h3>What goes up, must come down</h3>
+
+<h3>Mental Geometry</h3>
+
+<p>
+  Body shapes come in opposites:
+  1-2 = top-bottom. 3-4 = outside-inside.
+  When we combine two opposite types,
+  we get a double-cone,
+  which has the long-section of a rhombus.
+</p>
+
+<!--
+  similar: halving of a square
+  https://duckduckgo.com/?q=geometry+square+halving+socrates&iar=images&iax=images&ia=images
+-->
+
+
+
+<svg class="fig-square-half-quarter foldme"
+  style="width: 60%; margin-left: 20%;" version="1.1"
+  viewBox="0 0 149.91 59.757" xmlns="http://www.w3.org/2000/svg"
+  >
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig-square-half-quarter .stroke {
+      stroke-width: 0.5px;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+      fill: none;
+    }
+    .nofill {
+      fill: none;
+    }
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <g class="fig-square-half-quarter">
+    <g transform="translate(-38.418 -155.74)">
+      <rect transform="rotate(-45)" x="-103.13" y="159.38" width="40.341" height="40.341" class="stroke nofill" stroke-width=".5"/>
+      <path d="m39.772 185.62h57.05" class="stroke" stroke-width=".5"/>
+      <g font-family="sans-serif" font-size="10.583px" class="fillfg" text-align="center" text-anchor="middle">
+        <text x="68.442261" y="178.85248">2</text>
+        <text x="68.207138" y="200.17659">1</text>
+      </g>
+      <g class="stroke nofill" stroke-width=".5">
+       <rect transform="rotate(-45)" x="-39.383" y="223.13" width="40.341" height="40.341"/>
+       <path d="m144.19 171.36 28.525 28.525"/>
+       <path d="m172.71 171.36-28.525 28.525"/>
+      </g>
+      <g font-family="sans-serif" font-size="10.583px" class="fillfg" text-align="center" text-anchor="middle">
+       <text x="158.49054" y="175.21707">4</text>
+       <text x="158.49054" y="203.74223">4</text>
+       <text x="172.9118" y="189.47447">3</text>
+       <text x="144.0331" y="189.47447">3</text>
+      </g>
+     </g>
+  </g>
+</svg>
+
+
+
+<p>
+  View from top/bottom:
+  For 12, we see only one type.
+  For 34, we see both types:
+  4 is the Inner Circle,
+  3 is the Outer Circle.
+</p>
+
+<p>
+  TODO figure: top/bottom view of the double-cone
+</p>
+
+<p>
+  TODO figure: 3D axis + circle = gyro, spinner, rotary. axis = 4, circle = 3.
+  type 3 girls like to wear "hoop" earrings, matching their round face
+</p>
+
+<p>
+  TODO four "chakras"? 3142 = head bust belly ass = outside top inside bottom
+</p>
+
+
+
+<h3>Four Crosses: Body and Mind</h3>
+
+<p>
+  I assume that a certain Personality Basetype
+  must appear in a certain Body,
+  so I can perceive it as friendly
+  = so it is compatible to my Personality Basetype.
+</p>
+
+<p>
+  I'm a "type 1 father" (M1L = D1),
+  so I see as naturally attractive
+  all "type 3 mother" (F3L = B3),
+  all "type 4 son" (M4S = A4),
+  all "type 2 daughter" (F2S = C2).
+</p>
+
+<p>
+  In total, there are four different combinations of body and mind.
+  I call these the Four Crosses
+</p>
+
+
+
+<!-- TODO reduce Y space between subfigures -->
+<!-- TODO fix X positions of masculine/feminine -->
+<svg class="fig-body-and-mind foldme"
+  style="width: 80%; margin-left: 10%"
+  version="1.1" viewBox="0 0 188.87 167.25" xmlns="http://www.w3.org/2000/svg"
+  >
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) { 
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig-body-and-mind .stroke {
+      stroke-width: 0.5px;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+      fill: none;
+    }
+    .nofill {
+      fill: none;
+    }
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <g class="fig-body-and-mind" transform="translate(-29.697 -108.07)">
+    <g transform="translate(22.638 22.638)">
+      <g fill="none" stroke="#000" stroke-width=".5">
+        <g transform="translate(-10.775,-68.817)">
+          <circle cx="40.497" cy="166.1" r="5.2933"/>
+          <circle cx="81.99" cy="166.1" r="5.2933"/>
+          <circle cx="81.99" cy="207.59" r="5.2933"/>
+          <circle cx="40.497" cy="207.59" r="5.2933"/>
+        </g>
+        <g transform="translate(-10.775 -69.028)">
+          <path d="m44.24 170.05 34.007 34.007"/>
+          <path d="m44.24 204.06 34.007-34.007"/>
+        </g>
+        <path d="m39.706 118.03h21.526" stroke-dasharray="0.5, 0.5"/>
+        <path d="m50.469 107.27v21.526" stroke-dasharray="0.5, 0.5"/>
+      </g>
+      <g class="fillfg" font-family="sans-serif" stroke-width=".26458">
+        <text x="35.97942" y="99.38726" font-size="5.6444px">masculine</text>
+        <text x="38.192532" y="140.87724" font-size="5.6444px">feminine</text>
+        <g class="fillfg" font-size="8.4667px">
+          <text x="26.954203" y="100.36914">1</text>
+          <text x="68.55262" y="100.36914">4</text>
+          <text x="68.6353" y="141.91493">2</text>
+          <text x="27.045153" y="141.855">3</text>
+        </g>
+        <text x="21.128624" y="119.02256" font-size="5.6444px">young</text>
+        <text x="67.013397" y="120.13326" font-size="5.6444px">old</text>
+        <g font-size="5.6444px">
+          <text x="15.803432" y="90.671432">Son</text>
+          <text x="70.718117" y="90.721031">Father</text>
+          <text x="69.650131" y="149.54521">Mother</text>
+          <text x="7.5048957" y="148.99812">Daughter</text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(-2.1512e-8 22.638)">
+      <g transform="translate(113.92 55.662)" fill="none" stroke="#000" stroke-dasharray="0.5, 0.5" stroke-width=".5">
+        <path d="m50.481 62.367h21.526"/>
+        <path d="m61.244 51.604v21.526"/>
+      </g>
+      <g transform="translate(113.92 -69.028)" fill="none" stroke="#000" stroke-width=".5">
+        <path d="m44.24 170.05 34.007 34.007"/>
+        <path d="m44.24 204.06 34.007-34.007"/>
+      </g>
+      <g transform="translate(113.91,-68.817)" fill="none" stroke="#000" stroke-width=".5">
+        <circle cx="40.497" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="207.59" r="5.2933"/>
+        <circle cx="40.497" cy="207.59" r="5.2933"/>
+      </g>
+      <g transform="translate(41.598)">
+        <g class="fillfg" transform="translate(72.316,-68.817)" font-family="sans-serif" stroke-width=".26458">
+          <text x="46.75943" y="168.20427" font-size="5.6444px">masculine</text>
+          <text x="48.972542" y="209.69424" font-size="5.6444px">feminine</text>
+          <g class="fillfg" font-size="8.4667px">
+            <text x="37.725208" y="169.18614">1</text>
+            <text x="79.323616" y="169.18614">4</text>
+            <text x="79.406303" y="210.73193">2</text>
+            <text x="37.816162" y="210.67198">3</text>
+          </g>
+          <text x="73.392624" y="187.83957" font-size="5.6444px">young</text>
+          <text x="36.291405" y="188.95026" font-size="5.6444px">old</text>
+        </g>
+      </g>
+      <g class="fillfg" font-family="sans-serif" font-size="5.6444px" stroke-width=".26458">
+        <text x="135.51517" y="149.54521">Mother</text>
+        <text x="191.01826" y="148.99812">Daughter</text>
+        <text x="199.31682" y="90.671425">Son</text>
+        <text x="136.58315" y="90.721031">Father</text>
+      </g>
+    </g>
+    <g fill="none" stroke="#000" stroke-width=".5">
+      <g transform="translate(113.91,55.873)">
+        <circle cx="40.497" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="207.59" r="5.2933"/>
+        <circle cx="40.497" cy="207.59" r="5.2933"/>
+      </g>
+      <g transform="translate(113.92 55.662)">
+        <path d="m44.24 170.05 34.007 34.007"/>
+        <path d="m44.24 204.06 34.007-34.007"/>
+      </g>
+      <g transform="translate(113.92 180.35)" stroke-dasharray="0.5, 0.5">
+        <path d="m50.481 62.367h21.526"/>
+        <path d="m61.244 51.604v21.526"/>
+      </g>
+    </g>
+    <g font-family="sans-serif" stroke-width=".26458">
+      <g class="fillfg" transform="translate(113.91,55.662)">
+        <text x="61.142891" y="209.90524" font-size="5.6444px"><tspan text-align="center" text-anchor="middle">masculine</tspan></text>
+        <text x="48.976543" y="168.41527" font-size="5.6444px">feminine</text>
+        <g class="fillfg" font-size="8.4667px">
+          <text x="37.72921" y="169.39615">1</text>
+          <text x="79.327621" y="169.39714">4</text>
+          <text x="79.410301" y="210.94495">2</text>
+          <text x="37.82016" y="210.883">3</text>
+        </g>
+        <text x="73.396622" y="188.05055" font-size="5.6444px">young</text>
+        <text x="36.295403" y="189.16125" font-size="5.6444px">old</text>
+      </g>
+      <g class="fillfg" font-size="5.6444px">
+        <text x="135.51517" y="215.41023">Mother</text>
+        <text x="191.01826" y="214.44145">Daughter</text>
+        <text x="136.58315" y="273.81271">Father</text>
+        <text x="198.8951" y="273.76309">Son</text>
+      </g>
+    </g>
+    <g transform="translate(22.638 .0034999)">
+      <g class="fillfg" transform="translate(-10.775,55.662)" font-family="sans-serif" stroke-width=".26458">
+        <text x="46.754417" y="209.90524" font-size="5.6444px">masculine</text>
+        <text x="48.967533" y="168.41527" font-size="5.6444px">feminine</text>
+        <g class="fillfg" font-size="8.4667px">
+          <text x="37.729202" y="169.39714">1</text>
+          <text x="79.327621" y="169.39714">4</text>
+          <text x="79.410301" y="210.94295">2</text>
+          <text x="37.820152" y="210.883">3</text>
+        </g>
+        <text x="31.903624" y="188.05055" font-size="5.6444px">young</text>
+        <text x="77.788391" y="189.16125" font-size="5.6444px">old</text>
+      </g>
+      <g fill="none" stroke="#000" stroke-width=".5">
+        <path d="m33.465 225.71 34.007 34.007"/>
+        <path d="m33.465 259.72 34.007-34.007"/>
+        <g transform="translate(-10.775 180.35)" stroke-dasharray="0.5, 0.5">
+          <path d="m50.481 62.367h21.526"/>
+          <path d="m61.244 51.604v21.526"/>
+        </g>
+      </g>
+      <g class="fillfg" font-family="sans-serif" font-size="5.6444px" stroke-width=".26458">
+        <text x="7.5048957" y="214.86316">Daughter</text>
+        <text x="69.650131" y="215.41023">Mother</text>
+        <text x="70.718117" y="274.23441">Father</text>
+        <text x="15.803435" y="274.18481">Son</text>
+      </g>
+      <g transform="translate(-10.775,55.873)" fill="none" stroke="#000" stroke-width=".5">
+        <circle cx="40.497" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="166.1" r="5.2933"/>
+        <circle cx="81.99" cy="207.59" r="5.2933"/>
+        <circle cx="40.497" cy="207.59" r="5.2933"/>
+      </g>
+    </g>
+  </g>
+
+</svg>
+
+<p>
+  So for every property, we have two definitions.
+  For example,
+  "what is masculine?" (abstract)
+  or "who is masculine?" (concrete)
+  For some people, masculine is 14.
+  For other people, masculine is 23.
+  In every "Cross",
+  the four people share the same definitions
+  of masculine/feminine and young/old.
+  With this common ground, the four people are compatible.
+</p>
+
+
+
+<!--
+
+TODO better definition of Passive Violence
+make other dependent on your help.
+to punish them, stop your help.
+the "stopping of help" is the core of "passive" violence
+also: building walls, locking doors = "passive" violence, defense
+also: play on time, wait for conflicts to disappear magically = magical thinking
+
+<h3>Active Violence and Passive Violence</h3>
+
+<p>
+  Violence is necessary in many situations.
+  Active violence is used to change something wrong.
+  Passive violence is used to defend something right.
+  But right and wrong are subjective.
+  The current culture is biased in favor of passive violence,
+  to defend "law and order".
+  The people who attack this system are called criminals,
+  and punished in prison (also prison is passive violence).
+</p>
+
+-->
+
+
+
+<h3 id="population">What goes up, must come down</h3>
 
 <p>
   Population is a hot topic.
@@ -1896,10 +2490,9 @@ stop crying now 4----+----2 stop crying later
   Why "control the population"? Just look at <a class="nofootnote" href="http://econosystemics.com/?p=9" title="Human Population through the Ages. Bryan Long 2009">this graph</a>
 </p>
 
-<!-- World Population -->
-<!-- based on http://econosystemics.com/?p=9 -->
-<!-- FIXME remove padding in svg, to use full width -->
-<svg
+
+
+<svg title="World Population over 10000 years, Bryan K. Long, 2009" class="foldme"
   width="100%"
   style="
     margin-left: 0%;
@@ -1910,7 +2503,11 @@ stop crying now 4----+----2 stop crying later
   viewBox="0 0 182.38 123.17"
   xmlns="http://www.w3.org/2000/svg"
   >
+  <!-- TODO add line for Y=1 -->
   <!-- FIXME arrowheads are not visible. generated by inkscape + svgo -->
+  <!-- World Population -->
+  <!-- based on http://econosystemics.com/?p=9 -->
+  <!-- FIXME remove padding in svg, to use full width. workaround with css style: transform: scale(1.05) -->
   <style>
     svg { --fg: black; --bg: white; } /* light mode */
     @media screen {
@@ -2051,8 +2648,10 @@ stop crying now 4----+----2 stop crying later
     </g>
     <g transform="translate(-21.936)">
       <!-- TODO arrowhead after "8000 Million Humans in year 2020" -->
+      <!--
       <text class="fillfg" x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" text-align="center" text-anchor="middle">8000 Million Humans in year 2020</text>
       <path class="stroke" d="m168.3 94.379h8.2931" marker-end="url(#a)"/>
+      -->
     </g>
     <g class="fillfg" font-family="sans-serif" font-size="4.2333px" text-anchor="middle" text-align="center">
       <text x="51.604794" y="188.05453">Semi-Nomadic Era</text>
@@ -2108,7 +2707,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3>Legal stuff</h3>
+<h3 id="legal">Legal stuff</h3>
 
 <p>
   I release this book under the MIT License.
@@ -2117,8 +2716,7 @@ stop crying now 4----+----2 stop crying later
 </p>
 
 
-
-<div id="license" class="smalltext-block" style="margin-bottom: -4em">
+<div id="license" class="foldme smalltext-block" style="margin-bottom: -4em">
 
   <p>
     MIT License
@@ -2156,11 +2754,11 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3 class="nopagebreak">Contact</h3>
+<h3 id="contact" class="nopagebreak">Contact</h3>
 
   Milan Hauth,
   <a class="nofootnote" href="https://www.openstreetmap.org/?mlat=48.02665&mlon=12.56405#map=3/48.02665/12.56405"
-    >Jaegerstraase 10, 83308 Trostberg, Germany</a>
+    >Jägerstraße 10, 83308 Trostberg, Germany</a>
   <br>
   Web:
   <a class="nofootnote" href="https://github.com/milahu/whoaremyfriends">github.com/milahu/whoaremyfriends</a>
@@ -2176,7 +2774,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<h3 class="nopagebreak">Last Words</h3>
+<h3 id="last-words" class="nopagebreak">Last Words</h3>
 
 <p>
   You met me at a very strange time in my life.
@@ -2196,7 +2794,7 @@ stop crying now 4----+----2 stop crying later
 
 
 
-<script>
+<script title="bindery.umd.js" class="foldme">
   // based on node_modules/bindery/dist/bindery.umd.js
   // source https://github.com/evnbr/bindery
   // license MIT License, Copyright (c) 2017 Evan Brooks
