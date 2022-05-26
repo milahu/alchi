@@ -4357,12 +4357,14 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
     const B4 = 0b1110;
     const D4 = 0b1111;
 
+    // futurama
     fotoData[D1] = ['/d1-bender.webp', 'Bender']; // D1 = fire father
+    fotoData[D3] = ['/d3-fry.webp', 'Fry']; // D3 = air father
 
     // south park
     fotoData[A1] = ['/a1-kenny.webp', 'Kenny']; // A1 = fire son
     fotoData[A2] = ['/a2-stan.webp', 'Stan']; // A2 = earth son
-    fotoData[A3] = ['/a3-cartman.webp', 'Cartman']; // A3 = air son
+    //fotoData[A3] = ['/a3-cartman.webp', 'Cartman']; // A3 = air son
     fotoData[A4] = ['/a4-kyle.webp', 'Kyle']; // A4 = water son
     fotoData[C3] = ['/c3-heidi-turner.webp', 'Heidi Turner']; // C3 = air daughter
     fotoData[B2] = ['/b2-sharon-marsh.webp', 'Sharon Marsh']; // B2 = earth mother
@@ -4371,12 +4373,18 @@ console.log(`flipBodies: doAnimateMoves is`, doAnimateMoves);
     fotoData[C4] = ['/c4-lisa.webp', 'Lisa']; // C4 = water daughter
     fotoData[D2] = ['/d2-homer.webp', 'Homer']; // D2 = earth father
     fotoData[B1] = ['/b1-marge.webp', 'Marge']; // B1 = fire mother
+    fotoData[A3] = ['/a3-bart.webp', 'Bart']; // A3 = air son
 
     // american dad
     fotoData[B3] = ['/b3-francine.webp', 'Francine']; // B3 = air mother
 
     // family guy
-    fotoData[D3] = ['/d3-peter.webp', 'Peter Griffin']; // D3 = air father
+    //fotoData[D3] = ['/d3-peter.webp', 'Peter Griffin']; // D3 = air father
+    // i have replaced peter with fry,
+    // because the "morbidly obese" peter
+    // is a bad role model for type 3,
+    // and people will find it easier to identify with fry.
+    // same for cartman -> bart
     fotoData[B4] = ['/b4-lois.webp', 'Lois Griffin']; // B4 = water mother
     fotoData[C2] = ['/c2-meg-griffin.webp', 'Meg Griffin']; // C2 = earth daughter
 
