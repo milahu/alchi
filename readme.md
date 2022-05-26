@@ -262,6 +262,7 @@ blame `milahu`, who is just too damn lazy to push his project
 * mastodon: https://freespeechextremist.com/milahu
 * galaxy (with Tor Browser): `http://galaxy3m2mn5iqtn.onion/profile/milahu`
 * minds: https://www.minds.com/milahu
+* facebook: https://www.facebook.com/mila.nautikus (many posts. happy stalking)
 
 if you really want to reach me, better send your request to multiple sites
 
