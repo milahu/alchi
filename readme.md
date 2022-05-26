@@ -62,7 +62,9 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
+* alchi-maps html: [github](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np)
 * alchi-book html: [github](https://milahu.github.io/alchi/src/alchi-book/build/)
+  * [whoaremyfriends.html](https://milahu.github.io/whoaremyfriends/whoaremyfriends.html) ([whoaremyfriends project](https://github.com/milahu/whoaremyfriends))
 * alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - combination of multiple personality tests, show result with the four elements (four basetypes)
 
 <details>
