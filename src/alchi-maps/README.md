@@ -1,5 +1,15 @@
-# alcimaps
-mental chemistry maps for humans and their relations
+# alchi-maps
+
+compatibility map for humans
+
+## view
+
+view the latest version on ...
+
+* [github](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np)
+* [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np)
+
+## build
 
 ```sh
 # install dependencies
