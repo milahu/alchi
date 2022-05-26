@@ -260,7 +260,6 @@ blame `milahu`, who is just too damn lazy to push his project
 * gab: https://gab.com/milahu
 * scored: https://communities.win/u/milahu or https://communities.win/u/milahu2
 * mastodon: https://freespeechextremist.com/milahu
-* ruqqus: https://ruqqus.com/@milahu
 * galaxy (with Tor Browser): `http://galaxy3m2mn5iqtn.onion/profile/milahu`
 * minds: https://www.minds.com/milahu
 
