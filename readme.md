@@ -255,6 +255,10 @@ blame `milahu`, who is just too damn lazy to push his project
 
 ### contact
 
+* gmail: milahu
+* protonmail: milahu
+* gab: https://gab.com/milahu
+* scored: https://communities.win/u/milahu or https://communities.win/u/milahu2
 * mastodon: https://freespeechextremist.com/milahu
 * ruqqus: https://ruqqus.com/@milahu
 * galaxy (with Tor Browser): `http://galaxy3m2mn5iqtn.onion/profile/milahu`
@@ -267,6 +271,8 @@ if you really want to reach me, better send your request to multiple sites
 In case of milahu's absence ... milahu cannot help you, and you are on your own
 
 milahu does have some enemies, who want him broken, in jail or dead ...
+
+<!-- ^ funny how people misunderstand this. just another intelligence test -->
 
 What milahu has published here is only a part of his hand-written diary,  
 but it should be enough information to realize and test his concept
@@ -302,6 +308,8 @@ Let him quote the alchi-book ([src/alchi-book/src/pages/page-150.html](src/alchi
 > and argue with false reasons  
 > (superficial, formal criticism, pseudo-problems).
 
+<!-- spam
+
 #### keepalive
 
 Technically, milahu could publish "keepalive messages" every day,
@@ -326,40 +334,189 @@ The best way to authenticate milahu is to meet him in person.
 milahu's location is near Munich, Germany.
 (See [Contact](#contact))
 
+-->
+
 ## keywords
 
 some keywords (tags) for search engine optimization (SEO):
 
 * [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm, candidate for a "general theory of interpersonal compatibility"
 * [arranged friendship (talk by Dr. Vas Taras)](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
-* who are my friends, what is my circle of friends, what is my inner circle
-* who are my ideal parents, who are my ideal teachers, who are my ideal students
+* who are my friends
+  * what is my circle of friends
+  * what is my inner circle
+* who are my ideal parents
+  * who are my ideal teachers
+  * who are my ideal students
 * matchmaking, procuring, procuration, arranged marriage
 * dating platform algorithm
 * human combinatorics, human relations
-* stable match problem, stable matching problem, stable marriage problem, stable roommates problem, game theory
+* stable match problem
+  * stable matching problem
+  * stable marriage problem
+  * stable roommates problem
+  * game theory
 * organization theory
-* social psychology, psycho sociology
-* socionics, social engineering
-* communication theory, systems theory
-* small state, utopia, paradise on earth
-* non-calendar astrology (calendar astrology is wrong, personality type is NOT related to birthday)
+* social psychology
+  * psycho sociology
+* socionics
+  * social engineering
+* communication theory
+  * systems theory
+* small state
+  * utopia
+  * paradise on earth
+* non-calendar astrology
+  * calendar astrology is wrong
+  * personality type is NOT related to birthday
 * alternative to calendar astrology
 * what is natural order
-* primitive culture, minimalism, natural religion
-* physiognomy, anthropometry, body types, stigmata
-* anthropology, science of humans
-* sacred geometry, natural patterns
+* primitive culture
+  * minimalism
+  * natural religion
+* hard problem
+  * wicked problem
+  * fundamental problem
+  * meta problem
+  * mother of all problems
+  * root of all evil
+* master morality
+  * seek balance
+  * not afraid of radical solutions
+  * not afraid of unpopular solutions
+  * public domain is saturated with slave morality
+    * slave morality?
+      * stupid and proud
+      * life is a popularity contest
+        * seek many friends, dont care about quality
+        * fail at quality and compensate with quantity
+      * do everything wrong, and still get paid (insurance, welfare state)
+      * soft skills over hard skills
+      * idealize type 2 + demonize type 1
+        * good versus evil
+        * god versus devil
+* good violence
+  * liberating hostages
+  * removing children from incompatible parents
+    * open adoption: biological parents stay in touch with "their" children, but are not the primary caregivers
+* adoption
+  * normalize adoption to solve the devil child problem
+  * some kids are lucky, their parents are compatible, then a "small family" works
+  * other kids have bad luck, their parents are incompatible, then a "small family" fails, and an "extended family" fixes the problem. extended family as in: children and parents choose each other. children have "voting" rights from day one. "voting" is not political. fundamentally, "voting" is about choosing your friends, choosing your relations to other people, instead of passively tolerating a status quo, no matter how bad it is. (false conservatism: holding on to something wrong)
+* typical errors
+  * some people are vulnerable to "false positive" errors
+  * other people are vulnerable to "false negative" errors
+  * false negative:
+    * false enemies
+    * first impression says "he is a enemy" (perceived negative)
+    * after review we find "he is a friend" (actually positive)
+    * when left alone, the individual will stick to his first impression, and keep his false enemies
+    * good at selecting friends = low error rate
+      * liberals prefer friends over family
+        * [reddit: Liberals, relative to conservatives, express greater moral concern toward friends relative to family, and the world relative to the nation](https://www.reddit.com/r/science/comments/dbynle/liberals_relative_to_conservatives_express/)
+          * [2016election.procon.org: Differences in Conservative and Liberal Brains. 20 peer-reviewed studies show liberals and conservatives physiologically different (disgusting image of cutting fingers)](https://2016election.procon.org/view.resource.php?resourceID=005927)
+          * Study suggests that leftists have an almost precisely inverted scale of values compared to rightists. Instead of a hierarchy of concern with one’s own family, nation, and race highest on the scale, leftists place abstractions like “all objects in the universe” — including such things as rocks — or “all mankind” — in first place. ([nationalvanguard: Psychology: Liberals Care More About Rocks Than About Their Own Families](https://nationalvanguard.org/2020/07/psychology-liberals-care-more-about-rocks-than-their-own-families/))
+          * Liberals as you may suspect are more open to new ideas and are therefore more willing to change.  They are more likely to focus on the good things in change, hoping for the best.  Conservatives tend to be reluctant to change, fearing that change may ruin the good things and bring more problems; unintended consequences.  Such an outlook tends to track with age; younger people tend to be more liberal and older people tend to be more conservative. ([ethicsdefined: Conservatives VS. Liberals](http://ethicsdefined.org/the-problem-with-morality/conservatives-vs-liberals/))
+            * "Such an outlook tends to track with age", so this is expression of mental age.
+              * type 1 + type 3 = young brain = liberal = driven by lust = positive motivation = seeking types = agressive
+              * type 2 + type 4 = old brain = conservative = driven by fear = negative motivation = avoidant types = defensive
+      * good at answering the question "who are my friends?"
+        * choosy / selective / strong opinions on "what shall we do?" and "what should be?"
+        * driver. positive motivation
+    * bad at selecting enemies = high error rate
+      * dogmatic definitions of enemies
+      * others select enemies
+    * assumption: type 1 is here. possible expansions:
+      * type 1 and type 3? = young brains
+      * type 1 and type 4? = boy brains
+      * type 1 and type 2? = son-brain and mother-brain
+  * false positive:
+    * false friends
+    * first impression says "he is a friend" (perceived positive)
+    * after review we find "he is an enemy" (actually negative)
+    * when left alone, the individual will stick to his first impression, and keep his false friends
+    * good at selecting enemies = low error rate
+        * choosy / selective / strong opinions on "what should we avoid?" and "what should not be?"
+    * bad at selecting friends = high error rate
+      * dogmatic definitions of friends
+      * others select friends
+    * assumption: type 1 is not here. possible expansions:
+      * type 2 and type 4? = old brains
+      * type 2 and type 3? = girl brains
+      * type 4 and type 3? = father-brain and daughter-brain
+* natural incompatibility
+  * devil child
+  * problem child
+  * black sheep of the family
+* fundamental injustice
+  * systemic injustice
+  * systemic bias
+    * systemic bias towards extraverts
+    * systemic bias against extraverts
+      * [Susan Cain: QUIET. The Power of Introverts in a World That Can’t Stop Talking](https://books-that-can-change-your-life.net/power-of-introverts/)
+        * Summary of “Quiet, The Power of Introverts in a World that Can’t Stop Talking”: This book praises the many qualities of the introverted in a society that favours extroversion to excess; there is an overview of current theories on introversion, many tips on how to be happier as an introvert and some ideas on how to find a harmonious balance between introverted and extroverted.
+        * define version! what exactly is introversion/extraversion? carl jung says: version is a subtype, so it's variable (same as modality in astrology). (opposed to jungian functions, which are constant = basetype)
+  * systemic racism (define race!)
+* physiognomy
+  * anthropometry
+  * body types
+  * stigmata
+* anthropology
+  * science of humans
+* sacred geometry
+  * natural patterns
+* wholistic world view
+  * analysis and synthesis
+  * hybrid theory
+  * both are right
+  * balance
+  * justice
+  * symmetry
 * a perfect synthesis
-* alchemy, humorology, four classical elements
-* numerology, trinity (three modalities), quaternio (four elements)
-* comparative cultural studies, meta politics, cultural theory
-* simple but effective, realistic reductionism
-* intuitive factor analysis (the project author is element fire, who dreams to be a benevolent dictator)
-* border science, borderline science, between all the worlds
-* claim of perfection, totalitarian approach, a theory for every body
-* search for the one universal truth, monotheism, monism
+* alchemy
+  * humorology
+  * four classical elements
+  * conjunctio oppositorum (connection of opposites)
+* numerology
+  * trinity = three modalities = three subtypes
+  * quaternio = four elements = four basetypes
+* comparative cultural studies
+  * meta politics
+  * cultural theory
+* simple but effective
+  * realistic reductionism
+  * primitive culture
+* intuitive factor analysis
+  * the project author is element fire, who dreams to be a benevolent dictator
+* border science
+  * borderline science
+  * between all the worlds
+  * wholistic
+  * interdisciplinary
+* claim of perfection
+  * totalitarian approach
+  * a theory for every body
+* search for the one universal truth
+  * monotheism
+  * monism
+* search for balance
+  * dualism
+  * polytheism
+  * agree to disagree
+    * einigkeit in feindschaft (german)
+    * unity in hostility
 * natural Human Resource Management (HRM)
+* small is beautiful
+  * small groups
+  * small states
+  * small cities
+  * villages
+  * monasteries
+  * separatism
+  * bottom up
+  * start small, stay small
+  * dunbar's number 150
+    * [exact value for dunbar's number is 144 = 12 x 12 = 3 x 4 x 3 x 4](src/images/dunbar-number--natural-hierarchy--base-twelve-system--natural-coordinate-system.svg)
 
 ### more keywords
 
@@ -383,6 +540,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * spiritual mating
 * interpersonal compatibility
 * who are my friends
+* whoaremyfriends
 * where are my friends
 * natural order
 * natural attraction
@@ -411,3 +569,18 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * human resources management
 * world formula
 * basic principles
+* post collapse culture
+* post-collapse culture
+* village culture
+* postmodern culture
+* what would noah do?
+  * noah's family of eight
+  * noah eight family members
+  * 8 parents = 4 elements x 2 genders
+  * eight parents and eight children are sixteen people
+* individualism
+  * subjectivism
+  * moral relativism ([wikipedia: Moral relativism](https://en.wikipedia.org/wiki/Moral_relativism))
+    * "descriptive moral relativism holds only that people do, in fact, disagree fundamentally about what is moral, with no judgment being expressed on the desirability of this."
+    * "Meta-ethical moral relativism holds that in such disagreements, nobody is objectively right or wrong."
+    * "Normative moral relativism holds that because nobody is right or wrong, everyone ought to tolerate the behavior of others even when considerably large disagreements about the morality of particular things exist. "
