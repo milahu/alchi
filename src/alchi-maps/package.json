@@ -5,8 +5,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --host 0.0.0.0",
-    "inline": "inliner http://0.0.0.0:5000/alchi-maps.html >alchi-maps.inlined.html"
+    "start": "sirv public --host 0.0.0.0 --port 51234",
+    "inline": "inliner http://0.0.0.0:51234/alchi-maps.html >alchi-maps.inlined.html"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
