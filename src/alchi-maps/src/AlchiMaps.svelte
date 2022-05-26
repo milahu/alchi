@@ -6,6 +6,14 @@
 
   TODO
 
+  fix initial position of map
+    should be
+    #A1_e/bxfoto_s+m_1100_6_en_np
+    -> center tensecross:
+    parents on top, children below.
+    girls left (leftism is feminism)
+    boys right (right is masculine)
+
   SVG
     replace
       alignment-baseline="mathematical"
