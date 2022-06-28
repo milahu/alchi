@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 303.23 250.68" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow1Mend" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <g transform="translate(63.876 -418.23)">
+  <text x="-63.902924" y="486.625" fill="#000000" font-family="sans-serif" font-size="10.583px">Neutral</text>
+  <g transform="translate(-54.377 336.15)">
+   <text x="89.932205" y="101.47352" fill="#000000" font-family="sans-serif" font-size="10.583px">Positive</text>
+   <text x="85.695129" y="200.26895" fill="#000000" font-family="sans-serif" font-size="10.583px">Negative</text>
+   <path d="m41.869 137.93 29.812-29.812" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000"/>
+   <path d="m41.869 156.21 29.812 29.812" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000"/>
+   <text x="248.91374" y="101.47352" fill="#000000" font-family="sans-serif" font-size="10.583px">Positive</text>
+   <text x="248.91374" y="200.26895" fill="#000000" font-family="sans-serif" font-size="10.583px">Negative</text>
+   <g fill="none" stroke="#000">
+    <path d="m147.75 186.57 78.446-78.446" marker-end="url(#Arrow1Mend)"/>
+    <path d="m147.75 107.08 78.446 78.446" marker-end="url(#Arrow1Mend)"/>
+    <path d="m155.7 97.684 59.636 5e-6" marker-end="url(#Arrow1Mend)"/>
+    <path d="m155.7 196.25h59.636" marker-end="url(#Arrow1Mend)"/>
+   </g>
+   <g fill="#000000" font-family="sans-serif" font-size="10.583px">
+    <text x="175.92267" y="90.059654">true</text>
+    <text transform="rotate(45)" x="189.60258" y="-16.130781">false</text>
+    <text x="175.92267" y="209.63385">true</text>
+    <text transform="rotate(-45)" x="-15.136189" y="231.39256">false</text>
+   </g>
+  </g>
+  <g fill="none" stroke="#000" stroke-dasharray="2, 4">
+   <path d="m-44.125 568.06v97.318"/>
+   <path d="m54.62 568.06v97.318"/>
+   <path d="m214.39 568.06v97.318"/>
+  </g>
+  <g fill="#000000" text-align="center" font-family="sans-serif" font-size="10.583px" text-anchor="middle">
+   <text x="4.3813086" y="576.5802">Screening</text>
+   <text x="4.3813086" y="590.89246" >Hypothesis</text>
+   <text x="4.3813086" y="606.61084">Prediction</text>
+   <text x="4.3813076" y="622.14581">Prognosis</text>
+   <text x="4.3813076" y="636.75018">Feeling</text>
+   <text x="4.3813081" y="650.47827">Theory</text>
+   <text x="4.3813081" y="665.37469">Talk is cheap</text>
+  </g>
+  <g fill="#000000" text-align="center" font-family="sans-serif" font-size="10.583px" text-anchor="middle">
+   <text x="133.48386" y="576.5802">Test</text>
+   <text x="133.48386" y="590.89246">Experiment</text>
+   <text x="133.48386" y="606.61084">Verification</text>
+   <text x="133.48386" y="622.14581">Validation</text>
+   <text x="133.48386" y="636.75018">Proof</text>
+   <text x="133.48386" y="650.47827">Practice</text>
+   <text x="133.48386" y="665.37469">Truth is expensive</text>
+  </g>
+ </g>
+</svg>
