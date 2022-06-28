@@ -20,11 +20,11 @@
     <path d="m155.7 97.684 59.636 5e-6" marker-end="url(#Arrow1Mend)"/>
     <path d="m155.7 196.25h59.636" marker-end="url(#Arrow1Mend)"/>
    </g>
-   <g fill="#000000" font-family="sans-serif" font-size="10.583px">
-    <text x="175.92267" y="90.059654">true</text>
-    <text transform="rotate(45)" x="189.60258" y="-16.130781">false</text>
-    <text x="175.92267" y="209.63385">true</text>
-    <text transform="rotate(-45)" x="-15.136189" y="231.39256">false</text>
+   <g font-family="sans-serif" font-size="10.583px">
+      <text x="187.88351" y="90.059654">true</text>
+      <text transform="rotate(45)" x="261.60437" y="-36.39257">false</text>
+      <text x="187.88351" y="209.63385">true</text>
+      <text transform="rotate(-45)" x="53.401176" y="249.54248">false</text>
    </g>
   </g>
   <g fill="none" stroke="#000" stroke-dasharray="2, 4">
