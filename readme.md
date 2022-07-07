@@ -339,7 +339,9 @@ milahu's location is near Munich, Germany.
 
 ## keywords
 
-some keywords (tags) for search engine optimization (SEO):
+some keywords (tags) for search engine optimization (SEO)
+
+<details>
 
 * [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm, candidate for a "general theory of interpersonal compatibility"
 * [arranged friendship (talk by Dr. Vas Taras)](https://www.youtube.com/watch?v=JlEJbC5k914), prescriptive parenting, invasive parenting, directive parenting, authoritarian education, how should parents select friends for their kids
@@ -581,7 +583,230 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * eight parents and eight children are sixteen people
 * individualism
   * subjectivism
+    * your paradise is our hell
+    * your truths are our lies
+    * your virtues are our vices
+    * government is enemy
+    * sick society
+    * mainstream is shit
+    * mainstream is slave morality
+    * slavery was abolished, now all children are slaves by default
+    * democracy is tyranny of the stupid majority
+    * Rebellion to tyrants is obedience to God (god = nature)
+    * idiocracy is here and now
   * moral relativism ([wikipedia: Moral relativism](https://en.wikipedia.org/wiki/Moral_relativism))
     * "descriptive moral relativism holds only that people do, in fact, disagree fundamentally about what is moral, with no judgment being expressed on the desirability of this."
     * "Meta-ethical moral relativism holds that in such disagreements, nobody is objectively right or wrong."
     * "Normative moral relativism holds that because nobody is right or wrong, everyone ought to tolerate the behavior of others even when considerably large disagreements about the morality of particular things exist. "
+* [wikipedia: Outsider art](https://en.wikipedia.org/wiki/Outsider_art)
+  * self-taught
+  * self-initiated
+  * unconventional
+  * exotic
+  * esoteric (not public) (not for society) (not social) (antisocial) (private) (master morality)
+  * explicitly anti-conventional, anti-mainstream (most people are idiots)
+  * gildenloser magier. guildless magician
+    * "Gildenlose dürfen ihre Magie nicht als Dienstleistung verkaufen, da haben die Gildenmagiern ein Monopol." ([src](https://dsaforum.de/viewtopic.php?t=35321))
+  * i hate all large groups (societies)
+  * raw art
+  * rough art
+  * primitive art
+  * prmitive culture
+  * unwritten laws
+  * oral tradition
+  * most books are shit (bookkeeping always enables bookfaking) (for every good book they print a million bad books) (truth is hidden away from public domain) (epikur: live in private)
+  * unpopular
+  * antipopulist
+  * i want to be right not popular
+  * my life is NOT a popularity contest
+  * agoraphobia
+  * the hermit
+  * book of the hermit
+  * lone wolf
+    * menschlich ein arschloch, aber fachlich brilliant.
+      * an asshole to humans, but brilliant in his field.
+  * the devil is forever alone
+    * "psychiatric hospital patients"
+      * i was a psychiatry prisoner for about 2 years
+        * political prisoner, actually. see [wikipedia: Political abuse of psychiatry](https://en.wikipedia.org/wiki/Political_abuse_of_psychiatry)
+        * my official diagnosis is "paranoid schizophrenic" 
+          * schizo-phrenia = broken selfcontrol
+            * escaped from the mental prison
+            * i see things that other people dont see
+              * subjectivism
+              * i refuse to believe what society dictates as "normal"
+              * i refuse to believe state religion
+          * i prefer the diagnosis "intellectual tourette syndrome" because i have zero respect for false authority figures
+            * respect is earned by hard work, not by wearing doctor and police costumes
+              * credit where credit's due
+              * german: ehre wem ehre gebührt
+              * the more someone demands respect, the less he deserves it
+      * i was in normal jail for 3 years (for growing weed.) (not proud of it, just stating facts.)
+        * [Danger Dan - Gesiebte Luft](https://www.youtube.com/watch?v=3wuf09w4HkI)
+          * wer mal länger im knast war, der kommt vielleicht zur erkenntnis: der wahre knast ist armut und dummheit
+          * who was in jail for a longer time, maybe comes to the conclusion: the real prison is poverty and stupidity
+  * art brute
+  * rohe kunst
+  * Irre - Wir behandeln die Falschen: Unser Problem sind die Normalen
+* punk
+  * fuck authority 
+    * [Pennywise - Fuck Authority](https://www.youtube.com/watch?v=hflx4J_L9cs)
+      down with the system. enough of the lies. [Pennywise - Land of the Free (album)](https://www.youtube.com/watch?v=zhKErVfFphQ)
+    * Wrong: Why experts keep failing usm and how to know when not to trust them
+  * fuck society
+    * fuck majority
+    * fuck democracy
+    * fuck idiocracy
+    * [Loikaemie - Good Night White Pride](https://www.youtube.com/watch?v=4ruxmfXoUCE)
+      * You pick on the weak  
+        You're only strong in groups  
+        Can't do shit on your own  
+        You pick on those who are few  
+        Right winged scum  
+        You have no place in our scene  
+        Right winged scum  
+        We'll teach you what skinhead really means  
+      * You're the sickness of our generation  
+        You've infested almost every nation  
+        You're the plague of our society  
+        You're are our most hated enemy  
+        Listen what we have to say: Good night white pride  
+        Only what we have to say: Good night white pride
+* anti kommerz
+  * fuck popularity
+  * fuck populism
+  * fuck mass appeal
+  * [MC Rene - Whack und Kommerz](https://www.youtube.com/watch?v=ykRIO0ovgH4&t=238s)
+* [mischkultur](https://de.wikipedia.org/wiki/Mischkultur) für menschen
+  * Mischkultur ist der gleichzeitige Aufwuchs mehrerer Nutzpflanzenarten auf gleicher Fläche.
+  * Mischkultur wird angewendet in Gartenbau, Landwirtschaft und Privatgarten.
+  * Mischkultur vermeidet die Nachteile von Monokulturen.
+  * Mischkultur, Mischanbau, Mischfruchtanbau, Pflanzengesellschaft ...
+  * symbiose: zusammenleben
+  * synergie-effekte: ergänzung, arbeitsteilung
+  * [companion planting](https://en.wikipedia.org/wiki/Companion_planting) for humans
+    * "Companion planting in gardening and agriculture is the planting of different crops in proximity"
+    * reasons:
+      * pest control
+      * pollination
+      * providing habitat for beneficial insects
+      * maximizing use of space
+      * increase crop productivity
+    * Companion planting is a form of polyculture.
+    * Many of the modern principles of companion planting were present many centuries ago in forest gardens in Asia, and thousands of years ago in Mesoamerica. (traditional agriculture) (traditional culture) (primitive culture) (oral tradition) (schriftlose religionen)
+  * "Monokultur" bei Menschen = geistige Inzucht = [Filterblase](https://de.wikipedia.org/wiki/Filterblase) = Echokammer = Echoraum = Komfortzone
+    * "Ein verwandtes Konzept ist der Echokammer-Effekt (auch Echoraum genannt, englisch Echo Chamber Effect) in der Kommunikationswissenschaft, der beschreibt, wie es durch den verstärkten virtuellen Umgang mit Gleichgesinnten in sozialen Netzwerken zu einer Verengung der Weltsicht kommt, die zu Bestätigungsfehlern führen kann."
+    * "Im Unterschied zu Filterblasen, bei welchen die Personalisierung vor allem durch Algorithmen hervorgerufen wird (pre-selected personalization), wird beim Echokammer-Effekt die Personalisierung vom Individuum selbst vorgenommen (self-selected personalization)."
+    * dumm und dumm gesellt sich gern
+    * "Auch im Offlinekontext können Phänomene wie soziale Homophilie dazu führen, dass sich beispielsweise politisch homogene Gruppen bilden, in welchen die Mitglieder untereinander hauptsächlich konsonante und bestätigende Informationen teilen und sich gegenseitig weiter bestärken. Dies würde wiederum nicht nur dazu führen, dass kein offener Diskurs unter verschiedenen Menschen mit unterschiedlichen Vorstellungen mehr stattfindet, sondern auch, dass die Öffentlichkeit weiter polarisiert und fragmentiert werden würde."
+    * [soziale Homophilie](https://de.wikipedia.org/wiki/Soziale_Homophilie)
+      "Soziale Homophilie ist die Tendenz von Individuen, andere Menschen zu mögen und mit ihnen in Interaktion zu treten, wenn diese ihnen ähnlich sind."
+      "Alltagssprachlich kann das Phänomen mit dem Sinnspruch "Gleich und gleich gesellt sich gern." zusammengefasst werden."
+      * werteorientierte Kriterien:
+        * "Werteorientierte Kriterien referieren auf internale Faktoren, die nicht auf den ersten Blick direkt erkennbar sind. Dazu gehören Fähigkeiten, Einstellungen, Überzeugungen, Wünsche und Ziele." (persönlichkeitstyp) (menschentyp) (natürliche stärken und schwächen)
+      * "Die Bildung homophiler Gruppen führt zu einer erleichterten Kommunikation innerhalb der Gruppe sowie zu erleichterter Koordination von Handlungen und Aktivitäten."
+      * "Gleichzeitig kann es jedoch zu Prozessverlust innerhalb der Gruppe kommen, da die vielen ähnlichen Ansichten zu Gruppendenken führen können. Selektiver Informationsgewinn ist eines der möglichen Resultate."
+      * [Gruppendenken](https://de.wikipedia.org/wiki/Gruppendenken)
+        * "Gruppendenken ist ein möglicher Prozess innerhalb einer Gruppe. Kompetente Personen treffen dabei schlechtere oder realitätsfernere Entscheidungen, weil jede ihre Meinung an die erwartete Gruppenmeinung anpasst."
+        * "Daraus können Situationen entstehen, bei denen die Gruppe Handlungen oder Kompromissen zustimmt, die jedes einzelne Gruppenmitglied unter anderen Umständen ablehnen würde."
+        * "Nach Janis ist Groupthink ein „Denkmodus, den Personen verwenden, wenn das Streben nach Einmütigkeit in einer kohäsiven Gruppe derart dominant wird, dass es dahin tendiert, die realistische Abschätzung von Handlungsalternativen außer Kraft zu setzen“."
+        * geist der quantität, mehrheitswahlrecht, safety in numbers, mitläufer
+        * kollektivismus, sozialismus, faschismus, große gruppen, städte, kirchen, staaten, imperien
+        * freiheit wird geopfert zum gewinn von sicherheit
+        * harmoniesucht und verlustangst. "lass uns zusammen bleiben." klammern an falsche freunde
+        * lieber falsche freunde als keine freunde
+        * angst vor einsamkeit, alleine schwach
+        " „Für das Management ist es eine schmerzhafte Entscheidung. In der Begründung heisst es: das harmonisches Gruppendenken ist oberstes Ziel in unserer Firma, und wenn wir den hervorragenden Mitarbeiter befördern, dann zerstört das die bestehende Rangordnung der zwischenmenschlichen Beziehungen. Die Manager klagen: Was sollen wir sonst tun?“ – William H. Whyte
+        * "Caring Culture" vs "Results Culture" in Culture Alignment Framework (CAF) by Spencer Stuart
+        * [Gruppennarzissmus](https://de.wikipedia.org/wiki/Gruppennarzissmus)
+          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/…, wobei sie bei anderen nur Negatives erkennen"
+          * verschwörung
+            * manche menschen (typen 34?) haben ein natürliche neigung zum aufbau von verschwörungen
+            * wer solche verschwörungen bewusst wahrnimmt, der ist für diese menschen ein "verschwörungstheoretiker"
+            * grundsatz:
+              * deine gefühle sind mein gewissen
+              * dein fühlen ist mein wissen
+              * unbewusst für dich = bewusst für mich
+              * dein spaß = mein ernst
+          * faschismus = bündelung zu großer zahl
+          * alleine sind wir schwach, gemeinsam sind wir stark
+          * "Gruppennarzissmus ist die Übertragung des eigenen Narzissmus einer Person auf eine soziale Gruppe, auf die Nation, auf eine Kirche (religiöser Narzissmus) oder eine Gruppierung, die eine bestimmte Anschauung vertritt u. ä."
+          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/…, wobei sie bei anderen nur Negatives erkennen"
+          * gegenteil: individualnarzissmus = typen 12
+            * typ 1 = grandiose narciss = "teufel" = lebendes vorbild für herrenmoral (34x1) = könig der herren
+              "Grandiose narcissism is defined by an inflated sense of self-worth and high self-esteem, interpersonal exploitativeness, social dominance and assertiveness, shamelessness and a sense of entitlement derived from feelings of superiority or prestige"
+              * beispiel: Friedrich Nietzsche. Tyler Durden.
+            * typ 2 = vulnerable narciss = "gott" = lebendes vorbild für sklavenmoral (34x2) = könig der sklaven
+              * "vulnerable narcissism, characterized by the personality traits of defensiveness, fragility, social withdrawal, and sensitivity to criticism."
+              * beispiel: Ayn Rand.
+            * [Narcissistic personality disorder](https://en.wikipedia.org/wiki/Narcissistic_personality_disorder#Grandiose/overt_and_vulnerable/covert)
+* melting-pot und kultur-mosaik
+  * monoculture vs multiculture
+  * moral absolutism vs [moral relativism](https://en.wikipedia.org/wiki/Moral_relativism)
+  * objectivism vs subjectivism
+    * with multiculturalism, the "subjectivity" is based on race, ethnicity, culture (external factors) ... not on personality type, human nature (internal factors).
+    * defenders of multiculturalism say "this is legal for these people, because this is part of their culture. but this is criminal for us, because our culture says this is evil." (positive racism is racism too.)
+  * globalismus vs separatismus
+  * integration vs ghettos
+  * zerstrittene nachbarn vs clankriege, tribe wars, hooligans
+  * https://en.wikipedia.org/wiki/Cultural_mosaic
+    * "The idea of a cultural mosaic is intended to suggest a form of multiculturalism, different from other systems such as the melting pot, which is often used to describe nations like the United States' assimilation."
+    * "Another early use of the term mosaic to refer to Canadian society was by John Murray Gibbon, in his 1938 book Canadian Mosaic. Gibbon clearly disapproved of the American melting-pot concept. He saw the melting pot as a process by which immigrants and their descendants were encouraged to cut off ties with their countries and cultures of origin so as to assimilate into the American way of life."
+  * "Since the beginning of the 20th century, Canada has been one of the world's major immigrant-receiving societies. Until the 1960s immigrants were expected to assimilate into the mainstream society. Arriving as it did during a time of social upheaval, Porter's work had a marked influence on Canadian social policy. The view of Canada as a mosaic of cultures became the basis for the Trudeau government's multiculturalism policies in the early 1970s."
+* [naturreligion](https://de.wikipedia.org/wiki/Naturreligion_(Begriff))
+  * schriftlose Kultur: gefühl ist alles. schrift wird immer nur falsch verstanden.
+  * "Der Sammelbegriff Naturreligion ist eine heute von vielen Ethnologen und Religionswissenschaftlern als veraltet und irreführend abgelehnte Bezeichnung für die ethnischen Religionen schriftloser Kulturen. Im Gegensatz zu den gleichfalls beanstandeten Bezeichnungen „Primitivreligion“, „archaische Religion“ oder „Stammesreligion“ wird Naturreligion dennoch in populärer Literatur nach wie vor häufig verwendet."
+  * "Ältere Darstellungen stellen ‚Naturreligionen‘ oft den ‚Kulturreligionen‘ gegenüber."
+  * "Natur, Primitivität und Zivilisationslosigkeit werden in krassen Gegensatz zu Kultur gestellt."
+  * "Die Begriffe Naturreligionen und Naturvölker verweisen außerdem auf einen vermeintlich idealen Urzustand, auf den Traum von der Ganzheitlichkeit des Lebens." (paradies auf erden vs paradies im himmel) (echtes glück vs virtuelles glück) (herrenmoral vs sklavenmoral)
+  * "unabhängig von der wissenschaftshistorischen Verwendung bezeichnen auch einige Anhänger neuheidnischer Bewegungen ihre Überzeugung als „Naturreligion“."
+  * „Ethnische Religionen werden [von den neuheidnischen Bewegungen] vorwiegend als Naturreligionen wahrgenommen, und der selektive Zugriff auf sie ist Bestandteil spätmoderner Spiritualität.“
+  * [Neopaganismus](https://de.wikipedia.org/wiki/Neopaganismus) (neuheidnische Bewegungen)
+    * von lateinisch paganus „heidnisch“
+    * "religiöse und kulturelle Strömungen, die sich vor allem an antikem, keltischem, germanischem und slawischem Heidentum sowie an außereuropäischen ethnischen Religionen orientieren"
+    * "häufig nicht in großen Organisationen zusammengefasst" (kleine gruppen)
+    * "Wicca und verwandte Bewegungen sind nach unterschiedlichen Schätzungen von mehreren Tausend mit bis zu 100.000 Anhängern in Deutschland die größte neuheidnische Richtung."
+      * "Abwendungen von einer Priesterreligion, Betonung des direkten Glaubenserlebnisses und dezentrale Organisationsform"
+      * "Kein dogmatisches Glaubensbekenntnis, stattdessen individualisiertes Erleben von Gläubigkeit und Vielfalt gleichberechtigter Kulte"
+      * "Möglichst naturnahe Lebensweise"
+      * "Betonung der Freiheit des Einzelnen" (individualismus) (typen 12)
+      * "Kritik an monotheistischen, hierarchischen und dogmatischen Religionen wie dem Christentum" (gegenteil: typen 34)
+      * dualismus
+        * "Hexentum und Wicca: Der Wicca-Glaube wird manchmal, aufgrund seiner Ausrichtung auf die Verehrung von Gott und Göttin, als „Duotheismus“ oder „Bitheismus“ bezeichnet"
+      * "Einen großen Einfluss auf den Neopaganismus hatten auch die Theorien des Psychologen Carl Gustav Jung, welcher die verschiedenen Gottheiten als Archetypen der Seele aller Menschen interpretierte."
+      * "C. G. Jung wird in vielen Strömungen, wie z. B. Wicca, rezipiert: So wird sein Mutterarchetyp mit der Göttin und der Vaterarchetyp mit dem Gott identifiziert und sogar Jungs Theorie selbst ein inhärenter Paganismus attestiert."
+      * paradies auf erden
+        * "Viele Neuheiden lehnen allerdings diese theologischen Spekulationen rundweg ab. Wie in den antiken Religionen haben für sie ein bestimmtes Bekenntnis und ein Set von Dogmen keine besondere Relevanz in der Praxis. Viel wichtiger ist ihnen richtiges Handeln, also dass Kulthandlungen sorgfältig und ehrfürchtig durchgeführt werden."
+        * realismus. results culture. mesokosmos
+        * mikrokosmos ist nicht relevant
+        * makrokosmos ist nicht relevant
+      * "Die Wurzeln des Neopaganismus reichen zurück bis in die Renaissance, als antike Mythologie und Philosophie wiederentdeckt wurden."
+        * "Dezidiert antichristliche Positionen vertrat der byzantinische Philosoph Georgios Gemistos Plethon, der eine zweite platonische Akademie gründete und auf neuplatonischer Basis die alte griechische Religion wiederbeleben wollte."
+        * "Wegen ihrer Beschäftigung mit den antiken heidnischen Philosophen wurde vielen Humanisten vorgeworfen, „Heiden“, insbesondere Epikureer, zu sein."
+        * epikur: lebe im verborgenen, lebe privat, lebe in kleinen gruppen
+      * "Die „Modernisten“ versuchen, vom Stand der heutigen wissenschaftlichen Erkenntnisse ausgehend, eine Religion des Einklangs der beseelten Natur mit dem Menschen – wie in animistischen Religionen – zu leben. Sie bekennen sich dazu, neue religiöse Formen zu erschaffen."
+      * "Für das neuheidnische Hexenbild ist die Interpretation von Jacob Grimm am wichtigsten, der in seiner Deutschen Mythologie den Hexenglauben als Ausdruck des naturcultus unserer vorfahren interpretiert und die Hexen auf weise Frauen zurückführte, die in der heidnischen Gesellschaft als Heilkundige, Seherinnen und Priesterinnen eine zentrale Funktion erfüllt hätten."
+      * "... neuzeitlichen Hexenverfolgung, welche auch Männer betraf ..."
+  * glaube an eine naturordnung
+    * natur ist stärker als kultur
+    * kindischer eigenwille ist wichtiger als falsche erwartungen von lehrern. schlaue kinder und dumme eltern.
+  * Stammesreligion, réligion tribale, tribal religion
+  * "Die sogenannten „Stammesreligionen“ werden in vielen Staaten der dritten Welt immer noch als „primitiv und unterentwickelt“ stigmatisiert, zumal die herrschende Klasse dieser Länder in der Regel nach christlichen, islamischen oder kommunistischen Vorlagen ausgebildet wurde. In den Schwellenländern ist die Situation noch ungünstiger, da traditionell lebende Gruppen hier meist als entwicklungshemmend gelten: Entweder werden sie offensiv unterdrückt oder die Errichtung moderner technischer und sozialer Infrastruktur zerstört automatisch das alte Weltbild – und mit ihm die Religion."
+  * römer gegen gallier
+    * römer gegen germanen
+  * [Neo-ethnische Religionen](https://de.wikipedia.org/wiki/Ethnische_Religionen#Neo-ethnische_Religionen)
+    * Bildung und Festigung neuer ethnischer Identitäten, die unter anderem durch gemeinsame religiöse Vorstellungen neu begründet werden.
+* key to success
+  * pallas symbol = key symbol = cross and square = cross and circle
+* matchmaking
+* pair programming
+* pairing
+* human compatibility
+* compatibility in human relations
+* compatibility pattern
+* [checkerboard pattern](https://en.wikipedia.org/wiki/Check_(pattern))
+* symmetry
+* compatibility landscape
+* modulo four ring in two dimensions
+
+</details>
