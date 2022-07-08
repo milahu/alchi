@@ -34,11 +34,11 @@ jobs:
         #sudo apt-get install pandoc # pandoc 2.5 == too old
     # install nix to install pandoc 2.17
     - name: install nix
-      uses: cachix/install-nix-action@v10
+      uses: cachix/install-nix-action@master
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - name: convert github-markdown to strict-markdown
-      uses: workflow/nix-shell-action@v1
+      uses: workflow/nix-shell-action@main
       with:
         packages: pandoc
         script: |
