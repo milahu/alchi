@@ -3,10 +3,12 @@
 
 name: Issues2Markdown
 on:
-  #push: # comment it to reduce update.
+  push: # comment it to reduce update.
   schedule:
     # every day
-    - cron: "0 0 * * *"
+    #- cron: "0 0 * * *"
+    # every hour
+    - cron: "16 * * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,18 +19,21 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Backup github issues to a markdown file.
       run: |
+        set -x
         pip3 install --user --upgrade setuptools
         pip3 install --user gh2md
-        #$HOME/.local/bin/gh2md $GITHUB_REPOSITORY issues.md --token ${{ secrets.GITHUB_TOKEN }}
-        #git add issues.md
-        $HOME/.local/bin/gh2md $GITHUB_REPOSITORY archive/github/issues --token ${{ secrets.GITHUB_TOKEN }} --multiple-files
-        git add archive/github/issues
+        export PATH="$HOME/.local/bin:$PATH"
+        export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
+        gh2md $GITHUB_REPOSITORY archive/github/issues/ --multiple-files --file-extension .ghmd
+        echo "converting github markdown to strict markdown"
+        sudo apt-get install pandoc
+        find archive/github/issues/ -name '*.ghmd' -type f | while read f; do b="${f%.*}"; pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.ghmd" -o "$b.md"; done
+        git add archive/github/issues/
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        #git commit -m "Backup all issues into issues.md" -a
-        git commit -m "up archive/github/issues" -a
+        git commit -m "up archive/github/issues/" -a
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
