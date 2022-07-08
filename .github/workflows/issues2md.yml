@@ -26,6 +26,8 @@ jobs:
         export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
         # workaround for https://github.com/mattduck/gh2md/pull/31
         mkdir -p archive/github/issues/ || true
+        # fix: RuntimeError: Output directory already exists and has files in it
+        git rm -rf archive/github/issues/
         gh2md $GITHUB_REPOSITORY archive/github/issues/ --idempotent --multiple-files --file-extension .ghmd
         echo "converting github markdown to strict markdown"
         sudo apt-get install pandoc
