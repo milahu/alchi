@@ -32,6 +32,9 @@ jobs:
         echo "converting github markdown to strict markdown"
         sudo apt-get install pandoc
         find archive/github/issues/ -name '*.ghmd' -type f | while read f; do b="${f%.*}"; pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.ghmd" -o "$b.md"; done
+        # cleanup: move .ghmd files to separate folder
+        mkdir -p archive/github/issues/ghmd/
+        mv -v archive/github/issues/*.ghmd archive/github/issues/ghmd/
         git add archive/github/issues/
     - name: Commit files
       run: |
