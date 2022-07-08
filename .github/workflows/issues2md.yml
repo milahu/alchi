@@ -40,7 +40,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "up archive/github/issues/" -a
+        if ! git commit -m "up archive/github/issues/" -a; then echo nothing to commit; exit 0; fi
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
