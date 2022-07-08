@@ -213,12 +213,11 @@ only some mirrors allow users to send feedback, for example `gitlab.com` or `gal
 
 ### repo mirrors
 
-the `github.com/milahu/alchi` repository is mirrored to
+the main repository https://github.com/milahu/alchi is mirrored to
 
 * gitlab: https://gitlab.com/milahu/alchi
 * gitea.io: https://try.gitea.io/milahu/alchi
 * darktea (with Tor Browser): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
-* ~~rootgit (with Tor Browser): [http://rootgit4rghbuenb.onion/milahu/alchi](http://rootgit4rghbuenb.onion/milahu/alchi)~~ offline since [2021-05-23](http://auutohrgxfoc4zap.onion/cap.php?cat=1&pageno=1)
 
 ### clone commands
 
