@@ -24,7 +24,7 @@ jobs:
         pip3 install --user --upgrade setuptools
         pip3 install --user gh2md
         export PATH="$HOME/.local/bin:$PATH"
-        gh2md --version
+        gh2md --version || true
         export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
         # fix: RuntimeError: Output directory already exists and has files in it
         git rm -rf $GH2MD_OUTPUT_PATH
