@@ -7,20 +7,20 @@ on:
   schedule:
     # every day
     #- cron: "0 0 * * *"
-    # every hour, minute 16
-    - cron: "16 * * * *"
+    # every hour
+    - cron: "0 * * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Set env
+      run: echo "GH2MD_OUTPUT_PATH=archive/github/issues/" >> $GITHUB_ENV
     - uses: actions/checkout@master
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Backup github issues to markdown files
       run: |
-        set -x
-        export GH2MD_OUTPUT_PATH=archive/github/issues/
         pip3 install --user --upgrade setuptools
         pip3 install --user gh2md
         export PATH="$HOME/.local/bin:$PATH"
@@ -42,7 +42,6 @@ jobs:
       with:
         packages: pandoc
         script: |
-          set -x
           pandoc --version
           find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read f
           do
