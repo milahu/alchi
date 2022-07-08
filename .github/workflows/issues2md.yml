@@ -24,6 +24,8 @@ jobs:
         pip3 install --user gh2md
         export PATH="$HOME/.local/bin:$PATH"
         export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
+        # workaround for https://github.com/mattduck/gh2md/pull/31
+        mkdir -p archive/github/issues/ || true
         gh2md $GITHUB_REPOSITORY archive/github/issues/ --multiple-files --file-extension .ghmd
         echo "converting github markdown to strict markdown"
         sudo apt-get install pandoc
