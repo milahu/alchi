@@ -3,7 +3,7 @@
 
 name: Issues2Markdown
 on:
-  push: # comment it to reduce update.
+  #push: # comment it to reduce update.
   schedule:
     # every day
     #- cron: "0 0 * * *"
