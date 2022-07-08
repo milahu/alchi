@@ -224,19 +224,16 @@ the `github.com/milahu/alchi` repository is mirrored to
 
 ```
 # github.com
-git clone https://github.com/milahu/alchi.git
+git clone https://github.com/milahu/alchi
 
 # gitlab.com
-git clone https://gitlab.com/milahu/alchi.git
+git clone https://gitlab.com/milahu/alchi
 
 # gitea.io
-git clone https://try.gitea.io/milahu/alchi.git
+git clone https://try.gitea.io/milahu/alchi
 
 # darktea
-torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi.git
-
-# rootgit - offline since 2021-05-23
-torsocks git clone http://rootgit4rghbuenb.onion/milahu/alchi.git
+torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
 ```
 
 ### static mirrors
