@@ -373,6 +373,22 @@ some keywords (tags) for search engine optimization (SEO)
 * primitive culture
   * minimalism
   * natural religion
+  * voluntarism
+    * https://en.wikipedia.org/wiki/Voluntarism
+    * https://en.wikipedia.org/wiki/Voluntarism_(action) Voluntarism, sometimes referred to as voluntary action, is the principle that individuals are free to choose goals and how to achieve them within the bounds of certain societal and cultural constraints. opposite: actions that are coerced [forced] or predetermined
+    * https://en.wikipedia.org/wiki/Voluntaryism (political voluntarism) rejects a totalitarian government in favor of voluntary participation in society, meaning a lack of coercion and force. Voluntaryist principal beliefs stem from the idea of natural rights
+    * https://en.wikipedia.org/wiki/Voluntarism_(philosophy)
+      * A proponent of metaphysical voluntarism is 19th-century German philosopher Arthur Schopenhauer. In his view, the will is not reasoning, but an irrational, unconscious urge [active, creation, types 13] in relation to which the intellect represents a secondary phenomenon. [passive, rationalization, types 24]
+  * [Vernacular culture](https://en.wikipedia.org/wiki/Vernacular_culture) Vernacular culture is the cultural forms made and organised by ordinary, often indigenous people, as distinct from the high culture of an elite. One feature of vernacular culture is that it is informal. Such culture is generally engaged in on a non-profit and voluntary basis, and is almost never funded by the state. The term is used in the modern study of geography and cultural studies. It generally implies a cultural form that differs markedly from a deeply rooted folk culture, and also from tightly organised subcultures and religious cultures. In cultural and communication studies, vernacular rhetoric is the discursive aspect of vernacular culture, referring to "mundane, bottom-up, and informal discursive expressions that challenge and criticize the institutional".
+  * [Grassroots](https://en.wikipedia.org/wiki/Grassroots) A grassroots movement is one that uses the people in a given district, region or community as the basis for a political or economic movement. Grassroots movements and organizations use collective action from the local level to effect change at the local, regional, national or international level. Grassroots movements are associated with bottom-up, rather than top-down decision making, and are sometimes considered more natural or spontaneous than more traditional power structures. Grassroots movements, using self-organization, encourage community members to contribute by taking responsibility and action for their community.
+  * https://en.wikipedia.org/wiki/Direct_democracy
+  * https://en.wikipedia.org/wiki/Cellular_democracy
+  * https://en.wikipedia.org/wiki/Community_organizing
+  * https://en.wikipedia.org/wiki/Localism_(politics)
+  * https://en.wikipedia.org/wiki/Decentralization
+  * https://en.wikipedia.org/wiki/Open-source_governance Open-source governance (also known as open politics) is a political philosophy which advocates the application of the philosophies of the open-source and open-content movements to democratic principles to enable any interested citizen to add to the creation of policy, as with a wiki document. Legislation is democratically opened to the general citizenry, employing their collective wisdom to benefit the decision-making process and improve democracy.
+    * https://en.wikipedia.org/wiki/Radical_centrism The radical in the term refers to a willingness on the part of most radical centrists to call for fundamental reform of institutions. The centrism refers to a belief that genuine solutions require realism and pragmatism, not just idealism and emotion. One radical centrist text defines radical centrism as "idealism without illusions", a phrase originally from John F. Kennedy. Radical centrists borrow ideas from the left and the right, often melding them together. Some observers see radical centrism as primarily a process of catalyzing dialogue and fresh thinking among polarized people and groups.
+    * https://en.wikipedia.org/wiki/Radical_transparency 
 * hard problem
   * wicked problem
   * fundamental problem
