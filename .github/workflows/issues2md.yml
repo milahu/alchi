@@ -51,10 +51,10 @@ jobs:
         packages: pandoc
         script: |
           pandoc --version || true
-          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read f
+          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read path
           do
-            b="${f%.*}"
-            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.ghmd" -o "$b.md"
+            base="${path%.*}"
+            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$base.ghmd" -o "$base.md"
           done
     - name: "cleanup: move .ghmd files to separate folder"
       run: |
