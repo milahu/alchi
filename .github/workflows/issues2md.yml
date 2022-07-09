@@ -45,11 +45,12 @@ jobs:
       uses: cachix/install-nix-action@master
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - name: convert github-markdown to strict-markdown
+    - name: "pandoc: convert github-markdown to strict-markdown"
       uses: workflow/nix-shell-action@main
       with:
         packages: pandoc
         script: |
+          set -x
           pandoc --version || true
           find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read path
           do
