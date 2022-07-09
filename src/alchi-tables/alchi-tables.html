@@ -4,18 +4,24 @@
 
 <meta charset="utf-8">
 
-<meta name="version" value="2021-08-14"><!-- TODO update -->
+<meta name="version" value="2022-07-09"><!-- TODO update version -->
 
-<title>alchi-tables</title>
-
-<script>
-  // title = title + version
-  window.onload = function () {
-    document.title = document.title + '.' + document.querySelector('meta[name=version]').getAttribute('value');
-  };
-</script>
+<title>alchi-tables.2022-07-09</title><!-- TODO update version -->
 
 <style type="text/css">
+  span.clickable {
+    color: blue;
+    cursor: pointer;
+  }
+  span.clickable:hover {
+    text-decoration: underline;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 
   table.fourxfour {
     border-collapse: collapse;
@@ -226,14 +232,64 @@
     /* yellow + blue dashes */
     border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" x="0px" y="0px" width="30px" height="30px"><g stroke-width="4" fill="none"><rect stroke="%23ffff00" x="0" y="0" width="24" height="24" /><path stroke="%230000ff" stroke-dasharray="4" d="M 0 0 H 24 M 24 2 V 24 M 20 24 H 0 M 0 18 V 2" /></g></svg>') 1 repeat;
   }
-
-
-
-
 </style>
 
 </head>
 <body>
+
+<h1>
+  alchi-tables
+</h1>
+
+<p>
+  Please DO NOT read this from A to Z
+</p>
+
+<p>
+  This is intended as a translation table between many different namespaces,
+  so this has no beginning, and no end
+</p>
+
+<p>
+  Ideally, you already know one of these namespaces,
+  then you can try to find (Ctrl-F) the section by some keywords
+</p>
+
+<p>
+  Example keywords:
+</p>
+
+<ul>
+  <li>Carl Jung</li>
+  <li>MBTI</li>
+  <li>True Colors</li>
+  <li>Parenting style</li>
+  <li>Attachment theory</li>
+  <li>endomorph</li>
+  <li>Politics</li>
+  <li>Liberal</li>
+  <li>Conservative</li>
+  <li>Hans Eysenck</li>
+  <li>David Keirsey</li>
+  <li>Friedrich Nietzsche</li>
+  <li>...</li>
+</ul>
+
+<script>
+function scrollToRandom() {
+  // https://stackoverflow.com/a/1147768/10440128
+  var body = document.body;
+  var html = document.documentElement;
+  var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+  var scroll_y = (Math.random() * height) | 0;
+  //console.log(`scrolling to ${scroll_y} of ${height} = ${scroll_y/height*100}%`);
+  window.scrollTo(0, scroll_y);
+}
+</script>
+
+<p>
+  ... or you can <span class="clickable" onclick="scrollToRandom()">scroll to a random position</span> and start from there
+</p>
 
 <p>
   alcimaps, the mental chemistry maps<br>
@@ -3292,6 +3348,51 @@
 
 
 
+  <tr class="colspan-four" style="height: 5em">
+    <td><div>
+      <a href="https://en.wikipedia.org/wiki/Archetypal_pedagogy">Archetypal pedagogy</a>, Carl Jung, analytical psychology
+    </div></td>
+    <td></td><td></td><td></td>
+  </tr>
+
+  <tr>
+    <td>prophet</td>
+    <td>mother</td>
+    <td>philosopher</td>
+    <td>priest</td>
+  </tr>
+
+  <tr>
+    <td>justice</td>
+    <td>passive</td>
+    <td>complexity</td>
+    <td>order</td>
+  </tr>
+
+  <tr>
+    <td>
+      calls students to their "noblest traditions and aspirations"
+      in terms of social justice and communal equity
+    </td>
+    <td>
+      mysterious and paradoxical form of "non-teaching"
+      and counsellor/mother teaching is grounded in receptiveness,
+      relatedness and responsiveness (focused on the needs of the Other)
+    </td>
+    <td>
+      can foster 'cognitive intelligence' and 'higher order thinking'
+    </td>
+    <td>
+      Teacher becomes "minister of light and love",
+      and teaching is seen as a sacred act
+      that incarnates religious doctrine into a teaching practice
+      in order to create a positive learning environment for all students
+      (regardless of faith commitment)
+    </td>
+  </tr>
+
+
+
   <tr id="attachment-theory" class="colspan-four" style="height: 5em">
     <td><div>
       The Child Whisperer. by Carol Tuttle
@@ -3810,7 +3911,7 @@
 
 
 
-  <tr class="colspan-four" style="height: 25em"><td><div>
+  <tr class="colspan-four" style="height: 2em"><td><div>
     baby personality
     https://www.guavafamily.com/blogs/guava/baby-personality
   </div></td><td></td><td></td><td></td></tr>
@@ -6338,7 +6439,7 @@
 
 
   <tr class="colspan-four">
-    <td style="height: 6em"><div>
+    <td style="height: 9em"><div>
       <a href="https://bc20questions.deloitte.com/">Deloitte Business Chemistry</a>:<br>
       mutable / cardinal / fixed<br>
       Book: Kim Christfort, Suzanne Vickberg - Business Chemistry. Practical Magic for Crafting Powerful Work Relationships<br>
@@ -10833,6 +10934,350 @@
   <tr>
     <td>Results Culture is characterized by achievement and winning. Work environments are outcome-oriented  and  merit-based places where people aspire to achieve top performance. Employees are united by a drive for capability and success; leaders emphasize goal accomplishment.</td>
     <td>Caring Culture focuses on relationships and mutual trust. Work environments are warm, collaborative, and welcoming places where people help and support one another. Employees are united by loyalty; leaders emphasize sincerity, teamwork, and positive relationships.</td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="2">
+      <a href="https://en.wikipedia.org/wiki/Open_society">Open society</a>
+      <br>
+      see also: <a href="https://en.wikipedia.org/wiki/Open_Society_Foundations">Open Society Foundations</a>
+      by <a href="https://en.wikipedia.org/wiki/George_Soros">George Soros (M3) (master of philosophy)</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      closed society<br>
+      tribalism<br>
+      tribal<br>
+      small groups<br>
+      organic<br>
+      naturalism<br>
+      natural order<br>
+      paradise on earth<br>
+      localism<br>
+      loyal (strong bonds)<br>
+    </td>
+    <td>
+      open society<br>
+      mass culture<br>
+      large groups<br>
+      anonymous (weak bonds)<br>
+      made order (fascism, type 4)<br>
+      group cohesion by technology (type 4)<br>
+      <a href="https://en.wikipedia.org/wiki/Social_Credit_System">social credit system</a><br>
+      <a href="https://en.wikipedia.org/wiki/Government_by_algorithm">Government by algorithm</a><br>
+      <a href="https://en.wikipedia.org/wiki/Deus_ex_machina">Deus ex machina</a><br>
+      <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial intelligence</a><br>
+      hell on earth<br>
+      organized chaos<br>
+      melting pot<br>
+      rationalization of overpopulation<br>
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="2">
+      Friedrich Nietzsche<br>
+      Apollo and Dionysus
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Apollo (M1)<br>
+      Apollon<br>
+      Apollonian<br>
+    </td>
+    <td>
+      Dionysus (M3)<br>
+      Dionysos<br>
+      Dionysian<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Natural Order (and Made Chaos)
+    </td>
+    <td>
+      Natural Chaos (and Made Order)
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Quality
+    </td>
+    <td>
+      Quantity
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Quantity is constant<br>
+      Group size is constant<br>
+      Natural group size is 150 people (Robin Dunbar, Dunbar's Number)<br>
+      All groups follow the same rules for internal structure<br>
+    </td>
+    <td>
+      Quality is constant<br>
+      Group members are equal<br>
+      Homogen groups<br>
+      Differences are between groups<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Individuals are other-critical (<a href="https://en.wikipedia.org/wiki/Narcissism">Individual Narcissism</a>)<br>
+      Groups are self-critical (closed society)<br>
+    </td>
+    <td>
+      Individuals are self-critical (weak alone)<br>
+      Groups are other-critical (Chauvinism, <a href="https://en.wikipedia.org/wiki/Collective_narcissism">Group Narcissism</a>)<br>
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="2">
+      Friedrich Nietzsche<br>
+      <a href="http://historyguide.org/Europe/dio_apollo.html">Nietzsche, Dionysus and Apollo</a><br>
+      Apollonian and Dionysian are terms used by Nietzsche in "The Birth of Tragedy"
+      to designate the two central principles in Greek culture
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      The Apollonian,
+      which corresponds to Schopenhauer's principium individuationis
+      ("principle of individuation"),
+      is the basis of all analytic distinctions.
+      Everything that is part of the unique individuality of man or thing
+      is Apollonian in character;
+      all types of form or structure are Apollonian,
+      since form serves to define or individualize that which is formed;
+      thus, sculpture is the most Apollonian of the arts,
+      since it relies entirely on form for its effect.
+      Rational thought is also Apollonian
+      since it is structured and makes distinctions.
+    </td>
+    <td>
+      The Dionysian,
+      which corresponds roughly to Schopenhauer's conception of Will,
+      is directly opposed to the Apollonian.
+      Drunkenness and madness are Dionysian
+      because they break down a man's individual character;
+      all forms of enthusiasm and ecstasy are Dionysian,
+      for in such states man gives up his individuality
+      and submerges himself in a greater whole:
+      music is the most Dionysian of the arts,
+      since it appeals directly to man's instinctive, chaotic emotions
+      and not to his formally reasoning mind.
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td>
+      M1<br>
+      <a href="https://en.wikipedia.org/wiki/Apollo">Apollo</a><br>
+      <a href="https://en.wikipedia.org/wiki/Apollo_archetype">Apollo archetype (Carl Jung)</a><br>
+      archer (sagittarius, type 1)<br>
+      sun god<br>
+      light<br>
+      clarity<br>
+      truth<br>
+      protector of the young (teacher, education)<br>
+      prophet (oracle, active thinker, giver of laws)<br>
+      healer for his friends<br>
+      killer for his enemies<br>
+      poet (simple but effective, summarize, wrap it up)<br>
+      form<br>
+      order<br>
+      serious<br>
+      selecting<br>
+      defining<br>
+      wants clear definitions<br>
+      limiting<br>
+      constraining<br>
+      build walls<br>
+      perfectionist<br>
+      master morality<br>
+      is drawn to master a skill<br>
+      favors thinking over feeling<br>
+      favors distance over closeness<br>
+      favors objective assessment over subjective intuition<br>
+      favors abstraction over details<br>
+    </td>
+    <td>
+      M3<br>
+      Dionysus<br>
+      Bacchus<br>
+      Liber Pater (Free Father)<br>
+      wine god<br>
+      drunkenness<br>
+      ecstasy<br>
+      hedonism<br>
+      pleasure<br>
+      fun<br>
+      chaos<br>
+      melting<br>
+      confusing<br>
+      destroy walls<br>
+      dislimiting<br>
+      blurring of boundaries<br>
+      escalation<br>
+      break free<br>
+      exhibition<br>
+      open sexual expression<br>
+      loss of reason<br>
+      loss of self-control<br>
+      no limits<br>
+      "we will never know for sure"<br>
+      "panta rei" (everything flows)<br>
+      "progress is forever"<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      F1<br>
+      <a href="https://en.wikipedia.org/wiki/Artemis">Artemis</a> (Greek goddess)<br>
+      goddess of the hunt<br>
+      goddess of ...<br>
+      wilderness<br>
+      wild animals<br>
+      nature<br>
+      plants<br>
+      childbirth<br>
+      education<br>
+      chastity (sexual purity, self-control)<br>
+      <a href="https://en.wikipedia.org/wiki/Diana_(mythology)">Diana</a> (Roman goddess)<br>
+      goddess of the countryside<br>
+      Katniss Everdeen in <a href="https://en.wikipedia.org/wiki/The_Hunger_Games">The Hunger Games</a><br>
+    </td>
+    <td>
+      TODO F3 goddess? twin-sister of dionysus/bacchus?
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="2">
+      Albert Einstein
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      genius knows its limits (and the limits of others)
+    </td>
+    <td>
+      idiots know no limits (not its own limits, and not the limits of others)
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="2">
+      <a href="https://en.wikipedia.org/wiki/High_trust_and_low_trust_societies">High trust and low trust societies</a>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      High Trust Society<br>
+      Voluntarism<br>
+      Voluntaryism<br>
+      Asking for consent<br>
+      Mutual consent<br>
+      Mutuality<br>
+      Dualism<br>
+      Truth<br>
+      Honesty<br>
+      Transparency<br>
+      Separation of enemies<br>
+      "Keep your friends close, and your enemies at distance" (logical, symmetric, simple)<br>
+    </td>
+    <td>
+      Low Trust Society<br>
+      Rape culture<br>
+      Dog eat dog society<br>
+      Deathmatch<br>
+      Chaos<br>
+      Anarchy<br>
+      Homo homini lupus (man is a wolf to other men)<br>
+      Monism<br>
+      Secrets<br>
+      Lies<br>
+      Tricks<br>
+      Manipulation<br>
+      Secret Politics<br>
+      Fear<br>
+      Enemies are everywhere (paranoia, distrust)<br>
+      "Keep your friends close, but your enemies closer" (Niccolo Machiavelli) (paradox, anti-logical, complex)<br>
+      "Perfection is boring"<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      High-trust societies display a high degree of mutual trust
+      not imposed by outside "contractual, legal or hierarchical regulation",
+      but instead are based upon "prior moral consensus".<br>
+      <br>
+      Much writing on the subject refers to Francis Fukuyama's 1995 book,
+      Trust: Social Virtues and Creation of Prosperity,
+      in which he describes
+      "the ability of various peoples
+      to organize effectively for commercial purposes
+      without relying on blood ties or government intervention".<br>
+      <br>
+      respect for private property rights<br>
+      a trusted civil court system<br>
+      democratic voting<br>
+      acceptance of electoral outcomes<br>
+      voluntary tax payment<br>
+    </td>
+    <td>
+      mostly kinship-based [family over friends, conservative]<br>
+      difficulty in forming and maintaining corporate structures [blind for order]<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      linear-active cultures (type 2)<br>
+      following a daily schedule with a single task at a time<br>
+    </td>
+    <td>
+      multi-active cultures (type 3)<br>
+      flexible schedules with many tasks at once<br>
+      often in an unplanned order<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      voluntary altruism<br>
+      true altruism<br>
+    </td>
+    <td>
+      forced altruism<br>
+      fake altruism<br>
+    </td>
   </tr>
 
 
