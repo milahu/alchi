@@ -18,13 +18,8 @@ jobs:
       run: echo "GH2MD_OUTPUT_PATH=archive/github/issues/" >> $GITHUB_ENV
     - name: Check output path
       run: |
-        if [ -z "$GH2MD_OUTPUT_PATH" ]; then
-          echo "error: output path is empty"
-          exit 1
-        fi
-        pattern='^[a-zA-Z0-9_/.+~-]+$'
-        if ! printf '%s' "$GH2MD_OUTPUT_PATH" | tr $'\n' ' ' | grep -q -E "$pattern"; then
-          echo "error: output path does not match the pattern $pattern"
+        if ! [[ "$GH2MD_OUTPUT_PATH" =~ ^[a-zA-Z0-9_/.+~-]+$ ]]; then
+          echo "error: output path does not match the pattern ^[a-zA-Z0-9_/.+~-]+$"
           exit 1
         fi
     - name: checkout
