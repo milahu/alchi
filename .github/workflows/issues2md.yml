@@ -50,7 +50,7 @@ jobs:
       with:
         packages: pandoc
         script: |
-          pandoc --version
+          pandoc --version || true
           find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read f
           do
             b="${f%.*}"
