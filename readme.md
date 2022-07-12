@@ -217,6 +217,7 @@ the main repository https://github.com/milahu/alchi is mirrored to
 
 * gitlab: https://gitlab.com/milahu/alchi
 * gitea.io: https://try.gitea.io/milahu/alchi
+* srht: https://git.sr.ht/~milahu/alchi
 * darktea (with Tor Browser): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
 
 ### clone commands
@@ -230,6 +231,9 @@ git clone https://gitlab.com/milahu/alchi
 
 # gitea.io
 git clone https://try.gitea.io/milahu/alchi
+
+# srht
+git clone https://git.sr.ht/~milahu/alchi
 
 # darktea
 torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
