@@ -16,5 +16,7 @@ git push gitlab
 # updates are pulled by try.gitea.io
 #git push gitea
 
+git push srht
+
 # http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
 torsocks git push darktea
