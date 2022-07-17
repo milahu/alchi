@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 383.03 273.47" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow1Mend" overflow="visible" orient="auto">
+   <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <g transform="translate(-7.5883 9.4765)">
+  <rect x="7.5883" y="-9.4765" width="383.03" height="273.47" fill="#fff"/>
+  <g stroke="#000">
+  <!-- chrome: green != #0f0 -->
+   <circle cx="46.884" cy="95.627" r="13.838" fill="red"/>
+   <circle cx="81.169" cy="95.627" r="13.838" fill="yellow"/>
+   <circle transform="scale(-1,1)" cx="-81.169" cy="192.7" r="13.838" fill="blue"/>
+   <circle transform="scale(-1,1)" cx="-46.884" cy="192.7" r="13.838" fill="#0f0"/>
+   <circle cx="254.25" cy="132.39" r="13.838" fill="red"/>
+   <circle cx="348.43" cy="132.39" r="13.838" fill="yellow"/>
+   <circle transform="scale(-1,1)" cx="-348.43" cy="167.91" r="13.838" fill="blue"/>
+   <circle transform="scale(-1,1)" cx="-254.25" cy="167.91" r="13.838" fill="#0f0"/>
+  </g>
+  <g fill="none" stroke="#000">
+   <rect x="18.588" y="66.918" width="92.942" height="154.9" stroke-width="2"/>
+   <rect transform="rotate(90)" x="104.92" y="-379.61" width="92.942" height="154.9" stroke-width="2"/>
+   <path d="m216.45 235.87c-25.198 23.132-57.83 22.306-82.615 4.5438" marker-end="url(#Arrow1Mend)"/>
+   <path d="m132.57 87.981c25.198-23.132 57.83-22.306 82.615-4.5438" marker-end="url(#Arrow1Mend)"/>
+  </g>
+  <text x="98.311539" y="19.827543" fill="#000000" font-family="sans-serif" font-size="25.4px">partnertausch</text>
+ </g>
+</svg>
