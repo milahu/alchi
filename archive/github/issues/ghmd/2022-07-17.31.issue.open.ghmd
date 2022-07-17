@@ -1,0 +1,88 @@
+# [\#31 Issue](https://github.com/milahu/alchi/issues/31) `open`: partnertausch in vierer-gruppen
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-17 14:23](https://github.com/milahu/alchi/issues/31):
+
+partnertausch ...
+
+kann man leicht falsch verstehen als "sexpartner tauschen",
+aber das mein ich nicht
+
+stell dir vor, du hast ne family mit 4 menschen:
+sohn mutter tochter vater.
+
+aus den 4 menschen kannst du 2 paare bilden.
+dafür gibts theoretisch 3 lösungen oder "zustände":
+
+* mutter-vater und tochter-sohn (gleiches alter bindet)
+* mutter-tochter und vater-sohn (gleiches geschlecht bindet)
+* mutter-sohn und vater-tochter (gegenteil bindet)
+
+ich glaube, dieses paare-bilden funktioniert am besten
+wenn man immer abwechselt zwischen zwei zuständen:
+
+gleiches alter bindet <—> gleiches geschlecht bindet
+
+(für den zustand "gegenteil bindet" hab ich noch keine idee, für was der gut is)
+
+> ich glaube, dieses paare-bilden funktioniert am besten
+> wenn man immer abwechselt zwischen zwei zuständen
+
+nähe und abstand
+
+beispiel:
+
+```
+mutter + tochter
+
+
+
+
+abstand
+
+
+
+
+vater + sohn
+```
+
+der abstand muss so groß sein, dass die paare sich nicht gegenseitig stören, dass man sich unbeobachtet/frei fühlen kann
+
+das ist ähnlich wie das spiel "stille post"
+wo die leute im kreis sitzen,
+und "im kreis flüstern",
+und am schluss kommt ne ganz andere nachricht raus
+als was am anfang gesagt wurde
+
+... aber hier ist das ziel
+dass man missverständnisse abbaut,
+weil die paare sind immer "redner-hörer" paare,
+oder "antworter-frager" paare,
+oder "interview" paare ...
+
+und beim partnertausch wechseln die rollen,
+also redner werden hörer, etc
+
+menschen sind puzzle-teile:
+ABCD = sohn mutter tochter vater
+
+<a href="https://github.com/milahu/alchi/blob/master/src/images/alchi-peer-exchange-partnertausch.svg"><img width="400" src="https://github.com/milahu/alchi/raw/master/src/images/alchi-peer-exchange-partnertausch.svg"></a>
+
+im "flusskreis" (vierer-gruppen verbunden durch X auf meiner landkarte)
+verkörpern die 4 menschen (sohn mutter tochter vater)
+die 4 typen (feuer erde luft wasser = rot grün gelb blau)
+dann kann man den partnertausch auch mit farben darstellen:
+
+typen sind farben:
+1234 = rot grün gelb blau
+
+<a href="https://github.com/milahu/alchi/blob/master/src/images/partnertausch-vier-farben.svg"><img width="400" src="https://github.com/milahu/alchi/raw/master/src/images/partnertausch-vier-farben.svg"></a>
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+[Export of Github issue for [milahu/alchi](https://github.com/milahu/alchi).]
