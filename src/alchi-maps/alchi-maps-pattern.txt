@@ -1,0 +1,31 @@
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     x               x               x               x
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             o               o               o               o
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     x               x               x               x
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+
+             o               o               o               o
+
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     x               x               x               x
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             o               o               o               o
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     x               x               x               x
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+
+             o               o               o               o
