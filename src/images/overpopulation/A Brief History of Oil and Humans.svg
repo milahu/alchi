@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="148.91mm" height="103.89mm" version="1.1" viewBox="0 0 148.91 103.89" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-43.992 -81.995)">
+  <rect x="43.992" y="81.995" width="148.91" height="103.89" fill="#fff"/>
+  <path d="m63.149 172.17s11.077 0.0129 21.424-0.21698c12.434-0.27626 23.748 0.38138 26.65-3.7296 5.2483-7.4368 6.6873-47.757 7.0732-54.387" fill="none" stroke="#00f"/>
+  <path d="m108.12 173.28c1.0843-0.41308 3.0464-1.4974 3.666-2.1428 0.68316-0.71164 1.7039-2.1944 1.9363-4.0016 0.17171-1.3355 2.4351-43.843 2.4533-44.591 0.0183-0.74847 0.0904-2.2365 0.60243-2.1906 1.2231 0.10957 1.5027 2.4367 1.6795 4.3996 0.15076 1.6738 0.60496 32.722 2.6105 40.272 0.68132 2.5647 2.6288 7.0831 6.572 8.2515" fill="none" stroke="#f00"/>
+  <g font-family="sans-serif" stroke-width=".26458">
+   <text x="52.047287" y="94.387344" fill="#000000" font-size="8.4667px" style="line-height:1.25" xml:space="preserve"><tspan x="52.047287" y="94.387344" font-size="8.4667px" stroke-width=".26458">A Brief History of Oil and Humans</tspan></text>
+   <text x="127.79798" y="165.63721" fill="#ff0000" font-size="7.7611px" style="line-height:1.25" xml:space="preserve"><tspan x="127.79798" y="165.63721" fill="#ff0000" font-size="7.7611px" stroke-width=".26458">Oil</tspan></text>
+   <text x="127.22357" y="109.74047" fill="#0000ff" font-size="7.7611px" style="line-height:1.25" xml:space="preserve"><tspan x="127.22357" y="109.74047">Human</tspan><tspan x="127.22357" y="119.44186">Population</tspan></text>
+  </g>
+  <path d="m50.422 173.34h131.33" fill="none" stroke="#000" stroke-width=".26458px"/>
+  <path d="m51.827 174.43v-74.919" fill="none" stroke="#000" stroke-width=".26458px"/>
+  <g transform="translate(0 -8.7626)" fill="#000000" font-family="sans-serif" font-size="4.9389px" stroke-width=".26458">
+   <text x="79.009598" y="190.00273" style="line-height:1.25" xml:space="preserve"><tspan x="79.009598" y="190.00273" font-size="4.9389px" stroke-width=".26458">1000</tspan></text>
+   <text x="110.55502" y="190.00273" style="line-height:1.25" xml:space="preserve"><tspan x="110.55502" y="190.00273" font-size="4.9389px" stroke-width=".26458">2000</tspan></text>
+   <text x="143.41484" y="190.00273" style="line-height:1.25" xml:space="preserve"><tspan x="143.41484" y="190.00273" font-size="4.9389px" stroke-width=".26458">3000</tspan></text>
+   <text x="50.969227" y="190.00273" style="line-height:1.25" xml:space="preserve"><tspan x="50.969227" y="190.00273" font-size="4.9389px" stroke-width=".26458">0</tspan></text>
+  </g>
+  <g fill="none" stroke="#000" stroke-width=".26458px">
+   <path d="m68.029 173.33v0.99492"/>
+   <path d="m84.167 173.34v1.2049"/>
+   <path d="m100.27 173.33v0.85842"/>
+   <path d="m116.42 173.35v1.123"/>
+   <path d="m132.58 173.32v0.95384"/>
+   <path d="m148.74 173.35v1.1501"/>
+  </g>
+ </g>
+</svg>
