@@ -16,7 +16,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <meta name="author" content="Milan Hauth">
 
   <!-- meta#version -->
-  <meta id="version" name="dcterms.modified" content="2022-07-16">
+  <meta id="version" name="dcterms.modified" content="2022-07-22">
 
   <!-- document ID for hypothesis annotations -->
   <link rel="canonical" href="https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html#/cas/git/commit/9e77457a15181bcb1aa1b88ffaab4f0d9a6bd84a">
@@ -447,6 +447,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
               if (page.number == lastPage) return '';
               if (page.number > lastPage) {
                 console.log(`FIXME increase lastPage`);
+                alert(`FIXME increase lastPage`); // TODO test
                 return '';
               }
 
@@ -1768,7 +1769,28 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <!-- #################################################### -->
 
 <div class="para">
-  Ich:
+  <b>Ziele:</b>
+  Verbreitung und Experiment.
+  <!--
+    Werbung, Verbreitung, Vermehrung, Veröffentlichung
+  -->
+  Beide Ziele blockieren sich gegenseitig,
+  also muss ich beides gleichzeitig machen.
+  Jeder kann helfen, jeder darf helfen.
+  Beispiel:
+  1000 Flyer drucken (50 eur) und irgendwo verteilen.
+  <!--
+    kosten:
+    papier: 4 eur / 500 blatt (bei netto). durchschnitt 5 eur / 500 blatt = 1 cent pro blatt.
+    laserdrucker: 1 bis 3 cent pro seite
+    2 seiten
+    1000 kopien
+    1000 * 2 * (1...3 + 0.5) = 30...70 eur -> average 50 eur
+  -->
+</div>
+
+<div class="para">
+  <b>Ich:</b>
   <div class="nowrap">
   Milan Hauth,
   Jägerstraße 10,
@@ -1781,8 +1803,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Copyright (c) 2022 Milan Hauth.
-  Lizenz: MIT License.
+  MIT License, Copyright (c) 2022 Milan Hauth.
   Das heisst:
   <div class="nowrap">Du darfst alles mit meinem Text machen,</div>
   <div class="nowrap">und ich gebe dir keine Garantie.</div>
