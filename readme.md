@@ -62,10 +62,11 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
+* [wersindmeinefreunde.html](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends.html` in german language
 * dorfkultur.html (german): [github](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html), [gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html)
 * alchi-maps html: [github](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np)
 * alchi-book html: [github](https://milahu.github.io/alchi/src/alchi-book/build/)
-  * [whoaremyfriends.html](https://milahu.github.io/whoaremyfriends/whoaremyfriends.html) ([whoaremyfriends project](https://github.com/milahu/whoaremyfriends))
+  * rewrite: [whoaremyfriends.html](https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html)
 * alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - combination of multiple personality tests, show result with the four elements (four basetypes)
 
 <details>
@@ -824,5 +825,34 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * symmetry
 * compatibility landscape
 * modulo four ring in two dimensions
+* pattern of human relations by personality type gender age
+* open source education
+  * open source school
+  * "linux for education"
+  * radical transparency
+  * voluntarism
+  * efficient
+  * be excellent to each other
+  * be honest
+  * speak truth
+  * fear no one
+  * crowdsourcing
+  * open government
+  * "social innovation"
+  * citizen science
+  * amateur science
+* artgerechte haltung für menschen
+  * artgerechte haltung für menschenaffen
+* polyamorie in vierer-gruppen, mann-frau-mann-frau
+* polyamory in groups of four people, male-female-male-female
+  * the four people must meet certain constraints
+  * all four personality types must be present
+  * two possible groups of four:
+    * F1 M2 F4 M3
+    * F2 M1 F3 M4
+  * probably all subtypes must be parallel
+    * F104 M203 F401 M302
+    * F203 M104 F302 M401
+    * ... so that all have balanced "inner age", and all have extreme "inner gender"
 
 </details>
