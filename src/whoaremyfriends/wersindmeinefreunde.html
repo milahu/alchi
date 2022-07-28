@@ -254,6 +254,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     }
     h1 {
       font-size: 250%;
+      font-weight:normal;
+    }
+    h2 {
+      font-weight:normal;
     }
     /* debug
     * {
@@ -364,17 +368,19 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     table.four-basetypes td {
       border-left: solid 1px black; /* FIXME pixel hinting */
       text-align: center;
+      vertical-align: top;
       padding-left: 5px;
     }
     table.four-basetypes th {
       border-right: solid 1px black; /* FIXME pixel hinting */
       text-align: left;
+      vertical-align: top;
       padding-right: 5px;
       font-weight: normal;
     }
     table.four-basetypes {
       border-spacing: 2px 0;
-      white-space: nowrap;
+      /*white-space: nowrap;*//* no linebreaks */
       font-size: 90%; /* FIXME this has no effect */
       /* workaround for smaller font size */
       /*
@@ -382,6 +388,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       margin-bottom: -2.5em;
       */
       transform-origin: top left;
+    }
+    table.four-basetypes tbody+tbody tr:first-child * {
+      border-top: solid 1px black;
     }
     a {
       text-decoration: none;
@@ -469,12 +478,15 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
               //const lastPage = 16; // TODO update manually
 
               // FIXME get num pages
+              /*
+              // no page number on last page
               if (page.number == lastPage) return '';
               if (page.number > lastPage) {
                 console.log(`FIXME increase lastPage`);
-                alert(`FIXME increase lastPage`); // TODO test
+                alert(`FIXME increase lastPage`);
                 return '';
               }
+              */
 
               const pageNumber = page.number;
               //const pageNumber = page.number - 1; // workaround: first page left
@@ -538,9 +550,50 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <!-- page 1 -->
 
-<h1>Wer<br>sind<br>meine<br>Freunde</h1>
+<div style="text-align:center">
 
-<h2 class="nopagebreak">Gruppenaufbau<br>nach<br>Persönlichkeitstyp</h2>
+<div class="vspace" style="height:7em"></div>
+
+<h1>Pallas</h1>
+
+<div class="vspace" style="height:2em"></div>
+
+<svg class="pallas-symbol" style="width:16em"
+  viewBox="0 0 220 220"
+  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+  <!--
+    svg 2.0 is not yet supported by inkscape :(
+
+    svg 1.1: <use xlink:href="#alchi-pallas-symbol" />
+    svg 2.0: <use href="#alchi-pallas-symbol" />
+  -->
+  <defs>
+    <symbol id="alchi-pallas-symbol">
+      <path
+        transform="translate(110, 110)"
+        fill="none" stroke="black" stroke-width="4"
+        stroke-linejoin="round" stroke-linecap="round"
+        d="
+          M0+0 l50-50 l-50-50 l-50+50 z
+          M0+0 v100
+          M-50+50 h100
+        "
+      ></path>
+    </symbol>
+  </defs>
+  <use xlink:href="#alchi-pallas-symbol"/>
+</svg>
+
+<div class="vspace" style="height:2em"></div>
+
+<h2>Wer sind meine Freunde</h2>
+
+<div class="vspace" style="height:1em"></div>
+
+<h2 class="nopagebreak">Gruppenaufbau nach Persönlichkeitstyp</h2>
+
+</div>
 
 
 
@@ -552,32 +605,73 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   <b>Wer sind meine Freunde?</b>
-  Objektiv gesehen gibt es zwei Antworten:
+
+  Die Frage klingt einfach,
+  aber scheinbar ist die Frage so kompliziert,
+  dass die Psychologie bis heute
+  keine Antwort hat.
+  Stichworte:
+  <a href="https://en.wikipedia.org/wiki/Interpersonal_compatibility">Interpersonal Compatibility</a>,
+  <a href="https://en.wikipedia.org/wiki/Team_composition">Team Composition</a>.
+
+  Nur wenige Weltbilder versuchen eine Antwort,
+  zum Beispiel in der Astrologie
+  gibt es Vorhersagen zur Kompatibilität zwischen Sternzeichen.
+  Aber das ist mir zu ungenau.
+  Ich suche ein mathematisch exaktes System,
+  mit dem ich <b>freiwillige Beziehungen</b>
+  erklären und vorhersagen kann.
+</div>
+
+<!--
+<div class="para">
+  Objektiv gesehen gibt es zwei Antworten.
+
+  Idealisten sagen:
+  Meine Freunde sind die Menschen,
+  die ich mag,
+
+  Idealismus oder Realismus.
+
   Fühlen oder Denken.
-  Wer seine Freunde "fühlt" der entscheidet selber
-  (Selbstwert, Sensor, Führer, liberal).
-  Wer seine Freunde "denkt" der lässt Andere entscheiden
-  (Fremdwert, Memor, Folger, konservativ).
 </div>
 
 <div class="para">
+  Wer seine Freunde "fühlt" der entscheidet selber
+  (Selbstwert, Sensor, Führer, liberal, emotional,
+  Persönliche Gründe, innere Gründe).
+</div>
+
+<div class="para">
+  Wer seine Freunde "denkt" der lässt Andere entscheiden
+  (Fremdwert, Memor, Folger, konservativ,
+  rational, Sachgründe, äussere Gründe).
+  <!-x- spam
+  Solche "Denker" verteidigen ihre "Führer",
+  und wenn ich auf Abwehr stoße,
+  dann fordere ich:
+  Bring mich zu deinem Führer!
+  Du hast keinen?
+  Dann suchen wir deinen Führer : )
+  -x->
+</div>
+
+<div class="para">
+  Fühlen oder Denken?
   Beide sind wichtig,
   aber ich als Gefühlsmensch sage:
   "erst Fühlen, dann Denken".
   Also Fühlen ist Grundlage zum Denken.
-  Das ist meine subjektive Weltsicht,
+  Das ist meine <b>subjektive Weltsicht</b>,
   und jeder Mensch hat seine subjektive Weltsicht.
+  Wenn zwei Hypothesen streiten, dann soll man beide testen.
+  <!-x- spam
+  Wenn zwei sich streiten, dann soll man wetten.
+
   (Nur tote Menschen sind objektiv, neutral, grau.)
-  Synonyme:
-  Subjektive Weltsicht,
-  Subjektive Wahrheit,
-  Persönlichkeitstyp,
-  Innere Werte,
-  Geschmack,
-  Humor,
-  Temperament,
-  Personality Type.
+  -x->
 </div>
+-->
 
 <div class="para">
   Also, "Wer sind meine Freunde?",
@@ -587,10 +681,22 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   "Verschiedene Menschen" heisst vor allem:
   Menschen mit verschiedenem Persönlichkeitstyp.
 </div>
+<div class="para">
+  Synonyme:
+  <b>Persönlichkeitstyp</b>,
+  Subjektive Weltsicht,
+  Subjektive Wahrheit,
+  Innere Werte,
+  Geschmack,
+  Humor,
+  Talent,
+  Temperament,
+  Personality Type.
+</div>
 
 <div class="para">
   Wer sind meine Freunde?
-  Meine Antwort ist dieses Muster:
+  Meine Antwort ist dieses <b>Muster</b>:
 </div>
 
 
@@ -716,19 +822,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 </script>
 
-<!--
-<table>
-  <tr>
-    <td>
-    </td>
-    <td>
-    </td>
-  </tr>
-</table>
--->
-
 <div class="center-x">
-
   <svg class="foldme" title="Compatibility Chart" style="height:18em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -872,13 +966,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     </g>
 
   </svg>
-
 </div>
 
 
 
 <div class="para">
-  Das Muster zeigt 16 Menschen von oben.
+  Das Muster zeigt <b>16 Menschen</b> von oben.
   Jeder Kreis ist ein Mensch.
   Abkürzungen:
   <div class="nowrap">
@@ -894,7 +987,49 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Was passiert am Rand vom Muster?
+  Ich glaube:
+  Damit ein bestimmter Persönlichkeitstyp zu mir passt,
+  muss er im richtigen <b>Körper</b> wohnen,
+  also der Körper braucht richtiges Geschlecht und Alter.
+  Auch der Subtyp muss stimmen, aber dazu später mehr.
+</div>
+
+<div class="para">
+  <b>Nähe = Freunde. Distanz = Feinde.</b>
+
+  Das Muster zeigt Freunde und Feinde.
+
+  Wenn zwei Menschen direkt nebeneinander stehen,
+  dann sind sie Freunde.
+
+  Wenn zwei Menschen weiter auseinander stehen,
+  dann sind sie Feinde.
+</div>
+
+<div class="para">
+  Feinde brauchen <b>gemeinsame Freunde</b>
+  für ein gesundes Zusammenleben (soziale Gesundheit, gesunde Gruppe).
+
+  Wenn zwei Feinde direkt zusammen leben,
+  dann gibt es immer wieder Missverständnisse,
+  und jeder findet automatisch alles scheisse,
+  was der andere sagt und macht (<b>Persönliche Gründe</b>),
+  egal wie gut gemeint (Sachgründe).
+</div>
+
+<div class="para">
+  <b>Namen</b> für das Muster:
+  Muster für Beziehungen,
+  Landkarte für Menschen,
+  Mischkultur für Menschen,
+  Familienaufstellung,
+  Kompatibilitäts-Muster nach Persönlichkeitstyp,
+  Compatibility Chart for Personality Types,
+  ...
+</div>
+
+<div class="para">
+  Was passiert am <b>Rand</b> vom Muster?
   Das Muster wird einfach wiederholt,
   wie ein Stempel, oder wie ein Kachel-Muster.
   Zeile 5:
@@ -907,110 +1042,76 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   </div>
 </div>
 
+<div class="para">
+  <b>Woher</b> kommt das Muster?
+  Erfahrung und Symmetrie.
+  Ich habe meinen Persönlichkeitstyp rausgefunden
+  (Grundtyp 1, Subtyp 4).
+  Dann habe ich die Persönlichkeitstypen
+  meiner Familie, Freunde und Bekannten geschätzt,
+  immer mit der Frage "Wen mag ich? Wen mag ich nicht?"
+  oder "Wer passt zusammen? Wer hat immer Streit?"
+  Im Zweifel habe ich die "schönere" Lösung genommen (Symmetrie),
+  und irgendwann ist dieses Muster rausgekommen.
+</div>
 
 
+<!--
+TODO avoid overflow from page to page
 <hr>
+-->
 
 
 
 <!-- page 3 -->
 
+
 <div class="para">
+  <b>Forschung:</b>
+  Mein Muster ist nur eine Hypothese,
+  also ein Lösungsvorschlag.
+  Ich gebe dir <b>keine Garantie</b> dass es funktioniert.
 
-  Das Muster zeigt Freunde und Feinde.
-
-  <!--
-  <div class="box">
-    Nähe = Freunde. Abstand = Feinde.
-  </div>
-  -->
-  <div class="nowrap">
-    <b>
-      Nähe = Freunde. Distanz = Feinde.
-    </b>
-  </div>
-
-  Also:
-  Wenn zwei Menschen direkt nebeneinander stehen,
-  dann sind sie Freunde.
-
-  Wenn zwei Menschen weiter auseinander stehen,
-  dann sind sie Feinde und brauchen <b>gemeinsame Freunde</b>
-  für ein gesundes Zusammenleben (soziale Gesundheit).
-
-  Wenn zwei Feinde direkt zusammen leben,
-  dann gibt es immer wieder Missverständnisse,
-  und jeder findet automatisch alles Scheisse,
-  was der andere sagt (<b>Persönliche Gründe</b>, Fühlen),
-  egal wie gut gemeint (Sachgründe, Denken).
+  Ist das Muster richtig oder falsch?
+  Wie können wir das rausfinden?
+  Dazu müssen wir ein Experiment machen.
+  Ergebnisse werde ich veröffentlichen auf meiner Website.
+  (Ja, auch negative Ergebnisse.)
 </div>
 
 <div class="para">
-  <div class="nowrap">
-    <b>
-      Fühler = positive Gefühle. Denker = negative Gefühle.
-    </b>
-  </div>
-
-  Auch Denker haben Gefühle, aber das sind negative Gefühle.
-
-  Wenn ein Denker etwas Gutes sucht,
-  dann muss er seine Gefühle ignorieren (abwarten und vergessen)
-  und etwas Bekanntes wiederholen
-  (Wiederholung macht glücklich, Routine, Rückzug, Sicherheit).
+  Ich kann leider keine Simulation machen,
+  oder das Problem "im Kopf lösen",
+  weil hier suche ich <b>Grundlagen</b> (Axiome, höchste Wahrheiten),
+  und dahinter gibt es keine rationalen Gründe,
+  sondern dahinter steht nur mein persönlicher Grund:
+  "ich glaube dass meine Hypothese richtig ist".
 </div>
 
 <div class="para">
-  Gefühle: "ge-viele", kurzlebig, flüchtig,
-  werden schnell vergessen,
-  werden produziert im Arbeitsgedächtnis.
-
-  Wenn ein Fühler etwas Gutes sucht,
-  dann muss er seine Gefühle festhalten,
-  zum Beispiel durch Tagebuch schreiben oder zeichnen.
-  Das Tagebuch ist ein "externer Speicher" für gute Gefühle.
-  Fühler haben auch ein Langzeitgedächtnis,
-  aber das speichert nur negative Inhalte
-  (problemzentriertes Denken, wenige Probleme und viele Lösungen,
-  kreativ, innovativ, liberal, Führer, ...)
+  Eine Hypothese ist richtig,
+  wenn sie viele Phänomene (Realitäten) erklären kann,
+  und keine Widersprüche erzeugt (<b>Widerspruchsfreiheit</b>).
+  Deswegen ist negatives Feedback (Widersprüche, "es funktioniert nicht")
+  genauso wichtig wie positives Feedback ("es funktioniert").
 </div>
 
 <div class="para">
-  Der mühsame Weg:
-  In der Sklavenmoral gilt:
-  "Der Mensch ist ein Gewohnheitstier"
-  (Denker, Fremdwert, Folger).
-  Daraus folgt:
-  Alle Menschen sind kompatibel,
-  und ich muss mich "nur" anpassen
-  und alle Konflikte totschweigen
-  (Ignoranz, falsche Freunde).
-  Aber für mich als Gefühlsmensch
-  ist das der mühsame Weg.
-  Wir verschwenden Energie für Ignoranz,
-  aber diese Energie könnten wir anderswo viel schlauer nutzen.
-</div>
-
-<div class="para">
-  Der leichte Weg:
-  Dazu müssen wir "nur" Persönliche Gründe ernst nehmen,
-  Freunde verbinden und Feinde trennen.
-  Und dafür brauchen wir das Muster der 16 Menschen.
-</div>
-
-<div class="para">
-  Bis jetzt ist das Muster nur eine Theorie
-  (Hypothese, Lösungsvorschlag),
-  und ich möchte ein Experiment machen zum Rausfinden:
-  ist meine Theorie richtig oder falsch?
-  (Ergebnisse stelle ich auf meine Website.)
-</div>
-
-<div class="para">
-  Wie funktioniert dieses Experiment?
+  Wie funktioniert dieses <b>Experiment</b>?
   Dazu müssen wir Menschen so verbinden,
   wie sie auf dem Muster sind.
+
+  Diese Bindungen müssen freiwillig sein.
+  Ein Matchmaker (Kuppler, Vermittler) kann Vorschläge machen,
+  aber jeder Mensch darf "Nein" sagen,
+  oder selber Vorschläge machen (Reden oder Zeigen).
 </div>
+
+
+
+<!-- TODO avoid overflow from page to page -->
+
+
 
 <div class="para">
   Schritt eins
@@ -1028,18 +1129,14 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
+<!--
+TODO avoid overflow from page to page
 <hr>
+-->
 
 
 
 <!-- page 3 -->
-
-<div class="para">
-  Diese Bindungen müssen freiwillig sein.
-  Ein Matchmaker (Kuppler, Vermittler) kann Vorschläge machen,
-  aber jeder Mensch darf "Nein" sagen,
-  oder selber Vorschläge machen (Reden oder Zeigen).
-</div>
 
 <div class="para">
   Zweier-Gruppen sind einfach.
@@ -1049,9 +1146,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Problem:
   Auf Dauer wird jedes Paar einseitig und sucht nach Ausgleich.
   Lösung: Vierer-Gruppen.
-  Aber hier geht es NICHT um blutverwandte Kleinfamilien
+  Aber unser Ziel ist NICHT der Aufbau von blutverwandte Kleinfamilien
   ("wir machen zwei Kinder"),
-  sondern um geistverwandte Kleinfamilien
+  sondern der Aufbau von <b>geistverwandte Kleinfamilien</b>
   ("wir suchen gemeinsame Freunde", Adoption, geistige Vermehrung).
   <!--
     schnelle lösung: freunde suchen = geistverwandte.
@@ -1061,10 +1158,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<!-- cut: pair M1S-F3S -->
 <div class="center-x">
 
-  <svg class="foldme" title="Compatibility Chart" style="height:4.5em;margin:2em"
+  <svg class="foldme" title="pair M1S-F3S" style="height:4.5em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="200 200 400 200"
@@ -1243,7 +1339,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <!-- cut: center square -->
 <div class="center-x">
 
-  <svg class="foldme" title="Compatibility Chart" style="height:9em;margin:2em"
+  <svg class="foldme" title="square M1S-F3S-M4L-F2L" style="height:9em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="200 200 400 400"
@@ -1461,11 +1557,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<!-- cut: 3x3 square -->
-<!-- TODO pallas. remove -->
 <div class="center-x">
-
-  <svg class="foldme" title="Compatibility Chart" style="height:13.5em;margin:2em"
+  <svg class="foldme" title="Pallas M1S" style="height:13.5em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 600 600"
@@ -1657,7 +1750,6 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     </g>
 
   </svg>
-
 </div>
 
 
@@ -1691,17 +1783,33 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Was ist der Unterschied zwischen den zwei Quadrat-Gruppen?
+</div>
+
+<div class="para">
   Was haben die Typen 12 gemeinsam?
   Beide sind "orthogonal", rechtwinklig.
   Typ 1 ist "oben breit, unten lang",
   Typ 2 ist "oben lang, unten breit".
   Also die "Verbindung von Gegensätzen" in einem Körper.
   Ich glaube:
-  Dadurch haben Typen 12 ein komplexeres Weltbild (2-dimensional, Logik).
+  Dadurch haben Typen 12 ein komplexes Weltbild
+  (zweidimensional, Logik, Individualisten, Narzissten, Low Agreeableness, Streitlust, Einzelkämpfer).
   Typen 34 erreichen diese Komplexität nur durch Paarung (Paar aus Typ 3 und Typ 4),
-  aber der "innere Dialog" von Typen 12
+  aber "innerer Dialog" von Typen 12
   ist immer effizienter als
-  der "äussere Dialog" zwischen Typ 3 und Typ 4.
+  "äusserer Dialog" zwischen Typ 3 und Typ 4.
+</div>
+
+<div class="para">
+  Was haben die Typen 34 gemeinsam?
+  Beide sind "parallel".
+  Typ 3 ist "oben breit, unten breit",
+  Typ 4 ist "oben lang, unten lang".
+  Ich glaube:
+  Dadurch haben Typen 34 ein einfaches Weltbild
+  (eindimensional, Grafik, Kollektivisten, High Agreeableness, Harmoniesucht, Teamsport).
+  Typen 34 erreichen ein komplexes Weltbild nur durch Paarung (Paar aus Typ 3 und Typ 4),
+  also "äusserer Dialog" zwischen Typ 3 und Typ 4.
 </div>
 
 
@@ -1807,10 +1915,834 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 -->
 
 <div class="para">
-  Namen für das Muster:
-  Muster für Beziehungen,
-  Landkarte für Menschen,
-  ...
+  <b>Vier Typen:</b>
+
+  Grundlage für mein Muster ist Persönlichkeits-Psychologie.
+  Also: Menschen in Schubladen stecken.
+
+  Dieser Teil von Psychologie ist uralt, locker 2000 Jahre alt,
+  und schon sehr gut erforscht.
+
+  Quasi-Konsens: Es gibt vier Persönlichkeitstypen.
+  Für diese Vier Typen werden immer wieder neue Namen erfunden,
+  also jeder Autor hat seinen Namensraum (namespace).
+  Hier ein paar Übersetzungen:
+</div>
+
+
+
+<!--
+  more translations
+  TODO copy to book appendix
+  https://milahu.github.io/alchi/src/alchi-tables/alchi-tables.html
+-->
+
+<table class="four-basetypes" style="margin-top:0.5em">
+  <tbody>
+    <tr>
+      <th>Typ Nummer</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <!--
+      element ist schön weil kurz.
+      "feuer mann" sagt sicht leichter als
+      "typ eins mann" oder
+      "vordenker mann" oder
+      "handwerker mann" oder
+      "linkshirn mann" oder
+      ...
+    -->
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Classical_element">Element</a></th>
+      <td>Feuer</td>
+      <td>Erde</td>
+      <td>Luft</td>
+      <td>Wasser</td>
+    </tr>
+    <tr>
+      <th>Rolle</th>
+      <td>Vordenker</td>
+      <td>Nachmacher</td>
+      <td>Vormacher</td>
+      <td>Nachdenker</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
+      <td>Handwerker</td>
+      <td>Händler</td>
+      <td>Redner</td><!-- TODO better. Prediger? Redner? -->
+      <td>Denker</td>
+    </tr>
+    <tr>
+      <th>Interesse</th><!-- hauptberuf = grundtyp -->
+      <td>Gerechtigkeit</td>
+      <td>Gewohnheit</td><!-- ritual, routine, wiederholung, tradition -->
+      <td>Philosophie</td>
+      <td>Technik</td>
+    </tr>
+    <!--
+    <tr>
+      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
+      <td>Warrior</td>
+      <td>Lover</td>
+      <td>Magician</td>
+      <td>King</td>
+    </tr>
+    -->
+    <tr>
+      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
+      <td>Kämpfer</td>
+      <td>Liebhaber</td>
+      <td>Magier</td>
+      <td>König</td>
+    </tr>
+    <!--
+      <tr>
+      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
+      <td>Determined</td>
+      <td>Sensitive</td>
+      <td>Funny</td>
+      <td>Serious</td>
+    </tr>
+    -->
+    <tr>
+      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
+      <td>Willensstark</td>
+      <!--
+        rilke - panther:
+        Der weiche Gang geschmeidig starker Schritte,
+        der sich im allerkleinsten Kreise dreht,
+        ist wie ein Tanz von Kraft um eine Mitte,
+        in der betäubt ein großer Wille steht.
+        "wille zur macht" ... "geborener könig" ... "dominant" ... "hausherr"
+      -->
+      <td>Sensibel</td>
+      <td>Lustig</td>
+      <td>Ernst</td>
+    </tr>
+    <tr>
+      <th>Finger</th>
+      <td>Mittel</td>
+      <td>Klein</td>
+      <td>Ring</td>
+      <td>Zeige</td>
+    </tr>
+    <!-- nutzlos
+    <tr>
+      <th>Körperteil</th>
+      <td>Linkes Hirn</td>
+      <td>Rechte Hand</td>
+      <td>Linke Hand</td>
+      <td>Rechtes Hirn</td>
+    </tr>
+    -->
+    <!--
+      https://en.wikipedia.org/wiki/Playing_card_suit#Character_encodings
+      french suit: Heart Pike Clover Tile
+      french suit: Heart Spade Club Diamond
+      german suit: Heart Leaf Bell Acorn
+      swiss suit: Rose Shield Bell Acorn
+      latin suit: Cup Sword Coin Club
+      latin suit: Coppa Spada Denaro Bastone
+      latin suit: Kelch Schwert Gold Schlagstock
+      french white: ♡ ♤ ♧ ♢
+      french black: ♥ ♠ ♣ ♦
+    -->
+    <tr>
+      <th>Körperform</th>
+      <td>Herz ♡</td>
+      <td>Birne ♤</td>
+      <td>Breit ♧</td>
+      <td>Lang ♢</td>
+    </tr>
+    <tr>
+      <th>Kleid oben</th>
+      <td>Gelb-Schwarz</td>
+      <td>Blau-Weiss</td>
+      <td>Rot-Schwarz</td>
+      <td>Grün-Weiss</td>
+    </tr>
+    <tr>
+      <th>Kleid unten</th>
+      <td>Blau-Weiss</td>
+      <td>Gelb-Schwarz</td>
+      <td>Grün-Schwarz</td>
+      <td>Rot-Weiss</td>
+    </tr>
+    <!-- nutzlos? -->
+    <tr>
+      <th>Zylinder-Geometrie</th>
+      <td>Oben</td>
+      <td>Unten</td>
+      <td>Aussen</td>
+      <td>Innen</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Jungian_cognitive_functions">Carl Jung</a></th>
+      <td>Ntuition</td>
+      <td>Sensation</td>
+      <td>Feeling</td>
+      <td>Thinking</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/MBTI">MBTI</a></th>
+      <td>INxx</td>
+      <td>ESxx</td>
+      <td>ENxx</td>
+      <td>ISxx</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Attachment_theory">Attachment Style</a></th>
+      <td>Balanced</td>
+      <td>Disorganized</td>
+      <td>Coercive</td>
+      <td>Avoidant</td>
+    </tr>
+    <!--
+      the strange situation
+      TODO beschreiben
+    -->
+    <tr>
+      <th>↳ Schreien: Anfang</th><!-- Stress Response -->
+      <td>früh</td>
+      <td>spät</td>
+      <td>früh</td>
+      <td>spät</td>
+    </tr>
+    <tr>
+      <th>↳ Schreien: Ende</th><!-- Stress Response -->
+      <td>früh</td>
+      <td>spät</td>
+      <td>spät</td>
+      <td>früh</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Parenting_styles">Parenting Style</a></th>
+      <td>Authorative</td><!-- fordern + helfen = aktiv -->
+      <td>Neglectful</td><!-- nichtfordern + nichthelfen = passiv -->
+      <td>Permissive</td><!-- nichtfordern + helfen = helfen -->
+      <td>Totalitarian</td><!-- fordern + nichthelfen = fordern -->
+    </tr>
+    <tr>
+      <th>Erziehungs-Stil</th>
+      <td>aktiv</td><!-- fordern + helfen = aktiv -->
+      <td>passiv</td><!-- nichtfordern + nichthelfen = passiv -->
+      <td>helfen</td><!-- nichtfordern + helfen = helfen -->
+      <td>fordern</td><!-- fordern + nichthelfen = fordern -->
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Somatotype">William Sheldon</a></th>
+      <td>mesomorph</td>
+      <td>mesomorph</td>
+      <td>endomorph</td>
+      <td>ectomorph</td>
+    </tr>
+    <!-- note: typ 3 kann auch "Mittelgewicht" sein wenn sportlich aktiv, aber nie "Leichtgewicht" -->
+    <tr>
+      <th>Gewichtsklasse</th>
+      <td>Mittelgewicht</td>
+      <td>Mittelgewicht</td>
+      <td>Schwergewicht</td>
+      <td>Leichtgewicht</td>
+    </tr>
+    <tr>
+      <th>Diät</th>
+      <td>Zone</td>
+      <td>Zone</td>
+      <td>LCHF, Keto</td>
+      <td>HCLF</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://flowgenomeproject.com/flow-profile">Flow Profile</a></th>
+      <td>Hard Charger</td>
+      <td>Flow Goer</td>
+      <td>Crowd Pleaser</td>
+      <td>Deep Thinker</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://healthtype.org/the-healthtypes/">Health Type</a></th>
+      <!--
+        Diplomat = 24
+        Activator = 13
+      -->
+      <td>Crusader</td>
+      <td>Guardian</td>
+      <td>Connector</td>
+      <td>Sensor</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://bc20questions.deloitte.com/">Business Chemistry</a></th>
+      <td>Driver</td>
+      <td>Guardian</td>
+      <td>Pioneer</td>
+      <td>Integrator</td>
+    </tr>
+    <!-- ähnlich: true colors: green blue orange gold = owl dolphin fox beaver -->
+    <!--
+    <tr>
+      <th><a class="nofootnote" href="https://tobias-beck.com/wp-content/uploads/2017/09/EV-PT.pdf">Tobias Beck</a></th>
+      <td>Hai</td>
+      <td>Wal</td>
+      <td>Delfin</td>
+      <td>Eule</td>
+    </tr>
+    -->
+    <!-- too broad, breaks layout
+    <tr>
+      <th><a class="nofootnote" href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a></th>
+      <td>liberal separatist</td>
+      <td>conservative separatist</td>
+      <td>liberal integrationist</td>
+      <td>conservative integrationist</td>
+    </tr>
+    -->
+    <tr>
+      <th><a class="nofootnote" href="https://hiresuccess.com/help/understanding-the-4-personality-types">Hire Success</a></th>
+      <td>Director</td>
+      <td>Supporter</td>
+      <td>Socializer</td>
+      <td>Thinker</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types">Richard Bartle</a></th>
+      <td>Killer</td>
+      <td>Explorer</td>
+      <td>Socializer</td>
+      <td>Achiever</td>
+    </tr>
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/The_Satanic_Bible">Anton LaVey</a></th>
+      <td>Satan</td><!-- justice -->
+      <td>Belial</td><!-- ritual --><!-- belial, bella, bell, bell-shape, pear-shape -->
+      <td>Lucifer</td><!-- philosophy -->
+      <td>Leviathan</td><!-- technique, algorithm, step-by-step instruction -->
+    </tr>
+    <!-- nobody wants to be Fascist ...
+    <tr>
+      <!-x- Hans Eysenck -x->
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Political_spectrum#Hans_Eysenck">Political Spectrum</a></th>
+      <td>Communist</td>
+      <td>Capitalist</td>
+      <td>Socialist</td>
+      <td>Fascist</td>
+    </tr>
+    -->
+    <tr>
+      <th>Simpsons</th>
+      <td>Marge</td>
+      <td>Homer</td>
+      <td>Bart</td>
+      <td>Lisa</td>
+    </tr>
+    <tr>
+      <th>South Park</th>
+      <td>Kenny</td>
+      <td>Stan</td>
+      <td>Cartman</td>
+      <td>Kyle</td>
+    </tr>
+    <!--
+      American Dad: alternative translation: 1234 = Steve Stan Francine Hayley, weil Hayley: emotional, untreu, schlampig, idealistisch, pazifistisch, "liberal". stan ist mehr realistisch, pragmatisch, "konservativ".
+      American Dad: alternative translation: 1234 = Steve Hayley Francine Stan, weil Stan = hightech?
+      https://americandad.fandom.com/wiki/Hayley_Smith
+    -->
+    <tr>
+      <th>American Dad</th>
+      <td>Steve</td>
+      <td>Stan</td>
+      <td>Francine</td>
+      <td>Hayley</td>
+    </tr>
+    <tr>
+      <th>Harry Potter</th>
+      <td>Gryffindor</td>
+      <td>Hufflepuff</td>
+      <td>Ravenclaw</td>
+      <td>Slytherin</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+<div class="para">
+  <b>Wer ist wer?</b>
+  Also: Wer hat welchen Persönlichkeitstyp?
+  Das sieht man an Verhalten und Körpertyp.
+</div>
+
+<div class="para">
+  Einfach zu sehen sind "dicke" Menschen (Typ 3)
+  und "dünne" Menschen (Typ 4).
+  <!--
+  (Ja ich weiss schon, ich bin voll oberflächlich.
+  Du kannst auch 10 Fragebögen ausfüllen,
+  wenn dir das mehr Spaß macht ...)
+  -->
+</div>
+
+<div class="para">
+  Typ 3 Menschen können schnell Gewicht zunehmen
+  (Aufbau von Fett und Muskeln),
+  vor allem wenn sie viele Kohlenhydrate essen,
+  und können dieses Gewicht nur langsam wieder abnehmen
+  (LCHF-Diät, Keto-Diät).
+  Typ 3 Rassen: Eskimos, Mongolen.
+  Typ 3 Menschen überleben hartes Klima, Landklima, lange kalte Winter.
+</div>
+
+<div class="para">
+  Typ 4 Menschen können nur langsam Gewicht zunehmen
+  (Hard Gainer) (kann viele Kohlenhydrate essen aber wird nicht dick),
+  und verlieren dieses Gewicht schnell wieder.
+  Typ 4 Menschen brauchen mildes Klima, Seeklima, kurze warme Winter.
+</div>
+
+<div class="para">
+  Typ 1 und Typ 2 haben ähnliche Körper,
+  beide sind "von Natur aus sportlich",
+  haben mittleres Gewicht,
+  können Gewicht zunehmen und abnehmen (mit etwas Mühe),
+  bevorzugen Übergangsklima (zwischen Seeklima und Landklima).
+  Typ 1 und Typ 2 unterscheiden sich stärker beim Verhalten.
+</div>
+
+<div class="para">
+  Typ 1 ist eher dominant, herrisch, grandios, überheblich, "männlich", arrogant, aggressiv.
+  Typ 2 ist eher subordiniert, unterwürfig, ängstlich, defensiv.
+</div>
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<div class="para">
+  <b>Subtypen:</b>
+
+  Neben den Vier Typen kennt die Psychologie auch Subtypen.
+
+  Ich glaube:
+  Jeder Typ hat 2 Subtypen.
+
+  Für diese Subtypen gibt es auch wieder verschiedene Namen.
+  Carl Jung: extravertiert ambivertiert introvertiert.
+  Astrologie: cardinal mutable fixed.
+
+  Der dritte Subtyp (ambivertiert, mutable) heisst:
+  die 2 Subtypen sind gleich stark.
+
+  Ich nutze die gleichen Namen für Grundtypen und Subtypen.
+</div>
+
+
+
+<!-- TODO fix table borders. css grid? -->
+
+<table class="four-basetypes">
+
+  <tbody>
+    <tr>
+      <th>Alchi</th>
+      <td>103</td>
+      <td>1</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>Carl Jung</th>
+      <td>Ne = extravertierte Ntuition</td>
+      <td>N = Ntuition</td>
+      <td>Ni = introvertierte Ntuition</td>
+    </tr>
+    <tr>
+      <th>Sternzeichen</th>
+      <td>Widder, Aries</td>
+      <td>Schütze, Sagittarius</td>
+      <td>Löwe, Leo</td>
+    </tr>
+    <tr>
+      <th>Modalität</th>
+      <td>cardinal Fire</td>
+      <td>mutable Fire</td>
+      <td>fixed Fire</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th>Alchi</th>
+      <td>203</td>
+      <td>2</td>
+      <td>204</td>
+    </tr>
+    <tr>
+      <th>Carl Jung</th>
+      <td>Se = extravertierte Sensation</td>
+      <td>S = Sensation</td>
+      <td>Si = introvertierte Sensation</td>
+    </tr>
+    <tr>
+      <th>Sternzeichen</th>
+      <td>Steinbock, Capricorn</td>
+      <td>Jungfrau, Virgo</td>
+      <td>Stier, Taurus</td>
+    </tr>
+    <tr>
+      <th>Modalität</th>
+      <td>cardinal Earth</td>
+      <td>mutable Earth</td>
+      <td>fixed Earth</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th>Alchi</th>
+      <td>301</td>
+      <td>3</td>
+      <td>302</td>
+    </tr>
+    <tr>
+      <th>Carl Jung</th>
+      <td>Fe = extravertiertes Fühlen</td>
+      <td>F = Fühlen</td>
+      <td>Fi = introvertiertes Fühlen</td>
+    </tr>
+    <tr>
+      <th>Sternzeichen</th>
+      <td>Waage, Libra</td>
+      <td>Zwillinge, Gemini</td>
+      <td>Wassermann, Aquarius</td>
+    </tr>
+    <tr>
+      <th>Modalität</th>
+      <td>cardinal Air</td>
+      <td>mutable Air</td>
+      <td>fixed Air</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th>Alchi</th>
+      <td>401</td>
+      <td>4</td>
+      <td>402</td>
+    </tr>
+    <tr>
+      <th>Carl Jung</th>
+      <td>Te = extravertiertes Denken</td>
+      <td>T = Denken</td>
+      <td>Ti = introvertiertes Denken</td>
+    </tr>
+    <tr>
+      <th>Sternzeichen</th>
+      <td>Krebs, Cancer</td>
+      <td>Fische, Pisces</td>
+      <td>Skorpion, Scorpius</td>
+    </tr>
+    <tr>
+      <th>Modalität</th>
+      <td>cardinal Water</td>
+      <td>mutable Water</td>
+      <td>fixed Water</td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+<div class="para">
+  Beispiel:
+  Mein Typ ist M104 = Mann, Grundtyp 1, Subtyp 4.
+  = introvertierte Ntuition bei Carl Jung.
+  Den Subtyp 4 sieht man auch an meinem Körper:
+  ich bin eher untergewichtig.
+  Mein anderer Subtyp wäre M103 = Mann, Grundtyp 1, Subtyp 3.
+  = extravertierte Ntuition bei Carl Jung.
+  Der dritte Subtyp (ambivertiert, mutable) heisst:
+  Beide Subtypen (M104 und M103) sind gleich stark,
+  dieser Typ heisst bei mir einfach M1 (oder M101).
+  = ambivertierte Ntuition bei Carl Jung.
+</div>
+
+
+<div class="para">
+  <b>Subtypen im Muster:</b>
+
+  Die Subtypen sieht man auch in meinem Muster.
+  Regel: "einen Schritt weiter".
+  Jeder Mensch hat 4 Freunde (in geraden Richtungen, nicht diagonal).
+  Wir gehen "einen Schritt weiter" und landen beim Subtyp.
+  Was heisst das?
+  Wenn ich zu einem meiner 4 Freunde passen will,
+  dann muss ich den Subtyp "spielen" der hinter diesem Freund liegt.
+</div>
+
+<div class="para">
+  Beispiel:
+  Ich bin M1, meine Freundin ist F3.
+  Damit wir zusammen passen, muss ich M104 spielen,
+  und sie muss F302 spielen.
+</div>
+
+<div class="center-x">
+  <svg class="foldme" title="Line of four" style="width:18em;margin:2em"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 200 800 200"
+    >
+    <style>
+      svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
+
+      .nofill {
+        fill: none;
+      }
+
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }
+
+    </style>
+
+    <g class="fig1">
+
+      <!-- start generated svg -->
+
+        <!-- variant: four squares, one cross -->
+        <path class="stroke nofill" d="
+          M 458 458 L 342 342
+          M 458 342 L 342 458
+          M 0 0 L 58 58
+          M 800 800 L 742 742
+          M 0 800 L 58 742
+          M 800 0 L 742 58
+          M 400 0 L 342 58
+          M 400 0 L 458 58
+          M 400 800 L 342 742
+          M 400 800 L 458 742
+          M 0 400 L 58 342
+          M 0 400 L 58 458
+          M 800 400 L 742 342
+          M 800 400 L 742 458
+
+          M 160 100 H 240
+          M 160 300 H 240
+          M 100 160 V 240
+          M 300 160 V 240
+
+          M 560 100 H 640
+          M 560 300 H 640
+          M 500 160 V 240
+          M 700 160 V 240
+
+          M 560 500 H 640
+          M 560 700 H 640
+          M 500 560 V 640
+          M 700 560 V 640
+
+          M 160 500 H 240
+          M 160 700 H 240
+          M 100 560 V 640
+          M 300 560 V 640
+        "/>
+
+        <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+          
+            <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="100" y="100" class="fillfg">F1L</text>
+
+            <circle cx="300" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="300" y="100" class="fillfg">M2L</text>
+
+            <circle cx="500" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="500" y="100" class="fillfg">F4L</text>
+
+            <circle cx="700" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="700" y="100" class="fillfg">M3L</text>
+
+            <!-- NOTE no age -->
+
+            <circle cx="100" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="100" y="300" class="fillfg">F2</text>
+
+            <circle cx="300" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="300" y="300" class="fillfg">M1</text>
+
+            <circle cx="500" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="500" y="300" class="fillfg">F3</text>
+
+            <circle cx="700" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="700" y="300" class="fillfg">M4</text>
+
+            <circle cx="100" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="100" y="500" class="fillfg">F3L</text>
+
+            <circle cx="300" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="300" y="500" class="fillfg">M4L</text>
+
+            <circle cx="500" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="500" y="500" class="fillfg">F2L</text>
+
+            <circle cx="700" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="700" y="500" class="fillfg">M1L</text>
+
+            <circle cx="100" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="100" y="700" class="fillfg">F4S</text>
+
+            <circle cx="300" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="300" y="700" class="fillfg">M3S</text>
+
+            <circle cx="500" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="500" y="700" class="fillfg">F1S</text>
+
+            <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+            <text x="700" y="700" class="fillfg">M2S</text>
+        </g>
+
+      <!-- end generated svg -->
+
+    </g>
+
+  </svg>
+</div>
+
+<div class="para">
+  <b>Kodierung:</b>
+
+  Die Null zwischen Grundtyp und Subtyp
+  ist ein Platzhalter für den Freund,
+  der mit diesem Subtyp zu mir passt.
+
+  Wenn ich schreibe "Typen 14"
+  (sprich: "Typen Eins Vier")
+  dann meine ich "Typ 1 oder Typ 4",
+  und NICHT den Subtyp 104 (sprich: "Subtyp Eins Null Vier").
+</div>
+
+<div class="para">
+  Wenn auf dem Muster zwei Menschen nebeneinander stehen
+  (Beispiel: M1 und F3 mit gleichem Alter),
+  und wenn die <b>Subtypen parallel</b> liegen (Beispiel: M104 und F302 = Pfeile in der Grafik),
+  dann passen diese zwei Menschen gut zusammen.
+</div>
+
+<div class="center-x">
+  <svg class="foldme" title="Subtypes with arrows" style="width:27em;margin:2em"
+    version="1.1" viewBox="0 200 1200 200"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <style>svg { --fg: black; --bg: white; } /* light mode */
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        .fig1 .stroke {
+          stroke-width: 2;
+          stroke: black; /* fallback when css variables are not supported */
+          stroke: var(--fg);
+        }
+
+        .nofill {
+          fill: none;
+        }
+
+        .fillbg {
+          fill: white;
+          fill: var(--bg);
+        }
+
+        .fillfg {
+          fill: black;
+          fill: var(--fg);
+        }</style>
+    <g class="fig1" transform="translate(200)">
+      <!-- start generated svg -->
+      <!-- variant: four squares, one cross -->
+      <g dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
+        <!-- NOTE no age -->
+        <circle class="stroke nofill" cx="100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="100" y="300">F2</text>
+        <circle class="stroke nofill" cx="300" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="300" y="300">M1</text>
+        <circle class="stroke nofill" cx="500" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="500" y="300">F3</text>
+        <circle class="stroke nofill" cx="700" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="700" y="300">M4</text>
+        <circle class="stroke nofill" cx="-100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="-100" y="300">M4</text>
+        <circle class="stroke nofill" cx="900" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <text class="fillfg" x="900" y="300">F2</text>
+        <g id="g5966">
+          <!-- arrow head. workaround for chrome. inkscape arrow head is not working: <path marker-end="url(#Arrow2Mend)"> -->
+          <path transform="translate(-163 .63606)" d="m804.78 227.38 11.784 25.491-25.491-11.784c7.0239-1.0689 12.543-6.6222 13.707-13.707z" fill-rule="evenodd" fill="#000" stroke="#000" stroke-linejoin="round" stroke-width=".11963"/>
+          <!-- arrow line -->
+          <path d="m342.43 257.57c67.307-67.307 241.07-74.076 308.38-6.7697" fill="none" stroke="#000" stroke-width="2"/>
+        </g>
+        <use id="use6288" transform="rotate(180 300 300)" width="100%" height="100%" xlink:href="#g5966"/>
+        <use transform="translate(199.99)" width="100%" height="100%" xlink:href="#g5966"/>
+        <use transform="translate(200)" width="100%" height="100%" xlink:href="#use6288"/>
+      </g>
+      <!-- end generated svg -->
+    </g>
+  </svg>
+</div>
+
+<div class="para">
+  Forschungs-Fragen:
+  Was passiert, wenn die Subtypen orthogonal liegen? (Beispiel: M104 und F301)
+  Was passiert, wenn die Subtypen parallel liegen aber mit Abstand? (Beispiel: M103 und F301)
 </div>
 
 <div class="para">
@@ -1824,6 +2756,10 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 <div class="para">
   asdf
 </div>
+
+
+
+<hr>
 
 
 
@@ -1836,7 +2772,7 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   Die Folge: globale Übervölkerung.
   Also weltweit gibt es zu viele Menschen.
 
-  Dieses Problem ist bekannt spätestens seit 1980
+  Dieses Problem ist bekannt seit über 40 Jahren
   (Georgia Guidestones: Gebot 1:
   Halte die Bevölkerung unter 100 Millionen.)
 
@@ -1846,6 +2782,13 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   Kein Strom, kein Wasser, kein Essen, keine Heizung.
   Drei Tage später herrscht Anarchie.
   Wann? Winter 2022.
+  <!--
+    holodomor = hungertod = kein Essen
+  -->
+</div>
+
+<div class="para">
+  <b>Letzter Wille:</b>
 
   Stell dir vor, du hast noch 5 Monate zum Leben,
   und musst dann sterben.
@@ -1863,11 +2806,6 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 
 
 
-<hr>
-
-
-
-<!-- page 4 -->
 
 <div class="para">
   asdf
@@ -2556,318 +3494,6 @@ moved
   calendar-astrology is obviously wrong.
 -->
 
-<!--
-  more translations
-  TODO copy to book appendix
-  https://milahu.github.io/alchi/src/alchi-tables/alchi-tables.html
--->
-<table class="four-basetypes" style="margin-top:0.5em">
-  <tbody>
-    <tr>
-      <th>Typ Nummer</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-    <!--
-      element ist schön weil kurz.
-      "feuer mann" sagt sicht leichter als
-      "typ eins mann" oder
-      "vordenker mann" oder
-      "handwerker mann" oder
-      "linkshirn mann" oder
-      ...
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Classical_element">Element</a></th>
-      <td>Feuer</td>
-      <td>Erde</td>
-      <td>Luft</td>
-      <td>Wasser</td>
-    </tr>
-    <tr>
-      <th>Rolle</th>
-      <td>Vordenker</td>
-      <td>Nachmacher</td>
-      <td>Vormacher</td>
-      <td>Nachdenker</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
-      <td>Handwerker</td>
-      <td>Händler</td>
-      <td>Redner</td><!-- TODO better. Prediger? Redner? -->
-      <td>Denker</td>
-    </tr>
-    <tr>
-      <th>Interesse</th><!-- hauptberuf = grundtyp -->
-      <td>Gerechtigkeit</td>
-      <td>Gewohnheit</td><!-- ritual, routine, wiederholung, tradition -->
-      <td>Philosophie</td>
-      <td>Technik</td>
-    </tr>
-    <!--
-    <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
-      <td>Warrior</td>
-      <td>Lover</td>
-      <td>Magician</td>
-      <td>King</td>
-    </tr>
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
-      <td>Kämpfer</td>
-      <td>Liebhaber</td>
-      <td>Magier</td>
-      <td>König</td>
-    </tr>
-    <!--
-      <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
-      <td>Determined</td>
-      <td>Sensitive</td>
-      <td>Funny</td>
-      <td>Serious</td>
-    </tr>
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
-      <td>Willensstark</td>
-      <!--
-        rilke - panther:
-        Der weiche Gang geschmeidig starker Schritte,
-        der sich im allerkleinsten Kreise dreht,
-        ist wie ein Tanz von Kraft um eine Mitte,
-        in der betäubt ein großer Wille steht.
-        "wille zur macht" ... "geborener könig" ... "dominant" ... "hausherr"
-      -->
-      <td>Sensibel</td>
-      <td>Lustig</td>
-      <td>Ernst</td>
-    </tr>
-    <tr>
-      <th>Finger</th>
-      <td>Mittel</td>
-      <td>Klein</td>
-      <td>Ring</td>
-      <td>Zeige</td>
-    </tr>
-    <tr>
-      <th>Körperteil</th>
-      <td>Linkes Hirn</td>
-      <td>Rechte Hand</td>
-      <td>Linke Hand</td>
-      <td>Rechtes Hirn</td>
-    </tr>
-    <!--
-      https://en.wikipedia.org/wiki/Playing_card_suit#Character_encodings
-      french suit: Heart Pike Clover Tile
-      french suit: Heart Spade Club Diamond
-      german suit: Heart Leaf Bell Acorn
-      swiss suit: Rose Shield Bell Acorn
-      latin suit: Cup Sword Coin Club
-      latin suit: Coppa Spada Denaro Bastone
-      latin suit: Kelch Schwert Gold Schlagstock
-      french white: ♡ ♤ ♧ ♢
-      french black: ♥ ♠ ♣ ♦
-    -->
-    <tr>
-      <th>Körperform</th>
-      <td>Herz ♡</td>
-      <td>Birne ♤</td>
-      <td>Breit ♧</td>
-      <td>Lang ♢</td>
-    </tr>
-    <tr>
-      <th>Kleid oben</th>
-      <td>Gelb</td>
-      <td>Blau</td>
-      <td>Rot</td>
-      <td>Grün</td>
-    </tr>
-    <tr>
-      <th>Kleid unten</th>
-      <td>Blau</td>
-      <td>Gelb</td>
-      <td>Grün</td>
-      <td>Rot</td>
-    </tr>
-    <tr>
-      <th>Zylinder-Geometrie</th>
-      <td>Oben</td>
-      <td>Unten</td>
-      <td>Aussen</td>
-      <td>Innen</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Jungian_cognitive_functions">Carl Jung</a></th>
-      <td>Ntuition</td>
-      <td>Sensation</td>
-      <td>Feeling</td>
-      <td>Thinking</td>
-    </tr>
-    <!--
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/MBTI">MBTI</a></th>
-      <td>INxx</td>
-      <td>ESxx</td>
-      <td>ENxx</td>
-      <td>ISxx</td>
-    </tr>
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Attachment_theory">Attachment Style</a></th>
-      <td>Balanced</td>
-      <td>Disorganized</td>
-      <td>Coercive</td>
-      <td>Avoidant</td>
-    </tr>
-    <tr>
-      <th>↳ Schreien: Anfang</th><!-- Stress Response -->
-      <td>früh</td>
-      <td>spät</td>
-      <td>früh</td>
-      <td>spät</td>
-    </tr>
-    <tr>
-      <th>↳ Schreien: Ende</th><!-- Stress Response -->
-      <td>früh</td>
-      <td>spät</td>
-      <td>spät</td>
-      <td>früh</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Parenting_styles">Parenting Style</a></th>
-      <td>Authorative</td>
-      <td>Neglectful</td>
-      <td>Permissive</td>
-      <td>Totalitarian</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Somatotype">William Sheldon</a></th>
-      <td>mesomorph</td>
-      <td>mesomorph</td>
-      <td>endomorph</td>
-      <td>ectomorph</td>
-    </tr>
-    <!-- note: typ 3 kann auch "Mittelgewicht" sein wenn sportlich aktiv, aber nie "Leichtgewicht" -->
-    <tr>
-      <th>Gewichtsklasse</th>
-      <td>Mittelgewicht</td>
-      <td>Mittelgewicht</td>
-      <td>Schwergewicht</td>
-      <td>Leichtgewicht</td>
-    </tr>
-    <tr>
-      <th>Diät: Carb + Fat</th>
-      <td>Mid + Mid</td>
-      <td>Mid + Mid</td>
-      <td>Low + High</td>
-      <td>High + Low</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://flowgenomeproject.com/flow-profile">Flow Profile</a></th>
-      <td>Hard Charger</td>
-      <td>Flow Goer</td>
-      <td>Crowd Pleaser</td>
-      <td>Deep Thinker</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://bc20questions.deloitte.com/">Business Chemistry</a></th>
-      <td>Driver</td>
-      <td>Guardian</td>
-      <td>Pioneer</td>
-      <td>Integrator</td>
-    </tr>
-    <!-- ähnlich: true colors: green blue orange gold = owl dolphin fox beaver -->
-    <!--
-    <tr>
-      <th><a class="nofootnote" href="https://tobias-beck.com/wp-content/uploads/2017/09/EV-PT.pdf">Tobias Beck</a></th>
-      <td>Hai</td>
-      <td>Wal</td>
-      <td>Delfin</td>
-      <td>Eule</td>
-    </tr>
-    -->
-    <!-- too broad, breaks layout
-    <tr>
-      <th><a class="nofootnote" href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a></th>
-      <td>liberal separatist</td>
-      <td>conservative separatist</td>
-      <td>liberal integrationist</td>
-      <td>conservative integrationist</td>
-    </tr>
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://hiresuccess.com/help/understanding-the-4-personality-types">Hire Success</a></th>
-      <td>Director</td>
-      <td>Supporter</td>
-      <td>Socializer</td>
-      <td>Thinker</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types">Richard Bartle</a></th>
-      <td>Killer</td>
-      <td>Explorer</td>
-      <td>Socializer</td>
-      <td>Achiever</td>
-    </tr>
-    <tr>
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/The_Satanic_Bible">Anton LaVey</a></th>
-      <td>Satan</td><!-- justice -->
-      <td>Belial</td><!-- ritual --><!-- belial, bella, bell, bell-shape, pear-shape -->
-      <td>Lucifer</td><!-- philosophy -->
-      <td>Leviathan</td><!-- technique, algorithm, step-by-step instruction -->
-    </tr>
-    <!-- nobody wants to be Fascist ...
-    <tr>
-      <!-x- Hans Eysenck -x->
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Political_spectrum#Hans_Eysenck">Political Spectrum</a></th>
-      <td>Communist</td>
-      <td>Capitalist</td>
-      <td>Socialist</td>
-      <td>Fascist</td>
-    </tr>
-    -->
-    <tr>
-      <th>Simpsons</th>
-      <td>Marge</td>
-      <td>Homer</td>
-      <td>Bart</td>
-      <td>Lisa</td>
-    </tr>
-    <tr>
-      <th>South Park</th>
-      <td>Kenny</td>
-      <td>Stan</td>
-      <td>Cartman</td>
-      <td>Kyle</td>
-    </tr>
-    <!--
-      American Dad: alternative translation: 1234 = Steve Stan Francine Hayley, weil Hayley: emotional, untreu, schlampig, idealistisch, pazifistisch, "liberal". stan ist mehr realistisch, pragmatisch, "konservativ".
-      American Dad: alternative translation: 1234 = Steve Hayley Francine Stan, weil Stan = hightech?
-      https://americandad.fandom.com/wiki/Hayley_Smith
-    -->
-    <tr>
-      <th>American Dad</th>
-      <td>Steve</td>
-      <td>Stan</td>
-      <td>Francine</td>
-      <td>Hayley</td>
-    </tr>
-    <tr>
-      <th>Harry Potter</th>
-      <td>Gryffindor</td>
-      <td>Hufflepuff</td>
-      <td>Ravenclaw</td>
-      <td>Slytherin</td>
-    </tr>
-
-  </tbody>
-</table>
-
 
 <!-- #################################################### -->
 
@@ -2913,11 +3539,6 @@ moved
 </div>
 
 
-<hr>
-
-<p>
-please ignore this page for printing
-</p>
 
 
 
@@ -3739,8 +4360,10 @@ please ignore this page for printing
           overflowAmount() {
               const contentH = this.content.offsetHeight;
               const boxH = this.element.offsetHeight;
-              if (boxH === 0)
+              if (boxH === 0) {
+                  console.log('overflowAmount: this.element', this.element);
                   throw Error('Regionizer: Trying to flow into an element with zero height.');
+              }
               return contentH - boxH;
           }
           hasOverflowed() {
