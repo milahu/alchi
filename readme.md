@@ -62,12 +62,12 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
-* book: [Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german
-* dorfkultur.html (german): [github](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html), [gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html)
-* alchi-maps html: [github](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html#A1_e/bxfoto_s+m_1110_0_en_np)
-* alchi-book html: [github](https://milahu.github.io/alchi/src/alchi-book/build/)
-  * rewrite: [whoaremyfriends.html](https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html)
-* alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - combination of multiple personality tests, show result with the four elements (four basetypes)
+* book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
+* flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html))
+* visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html))
+* book: [Pallas. Extended Families and Small States](https://milahu.github.io/alchi/src/alchi-book/build/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/))
+  * rewrite: [Who are my friends? Team composition by personality type](https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/whoaremyfriends.html))
+* personality test: [alchi-test](https://milahu.github.io/alchi/src/alchi-test/public/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/)). combination of multiple personality tests (mostly Big Five), returns result in the four elements (four basetypes)
 
 <details>
 
