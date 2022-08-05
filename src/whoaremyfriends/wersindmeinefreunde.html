@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-07-28">
+  <meta id="version" name="dcterms.modified" content="2022-08-05">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -264,6 +264,22 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       outline: solid 1px red;
     }
     */
+
+    /* <div class="annotation" */
+    div.annotation {
+      display: inline;
+      background: rgba(255, 255, 0, 0.4); /* transparent yellow */
+      cursor: pointer;
+    }
+    div.annotation:hover {
+      background: rgba(255, 255, 0, 0.6); /* transparent yellow */
+    }
+    @media print {
+      div.annotation {
+        background: none;
+      }
+    }
+
     .bindery-print-sheet {
       height: auto !important; /* workaround https://github.com/evnbr/bindery/issues/109 */
     }
@@ -410,6 +426,14 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     inlined at end of file
     <script src="./node_modules/bindery/dist/bindery.umd.js"></script>
   -->
+
+  <script>
+    function clickAnnotation(element) {
+      const text = element.getAttribute("title");
+      console.log(text);
+      alert(text); // TODO show pretty modal
+    }
+  </script>
 
   <script title="binderyOptions" class="foldme">
 
@@ -606,12 +630,65 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <!-- page 2 -->
 
 <div class="para">
-  <b>Wer sind meine Freunde?</b>
+  <b>
+    <div class="annotation" onClick="clickAnnotation(this)" title='
+      <div class="para">
+        Objektiv gesehen gibt es zwei Antworten.
+
+        Idealisten sagen:
+        Meine Freunde sind die Menschen,
+        die ich mag,
+
+        Idealismus oder Realismus.
+
+        Fühlen oder Denken.
+      </div>
+
+      <div class="para">
+        Wer seine Freunde "fühlt" der entscheidet selber
+        (Selbstwert, Sensor, Führer, liberal, emotional,
+        Persönliche Gründe, innere Gründe).
+      </div>
+
+      <div class="para">
+        Wer seine Freunde "denkt" der lässt Andere entscheiden
+        (Fremdwert, Memor, Folger, konservativ,
+        rational, Sachgründe, äussere Gründe).
+        <!-x- spam
+        Solche "Denker" verteidigen ihre "Führer",
+        und wenn ich auf Abwehr stoße,
+        dann fordere ich:
+        Bring mich zu deinem Führer!
+        Du hast keinen?
+        Dann suchen wir deinen Führer : )
+        -x->
+      </div>
+
+      <div class="para">
+        Fühlen oder Denken?
+        Beide sind wichtig,
+        aber ich als Gefühlsmensch sage:
+        "erst Fühlen, dann Denken".
+        Also Fühlen ist Grundlage zum Denken.
+        Das ist meine <b>subjektive Weltsicht</b>,
+        und jeder Mensch hat seine subjektive Weltsicht.
+        Wenn zwei Hypothesen streiten, dann soll man beide testen.
+        <!-x- spam
+        Wenn zwei sich streiten, dann soll man wetten.
+
+        (Nur tote Menschen sind objektiv, neutral, grau.)
+        -x->
+      </div>
+    '>Wer</div>
+
+    sind meine Freunde?
+  </b>
 
   Die Frage klingt einfach,
   aber scheinbar ist die Frage so kompliziert,
   dass die Psychologie bis heute
   keine Antwort hat.
+
   Stichworte:
   <a href="https://en.wikipedia.org/wiki/Interpersonal_compatibility">Interpersonal Compatibility</a>,
   <a href="https://en.wikipedia.org/wiki/Team_composition">Team Composition</a>.
@@ -619,63 +696,44 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Nur wenige Weltbilder geben eine Antwort,
-  zum Beispiel Astrologie und Sozionik
-  machen Vorhersagen zur Kompatibilität zwischen Persönlichkeitstypen.
+  zum Beispiel
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    Astrologie:
+    Falsch ist der Schluss von Geburtstag auf Persönlichkeitstyp.
+
+    Weil:
+    Persönlichkeitstypen sind zufällig verteilt.
+
+    Weil:
+    Wie funktioniert dieses System für Menschen,
+    wo der Geburtstag nicht bekannt ist?
+
+    Weil:
+    Geburtstag und Kalender sind Produkte von Hochkultur,
+    also dieses System hätte vor 10 Millionen Jahren nicht funktioniert.
+  '>Astrologie</div>
+
+  und Sozionik
+  machen
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    TODO 16personalities macht Vorhersagen zur Kompatibilität
+  '>Vorhersagen</div>
+
+  zur Kompatibilität zwischen Persönlichkeitstypen.
+
   Aber das ist mir zu ungenau.
+
   Ich suche ein mathematisch exaktes System,
   mit dem ich <b>freiwillige Beziehungen</b>
   erklären und vorhersagen kann.
 </div>
 
-<!--
 <div class="para">
-  Objektiv gesehen gibt es zwei Antworten.
-
-  Idealisten sagen:
-  Meine Freunde sind die Menschen,
-  die ich mag,
-
-  Idealismus oder Realismus.
-
-  Fühlen oder Denken.
+  TODO ich suche eine "ganzheitliche" theorie zur anwendung in arbeitsleben UND privatleben.
+  eine schwäche von organisationspsychologie ist die beschränkung aufs arbeitsleben.
 </div>
-
-<div class="para">
-  Wer seine Freunde "fühlt" der entscheidet selber
-  (Selbstwert, Sensor, Führer, liberal, emotional,
-  Persönliche Gründe, innere Gründe).
-</div>
-
-<div class="para">
-  Wer seine Freunde "denkt" der lässt Andere entscheiden
-  (Fremdwert, Memor, Folger, konservativ,
-  rational, Sachgründe, äussere Gründe).
-  <!-x- spam
-  Solche "Denker" verteidigen ihre "Führer",
-  und wenn ich auf Abwehr stoße,
-  dann fordere ich:
-  Bring mich zu deinem Führer!
-  Du hast keinen?
-  Dann suchen wir deinen Führer : )
-  -x->
-</div>
-
-<div class="para">
-  Fühlen oder Denken?
-  Beide sind wichtig,
-  aber ich als Gefühlsmensch sage:
-  "erst Fühlen, dann Denken".
-  Also Fühlen ist Grundlage zum Denken.
-  Das ist meine <b>subjektive Weltsicht</b>,
-  und jeder Mensch hat seine subjektive Weltsicht.
-  Wenn zwei Hypothesen streiten, dann soll man beide testen.
-  <!-x- spam
-  Wenn zwei sich streiten, dann soll man wetten.
-
-  (Nur tote Menschen sind objektiv, neutral, grau.)
-  -x->
-</div>
--->
 
 <div class="para">
   Also, "Wer sind meine Freunde?",
@@ -1011,13 +1069,47 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   dann sind sie Feinde.
 </div>
 
+
+
 <div class="para">
   Feinde brauchen <b>gemeinsame Freunde</b>
   für ein gesundes Zusammenleben (soziale Gesundheit, gesunde Gruppe).
 
   Wenn zwei Feinde direkt zusammen leben,
   dann gibt es immer wieder Missverständnisse,
-  und jeder findet automatisch alles scheisse,
+  und jeder findet automatisch alles
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    "Nein! Das bleibt hier alles so wies ist!"
+    Okay Andreas.
+    <!-x- Okay <a href="https://youtu.be/gy39bTYYWs4">Andreas</a>. -x->
+    Schön für dich.
+    Wenn ein Mensch sich wehrt gegen gut-gemeinte Ratschläge,
+    dann hat das oft <b>Persönliche Gründe</b>.
+    Dann zählt nicht "Was" einer sagt, sondern "Wer" etwas sagt.
+    Zarathustra: "Ich bin nicht der Mund für diese Ohren."
+    Echte Freunde.
+    Geistige Nähe.
+
+
+
+    Geistige Freundschaft.
+
+    "Freundschaft" klingt zu konkret.
+    Kompatibilität ist etwas theoretisches,
+    das "schon da" sein kann,
+    aber auch "noch nicht da" sein kann.
+    Auch wenn zwei menschen sich noch nie gesehen haben,
+    können sie trotzdem kompatibel sein.
+
+
+
+    Geist-Verwandtschaft.
+    Soulmates.
+    Sympathie.
+    Kompatibilität.
+  '>scheisse,</div>
+
   was der andere sagt und macht (<b>Persönliche Gründe</b>),
   egal wie gut gemeint (Sachgründe).
   Zarathustra: "Ich bin nicht der Mund für diese Ohren."
@@ -1029,39 +1121,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Geistige Nähe,
   Geist-Verwandte,
   Soulmates,
+  Attraktion,
+  Anziehung,
+  Schönheit,
   Sympathie,
   Kompatibilität,
   ...
 </div>
-
-<!--
-  "Nein! Das bleibt hier alles so wies ist!"
-  Okay Andreas.
-  <!-x- Okay <a href="https://youtu.be/gy39bTYYWs4">Andreas</a>. -x->
-  Schön für dich.
-  Wenn ein Mensch sich wehrt gegen gut-gemeinte Ratschläge,
-  dann hat das oft <b>Persönliche Gründe</b>.
-  Dann zählt nicht "Was" einer sagt, sondern "Wer" etwas sagt.
-  Zarathustra: "Ich bin nicht der Mund für diese Ohren."
-  Echte Freunde.
-  Geistige Nähe.
-  <!-x-
-    Geistige Freundschaft.
-
-    "Freundschaft" klingt zu konkret.
-    Kompatibilität ist etwas theoretisches,
-    das "schon da" sein kann,
-    aber auch "noch nicht da" sein kann.
-    Auch wenn zwei menschen sich noch nie gesehen haben,
-    können sie trotzdem kompatibel sein.
-  -x->
-  Geist-Verwandtschaft.
-  Soulmates.
-  Sympathie.
-  Kompatibilität.
--->
-
-
 
 <div class="para">
   Was passiert am <b>Rand</b> vom Muster?
@@ -1108,21 +1174,92 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Ich hoffe, das Muster stimmt für alle Menschen.
   Wenn es stimmt, dann ist das Muster
   eine Grundlage für eine <b>bessere Welt</b>:
-  Freunde sind nah, Feinde sind fern,
+
+  Freunde sind
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    fernbeziehungen sind eine grundlage für das aktuelle (kranke) system.
+    das aktuelle (kranke) system basiert auf fernbeziehungen.
+
+
+
+    was ist mein ziel?
+    was bringt mein konzept / meine idee?
+    gerechtigkeit bei der verteilung von persönlichkeitstypen.
+    also nicht nur eine "frauenquote"
+    sondern gerechtigkeit in allen 4 dimensionen:
+    körper-geschlecht körper-alter hirn-geschlecht hirn-alter.
+    und sowieso:
+    freiwillige beziehungen, romantik, idealismus,
+    schüler dürfen ihre lehrer wählen, jeder darf lehrer sein ...
+    ultimative ketzerei : D
+
+    LAPAZ - KRKA (Albumsnippet No.1)
+    https://www.youtube.com/watch?v=Hu-CGPwk8nQ&list=UUk_9P4OTbU0lVWSoh16BQuw&index=6
+
+
+
+    gottkomplex, megalomaniac, grandiose narciss, typ 1.
+
+    Manchmal fragt ihr euch ob Gott verrückt ist 
+    Aber was wollt ihr tun, wenn Gott zurück ist? 
+
+    DJ Tomekk - Return Of Hip Hop (feat. Torch, KRS-One, MC Rene)
+
+
+
+    worst case:
+    meine theorie ist falsch.
+    dann haben wir riskiert und verloren.
+    dann haben wir energie verschwendet (research cost, Research and Development Expense).
+
+    best case:
+    meine theorie ist richtig.
+    dann haben wir riskiert und gewonnen.
+    dann haben wir eine wichtige grundlage für eine bessere welt.
+
+
+
+    https://www.youtube.com/watch?v=G87XDHw2lOE&list=UUk_9P4OTbU0lVWSoh16BQuw&index=19
+    LAPAZ - HÖCHSTE ZEIT (PROD. BY VINTAGEMAN PRODUKCJA)
+
+    > nicht mehr lang bis sich unser aller König zeigt, Jesus Christ dem Teufel geht der Arsch auf Eis
+
+    definiere könig, definiere gott, definiere teufel ... für mich nur synonyme für persönlichkeitstypen. (nur was ich auch anfassen kann ist real. pragmatik. results culture.)
+
+    nur ... who is who? wer ist welcher typ? mein typ? dein typ? sein typ? kein typ?
+
+    eine frage ist ja auch:
+    abeite ich für tote götter?
+    oder abeite ich für lebende götter?
+
+    hirnfick-fragen, ich weiss schon : D
+    der schmale grat zwischen genie und wahn.
+
+    viele menschen suchen einen schutzherr,
+    der seine arbeit besser macht als der aktuelle "vater staat".
+    also ein neues system, ein besseres system.
+
+    auch dafür hab ich meine theorie geschrieben:
+    als anleitung zum aufbau von kleinstaaten.
+
+    mein "gott" der für alle gilt heisst naturordnung
+    (naturgesetze, physik, naturkonstanten, freiwillige beziehungen).
+
+    --
+
+    Manchmal fragt ihr euch, ob Gott verrückt ist 
+    Aber was wollt ihr tun, wenn Gott zurück ist? 
+
+    DJ Tomekk - Return Of Hip Hop (feat. Torch, KRS-One, MC Rene)
+
+  '>nah,</div>
+
+  Feinde sind fern,
   jeder darf seine Stärke leben,
   jeder darf seine Schwächen delegieren an seine Freunde.
 </div>
 
-
-
-<!--
-TODO avoid overflow from page to page
-<hr>
--->
-
-
-
-<!-- page 3 -->
 
 
 <div class="para">
@@ -1168,10 +1305,6 @@ TODO avoid overflow from page to page
 
 
 
-<!-- TODO avoid overflow from page to page -->
-
-
-
 <div class="para">
   Schritt eins
   ist das <b>Bilden von Zweier-Gruppen</b> (Paare).<br>
@@ -1188,15 +1321,6 @@ TODO avoid overflow from page to page
 
 
 
-<!--
-TODO avoid overflow from page to page
-<hr>
--->
-
-
-
-<!-- page 3 -->
-
 <div class="para">
   Zweier-Gruppen sind einfach.
   Man hat etwas gemeinsam,
@@ -1208,11 +1332,14 @@ TODO avoid overflow from page to page
   Aber unser Ziel ist NICHT der Aufbau von blutverwandte Kleinfamilien
   ("wir machen zwei Kinder"),
   sondern der Aufbau von <b>geistverwandte Kleinfamilien</b>
-  ("wir suchen gemeinsame Freunde", Adoption, geistige Vermehrung, schlaue Lösung).
-  <!--
+  ("wir suchen gemeinsame Freunde",
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
     schnelle lösung: freunde suchen = geistverwandte.
     langsame lösung: kinder machen = blutverwandte.
-  -->
+  '>Adoption,</div>
+  
+  geistige Vermehrung, schlaue Lösung).
 </div>
 
 
@@ -1362,8 +1489,6 @@ TODO avoid overflow from page to page
 
   </svg>
 </div>
-
-
 
 
 
@@ -1567,24 +1692,14 @@ TODO avoid overflow from page to page
 
 
 
-<!-- TODO avoid overflow from page 4 to page 5 -->
-
-
-
-<!-- page 5 -->
-
 <div class="para">
   Wie genau funktioniert der Partnertausch?
   Das weiss ich noch nicht,
   und das werden wir im Experiment sehen.
   Ich glaube:
-  Vierer-Gruppen "schwingen" immer zwischen
-  Horizontal-Paare und Vertikal-Paare.
+  Vierer-Gruppen
 
-  Ob und wie die Diagonal-Paare funktionieren,
-  weiss ich noch nicht.
-
-  <!--
+  <div class="annotation" onClick="clickAnnotation(this)" title='
     "schwingen" ... "swinger" ...
     partnertausch beim sex.
     sex ist immer so ein tabu-thema,
@@ -1593,10 +1708,231 @@ TODO avoid overflow from page to page
     hygiene: monogamie zum vermeiden von geschlechtskrankheiten.
     übervölkerung: sex-tabu zum bremsen der vermehrung.
     natürliche hierarchie: es gibt immer einen besten partner -> natürliche monogamie.
-  -->
+  '>"schwingen"</div>
+
+  immer zwischen
+  Horizontal-Paare und Vertikal-Paare.
 </div>
 
+<div class="para">
+  TODO
+  exodus. brain drain.
+  alle guten laufen weg.
+  übrig bleibt nur der abschaum.
+  die karavane zieht weiter.
+  wertvolle menschen rekrutieren:
+  schöne, schlaue, starke, high value male, high value female.
+  arche noah.
+</div>
 
+<div class="para">
+  TODO
+  schönheit ist subjektiv.
+  kompatibilität = schönheit = attraktion.
+</div>
+
+<div class="center-x">
+
+  <svg id="alchi-peer-exchange-partnertausch" style="height:8em; margin-top:1em"
+    viewBox="-17 -21 296 117"
+    version="1.1"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg">
+    <defs
+      id="defs32" />
+    <g
+      font-size="14.19px"
+      font-family="sans-serif"
+      text-anchor="middle"
+      dominant-baseline="mathematical"
+      stroke-width="1"
+      fill="none"
+      stroke="#000000"
+      id="g379"
+      transform="translate(-76.5,-108.5)">
+      <g
+        id="g1171"
+        transform="translate(197.12646,110)">
+        <rect
+          x="43"
+          y="-3"
+          width="114"
+          height="78"
+          stroke-dasharray="1, 2"
+          id="rect337" />
+        <path
+          transform="translate(118)"
+          d="M 18,0 14.4,3.6 H 3.6 V 14.4 L 7.2,18 3.6,21.6 V 32.4 H 14.4 L 18,36 21.6,32.4 H 32.4 V 21.6 L 28.8,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path341" />
+        <path
+          transform="translate(46)"
+          d="M 18,7.2 14.4,3.6 H 3.6 V 14.4 L 0,18 3.6,21.6 v 10.8 h 10.8 l 3.6,-3.6 3.6,3.6 H 32.4 V 21.6 L 36,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path343" />
+        <path
+          transform="translate(46,36)"
+          d="M 18,0 14.4,3.6 H 3.6 V 14.4 L 7.2,18 3.6,21.6 V 32.4 H 14.4 L 18,36 21.6,32.4 H 32.4 V 21.6 L 28.8,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path345" />
+        <path
+          transform="translate(118,36)"
+          d="M 18,7.2 14.4,3.6 H 3.6 V 14.4 L 0,18 3.6,21.6 v 10.8 h 10.8 l 3.6,-3.6 3.6,3.6 H 32.4 V 21.6 L 36,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path347" />
+        <g
+          id="g1147">
+          <text
+            fill="#000000"
+            y="16"
+            x="64"
+            id="text357"
+            style="stroke:none">MS</text>
+          <text
+            fill="#000000"
+            y="16"
+            x="136"
+            id="text359"
+            style="stroke:none">FS</text>
+          <text
+            fill="#000000"
+            y="52"
+            x="136"
+            id="text361"
+            style="stroke:none">FL</text>
+          <text
+            fill="#000000"
+            y="52"
+            x="64"
+            id="text363"
+            style="stroke:none">ML</text>
+        </g>
+      </g>
+      <g
+        id="g1159">
+        <rect
+          x="61"
+          y="89"
+          width="78"
+          height="114"
+          stroke-dasharray="1, 2"
+          id="rect339" />
+        <path
+          transform="translate(100,92)"
+          d="M 18,0 14.4,3.6 H 3.6 V 14.4 L 7.2,18 3.6,21.6 V 32.4 H 14.4 L 18,36 21.6,32.4 H 32.4 V 21.6 L 28.8,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path349" />
+        <path
+          transform="translate(64,92)"
+          d="M 18,7.2 14.4,3.6 H 3.6 V 14.4 L 0,18 3.6,21.6 v 10.8 h 10.8 l 3.6,-3.6 3.6,3.6 H 32.4 V 21.6 L 36,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path351" />
+        <path
+          transform="translate(64,164)"
+          d="M 18,0 14.4,3.6 H 3.6 V 14.4 L 7.2,18 3.6,21.6 V 32.4 H 14.4 L 18,36 21.6,32.4 H 32.4 V 21.6 L 28.8,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path353" />
+        <path
+          transform="translate(100,164)"
+          d="M 18,7.2 14.4,3.6 H 3.6 V 14.4 L 0,18 3.6,21.6 v 10.8 h 10.8 l 3.6,-3.6 3.6,3.6 H 32.4 V 21.6 L 36,18 32.4,14.4 V 3.6 H 21.6 Z"
+          id="path355" />
+        <g
+          id="g1141">
+          <text
+            fill="#000000"
+            y="108"
+            x="118"
+            id="text365"
+            style="stroke:none">FS</text>
+          <text
+            fill="#000000"
+            y="108"
+            x="82"
+            id="text367"
+            style="stroke:none">MS</text>
+          <text
+            fill="#000000"
+            y="180"
+            x="82"
+            id="text369"
+            style="stroke:none">ML</text>
+          <text
+            fill="#000000"
+            y="180"
+            x="118"
+            id="text371"
+            style="stroke:none">FL</text>
+        </g>
+      </g>
+      <g
+        id="g1057"
+        transform="translate(-1.663659)">
+        <g
+          id="g887"
+          transform="translate(-21.947936,2.6004907)">
+          <g
+            id="g879"
+            transform="translate(23.189266,-2.6004833)">
+            <path
+              d="m 172.3006,136.72979 h 35.36992"
+              id="path375" />
+            <path
+              style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round"
+              d="m 204.67052,139.72979 3,-3 -3,-3"
+              id="path7847" />
+          </g>
+          <use
+            x="0"
+            y="0"
+            xlink:href="#g879"
+            id="use881"
+            transform="matrix(-1,0,0,1,426.34965,18.540421)" />
+        </g>
+      </g>
+    </g>
+  </svg>
+
+</div>
+
+<div class="para">
+  Hier zeige ich Menschen als Puzzel-Teile.
+  <div class="nowrap">Nase nach Innen</div>
+  = <div class="nowrap">introvertierter Subtyp</div>.
+  <div class="nowrap">Nase nach Aussen</div>
+  = <div class="nowrap">extravertierter Subtyp</div>.
+  Die Bindungen sind "Monolog-Bindungen":
+  Ein Bindungs-Partner spielt "Seher und Redner" (unsichtbar und taub),
+  der andere Bindungs-Partner spielt "Hörer und Zeiger" (stumm und blind).
+</div>
+
+<div class="para">
+  Ich glaube:
+  Es gibt eine Verbindung zwischen Subtyp und Bindungs-Partner.
+  Diese Verbindung geht in beide Richtungen:
+  Ein bestimmter Subtyp wirkt als Mating Call
+  für einen bestimmten Bindungs-Partner.
+  Und andersrum:
+  Ein bestimmter Bindungs-Partner (Mate Presence)
+  aktiviert einen bestimmten Subtyp.
+</div>
+
+<div class="para">
+  Ich glaube:
+  Nur wenige Menschen haben ein Gleichgewicht
+  zwischen ihren 2 Subtypen.
+  Die meisten Menschen sind "spezialisiert" auf einen Subtyp
+  (Stärke, mehr Erfahrung),
+  und der andere Subtyp ist
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    Sozial-Therapie.
+    Ziel:
+    Jeder soll beide seiner Subtypen spielen.
+    = mutable modality (wechselhafte Modalität) in der Astrologie.
+
+    Anfang der Therapie:
+    Paare bilden,
+    Vierer-Gruppen bilden.
+  '>schwächer.</div>
+</div>
+
+<div class="para">
+  Ob und wie die Diagonal-Paare funktionieren,
+  weiss ich noch nicht. Diagonal-Paare: MS-FL und FS-ML.
+</div>
 
 <div class="para">
   Schritt drei ist das <b>Wechseln zwischen Vierer-Gruppen</b>.
@@ -1610,9 +1946,17 @@ TODO avoid overflow from page to page
 
 <div class="para">
   Die Verbindung aus Kreuz und Quadrat heisst "Pallas".
-  Es ist eine Verbindung von Gegensätzen,
-  <!-- conjunctio oppositorum -->
+  Es ist eine Verbindung von Gegensätzen (conjunctio oppositorum),
   so wie "Tag und Nacht".
+  Das Pallas-Symbol verbindet 7 Punkte
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    Der Anfangs-Buchstabe P von Pallas
+    ist der 16. Buchstabe im Alphabet
+    (immer diese Zufälle ...)
+
+    G ist der 16. Buchstabe im Hexadezimal-Alphabet (0123 4567 89AB CDEF G)
+  '>(Glückszahl 7).</div>
 </div>
 
 
@@ -1814,7 +2158,20 @@ TODO avoid overflow from page to page
 
 
 
-<div class="para">
+<div class="para" data-comment='
+  "F2 ist besser zum Ficken und Schlafen"
+  "Ficken" klingt grob, dreckig.
+  aber ich brauche ein tunwort, verb,
+  als kontrast zu "Reden und Arbeiten".
+
+  "meine 2 Frauen sind F2 und F3"
+  ich glaube:
+  jeder mensch braucht 2 partner.
+  beide partner haben gleiches alter und anderes geschlecht.
+  auch hier können wir vierer-gruppen bauen:
+  alle vier haben gleiches alter.
+  2 männer und 2 frauen.
+'>
   Was ist der Unterschied zwischen Kreuz- und Quadrat-Gruppen?
   Das weiss ich noch nicht,
   und das werden wir im Experiment sehen.
@@ -2024,107 +2381,6 @@ TODO avoid overflow from page to page
 </div>
 
 
-
-<!--
-
-Der Begriff Polyamorie beschreibt das
-Gegenteil des Konzepts der Monogamie, also der Paarbeziehung.
-In polyamoren Beziehungen gehen also
-mehrere Personen eine Liebesbeziehung miteinander ein.
-Palyamorie ist gekennzeichnet von
-Konsens und Gleichberechtigung.
-
-Prinzipiell wird die Zulässigkeit der Polygamie
-häufig auf den Koran Vers 4:3 zurückgeführt,
-der Männern grundsätzlich mehrere Frauen erlaube,
-wenn sie sich um alle kümmern können.
-Historikerinnen und Historiker sehen den Ursprung
-aber eher im siebten Jahrhundert:
-Während der Kriege im arabischen Raum
-wurden wohl viele Witwen und Waisen auf diese Art aufgefangen.
-Und bis heute sind die polygamen Muslime besonders dort zu finden,
-wo vor allem junge Männer keine hohe Lebenserwartung haben.
-
-Koran Sure 4: an-Nisa (Die Frauen)
-Vers 3:
-Und wenn ihr befürchtet,
-nicht gerecht hinsichtlich der Waisen zu handeln,
-dann heiratet, was euch an Frauen gut scheint,
-zwei, drei oder vier.
-Wenn ihr aber befürchtet, nicht gerecht zu handeln,
-dann (nur) eine oder was eure rechte Hand besitzt.
-Das ist eher geeignet, daß ihr nicht ungerecht seid.
-
-https://www.mdr.de/wissen/polygamie-partnerbeziehungen-mehrere-menschen-weltweit-ausnahme-100.html
-
-
-
-
-
-Abgrenzung Polyamorie & offene Beziehung 
-
-Weil bei Polyamorie immer Gefühle
-mit im Spiel sein dürfen und sogar sein sollen,
-ist dieser Beziehungstypus  keineswegs „unkomplizierter“
-als eine monogame Beziehung, sondern in erster Linie „anders“.
-
-Polyamorie: Vorteile und Nachteile
-
-Mehreren engen Bezugspersonen
-zärtlich und emotional verbunden zu sein,
-kann entlastend wirken.
-Sorgen und Nöte werden gemeinsam aufgefangen,
-schöne Erlebnisse können sich intensiver anfühlen,
-wenn sie mit mehreren Personen geteilt werden. 
-
-Polyamorie ist entlastend
-
-Ist ein Partner eher introvertiert
-und verbringt die Abende am liebsten kuschelnd auf dem Sofa,
-kann ein anderer wiederum der perfekte Begleiter für Abenteuer sein.
-Niemand in der Dreier-, Vierer- oder Fünfer-Beziehung steht unter Zugzwang,
-in jeder Hinsicht Präsenz zu zeigen und alles leisten zu müssen.
-Dadurch kann ein Gefühl großer Gelassenheit und Akzeptanz entstehen,
-das die Beziehung, aber auch den Alltag aller Beteiligten ungemein entspannt. 
-
-Polyamorie ist abwechslungsreich
-
-Auch der Faktor Abwechslung spielt für Menschen,
-die sich für Polyamorie entscheiden, eine große Rolle.
-Sie berichten mir in der Paartherapie
-in meiner Praxis in München häufig davon,
-dass sich zwischen Arbeit und Familie
-zu viel Routine in ihre Beziehung eingeschlichen hat.
-Es fehlt an Spannung und der Distanz,
-die nötig ist, damit wieder Leidenschaft entsteht.
-
-Polyamorie ist herausfordernd
-
-In einer polyamorösen Beziehung
-sind demgegenüber naturgemäß
-mehr Abwechslung und mehr Freiheit vorhanden
-– das geht aber möglicherweise auch
-mit einem gewissen Konkurrenzdruck und Eifersucht einher.
-
-Polyamorie braucht Austausch
-
-Um solche Konflikte zu bewältigen,
-ist ein offener Austausch
-gerade in polyamorösen Konstellationen unerlässlich.
-Zu wissen, dass der geliebte Partner
-nicht nur mit jemand anderem schläft,
-sondern mit dieser Person auch noch tiefe Gefühle
-und intimste Momente teilt, ist nicht einfach.
-Auch ein noch so liberales Weltbild schützt nicht davor,
-in gewissen Situationen
-in eine Gedankenspirale und Streit zu geraten. 
-
-https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-beziehung/
-
-
-
--->
-
 <div class="para">
   <b>Vier Typen:</b>
 
@@ -2139,19 +2395,65 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   also jeder Autor hat seinen Namensraum (namespace).
 </div>
 
-
-
-
-
 <div class="para">
-  Vier Typen: Hier ein paar Übersetzungen:
-</div>
+  Vier Typen:
+  Hier ein paar
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    TODO more text. add a short description to every name.
 
-<!--
-  more translations
-  TODO copy to book appendix
-  https://milahu.github.io/alchi/src/alchi-tables/alchi-tables.html
--->
+    TODO more translations from
+    https://milahu.github.io/alchi/src/alchi-tables/alchi-tables.html
+
+    ähnlich: true colors: green blue orange gold = owl dolphin fox beaver
+    <tr>
+      <th><a class="nofootnote" href="https://tobias-beck.com/wp-content/uploads/2017/09/EV-PT.pdf">Tobias Beck</a></th>
+      <td>Hai</td>
+      <td>Wal</td>
+      <td>Delfin</td>
+      <td>Eule</td>
+    </tr>
+
+    too broad, breaks layout
+    <tr>
+      <th><a class="nofootnote" href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a></th>
+      <td>liberal separatist</td>
+      <td>conservative separatist</td>
+      <td>liberal integrationist</td>
+      <td>conservative integrationist</td>
+    </tr>
+
+    nutzlos
+    <tr>
+      <th>Körperteil</th>
+      <td>Linkes Hirn</td>
+      <td>Rechte Hand</td>
+      <td>Linke Hand</td>
+      <td>Rechtes Hirn</td>
+    </tr>
+
+    https://en.wikipedia.org/wiki/Playing_card_suit#Character_encodings
+    french suit: Heart Pike Clover Tile
+    french suit: Heart Spade Club Diamond
+    german suit: Heart Leaf Bell Acorn
+    swiss suit: Rose Shield Bell Acorn
+    latin suit: Cup Sword Coin Club
+    latin suit: Coppa Spada Denaro Bastone
+    latin suit: Kelch Schwert Gold Schlagstock
+    french white: ♡ ♤ ♧ ♢
+    french black: ♥ ♠ ♣ ♦
+
+    nobody wants to be Fascist ...
+    <tr>
+      <!-x- Hans Eysenck -x->
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Political_spectrum#Hans_Eysenck">Political Spectrum</a></th>
+      <td>Communist</td>
+      <td>Capitalist</td>
+      <td>Socialist</td>
+      <td>Fascist</td>
+    </tr>
+
+  '>Übersetzungen:</div>
+</div>
 
 <table class="four-basetypes nowrap" style="margin-top:1em; margin-bottom:1em">
   <tbody>
@@ -2162,18 +2464,19 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>3</td>
       <td>4</td>
     </tr>
-    <!--
-      element ist schön weil kurz.
-      "feuer mann" sagt sicht leichter als
-      "typ eins mann" oder
-      "vordenker mann" oder
-      "handwerker mann" oder
-      "linkshirn mann" oder
-      ...
-    -->
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Classical_element">Element</a></th>
-      <td>Feuer</td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          element ist schön weil kurz.
+          "feuer mann" sagt sicht leichter als
+          "typ eins mann" oder
+          "vordenker mann" oder
+          "handwerker mann" oder
+          "linkshirn mann" oder
+          ...
+        '>Feuer</div>
+      </td>
       <td>Erde</td>
       <td>Luft</td>
       <td>Wasser</td>
@@ -2189,52 +2492,53 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
       <td>Handwerker</td>
       <td>Händler</td>
-      <td>Redner</td><!-- TODO better. Prediger? Redner? -->
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          TODO better? Redner, Prediger, Idealist, ...
+        '>Redner</div>
+      </td>
       <td>Denker</td>
     </tr>
     <tr>
-      <th>Interesse</th><!-- hauptberuf = grundtyp -->
+      <th>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Interesse = hauptberuf = grundtyp
+        '>Interesse</div>
+      </th>
       <td>Gerechtigkeit</td>
-      <td>Gewohnheit</td><!-- ritual, routine, wiederholung, tradition -->
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Gewohnheit, ritual, routine, wiederholung, tradition
+        '>Gewohnheit</div>
+      </td>
       <td>Philosophie</td>
       <td>Technik</td>
     </tr>
-    <!--
     <tr>
       <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
-      <td>Warrior</td>
-      <td>Lover</td>
-      <td>Magician</td>
-      <td>King</td>
-    </tr>
-    -->
-    <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Robert+Moore+-+King+Warrior+Magician+Lover">Robert Moore</a></th>
-      <td>Kämpfer</td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          original: 1234 = Warrior Lover Magician King
+        '>Kämpfer</div>
+      </td>
       <td>Liebhaber</td>
       <td>Magier</td>
       <td>König</td>
     </tr>
-    <!--
-      <tr>
-      <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
-      <td>Determined</td>
-      <td>Sensitive</td>
-      <td>Funny</td>
-      <td>Serious</td>
-    </tr>
-    -->
     <tr>
       <th><a class="nofootnote" href="https://libgen.rs/search.php?req=Carol+Tuttle+-+The+Child+Whisperer">Carol Tuttle</a></th>
-      <td>Willensstark</td>
-      <!--
-        rilke - panther:
-        Der weiche Gang geschmeidig starker Schritte,
-        der sich im allerkleinsten Kreise dreht,
-        ist wie ein Tanz von Kraft um eine Mitte,
-        in der betäubt ein großer Wille steht.
-        "wille zur macht" ... "geborener könig" ... "dominant" ... "hausherr"
-      -->
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          original: 1234 = Determined Sensitive Funny Serious
+
+          rilke - panther:
+          Der weiche Gang geschmeidig starker Schritte,
+          der sich im allerkleinsten Kreise dreht,
+          ist wie ein Tanz von Kraft um eine Mitte,
+          in der betäubt ein großer Wille steht.
+          -> "wille zur macht" ... "geborener könig" ... "dominant" ... "hausherr"
+        '>Willensstark</div>
+      </td>
       <td>Sensibel</td>
       <td>Lustig</td>
       <td>Ernst</td>
@@ -2246,27 +2550,6 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Ring</td>
       <td>Zeige</td>
     </tr>
-    <!-- nutzlos
-    <tr>
-      <th>Körperteil</th>
-      <td>Linkes Hirn</td>
-      <td>Rechte Hand</td>
-      <td>Linke Hand</td>
-      <td>Rechtes Hirn</td>
-    </tr>
-    -->
-    <!--
-      https://en.wikipedia.org/wiki/Playing_card_suit#Character_encodings
-      french suit: Heart Pike Clover Tile
-      french suit: Heart Spade Club Diamond
-      german suit: Heart Leaf Bell Acorn
-      swiss suit: Rose Shield Bell Acorn
-      latin suit: Cup Sword Coin Club
-      latin suit: Coppa Spada Denaro Bastone
-      latin suit: Kelch Schwert Gold Schlagstock
-      french white: ♡ ♤ ♧ ♢
-      french black: ♥ ♠ ♣ ♦
-    -->
     <tr>
       <th>Körperform</th>
       <td>Herz ♡</td>
@@ -2288,7 +2571,6 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Grün-Schwarz</td>
       <td>Rot-Weiss</td>
     </tr>
-    <!-- nutzlos? -->
     <tr>
       <th>Zylinder-Geometrie</th>
       <td>Oben</td>
@@ -2296,11 +2578,13 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Aussen</td>
       <td>Innen</td>
     </tr>
-    <!--
-      Jahreszeit (<a class="nofootnote" href="https://en.wikipedia.org/wiki/Baum_test">Baum-Test</a>)
-    -->
     <tr>
-      <th>Jahreszeit</th>
+      <th>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Jahreszeit,
+          <a class="nofootnote" href="https://en.wikipedia.org/wiki/Baum_test">Baum-Test</a>
+        '>Jahreszeit</div>
+      </th>
       <td>Herbst</td>
       <td>Frühling</td>
       <td>Sommer</td>
@@ -2315,10 +2599,10 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/MBTI">MBTI</a></th>
-      <td>INxx</td>
-      <td>ESxx</td>
-      <td>ENxx</td>
-      <td>ISxx</td>
+      <td>INTP</td>
+      <td>ESFJ</td>
+      <td>ENFP</td>
+      <td>ISTJ</td>
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Attachment_theory">Attachment Style</a></th>
@@ -2327,19 +2611,23 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Coercive</td>
       <td>Avoidant</td>
     </tr>
-    <!--
-      the strange situation
-      TODO beschreiben
-    -->
     <tr>
-      <th>↳ Schreien: Anfang</th><!-- Stress Response -->
+      <th>
+        ↳
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Stress Response
+          the strange situation
+          TODO beschreiben
+        '>Schreien:</div>
+        Anfang
+      </th>
       <td>früh</td>
       <td>spät</td>
       <td>früh</td>
       <td>spät</td>
     </tr>
     <tr>
-      <th>↳ Schreien: Ende</th><!-- Stress Response -->
+      <th>↳ Schreien: Ende</th>
       <td>früh</td>
       <td>spät</td>
       <td>spät</td>
@@ -2347,17 +2635,25 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Parenting_styles">Parenting Style</a></th>
-      <td>Authorative</td><!-- fordern + helfen = aktiv -->
-      <td>Neglectful</td><!-- nichtfordern + nichthelfen = passiv -->
-      <td>Permissive</td><!-- nichtfordern + helfen = helfen -->
-      <td>Totalitarian</td><!-- fordern + nichthelfen = fordern -->
+      <td>Authorative</td>
+      <td>Neglectful</td>
+      <td>Permissive</td>
+      <td>Totalitarian, Autoritarian</td>
     </tr>
     <tr>
       <th>Erziehungs-Stil</th>
-      <td>aktiv</td><!-- fordern + helfen = aktiv -->
-      <td>passiv</td><!-- nichtfordern + nichthelfen = passiv -->
-      <td>helfen</td><!-- nichtfordern + helfen = helfen -->
-      <td>fordern</td><!-- fordern + nichthelfen = fordern -->
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          1 = aktiv = viel fordern + viel helfen
+          2 = passiv = wenig fordern + wenig helfen
+          3 = helfen = wenig fordern + viel helfen
+          4 = fordern = viel fordern + wenig helfen
+        '>aktiv</div>
+      </td>
+      <td>aktiv</td>
+      <td>passiv</td>
+      <td>helfen</td>
+      <td>fordern</td>
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Somatotype">William Sheldon</a></th>
@@ -2366,12 +2662,15 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>endomorph</td>
       <td>ectomorph</td>
     </tr>
-    <!-- note: typ 3 kann auch "Mittelgewicht" sein wenn sportlich aktiv, aber nie "Leichtgewicht" -->
     <tr>
       <th>Gewichtsklasse</th>
       <td>Mittelgewicht</td>
       <td>Mittelgewicht</td>
-      <td>Schwergewicht</td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          typ 3 kann auch "Mittelgewicht" sein wenn sportlich aktiv, aber nie "Leichtgewicht"
+        '>Schwergewicht</div>
+      </td>
       <td>Leichtgewicht</td>
     </tr>
     <tr>
@@ -2390,11 +2689,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://healthtype.org/the-healthtypes/">Health Type</a></th>
-      <!--
-        Diplomat = 24
-        Activator = 13
-      -->
-      <td>Crusader</td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Diplomat = types 24
+          Activator = types 13
+        '>Crusader</div>
+      </td>
       <td>Guardian</td>
       <td>Connector</td>
       <td>Sensor</td>
@@ -2406,25 +2706,6 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Pioneer</td>
       <td>Integrator</td>
     </tr>
-    <!-- ähnlich: true colors: green blue orange gold = owl dolphin fox beaver -->
-    <!--
-    <tr>
-      <th><a class="nofootnote" href="https://tobias-beck.com/wp-content/uploads/2017/09/EV-PT.pdf">Tobias Beck</a></th>
-      <td>Hai</td>
-      <td>Wal</td>
-      <td>Delfin</td>
-      <td>Eule</td>
-    </tr>
-    -->
-    <!-- too broad, breaks layout
-    <tr>
-      <th><a class="nofootnote" href="http://bcn.boulder.co.us/~neal/uu/globalization/lerner-5C.html">circular paradigm</a></th>
-      <td>liberal separatist</td>
-      <td>conservative separatist</td>
-      <td>liberal integrationist</td>
-      <td>conservative integrationist</td>
-    </tr>
-    -->
     <tr>
       <th><a class="nofootnote" href="https://hiresuccess.com/help/understanding-the-4-personality-types">Hire Success</a></th>
       <td>Director</td>
@@ -2441,21 +2722,23 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/The_Satanic_Bible">Anton LaVey</a></th>
-      <td>Satan</td><!-- justice -->
-      <td>Belial</td><!-- ritual --><!-- belial, bella, bell, bell-shape, pear-shape -->
-      <td>Lucifer</td><!-- philosophy -->
-      <td>Leviathan</td><!-- technique, algorithm, step-by-step instruction -->
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          Anton LaVey: interest: 1234 = justice ritual philosophy technique
+        '>Satan</div>
+      </td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          belial, bella, bell, bell-shape, pear-shape
+        '>Belial</div>
+      </td>
+      <td>Lucifer</td>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          technique, algorithm, step-by-step instruction
+        '>Leviathan</div>
+      </td>
     </tr>
-    <!-- nobody wants to be Fascist ...
-    <tr>
-      <!-x- Hans Eysenck -x->
-      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Political_spectrum#Hans_Eysenck">Political Spectrum</a></th>
-      <td>Communist</td>
-      <td>Capitalist</td>
-      <td>Socialist</td>
-      <td>Fascist</td>
-    </tr>
-    -->
     <tr>
       <th>Simpsons</th>
       <td>Marge</td>
@@ -2470,13 +2753,14 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Cartman</td>
       <td>Kyle</td>
     </tr>
-    <!--
-      American Dad: alternative translation: 1234 = Steve Stan Francine Hayley, weil Hayley: emotional, untreu, schlampig, idealistisch, pazifistisch, "liberal". stan ist mehr realistisch, pragmatisch, "konservativ".
-      American Dad: alternative translation: 1234 = Steve Hayley Francine Stan, weil Stan = hightech?
-      https://americandad.fandom.com/wiki/Hayley_Smith
-    -->
     <tr>
-      <th>American Dad</th>
+      <th>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          American Dad: alternative translation: 1234 = Steve Stan Francine Hayley, weil Hayley: emotional, untreu, schlampig, idealistisch, pazifistisch, "liberal". stan ist mehr realistisch, pragmatisch, "konservativ".
+          American Dad: alternative translation: 1234 = Steve Hayley Francine Stan, weil Stan = hightech?
+          https://americandad.fandom.com/wiki/Hayley_Smith
+        '>American Dad</div>
+      </th>
       <td>Steve</td>
       <td>Stan</td>
       <td>Francine</td>
@@ -2515,29 +2799,32 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 </div>
 
 <div class="para">
-  Also: Wer ist wer?
+  Also:
+  
+  Wer ist 
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    am liebsten würde ich diese frage delegieren mit
+    "bitte geh selber psychologie studieren"
+    aber das dauert zu lange und ist mühsam.
+    also muss ich hier zumindest einen überblick geben.
+
+    typen sind grundlage:  
+    meine theorie funktioniert nur dann
+    wenn wir die typen richtig schätzen.
+  '>wer?</div>
+
   Das sehen wir an Verhalten und Körperform.
 </div>
 
-<!--
-  am liebsten würde ich diese frage delegieren mit
-  "bitte geh selber psychologie studieren"
-  aber das dauert zu lange und ist mühsam.
-  also muss ich hier zumindest einen überblick geben.
-
-  typen sind grundlage:  
-  meine theorie funktioniert nur dann
-  wenn wir die typen richtig schätzen.
--->
-
 <div class="para">
   Einfach zu sehen sind "dicke" Menschen (Typ 3)
-  und "dünne" Menschen (Typ 4).
-  <!--
-  (Ja ich weiss schon, ich bin voll oberflächlich.
-  Du kannst auch 10 Fragebögen ausfüllen,
-  wenn dir das mehr Spaß macht ...)
-  -->
+  und
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    (Ja ich weiss schon, ich bin voll oberflächlich.
+    Du kannst auch 10 Fragebögen ausfüllen,
+    wenn dir das mehr Spaß macht ...)
+  '>"dünne"</div>
+  Menschen (Typ 4).
 </div>
 
 <div class="para">
@@ -2697,15 +2984,13 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   Ich frage: Wer sind deine Freunde? Wer sind deine Feinde?
   Dann schließe ich von Beziehungen auf den Persönlichkeitstyp,
   weil mein Muster funktioniert in beide Richtungen.
-  Sprich: "<b>Zeig mir deine Freunde</b>, und ich sag dir wer du bist."
-  <!-- spam
-  Auch diese Analyse kann man komplett passiv machen,
-  ohne Einmischen, nur durch Beobachten ... aber so gehts langsamer.
-  -->
+  Sprich: "<b>Zeig mir deine Freunde</b>, und ich sag dir wer du
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    Auch diese Analyse kann man komplett passiv machen,
+    ohne Einmischen, nur durch Beobachten ... aber so gehts langsamer.
+  '>bist."</div>
 </div>
-
-
-
 
 <div class="para">
   <b>Subtypen:</b>
@@ -2731,13 +3016,15 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 
 
 
-<!-- TODO fix table borders. css grid? -->
-
 <table class="four-basetypes" style="margin-top:1em;margin-bottom:1em">
 
   <tbody>
     <tr>
-      <th>Alchi</th>
+      <th>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          TODO fix table borders. css grid?
+        '>Alchi</div>
+      </th>
       <td>103</td>
       <td>1</td>
       <td>104</td>
@@ -2747,6 +3034,37 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Ne = extravertierte Ntuition</td>
       <td>N = Ntuition</td>
       <td>Ni = introvertierte Ntuition</td>
+    </tr>
+    <tr>
+      <th>MBTI</th>
+      <td>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          https://www.reddit.com/r/mbti/comments/ds3r3o/decoding_mbti_four_elements_alchemy_physiognomy/
+
+          translation:
+
+          MBTI letters 12 = basetype
+          MBTI letters 34 = subtype
+
+          MBTI letter 1:
+          I = Introversion = male brain = types 14
+          E = Extraversion = female brain = types 23
+
+          MBTI letter 2:
+          N = iNtuition = young brain = types 13
+          S = Sensing = old brain = types 24
+
+          MBTI letter 3:
+          T = Thinking = male brain = types 14
+          F = Feeling = female brain = types 23
+
+          MBTI letter 4:
+          P = Perceiving = young brain = types 13
+          J = Judging = old brain = types 24
+        '>INFP</div>
+      </td>
+      <td>INTP, ENTJ, ISFP</td>
+      <td>INTJ</td>
     </tr>
     <tr>
       <th>Sternzeichen</th>
@@ -2759,6 +3077,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>cardinal Fire</td>
       <td>mutable Fire</td>
       <td>fixed Fire</td>
+    </tr>
+    <tr>
+      <th>Feiertag</th>
+      <td>20.8. (August)</td>
+      <td>20.9. (September)</td>
+      <td>20.10. (Oktober)</td>
     </tr>
   </tbody>
 
@@ -2776,6 +3100,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Si = introvertierte Sensation</td>
     </tr>
     <tr>
+      <th>MBTI</th>
+      <td>ESFP</td>
+      <td>ESFJ, ENTJ, ISFP</td>
+      <td>ESTJ</td>
+    </tr>
+    <tr>
       <th>Sternzeichen</th>
       <td>Steinbock, Capricorn</td>
       <td>Jungfrau, Virgo</td>
@@ -2786,6 +3116,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>cardinal Earth</td>
       <td>mutable Earth</td>
       <td>fixed Earth</td>
+    </tr>
+    <tr>
+      <th>Feiertag</th>
+      <td>20.4. (April)</td>
+      <td>20.3. (März)</td>
+      <td>20.2. (Februar)</td>
     </tr>
   </tbody>
 
@@ -2803,6 +3139,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Fi = introvertiertes Fühlen</td>
     </tr>
     <tr>
+      <th>MBTI</th>
+      <td>ENTP</td>
+      <td>ENFP, INFJ, ESTP</td>
+      <td>ENFJ</td>
+    </tr>
+    <tr>
       <th>Sternzeichen</th>
       <td>Waage, Libra</td>
       <td>Zwillinge, Gemini</td>
@@ -2813,6 +3155,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>cardinal Air</td>
       <td>mutable Air</td>
       <td>fixed Air</td>
+    </tr>
+    <tr>
+      <th>Feiertag</th>
+      <td>20.7. (Juli)</td>
+      <td>20.6. (Juni)</td>
+      <td>20.5. (Mai)</td>
     </tr>
   </tbody>
 
@@ -2830,6 +3178,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>Ti = introvertiertes Denken</td>
     </tr>
     <tr>
+      <th>MBTI</th>
+      <td>ISTP</td>
+      <td>ISTJ, INFJ, ESTP</td>
+      <td>ISFJ</td>
+    </tr>
+    <tr>
       <th>Sternzeichen</th>
       <td>Krebs, Cancer</td>
       <td>Fische, Pisces</td>
@@ -2840,6 +3194,12 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
       <td>cardinal Water</td>
       <td>mutable Water</td>
       <td>fixed Water</td>
+    </tr>
+    <tr>
+      <th>Feiertag</th>
+      <td>20.11. (November)</td>
+      <td>20.12. (Dezember)</td>
+      <td>20.1. (Januar)</td>
     </tr>
   </tbody>
 
@@ -3038,10 +3398,23 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 <div class="para">
   Wenn auf dem Muster zwei Menschen nebeneinander stehen
   (Beispiel: M1 und F3 mit gleichem Alter),
-  und wenn die <b>Subtypen parallel</b> liegen (Beispiel: M104 und F302 = Pfeile in der Grafik),
-  dann passen diese zwei Menschen gut zusammen.
+  und wenn die <b>Subtypen parallel</b> liegen
+  (Beispiel: M104 und F302 = Pfeile in der Grafik),
+  dann passen diese zwei Menschen gut zusammen (starke Dialog-Bindung).
   Die zwei Menschen "umarmen" einander mit ihren Subtypen,
-  ähnlich wie im Yin-Yang-Symbol.
+  ähnlich wie im Yin-Yang Symbol
+  (Yin-Yang = Frau-Mann = passiv-aktiv = Schwarz-Weiss = Schatten-Licht).
+</div>
+
+<div class="para">
+  Schwachstelle:
+  Die Schwachstelle an meinem System ist
+  das richtige Schätzen von Persönlichkeitstypen.
+  Dafür gibt es mehrere Wege:
+  Selbsteinschätzung (Wer bin ich?),
+  Fremdeinschätzung (Wer bist du?),
+  Körperform (Knochen-Proportionen, Fettverteilung, Gewicht),
+  Verhalten (Stressreaktion, Bindungsverhalten).
 </div>
 
 <div class="center-x">
@@ -3119,9 +3492,111 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 
 <div class="para">
   Forschungs-Fragen:
-  Was passiert, wenn die Subtypen orthogonal liegen? (Beispiel: M104 und F301)
-  Was passiert, wenn die Subtypen parallel liegen aber mit Abstand? (Beispiel: M103 und F301)
-  Wie gut funktioniert Polyamorie in gleichalten Vierer-Gruppen? (Beispiel: F2-M1-F3-M4)
+  Was passiert, wenn die Subtypen orthogonal liegen?
+  (Beispiel: M104 und F301. schwache Monolog-Bindung?)
+
+  Was passiert, wenn die Subtypen mit Abstand parallel liegen?
+  (Beispiel: M103 und F301)
+
+  Wie gut funktioniert
+  
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+
+    Der Begriff Polyamorie beschreibt das
+    Gegenteil des Konzepts der Monogamie, also der Paarbeziehung.
+    In polyamoren Beziehungen gehen also
+    mehrere Personen eine Liebesbeziehung miteinander ein.
+    Palyamorie ist gekennzeichnet von
+    Konsens und Gleichberechtigung.
+
+    Prinzipiell wird die Zulässigkeit der Polygamie
+    häufig auf den Koran Vers 4:3 zurückgeführt,
+    der Männern grundsätzlich mehrere Frauen erlaube,
+    wenn sie sich um alle kümmern können.
+    Historikerinnen und Historiker sehen den Ursprung
+    aber eher im siebten Jahrhundert:
+    Während der Kriege im arabischen Raum
+    wurden wohl viele Witwen und Waisen auf diese Art aufgefangen.
+    Und bis heute sind die polygamen Muslime besonders dort zu finden,
+    wo vor allem junge Männer keine hohe Lebenserwartung haben.
+
+    Koran Sure 4: an-Nisa (Die Frauen)
+    Vers 3:
+    Und wenn ihr befürchtet,
+    nicht gerecht hinsichtlich der Waisen zu handeln,
+    dann heiratet, was euch an Frauen gut scheint,
+    zwei, drei oder vier.
+    Wenn ihr aber befürchtet, nicht gerecht zu handeln,
+    dann (nur) eine oder was eure rechte Hand besitzt.
+    Das ist eher geeignet, daß ihr nicht ungerecht seid.
+
+    https://www.mdr.de/wissen/polygamie-partnerbeziehungen-mehrere-menschen-weltweit-ausnahme-100.html
+
+
+
+    Abgrenzung Polyamorie & offene Beziehung 
+
+    Weil bei Polyamorie immer Gefühle
+    mit im Spiel sein dürfen und sogar sein sollen,
+    ist dieser Beziehungstypus  keineswegs „unkomplizierter“
+    als eine monogame Beziehung, sondern in erster Linie „anders“.
+
+    Polyamorie: Vorteile und Nachteile
+
+    Mehreren engen Bezugspersonen
+    zärtlich und emotional verbunden zu sein,
+    kann entlastend wirken.
+    Sorgen und Nöte werden gemeinsam aufgefangen,
+    schöne Erlebnisse können sich intensiver anfühlen,
+    wenn sie mit mehreren Personen geteilt werden. 
+
+    Polyamorie ist entlastend
+
+    Ist ein Partner eher introvertiert
+    und verbringt die Abende am liebsten kuschelnd auf dem Sofa,
+    kann ein anderer wiederum der perfekte Begleiter für Abenteuer sein.
+    Niemand in der Dreier-, Vierer- oder Fünfer-Beziehung steht unter Zugzwang,
+    in jeder Hinsicht Präsenz zu zeigen und alles leisten zu müssen.
+    Dadurch kann ein Gefühl großer Gelassenheit und Akzeptanz entstehen,
+    das die Beziehung, aber auch den Alltag aller Beteiligten ungemein entspannt. 
+
+    Polyamorie ist abwechslungsreich
+
+    Auch der Faktor Abwechslung spielt für Menschen,
+    die sich für Polyamorie entscheiden, eine große Rolle.
+    Sie berichten mir in der Paartherapie
+    in meiner Praxis in München häufig davon,
+    dass sich zwischen Arbeit und Familie
+    zu viel Routine in ihre Beziehung eingeschlichen hat.
+    Es fehlt an Spannung und der Distanz,
+    die nötig ist, damit wieder Leidenschaft entsteht.
+
+    Polyamorie ist herausfordernd
+
+    In einer polyamorösen Beziehung
+    sind demgegenüber naturgemäß
+    mehr Abwechslung und mehr Freiheit vorhanden
+    - das geht aber möglicherweise auch
+    mit einem gewissen Konkurrenzdruck und Eifersucht einher.
+
+    Polyamorie braucht Austausch
+
+    Um solche Konflikte zu bewältigen,
+    ist ein offener Austausch
+    gerade in polyamorösen Konstellationen unerlässlich.
+    Zu wissen, dass der geliebte Partner
+    nicht nur mit jemand anderem schläft,
+    sondern mit dieser Person auch noch tiefe Gefühle
+    und intimste Momente teilt, ist nicht einfach.
+    Auch ein noch so liberales Weltbild schützt nicht davor,
+    in gewissen Situationen
+    in eine Gedankenspirale und Streit zu geraten. 
+
+    https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-beziehung/
+
+  '>Polyamorie</div>
+
+  in gleichalten Vierer-Gruppen? (Beispiel: F2-M1-F3-M4)
   ... müssen dazu alle Subtypen parallel liegen? (Beispiel: F203-M104-F302-M401.
   Es kann sein, dass M104-M401 und F203-F302 zu ähnlich sind.)
   (Polyamorie könnte so funktionieren: ein Partner für die Nacht, ein Partner für den Tag.)
@@ -3181,27 +3656,27 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   und bauen eine Großfamilie mit 4 Männer und 4 Frauen.
 </div>
 
-
-<!--
-  politik ist "eigentlich" off-topic,
-  aber ...
-
-  ich will ja eine "ganzheitliche" theorie schreiben,
-  und ich will die leute erinnern:
-
-  wir haben keine zeit
-  (urgency, dringlichkeit, es ist dringend),
-
-  und in den nächsten monaten
-  können wir uns nochmal nützlich machen,
-  bevor wir verhungern und erfrieren.
-
-  ich arbeite für eine bessere zukunft,
-  die ich selber nicht erleben werde.
--->
-
 <div class="para">
-  <b>Politik</b> ist ganz einfach,
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    politik ist "eigentlich" off-topic,
+    aber ...
+
+    ich will ja eine "ganzheitliche" theorie schreiben,
+    und ich will die leute erinnern:
+
+    wir haben keine zeit
+    (urgency, dringlichkeit, es ist dringend),
+
+    und in den nächsten monaten
+    können wir uns nochmal nützlich machen,
+    bevor wir verhungern und erfrieren.
+
+    ich arbeite für eine bessere zukunft,
+    die ich selber nicht erleben werde.
+  '><b>Politik</b></div>
+
+  ist ganz einfach,
   wenn man die Grundlagen versteht.
 
   Die Grundlagen unserer Zivilisation
@@ -3219,12 +3694,15 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   (Depopulation, Agenda 21, Great Reset, Holodomor).
   Wie werden Menschen sterben?
   Versorgungsausfall.
-  Kein Strom, kein Wasser, kein Essen, keine Heizung.
+  Kein Strom, kein Wasser,
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    holodomor = tod durch hunger = hungertod = kein Essen
+  '>kein Essen,</div>
+
+  keine Heizung.
   Drei Tage später herrscht Anarchie.
   Wann? Winter 2022.
-  <!--
-    holodomor = hungertod = kein Essen
-  -->
 </div>
 
 <div class="para">
@@ -3248,18 +3726,40 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 
   Wenn sie richtig ist,
   dann ist meine Theorie eine Grundlage
-  für eine bessere Welt nach dem Kollaps.
+  für eine
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    Was ist mein "Paradies auf Erden"?
+    Dorfkultur,
+    Stammkultur,
+    Tribalismus,
+    150 Menschen pro Dorf,
+    Abstand zu anderen Dörfern,
+    Konkurrenz-Kampf zwischen Dörfern
+    (Stammkriege, Tribe Wars, Serienmord ist besser als Massenmord),
+    Eugenik und Euthanasie,
+    Eugenik: schöne Menschen vermehren,
+    Euthanasie: hässliche Menschen opfern,
+  '>bessere Welt</div>
+
+  nach dem Kollaps.
 
   Ich selber werde diese bessere Welt nicht erleben,
-  aber das ist mir egal.
+  aber das ist mir
 
-  <!--
+  <div class="annotation" onClick="clickAnnotation(this)" title='
     ich bin voll der held oder?
     shut up and test my hypothesis.
     es geht hier überhaupt nicht um mich.
     ich bin nur der idiot,
     der diese theorie zu papier bringt.
-  -->
+    ich will mich überflüssig machen.
+    keiner soll abhängig sein von mir.
+    ich will andere menschen nicht blockieren oder einsperren.
+    ich will andere menschen befreien (liberal).
+    ich arbeite für kinder, für zukunft. (ich hasse alte menschen.)
+  '>egal.</div>
+
 </div>
 
 <div class="para">
@@ -3297,8 +3797,6 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
   Du darfst alles mit meinem Text machen,
   und ich gebe dir keine Garantie.
 </div>
-
-
 
 
 
@@ -6903,7 +7401,33 @@ https://www.praxis-breitenberger.de/ratgeber/partnerschaft/polyamorie-offene-bez
 
 
 
-<script>Bindery.makeBook(binderyOptions(Bindery))</script>
+<script>
+
+  async function main() {
+
+    console.log(`Bindery.makeBook`);
+    await Bindery.makeBook(binderyOptions(Bindery));
+
+    /* not working
+    console.log(`add handleClick to annotation elements`);
+    Array.from(document.getElementsByClassName("annotation")).forEach(element => {
+      console.log(`add handleClick to element`, element);
+      function clickAnnotation(event) {
+        const element = event.target;
+        console.log(`clicked element`, element);
+        alert(element.getAttribute("title"));
+      }
+      element.addEventListener("click", clickAnnotation);
+      element.addEventListener("mouseover", clickAnnotation);
+      //element.onclick = handleClick;
+    });
+    */
+
+  }
+
+  main();
+
+</script>
 
 </body>
 </html>
