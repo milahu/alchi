@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-05">
+  <meta id="version" name="dcterms.modified" content="2022-08-10">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -2638,7 +2638,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Authorative</td>
       <td>Neglectful</td>
       <td>Permissive</td>
-      <td>Totalitarian, Autoritarian</td>
+      <td>Autoritarian</td>
     </tr>
     <tr>
       <th>Erziehungs-Stil</th>
@@ -2650,7 +2650,6 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
           4 = fordern = viel fordern + wenig helfen
         '>aktiv</div>
       </td>
-      <td>aktiv</td>
       <td>passiv</td>
       <td>helfen</td>
       <td>fordern</td>
@@ -3633,7 +3632,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   Gleichgewicht:
   Jedes Dorf ist im Gleichgewicht:
-  72 Männer und 72 Frauen.
+  72 Männer und
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    vielleicht deswegen die "72 Jungfrauen im Paradies" im Koran
+  '>72 Frauen</div>.
   72 Junge und 72 Alte.
   Also Gerechtigkeit bei der Verteilung von Geschlecht und Alter.
   Diese Gerechtigkeit kommt nicht von selber (Natur ist Zufall),
@@ -3683,8 +3685,266 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   sind Mordverbot und billige Energie.
   Die Folge: globale <b>Übervölkerung</b>.
   Also weltweit gibt es zu viele Menschen.
+</div>
 
-  Dieses Problem ist bekannt seit über 40 Jahren
+<div class="para">
+  TODO fix layout. keep the two graphs on one page
+</div>
+
+
+
+<hr>
+
+
+
+<div class="para">
+  Hier die Zahl der Menschen weltweit
+  über die letzten 10.000 Jahre.
+  Der
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    TODO keep the two graphs on one page
+  '><b>Graph</b></div>
+  hat lineare Hochachse
+  und man sieht die "Explosion" der Bevölkerung seit 200 Jahren.
+</div>
+
+<div class="center-x">
+  <svg title="world-population-chart.linear-graph" style="width:100%"
+    version="1.1" viewBox="0 0 182.38 123.17" xmlns="http://www.w3.org/2000/svg"
+    >
+    <defs>
+      <marker id="Arrow1Mstart" overflow="visible" orient="auto">
+        <path transform="matrix(.4 0 0 .4 4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+      </marker>
+      <marker id="Arrow1Mend" overflow="visible" orient="auto">
+        <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+      </marker>
+    </defs>
+    <g transform="translate(-20.087 54.74)">
+      <g transform="translate(0 -276.88)">
+        <rect x="20.087" y="222.14" width="182.38" height="123.17" fill="#fff" fill-rule="evenodd" stroke-width=".22482"/>
+        <g transform="translate(0 13.717)">
+          <path d="m27.95 320.32 151.88 8e-3v-110.16" fill="none" marker-end="url(#Arrow1Mend)" marker-start="url(#Arrow1Mstart)" stroke="#000" stroke-width=".26458px"/>
+          <g transform="translate(.27565 123.17)">
+            <g transform="matrix(1 0 0 2.5604 0 -307.6)" fill="none" stroke="#000" stroke-width=".26458px">
+              <path d="m179.55 197.13v0.85321"/>
+              <path d="m165.77 197.13v0.85321"/>
+              <path d="m151.99 197.13v0.85321"/>
+              <path d="m138.21 197.13v0.85321"/>
+              <path d="m124.43 197.13v0.85321"/>
+              <path d="m110.64 197.13v0.85321"/>
+              <path d="m83.079 197.13v0.85321"/>
+              <path d="m96.861 197.13v0.85321"/>
+              <path d="m69.297 197.13v0.85321"/>
+              <path d="m55.514 197.13v0.85321"/>
+              <path d="m41.732 197.13v0.85321"/>
+            </g>
+            <g font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-anchor="middle">
+              <text x="179.55566" y="203.48607" text-align="center"><tspan x="179.55566" y="203.48607" font-size="3.5278px" stroke-width=".26458">0</tspan></text>
+              <text x="165.77254" y="203.53603" text-align="center"><tspan x="165.77254" y="203.53603" font-size="3.5278px" stroke-width=".26458">1000</tspan></text>
+              <text x="151.99026" y="203.53603" text-align="center"><tspan x="151.99026" y="203.53603" font-size="3.5278px" stroke-width=".26458">2000</tspan></text>
+              <text x="138.19594" y="203.53603" text-align="center"><tspan x="138.19594" y="203.53603" font-size="3.5278px" stroke-width=".26458">3000</tspan></text>
+              <text x="124.40849" y="203.53603" text-align="center"><tspan x="124.40849" y="203.53603" font-size="3.5278px" stroke-width=".26458">4000</tspan></text>
+              <text x="110.67445" y="203.53603" text-align="center"><tspan x="110.67445" y="203.53603" font-size="3.5278px" stroke-width=".26458">5000</tspan></text>
+              <text x="96.842216" y="203.53603" text-align="center"><tspan x="96.842216" y="203.53603" font-size="3.5278px" stroke-width=".26458">6000</tspan></text>
+              <text x="83.072861" y="203.53603" text-align="center"><tspan x="83.072861" y="203.53603" font-size="3.5278px" stroke-width=".26458">7000</tspan></text>
+              <text x="69.296608" y="203.53603" text-align="center"><tspan x="69.296608" y="203.53603" font-size="3.5278px" stroke-width=".26458">8000</tspan></text>
+              <text x="55.514324" y="203.53603" text-align="center"><tspan x="55.514324" y="203.53603" font-size="3.5278px" stroke-width=".26458">9000</tspan></text>
+              <text x="41.738075" y="203.53603" text-align="center"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10000</tspan></text>
+            </g>
+          </g>
+        </g>
+        <g transform="matrix(1 0 0 .93213 -.0045534 35.457)">
+          <g transform="matrix(.013782 0 0 -.013782 152.03 320.3)" fill="none" stroke="#000" stroke-width="25.023">
+            <path d="m2017 2e3h155.6"/>
+            <path d="m2017 1e3h155.6"/>
+            <path d="m2017 3e3h155.6"/>
+            <path d="m2017 4e3h155.6"/>
+            <path d="m2017 5e3h155.6"/>
+            <path d="m2017 6e3h155.6"/>
+            <path d="m2017 7e3h155.6"/>
+            <path d="m2017 8e3h155.6"/>
+          </g>
+          <!-- graph: global human population, linear scale -->
+          <path d="m28.957 320.24 12.816-0.0138h41.347l13.782-0.0276 13.782-0.0965 13.782-0.17917 13.782-0.317 3.4456-0.13782 3.4456-0.55129 1.3782-0.82694 2.7565 0.13782 2.7702-0.27565 2.7427-0.27564h4.1347l1.3782-0.13783 2.7565-0.27564 1.3782-0.0827 1.3782-1.1577 1.3782 0.12404 1.3782-0.81316 0.68912-0.55129 0.68912 0.55129 0.55129-1.1439 0.82694 1.2818 1.3782-1.0337 1.3782-1.6539 0.68911 1.0337 0.68912-1.7917 0.68912-2.6186 0.68911-2.6186 0.68912-3.8591 0.68912-5.3751 0.13782-1.3782 0.13782-1.516 0.13783-2.8943 0.13782-3.1699 0.13782-1.3782 0.13783-8.545 0.13782-9.372 0.0551-4.1347 0.0827-5.9264 0.0965-7.8559 0.0413-3.5834 0.13782-11.164 7e-3 -5.9264 3e-3 -3.4111 6e-3 -3.48 0.0955-13.782" fill="none" stroke="#000" stroke-width=".51788"/>
+          <g id="percentage_numbers" transform="matrix(.34456 0 0 .34456 183.9 234.85)" fill="#000000" font-family="Verdana, Tahoma, sans-serif" font-size="11px">
+            <text y="250" text-anchor="end"><tspan text-anchor="start">0</tspan></text>
+            <text y="210">1000</text>
+            <text y="170" text-anchor="end"><tspan text-anchor="start">2000</tspan></text>
+            <text y="130" text-anchor="end"><tspan text-anchor="start">3000</tspan></text>
+            <text y="90">4000</text>
+            <g text-anchor="end">
+              <text y="50"><tspan text-anchor="start">5000</tspan></text>
+              <text y="10"><tspan text-anchor="start">6000</tspan></text>
+              <text y="-30.000277"><tspan text-anchor="start">7000</tspan></text>
+              <text y="-70.000557"><tspan text-anchor="start">8000</tspan></text>
+            </g>
+          </g>
+        </g>
+        <g font-family="sans-serif" stroke-width=".26458" text-anchor="middle">
+          <text x="27.785782" y="232.70168" font-size="4.9389px" text-align="center"><tspan x="27.785782" y="232.70168" font-size="4.9389px" stroke-width=".26458" text-align="start" text-anchor="start">World Population</tspan></text>
+          <text x="27.488127" y="245.94724" font-size="4.2333px" text-align="center"><tspan x="27.488127" y="245.94724" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">in Million Humans, linear scale</tspan></text>
+          <text x="27.488127" y="252.43819" font-size="4.2333px" text-align="center"><tspan x="27.488127" y="252.43819" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10000 years</tspan></text>
+          <text x="27.949768" y="339.92209" font-size="3.5278px" text-align="center"><tspan x="27.949768" y="339.92209" font-size="3.5278px" stroke-width=".26458">Years</tspan></text>
+        </g>
+        <g transform="translate(-2.5318 136.86)">
+          <text x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-align="center" text-anchor="middle"><tspan x="135.72267" y="95.351952" font-size="3.5278px" stroke-width=".26458">8000 Million Humans in year 2020</tspan></text>
+          <path d="m168.3 94.379h8.2931" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000" stroke-width=".26458px"/>
+        </g>
+        <text x="27.488127" y="262.63916" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-align="center" text-anchor="middle"><tspan x="27.488127" y="262.63916" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">https://en.wikipedia.org/wiki/File:Population_curve.svg</tspan></text>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="para">
+  Hier die gleichen Zahlen,
+  aber dieser Graph hat logarithmische Hochachse,
+  das heisst:
+  Gleicher Abstand sind 10 Mal mehr Menschen.
+</div>
+
+<div class="center-x">
+  <!-- based on http://econosystemics.com/?p=9 -->
+  <svg title="world-population-chart.bryan-long-2009" style="width:100%"
+    version="1.1" viewBox="0 0 182.38 123.17" xmlns="http://www.w3.org/2000/svg"
+    >
+    <defs>
+      <marker id="Arrow1Mstart" overflow="visible" orient="auto">
+        <path transform="matrix(.4 0 0 .4 4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+      </marker>
+      <marker id="Arrow1Mend" overflow="visible" orient="auto">
+        <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+      </marker>
+    </defs>
+    <g transform="translate(-20.087 -85.282)">
+      <rect x="20.087" y="85.282" width="182.38" height="123.17" fill="#fff" fill-rule="evenodd" stroke-width=".22482"/>
+      <path d="m27.95 197.15 151.88 8e-3v-108.91" fill="none" marker-end="url(#Arrow1Mend)" marker-start="url(#Arrow1Mstart)" stroke="#000" stroke-width=".26458px"/>
+      <!-- graph: global human population, log scale -->
+      <path d="m27.967 179.92c4.6979-0.48077 9.4302-0.94554 12.031-1.1459 6.391-0.49229 31.661 1.3488 41.037 0.35546 9.3767-0.99333 20.433-6.0141 26.023-9.8855 5.5896-3.8715 27.816-13.35 31.601-16.932 3.7852-3.5816 10.042-14.69 10.794-15.455s1.0906 0.27165 2.2671 0.14623c1.1765-0.12543 1.6419-1.9407 2.8587-1.7594 1.2168 0.18132 1.465 1.8066 3.1014 1.8054 1.6364-1e-3 3.3858-0.65495 3.9685-0.53959 0.58265 0.11535 0.54481-1.3118 1.3918-1.3118 0.84694 0 1.4028 0.52057 1.6411-0.19593 0.23834-0.71651-0.15303-3.2821 0.85768-3.5507 1.0107-0.26858 0.6776 0.77154 1.464 0.68183 0.78639-0.0897 0.56411-3.7512 1.5424-3.7301 0.97828 0.0211 1.4138 1.8013 2.3313 1.7948 0.91749-7e-3 1.4274-5.3566 2.547-5.2809 1.1197 0.0757 0.62212 1.2338 1.3256 1.2338s3.1254-11.29 3.6072-14.805c0.48177-3.5153 1.3125-14.903 1.3125-14.903" fill="none" stroke="#000" stroke-width=".51788"/>
+      <g transform="translate(-1.0876)" fill="none" stroke="#000" stroke-width=".26458px">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+        <g transform="translate(0 -26.368)">
+          <path d="m180.92 189.23h3.7607"/>
+          <path d="m180.92 184.58h3.7607"/>
+          <path d="m180.92 181.33h3.7607"/>
+          <path d="m180.92 178.72h3.7607"/>
+          <path d="m180.92 176.63h3.7607"/>
+          <path d="m180.92 174.94h3.7607"/>
+          <path d="m180.92 173.43h3.7607"/>
+          <path d="m180.92 172.11h3.7607"/>
+          <path d="m180.92 170.85h3.7607"/>
+        </g>
+        <g transform="translate(0 -52.645)">
+          <path d="m180.92 189.23h3.7607"/>
+          <path d="m180.92 184.58h3.7607"/>
+          <path d="m180.92 181.33h3.7607"/>
+          <path d="m180.92 178.72h3.7607"/>
+          <path d="m180.92 176.63h3.7607"/>
+          <path d="m180.92 174.94h3.7607"/>
+          <path d="m180.92 173.43h3.7607"/>
+          <path d="m180.92 172.11h3.7607"/>
+          <path d="m180.92 170.85h3.7607"/>
+        </g>
+        <g transform="translate(0 -78.917)">
+          <path d="m180.92 189.23h3.7607"/>
+          <path d="m180.92 184.58h3.7607"/>
+          <path d="m180.92 181.33h3.7607"/>
+          <path d="m180.92 178.72h3.7607"/>
+          <path d="m180.92 176.63h3.7607"/>
+          <path d="m180.92 174.94h3.7607"/>
+          <path d="m180.92 173.43h3.7607"/>
+          <path d="m180.92 172.11h3.7607"/>
+          <path d="m180.92 170.85h3.7607"/>
+        </g>
+      </g>
+      <path d="m173.12 125.03v72.122" fill="none" stroke="#000" stroke-width=".26458px"/>
+      <path d="m149.43 136.89v60.26" fill="none" stroke="#000" stroke-width=".26458px"/>
+      <g transform="translate(.27565)">
+        <g transform="matrix(1 0 0 2.5604 0 -307.6)" fill="none" stroke="#000" stroke-width=".26458px">
+          <path d="m179.55 197.13v0.85321"/>
+          <path d="m165.77 197.13v0.85321"/>
+          <path d="m151.99 197.13v0.85321"/>
+          <path d="m138.21 197.13v0.85321"/>
+          <path d="m124.43 197.13v0.85321"/>
+          <path d="m110.64 197.13v0.85321"/>
+          <path d="m83.079 197.13v0.85321"/>
+          <path d="m96.861 197.13v0.85321"/>
+          <path d="m69.297 197.13v0.85321"/>
+          <path d="m55.514 197.13v0.85321"/>
+          <path d="m41.732 197.13v0.85321"/>
+        </g>
+        <g font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-anchor="middle">
+          <text x="179.55566" y="203.48607" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="179.55566" y="203.48607" font-size="3.5278px" stroke-width=".26458">0</tspan></text>
+          <text x="165.77254" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="165.77254" y="203.53603" font-size="3.5278px" stroke-width=".26458">1000</tspan></text>
+          <text x="151.99026" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="151.99026" y="203.53603" font-size="3.5278px" stroke-width=".26458">2000</tspan></text>
+          <text x="138.19594" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="138.19594" y="203.53603" font-size="3.5278px" stroke-width=".26458">3000</tspan></text>
+          <text x="124.40849" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="124.40849" y="203.53603" font-size="3.5278px" stroke-width=".26458">4000</tspan></text>
+          <text x="110.67445" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="110.67445" y="203.53603" font-size="3.5278px" stroke-width=".26458">5000</tspan></text>
+          <text x="96.842216" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="96.842216" y="203.53603" font-size="3.5278px" stroke-width=".26458">6000</tspan></text>
+          <text x="83.072861" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="83.072861" y="203.53603" font-size="3.5278px" stroke-width=".26458">7000</tspan></text>
+          <text x="69.296608" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="69.296608" y="203.53603" font-size="3.5278px" stroke-width=".26458">8000</tspan></text>
+          <text x="55.514324" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="55.514324" y="203.53603" font-size="3.5278px" stroke-width=".26458">9000</tspan></text>
+          <text x="41.738075" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10000</tspan></text>
+        </g>
+      </g>
+      <g font-family="sans-serif" stroke-width=".26458" text-anchor="middle">
+        <g font-size="3.5278px">
+          <text x="188.37381" y="198.43936" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="198.43936" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">1</tspan></text>
+          <text x="188.37381" y="172.13287" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="172.13287" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10</tspan></text>
+          <text x="188.37381" y="145.76482" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="145.76482" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">100</tspan></text>
+          <text x="188.37381" y="119.48749" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="119.48749" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">1000</tspan></text>
+          <text x="188.37381" y="93.216339" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="93.216339" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10000</tspan></text>
+          <text x="27.949768" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.949768" y="203.53603" font-size="3.5278px" stroke-width=".26458">Years</tspan></text>
+        </g>
+        <text x="27.785782" y="97.292755" font-size="4.9389px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.785782" y="97.292755" font-size="4.9389px" stroke-width=".26458" text-align="start" text-anchor="start">World Population</tspan></text>
+        <text x="27.488127" y="110.53831" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="110.53831" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">in Million Humans, logarithmic scale</tspan></text>
+        <text x="27.488127" y="117.02924" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="117.02924" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10000 years</tspan></text>
+        <text x="27.488127" y="137.44823" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="137.44823" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">(c) 2009 Bryan K. Long</tspan></text>
+        <text x="27.488127" y="143.30658" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="143.30658" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">http://econosystemics.com/?p=9</tspan></text>
+      </g>
+      <g transform="translate(-21.936)">
+        <text x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-align="center" text-anchor="middle" style="line-height:1.25" xml:space="preserve"><tspan x="135.72267" y="95.351952" font-size="3.5278px" stroke-width=".26458">8000 Million Humans in year 2020</tspan></text>
+        <path d="m168.3 94.379h8.2931" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000" stroke-width=".26458px"/>
+      </g>
+      <g font-family="sans-serif" font-size="4.2333px" stroke-width=".26458" text-anchor="middle">
+        <text x="51.604794" y="188.05453" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="51.604794" y="188.05453" font-size="4.2333px" stroke-width=".26458">Semi-Nomadic Era</tspan></text>
+        <text x="119.68132" y="176.08015" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="119.68132" y="176.08015" font-size="4.2333px" stroke-width=".26458">City States</tspan></text>
+        <text x="159.93082" y="154.6176" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="159.93082" y="154.6176" font-size="4.2333px" stroke-width=".26458">Empires</tspan></text>
+        <text transform="rotate(-90)" x="-138.52907" y="177.94925" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="-138.52907" y="177.94925" font-size="4.2333px" stroke-width=".26458">Global</tspan></text>
+      </g>
+      <path d="m90.08 177.21v19.942" fill="none" stroke="#000" stroke-width=".26458px"/>
+      <g font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-anchor="middle">
+        <text x="42.339771" y="175.02097" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="42.339771" y="175.02097" font-size="3.5278px" stroke-width=".26458">Early Agriculture</tspan></text>
+        <text x="64.002998" y="168.44278" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="64.002998" y="168.44278" font-size="3.5278px" stroke-width=".26458">Copper</tspan></text>
+        <text x="90.966606" y="170.53709" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="90.966606" y="170.53709" font-size="3.5278px" stroke-width=".26458">Wheel</tspan></text>
+        <text x="101.05252" y="153.35725" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="101.05252" y="153.35725" font-size="3.5278px" stroke-width=".26458">Irrigation</tspan></text>
+        <text x="100.27689" y="159.16676" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="100.27689" y="159.16676" font-size="3.5278px" stroke-width=".26458">Wood Plow</tspan></text>
+        <text x="117.46384" y="146.5674" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="117.46384" y="146.5674" font-size="3.5278px" stroke-width=".26458">Bronze</tspan></text>
+        <text x="127.57859" y="139.46359" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="127.57859" y="139.46359" font-size="3.5278px" stroke-width=".26458">Iron</tspan></text>
+        <text x="141.02661" y="133.228" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="141.02661" y="133.228" font-size="3.5278px" stroke-width=".26458">Metal Plow</tspan></text>
+        <text x="154.90468" y="123.79401" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="154.90468" y="123.79401" font-size="3.5278px" stroke-width=".26458">Water Mills</tspan></text>
+        <text x="154.91161" y="128.19908" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="154.91161" y="128.19908" font-size="3.5278px" stroke-width=".26458">Wind Mills</tspan></text>
+        <text x="170.3678" y="122.80343" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="170.3678" y="122.80343" font-size="3.5278px" stroke-width=".26458">Coal</tspan></text>
+        <text x="170.31664" y="115.85435" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="170.31664" y="115.85435" font-size="3.5278px" stroke-width=".26458">Steam</tspan></text>
+        <text x="169.13686" y="107.78757" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="169.13686" y="107.78757" font-size="3.5278px" stroke-width=".26458">Electricity</tspan></text>
+        <text x="168.94328" y="101.43417" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="168.94328" y="101.43417" font-size="3.5278px" stroke-width=".26458">Oil + Gas</tspan></text>
+        <text x="168.90126" y="95.930222" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="168.90126" y="95.930222" font-size="3.5278px" stroke-width=".26458">Fertilizer</tspan></text>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="para">
+  Das Problem Übervölkerung ist bekannt seit über 40 Jahren
   (Georgia Guidestones: Gebot 1:
   Halte die Bevölkerung unter 100 Millionen.)
 </div>
@@ -3763,6 +4023,117 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
+  <b>Schwachstellen:</b>
+  Meine Theorie hat 2 Schwachstellen.
+
+  [FIXME deduplicate]
+</div>
+
+<div class="para">
+  Die kleine Schwachstelle ist:
+  Ich muss Beziehungsqualität messen.
+  Jede Messung ist relativ,
+  das heisst,
+  ich muss kompatible Beziehungen
+  und nichtkompatible Beziehungen ausprobieren,
+  und kann im Rückblick sagen:
+  Waren die kompatiblen Beziehungen besser?
+</div>
+
+<div class="para">
+  Die große Schwachstelle ist:
+  Ich muss Persönlichkeitstypen richtig schätzen.
+  Dabei versuche ich möglichst "ganzheitlich" zu schätzen,
+  also nach Körperform und Verhalten.
+  Im Zweifel ignoriere ich Ergebnisse
+  von Fragebogen-Tests (MBTI, Big Five, etc.)
+  weil dort auch ein "falsches Selbstbild" rauskommen kann
+  ("you are mistyped!")
+</div>
+
+<div class="para">
+  Was mache ich mit Menschen,
+  wo ich den Persönlichkeitstyp nicht schätzen kann?
+  Dann gehe ich den "Rückweg"
+  von Beziehungen zum Typ:
+  "Zeig mir deine Freunde,
+  und ich sag dir wer du bist."
+  Also ich nehme andere Menschen
+  wo ich mir sicher bin beim Persönlichkeitstyp
+  ("Bilderbuch-Typen"),
+  und dann tu ich ausprobieren:
+  Welche Beziehungen sind kompatibel?
+</div>
+
+<div class="para">
+  Was ist der <b>Haken</b>?
+  Der Preis fürs "Paradies auf Erden" ist Serienmord.
+  Normalisieren von Serienmord hat 2 positive Wirkungen:
+  niedrige Quantität und hohe Qualität.
+  Serienmord ist die billigste Lösung gegen Übervölkerung (hohe Quantität)
+  und gegen Degeneration (niedrige Qualität, Erbkrankheiten, hässliche Menschen).
+
+  Mir ist klar:
+  Viele Menschen sagen:
+  Beim Thema "Menschen umbringen"
+  hört der Spaß auf!
+  (hier hat die Toleranz ein Ende.)
+
+  Aber genau hier fängt mein Spaß erst an (sage ich als Typ 1).
+  Und genau das ist das Problem mit Persönlichkeitstypen:
+  Jeder Typ hat seine subjektive Weltsichtt (Subjektivismus):
+  Mein Spaß ist dein Ernst.
+  Meine Tugend ist deine Sünde.
+  Mein Paradies ist deine Hölle.
+  Und so weiter.
+</div>
+
+<div class="para">
+  Toleranz ist billig wenns leicht geht.
+  Aber damit man so "extrem" andere Weltsichten "tolerieren" kann,
+  müssen diese anderen Weltsichten
+  in "sympatischen" Körpern wohnen.
+  Kompatible Beziehungen halten solche "Streit-Themen" aus.
+</div>
+
+<div class="para">
+  Nicht-kompatible Beziehungen produzieren immer Streit,
+  egal wie groß oder klein das Thema ist,
+  ausser beide Bindungs-Partner
+  einigen sich auf Verdrängung (Ignoranz macht glücklich)
+  und reden nur über kleine Probleme (Einigung auf niedrigem Niveau).
+  Bei Konfrontation mit großen Problemen
+  sind solche Beziehungen überfordert
+  und die geistige Feindschaft (Nicht-Kompatibilität)
+  kommt wieder hoch.
+
+  Ähnlich bei Drogen:
+  Manche Menschen sind schon vorher gestört,
+  aber können diese Störung verdrängen.
+  Drogen überfordern die Verdrängung
+  und wirken als scheinbarer "Auslöser" für die Störung.
+  (In vino veritas = Alkohol macht ehrlich.)
+  (Unterschied: Ursache oder Anlass?)
+</div>
+
+<div class="para">
+  Geht es auch ohne Serienmord?
+  Also,
+  gibt es ein "Paradies auf Erden"
+  ohne die Schattenseiten?
+  Nein.
+  Seit ungefähr 10.000 Jahren
+  rebellieren die Menschen gegen Naturgesetze,
+  mit so "schönen" Erfindungen wie <b>Mordverbot</b>.
+  Aber diese Menschen sind nur Tragische Helden,
+  die mit gutem Vorsatz ins Verderben laufen
+  (Übervölkerung, Degeneration, Dekadenz, Kollaps,
+  Boom-Bust-Cycles),
+  die einen verlorenen Krieg kämpfen.
+  Hochmut kommt vor dem Fall.
+</div>
+
+<div class="para">
   <b>Hilfe gesucht:</b>
 
   Ich brauche Hilfe bei meinen 2 Zielen:
@@ -3772,7 +4143,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Flyer drucken (50 EUR / 1000 Flyer)
   und verteilen (persönlich, nicht in Briefkästen).
   E-Mails und Briefe schreiben
-  (Verleger, Psychologen, Ökodörfer, Demeter-Höfe, Prepper ...).
+  (Verleger, Psychologen, Ökodörfer, Demeter-Höfe,
+  Prepper, Boxclubs, Gangs ...).
 
   Das Experiment habe ich schon beschrieben.
   Feedback und Ergebnisse
