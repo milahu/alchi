@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-11">
+  <meta id="version" name="dcterms.modified" content="2022-08-13">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -247,6 +247,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     body.js-enabled hr {
       height: 0;
       border: none;
+    }
+    .pre-line {
+      white-space:pre-line;
     }
     body {
       font-family: sans-serif;
@@ -1059,17 +1062,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   <b>Nähe = Freunde. Distanz = Feinde.</b>
-
   Das Muster zeigt Freunde und Feinde.
-
-  <b>Wenn zwei Menschen direkt nebeneinander stehen,
-  dann sind sie Freunde.</b>
-
-  Wenn zwei Menschen weiter auseinander stehen,
-  dann sind sie Feinde.
+  Wenn zwei Menschen direkt nebeneinander stehen, dann sind sie Freunde.
+  Wenn zwei Menschen weiter auseinander stehen, dann sind sie Feinde.
 </div>
-
-
 
 <div class="para">
   Feinde brauchen <b>gemeinsame Freunde</b>
@@ -1290,6 +1286,21 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   und keine Widersprüche erzeugt (<b>Widerspruchsfreiheit</b>).
   Deswegen ist negatives Feedback (Widersprüche, "es funktioniert nicht")
   genauso wichtig wie positives Feedback ("es funktioniert").
+</div>
+
+<div class="para">
+  Das Experiment muss billig sein,
+  dann kann jeder Mensch das Experiment reproduzieren (wiederholen).
+
+  Es wird immer wieder Menschen geben,
+  die diese Theorie noch nicht kennen,
+  und diese Menschen brauchen einen billigen Weg,
+  zum Testen der Theorie.
+
+  An die Hypothese "glauben"
+  muss man dabei nur so lange,
+  bis das Experiment vorbei ist
+  (Arbeitshypothese).
 </div>
 
 <div class="para">
@@ -1902,7 +1913,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   Ich glaube:
   Es gibt eine Verbindung zwischen Subtyp und Bindungs-Partner.
-  Diese Verbindung geht in beide Richtungen:
+  Diese Verbindung geht in beide Richtungen (bidirektional):
   Ein bestimmter Subtyp wirkt als Mating Call
   für einen bestimmten Bindungs-Partner.
   Und andersrum:
@@ -2395,10 +2406,6 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   also jeder Autor hat seinen Namensraum (namespace).
 </div>
 
-<div class="para">
-  FIXME layout. keep table on one page
-</div>
-
 
 
 <hr>
@@ -2407,7 +2414,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Vier Typen:
-  Hier ein paar
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    TODO layout: keep table on one page
+  '>Hier</div>
+
+  ein paar
   <div class="annotation" onClick="clickAnnotation(this)" title='
     TODO more text. add a short description to every name.
 
@@ -2787,7 +2799,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </table>
 
 <div class="para">
-  Mehr Übersetzungen in meinen <a href="https://milahu.github.io/alchi/src/alchi-tables">alchi-tables</a>.
+  Mehr Übersetzungen in meinen <a href="https://milahu.github.io/alchi/tables">alchi-tables</a>.
 </div>
 
 
@@ -2822,7 +2834,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     wenn wir die typen richtig schätzen.
   '>wer?</div>
 
-  Das sehen wir an Verhalten und Körperform.
+  Das sehe ich an <b>Körperform und Verhalten</b>.
 </div>
 
 <div class="para">
@@ -2842,14 +2854,16 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   vor allem wenn sie viele Kohlenhydrate essen,
   und können dieses Gewicht nur langsam wieder abnehmen
   (LCHF-Diät, Keto-Diät).
-  Typ 3 Menschen überleben hartes Klima, Landklima, lange kalte Winter.
+  Typ 3 Menschen überleben hartes Klima, Landklima, lange kalte Winter,
+  überleben mehrere Wochen ohne Essen (lange Fastenzeit).
 </div>
 
 <div class="para">
   Typ 4 Menschen können nur langsam Gewicht zunehmen
   (Hard Gainer) (können viele Kohlenhydrate essen aber werden nicht dick)
   und verlieren dieses Gewicht schnell wieder.
-  Typ 4 Menschen brauchen mildes Klima, Seeklima, kurze warme Winter.
+  Typ 4 Menschen brauchen mildes Klima, Seeklima, kurze warme Winter,
+  müssen jeden Tag essen (kurze Fastenzeit).
 </div>
 
 
@@ -2966,25 +2980,30 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   haben mittleres Gewicht,
   können Gewicht zunehmen und abnehmen (mit etwas Mühe),
   bevorzugen Übergangsklima (zwischen Seeklima und Landklima).
-  Typ 1 und Typ 2 unterscheiden sich stärker beim Verhalten.
+  Typ 1 und Typ 2 unterscheiden sich stärker beim Verhalten
+  (Streitlust, Dualismus).
 </div>
 
 <div class="para">
   Typ 1 ist eher dominant, herrisch, grandios (grandiose narciss),
   überheblich, "männlich", stolz, frech, arrogant, aggressiv.
+
   Typ 2 ist eher subordiniert, unterwürfig,
-  verletzbar (vulnerable narciss), höflich, ängstlich, defensiv.
+  verletzbar (vulnerable narciss), höflich, ängstlich,
+  defensiv, angepasst, passiv.
 </div>
 
 <div class="para">
   Auch über die Körperform kann man Typen schätzen
-  (Physiognomie, Morpho-Psychologie, Profiling):
+  (Physiognomie, Morpho-Psychologie, Profiling,
+  erster Eindruck, first impression):
   Gesichtsform (breites Gesicht = 3, langes Gesicht = 4),
   Handform (breite Gelenke = 3, lange Finger = 4),
   Fingernägel (lange Nagelbetten = Typen 14, kurze Nagelbetten = Typen 23),
   ...
   aber hier gibt es immer wieder Widersprüche,
-  und man sollte möglichst viele Informationen sammeln.
+  und ich sammle möglichst viele Informationen
+  für ein "ganzheitliches" Bild.
 </div>
 
 <div class="para">
@@ -3004,7 +3023,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Subtypen:</b>
 
-  Neben den Vier Typen kennt die Psychologie auch Subtypen.
+  Neben den Vier Typen kennen Psychologen auch Subtypen.
 
   Ich glaube:
   Jeder Typ hat 2 Subtypen.
@@ -3024,6 +3043,29 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
+  Übersetzung:
+  extravertierter Subtyp
+  = cardinal modality
+  = Subtyp ist jung (Typen 13)
+  = fühlt sich jung, stark, aktiv, wach, Frühaufsteher, stolz, hoher Selbstwert,
+  sichtbar, zeigt sich gerne, mutig, Risiko-freudig,
+  attention-seeking, steht gerne im Mittelpunkt, ...
+</div>
+
+<div class="para">
+  introvertierter Subtyp
+  = fixed modality
+  = Subtyp ist alt (Typen 24)
+  = fühlt sich alt, schwach, passiv, müde, Langschläfer, Scham, Selbstzweifel,
+  schüchtern, versteckt, defensiv, meidet Risiko,
+  meidet den Fokus, meidet den Mittelpunkt, ...
+</div>
+
+<div class="para">
+  
+</div>
+
+<div class="para">
   Die <b>Karavane</b> zieht weiter.
   Bestehende Gruppen reparieren ist schwer bis unmöglich,
   weil körperliche Sesshaftigkeit hängt zusammen mit geistiger Trägheit
@@ -3031,14 +3073,17 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Einfacher ist:
   Einzelne Menschen rausholen aus ihren Gruppen
   ("Wen von euch darf ich entführen?"),
-  mit diesen Menschen rumlaufen ("Karavane"),
+  mit diesen Menschen rumlaufen ("Die Karavane zieht weiter"),
   und Schritt für Schritt eine neue Gruppe bauen.
   Das Rumlaufen ist wichtig,
   weil "ein bewegter Körper trägt einen bewegten Geist" (Peripathetiker).
+  Aber auch das "sesshaft werden" ist wichtig,
+  also einen neuen Platz suchen und besetzen.
 </div>
 
 <div class="para">
-  Dabei muss ich mich (leider) an meine eigenen Gesetze halten,
+  Bei diesem "Karavane Spiel"
+  muss ich mich (leider) an meine eigenen Gesetze halten,
   das heisst:
   Schritt 1:
   Ich muss die Menschen finden,
@@ -3078,13 +3123,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Meine andere Vierer-Gruppe ist M1-F2-F1-M2 (Quadrat im Muster).
 </div>
 
-<div class="para">
-  FIXME layout. keep table on one page
-</div>
-
 
 
 <hr>
+
 
 
 <table class="four-basetypes" style="margin-top:1em;margin-bottom:1em">
@@ -3094,6 +3136,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <th>
         <div class="annotation" onClick="clickAnnotation(this)" title='
           TODO fix table borders. css grid?
+
+          TODO layout: keep table on one page
         '>Alchi</div>
       </th>
       <td>103</td>
@@ -3134,7 +3178,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
           J = Judging = old brain = types 24
         '>INFP</div>
       </td>
-      <td>INTP, ENTJ, ISFP</td>
+      <td>INTP<br>ENTJ, ISFP</td>
       <td>INTJ</td>
     </tr>
     <tr>
@@ -3173,7 +3217,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     <tr>
       <th>MBTI</th>
       <td>ESFP</td>
-      <td>ESFJ, ENTJ, ISFP</td>
+      <td>ESFJ<br>ENTJ, ISFP</td>
       <td>ESTJ</td>
     </tr>
     <tr>
@@ -3212,7 +3256,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     <tr>
       <th>MBTI</th>
       <td>ENTP</td>
-      <td>ENFP, INFJ, ESTP</td>
+      <td>ENFP<br>INFJ, ESTP</td>
       <td>ENFJ</td>
     </tr>
     <tr>
@@ -3251,7 +3295,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     <tr>
       <th>MBTI</th>
       <td>ISTP</td>
-      <td>ISTJ, INFJ, ESTP</td>
+      <td>ISTJ<br>INFJ, ESTP</td>
       <td>ISFJ</td>
     </tr>
     <tr>
@@ -3760,7 +3804,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  TODO fix layout. keep the two graphs on one page
+  Der schlimmste Teil von Umweltzerstörung
+  ist die Abholzung von Urwald.
 </div>
 
 
@@ -4148,7 +4193,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Mir ist klar:
   Viele Menschen sagen:
   Beim Thema "Menschen umbringen"
-  hört der Spaß auf!
+  hört der Spaß auf.
   (hier hat die Toleranz ein Ende.)
 
   Aber genau hier fängt mein Spaß erst an (sage ich als Typ 1).
@@ -4158,10 +4203,16 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Meine Tugend ist deine Sünde.
   Mein Paradies ist deine Hölle.
   Und so weiter.
+
+  TODO Sublimation von aggressiven Trieben zu produktiver Arbeit,
+  Spiel mit dem Feuer,
+  Zivilisation,
+  Zähmung von Tier zu Mensch
+  (Sigmund Freud - Unbehagen in der Kultur)
 </div>
 
 <div class="para">
-  Toleranz ist billig wenns leicht geht.
+  Toleranz ist billig wenns leicht geht (Schönwetter-Toleranz).
   Aber damit man so "extrem" andere Weltsichten "tolerieren" kann,
   müssen diese anderen Weltsichten
   in "sympatischen" Körpern wohnen.
@@ -4196,7 +4247,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Nein.
   Seit ungefähr 10.000 Jahren
   rebellieren die Menschen gegen Naturgesetze,
-  mit so "schönen" Erfindungen wie <b>Mordverbot</b>.
+  mit so "schönen" Erfindungen wie
+  <b>Mordverbot</b>, Versicherungen, Sozialstaat.
   Aber diese Menschen sind nur Tragische Helden,
   die mit gutem Vorsatz ins Verderben laufen
   (Übervölkerung, Degeneration, Dekadenz, Kollaps,
@@ -4206,22 +4258,768 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
+  <b>Problemkind</b>: Festhalten oder Loslassen?
+  Stell dir vor, du bist der größte Pazifist auf der Welt,
+  aber dein Kind will Menschen töten.
+  Was machst du?
+  Dein Kind festhalten und erziehen zu einem Pazifist?
+  (Passive Gewalt, Festhalten, Einsperren, schicksals-ergeben,
+  "das muss so sein", "zu spät für Korrektur",
+  "jetzt haben wir schon angefangen und wir müssen das fertig machen")
+  ...
+  oder dein Kind loslassen und von "den Anderen" erziehen lassen zu seinem Soldat?
+  Ich fürchte:
+  Manche Menschen werden "ihre" Kinder nie freiwillig loslassen,
+  egal wie fremd diese Kinder sind.
+  Da hilft nur "liberale Gewalt",
+  also mit Gewalt diese "gefangenen Kinder" befreien
+  und zu besseren Eltern bringen.
+</div>
+
+<div class="para">
+  Solche "Kinderräuber" kennen wir als Krampus,
+  vor dem unsere Kinder Angst haben sollen.
+  Aber für mich ist Krampus ein Befreier, ein Held.
+  Ich selber war so ein Problemkind
+  (fremd zu Vater, Mutter, Bruder),
+  und unbewusst habe ich immer nach "besseren Eltern" gesucht,
+  also ältere Freunde als Ersatz-Eltern.
+</div>
+
+<div class="para">
+  Solche "Problemkinder" kennen wir auch als
+  Wechselbalg, Tauschkind, ungeliebtes Kind, Kuckuckskind, Satansbraten, Teufelskind ...
+  Wer ist schuld? Beide!
+  Das Problem ist die nicht-kompatible Beziehung zwischen Eltern und Kind.
+  Deswegen ist es so schwer, einen Schuldigen zu finden.
+  Beispiel:
+  Meine Eltern glauben ich bin verrückt (Hormonstörung im Kopf),
+  ich glaube meine Eltern sind dumm (falsche Bilder im Kopf).
+  "Einigkeit in Feindschaft."
+  Beide Seiten fühlen die Nicht-Kompatibilität,
+  und die beste Lösung ist: Wir gehen getrennte Wege.
+</div>
+
+<div class="para">
+  Geht diese Kinder-Befreiung auch ohne Gewalt?
+  Ja.
+  Dazu muss man den Eltern erst ein besseres Kind geben,
+  warten bis die Eltern sich an das bessere Kind gewöhnt haben,
+  und dann können die Eltern das falsche Kind loslassen.
+</div>
+
+<div class="para">
+  <b>Systemgewinner</b>:
+  Für manche Menschen funktioniert das konventionelle System
+  (Kleinfamilie, Schule, Arbeit).
+  Diese "Systemgewinner" werden immer sagen:
+  "die Anderen" müssen sich einfach mehr Mühe geben,
+  müssen sich nur mehr anstrengen,
+  dann haben sie mehr Erfolg in diesem System.
+  Warum gibt es solche Systemgewinner?
+  Zufall oder niedrige Ansprüche.
+</div>
+
+<div class="para">
+  Beispiel Kleinfamilie:
+  Durch Zufall können Kinder kompatibel sein zu ihren Eltern,
+  dann sagen diese Kinder: Kleinfamilie ist gut.
+  Genauer gesagt:
+  "Ich habe gute Erfahrungen gemacht mit Kleinfamilie."
+  Problematisch ist hier
+  der Schluss von subjektive Erfahrung zu objektives Weltbild
+  ("von sich auf Andere schließen")
+</div>
+
+<div class="para">
+  Solche Systemgewinner gibt es auch bei der <b>Kalender-Astrologie</b>,
+  wo man den Geburtstag nimmt, zum Berechnen vom Persönlichkeitstyp.
+  Durch Zufall stimmt dieses System für 1 von 4 Menschen (25 von 100),
+  weil Persönlichkeitstypen sind zufällig verteilt,
+  und es gibt 4 Grundtypen.
+  Diese Systemgewinner halten das System Kalender-Astrologie am Leben,
+  weil "für mich stimmt es".
+</div>
+
+<div class="para">
+  Falsche Ergebnisse versucht die Kalender-Astrologie zu "retten"
+  durch mehr Komplexität: genaue Geburtzeit, Aszendent, bla bla bla.
+  Aber Kalender-Astrologie ist "broken by design",
+  weil Geburtstag und Geburtzeit haben Null Einfluss auf den Typ.
+  Astrologie kann nützlich sein,
+  wenn man die Beschreibungen der Typen liest,
+  und überlegt: Was passt zu mir?
+  Welcher Typ beschreibt mein Verhalten am besten?
+</div>
+
+<div class="para">
+  <b>Wilde Theorie:</b>
+  Ich bin ein Amateurforscher
+  und ich schreibe meine Theorie
+  vor allem für andere Amateure (auch für Kinder),
+  weil ich glaube:
+  die meisten Profi-Psychologen sind Versager,
+  oder zumindest Fachidioten,
+  aber keine Generalisten,
+  also schon daher unfähig,
+  meine "ganzheitliche" Theorie ernst zu nehmen.
+  Aber wie sagt man so schön:
+  Ist mir egal : )
+</div>
+
+<div class="para">
+  Und auch jeder "seriöse" Forscher müsste sagen:
+  "Ist mir egal" woher genau diese Theorie kommt,
+  alle Hypothesen sind gleichwertig,
+  und nur Experiment zeigt Wahrheit.
+  In dem Sinn sage ich:
+  "Shut up and test my hypothesis!"
+</div>
+
+<div class="para">
+  Meine Theorie ist so allgemein (ganzheitlich, abstrakt, generell),
+  dass keiner verantwortlich ist (zumindest kein Spezialist) ...
+  also ist jeder verantwortlich.
+
+  Das heisst:
+  Jeder darf helfen,
+  jeder kann helfen,
+  jedes Feedback ist wertvoll.
+</div>
+
+<div class="para">
+  Woher kommt meine Theorie?
+  Selbststudium Psychologie
+  für ungefähr 5 Jahre.
+  Schwerpunkt Persönlichkeits-Psychologie,
+  also die Kunst des
+  "alle Menschen in wenige Schubladen stecken" (Abstraktion).
+  Selbststudium heisst:
+  Ich lese nur das, was mich interessiert.
+  Ich entscheide selber: Was ist wichtig? Wo geht es weiter?
+  Die Abschlussarbeit für mein Selbststudium
+  ist diese Theorie, die du gerade liest.
+</div>
+
+<div class="para">
   <b>Hilfe gesucht:</b>
 
   Ich brauche Hilfe bei meinen 2 Zielen:
   Veröffentlichen und Experiment.
+</div>
 
+<div class="para">
   Veröffentlichen heisst:
   Flyer drucken (50 EUR / 1000 Flyer)
   und verteilen (persönlich, nicht in Briefkästen).
-  E-Mails und Briefe schreiben
+  E-Mails, Briefe, Telefonate
   (Verleger, Psychologen, Ökodörfer, Demeter-Höfe,
   Prepper, Boxclubs, Gangs ...).
+  Oder Reposten in deinem Social Media Feed.
+  Oder bei einem Journal fragen,
+  ob die einen Artikel von mir drucken wollen.
+  Oder frage deinen Lieblings-"Influencer"
+  ob der mich featuren will.
+</div>
 
+<div class="para">
+  Wichtig sind auch <b>zufällige Begegnungen</b>
+  zum neue Menschen treffen
+  (Park, Badesee, Demo, Einkaufen,
+  Bahn, Bus, Autostoppen, Wandern ...)
+</div>
+
+<div class="para">
   Das Experiment habe ich schon beschrieben.
   Feedback und Ergebnisse
   kann jeder auf meinen Websites veröffentlichen (Github, Gitlab, ...).
 </div>
+
+<div class="para">
+  <b>Freiwilligkeit:</b>
+  Mein Projekt ist sowas wie "Linux für Erziehung", also:
+  transparent (Open Source),
+  kostenlos,
+  freiwillig.
+  Vorteil: freiwillige Arbeit produziert bessere Qualität
+  (Eigenmotivation, freier Wille).
+  Nachteil: Es dauert länger,
+  weil man muss sich Zeit nehmen.
+</div>
+
+<div class="para">
+  Meine Theorie kann man beschreiben
+  als eine "Theorie der Freiwilligkeit":
+
+  Das Ziel sind freiwillige Beziehungen:
+  Beide Bindungs-Partner haben ein Veto-Recht,
+  also wenn einer "Nein" sagt,
+  dann ist die Beziehung vorbei.
+</div>
+
+<div class="para">
+  Auch Kleinkinder können "Ja" oder "Nein" sagen
+  zu ihren biologischen Eltern,
+  aber Kleinkinder zeigen das durch Körpersprache,
+  und Kinder müssen verschiedene Eltern "ausprobieren" (Körperkontakt),
+  damit man vergleichen kann: Wer passt besser?
+</div>
+
+<div class="para">
+  Dagegen:
+  Wenn Eltern sagen:
+  "Kinder gehören zu ihren Eltern" und "Keine Experimente",
+  dann spielen diese Eltern ein Glückspiel:
+  Manche Kinder passen
+  (Glück gehabt, Kind und Eltern sind Freunde, beide Seiten gewinnen),
+  andere Kinder stören
+  (Pech gehabt, Kind und Eltern sind Feinde, beide Seiten verlieren).
+</div>
+
+
+
+<div class="para">
+  Anhang: <b>Zitate und Sprüche</b>
+</div>
+
+<div class="para">Ich und du und er und sie und es sind
+  Besser dran, wenn wir uns selber helfen
+  &mdash; Samy Deluxe - Weck mich auf
+</div>
+
+<div class="para">Es gibt nichts was so fehlt wie verlorene Zeit
+  &mdash; Fiva MC - Verlorene Zeit
+</div>
+
+<div class="para">Knast ist nicht wenn ein Mensch in einer Zelle sitzt
+  Knast ist wenn die Angst im Kopf deine Zelle ist
+  &mdash; Danger Dan - Gesiebte Luft
+</div>
+
+<div class="para">This town's alright, But it's not enough
+  I'm looking for a quick exit, like a prisoner on the run
+  &mdash; Chase & Status - Embrace (feat. White Lies)
+</div>
+
+<!--
+  Big time breakdown, look how the stars come out
+  Big time breakdown, why didn't you just shout?
+  I'm lonely, and I'm looking for a place to go
+  where everything's an embrace [Umarmung], and everybody wants to know
+-->
+
+<!--
+  I have shut the window, already to defend
+  What is left to die for, What is left to give
+  All is about to wither, all is about you
+  Hard to make up your mind, hard to get through to me
+  You gave away the love I gave, You gave away the love I gave
+  You gave away the love I gave, You gave away the love I gave
+-->
+
+<div class="para">
+  Funny how everything falls into place once decisions are made
+  <br>
+  &mdash; Rawthang - Scorned
+</div>
+
+<div class="para">
+  Why did you have him, then? Nothing uses carbon like a first-world human.
+  <br>
+  &mdash; Utopia (UK 2013)
+</div>
+
+<div class="para">
+  What have you done today, to earn your place in this crowded world?
+  <br>
+  &mdash; Utopia (US 2020)
+</div>
+  <!--
+    Utopia | Official Teaser | Prime Video
+    https://www.youtube.com/watch?v=NUVNDvfY4Ps
+  -->
+
+<!-- too long
+It's a virus called RD9. Or as I like to call it, World Cure.
+  At the end of the game, everyone in the stadium will be infected.
+  It should take two to three weeks for symptoms to start showing up.
+  - By which time 96 000 fans from almost every country in the world
+  will be back home spreading the disease. Why are you doing this?
+  - Well, think about it. We have seven billion people
+  running around on a planet that can only hold five.
+  I'm just trying to make the world a better place, that's all.
+  By deleting the surplus.
+-->
+
+<div class="para">
+  "Cure the world." And who exactly do you intend to "delete"?
+  <br>
+  - The garbage. The imbeciles who lie around drunk, reproducing like rabbits,
+  and sitting there with their hand out, expecting the rest of us to pay.
+  And let's be frank, who's gonna miss them anyway?
+  &mdash; The Brothers Grimsby (2016)
+</div>
+
+<!-- nutzlos
+<div class="para">
+  It's Idiocracy, pure hypocrisy
+  <br>
+  Waking these dummies up, it used to mean a lot to me
+  <br>
+  but nowadays, I wanna tip their canoes
+  <br>
+  and as they drown, tell them, this is what you get when you snooze
+  <br>
+  &mdash; ODD TV - They Live, We Sleep
+</div>
+-->
+
+<div class="para">
+  Glaubst Du an das Schicksal, Neo?
+  - Nein.
+  - Warum nicht?
+  - Mir missfällt der Gedanke, mein Leben nicht unter Kontrolle zu haben.
+  - Ich weiß ganz genau, was Du meinst.
+  Ich will Dir sagen, wieso Du hier bist.
+  Du bist hier, weil Du etwas weißt.
+  Etwas, das Du nicht erklären kannst. aber Du fühlst es.
+  Du fühlst es schon Dein ganzes Leben lang,
+  dass mit der Welt etwas nicht stimmt.
+  Du weißt nicht was, aber es ist da.
+  Wie ein Splitter in Deinem Kopf, der Dich verrückt macht.
+  Dieses Gefühl hat Dich zu mir geführt.
+  Weißt Du wovon ich spreche?
+  - Von der Matrix?
+  - ... Es ist eine Scheinwelt, die man Dir vorgaukelt,
+  um Dich von der Wahrheit abzulenken.
+  - Welche Wahrheit?
+  - Dass Du ein Sklave bist, Neo.
+  Du wurdest wie alle in die Sklaverei geboren,
+  und lebst in einem Gefängnis,
+  das Du weder anfassen noch riechen kannst.
+  Ein Gefängnis für Deinen Verstand. 
+  &mdash; Matrix (1999)
+</div>
+
+<div class="para">
+  Das Problem ist: du glaubst, du hast Zeit.
+  &mdash; Buddha
+</div>
+
+<div class="para">
+  All you can do is warn them.
+  <br>
+  If they dont listen, move on, so you can warn others.
+  [Breitensuche]
+</div>
+
+<div class="para">
+  Be excellent to each other.
+  &mdash; Linus Torvalds
+</div>
+
+<div class="para">
+  Der moderne Mensch wird in einem Tätigkeitstaumel gehalten,
+  damit er nicht zum Nachdenken kommt,
+  über den Sinn seines Lebens und der Welt.
+  &mdash; Albert Schweitzer
+</div>
+
+<div class="para">
+  Das ist dein Leben, und es endet Minute für Minute ...
+  Ich bin Jack's vergeudetes Leben ...
+  Wir sind Konsumenten ...
+  Durch die Werbung sind wir heiß auf Klamotten und Autos,
+  machen Jobs die wir hassen,
+  kaufen dann Scheiße, die wir nicht brauchen ...
+  wir sind kurz, ganz kurz vorm Ausrasten ...
+  Wir sind nichts Besonderes ...
+  Du entscheidest, wie weit du dich beteiligst ...
+  Vergiss was du weisst, über das Leben, über Freundschaft ...
+  Was willst du noch machen bevor du stirbst? ...
+  Hör auf alles kontrollieren zu wollen, lass einfach los. Lass los! ...
+  Du hast mich in einer seltsamen Phase meines Lebens getroffen
+  &mdash; Fight Club (1999)
+</div>
+
+<div class="para">
+  We should forget about small efficiencies about 97% of the time.
+  premature optimization is the root of all evil.
+  &mdash; Donald Knuth
+</div>
+
+<div class="para">
+  Für die Dinge die wir lieben sind wir gemacht.
+  &mdash; Rakede - Sonne
+</div>
+
+<div class="para">
+  Ich werd heut nicht schlafen gehen,
+  ich feile an großen Plänen
+  <br>
+  &mdash; Rakede - Schlafen gehen
+</div>
+
+<div class="para">
+  Die Liebe ist ein wildes Tier
+  ...
+  Amuur Amuur, Alle wollen nur dich zähmen
+  &mdash; Rammstein - Amour
+</div>
+
+<div class="para">
+  Ich komm nicht mit vor die Tür, wir gehen gleich in den Wald
+  <br>
+  Das ist freie Gewalt, ich kämpfe für rohe Liebe
+  &mdash; K.I.Z - Geld Essen
+</div>
+
+<div class="para">
+  Diese Welt ist voll mit Verrückten.
+  Ihr dachtet dass es keine Helden mehr gibt.
+  K.I.Z tragen Richterperücken.
+  Wir fahren durch deinen Block und üben Selbstjustiz
+  &mdash; K.I.Z - Selbstjustiz
+</div>
+
+<div class="para">
+  Sie wissen, dass ich ausbrechen werde.
+  Und tragen mich, damit ich das Laufen nicht lerne
+  &mdash; K.I.Z - Käfigbett
+</div>
+
+<div class="para">
+  Die Freiheitsstatue ist ne Hure, und ich fick sie
+  &mdash; Haftbefehl - Lass die Affen aus'm Zoo
+</div>
+
+<div class="para">
+  In die Schule zurück gehen tät ich nie wieder.
+  Und wenn ichs doch tun würde dann reiss ich sie nieder
+  &mdash; BBou - Eigentlich
+</div>
+
+<div class="para">
+  Ich glaubte an das Gute, doch die Pille schmeckt so bitter.
+  Diese Welt geht langsam unter, deshalb will ich keine Kinder.
+  &mdash; Antifuchs - Mama
+</div>
+
+<div class="para">
+  Ich hab geschrieben ... damit mir der Kopf nicht platzt.
+  <br>
+  &mdash; Torch - Ich hab geschrieben
+</div>
+
+<div class="para">
+  Halt du sie dumm, ich halt sie arm.
+  (sagt der König zum Priester)
+</div>
+
+<div class="para">
+  Die hohe, reich dotierte Geislichkeit
+  fürchtet nichts mehr
+  als die Aufklärung der unteren Masse.
+  &mdash; J. W. Goethe
+</div>
+
+<div class="para">
+  Wir haben geträumt, von einer besseren Welt.
+  Wir haben sie uns, so einfach vorgestellt.
+  Wir haben geträumt, es war ne lange Nacht.
+  Ich wünschte wir wären niemals aufgewacht.
+  Revolution, wir wollten weg von der Masse.
+  Kopfüber in die Hölle und zurück.
+  Heute stehst du, bei Hertie an der Kasse.
+  Da ist keine Sehnsucht mehr in deinem Blick.
+  Du sagst man tut halt was man kann.
+  Und dir gehts gut, du kotzt mich an
+  &mdash; Terrorgruppe - Kopfüber In Die Hölle
+</div>
+
+<div class="para">
+  Wer in Glaubensfragen den Verstand befragt,
+  kriegt unchristliche Antworten.
+  &mdash; Wilhelm Busch
+</div>
+
+<div class="para">
+  Der beste Trick vom Teufel ist:
+  Den Menschen einreden: es gibt keinen Teufel.
+</div>
+
+<div class="para">
+  Des großen Alexander Reich zerfiel;
+  das der alten Römer und das Napoleons ging in Trümmer;
+  sie waren gebaut auf die Gewalt der Waffen.
+  
+  Aber das Reich von Neu-Rom
+  besteht schon fast anderthalbtausend Jahre
+  und wird wer weiß wie lange bestehen,
+  denn es ruht auf dem solidesten Fundament:
+  auf der Dummheit der Menschen.
+  &mdash; Otto von Corvin
+</div>
+
+<div class="para">
+  Wer glaubt etwas zu sein,
+  der hat aufgehört es zu werden.
+</div>
+
+<div class="para">
+  Glaube denen, die die Wahrheit suchen,
+  und zweifle an denen, die sie gefunden haben.
+  &mdash; André Gide
+</div>
+
+<div class="para">
+  Religion ist:
+  wahr für das Volk,
+  falsch für die Weisen,
+  nützlich für die Herrscher.
+  &mdash; Edward Gibbon
+</div>
+
+<div class="para">
+  Reform, Säkularisierung, Denazifizierung, Wissenschaft, Reset ...
+  ist der
+
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    shapeshift, shapeshifters, etikettenwechsel, flaggenwechsel
+  '>Fassadenwechsel</div>
+
+  von alter Staatsreligion zu neuer Staatsreligion.
+</div>
+
+<div class="para">
+  Unter den Talaren, der Muff von tausend Jahren.
+</div>
+
+<div class="para">
+  Wahrheit ist da wos weh tut.
+</div>
+
+<div class="para">
+  Ich war gerne in der Schule, es war ne gute Zeit.
+  Du sagst, dass ich trotzdem keinen Abschluss habe, tut dir leid.
+  Doch warum? Ich bin nicht dumm, ich will so komisch reden.
+  Ich hab einfach ein großes Problem mit Autoritäten.
+  ...
+  Das Schulsystem ist für'n Arsch, ihr kommt nicht an uns ran.
+  Doch ihr macht einfach die Augen zu und bleibt so arrogant.
+  Wenn's ein Problem gibt, müsst ihr gerne drüber reden.
+  Doch in erster Linie müsst ihr lern, uns zu versteh'n.
+  &mdash; Sido [M1] - Schule
+</div>
+
+<div class="para">
+  Ich war in der Schule und habe nix gelernt.
+  Doch heute habe ich ein Affen und ein Pferd.
+  &mdash; K.I.Z - Affe und Pferd
+</div>
+
+<div class="para">
+  Ich komm nicht aus der East Side, komm nicht aus der West Side.
+  Bruder ich komme aus der Steinzeit, uh!
+  ...
+  Jeder hier sagt ich bin sympathisch und nett.
+  Ein Gysi auf der Straße und ein Stalin im Bett, ah!
+  <br>
+  &mdash; K.I.Z - VIP in der Psychiatrie
+</div>
+
+<div class="para">
+  Mein größte Angst ist Zeitverschwendung.
+</div>
+
+<div class="para">
+  A person who is demoralized
+  is unable to assess true information.
+  <b>The facts tell nothing to him.</b>
+  Even if I shower him with information,
+  with authentic proof, with documents, with pictures.
+
+  Even if I take him by force to the Soviet Union
+  and show him a concentration camp,
+  <b>he will refuse to believe it</b>,
+  until he is going to receive a kick in his fat bottom.
+  When the military boot crushes his balls,
+  then he will understand, but not before that.
+  That is the tragedy of the situation of <b>demoralization</b>.
+
+  So basically, America is stuck with demoralization.
+  And even if you start right now, here, this minute,
+  you start educating a new generation of Americans.
+  It will still take you fifteen to <b>twenty years</b>
+  to turn the tide of ideological perception of reality
+  back to normalcy and patriotism.
+
+  &mdash; Yuri Bezmenov (Ex KGB Agent)
+</div>
+
+<div class="para">
+  Ich will hier weg, weg, jeden Tag das Gleiche.
+  Der Punk in mir versteckt hinter Nadelstreifen.
+  ...
+  Sie [MDMA] zeigt mir ihre Welt und ich fühl mich wie neu geboren.
+  Sie dirigiert das Licht, flüstert in mein Ohr.
+  All die verschwommenen dunklen Bilder werden klar.
+  Und alles was sie sagt wird wahr.
+  ...
+  Ich denk nicht mehr nach.
+  Brauch keinen Schlaf, brauch keinen Plan, ich bin so schön verstrahlt.
+  ...
+  Ein großer Fisch braucht'n großen Teich.
+  Sie hat mich befreit, denn mein Aquarium war zu klein.
+  ...
+  Deine Schönheit ist so gnadenlos, seh' wie alles neben dir verwelkt.
+  Und alle sind sie gegen uns, doch ich weiß dass du zu mir hältst.
+  Und wenn wir zusammen sind, wird jede kalte Nacht zum Tag.
+  Kenn keine Angst mehr, denn ich bin so schön verstrahlt.
+  &mdash; Marteria [M1] - Verstrahlt
+</div>
+
+<div class="para">
+  Weißt du noch? Als wir in die Tische ritzten in den Schulen,
+  bitte Herr vergib ihnen nicht denn sie wissen was sie tun.
+  Unter den Pflastersteinen wartet der Sandstrand,
+  wenn ich mit Rap dann mit der Pumpgun.
+  ...
+  Du willst einen rauchen? Dann geh dir was pflücken im Garten,
+  Doch unser heutiges Leben lässt sich auch nüchtern ertragen.
+  ...
+  Ein Goldbarren ist für uns das gleiche wie ein Ziegelstein,
+  der Kamin geht aus, wirf' mal noch 'ne Bibel rein.
+  Die Kids gruseln sich, denn ich erzähle vom Papst,
+  dieses Leben ist so schön, wer braucht ein Leben danach?
+  ...
+  Baby die Zeit mit dir war so wunderschön.
+  Ja, jetzt ist es wieder aus, aber unsere Kinder weinen nicht,
+  denn wir ziehen sie alle miteinander auf.
+  ...
+  Sie dachten echt ihre Scheiße hält ewig
+  ...
+  Hurra, diese Welt geht unter!
+  Auf den Trümmern das Paradies
+  &mdash; K.I.Z - Hurra die Welt geht unter
+</div>
+
+<div class="para">
+  Teacher leave them kids alone.
+  &mdash; Pink Floyd - Another Brick in the Wall
+</div>
+
+<div class="para">
+  Als die ersten Missionare nach Afrika kommen,
+  besitzen sie die Bibel und wir das Land.
+  Sie sagen: Lasst uns beten!
+  Und wir schließen die Augen.
+  Als wir die Augen wieder öffnen,
+  ist die Lage genau umgekehrt:
+  Wir haben die Bibel und sie haben das Land.
+  &mdash; Desmond Tutu
+</div>
+
+<div class="para">
+  Gegen Dummheit hilft nur Gewalt.
+</div>
+
+<div class="para">
+  Wegen Bomben die ich baute nannten sie mich Attentäter,
+  Terrorist Gegenläufer und Verräter.
+  Aber später werden Menschen die wie ich sind euch regieren,
+  Und so sage ich mir täglich nur den Glauben nicht verlieren.
+  ...
+  Untergrund ist Medizin Rap Antidepressiva,
+  Gegen Hiphop-HIV auch bekannt als Viva.
+  Wer will Liebeslieder und wer will tighte Raps,
+  Ich will raus aus diesem Knast, mein Mikro Geld und Sex.
+  ...
+  Wie kann so etwas Gutes so falsch sein?
+  Warum ist so etwas Schönes so schlecht?
+  Weshalb gibt es auf der Welt keine Liebe?
+  Und weswegen hab ich eigentlich immer recht?
+  ...
+  Jeden Tag sterben Kinder, es gibt neue Kriege,
+  Ich sehe Hass und Zerstörung, Berlin-West, keine Liebe.
+  Zensur und RTL formten mich zum Psychopathen,
+  die Platten die ich hörte machten mich zum Mic-Soldaten.
+  Und deshalb ist jetzt KO-Zeit angebrochen für euch Opfer,
+  die Devise lautet "Hände weg vom Mic oder Kopf ab!"
+  ...
+  Wonderbras und Silikon sollten Pflicht sein für Gehirne,
+  denn bis jetzt hat jeder Zweite von euch Scheiße in der Birne.
+  Hier kommt Anti gegen Alles, ich misstraue auch mir selbst,
+  Hauptsache ist du stirbst, egal durch wessen Schwert du fällst.
+  Alle Hippies und Versager kommen ins Hiphop-Arbeitslager.
+  "Untergrund" zu sein heißt tot sein oder Krieg wie Intifada.
+  &mdash; Prinz Pi [M1] - Keine Liebe
+</div>
+
+<div class="para">
+  Der Mensch sucht Heldenfiguren, dann muss er selbst nichts mehr tun.
+  Niemand mehr der etwas bewegt, als wären sie querschnittsgelähmt.
+  &mdash; Kollegah - Wie ein Boss
+</div>
+
+<div class="para">
+  Was ist mit der Realness? Alle nur noch Wellness.
+  &mdash; Marsimoto - Wellness
+</div>
+
+<div class="para">
+  Corona Hysterie? Ist doch klar was dahinter steckt!
+  Genau, Pharma und die Bankendynastien,
+  Billie G. und die gut bewährten Ablenkungsmanieren.
+  ...
+  Hiermit will ich Zeichen und zugleich weitere Weichen setzen
+  weiter als die Zeit in der Parteien deinen Preis berechnen.
+  ...
+  "Du wählst die AFD" - Nee Man ich bin unpolitisch.
+  Du kannst es grade sehn, jeder von euch Dumbos sieht es.
+  Ich glaube ja im Kern, sind wir nicht so unterschiedlich.
+  Denn nur deine Wahrnehmung bestimmt, ob jemand unbeliebt ist.
+  &mdash; Der Typ - Corona Brainwash
+</div>
+
+<div class="para">
+  Nach 10.000 Jahren habe ich sie endlich gefunden:
+  <br>
+  die Schriftrolle der Wahrheit!
+  - "Du bist dumm."
+  - Nahh!
+</div>
+
+
+
+<div class="para">
+  Anhang: <b>Konzepte</b>
+</div>
+
+<div class="para">
+  <b>Trauma Releasing Exercises</b> von David Berceli.
+  Krampfen und Zittern.
+  Echter Exorzismus.
+  Befreiung aus Blockaden.
+  Befreiung aus Angst.
+  Video:
+  <a href="https://youtu.be/4lrfdsV4zB8">The Wounded Woman - Chapter 3</a>
+</div>
+
+
+
+<!-- duplicate
+<div class="para">
+  Ich bin nicht der Mund für diese Ohren.
+  &mdash; Friedrich Nietzsche
+</div>
+-->
+
+
+
+<hr>
+
+
 
 <div class="para">
   Ich:
@@ -4241,6 +5039,46 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Du darfst alles mit meinem Text machen,
   und ich gebe dir keine Garantie.
 </div>
+
+
+
+<div class="para">
+  Anhang: Das Muster für 8 x 8 = 64 Menschen
+</div>
+
+<pre class="para" style="font-size:90%; margin-top:5em">
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     x               x               x               x
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             o               o               o               o
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     x               x               x               x
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+
+             o               o               o               o
+
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     x               x               x               x
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             o               o               o               o
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     x               x               x               x
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+
+             o               o               o               o
+</pre>
 
 
 
