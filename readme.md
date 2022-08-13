@@ -63,6 +63,7 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
 * book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
+  * [google translate](https://milahu-gitlab-io.translate.goog/alchi/src/whoaremyfriends/wersindmeinefreunde.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment. I made [a translation tool](./src/alchi-book/scripts/translate.js) for my alchi-book, which I will use here too.
 * flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html))
 * visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html))
 * book: [Pallas. Extended Families and Small States](https://milahu.github.io/alchi/src/alchi-book/build/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/))
