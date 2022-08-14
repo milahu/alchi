@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-13">
+  <meta id="version" name="dcterms.modified" content="2022-08-14">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -1261,14 +1261,26 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Forschung:</b>
   Mein Muster ist nur eine Hypothese,
-  also ein Lösungsvorschlag.
+  also ein Lösungsvorschlag (Research Proposal).
   Ich gebe dir <b>keine Garantie</b> dass es funktioniert.
 
   Ist das Muster richtig oder falsch?
   Wie können wir das rausfinden?
   Dazu müssen wir ein Experiment machen.
-  Ergebnisse werde ich veröffentlichen auf meiner Website.
+  Ergebnisse darf jeder veröffentlichen auf meinen Websites (Github, Gitlab, ...).
   (Ja, auch negative Ergebnisse.)
+</div>
+
+<div class="para">
+  <b>Alternativ-Hypothesen:</b>
+
+  1. es gibt kein "Muster für Beziehungen" und alle Menschen sind kompatibel,
+  also zufällige Beziehungen sind genauso gut und belastbar
+  wie die "kompatiblen" Beziehungen im Muster.
+
+  2. dieses Muster ist falsch, aber es gibt ein anderes Muster
+  (Du darfst gerne ein anderes Muster vorschlagen,
+  dann können wir verschiedene Muster probieren und vergleichen.)
 </div>
 
 <div class="para">
@@ -1294,13 +1306,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   Es wird immer wieder Menschen geben,
   die diese Theorie noch nicht kennen,
-  und diese Menschen brauchen einen billigen Weg,
-  zum Testen der Theorie.
+  und diese Menschen brauchen einen billigen Weg zum Testen der Theorie.
 
-  An die Hypothese "glauben"
-  muss man dabei nur so lange,
-  bis das Experiment vorbei ist
-  (Arbeitshypothese).
+  An die Hypothese "glauben" muss man dabei nur so lange,
+  bis das Experiment vorbei ist (Arbeitshypothese).
 </div>
 
 <div class="para">
@@ -1688,17 +1697,17 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Horizontal-Paare:
   M1S-F3S und M4L-F2L =
   Sohn-Tochter und Vater-Mutter =
-  Alter bindet.
+  gleiches Alter.
 
   Vertikal-Paare:
   M1S-M4L und F3S-F2L =
   Sohn-Vater und Tochter-Mutter =
-  Geschlecht bindet.
+  gleiches Geschlecht.
 
   Diagonal-Paare:
   M1S-F2L und F3S-M4L =
   Sohn-Mutter und Tochter-Vater =
-  Gegenteil bindet.
+  gleiche Diagonale.
 </div>
 
 
@@ -2579,6 +2588,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Breit ♧</td>
       <td>Lang ♢</td>
     </tr>
+    <!--
     <tr>
       <th>Kleid oben</th>
       <td>Gelb-Schwarz</td>
@@ -2592,6 +2602,21 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Gelb-Schwarz</td>
       <td>Grün-Schwarz</td>
       <td>Rot-Weiss</td>
+    </tr>
+    -->
+    <tr>
+      <th>Kleid oben</th>
+      <td>Schwarz-Gelb</td>
+      <td>Weiss-Blau</td>
+      <td>Schwarz-Rot</td>
+      <td>Weiss-Grün</td>
+    </tr>
+    <tr>
+      <th>Kleid unten</th>
+      <td>Weiss-Blau</td>
+      <td>Schwarz-Gelb</td>
+      <td>Schwarz-Grün</td>
+      <td>Weiss-Rot</td>
     </tr>
     <tr>
       <th>Zylinder-Geometrie</th>
@@ -2635,13 +2660,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     </tr>
     <tr>
       <th>
-        ↳
         <div class="annotation" onClick="clickAnnotation(this)" title='
           Stress Response
           the strange situation
           TODO beschreiben
-        '>Schreien:</div>
-        Anfang
+        '>Stress: ↑ Aufregen</div>
       </th>
       <td>früh</td>
       <td>spät</td>
@@ -2649,7 +2672,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>spät</td>
     </tr>
     <tr>
-      <th>↳ Schreien: Ende</th>
+      <th>Stress: ↓ Beruhigen</th>
       <td>früh</td>
       <td>spät</td>
       <td>spät</td>
@@ -2701,6 +2724,15 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>LCHF, Keto</td>
       <td>HCLF</td>
     </tr>
+
+    <tr>
+      <th>Ayurveda Doshas</th>
+      <td>Pitta</td>
+      <td>[Prithvi]</td>
+      <td>Kapha</td>
+      <td>Vata</td>
+    </tr>
+
     <tr>
       <th><a class="nofootnote" href="https://flowgenomeproject.com/flow-profile">Flow Profile</a></th>
       <td>Hard Charger</td>
@@ -2985,12 +3017,18 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Typ 1 ist eher dominant, herrisch, grandios (grandiose narciss),
-  überheblich, "männlich", stolz, frech, arrogant, aggressiv.
+  Typ 1 ist eher herrisch, dominant, grandios (grandiose narciss),
+  überheblich, "männlich", stolz, frech, arrogant, aggressiv,
+  starke Meinungen (strong opinions),
+  Selbstwert, Licht,
+  neugierig, Risiko, Freiheit.
 
-  Typ 2 ist eher subordiniert, unterwürfig,
+  Typ 2 ist eher unterwürfig, subordiniert,
   verletzbar (vulnerable narciss), höflich, ängstlich,
-  defensiv, angepasst, passiv.
+  defensiv, angepasst, passiv,
+  schwache Meinungen (weak opinions),
+  Selbstzweifel, Fremdwert, Schatten,
+  Geduld, Sicherheit.
 </div>
 
 <div class="para">
@@ -3005,6 +3043,606 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   und ich sammle möglichst viele Informationen
   für ein "ganzheitliches" Bild.
 </div>
+
+
+
+<div class="para">
+  Verhalten zeigt Typ durch <b>typische Stress-Reaktion</b>.
+</div>
+
+<table style="width:100%; margin-top:0.5em">
+  <tr>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. früh</td>
+          <td></td>
+          <td>3. früh</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>↑ Aufregen</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. spät</td>
+          <td></td>
+          <td>2. spät</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      →
+    </td>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. früh</td>
+          <td></td>
+          <td>3. spät</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>↓ Beruhigen</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. früh</td>
+          <td></td>
+          <td>2. spät</td>
+        </tr>
+      </table>
+    </tr>
+  </tr>
+</table>
+
+<div class="para">
+  Dieser Test funktioniert schon für Kleinkinder.
+  Man braucht einen Stress, der zeitlich klar definiert ist.
+  Also der Stress braucht genauen Anfang und Ende.
+</div>
+
+<div class="para">
+  Beispiel: <b>The Strange Situation</b>:
+  Mutter verlässt Kind (Anfang vom Stress),
+  Mutter kommt zurück (Ende vom Stress).
+</div>
+
+<div class="para">
+  Wie geht der Test?
+  Man beobachtet das Kind am Anfang und Ende vom Stress.
+</div>
+
+<div class="para">
+  Beim Anfang vom Stress fragt man:
+  Wann tut das Kind anfangen zu Schreien? Früh oder spät?
+  Die "früh aufregen" Kinder (Typen 13) schreien früher,
+  die "spät aufregen" Kinder (Typen 24) verdrängen den Stress (Geduld)
+  und schreien später (die Reaktion wird gehemmt, unterdrückt,
+  aufgeschoben, gespart, verzögert, prokrastiniert).
+</div>
+
+<div class="para">
+  Beim Ende vom Stress fragt man:
+  Wann tut das Kind aufhören zu Schreien? Früh oder spät?
+  Die "früh beruhigen" Kinder (Typen 14) beruhigen sich früher,
+  die "spät beruhigen" Kinder (Typen 23) halten die Reaktion
+  (Trägheit, weiter Schreien, weiter Kämpfen)
+  und beruhigen sich später.
+</div>
+
+<div class="para">
+  Diese typische Stress-Reaktion sieht man auch bei Erwachsenen,
+  aber das kindische Schreien wird ersetzt durch andere Stress-Reaktionen,
+  und der Subtyp verschiebt das Verhalten
+  (aber nie ins Gegenteil, zum Beispiel
+  ein Typ 3 Mensch wird nie so reagieren wie ein Typ 4 Mensch).
+</div>
+
+<div class="para">
+  Test-Fragen:
+  Wird die Stress-Reaktion ausgelebt ("früh Aufregen") oder verdrängt ("spät Aufregen")?
+  Ist die Stress-Reaktion kurz ("früh Beruhigen") oder lang ("spät Beruhigen")?
+</div>
+
+
+
+<hr>
+
+
+
+<div class="para">
+  <b>Element</b> heisst:
+  Ich bin ein X und mein Element ist Y.
+  Diese Namen nutzten Psychologen vor 2000 Jahren in Griechenland (Antike, Klassik).
+</div>
+
+<table style="width:100%; margin-top:0.5em">
+  <tr>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Tier</td>
+          <td></td>
+          <td>3. Vogel</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Ich bin ein</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Fisch</td>
+          <td></td>
+          <td>2. Pflanze</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      und
+    </td>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Feuer</td>
+          <td></td>
+          <td>3. Luft</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>mein Element ist</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Wasser</td>
+          <td></td>
+          <td>2. Erde</td>
+        </tr>
+      </table>
+    </tr>
+  </tr>
+</table>
+
+
+
+<div class="para">
+  <b>Zahlen:</b>
+  Für mich sind die Zahlen wichtig,
+  weil ich damit die Typen extrem kompakt beschreiben kann,
+  also mit nur einem Symbol (wichtig für mein Muster).
+
+  Die Zahlen 1234 kann ich auch mit meinen 4 Fingern zeigen
+  (Römische Zahlen: I II III IIII).
+
+  Warum diese Zahlen?
+  einfaches Weltbild:
+  Radius 1 = Erdkern = Magma, Vulkane, Feuer.
+  Radius 2 = Erdhülle = Erde, Steine.
+  Radius 3 = Luft = farblos, durchsichtig.
+  Radius 4 = Wasser = blauer Himmel.
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Eins</td>
+    <td></td>
+    <td>3. Drei</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>0. Null</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Vier</td>
+    <td></td>
+    <td>2. Zwei</td>
+  </tr>
+</table>
+
+
+
+<div class="para">
+  <b>Farben:</b>
+  Figur-betonende Kleidfarben.
+  Natürlicher Dresscode.
+</div>
+
+<!-- nutzlos?
+<div class="para">
+  Natürliche Flaggen = Kleid oben.
+  1 = Schwarz-Gelb = Anarcho-Capitalism = AnCap.
+  2 = Weiss-Blau = Pacifist-Capitalism?
+  3 = Schwarz-Rot = Anarcho-Syndicalism.
+  4 = Weiss-Grün = Pacifist-Syndicalism?
+</div>
+-->
+
+
+
+<table style="width:100%; margin-top:0.5em">
+  <tr>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Schwarz</td>
+          <td></td>
+          <td>3. Schwarz</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Kleid oben</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Weiss</td>
+          <td></td>
+          <td>2. Weiss</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      /
+    </td>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Weiss</td>
+          <td></td>
+          <td>3. Schwarz</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Kleid unten</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Weiss</td>
+          <td></td>
+          <td>2. Schwarz</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<div class="para">
+  Warum Schwarz-Weiss?
+  Zu einer breiten Körperhälfte passen schwarze und enge Kleider (Schwarz macht schlank, Tight Fit),
+  zu einer langen Körperhälfte passen weisse und weite Kleider (Weiss macht dick, Baggy Style).
+  Warum?
+  Kontrast zwischen Körper und Kleid.
+  Kontrast zwischen Natur und Kunst.
+</div>
+
+<div class="para">
+  Man kann auch "falsche" Farben tragen,
+  aber das wirkt "geschmacklos" (bad taste)
+  für sensible Augen.
+</div>
+
+
+
+<table style="width:100%; margin-top:0.5em">
+  <tr>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Gelb</td>
+          <td></td>
+          <td>3. Rot</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Kleid oben</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Grün</td>
+          <td></td>
+          <td>2. Blau</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      /
+    </td>
+    <td>
+      <table style="margin:auto; border:solid 1px black">
+        <tr>
+          <td>1. Blau</td>
+          <td></td>
+          <td>3. Grün</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Kleid unten</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4. Rot</td>
+          <td></td>
+          <td>2. Gelb</td>
+        </tr>
+      </table>
+    </tr>
+  </tr>
+</table>
+
+<div class="para">
+  Warum diese Farben?
+
+  Kleider sind etwas Künstliches,
+  also ein Kontrast zum Körper (Natur).
+</div>
+
+<div class="para">
+  Für Typen 12 gilt:
+  Rot-Grün sind natürliche Farben
+  (Eigenfarben: Rot = Typ 1, Grün = Typ 2),
+  Gelb-Blau sind künstliche Farben.
+  Deswegen tragen Typen 12 lieber gelbe oder blaue Kleider,
+  oder wählen lieber gelbe oder blaue Parteien.
+</div>
+
+<div class="para">
+  Für Typen 34 gilt das Gegenteil:
+  Gelb-Blau sind natürliche Farben
+  (Eigenfarben: Gelb = Typ 3, Blau = Typ 4),
+  Rot-Grün sind künstliche Farben.
+  Deswegen tragen Typen 34 lieber rote oder grüne Kleider,
+  oder wählen lieber rote oder grüne Parteien.
+</div>
+
+
+
+<div class="para">
+  <b>Eigenfarben:</b>
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Rot</td>
+    <td></td>
+    <td>3. Gelb</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Eigenfarbe</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Blau</td>
+    <td></td>
+    <td>2. Grün</td>
+  </tr>
+</table>
+
+<div class="para">
+  Warum diese "Eigenfarben"?
+  2 = Pflanze = Grün.
+  4 = Wasser = Blau.
+
+  1 ist das Gegenteil von 2,
+  Rot ist die Gegenfarbe von Grün
+  (Gegenfarben vermischen sich zu Schwarz oder Weiss).
+
+  3 ist das Gegenteil von 4,
+  Gelb ist die Gegenfarbe von Blau.
+</div>
+
+
+
+<div class="para">
+  Warum ist Farbe X oben?
+  Warum ist Farbe Y unten?
+  Die obere Kleidfarbe ist die Eigenfarbe vom Typ mit gleichem Oberkörper.
+  Die untere Kleidfarbe ist die Eigenfarbe vom Typ mit gleichem Unterkörper.
+</div>
+
+<div class="para">
+  Beispiel:
+  Typen 13 haben breiten Oberkörper.
+  Typen 14 haben langen Unterkörper.
+  Also:
+  Typ 1 hat als obere Kleidfarbe die Eigenfarbe von Typ 3 (gelb),
+  Typ 1 hat als untere Kleidfarbe die Eigenfarbe von Typ 4 (blau).
+</div>
+
+
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Schwarz-Gelb</td>
+    <td></td>
+    <td>3. Schwarz-Rot</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Kleid oben</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Weiss-Grün</td>
+    <td></td>
+    <td>2. Weiss-Blau</td>
+  </tr>
+</table>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Weiss-Blau</td>
+    <td></td>
+    <td>3. Schwarz-Grün</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Kleid unten</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Weiss-Rot</td>
+    <td></td>
+    <td>2. Schwarz-Gelb</td>
+  </tr>
+</table>
+
+
+
+<div class="para">
+  <b>Körperform:</b>
+  Ich sehe vier Körperformen:
+  1234 = Herz Birne Breit Lang.
+  Grundlagen:
+  William Sheldon:
+  1234 = meso meso endo ecto-morph.
+  Elliot Abravanel:
+  1234 = Thyroid Gonad Adrenal Pituitary.
+</div>
+
+<div class="para">
+  Zu oberflächlich?
+  Manche Menschen sind überrascht wenn ich behaupte:
+  Ich kann Innere Werte (Persönlichkeitstyp) ablesen von der Körperform.
+  "Nur weil ich dick bin muss ich doch nicht Typ 3 sein!"
+  Hmm. Warum nicht? Warum kompliziert, wenns auch leicht geht?
+</div>
+
+<div class="para">
+  Für meinen Ersten Eindruck muss ich nach Körperform gehen,
+  weil die Körperform sehe ich sofort.
+  Aber nur bei manchen Menschen sehe ich den Typ auf den ersten Blick ...
+  andere Menschen muss ich länger beobachten (Reden, Verhalten, Stress-Reaktion).
+</div>
+
+<div class="para">
+  Ich habe auch eine etwas andere Definition zwischen Körper und Geist
+  = Grobstruktur und Feinstruktur
+  = Äussere Werte (Geschlecht und Alter)
+  und Innere Werte (Persönlichkeitstyp, inneres Geschlecht und inneres Alter).
+  Also die "inneren" Werte sind nicht komplett versteckt,
+  sondern nur schwächer sichtbar als die "äusseren" Werte.
+</div>
+
+<div class="para">
+  Das Schließen von Körperform auf Innere Werte
+  ist bekannt als <b>Physiognomie</b> oder Morpho-Psychologie.
+  Wer zu viel Zeit hat,
+  der kann sich ja ein paar Studien dazu durchlesen ...
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Herz</td>
+    <td></td>
+    <td>3. Breit</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Körperform</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Lang</td>
+    <td></td>
+    <td>2. Birne</td>
+  </tr>
+</table>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Oben</td>
+    <td></td>
+    <td>3. Aussen</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Zylinder</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Innen</td>
+    <td></td>
+    <td>2. Unten</td>
+  </tr>
+</table>
+
+<div class="para">
+  Typ 1:
+  Herz-Form,
+  starke Arme,
+  schwache Beine,
+  Boxer,
+  TODO
+</div>
+
+<div class="para">
+  Typ 2:
+  Birnen-Form,
+  starke Beine,
+  schwache Arme,
+  Ringer (griechisches Ringen),
+  TODO
+</div>
+
+<div class="para">
+  Typ 3:
+  kurze Knochen,
+  breite Gelenke,
+  symmetrisches Gesicht,
+  symmetrische Fettverteilung,
+  Kugelstoßer,
+  Sprinter,
+  Kickboxer,
+  MMA,
+  Easy Gainer + Hard Loser,
+  Neigung zu Übergewicht,
+  langsamer Stoffwechsel (low metabolic rate),
+</div>
+
+<div class="para">
+  Typ 4:
+  lange Knochen,
+  schmale Gelenke,
+  kleiner Körper,
+  großer Kopf,
+  symmetrisches Gesicht,
+  symmetrische Fettverteilung,
+  Marathon-Läufer,
+  Hard Gainer + Easy Loser,
+  Neigung zu Untergewicht,
+  schneller Stoffwechsel (high metabolic rate),
+</div>
+
+
+
+<!-- template
+
+<div class="para">
+  TODO
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. TODO</td>
+    <td></td>
+    <td>3. TODO</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>TODO</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. TODO</td>
+    <td></td>
+    <td>2. TODO</td>
+  </tr>
+</table>
+
+-->
+
+
 
 <div class="para">
   Wenn ich bei einem Mensch den Typ gar nicht schätzen kann,
@@ -4080,6 +4718,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   keine Heizung.
   Drei Tage später herrscht Anarchie.
   Wann? Winter 2022.
+  (Worst Case: Oktober 2022. Best Case: Jahr 2025.)
 </div>
 
 <div class="para">
@@ -4796,10 +5435,6 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Wahrheit ist da wos weh tut.
-</div>
-
-<div class="para">
   Ich war gerne in der Schule, es war ne gute Zeit.
   Du sagst, dass ich trotzdem keinen Abschluss habe, tut dir leid.
   Doch warum? Ich bin nicht dumm, ich will so komisch reden.
@@ -4826,6 +5461,10 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Ein Gysi auf der Straße und ein Stalin im Bett, ah!
   <br>
   &mdash; K.I.Z - VIP in der Psychiatrie
+</div>
+
+<div class="para">
+  Wahrheit ist da wos weh tut.
 </div>
 
 <div class="para">
@@ -4983,6 +5622,11 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  We're sick of your treason, sick of your lies
+  &mdash; Pennywise - Fuck Authority
+</div>
+
+<div class="para">
   Nach 10.000 Jahren habe ich sie endlich gefunden:
   <br>
   die Schriftrolle der Wahrheit!
@@ -4997,13 +5641,87 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  <b>Trauma Releasing Exercises</b> von David Berceli.
+  Konzept: <b>Trauma Releasing Exercises</b> von David Berceli.
   Krampfen und Zittern.
   Echter Exorzismus.
   Befreiung aus Blockaden.
   Befreiung aus Angst.
   Video:
   <a href="https://youtu.be/4lrfdsV4zB8">The Wounded Woman - Chapter 3</a>
+</div>
+
+<div class="para">
+  Konzept: Trauma-based <b>Mind Control</b>.
+  Provokation und Sublimation.
+  Ein Kind wird gezwungen in Erzieher-Kind Beziehungen,
+  unter böse oder dumme Erzieher.
+  Diese Erzieher traumatisieren das Kind
+  durch falsche Erziehung:
+  Verletzen oder Vernachlässigen.
+  Trauma heisst:
+  das Kind war zu schwach für Abwehr,
+  das Kind durfte nicht zurückschlagen,
+  das Kind durfte immer nur "lieb sein" / "nett sein" / "brav sein",
+  ungelöster Konflikt,
+  verdrängte Aggression,
+  unterschwelliger Hass,
+  verkrampfte Körperhaltung,
+  Blockaden,
+  Tabu-Themen,
+  Trigger Topics.
+  Folge:
+  Ein lebenslanger Rache-Feldzug
+  gegen alle "Autoritäten",
+  also gegen jeden,
+  der das Kind erinnert an seine Erzieher.
+</div>
+
+<div class="para">
+  Also vor allem ein Rache-Feldzug
+  gegen alle "stolzen" Autoritäten
+  (Typ 1 Menschen, transactional leadership style, 1 führt und 2 folgt),
+  die ihre Dominanz offen ausleben.
+  Solche Typ 1 Menschen wecken Hoffnung in dem Kind,
+  Hoffnung auf "Erlösung" (Trauma Release),
+  weil Typ 1 "führt zu Freiheit".
+  Aber die meisten Typ 1 Menschen
+  sind nicht vorbereitet für diese Situation,
+  und wissen nicht (Dummheit),
+  wie sie reagieren sollen auf diese Hoffnung.
+  Folge:
+  Das Kind ist enttäuscht vom Typ 1 Mensch,
+  der Typ 1 Mensch wirkt wie ein Versager,
+  das Kind fühlt sich verletzt oder vernachlässigt,
+  das Kind erinnert sich an sein Trauma
+  (Verletzungen in der Kindheit) (Re-Traumatisierung),
+  die verdrängte Aggression kommt wieder hoch,
+  das Kind wird aggressiv gegen den Typ 1 Mensch.
+</div>
+
+<div class="para">
+  Die Gewinner in diesem Spiel sind Typ 4 Menschen,
+  die ihre Dominanz unterschwellig ausleben
+  (Typ 4 Menschen, transformational leadership style, 3 führt und 4 folgt).
+  Solche Typ 4 Menschen nutzen die verdrängte Aggression
+  als Motivation zum Arbeiten (Motivation, Antrieb).
+  Dazu macht der Typ 4 Mensch
+  unterschwellige Anspielungen auf die Tabu-Themen vom Kind.
+  Das Kind wird leicht aggressiv,
+  und der Typ 4 Mensch lenkt diese Aggression in produktive Arbeit
+  (Sublimation, Spiel mit dem Feuer).
+</div>
+
+<div class="para">
+  Man kann dieses "Spiel" auch so verstehen:
+  Typ 4 Menschen sind blind für Naturordnung.
+  Sprich: "Natur ist nichts, Erziehung ist alles."
+  Also: "Alle Menschen sind gleich geboren,
+  und alle Unterschiede sind gelernt."
+  Also: Aggression ist gelernt.
+  Also: Man zwingt manche Kinder in eine "Erziehung zu Aggression",
+  damit diese Kinder später eine "Motivation zum Arbeiten" haben.
+  Diese Menschen glauben auch nicht an Freiwillige Arbeit
+  (negatives Menschenbild, "alle Menschen sind faul")
 </div>
 
 
