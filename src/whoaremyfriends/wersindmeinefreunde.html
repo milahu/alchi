@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-14">
+  <meta id="version" name="dcterms.modified" content="2022-08-16">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -267,6 +267,31 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       outline: solid 1px red;
     }
     */
+
+    table.macro-ratios {
+      width: 80%;
+      margin: auto;
+      white-space: nowrap;
+    }
+    /* no effect
+    table.macro-ratios > tr > td {
+      padding-right: 0.5em;
+    }
+    */
+    /* no effect
+    table.macro-ratios > tr > td:nth-child(2) {
+      width: 100%;
+    }
+    */
+    table.macro-ratios table {
+      width: 100%;
+      margin-top: 0.5em;
+      border-collapse: collapse;
+    }
+    table.macro-ratios table td {
+      border: solid 1px black;
+      text-align: center;
+    }
 
     /* <div class="annotation" */
     div.annotation {
@@ -1054,10 +1079,33 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Ich glaube:
-  Damit ein bestimmter Persönlichkeitstyp zu mir passt,
-  muss er im richtigen <b>Körper</b> wohnen,
-  also der Körper braucht richtiges Geschlecht und Alter.
-  Auch der Subtyp muss stimmen, aber dazu später mehr.
+  <!-- rückwärts kausalität: damit wirkung, muss ursache.
+  <b>Damit ein bestimmter Persönlichkeitstyp zu mir passt,
+  muss er im richtigen Körper wohnen.</b>
+  -->
+  <!-- vorwärts kausalität: erst ursache, dann wirkung. -->
+  <b>Wenn ein Persönlichkeitstyp im richtigen Körper wohnt,
+  dann finde ich diesen Typ sympathisch.</b>
+</div>
+
+<div class="para">
+  ... das ist meine Kern-These, mein Key Concept.
+  Also ein anderer Mensch ist zu mir genau dann kompatibel,
+  wenn sein Körper und Geist bestimmte Eigenschaften erfüllen.
+  (Geist = Persönlichkeitstyp = Innere Werte.)
+</div>
+
+<div class="para">
+  Umgekehrt gilt:
+  Wenn ein Persönlichkeitstyp <b>im falschen Körper</b> wohnt,
+  dann finde ich diesen Typ falsch, krank, dumm, störend, mühsam ...
+</div>
+
+<div class="para">
+  Subjektive Wahrheit:
+  Welcher Körper ist "richtig"?
+  Welche Eigenschaften sind "richtig"?
+  Das ist immer <b>relativ</b> zu meinem Körper und Geist.
 </div>
 
 <div class="para">
@@ -1137,6 +1185,33 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <div class="nowrap">
     F1L F2S F3L F4S.
   </div>
+</div>
+
+<div class="para">
+  Jeder Mensch in diesem Muster hat 6 Freunde:
+  2 Freunde in horizontaler Richtung (gleiches Alter),
+  2 Freunde in vertikaler Richtung (gleiches Geschlecht),
+  2 Freunde in diagonaler Richtung (gleiche Diagonale, doppeltes Gegenteil).
+</div>
+
+<div class="para">
+  TODO Pallas-Symbol = Verbindung für 7 Punkte = Ich und meine 6 Freunde.
+</div>
+
+<div class="para">
+  Quadrate und Kreuze:
+  Im Muster gibt es 2 verschiedene Vierer-Gruppen.
+  Jede Kreuz-Gruppe hat alle 4 Typen: 1-3-2-4.
+  Jede Quadrat-Gruppe hat nur 2 Typen: 1-2-1-2 oder 3-4-3-4.
+  Die Striche im Muster verbinden immer die Gegentypen (1-2 und 3-4).
+</div>
+
+<div class="para">
+  TODO Alternative Darstellung:
+  Alle Striche in gerader Richtung.
+  Doppelbindungen zwischen Gegentypen in Quadrat-Gruppen.
+  Einfachbindungen in gerader Richtung in Kreuz-Gruppen.
+  Nachteil: Höhere Auflösung.
 </div>
 
 <!-- spam? -->
@@ -1304,23 +1379,61 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Das Experiment muss billig sein,
   dann kann jeder Mensch das Experiment reproduzieren (wiederholen).
 
-  Es wird immer wieder Menschen geben,
-  die diese Theorie noch nicht kennen,
-  und diese Menschen brauchen einen billigen Weg zum Testen der Theorie.
+  Es wird immer Menschen geben, die diese Theorie <b>noch nicht kennen</b>.
+  Diese Menschen brauchen einen billigen Weg zum Testen der Theorie.
 
-  An die Hypothese "glauben" muss man dabei nur so lange,
-  bis das Experiment vorbei ist (Arbeitshypothese).
+  An die Hypothese "glauben" müssen diese Menschen nur für das Experiment.
+  Das Experiment soll zeitlich klar begrenzt sein. Beispiel: einen Tag lang.
+  Wenn das Experiment vorbei ist, dann ist die Hypothese wieder ungültig.
+</div>
+
+<div class="para">
+  Idealer weise sollte man immer skeptisch sein
+  bei allen Vorschlägen, Empfehlungen, Suggestionen ...
+  weil:
+  Streng genommen sind das <b>alles nur Hypothesen</b>
+  die jede Gruppe für sich prüfen muss
+  (Arbeitsteilung zwischen Fühlen und Wissen = Forschung und Produktion).
+</div>
+
+<div class="para">
+  Beispiel für ein nicht-reproduzierbares Experiment:
+  Leben nach dem Tod.
+  Dieses Experiment (Sterben) kann jeder Mensch genau ein Mal machen,
+  also ist es nicht reproduzierbar.
+  Sprich: Ein Mal ist kein Mal.
+</div>
+
+<div class="para">
+  Auch wichtig: Kontrollgruppen. "Falsch machen."
+
+  Beziehungsqualität schätzen kann man nur dann,
+  wenn man "richtige" und "falsche" Beziehungen probiert hat.
+
+  Also: <b>Man muss beide probieren</b>
+  und erst im Rückblick kann man sagen:
+  Das eine war besser, das andere war
+  <div class="annotation" onClick="clickAnnotation(this)" title='
+    höfliche Menschen werden schlechte Beziehungen nur indirekt kritisieren
+    als "nicht so gut" oder "weniger gut als andere".
+    Vorsicht, Angst, Sicherheitsdenken, Risk-Aversion.
+    Jeder Typ hat seine Sprache.
+  '>schlechter.</div>
+
+  Messungen sind immer relativ.
+  Probieren geht über Studieren.
 </div>
 
 <div class="para">
   Wie funktioniert dieses <b>Experiment</b>?
-  Dazu müssen wir Menschen so verbinden,
-  wie sie auf dem Muster sind.
+  Dazu müssen wir Menschen so verbinden, wie sie auf dem Muster sind.
 
   Diese Bindungen müssen freiwillig sein.
+
   Ein Matchmaker (Kuppler, Vermittler) kann Vorschläge machen,
   aber jeder Mensch darf "Nein" sagen,
-  oder selber Vorschläge machen (Reden oder Zeigen).
+  oder selber Vorschläge machen (Reden oder Zeigen),
+  oder selber als Matchmaker arbeiten (Flache Hierarchie).
 </div>
 
 
@@ -2400,6 +2513,35 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   also "äusserer Dialog" mit anderen Typen.
 </div>
 
+<div class="para">
+  <b>Gleich oder verschieden?</b>
+
+  "Gleich und Gleich gesellt sich gern"
+  oder
+  "Gegensätze ziehen sich an"?
+  Beides.
+
+  Helen Fisher hat Forschung gemacht für <b>stabile Paar-Beziehungen</b>.
+
+  Ergebnis:
+  Typen 12 heiraten den Gegen-Typ.
+  Typen 34 heiraten den gleichen Typ.
+  Also haben wir 4 stabile Paare:
+  M1-F2, M2-F1, M3-F3, M4-F4.
+
+  Mein Muster sagt:
+  Typen 12 heiraten gleiches Alter.
+  Typen 34 heiraten verschiedenes Alter.
+</div>
+
+
+
+<!--
+  FIXME avoid forced pagebreak. ideally dont break paragraphs
+-->
+<hr>
+
+
 
 <div class="para">
   <b>Vier Typen:</b>
@@ -2409,10 +2551,22 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   Dieser Teil von Psychologie ist uralt, locker 2000 Jahre alt,
   und schon sehr gut erforscht.
+</div>
 
-  Quasi-Konsens: Es gibt vier Persönlichkeitstypen.
+<div class="para">
+  Quasi-Konsens: Es gibt
+  <a href="https://en.wikipedia.org/wiki/Two-factor_models_of_personality"
+  >vier Persönlichkeitstypen</a>.
   Für diese Vier Typen werden immer wieder neue Namen erfunden,
-  also jeder Autor hat seinen Namensraum (namespace).
+  also jeder Autor hat seinen Namespace (Namensraum).
+</div>
+
+<div class="para">
+  Jeder Namespace hat seine eigenen Beschreibungen der vier Typen.
+  Für die Übersetzung zwischen 2 Namespaces
+  lese ich die Beschreibungen und frage:
+  Welche Beschreibungen sind ähnlich?
+  So kriege ich meine Übersetzungs-Tabelle.
 </div>
 
 
@@ -2422,14 +2576,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 <div class="para">
-  Vier Typen:
+  Vier Typen in verschiedenen
 
   <div class="annotation" onClick="clickAnnotation(this)" title='
+
     TODO layout: keep table on one page
-  '>Hier</div>
 
-  ein paar
-  <div class="annotation" onClick="clickAnnotation(this)" title='
     TODO more text. add a short description to every name.
 
     TODO more translations from
@@ -2483,11 +2635,19 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Fascist</td>
     </tr>
 
-  '>Übersetzungen:</div>
+  '>Namespaces.</div>
+
+  Längere Beschreibungen stehen auf den folgenden Seiten.
 </div>
 
 <table class="four-basetypes nowrap" style="margin-top:1em; margin-bottom:1em">
   <tbody>
+    <!-- nutzlos
+    <tr>
+      <th>Namespace</th>
+      <td colspan="4">Vier Typen</td>
+    </tr>
+    -->
     <tr>
       <th>Typ Nummer</th>
       <td>1</td>
@@ -2580,6 +2740,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Klein</td>
       <td>Ring</td>
       <td>Zeige</td>
+    </tr>
+    <tr>
+      <th>Körperteil</th>
+      <td>Linkes Hirn</td>
+      <td>Rechte Hand</td>
+      <td>Linke Hand</td>
+      <td>Rechtes Hirn</td>
     </tr>
     <tr>
       <th>Körperform</th>
@@ -2831,7 +2998,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </table>
 
 <div class="para">
-  Mehr Übersetzungen in meinen <a href="https://milahu.github.io/alchi/tables">alchi-tables</a>.
+  Mehr Namespaces in meinen
+  <a href="https://milahu.github.io/alchi/tables">alchi-tables</a>.
 </div>
 
 
@@ -3129,6 +3297,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   die "spät beruhigen" Kinder (Typen 23) halten die Reaktion
   (Trägheit, weiter Schreien, weiter Kämpfen)
   und beruhigen sich später.
+</div>
+
+<div class="para">
+  TODO
+  Typen 14 können sich alleine schneller beruhigen? (frei)
+  Typen 23 brauchen beim Beruhigen Hilfe von Anderen? (abhängig)
 </div>
 
 <div class="para">
@@ -3616,6 +3790,114 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
+<div class="para">
+  <b>Diät</b>
+  wird oft falsch verstanden als "weniger essen",
+  aber hier meine ich "anders essen".
+  Jeder Typ braucht sein
+  Verhältnis der Makro-Nährstoffe:
+  <b>Kohlenhydrate Fett Protein</b> = CFP.
+  Hier die Masse-Verhältnisse in Gramm oder Unzen,
+  relativ zu 100:
+</div>
+
+<table class="macro-ratios">
+  <tr>
+    <td style="text-align:right; padding-top:0.5em; padding-right:0.5em">3.</td>
+    <td style="padding-top:0.5em; padding-right:0.5em">CFP =</td>
+    <td style="width:100%; padding-right:0.5em">
+      <table>
+        <tr>
+          <td style="width:30%">30</td>
+          <td style="width:25%">25</td>
+          <td style="width:45%">45</td>
+        </tr>
+      </table>
+    </td>
+    <td style="padding-top:0.5em; padding-right:0.5em">Gramm</td>
+  </tr>
+  <tr>
+    <td style="text-align:right; padding-top:0.5em; padding-right:0.5em">12.</td>
+    <td style="padding-top:0.5em; padding-right:0.5em">CFP =</td>
+    <td style="width:100%; padding-right:0.5em">
+      <table>
+        <tr>
+          <td style="width:50%">50</td>
+          <td style="width:15%">15</td>
+          <td style="width:35%">35</td>
+        </tr>
+      </table>
+    </td>
+    <td style="padding-top:0.5em; padding-right:0.5em">Gramm</td>
+  </tr>
+  <tr>
+    <td style="text-align:right; padding-top:0.5em; padding-right:0.5em">4.</td>
+    <td style="padding-top:0.5em; padding-right:0.5em">CFP =</td>
+    <td style="width:100%; padding-right:0.5em">
+      <table>
+        <tr>
+          <td style="width:60%">60</td>
+          <td style="width:10%">10</td>
+          <td style="width:30%">30</td>
+        </tr>
+      </table>
+    </td>
+    <td style="padding-top:0.5em; padding-right:0.5em">Gramm</td>
+  </tr>
+</table>
+
+<div class="para">
+  Beispiel:
+  Typ 3 soll essen:
+  <br>
+  30 Gramm Kohlenhydrate +
+  25 Gramm Fett +
+  45 Gramm Protein.
+  <br>
+  Das ist die
+  "Low-Carb High-Fat" (LCHF) Diät.
+  <!-- obvious?
+  Wenn Typ 3 zu viele Kohlenhydrate isst,
+  dann wird er schnell dick.
+  -->
+</div>
+
+<div class="para">
+  "Low Fat" Produkte sind für Typ 4.
+  Typ 4 Menschen können weniger Fett verdauen als andere Typen.
+</div>
+
+<div class="para">
+  Im Fitness-Bereich werden die Makro-Nährstoffe meistens angegeben
+  als Energie-Verhältnisse in Calorien oder Joule.
+  Typ 3: CFP = 25:40:35 Cal.
+  Typen 12: CFP = 40:30:30 Cal.
+  Typ 4: CFP = 55:20:25 Cal.
+</div>
+
+<div class="para">
+  Beispiel:
+  Typ 3:
+  25% vom Energiebedarf sind Kohlenhydrate,
+  40% vom Energiebedarf sind Fett,
+  35% vom Energiebedarf sind Protein.
+</div>
+
+<div class="para">
+  Beispiel Energiebedarf:
+  2.000 kiloCalorien pro Tag für:
+  60kg Körpergewicht,
+  Alter 20-30 Jahre,
+  ohne körperliche Aktivität (PAL-Faktor 1,2).
+</div>
+
+<div class="para">
+  Zum Umrechnen zwichen Masse und Energie
+  braucht man die Energie-Dichten:
+  9 Calorien pro Gramm für Fett.
+  4 Calorien pro Gramm für Kohlenhydrate und Protein.
+</div>
+
 <!-- template
 
 <div class="para">
@@ -3700,7 +3982,29 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  
+  Differenzial-Diagnose:
+  Wenn zwei Typen zu einem Mensch passen:
+  <b>Welcher Typ ist der Grundtyp?</b>
+  Welcher Typ ist der Subtyp?
+  Dafür nutze ich die Körperform.
+  Beispiel:
+  Ein Mensch ist eine Mischung aus Typ 1 und Typ 4.
+  Dieser Mensch hat die Körperform "ectomorph"
+  (lange Knochen, schmale Gelenke, ...),
+  also ist dieser Mensch:
+  Grundtyp 4, Subtyp 1 = <div class="nowrap">Typ 401</div>.
+</div>
+
+<div class="para">
+  Ist das eine Sekte?
+  Nein, aber du kannst deine eigene Sekte damit bauen.
+  Das hier ist ganz allgemein eine Anleitung zum Aufbau von Gruppen,
+  bis zu einer Gruppen-Größe von 144 Menschen.
+  Welche "Religion" du damit lebst (Sklavenmoral? Herrenmoral? Beide?), das ist mir egal.
+  Ich glaube:
+  Wenn die Grundlagen stimmen (Gerechtigkeit, Freiwilligkeit),
+  dann wird jede Gruppe automatisch ihre optimale Kultur finden,
+  die am besten zum Lebensraum passt (Mileau, Habitat, Klima).
 </div>
 
 <div class="para">
@@ -4384,6 +4688,56 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
+  <b>Natürliche Gruppengröße:</b>
+  Die Begrenzung auf 144 Menschen ist wichtig,
+  weil nur in kleinen Gruppen (Kleinstaaten)
+  funktioniert mein "Paradies auf Erden".
+  Das Schöne von kleinen Gruppen (144 Menschen) ist:
+  Die Verwaltung solcher Gruppen (Innere Ordnung) funktioniert "im Kopf",
+  also man braucht keine Technik: keine Buchführung, kein Geld, ...
+</div>
+
+<div class="para">
+  Auch viele andere "Utopien" funktionieren nur in kleinen Gruppen.
+
+  Wie kann man kleine Gruppen klein halten?
+  Wie kann man verhindern, dass ein Dorf (144 Menschen) eskaliert zu einer Stadt?
+  Wie kann man verhindern, dass mehrere Dörfer zusammen wachsen?
+
+  Friedliche Utopien erzwingen kleine Gruppen durch den Lebensraum "kleine Insel".
+  <b>Kriegerische Utopien</b> brauchen regelmäßige Stammkriege
+  (Konkurrenz zwischen Stämmen),
+  damit die Gruppen sich gegenseitig klein halten.
+</div>
+
+<div class="para">
+  Genau diese Stamm-Kultur (Tribalismus) hatten Naturvölker
+  (Germanen, Kelten, Indianer, Afrikaner, ...),
+  bevor das Römische Imperium (Römische Kirche, Christentum)
+  diese Stämme "zivilisiert" also "befriedet" hat.
+
+  Heute erinnern die Hooligans beim Fußball an die alte Zeit der Stammkriege.
+</div>
+
+<div class="para">
+  Die Migranten-Invasion nach Europa und Nord-Amerika
+  kann man sehen als ein "Zurück zu Stammkriege".
+  Angela Merkel:
+  "Ich kämpfe für meinen Plan: aus Illegalität Legalität machen"
+</div>
+
+<div class="para">
+  Jede Gruppe, die größer ist als 144 Menschen,
+  produziert automatisch eine "Hölle auf Erden".
+  Also eine "Masse" von Menschen,
+  die man mit Technik (Buchführung) zusammen halten muss.
+  Solche Großstaaten führen auf Dauer immer wieder zu Wucher und Kollaps
+  (Urbanisierung, Union, Friedensbündnis, Boom-Bust-Cycles,
+  Growth-Based Economies, Ponzi-Schema, Schneeball-System,
+  Bullen spekulieren auf steigende Nachfrage).
+</div>
+
+<div class="para">
   Gleichgewicht:
   Jedes Dorf ist im Gleichgewicht:
   72 Männer und
@@ -4460,7 +4814,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     TODO keep the two graphs on one page
   '><b>Graph</b></div>
   hat lineare Hochachse
-  und man sieht die "Explosion" der Bevölkerung seit 200 Jahren.
+  und man sieht die "Explosion" der Bevölkerung seit 200 Jahren (Kohle, Dampfmaschinen, Industrie).
 </div>
 
 <div class="center-x">
@@ -5063,9 +5417,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Wichtig sind auch <b>zufällige Begegnungen</b>
-  zum neue Menschen treffen
-  (Park, Badesee, Demo, Einkaufen,
-  Bahn, Bus, Autostoppen, Wandern ...)
+  zum neue Menschen treffen,
+  weil gute Menschen sind überall:
+  Park, Badesee, Demo, Einkaufen,
+  Bahn, Bus, Autostoppen, Wandern ...
 </div>
 
 <div class="para">
@@ -5118,24 +5473,60 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 <div class="para">
-  Anhang: <b>Zitate und Sprüche</b>
+  Anhang: <b>Zitate und Sprüche.</b>
+  Auch hier stellt sich wieder die Frage:
+  Welcher Typ spricht hier?
+  Also:
+  Welchen Persönlichkeitstyp hat "das lyrische Ich"?
+
+  Ich bin Typ 104,
+  also sammle ich Sprüche, die zu meinem Typ passen,
+  die mir "aus der Seele" sprechen.
 </div>
 
-<div class="para">Ich und du und er und sie und es sind
-  Besser dran, wenn wir uns selber helfen
+<div class="para">
+  Ich und du und er und sie und es sind,
+  <br>
+  besser dran wenn wir uns selber helfen.
   &mdash; Samy Deluxe - Weck mich auf
 </div>
 
-<div class="para">Es gibt nichts was so fehlt wie verlorene Zeit
+<div class="para">
+  Es gibt nichts was so fehlt wie verlorene Zeit
   &mdash; Fiva MC - Verlorene Zeit
 </div>
 
-<div class="para">Knast ist nicht wenn ein Mensch in einer Zelle sitzt
+<div class="para">
+  Schreie die keiner hört, Sätze die niemand sagt.
+  Dinge die keiner fühlt, Schätze die niemand jagt.
+  Töne die keiner spielt, Wunder die keiner sieht.
+  Ihr seid für alle Zeit vertrieben aus dem Paradies.
+  Eure Welt ist Plastik, alles falsch, alles Fassade.
+  Erst wenn die Schneekugel geplatzt ist, kann ich atmen, kann ich atmen.
+  &mdash; Genetikk - Plastik
+</div>
+
+<div class="para">
+  Knast ist nicht wenn ein Mensch in einer Zelle sitzt
   Knast ist wenn die Angst im Kopf deine Zelle ist
   &mdash; Danger Dan - Gesiebte Luft
 </div>
 
-<div class="para">This town's alright, But it's not enough
+<div class="para">
+  Wir hatten uns nicht vorgenommen,
+  jemals auf die Welt zu kommen,
+  und trotzdem ist es irgendwie passiert
+  &mdash; Danger Dan - Filmriss
+</div>
+
+<div class="para">
+  Gentlemen, it has been a privilege playing with you tonight.
+  <br>
+  &mdash; Titanic (1997)
+</div>
+
+<div class="para">
+  This town's alright, But it's not enough.
   I'm looking for a quick exit, like a prisoner on the run
   &mdash; Chase & Status - Embrace (feat. White Lies)
 </div>
@@ -5196,6 +5587,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   - The garbage. The imbeciles who lie around drunk, reproducing like rabbits,
   and sitting there with their hand out, expecting the rest of us to pay.
   And let's be frank, who's gonna miss them anyway?
+  <br>
   &mdash; The Brothers Grimsby (2016)
 </div>
 
@@ -5258,6 +5650,18 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Nur wer beleidigen kann, der kann auch ehrlich sein.
+  <!--
+  He who dares not offend, cannot be honest.
+  -->
+  &mdash; Thomas Paine
+</div>
+
+<div class="para">
+  Lieber echte Feinde als falsche Freunde.
+</div>
+
+<div class="para">
   Der moderne Mensch wird in einem Tätigkeitstaumel gehalten,
   damit er nicht zum Nachdenken kommt,
   über den Sinn seines Lebens und der Welt.
@@ -5314,10 +5718,10 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Diese Welt ist voll mit Verrückten.
-  Ihr dachtet dass es keine Helden mehr gibt.
-  K.I.Z tragen Richterperücken.
-  Wir fahren durch deinen Block und üben Selbstjustiz
+  Diese Welt ist voll mit Verrückten,
+  ihr dachtet dass es keine Helden mehr gibt.
+  K.I.Z tragen Richterperücken,
+  wir fahren durch deinen Block und üben Selbstjustiz
   &mdash; K.I.Z - Selbstjustiz
 </div>
 
@@ -5329,6 +5733,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Die Freiheitsstatue ist ne Hure, und ich fick sie
+  <br>
   &mdash; Haftbefehl - Lass die Affen aus'm Zoo
 </div>
 
@@ -5345,6 +5750,26 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Daniela steht auf Jonas, doch Jonas liebt Vanessa.
+  Vanessa wär' gern mit Lars zusammen, doch der findet Melanie besser.
+
+  <!--
+  Die allerdings steht eher auf Tim, Tim wiederum findet Jennifer cool.
+  Jennifer jedoch ist verliebt in Kevin, aber Kevin ist schwul.
+
+  Tobias ist scharf auf Annika, und Annika eigentlich auch auf ihn.
+  Doch Pech, denn er ist schon lange der Schwarm ihrer besten Freundin.
+  -->
+
+  ...
+
+  Zum Glück bin ich ein alter Mann, das geht mich alles nichts mehr an.
+  Bin weder hetero noch schwul, und mir genügt ein angenehmer Stuhl.
+
+  &mdash; Knorkator - Alter Mann
+</div>
+
+<div class="para">
   Ich hab geschrieben ... damit mir der Kopf nicht platzt.
   <br>
   &mdash; Torch - Ich hab geschrieben
@@ -5356,23 +5781,29 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Die hohe, reich dotierte Geislichkeit
+  Die hohe, reich dotierte Geistlichkeit
   fürchtet nichts mehr
   als die Aufklärung der unteren Masse.
+  [Unterschicht = Kinder]
   &mdash; J. W. Goethe
 </div>
 
 <div class="para">
-  Wir haben geträumt, von einer besseren Welt.
-  Wir haben sie uns, so einfach vorgestellt.
-  Wir haben geträumt, es war ne lange Nacht.
-  Ich wünschte wir wären niemals aufgewacht.
-  Revolution, wir wollten weg von der Masse.
-  Kopfüber in die Hölle und zurück.
-  Heute stehst du, bei Hertie an der Kasse.
-  Da ist keine Sehnsucht mehr in deinem Blick.
-  Du sagst man tut halt was man kann.
-  Und dir gehts gut, du kotzt mich an
+  Wir haben geträumt, von einer besseren Welt,
+  wir haben sie uns, so einfach vorgestellt.
+
+  Wir haben geträumt, es war ne lange Nacht,
+  ich wünschte wir wären niemals aufgewacht.
+
+  Revolution, wir wollten weg von der Masse,
+  kopfüber in die Hölle und zurück.
+
+  Heute stehst du, bei Hertie an der Kasse,
+  da ist keine Sehnsucht mehr in deinem Blick.
+
+  Du sagst man tut halt was man kann,
+  und dir gehts gut, du kotzt mich an
+
   &mdash; Terrorgruppe - Kopfüber In Die Hölle
 </div>
 
@@ -5384,6 +5815,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Der beste Trick vom Teufel ist:
+  <br>
   Den Menschen einreden: es gibt keinen Teufel.
 </div>
 
@@ -5435,15 +5867,8 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Ich war gerne in der Schule, es war ne gute Zeit.
-  Du sagst, dass ich trotzdem keinen Abschluss habe, tut dir leid.
-  Doch warum? Ich bin nicht dumm, ich will so komisch reden.
-  Ich hab einfach ein großes Problem mit Autoritäten.
-  ...
   Das Schulsystem ist für'n Arsch, ihr kommt nicht an uns ran.
   Doch ihr macht einfach die Augen zu und bleibt so arrogant.
-  Wenn's ein Problem gibt, müsst ihr gerne drüber reden.
-  Doch in erster Linie müsst ihr lern, uns zu versteh'n.
   &mdash; Sido [M1] - Schule
 </div>
 
@@ -5454,11 +5879,11 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Ich komm nicht aus der East Side, komm nicht aus der West Side.
-  Bruder ich komme aus der Steinzeit, uh!
+  Ich komm nicht aus der East Side, komm nicht aus der West Side,
+  Bruder ich komme aus der Steinzeit, ah!
   ...
-  Jeder hier sagt ich bin sympathisch und nett.
-  Ein Gysi auf der Straße und ein Stalin im Bett, ah!
+  Jeder hier sagt ich bin sympathisch und nett,
+  ein Gysi auf der Straße und ein Stalin im Bett, ah!
   <br>
   &mdash; K.I.Z - VIP in der Psychiatrie
 </div>
@@ -5469,6 +5894,11 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Mein größte Angst ist Zeitverschwendung.
+</div>
+
+<div class="para">
+  "Nein" ist ein leeres Wort.
+  Ich kämpfe "für" meine Freunde.
 </div>
 
 <div class="para">
@@ -5519,6 +5949,17 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Was willst du tun, wenn sie machen was sie wollen.
+  Was willst du tun, wenn du selber drin steckst.
+  Was willst du tun, wenn dein Kind so aufwächst.
+  Was willst du tun, du bist drin in dem Netz.
+  Was willst du tun, wenn du drin verreckst.
+  ...
+  Was willst du tun, wenn auf ein Mal der Club brennt
+  &mdash; Frauenarzt - Was willst du tun
+</div>
+
+<div class="para">
   Weißt du noch? Als wir in die Tische ritzten in den Schulen,
   bitte Herr vergib ihnen nicht denn sie wissen was sie tun.
   Unter den Pflastersteinen wartet der Sandstrand,
@@ -5528,17 +5969,17 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Doch unser heutiges Leben lässt sich auch nüchtern ertragen.
   ...
   Ein Goldbarren ist für uns das gleiche wie ein Ziegelstein,
-  der Kamin geht aus, wirf' mal noch 'ne Bibel rein.
+  der Kamin geht aus, wirf mal noch ne Bibel rein.
   Die Kids gruseln sich, denn ich erzähle vom Papst,
   dieses Leben ist so schön, wer braucht ein Leben danach?
   ...
   Baby die Zeit mit dir war so wunderschön.
   Ja, jetzt ist es wieder aus, aber unsere Kinder weinen nicht,
-  denn wir ziehen sie alle miteinander auf.
+  denn wir ziehen sie alle <b>miteinander</b> auf.
   ...
   Sie dachten echt ihre Scheiße hält ewig
   ...
-  Hurra, diese Welt geht unter!
+  Hurra diese Welt geht unter!
   Auf den Trümmern das Paradies
   &mdash; K.I.Z - Hurra die Welt geht unter
 </div>
@@ -5571,7 +6012,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   ...
   Untergrund ist Medizin Rap Antidepressiva,
   Gegen Hiphop-HIV auch bekannt als Viva.
-  Wer will Liebeslieder und wer will tighte Raps,
+  Wer will Liebeslieder und wer will tighte Raps?
   Ich will raus aus diesem Knast, mein Mikro Geld und Sex.
   ...
   Wie kann so etwas Gutes so falsch sein?
@@ -5590,20 +6031,31 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   denn bis jetzt hat jeder Zweite von euch Scheiße in der Birne.
   Hier kommt Anti gegen Alles, ich misstraue auch mir selbst,
   Hauptsache ist du stirbst, egal durch wessen Schwert du fällst.
-  Alle Hippies und Versager kommen ins Hiphop-Arbeitslager.
+  Alle <b>Hippies und Versager</b> kommen ins Hiphop-Arbeitslager.
   "Untergrund" zu sein heißt tot sein oder Krieg wie Intifada.
   &mdash; Prinz Pi [M1] - Keine Liebe
 </div>
 
 <div class="para">
+  187! Die Helden von jetzt
+  &mdash; 187 Strassenbande - 10 Jahre
+</div>
+
+<div class="para">
   Der Mensch sucht Heldenfiguren, dann muss er selbst nichts mehr tun.
   Niemand mehr der etwas bewegt, als wären sie querschnittsgelähmt.
+  <br>
   &mdash; Kollegah - Wie ein Boss
 </div>
 
 <div class="para">
-  Was ist mit der Realness? Alle nur noch Wellness.
+  Was ist mit der <b>Realness</b>? Alle nur noch Wellness.
   &mdash; Marsimoto - Wellness
+</div>
+
+<div class="para">
+  Gib den Indianern ihr Land zurück.
+  &mdash; Marsimoto - Indianer
 </div>
 
 <div class="para">
@@ -5618,6 +6070,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Du kannst es grade sehn, jeder von euch Dumbos sieht es.
   Ich glaube ja im Kern, sind wir nicht so unterschiedlich.
   Denn nur deine Wahrnehmung bestimmt, ob jemand unbeliebt ist.
+  <br>
   &mdash; Der Typ - Corona Brainwash
 </div>
 
@@ -5639,6 +6092,262 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Anhang: <b>Konzepte</b>
 </div>
+
+<div class="para">
+  Konzept: <b>Investitionsschutz</b>, Ego Investment,
+  "zu spät", "ich bin zu alt", "kein zurück",
+  "alte Bäume soll man nicht umpflanzen"
+  Je mehr Energie man in eine Richtung investiert hat,
+  desto schwerer ist es, diese Richtung zu ändern.
+  Dann sagt man:
+  "Kurswechsel? Lieber nie als spät!"
+</div>
+
+<div class="para">
+  Konzept: <b>Sozialdarwinismus:</b>
+
+  Typen 34 sind "gesunde" Menschen,
+  die sich aggressiv vermehren sollen.
+  (Sozialisten, Altruisten, High Agreeableness in Big Five,
+  Paradies im Himmel, spirituell,
+  Tochter und Vater, Luft und Liebe,
+  Hochkultur, Kunstordnung),
+
+  Typen 12 sind "kranke" Menschen,
+  die aussterben sollen.
+  (Narzissten, Egoisten, Low Agreeableness in Big Five,
+  Paradies auf Erden, Materialisten,
+  Mutter und Sohn, Frieden und Krieg,
+  Ungläubige, Heiden, Antichristen,
+  Primitivkultur, Naturordnung)
+
+  Typen 12 werden geopfert für den "Fortschritt",
+  fort von der "primitiven" Naturordnung.
+
+  ... also genau das Gegenteil
+  zu meiner Forderung nach Gerechtigkeit:
+  gerechte Verteilung von Persönlichkeitstypen,
+  jedes Dorf braucht genau 25% von jedem der 4 Typen.
+</div>
+
+<div class="para">
+  Warum?
+  Typen 34 haben ein "einfaches" Weltbild,
+  ein "eindimensionales" Weltbild,
+  also sehen nur 2 Typen.
+
+  Bei Farben gilt:
+  Für Typen 34 sind Rot-Grün künstliche Farben.
+
+  Bei Zahlen gilt:
+  Für Typen 34 sind 1 und 2 künstliche Zahlen,
+  also die "künstlichen" Weltbilder (Wissen, Bewusstsein) von Typen 34
+  basieren immer auf den Zahlen 1 und 2.
+
+  Beispiel:
+  These Antithese Synthese = aus 2 mach 1.
+  Vater Mutter Kind = 2 Eltern machen 1 Kind.
+
+  Deswegen glauben Typen 34 instinktiv
+  "Kunst ist stärker als Natur" (nature vs nurture debate):
+  Subtyp hat nur 2 Extremwerte (introvertiert-extrovertiert bei Carl Jung).
+  Grundtyp hat 4 Extremwerte (Feuer-Erde-Luft-Wasser bei Elemente).
+</div>
+
+<div class="para">
+  Man kann auch sagen:
+  Typen 34 glauben instinktiv an "lineare" Weltbilder
+  (Fortschritt, Bewegung, Dynamik, Variation, Hybridisierung,
+  Rauschen, Chaos, immer alles neu, modern, Mode, Neo),
+
+  Typen 12 glauben instinktiv an "zirkulare" Weltbilder
+  (Geschichte wiederholt sich, Wiederholung,
+  Selektion, Stabilisierung, Zyklen, Reinkarnation,
+  Schicksal, Naturordnung, Klassik, alles nichts Neues).
+</div>
+
+<div class="para">
+  Konzept: <b>Systemkritik:</b>
+  Systemkritik ist meistens scheisse,
+  weil die meisten Kritiker verlieren sich in Diagnosen,
+  aber bieten keine Therapie.
+  Also der Standard-Vorwurf gegen jeden Kritiker:
+  "Du kannst nur meckern, aber machst es selber nicht besser."
+  Kurz: "Selber doof!"
+
+  Ich glaube:
+  Meine Theorie über kompatible Beziehungen
+  ist eine mögliche Therapie für unsere kaputte Welt,
+  und deswegen darf ich meine Fresse
+  auch ganz weit aufreissen beim Thema Systemkritik.
+</div>
+
+<div class="para">
+  Konzept: <b>Gerechtigkeit:</b>
+  Ich as Typ 1 Mensch
+  suche immer nach Gerechtigkeit, Gleichgewicht,
+  Ordnung, Bilanz, Symmetrie, Schönheit.
+
+  Also:
+  Gleichgewicht zwischen Diagnose und Therapie.
+  Gleichgewicht zwischen Analyse und Synthese
+  = Typen und Beziehungen
+  = "Wer bin ich?" und "Wer sind meine Freunde?"
+  Gleichgewicht zwischen Männer und Frauen.
+  Gleichgewicht zwischen Kinder und Eltern.
+  Gleichgewicht zwischen Innere Werte und Äussere Werte.
+</div>
+
+<div class="para">
+  Konzept: <b>Versicherung:</b>
+  Versicherung und Versicherungsbetrug gehen Hand in Hand.
+  Was genau sind Versicherungen?
+  Überall dort,
+  wo Arbeiter nach <b>Pauschallohn</b> bezahlt werden,
+  egal wie schlecht die Arbeit ist.
+  Gegenteil:
+  Schenkwirtschaft,
+  "freier Markt",
+  freies Feedback.
+</div>
+
+<div class="para">
+  Beispiel Krankenversicherung:
+  Wer mich langweilen will,
+  der macht bei der Polizei die Falschaussage "der hat mich bedroht".
+  Polizei holt mich ab und sperrt mich in die Psychiatrie.
+  Ärzte nötigen mich circa 4 Wochen lang
+  zu einer "freiwilligen" Behandlung mit Beruhigungsmittel.
+  Ärzte machen beim Richter die Falschaussage
+  "sein Zustand wird immer schlechter".
+  Richter gibt Erlaubnis für Zwangsbehandlung.
+  Ärzte behandeln mich gegen meinen Willen
+  mit Beruhigungsmittel (Depot-Spritze).
+  Ärzte machen in meiner Akte die Falschaussage
+  "mit Medizin geht es ihm langsam besser".
+  Ein paar Wochen später werde ich entlassen.
+  Für diese "Unterbringung"
+  zahlt meine Krankenversicherung 400 EUR pro Tag an die Ärzte.
+  2 Monate Klapse machen also einen Umsatz von 60 x 400 = 24.000 EUR.
+  Ein Hotel-Zimmer kostet circa 50 EUR pro Tag,
+  und Klapse ist nur ein Hotel ohne Ausgang.
+  Nach meiner Entlassung schreibt meine Versicherung:
+  Ich soll 10% der Kosten zahlen, circa 2.000 EUR,
+  sonst werde ich runtergestuft in einen Notlagentarif ...
+
+  Also die schöne Idee vom "Recht auf Leben und Gesundheit"
+  kann ganz einfach missbraucht werden
+  für Moderne Sklaverei
+  (Behandlung als Vorwand für Versicherungsbetrug)
+  und/oder Politische Verfolgung.
+
+  Beispiel:
+  Gustl Mollath hat sich mit der Finanz-Mafia angelegt,
+  und wurde durch Falsch-Aussagen mehrere Jahre lang
+  "unschuldig" in die Psychiatrie weggesperrt.
+
+  Allgemein:
+  Gewaltenteilung ist fake,
+  Staat ist Mafia,
+  Staat ist organized crime.
+</div>
+
+<div class="para">
+  Konzept: <b>Religion:</b>
+
+  Christentum, Islam, Judentum, Positiver Rassismus, Covid-Kult, ...
+  kann man alle zusammenfassen
+  unter dem Begriff <b>Sklavenmoral</b> (Friedrich Nietzsche).
+
+  Sklavenmoral heisst:
+  Typ 1 wird geopfert, dann können Typen 234 "in Ruhe" leben.
+  Zivilisation = Pazifismus = Pro Life.
+  Trinität = Heilige Dreifaltigkeit = Typen 234 = Körper Seele Geist = Schöpfer Macher Denker.
+
+  Typ 2 dient als lebendes Vorbild.
+  Typ 1 dient als Negativ-Beispiel.
+</div>
+
+<div class="para">
+  Typ 2 ist Bella, lebender Gott, perfekter Sklave,
+  Opfertier, Prototyp Opfer, Schöpfer, Gebährmutter,
+  Stockholm-Syndrom, höflich bis zur Selbstzerstöung,
+  Mutter-Rolle, Vulnerable Narciss.
+</div>
+
+<div class="para">
+  Typ 1 ist Satan, Problemkind, stolzer Egoist,
+  Täter, Krimineller, Staatsfeind,
+  Serienmörder, Terrorist, Scharfrichter, Zerstörer,
+  Natürliche Selektion, Natürlicher Tod, Pro Choice,
+  Richter über Leben und Tod, Grandiose Narciss,
+  Sohn-Rolle, Hauptberuf Sohn, Teufel, Satan, Raubtier, Löwe.
+</div>
+
+<div class="para">
+  Beispiel Christentum:
+  Der Sohn (Jesus, Typ 1) wird geopfert von seinem Vater (Jahwe, Typ 4),
+  damit "die Menschen" (Typen 34?)
+  von der Sünde (Serienmord, Stammkriege) gereinigt werden.
+</div>
+
+<div class="para">
+  Problem:
+  Alle diese "Pro Life" Kulte
+  produzieren immer wieder Übervölkerung (zu viele Menschen)
+  und Degeneration (hässliche Menschen, alte Menschen).
+
+  Zum Ausgleich erfinden diese Kulte:
+  Beihilfe zur Selbstzerstörung (Schwule, Drogen),
+  Schulmedizin (dumme Menschen krank machen),
+  Sex-Tabu (Ein-Kind-Familie),
+  Verhütung (Sex zum Spaß, ohne Kinderkriegen),
+  Kleider (Verbot von Nacktheit, hässliche Körper verstecken),
+  ...
+  
+  aber am Ende vom Tag funktionieren diese System
+  nie so effizient wie Naturordnung,
+  wo Typ 1 Menschen die "unwürdigen Menschen" sofort töten,
+  und nicht jahrelang am Leben halten,
+  und von allen Seiten zum Suizid verführen.
+</div>
+
+<div class="para">
+  Detail:
+  Teufel sind immer Männer, also Typ M1.
+  Also scheinbar ist F1 besser als M1.
+  Warum?
+  Das männliche Geschlecht von M1
+  ist symmetrisch zum männlichen Gehirn von M1,
+  deswegen ist M1 "stärker" als F1.
+</div>
+
+<div class="para">
+  TODO Patriarchat = M1-M4-F2-F3. Matriarchat = F1-F4-M2-M3.
+</div>
+
+<div class="para">
+  Symbol: ✝, †, Römisches Kreuz, Latinisches Kreuz, Dolch.
+
+  TODO svg grafik. 34 sind näher bei 2. 1 ist alleine
+</div>
+
+<table style="position:relative; margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td></td>
+    <td>2</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="position:relative; margin-top:-0.5em">3 -</td>
+    <td>†</td>
+    <td style="margin-top:-0.5em">- 4</td>
+  </tr>
+    <td></td>
+    <td>1</td>
+    <td></td>
+  </tr>
+</table>
 
 <div class="para">
   Konzept: <b>Trauma Releasing Exercises</b> von David Berceli.
@@ -5722,6 +6431,15 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   damit diese Kinder später eine "Motivation zum Arbeiten" haben.
   Diese Menschen glauben auch nicht an Freiwillige Arbeit
   (negatives Menschenbild, "alle Menschen sind faul")
+</div>
+
+<div class="para">
+  TODO
+  Jugendamt als Kinderklau-Behörde,
+  rekrutiert neue Kindersoldaten
+  für die Ausbildung im Kinderheim.
+  Kinder werden "gefickt",
+  also körperlich und geistig verletzt, traumatisiert.
 </div>
 
 
