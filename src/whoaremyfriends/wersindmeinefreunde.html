@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-16">
+  <meta id="version" name="dcterms.modified" content="2022-08-18 12:20">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -262,6 +262,20 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     h2 {
       font-weight:normal;
     }
+
+    div.smilie {
+      display: inline-block;
+      /*font-size: 12em;*/
+      writing-mode: vertical-lr;
+      margin: auto;
+    }
+    /*
+    div.smilie:before {
+      content: "";
+      vertical-align: sub;
+    }
+    */
+
     /* debug
     * {
       outline: solid 1px red;
@@ -2569,6 +2583,20 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   So kriege ich meine Übersetzungs-Tabelle.
 </div>
 
+<!-- TODO
+<div class="para">
+  Auch viele Tiere haben diese Vier Typen:
+  Hunde (Ivan Pavlov: Dog Temperaments, Aufregen und Beruhigen)
+  strong = adaptable = types 13.
+  balanced = types 14.
+  moderate = types 12.
+  https://en.wikipedia.org/wiki/Pavlov%27s_typology
+  https://milahu.github.io/alchi/src/alchi-tables/alchi-tables.html
+
+  "viele Tiere" - welche tiere nicht? vögel? schwarm-tiere? (schwarm = größer als 144)
+</div>
+-->
+
 
 
 <hr>
@@ -2672,6 +2700,57 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Luft</td>
       <td>Wasser</td>
     </tr>
+    <!--
+      das sind eher eigenschaften, oder?
+      typen 13 = optimist
+      typen 24 = pessimist
+    <tr>
+      <th>
+        <div class="annotation" onClick="clickAnnotation(this)" title='
+          1234 = Sanguinic	Melancholic	Choleric	Phlegmatic
+          weil gegentypen:
+          Sanguinic-Melancholic = Optimist-Pessimist
+          Choleric-Phlegmatic = Aktivist-Pazifist
+        '>Temperament</div>
+      </th>
+      <td>Optimist</td>
+      <td>Pessimist</td>
+      <td>Aktivist</td>
+      <td>Pazifist</td>
+    </tr>
+    -->
+    <!--
+      < > ascii angle brackets: zu spitz
+      ❬ ❭ MEDIUM LEFT-POINTING ANGLE BRACKET ORNAMENT: zu schwer
+      ❮ ❯ HEAVY LEFT-POINTING ANGLE QUOTATION MARK ORNAMENT
+      ❰ ❱ HEAVY LEFT-POINTING ANGLE BRACKET ORNAMENT
+      ⟨ ⟩ MATHEMATICAL LEFT ANGLE BRACKET
+    -->
+    <!-- problem: unicode brackets are not in vertical center = too high
+    <tr>
+      <th>Smilie</th>
+      <td><div class="smilie">⟩: )</div></td>
+      <td><div class="smilie">⟨: (</div></td>
+      <td><div class="smilie">⟨: )</div></td>
+      <td><div class="smilie">⟩: (</div></td>
+    </tr>
+    -->
+    <tr>
+      <th>Smilie</th>
+      <td><div class="smilie">): )</div></td>
+      <td><div class="smilie">(: (</div></td>
+      <td><div class="smilie">(: )</div></td>
+      <td><div class="smilie">): (</div></td>
+    </tr>
+    <!-- nase stört
+    <tr>
+      <th>Smilie</th>
+      <td><div class="smilie">):-)</div></td>
+      <td><div class="smilie">(:-(</div></td>
+      <td><div class="smilie">(:-)</div></td>
+      <td><div class="smilie">):-(</div></td>
+    </tr>
+    -->
     <tr>
       <th>Rolle</th>
       <td>Vordenker</td>
@@ -3069,6 +3148,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 <div class="center-x">
+<!-- FIXME indent svg -->
 <svg class="foldme" title="four body shapes" style="margin-top:0.5em; height:10em; "
   version="1.1"
   viewBox="0 0 142.5 82.46"
@@ -3206,6 +3286,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Gesichtsform (breites Gesicht = 3, langes Gesicht = 4),
   Handform (breite Gelenke = 3, lange Finger = 4),
   Fingernägel (lange Nagelbetten = Typen 14, kurze Nagelbetten = Typen 23),
+  Nasenspitze (Doppelspitze oder eckige Spitze = Typen 34, runde Spitze = Typen 12),
   ...
   aber hier gibt es immer wieder Widersprüche,
   und ich sammle möglichst viele Informationen
@@ -3377,6 +3458,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   </tr>
 </table>
 
+<div class="para">
+  ... die Übersetzungen für Typen 234 sind einfach,
+  aber warum "1 = Feuer = Tier"?
+  Weil "Tier" ist das Gegenteil von "Pflanze".
+</div>
+
 
 
 <div class="para">
@@ -3392,8 +3479,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   einfaches Weltbild:
   Radius 1 = Erdkern = Magma, Vulkane, Feuer.
   Radius 2 = Erdhülle = Erde, Steine.
-  Radius 3 = Luft = farblos, durchsichtig.
+  Radius 3 = Luft = farblos, durchsichtig, gelbe Sonne.
   Radius 4 = Wasser = blauer Himmel.
+  (Die Sonne ist gelb, weil der Himmel ist blau = Kontrast.)
+  (Der Himmel ist blau,
+  weil blaue Photonen haben kürzere Wellen,
+  treffen häufiger auf Luft-Moleküle,
+  werden breiter gestreut als rote/gelbe/grüne Photonen.)
 </div>
 
 <table style="margin:auto; margin-top:0.5em; border:solid 1px black">
@@ -3413,6 +3505,50 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     <td>2. Zwei</td>
   </tr>
 </table>
+
+
+
+<div class="para">
+  TODO move.
+
+  Alter ist relativ und geht nach Gefühl.
+  Also:
+  Ich kann mein Alter immer nur relativ angeben zu einem Anderen.
+  Ich darf nicht fragen "Wie alt bist du?"
+  sondern ich muss schätzen:
+  Ist der jünger/gleichalt/älter als ich?
+</div>
+
+<div class="para">
+  TODO move.
+
+  Subtyp bei gleichen Typen.
+
+  Beispiel:
+  Zwei F3 leben zusammen.
+
+  Die zwei Typen sind nicht kompatibel,
+  also werden sie sich gegenseitig abstoßen über ihre Subtypen:
+  F301 und F302.
+
+  TODO grafik mit subtypen.
+
+  Wenn diese zwei Menschen verschieden alt sind,
+  dann können sie eine "schwache Bindung" haben.
+
+  Beipiel:
+  F3L und F3S &rarr; F302L und F301S.
+
+  Die Subtypen liegen rechtwinklig.
+
+  Bindung an Subtyp:
+  F301S bindet an den Subtyp F2L von F302L.
+
+  Wenn beide schon den gleichen Subtyp haben,
+  bevor sie zusammen kommen,
+  dann sind sie noch weniger kompatibel, weil zu ähnlich
+  (Konkurrenzkampf oder Stillstand).
+</div>
 
 
 
@@ -3885,7 +4021,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Beispiel Energiebedarf:
-  2.000 kiloCalorien pro Tag für:
+  2.000 KiloCalorien pro Tag für:
   60kg Körpergewicht,
   Alter 20-30 Jahre,
   ohne körperliche Aktivität (PAL-Faktor 1,2).
@@ -3897,6 +4033,174 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   9 Calorien pro Gramm für Fett.
   4 Calorien pro Gramm für Kohlenhydrate und Protein.
 </div>
+
+
+
+
+
+<div class="para">
+  <b>Smilies:</b>
+  Typen 13 sind optimistisch, also Mundwinkel hoch.
+  Typen 24 sind pessimistisch, also Mundwinkel runter.
+  Typen 14 sind "tough-minded", also böser Blick.
+  Typen 23 sind "tender-minded", also braver Blick.
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. <div class="smilie">): )</div></td>
+    <td></td>
+    <td>3. <div class="smilie">(: )</div></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Smilie</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. <div class="smilie">): (</div></td>
+    <td></td>
+    <td>2. <div class="smilie">(: (</div></td>
+  </tr>
+</table>
+
+<div class="para">
+  Subtypen mit Smilies:
+  Durch Subtypen wird immer eine Eigenschaft verstärkt,
+  und die andere Eigenschaft neutralisiert.
+  Beispiel Typ 104 = Grundtyp 1, Subtyp 4.
+  Typen 14 sind beide männlich, tough-minded,
+  also Typ 104 ist "extrem männlich",
+  also sind die Augen "doppelt böse".
+  Typ 1 ist jung, Typ 4 ist alt,
+  also Typ 104 ist "mittel alt",
+  also sind die Mundwinkel gerade.
+  Also:
+  Typ 104 = <div class="smilie">)): |</div>.
+  Der Nachteil an dieser Darstellung:
+  Man kann nicht unterscheiden zwischen Grundtyp und Subyp,
+  also Typ 104 hat das gleiche Smilie wie Typ 401.
+  Also gibt es hier insgesamt 8 Typen,
+  aber wenn wir Grundtyp und Subtyp unterscheiden,
+  dann gibt es insgesamt 12 Typen (12 Sternzeichen).
+</div>
+
+
+
+<!--
+<div class="para">
+  <b>David Keirsey:</b>
+  Die Vier Typen
+  (1234 = Handwerker Händler Redner Denker)
+  kommen ursprünglich von Plato,
+  vor 2500 Jahren in Griechenland.
+
+  Bei Plato heissen die Vier Typen:
+  1234 = iconic pistic noetic dianoetic
+  = artistic common-sense intuition logic.
+
+  Bei Aristoteles heissen die Vier Eigenschaften:
+  xxxxx = iconic pistic noetic dianoetic = artistic 
+
+  David Keirsey:
+  1234 = Artisan Guardian Idealist Rational.
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Handwerker</td>
+    <td></td>
+    <td>3. Redner</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Beruf nach David Keirsey</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Denker</td>
+    <td></td>
+    <td>2. Händler</td>
+  </tr>
+</table>
+-->
+
+
+
+<div class="para">
+  <b>Hauptberuf:</b>
+  Diese Vier Typen habe ich mir ausgedacht.
+  Grundlage:
+  Auch unser Gehirn hat Geschlecht und Alter.
+
+  Grundlage:
+  Körperformen:
+  1234 = Herz Birne Breit Lang.
+
+  Ich sage:
+  Typen 14 = Langer Unterkörper = männlich.
+  Typen 23 = Breiter Unterkörper = weiblich.
+
+  Auch beim Verhalten:
+  Typen 14 (tough-minded, psychotic, schlau, Freigeist) sind eher männlich,
+  Typen 23 (tender-minded, neurotic, stark, gesellig) sind eher weiblich.
+
+  Oberkörper:
+  Typen 13 nutzen häufiger ihr "junges" Hirn (Cortex, Breitensuche),
+  Typen 24 nutzen häufiger ihr "altes" Hirn (Stamm, Tiefensuche).
+
+  Deswegen:
+  Typen 13 sind "jung",
+  Typen 24 sind "alt".
+
+  Also:
+  Typen 13 = jung = breite Oberkörper,
+  Typen 24 = alt = lange Oberkörper.
+</div>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. Sohn</td>
+    <td></td>
+    <td>3. Tochter</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Hauptberuf</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. Vater</td>
+    <td></td>
+    <td>2. Mutter</td>
+  </tr>
+</table>
+
+<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
+  <tr>
+    <td>1. jung + männlich</td>
+    <td></td>
+    <td>3. jung + weiblich</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Innere Eigenschaften</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4. alt + männlich</td>
+    <td></td>
+    <td>2. alt + weiblich</td>
+  </tr>
+</table>
+
+<div class="para">
+  Andere Alchemisten sagen:
+  Typen 13 sind männlich,
+  Typen 24 sind weiblich.
+</div>
+
+
 
 <!-- template
 
@@ -4767,6 +5071,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
+  TODO dynamisches Gleichgewicht wie in der Chemie.
+  Das Gleichheitszeichen = ist eigentlich ein "Hin-Her" Pfeil,
+  und das Gleichgewicht schwingt um einen Mittelwert.
+</div>
+
+<div class="para">
 
   <div class="annotation" onClick="clickAnnotation(this)" title='
     politik ist "eigentlich" off-topic,
@@ -5397,8 +5707,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Hilfe gesucht:</b>
 
-  Ich brauche Hilfe bei meinen 2 Zielen:
-  Veröffentlichen und Experiment.
+  Ich brauche Hilfe bei meinen Zielen:
+  Veröffentlichen Fertigschreiben Experiment.
 </div>
 
 <div class="para">
@@ -5421,6 +5731,16 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   weil gute Menschen sind überall:
   Park, Badesee, Demo, Einkaufen,
   Bahn, Bus, Autostoppen, Wandern ...
+</div>
+
+<div class="para">
+  Fertigschreiben heisst:
+  Ich selber bin nur ein Anfänger (Typen 13),
+  also mein Text ist nur ein Anfang,
+  den ich selber nie fertig schreiben werde ...
+  also:
+  ich suche "Fertigmacher" (Typen 24),
+  die mir helfen, meinen Text fertig zu schreiben.
 </div>
 
 <div class="para">
@@ -5468,6 +5788,79 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   (Glück gehabt, Kind und Eltern sind Freunde, beide Seiten gewinnen),
   andere Kinder stören
   (Pech gehabt, Kind und Eltern sind Feinde, beide Seiten verlieren).
+</div>
+
+<div class="para">
+  TODO move:
+  Meine Theorie ist relativ einfach:
+  Man muss Menschen so verbinden, wie sie auf dem Muster stehen,
+  und die Subtypen müssen irgendwie zusammen passen.
+  Kompliziert wird meine Theorie durch Grundlagen und Konsequenzen.
+</div>
+
+<div class="para">
+  Die Grundlage für meine Theorie ist Persönlichkeits-Psychologie.
+  Also: Ich brauche eine Methode, mit der ich Typen richtig schätzen kann.
+  Wenn die Typen falsch sind, dann ist mein Muster wertlos.
+  Also: Ich muss immer mit solchen Menschen anfangen,
+  wo ich den Typ sicher schätzen kann.
+</div>
+
+<div class="para">
+  Die Konsequenz aus meiner Theorie ist Dorfkultur
+  (Stammkultur, Tribalismus, Kleinstaaten).
+  Jedes Dorf hat 144 Menschen (Dunbar's Number).
+  Jedes Dorf braucht Abstand zu seinen Nachbar-Dörfern.
+  Jedes Dorf hat kriegerische Beziehungen (Stammkriege, Tribe Wars)
+  und friedliche Beziehungen (Handel, Import und Export) zu anderen Dörfern.
+</div>
+
+<div class="para">
+  TODO move:
+  <b>Hochmut:</b>
+  Meine Arroganz ist die Behauptung:
+  In 10.000 Jahren Zivilisation
+  hat noch kein Mensch dieses einfache Muster gefunden.
+</div>
+
+<div class="para">
+  Klar:
+  Es gibt viele Ansätze zu der Frage
+  "welche Typen sind kompatibel?"
+
+  Aber:
+  Diese Forschungen beschränken sich auf Paar-Beziehungen (stable marriage).
+
+  Diese Forschungen sind zu passiv/deskriptiv/konservativ,
+  also beobachten nur alte Gruppen,
+  aber haben keine Methode (strong opinion) zum Aufbau für neue Gruppen.
+
+  Diese Forschungen sind nicht ganzheitlich/radikal,
+  also suchen nicht nach einer "Weltformel",
+  die für alle Menschen in allen Lebensbereichen funktioniert,
+  weil "Privatleben ist heilig"
+  und "nur Verrückte tun sich einmischen in das Privatleben von anderen Menschen."
+  also das wäre "unprofessionell" und "unethisch".
+
+  Also das "Paradies auf Erden"
+  scheitert an tausend lächerlichen Ausreden.
+  Und vielleicht auch:
+  "Die Entscheider sind nicht gewählt,
+  die Gewählten dürfen nichts entscheiden."
+  (Horst Seehofer)
+  <!--
+    original:
+    Diejenigen, die entscheiden, sind nicht gewählt,
+    und diejenigen, die gewählt werden, haben nichts zu entscheiden
+  -->
+  Also das Paradox:
+  Talent wird bestraft, Schwäche wird belohnt.
+  Also Gleichmacherei:
+  Die Starken kaputt machen, den Schwachen helfen.
+  Warum?
+  Typen 34 suchen erst Gleichheit, dann Unterschied.
+  Also Typen 34 brauchen die stabilen Paare F3-M3 und F4-M4,
+  als Grundlage für alle anderen Beziehungen.
 </div>
 
 
