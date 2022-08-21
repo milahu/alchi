@@ -17,7 +17,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-08-21 16:05">
+  <meta id="version" name="dcterms.modified" content="2022-08-21">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -575,10 +575,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
         pageSetup: {
           size: { width: '148mm', height: '209mm' }, // A5. height -1mm to avoid pagebreak https://github.com/evnbr/bindery/issues/109
           margin: {
+            // --bindery-margin-top
+            // usually 10mm. 20mm for long binding. 30mm to make room for running-header (workaround)
+            //top: '30mm',
             top: '10mm',
             //inner: '10mm',
-            inner: '20mm',
-            outer: '10mm',
+            inner: '15mm',
+            outer: '15mm',
             bottom: '10mm',
           },
         },
@@ -2558,13 +2561,6 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<!--
-  FIXME avoid forced pagebreak. ideally dont break paragraphs
--->
-<hr>
-
-
-
 <div class="para">
   <b>Vier Typen:</b>
 
@@ -3416,10 +3412,6 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Wird die Stress-Reaktion ausgelebt ("früh Aufregen") oder verdrängt ("spät Aufregen")?
   Ist die Stress-Reaktion kurz ("früh Beruhigen") oder lang ("spät Beruhigen")?
 </div>
-
-
-
-<hr>
 
 
 
@@ -8140,7 +8132,20 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Diese "dummen" Menschen (Typen 24?)
+  <b>Leben und Tod:</b>
+  Liebe und Hass.
+  Eros und Thanatos.
+  Dionoysos und Apollo.
+  Chaos und Ordnung.
+  Mutation und Selektion.
+  Pro Life und Pro Choice.
+  Aeros und Focus.
+  Luft und Feuer.
+  Typ 3 und Typ 1.
+</div>
+
+<div class="para">
+  Diese "dummen" Menschen (Typen 24? Typen 34?)
   werden auch nie verstehen,
   wie ein <b>Dynamisches Gleichgewicht</b> funktioniert.
   Konkret kann man das begründen mit Kleinfamilie:
@@ -8677,6 +8682,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Any fool can make things more complex.
+  <br>
   It takes genius to find things that are simple but effective.
 </div>
 
@@ -8740,11 +8746,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   &mdash; Zugezogen Maskulin - Der müde Tod
 </div>
 
+<!-- nutzlos
 <div class="para">
   Wunderlicher Alter, soll ich mit dir gehn?
   Willst zu meinen Liedern, deine Leier drehn?
   &mdash; Franz Schubert - Der Leiermann
 </div>
+-->
 
 <div class="para">
   Mein Tagebuch:
@@ -8784,6 +8792,16 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   Tempus fugit, dolor manet.<br>
   Zeit vergeht, Scheisse bleibt.
+</div>
+
+<div class="para">
+  Si vis pacem, para bellum.<br>
+  Willst du Frieden, rüste für Krieg.
+</div>
+
+<div class="para">
+  Winter is coming.
+  &mdash; Game of Thrones
 </div>
 
 <!--
@@ -8827,14 +8845,177 @@ Nazz feat. Cr7z - Überdosis
   bleibt die Frage, ob das hier sich lohnt.
 
   Wichtig ist, uns beiden geht es gut,
-  das Leben viel zu kurz, die Zeit vergeht so wie im Flug.
+  <b>das Leben viel zu kurz, die Zeit vergeht so wie im Flug.</b>
   Ich vertrau Dir blind bei allem was Du tust,
   bei allem was Du tust
 
   &mdash; Lapaz - Risiko
 </div>
 
+<div class="para">
+  Dem Heiteren erscheint die Welt auch heiter.
+  &mdash; Goethe
+</div>
 
+<div class="para">
+  Der zentrale Konflikt unserer Tage ist der Krieg Reich gegen Arm.<br>
+  Wir, die Klasse der Reichen, haben diesen Krieg angefangen,<br>
+  und wir werden ihn auch gewinnen.
+  <br>
+  &mdash; Warren Buffett, Übersetzung: Georg Schramm
+  <!--
+    https://soheit.de/2019/vom-krieg-reich-gegen-arm/
+  -->
+</div>
+
+<div class="para">
+  Von Warren Buffett stammt übrigens auch der schöne Begriff:<br>
+  "finanztechnische Massenvernichtungswaffen".
+  <br>
+  &mdash; Georg Schramm
+</div>
+
+<div class="para">
+  Das ist das Fundament einer Volksreligion: Die Unterdrückung einer berechtigten Frage.
+  &mdash; Georg Schramm
+</div>
+
+<div class="para">
+  Die Vernunft kann sich mit größerer Wucht dem Bösen entgegenstellen,
+  wenn der Zorn ihr dienstbar zur Hand geht.
+  &mdash; Georg Schramm
+</div>
+
+<div class="para">
+  Menschliche Dummheit ist endlos.
+  &mdash; Albert Einstein
+</div>
+
+<div class="para">
+  Die Welt beachtet mich nicht und begeht Gotteslästerung.
+  ...
+  Ich hab verkackt und lebe täglich hart am Abgrund,
+  Und hab kaum mehr übrig als für den Staat Verachtung, Nein.
+  Ihr seht wie Dinge passiern,
+  und denkt ihr könnt sie lenken.
+  Doch wenn was Schlimmes passiert,
+  beschränkt ihr euch auf das Argument "Dinge passieren!"
+  Und rennt nur davon Weil ihr machtlos seid,
+  und abgefuckt in menschlicher Dummheit
+  &mdash; JAW - Menschliche Dummheit
+</div>
+
+<div class="para">
+  All meine Gespräche sind meistens nur Monologe,
+  ich will kein Leben voll Scheiße wie Drogentote.
+  Schmeiss es weg, und während andere schreien und winseln,
+  kehrt mein Geist in die Stille zurück, und steigt in den Himmel.
+  ...
+  Machen, was man machen will, ist unter Strafe verboten.
+  ...
+  Ich bin leider nicht dumm genug, euren Lügen zu glauben,
+  und leider nicht mutig genug, meine Flügel zu brauchen.
+  Also schieß' ich alles in Gedanken über den Haufen
+  ...
+  Ist auch für nen guten Zweck, denn wenn ihr weg seid,
+  dann ist Platz für die, die ihr eigener Herr sein wollen.
+  Von mir aus nenn es Blasphemie, ich nenn es Mündigkeit,
+  und diese Erde nenn ich Scheiterhaufen.
+  &mdash; JAW - Himmel
+</div>
+
+<div class="para">
+  Ich bin ein Sklave der Liebe, ertrage die Hiebe
+  &mdash; JAW - Entheiligte Welt
+</div>
+
+<div class="para">
+  Was hat denn das Leben bitte für einen Sinn? Keinen!
+  Also muss man seinem Leben einen Sinn geben,
+  und das mache ich nicht,
+  indem ich einem überbezahlten Chef im Arsch rumkrieche,
+  oder mich verarschen lasse von Faschisten,
+  die mir erzählen wollen wir leben in einer Volksherrschaft.
+  ...
+  Vielleicht hätte mein Leben komplett anders verlaufen können,
+  aber die Gesellschaft hat nunmal keinen Platz für Individualisten.
+  Ich meine richtige Individualisten, Leute die selbst denken,
+  und nicht solche "Ich trage ein Nietenarmband und bin alternativ" Idioten!
+  ...
+  Das Leben wie es heute täglich stattfindet,
+  ist wohl das armseeligste was die Welt zu bieten hat!
+  SAART = Schule Ausbildung Arbeit Rente Tod.
+  Das ist der Lebenslauf eines "normalen" Menschen heutzutage.
+  Aber was ist eigentlich normal?
+  Als normal wird das bezeichnet, was von der Gesellschaft erwartet wird.
+  Somit werden heutzutage Punks, Penner, Mörder, Gothics, Schwule usw. als unnormal bezeichnet,
+  weil sie den allgemeinen Vorstellungen der Gesellschaft nicht gerecht werden, können oder wollen.
+  Ich scheiss auf euch!
+  Jeder hat frei zu sein!
+  Gebt jedem eine Waffe und die Probleme unter den Menschen lösen sich ohne jedliche Einmischung Dritter.
+  Wenn jemand stirbt, dann ist er halt tot.
+  Und? Der Tod gehört zum Leben!
+  Kommen die Angehörigen mit dem Verlust nicht klar,
+  können sie Selbstmord begehen, niemand hindert sie daran!
+  ...
+  Weil ich weiss, dass die Fascho-Polizei
+  meine Videos, Schulhefte, Tagebücher, einfach alles,
+  nicht veröffentlichen will,
+  habe ich das selbst in die Hand genommen.
+  <br>
+  &mdash; Sebastian Bosse [M4?], der Amokläufer von Emsdetten
+</div>
+
+<div class="para">
+  Die industrielle Revolution und ihre Folgen sind eine Katastrophe für die Menschheit.
+  In den hoch entwickelten Ländern steigt die Lebensdauer der Menschen,
+  aber dafür sinkt die Lebensqualität:
+  Menschen sind nicht mehr glücklich,
+  Menschen quälen sich,
+  Menschen haben psychische Probleme,
+  in der Dritten Welt erleiden Menschen auch körperliche Qualen,
+  und die Natur erleidet schweren Schaden.
+  &mdash; Ted Kaczynski [M2?]
+</div>
+<!--
+  https://docplayer.org/211442212-Die-industrielle-gesellschaft-und-ihre-zukunft.html
+-->
+
+<div class="para">
+  Der weiche Gang geschmeidig starker Schritte,
+  der sich im allerkleinsten Kreise dreht,
+  ist wie ein Tanz von Kraft um eine Mitte,
+  in der betäubt <b>ein großer Wille</b> steht.
+  &mdash; Rilke - Der Panther
+</div>
+
+<div class="para">
+  Du Opfer was willst du machen? Überall sind Kanacken.
+  Deine Mama soll losgehn, und die Wertsachen wegpacken.
+  Wir ziehen Koks, ziehen Speed, das Leben eines G's.
+  Wir boxen dich zu Kartoffelbrei, Ali, Murat, Rajid
+  &mdash; K.I.Z - Was willst du machen
+</div>
+
+<div class="para">
+  Fass nicht meine Bäume an, ich fackel auch nicht deine Träume ab
+  &mdash; Lazy Lizzard Gang - Wald
+</div>
+
+<div class="para">
+  Die wissenschaftliche Debatte fragt nicht mehr:
+  Wie können wir mehr Menschen ernähren?
+  Sondern:
+  Wie können wir den Kollaps der Zivilisation verhindern?
+  &mdash; Paul Ehrlich
+</div>
+
+<div class="para">
+  no changes in behavior or technology can save us,
+  unless we can achieve control over the size of the human population.
+  The birth rate must be brought into balance with the death rate. 
+  &mdash; Paul Ehrlich - The Population Bomb
+</div>
 
 <div class="para">
   Gentlemen, it has been a privilege playing with you tonight.
@@ -8911,6 +9092,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Fuck the police!
   I was born in jail, you dont know me
+  <br>
   &mdash; Bros Before Hos (2013)
 </div>
 
@@ -8950,6 +9132,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Endlich Wochenende! Die Welt mit anderen Augen sehen.
   Endlich Wochenende! Los wir werden high,
   Endlich ist wieder ne scheiß Woche vorbei.
+  <br>
   &mdash; Sido - Endlich Wochenende
 </div>
 
@@ -8974,8 +9157,10 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Jeden Tag stirbt ein Teil von dir,
   jeden Tag schwindet deine Zeit.
+  <br>
   Jeden Tag ein Tag den du verlierst,
   nichts bleibt für die Ewigkeit.
+  <br>
   &mdash; Die Toten Hosen - Nichts bleibt für die Ewigkeit
 </div>
 
@@ -9058,7 +9243,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Glaubst Du an das Schicksal, Neo?
   - Nein.
   - Warum nicht?
-  - Mir missfällt der Gedanke, mein Leben nicht unter Kontrolle zu haben.
+  - Mir missfällt der Gedanke, mein Leben nicht unter <b>Kontrolle</b> zu haben.
   - Ich weiß ganz genau, was Du meinst.
   Ich will Dir sagen, wieso Du hier bist.
   Du bist hier, weil Du etwas weißt.
@@ -9073,12 +9258,68 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   - ... Es ist eine Scheinwelt, die man Dir vorgaukelt,
   um Dich von der Wahrheit abzulenken.
   - Welche Wahrheit?
-  - Dass Du ein Sklave bist, Neo.
+  - Dass Du ein <b>Sklave</b> bist, Neo.
   Du wurdest wie alle in die Sklaverei geboren,
   und lebst in einem Gefängnis,
   das Du weder anfassen noch riechen kannst.
-  Ein Gefängnis für Deinen Verstand. 
+  <b>Ein Gefängnis für Deinen Verstand.</b>
   &mdash; Matrix (1999)
+</div>
+
+<div class="para">
+  Ich kam zu einer interessanten Entdeckung, seit ich in Matrix bin.
+  Es fiel mir auf, als ich versuchte, Eure Spezies zu klassifizieren.
+  Ihr seid im eigentlichen Sinne keine richtigen Säugetiere.
+  Jedwede Art von Säuger auf diesem Planeten entwickelt instinktiv
+  ein natürliches Gleichgewicht mit ihrer Umgebung.
+  Ihr Menschen aber tut dies nicht.
+  Ihr zieht in ein bestimmtes Gebiet, und vermehrt Euch und vermehrt Euch,
+  bis als natürlichen Ressourcen erschöpft sind.
+  Und die einzige Möglichkeit zu überleben ist die Ausbreitung auf ein anderes Gebiet.
+  Es gibt noch einen Organismus auf diesem Planeten, der genauso verfährt.
+  Wissen Sie, welcher? Das <b>Virus</b>!
+  Der Mensch ist eine Krankheit! Das Geschwür dieses Planeten!
+  Ihr seid wie die Pest, und wir sind die Heilung!
+  &mdash; Agent Smith, Matrix (1999)
+</div>
+
+<div class="para">
+  Ich hasse diesen Planeten! Diesen Zoo, dieses Gefängnis!
+  Diese Realität, wie man auch immer dazu sagen mag, ich halte es nicht länger aus!
+  Vor allem den Geruch, falls so was existiert.
+  Ich bin seiner sozusagen überdrüssig.
+  Ich kann riechen, wie Sie stinken,
+  und jedes Mal wenn ich es rieche fürchte ich mich infiziert zu haben.
+  Es ist abstoßend, finden Sie nicht?
+  Ich muss hier irgendwie raus, ich will endlich frei sein
+  &mdash; Agent Smith, Matrix (1999)
+</div>
+
+<div class="para">
+  Ich will als tödlicher Virus wiedergeboren werden,
+  und die menschliche Bevölkerung reduzieren.
+  &mdash; Prince Philip, 1988
+  <!--
+    If I were reincarnated
+    I would wish to be returned to earth as a killer virus
+    to lower human population levels
+  -->
+</div>
+
+<div class="para">
+  Kannibalismus ist eine radikale, aber realistische Lösung gegen Übervölkerung.
+  &mdash; Prince Philip
+</div>
+
+<div class="para">
+  1. Halte die Menschen unter 500 Millionen,
+  für immer im Gleichgewicht mit der Natur.<br>
+  2. Vermehre dich schlau, für mehr Stärke und Vielfalt.<br>
+  &mdash; Georgia Guidestones, 1980
+  <!--
+    1. Maintain humanity under 500,000,000, in perpetual balance with nature.
+    2. Guide reproduction wisely, improving fitness and diversity.
+  -->
 </div>
 
 <div class="para">
@@ -9118,20 +9359,70 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Das ist dein Leben, und es endet Minute für Minute ...
-  Ich bin Jack's vergeudetes Leben ...
+  Von dem Geld das wir nicht haben,
+  kaufen wir Dinge die wir nicht brauchen,
+  um Leuten zu gefallen die wir nicht mögen
+  &mdash; Tyler Durden [M1], Fight Club
+</div>
+
+<div class="para">
   Wir sind Konsumenten ...
   Durch die Werbung sind wir heiß auf Klamotten und Autos,
   machen Jobs die wir hassen,
-  kaufen dann Scheiße, die wir nicht brauchen ...
-  wir sind kurz, ganz kurz vorm Ausrasten ...
-  Wir sind nichts Besonderes ...
-  Du entscheidest, wie weit du dich beteiligst ...
-  Vergiss was du weisst, über das Leben, über Freundschaft ...
-  Was willst du noch machen bevor du stirbst? ...
-  Hör auf alles kontrollieren zu wollen, lass einfach los. Lass los! ...
+  kaufen dann Scheiße, die wir nicht brauchen
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  wir sind kurz, ganz kurz vorm Ausrasten
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  Wir sind nichts Besonderes
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  Du entscheidest, wie weit du dich beteiligst
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  Vergiss was du weisst, über das Leben, über Freundschaft
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  Es ist dein Leben, und es endet Minute für Minute
+  &mdash; Fight Club
+</div>
+
+<div class="para">
+  Ich bin Jack's vergeudetes Leben ...
+  &mdash; Fight Club
+</div>
+
+<div class="para">
+  <b>Was willst du noch machen bevor du stirbst?</b>
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
+  Hör auf alles kontrollieren zu wollen, lass einfach los. Lass los!
+  &mdash; Tyler Durden [M1]
+</div>
+
+<div class="para">
   Du hast mich in einer seltsamen Phase meines Lebens getroffen
-  &mdash; Fight Club (1999)
+  &mdash; Fight Club
+</div>
+
+<div class="para">
+  Mischst dich in Sachen ein, die dich nix angehn
+  ...
+  Ich hab keine Angst vor dir, auch wenn du mich in Knast steckst
+  &mdash; 2ara - Bullenschwein
 </div>
 
 <div class="para">
@@ -9155,7 +9446,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Die Liebe ist ein wildes Tier
   ...
-  Amuur Amuur, Alle wollen nur dich zähmen
+  Amuur Amuur, alle wollen nur dich zähmen
   &mdash; Rammstein - Amour
 </div>
 
@@ -9185,11 +9476,12 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   ...
   Schulden ohne Ende, Ich muss das Geld gut einteilen,
   zieh eine Line und verwechsel frei mit high sein.
-  Ich ertrag' mein Leben nur wenn die Pupillen sich weiten,
+  Ich ertrag mein Leben nur wenn die Pupillen sich weiten,
   wann ich frei sein darf entscheiden meine Arbeitszeiten.
 
   Und sie geben dir Rente, damit du die Hoffnung nicht aufgibst,
   funktionierst, parierst, nicht austickst.
+  <br>
   &mdash; K.I.Z - Frei sein
 </div>
 
@@ -9253,7 +9545,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   fürchtet nichts mehr
   als die Aufklärung der unteren Masse.
   [Unterschicht = Kinder]
-  &mdash; J. W. Goethe
+  &mdash; Goethe
 </div>
 
 <div class="para">
@@ -9272,6 +9564,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Select and collect all the words and sentences,
   that in all your readings have been to you,
   like the blast of a trumpet.
+  <br>
   &mdash; Ralph Waldo Emerson
 </div>
 
@@ -9290,6 +9583,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Trust instinct to the end,
   even though you can give no reason.
+  <br>
   &mdash; Ralph Waldo Emerson
 </div>
 
@@ -9377,6 +9671,7 @@ but for deliverance from fear.
 
 <div class="para">
   What I need is someone, who will make me do what I can.
+  <br>
   &mdash; Ralph Waldo Emerson
 </div>
 
@@ -9410,7 +9705,7 @@ but for deliverance from fear.
   Bei Schlaflosigkeit wird alles unwirklich.
   Alles ist weit weg.
   Alles ist die Kopie einer Kopie einer Kopie.
-  &mdash; Fight Club (1999)
+  &mdash; Fight Club
 </div>
 
 <div class="para">
@@ -9448,6 +9743,7 @@ but for deliverance from fear.
 
 <div class="para">
   Wer in Glaubensfragen den Verstand befragt,
+  <br>
   kriegt unchristliche Antworten.
   &mdash; Wilhelm Busch
 </div>
@@ -9490,6 +9786,7 @@ but for deliverance from fear.
   Religion ist:
   wahr für das Volk,
   falsch für die Weisen,
+  <br>
   nützlich für die Herrscher.
   &mdash; Edward Gibbon
 </div>
@@ -12671,7 +12968,13 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
   .bindery-running-header {
     position: absolute;
     text-align: center;
-    top: 0.25in;
+    /* quickfix
+    https://github.com/evnbr/bindery/issues/128
+    running header ignores top margin
+    */
+    /*top: 0.25in;*/
+    top: var(--bindery-margin-top);
+    margin-top: -1.5em;
   }
   .bindery-left .bindery-running-header {
     text-align: left;
