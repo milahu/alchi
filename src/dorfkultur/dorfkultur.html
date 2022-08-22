@@ -16,7 +16,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <meta name="author" content="Milan Hauth">
 
   <!-- meta#version -->
-  <meta id="version" name="dcterms.modified" content="2022-07-21">
+  <meta id="version" name="dcterms.modified" content="2022-08-22">
 
   <!-- document ID for hypothesis annotations -->
   <link rel="canonical" href="https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html#/cas/git/commit/9e77457a15181bcb1aa1b88ffaab4f0d9a6bd84a">
@@ -417,15 +417,16 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
                 if (page.isRight) return `<div class="running-header">${headerTitle}<span class="page-number">${ page.number }</span></div>`;
               }
               */
-              var linkLeftList = [
-                'github.com/milahu/',
-                'gitlab.com/milahu/',
+              var linkList = [
+                ['github.com/milahu/alchi', ''],
+                ['gitlab.com/milahu/alchi', 'Mirror'],
               ];
-              var linkLeftOffset = 1; // which link is first in linkLeftList
-              var linkLeftIdx = (Math.floor(page.number / 2) + linkLeftOffset) % linkLeftList.length;
-              var linkLeft = linkLeftList[linkLeftIdx];
-              var linkRight = 'alchi';
-              var href = `https://${linkLeft}${linkRight}`;
+              var linkOffset = 1; // which link is first in linkList
+              var linkIdx = (Math.floor(page.number / 2) + linkOffset) % linkList.length;
+              var link = linkList[linkIdx][0];
+              var desc = linkList[linkIdx][1];
+              var href = `https://${link}`;
+              var linkText = desc ? `${link} (${desc})` : link;
               /* pretty effect, but version is missing
               var headerTitle = (page.isLeft)
                 ? `<div class="running-header-title running-header-title-left running-header-title-pages-${page.number}-${(page.number + 1)}"><a href="${href}" onmouseover="hoverBothLinksStart(this)" onmouseout="hoverBothLinksEnd(this)">${linkLeft}</a></div>`
@@ -437,7 +438,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
               var versionString = version;
               //versionString = `Entwurf ${versionString}`; // add prefix
               var headerTitle = (!page.isLeft)
-                ? `<div class="running-header-title running-header-title-left"><a href="${href}" onmouseover="hoverBothLinksStart(this)" onmouseout="hoverBothLinksEnd(this)">${linkLeft}${linkRight}</a></div>`
+                ? `<div class="running-header-title running-header-title-left"><a href="${href}" onmouseover="hoverBothLinksStart(this)" onmouseout="hoverBothLinksEnd(this)">${linkText}</a></div>`
                 : `<div class="running-header-title running-header-title-right">${versionString}</div>`
               ;
 
@@ -628,8 +629,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Gleichgewicht:</b>
   Jedes Dorf ist im Gleichgewicht:
-  72 Männer und 72 Frauen.
-  72 Junge und 72 Alte.
+  <div class="nowrap">72 Männer und 72 Frauen.</div>
+  <div class="nowrap">72 Junge und 72 Alte.</div>
   <!-- (Koran: 72 Jungfrauen im Paradies für die Gerechten.) -->
   Also Gerechtigkeit bei der Verteilung von Geschlecht und Alter.
   Diese Gerechtigkeit kommt nicht von selber (Natur ist Zufall),
@@ -673,7 +674,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   dann hat das oft <b>Persönliche Gründe</b>.
   Dann zählt nicht "Was" einer sagt, sondern "Wer" etwas sagt.
   Zarathustra: "Ich bin nicht der Mund für diese Ohren."
-  Echte Freunde.
+  <b>Echte Freunde.</b>
   Geistige Nähe.
   <!--
     Geistige Freundschaft.
@@ -1457,7 +1458,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Vier Typen:</b>
   Die vier Persönlichkeitstypen
-  in verschiedenen Sprachräumen:
+  in verschiedenen Sprachräumen.
+  <br>
+  Ideal: 2 Typen passen = Grundtyp und Subtyp
 </div>
 
 <!--
@@ -1482,6 +1485,13 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>3</td>
       <td>4</td>
     </tr>
+    <tr>
+      <th>Hauptberuf</th>
+      <td>Sohn</td>
+      <td>Mutter</td>
+      <td>Tochter</td>
+      <td>Vater</td>
+    </tr>
     <!--
       element ist schön weil kurz.
       "feuer mann" sagt sicht leichter als
@@ -1505,17 +1515,44 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Vormacher</td>
       <td>Nachdenker</td>
     </tr>
+    <!-- freie übersetzung
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
       <td>Handwerker</td>
       <td>Händler</td>
-      <td>Redner</td><!-- TODO better. Prediger? Redner? -->
+      <td>Redner</td><!-xx- TODO better. Prediger? Redner? -xx->
       <td>Denker</td>
     </tr>
+    -->
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
+      <td>Künstler</td><!-- praktisch kreativ -->
+      <td>Versorger</td><!-- praktisch konservativ, Beschützer -->
+      <td>Träumer</td><!-- theoretisch kreativ, Idealist, heisse luft -->
+      <td>Verwalter</td><!-- theoretisch konservativ, kaltes wasser, Sachlich -->
+    </tr>
+    <!-- zu breit für tabelle
+    <tr>
+      <th>TODO</th>
+      <td>praktisch kreativ</td>
+      <td>praktisch konservativ</td>
+      <td>theoretisch kreativ</td>
+      <td>theoretisch konservativ</td>
+    </tr>
+    -->
+    <!--
+    <tr>
+      <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter">David Keirsey</a></th>
+      <td>Kreativ</td>
+      <td>Konservativ</td>
+      <td>Idealist</td>
+      <td>Realist</td>
+    </tr>
+    -->
     <tr>
       <th>Interesse</th><!-- hauptberuf = grundtyp -->
       <td>Gerechtigkeit</td>
-      <td>Gewohnheit</td><!-- ritual, routine, wiederholung, tradition -->
+      <td>Sicherheit</td><!-- ritual, routine, wiederholung, tradition, Gewohnheit -->
       <td>Philosophie</td>
       <td>Technik</td>
     </tr>
@@ -1561,10 +1598,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     </tr>
     <tr>
       <th>Finger</th>
-      <td>Mittel</td>
-      <td>Klein</td>
-      <td>Ring</td>
-      <td>Zeige</td>
+      <td>Mittelfinger</td>
+      <td>Kleinfinger</td>
+      <td>Ringfinger</td>
+      <td>Zeigefinger</td>
     </tr>
     <tr>
       <th>Körperteil</th>
@@ -1594,17 +1631,17 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     </tr>
     <tr>
       <th>Kleid oben</th>
-      <td>Gelb</td>
-      <td>Blau</td>
-      <td>Rot</td>
-      <td>Grün</td>
+      <td>Schwarz-Gelb</td>
+      <td>Weiss-Blau</td>
+      <td>Schwarz-Rot</td>
+      <td>Weiss-Grün</td>
     </tr>
     <tr>
       <th>Kleid unten</th>
-      <td>Blau</td>
-      <td>Gelb</td>
-      <td>Grün</td>
-      <td>Rot</td>
+      <td>Weiss-Blau</td>
+      <td>Schwarz-Gelb</td>
+      <td>Schwarz-Grün</td>
+      <td>Weiss-Rot</td>
     </tr>
     <tr>
       <th>Zylinder-Geometrie</th>
@@ -1620,15 +1657,14 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Feeling</td>
       <td>Thinking</td>
     </tr>
-    <!--
+    <!-- MBTI ist scheisse ... aber bekannt -->
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/MBTI">MBTI</a></th>
-      <td>INxx</td>
-      <td>ESxx</td>
-      <td>ENxx</td>
-      <td>ISxx</td>
+      <td>INTP</td>
+      <td>ESFJ</td>
+      <td>ENFP</td>
+      <td>ISTJ</td>
     </tr>
-    -->
     <tr>
       <th><a class="nofootnote" href="https://en.wikipedia.org/wiki/Attachment_theory">Attachment Style</a></th>
       <td>Balanced</td>
@@ -1637,14 +1673,14 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Avoidant</td>
     </tr>
     <tr>
-      <th>↳ Schreien: Anfang</th><!-- Stress Response -->
+      <th>↑ Aufregen</th><!-- Stress Response -->
       <td>früh</td>
       <td>spät</td>
       <td>früh</td>
       <td>spät</td>
     </tr>
     <tr>
-      <th>↳ Schreien: Ende</th><!-- Stress Response -->
+      <th>↓ Beruhigen</th><!-- Stress Response -->
       <td>früh</td>
       <td>spät</td>
       <td>spät</td>
@@ -1673,11 +1709,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       <td>Leichtgewicht</td>
     </tr>
     <tr>
-      <th>Diät: Carb + Fat</th>
-      <td>Mid + Mid</td>
-      <td>Mid + Mid</td>
-      <td>Low + High</td>
-      <td>High + Low</td>
+      <th>Carbs+Fat+Protein</th>
+      <td>50g+15g+35g</td>
+      <td>50g+15g+35g</td>
+      <td>30g+25g+45g</td>
+      <td>60g+10g+30g</td>
     </tr>
     <tr>
       <th><a class="nofootnote" href="https://flowgenomeproject.com/flow-profile">Flow Profile</a></th>
