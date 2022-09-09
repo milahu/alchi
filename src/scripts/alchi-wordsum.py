@@ -1,4 +1,6 @@
-#!/usr/bin/python3
+#! /usr/bin/env python3
+
+# nix-shell -p python3.pkgs.{beautifulsoup4,unidecode}
 
 # https://en.wikipedia.org/wiki/Digital_root
 # digital sum
@@ -13,6 +15,47 @@ https://github.com/first20hours/google-10000-english
 the 10,000 most common English words in order of frequency
 
 https://github.com/metabase/metabase/raw/master/resources/words-by-frequency.txt
+
+examples:
+
+# typ 1
+Bender Bending Rodriguez -> 1
+
+# typ 1
+Marjorie Jacqueline Bouvier -> 1 3
+Marge Simpson -> 2 0
+
+# typ 2
+Homer Jay Simpson -> 0 2
+Homer Simpson -> 3 2
+
+# typ 4
+Lisa Marie Simpson -> 0 3 # wrong! lisa has 8 hair tips = 4x2
+Lisa Simpson -> 4 2
+
+# typ 3
+Bartholomew JoJo Bart Simpson -> 0 4 # wrong!
+Bartholomew JoJo Simpson -> 4 3
+Bart Simpson -> 4 2 # wrong! bart has 9 hair tips = 3x3
+
+Margaret Maggie Simpson -> 2 0
+Maggie Simpson -> 3
+Margaret Simpson -> 2 3
+
+# typ 1
+Alexander Milan Hauth -> 1 2
+Milan Hauth -> 2 3
+Alexander Hauth -> 2 2
+
+# typ 1
+Tyler Durden -> 4 2
+45 years old. 5 - 4 = 1.
+count like roman numbers:
+if left number is smaller, then subtract left from right. IV = 15 = 4.
+if right number is smaller, then add right to left. VI = 51 = 6.
+
+# typ 2?
+Marla Singer -> 2 4 # mirror of "4 2" (Tyler Durden)
 """
 
 n0 = ord('a')     # a = 0
@@ -86,14 +129,19 @@ def wordsum(w):
 		n = sum(s)
 		ns.append(n)
 
-#		_print('n%i = ' % i + ' + '.join(map('{:2d}'.format, s)) + ' = ' + str(n))
+		_print('n%i = ' % i + ' + '.join(map('{:2d}'.format, s)) + ' = ' + str(n))
 		dr = digroot(n)
 		if dr:
-#			_print(' --> ' + ' --> '.join(map(str, dr)))
+			_print(' --> ' + ' '.join(map(str, dr)))
 			drs.append(dr)
+			# modulo five
+			drm5 = map(lambda i: i % 5, filter(lambda i: i < 10, dr))
+			#drm5 = filter(lambda i: i != 0, map(lambda i: i % 5, dr))
+			if dr != drm5:
+				_print(' --> ' + ' '.join(map(str, drm5)))
 		else:
 			drs.append([s])
-#		print() # new line
+		print() # new line
 
 	#for x in drs:
 	#	if x[0] == 187:
@@ -117,7 +165,7 @@ def wordsum(w):
 #			for (i, dr) in enumerate(drs):
 #				_print('n%i = ' % i + ' + '.join(map('{:2d}'.format, ss[i])) + ' = ' + str(ns[i]))
 #				print(' --> ' + ' --> '.join(map(str, dr)))
-		
+
 
 import os.path
 
@@ -174,6 +222,3 @@ for w in sys.argv[1:]:
 				except IndexError:
 					pass
 				wordsum(l)
-
-
-
