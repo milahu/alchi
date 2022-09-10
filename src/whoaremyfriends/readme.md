@@ -13,4 +13,4 @@ group composition by personality type
 
 you can simply download the `online` files, and open them in your web browser, for example in google chrome
 
-ideally you download all of my files, see [alchi/readme.md](../readme.md)  
+ideally you download all of my files, see [alchi/readme.md](../../readme.md)  
