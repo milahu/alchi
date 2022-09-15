@@ -1,35 +1,105 @@
 <!doctype html>
-<!--
-based on alchi/src/whoaremyfriends/whoaremyfriends.html
--->
+
 <html lang="de">
+
+<!-- NOTE please use a text editor with automatic code folding
+
+  im using the "vscode" editor.
+  actually "vscodium", the open source version of vscode.
+
+  for vscode, i have the plugin "explicit folding".
+  my folding rules are defined in alchi/.vscode/settings.json
+
+  without code folding,
+  you will have to navigate about 20000 lines of html code ...
+
+  content starts at <article id="whoaremyfriends-german">
+
+-->
+
+<!-- based on alchi/src/whoaremyfriends/whoaremyfriends.html
+
+  also based on
+
+  alchi/src/book/
+  alchi/src/alchi-flyer/
+  alchi/src/dorfkultur/
+
+-->
+
+<!-- TODO group content into sections
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+
+  <section>
+    <h2>Heading</h2>
+    <p>Bunch of awesome content</p>
+    <p>Bunch of awesome content</p>
+  </section>
+
+  <section>
+    <h3>Heading</h3>
+    <p>Bunch of awesome content</p>
+    <p>Bunch of awesome content</p>
+  </section>
+
+  TODO generate a table of contents
+-->
+
+<!-- TODO use an XML linter for automatic refactoring
+
+  example:
+  title="" should come first in <svg> and its children
+
+  TODO lint annotations:
+  copy content to attribute
+  <div content="Hello" class="annotation" title='
+    ...
+  '>Hello</div>
+  to make annotations readable with code folding.
+  the folded node looks like
+  <div content="Hello" class="annotation" title='...
+  so the content is still readable
+
+  lint html:
+  allow either 1 or 3 empty lines between nodes.
+  because 2 empty lines are ugly.
+  example:
+  <div></div>
+
+  <div></div>
+
+
+
+  <div></div>
+  exception: dont apply this rule in <pre>
+  challenge: parse CSS for white-space:pre
+-->
+
 <head>
   <meta charset="utf-8">
-  <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
-  <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
 
   <title>Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp</title>
 
-  <!-- TODO -->
-  <meta name="description" content="">
+  <!-- TODO description -->
+  <meta name="description" content='
+    Gruppenaufbau nach Persönlichkeitstyp.
+    Wer sind meine Freunde?
+    Die Frage klingt einfach ... aber, es ist kompliziert,
+    und die Psychologie-Experten haben bis heute keine Antwort.
+    Also: Wir müssen diese Frage selber lösen.
+  '>
 
   <meta name="author" content="Milan Hauth">
 
   <!-- meta#version -->
   <!-- TODO update -->
-  <meta id="version" name="dcterms.modified" content="2022-09-10">
+  <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
+  <meta id="version" name="dcterms.modified" content="2022-09-15">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
   <link rel="canonical" href="https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html#/cas/git/commit/9c6e723296fc7d8534cd901de0f0dcfd4765ea3c">
-
-  <!--
-    content starts at <article id="content">
-
-    all assets are inlined into this html file
-    i hope you have a good code editor, with code folding.
-    folding suggestions: class="foldme"
-  -->
 
   <meta class="foldme" name="keywords" content="
     who are my friends,
@@ -216,7 +286,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <meta name="homepage.tor.darktea" content="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi">
 
   <!-- legal stuff. short: zero limits and zero warranty -->
-  <meta class="foldme" name="dc.rights" content='
+  <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
+  <meta name="dc.rights" content='
 
     MIT License
 
@@ -242,7 +313,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   '>
 
-  <style class="foldme">
+  <style>
     /* FIXME width 1105px, zoom 100%, dpi 144? -> horizontal scrollbar in grid view */
     body.js-enabled hr {
       height: 0;
@@ -334,10 +405,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
       vertical-align: baseline;
       font-size: 100% !important;
     }
-    .center-x {
+    .xcenter {
       text-align: center;
     }
-    .center-x > * {
+    .xcenter > * {
       display: inline-block;
     }
     .box {
@@ -464,10 +535,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     }
   </style>
 
-  <!--
-    inlined at end of file
-    <script src="./node_modules/bindery/dist/bindery.umd.js"></script>
-  -->
+  <!-- the layout engine (bindery.umd.js) is inlined at end of file -->
 
   <script>
     function clickAnnotation(element) {
@@ -477,7 +545,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     }
   </script>
 
-  <script title="binderyOptions" class="foldme">
+  <script title="binderyOptions">
 
     const lastPage = 16; // TODO update manually
 
@@ -604,23 +672,29 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 </head>
 
+
+
 <body>
 
-<!-- note: dont indent body content -->
+<!-- dont indent body content. shallow xml -->
 
 <script>document.body.classList.add('js-enabled')</script>
 
 <noscript>This page works better with Javascript</noscript>
 
+
+
 <article id="content">
 
-<!-- note: dont indent article content -->
+<!-- id="content" is needed for bindery -->
+<!-- dont indent article content. shallow xml -->
 <!-- end of article: </article> -->
 
 
 
 <!-- page 1 -->
 
+<!-- TODO why does this break with class="xcenter" -->
 <div style="text-align:center">
 
 <div class="vspace" style="height:7em"></div>
@@ -675,65 +749,66 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <!-- page 2 -->
 
 <div class="para">
-  <b>
-    <div class="annotation" onClick="clickAnnotation(this)" title='
-      <div class="para">
-        Objektiv gesehen gibt es zwei Antworten.
+    <b>Wer sind meine Freunde?</b>
+    Die Frage klingt einfach ... aber, es ist kompliziert,
+    und die Psychologie-Experten haben bis heute keine Antwort.
+    Also: Wir müssen diese Frage selber lösen.
+</div>
 
-        Idealisten sagen:
-        Meine Freunde sind die Menschen,
-        die ich mag,
+<!-- blah ... Idealisten vs Realisten, Fühlen vs Denken
 
-        Idealismus oder Realismus.
+  ist "blah" aber trotzdem wichtig
 
-        Fühlen oder Denken.
-      </div>
+  TODO better wording
 
-      <div class="para">
-        Wer seine Freunde "fühlt" der entscheidet selber
-        (Selbstwert, Sensor, Führer, liberal, emotional,
-        Persönliche Gründe, innere Gründe).
-      </div>
+  Objektiv gesehen gibt es zwei Antworten.
 
-      <div class="para">
-        Wer seine Freunde "denkt" der lässt Andere entscheiden
-        (Fremdwert, Memor, Folger, konservativ,
-        rational, Sachgründe, äussere Gründe).
-        <!-x- spam
-        Solche "Denker" verteidigen ihre "Führer",
-        und wenn ich auf Abwehr stoße,
-        dann fordere ich:
-        Bring mich zu deinem Führer!
-        Du hast keinen?
-        Dann suchen wir deinen Führer : )
-        -x->
-      </div>
+  Idealisten sagen:
+  Meine Freunde sind die Menschen,
+  die ich mag,
 
-      <div class="para">
-        Fühlen oder Denken?
-        Beide sind wichtig,
-        aber ich als Gefühlsmensch sage:
-        "erst Fühlen, dann Denken".
-        Also Fühlen ist Grundlage zum Denken.
-        Das ist meine <b>subjektive Weltsicht</b>,
-        und jeder Mensch hat seine subjektive Weltsicht.
-        Wenn zwei Hypothesen streiten, dann soll man beide testen.
-        <!-x- spam
-        Wenn zwei sich streiten, dann soll man wetten.
+  Idealismus oder Realismus.
 
-        (Nur tote Menschen sind objektiv, neutral, grau.)
-        -x->
-      </div>
-    '>Wer</div>
+  Fühlen oder Denken.
 
-    sind meine Freunde?
-  </b>
 
-  Die Frage klingt einfach,
-  aber scheinbar ist die Frage so kompliziert,
-  dass die Psychologie bis heute
-  keine Antwort hat.
 
+  Wer seine Freunde "fühlt" der entscheidet selber
+  (Selbstwert, Sensor, Führer, liberal, emotional,
+  Persönliche Gründe, innere Gründe).
+
+
+
+  Wer seine Freunde "denkt" der lässt Andere entscheiden
+  (Fremdwert, Memor, Folger, konservativ,
+  rational, Sachgründe, äussere Gründe).
+
+  Solche "Denker" verteidigen ihre "Führer",
+  und wenn ich auf Abwehr stoße,
+  dann fordere ich:
+  Bring mich zu deinem Führer!
+  Du hast keinen?
+  Dann suchen wir deinen Führer : )
+
+
+
+  Fühlen oder Denken?
+  Beide sind wichtig,
+  aber ich als Gefühlsmensch sage:
+  "erst Fühlen, dann Denken".
+  Also Fühlen ist Grundlage zum Denken.
+  Das ist meine <b>subjektive Weltsicht</b>,
+  und jeder Mensch hat seine subjektive Weltsicht.
+  Wenn zwei Hypothesen streiten, dann soll man beide testen.
+
+  Wenn zwei sich streiten, dann soll man wetten.
+
+  (Nur tote Menschen sind objektiv, neutral, grau.)
+
+-->
+
+<div class="para">
+  TODO move:
   Stichworte:
   <a href="https://en.wikipedia.org/wiki/Interpersonal_compatibility">Interpersonal Compatibility</a>,
   <a href="https://en.wikipedia.org/wiki/Team_composition">Team Composition</a>.
@@ -804,7 +879,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Wer sind meine Freunde?
-  Meine Antwort ist dieses <b>Muster</b>:
+  Meine Antwort ist das <b>Pallas-Muster</b>:
 </div>
 
 
@@ -930,8 +1005,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 </script>
 
-<div class="center-x">
-  <svg class="foldme" title="Compatibility Chart" style="height:18em;margin:2em"
+<div class="xcenter">
+  <svg class="foldme" title="Compatibility Chart" style="width:18em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 800 800"
@@ -1079,7 +1154,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 <div class="para">
-  Das Muster zeigt <b>16 Menschen</b> von oben.
+  Das Pallas-Muster zeigt <b>16 Menschen</b> von oben.
   Jeder Kreis ist ein Mensch.
   Abkürzungen:
   <div class="nowrap">
@@ -1096,11 +1171,20 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Ich glaube:
-  <!-- rückwärts kausalität: damit wirkung, muss ursache.
-  <b>Damit ein bestimmter Persönlichkeitstyp zu mir passt,
-  muss er im richtigen Körper wohnen.</b>
+  <!-- wording kausalität: vorwärts vs rückwärts kausalität
+
+    rückwärts kausalität: damit wirkung, muss ursache.
+    Damit ein bestimmter Persönlichkeitstyp zu mir passt,
+    muss er im richtigen Körper wohnen.
+    = mental stacking
+    = ich muss mir den anfang merken (auf meinen hirn-stack pushen)
+    , weiter lesen für den nächsten satzteil
+    , meinen stack poppen und den satz verstehen.
+
+    vorwärts kausalität: erst ursache, dann wirkung.
+    Wenn ein Persönlichkeitstyp im richtigen Körper wohnt,
+    dann finde ich diesen Typ sympathisch.
   -->
-  <!-- vorwärts kausalität: erst ursache, dann wirkung. -->
   <b>Wenn ein Persönlichkeitstyp im richtigen Körper wohnt,
   dann finde ich diesen Typ sympathisch.</b>
 </div>
@@ -1132,7 +1216,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   <b>Nähe = Freunde. Distanz = Feinde.</b>
-  Das Muster zeigt Freunde und Feinde.
+  Das Pallas-Muster zeigt Freunde und Feinde.
   Wenn zwei Menschen direkt nebeneinander stehen, dann sind sie Freunde.
   Wenn zwei Menschen weiter auseinander stehen, dann sind sie Feinde.
 </div>
@@ -1202,7 +1286,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Was passiert am <b>Rand</b> vom Muster?
+  Was passiert am <b>Rand</b> vom Pallas-Muster?
   Das Muster wird einfach wiederholt,
   wie ein Stempel, oder wie ein Kachel-Muster.
   Zeile 5:
@@ -1216,7 +1300,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Jeder Mensch in diesem Muster hat 6 Freunde:
+  Jeder Mensch im Pallas-Muster hat 6 Freunde:
   2 Freunde in horizontaler Richtung (gleiches Alter),
   2 Freunde in vertikaler Richtung (gleiches Geschlecht),
   2 Freunde in diagonaler Richtung (gleiche Diagonale, doppeltes Gegenteil).
@@ -1228,10 +1312,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Quadrate und Kreuze:
-  Im Muster gibt es 2 verschiedene Vierer-Gruppen.
+  Im Pallas-Muster gibt es 2 verschiedene Vierer-Gruppen.
   Jede Kreuz-Gruppe hat alle 4 Typen: 1-3-2-4.
   Jede Quadrat-Gruppe hat nur 2 Typen: 1-2-1-2 oder 3-4-3-4.
-  Die Striche im Muster verbinden immer die Gegentypen (1-2 und 3-4).
+  Die Striche im Pallas-Muster verbinden immer die Gegentypen (1-2 und 3-4).
 </div>
 
 <div class="para">
@@ -1244,9 +1328,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <!-- spam? -->
 <div class="para">
-  Namen für das Muster:
+  Namen für das Pallas-Muster:
+  Friend Map,
+  Landkarte der Freunde,
+  Wer sind meine Freunde,
   Muster für Beziehungen,
-  Landkarte für Menschen,
   Mischkultur für Menschen,
   Familienaufstellung,
   Kompatibilitäts-Muster nach Persönlichkeitstyp,
@@ -1256,7 +1342,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <!-- spam? -->
 <div class="para">
-  <b>Woher</b> kommt das Muster?
+  <b>Woher</b> kommt das Pallas-Muster?
   Erfahrung und Symmetrie.
   Ich habe meinen Persönlichkeitstyp rausgefunden
   (Grundtyp 1, Subtyp 4).
@@ -1270,8 +1356,656 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Ich hoffe, das Muster stimmt für alle Menschen.
-  Wenn es stimmt, dann ist das Muster
+  <b>Alternative Darstellungen</b> vom Pallas Muster:
+
+  Der Nachteil an diesen Darstellungen ist:
+  sie brauchen höhere Auflösung.
+
+  Dagegen: Das Pallas Muster ist die einfachste Darstellung,
+  und ist auch bei niedriger Auflösung gut sichtbar.
+  Zum Beispiel als ein 16x16 Pixel Icon auf einem 72dpi Monitor.
+
+  Das Pallas Muster ist ähnlich zum Weiblich Muster O+.
+  Ich habe ganz bewusst nicht einen Kreis,
+  sondern ein Viereck genommen, damit man sieht:
+  Der Pallas Schlüssel verbindet sieben Punkte.
+
+  Aber zurück zu:
+  Alternative Darstellungen vom Pallas Muster.
+</div>
+
+<div class="para">
+  Pallas Muster mit <b>Doppelbindungen und Einfachbindungen</b>:
+  Das Doppelbindungen Muster braucht höhere Auflösung als das Pallas Muster.
+</div>
+
+
+
+
+<div class="xcenter">
+  <svg id="pallas-pattern.doublelines" style="width:18em;margin:2em"
+  viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- made with https://boxy-svg.com/ -->
+    <!-- but usually, i edit my svg files in a text editor (vscode) -->
+    <!--
+      TODO generate svg files from template
+      allow to add/remove groups on condition
+    -->
+    <!--
+      TODO refactor: move titles from <title>...</title> to title="...".
+      use a tool for automatic refactoring of xml or svg.
+    -->
+    <defs>
+      <style type="text/css">
+          svg { --fg: black; --bg: white; } /* light mode */
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: white; --bg: black; } /* dark mode */
+            }
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+            }
+
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          .fig1 .stroke {
+            stroke-width: 2;
+            stroke: black; /* fallback when css variables are not supported */
+            stroke: var(--fg);
+          }
+
+          .nofill {
+            fill: none;
+          }
+
+          .fillbg {
+            fill: white;
+            fill: var(--bg);
+          }
+
+          .fillfg {
+            fill: black;
+            fill: var(--fg);
+          }
+        </style>
+    </defs>
+    <g class="fig1">
+      <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
+        <title>Text</title>
+        <text x="100" y="100">F1L</text>
+        <text x="300" y="100">M2L</text>
+        <text x="500" y="100">F4L</text>
+        <text x="700" y="100">M3L</text>
+        <text x="100" y="300">F2S</text>
+        <text x="300" y="300">M1S</text>
+        <text x="500" y="300">F3S</text>
+        <text x="700" y="300">M4S</text>
+        <text x="100" y="500">F3L</text>
+        <text x="300" y="500">M4L</text>
+        <text x="500" y="500">F2L</text>
+        <text x="700" y="500">M1L</text>
+        <text x="100" y="700">F4S</text>
+        <text x="300" y="700">M3S</text>
+        <text x="500" y="700">F1S</text>
+        <text x="700" y="700">M2S</text>
+      </g>
+      <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+
+        <g title="single lines center">
+          <path title="right" d="M 500 360 L 500 440"/>
+          <path title="left" d="M 300 360 L 300 440"/>
+          <path title="bottom" d="M 440 500 L 360 500"/>
+          <path title="top" d="M 360 300 L 440 300"/>
+        </g>
+
+        <g title="single lines offscreen squares">
+          <!-- single lines center + translate by 400 -->
+          <g title="right" transform="translate(400 0)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="left" transform="translate(-400 0)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="top" transform="translate(0 -400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="bottom" transform="translate(0 400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="top left" transform="translate(-400 -400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="top right" transform="translate(400 -400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="bottom left" transform="translate(-400 400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+          <g title="bottom right" transform="translate(400 400)">
+            <path title="right" d="M 500 360 L 500 440"/>
+            <path title="left" d="M 300 360 L 300 440"/>
+            <path title="bottom" d="M 440 500 L 360 500"/>
+            <path title="top" d="M 360 300 L 440 300"/>
+          </g>
+        </g>
+
+        <g display="none" title="double lines center">
+          <path title="right left" d="M 490 360 L 490 440"/>
+          <path title="right right" d="M 510 360 L 510 440"/>
+
+          <path title="left left" d="M 290 360 L 290 440"/>
+          <path title="left right" d="M 310 360 L 310 440"/>
+
+          <path title="bottom top" d="M 440 490 L 360 490"/>
+          <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+          <path title="top bottom" d="M 360 310 L 440 310"/>
+          <path title="top top" d="M 360 290 L 440 290"/>
+        </g>
+
+        <g title="double lines outside squares">
+          <!-- copy paste. different transform values -->
+          <g title="top left" transform="translate(-200 -200)">
+            <title>top-left double lines</title>
+            <path title="right left" d="M 490 360 L 490 440"/>
+            <path title="right right" d="M 510 360 L 510 440"/>
+
+            <path title="left left" d="M 290 360 L 290 440"/>
+            <path title="left right" d="M 310 360 L 310 440"/>
+
+            <path title="bottom top" d="M 440 490 L 360 490"/>
+            <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+            <path title="top bottom" d="M 360 310 L 440 310"/>
+            <path title="top top" d="M 360 290 L 440 290"/>
+          </g>
+
+          <g title="top left" transform="translate(200 -200)">
+            <title>top-left double lines</title>
+            <path title="right left" d="M 490 360 L 490 440"/>
+            <path title="right right" d="M 510 360 L 510 440"/>
+
+            <path title="left left" d="M 290 360 L 290 440"/>
+            <path title="left right" d="M 310 360 L 310 440"/>
+
+            <path title="bottom top" d="M 440 490 L 360 490"/>
+            <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+            <path title="top bottom" d="M 360 310 L 440 310"/>
+            <path title="top top" d="M 360 290 L 440 290"/>
+          </g>
+
+          <g title="top left" transform="translate(-200 200)">
+            <title>top-left double lines</title>
+            <path title="right left" d="M 490 360 L 490 440"/>
+            <path title="right right" d="M 510 360 L 510 440"/>
+
+            <path title="left left" d="M 290 360 L 290 440"/>
+            <path title="left right" d="M 310 360 L 310 440"/>
+
+            <path title="bottom top" d="M 440 490 L 360 490"/>
+            <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+            <path title="top bottom" d="M 360 310 L 440 310"/>
+            <path title="top top" d="M 360 290 L 440 290"/>
+          </g>
+
+          <g title="top left" transform="translate(200 200)">
+            <title>top-left double lines</title>
+            <path title="right left" d="M 490 360 L 490 440"/>
+            <path title="right right" d="M 510 360 L 510 440"/>
+
+            <path title="left left" d="M 290 360 L 290 440"/>
+            <path title="left right" d="M 310 360 L 310 440"/>
+
+            <path title="bottom top" d="M 440 490 L 360 490"/>
+            <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+            <path title="top bottom" d="M 360 310 L 440 310"/>
+            <path title="top top" d="M 360 290 L 440 290"/>
+          </g>
+
+        </g>
+
+        <g display="none" title="single lines outside squares">
+          <g>
+            <title>bottom left</title>
+            <path title="right" d="M 300 560 L 300 640"/>
+            <path title="left" d="M 100 560 L 100 640"/>
+            <path title="bottom" d="M 160 700 L 240 700"/>
+            <path title="top" d="M 160 500 L 240 500"/>
+          </g>
+          <g>
+            <title>bottom right</title>
+            <path title="right" d="M 700 560 L 700 640"/>
+            <path title="left" d="M 500 560 L 500 640"/>
+            <path title="bottom" d="M 560 700 L 640 700"/>
+            <path title="top" d="M 560 500 L 640 500"/>
+          </g>
+          <g>
+            <title>top right</title>
+            <!-- TODO add titles -->
+            <path d="M 700 160 L 700 240"/>
+            <path d="M 500 160 L 500 240"/>
+            <path d="M 560 300 L 640 300"/>
+            <path d="M 560 100 L 640 100"/>
+          </g>
+          <g>
+            <title>top left</title>
+            <!-- TODO add titles -->
+            <path d="M 300 160 L 300 240"/>
+            <path d="M 100 160 L 100 240"/>
+            <path d="M 160 300 L 240 300"/>
+            <path d="M 160 100 L 240 100"/>
+          </g>
+        </g>
+
+        <!-- TODO move to groups: diagonal lines
+          TODO add the corresponding horiz/vert lines
+          left
+          <path d="M 0 400 L 58 458"/>
+          <path d="M 0 400 L 58 342"/>
+          right
+          <path d="M 800 400 L 742 458"/>
+          <path d="M 800 400 L 742 342"/>
+          bottom
+          <path d="M 400 800 L 458 742"/>
+          <path d="M 400 800 L 342 742"/>
+          top
+          <path d="M 400 0 L 458 58"/>
+          <path d="M 400 0 L 342 58"/>
+          top right
+          <path d="M 800 0 L 742 58"/>
+          bottom left
+          <path d="M 0 800 L 58 742"/>
+          bottom right
+          <path d="M 800 800 L 742 742"/>
+          top left
+          <path d="M 0 0 L 58 58"/>
+          center bottom-left to top-right
+          <path d="M 458 342 L 342 458"/>
+          center top-left to bottom-right
+          <path d="M 458 458 L 342 342"/>
+        -->
+
+      </g>
+      <g display="none" stroke="red" stroke-width="2">
+        <title>Grid centers</title>
+        <path class="stroke nofill" d="M 0 500 L 800 500"/>
+        <path class="stroke nofill" d="M -100 400 L 700 400" transform="matrix(0, 1, -1, 0, 700, 100)"/>
+        <path class="stroke nofill" d="M 100 400 L 900 400" transform="matrix(0, 1, -1, 0, 900, -100)"/>
+        <path class="stroke nofill" d="M 300 400 L 1100 400" transform="matrix(0, 1, -1, 0, 1100, -300)"/>
+        <path class="stroke nofill" d="M -300 400 L 500 400" transform="matrix(0, 1, -1, 0, 500, 300)"/>
+        <path class="stroke nofill" d="M 0 100 L 800 100"/>
+        <path class="stroke nofill" d="M 0 700 L 800 700"/>
+        <path class="stroke nofill" d="M 0 300 L 800 300"/>
+      </g>
+      <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g display="none" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+        <title>Squares 320</title>
+        <rect x="40" y="40" width="320" height="320"/>
+        <rect x="440" y="40" width="320" height="320"/>
+        <rect x="440" y="440" width="320" height="320"/>
+        <rect x="40" y="440" width="320" height="320"/>
+      </g>
+      <g display="none" stroke="red" stroke-width="2">
+        <title>Grid between</title>
+        <path class="stroke nofill" d="M 0 400 L 800 400"/>
+        <path class="stroke nofill" d="M 0 400 L 800 400" transform="matrix(0, 1, -1, 0, 800, 0)"/>
+        <path class="stroke nofill" d="M 200 400 L 1000 400" transform="matrix(0, 1, -1, 0, 1000, -200)"/>
+        <path class="stroke nofill" d="M -200 400 L 600 400" transform="matrix(0, 1, -1, 0, 600, 200)"/>
+        <path class="stroke nofill" d="M 0 600 L 800 600"/>
+        <path class="stroke nofill" d="M 0 200 L 800 200"/>
+      </g>
+      <g display="none" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+        <title>Pattern boxes</title>
+        <g>
+          <title>Squares 360</title>
+          <rect x="20" y="20" width="360" height="360"/>
+          <rect x="420" y="20" width="360" height="360"/>
+          <rect x="20" y="420" width="360" height="360"/>
+          <rect x="420" y="420" width="360" height="360"/>
+          <rect x="220" y="220" width="360" height="360"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, -400)">
+          <title>cross top</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>cross center-y</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 400)">
+          <title>cross bottom</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>squares small</title>
+          <rect x="180" y="180" width="40" height="40"/>
+          <rect x="580" y="180" width="40" height="40"/>
+          <rect x="180" y="580" width="40" height="40"/>
+          <rect x="580" y="580" width="40" height="40"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="para">
+  Pallas Muster als <b>Überlagerte Vierecke</b>:
+  Das ist das TODO Muster
+  Das TODO Muster braucht höhere Auflösung als das Doppelbindungen Muster.
+</div>
+
+<div class="xcenter">
+  <svg title="pallas-pattern.boxes" style="width:18em;margin:2em" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- made with https://boxy-svg.com/ -->
+    <defs>
+      <style type="text/css">
+          svg { --fg: black; --bg: white; } /* light mode */
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: white; --bg: black; } /* dark mode */
+            }
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+            }
+
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          .fig1 .stroke {
+            stroke-width: 2;
+            stroke: black; /* fallback when css variables are not supported */
+            stroke: var(--fg);
+          }
+
+          .nofill {
+            fill: none;
+          }
+
+          .fillbg {
+            fill: white;
+            fill: var(--bg);
+          }
+
+          .fillfg {
+            fill: black;
+            fill: var(--fg);
+          }
+        </style>
+    </defs>
+    <g class="fig1">
+      <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
+        <title>Text</title>
+        <text x="100" y="100">F1L</text>
+        <text x="300" y="100">M2L</text>
+        <text x="500" y="100">F4L</text>
+        <text x="700" y="100">M3L</text>
+        <text x="100" y="300">F2S</text>
+        <text x="300" y="300">M1S</text>
+        <text x="500" y="300">F3S</text>
+        <text x="700" y="300">M4S</text>
+        <text x="100" y="500">F3L</text>
+        <text x="300" y="500">M4L</text>
+        <text x="500" y="500">F2L</text>
+        <text x="700" y="500">M1L</text>
+        <text x="100" y="700">F4S</text>
+        <text x="300" y="700">M3S</text>
+        <text x="500" y="700">F1S</text>
+        <text x="700" y="700">M2S</text>
+      </g>
+      <g display="none" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <title>Pattern lines</title>
+        <path d="M 458 458 L 342 342"/>
+        <path d="M 300 560 L 300 640"/>
+        <path d="M 100 560 L 100 640"/>
+        <path d="M 160 700 L 240 700"/>
+        <path d="M 160 500 L 240 500"/>
+        <path d="M 700 560 L 700 640"/>
+        <path d="M 500 560 L 500 640"/>
+        <path d="M 560 700 L 640 700"/>
+        <path d="M 560 500 L 640 500"/>
+        <path d="M 700 160 L 700 240"/>
+        <path d="M 500 160 L 500 240"/>
+        <path d="M 560 300 L 640 300"/>
+        <path d="M 560 100 L 640 100"/>
+        <path d="M 300 160 L 300 240"/>
+        <path d="M 100 160 L 100 240"/>
+        <path d="M 160 300 L 240 300"/>
+        <path d="M 160 100 L 240 100"/>
+        <path d="M 800 400 L 742 458"/>
+        <path d="M 800 400 L 742 342"/>
+        <path d="M 0 400 L 58 458"/>
+        <path d="M 0 400 L 58 342"/>
+        <path d="M 400 800 L 458 742"/>
+        <path d="M 400 800 L 342 742"/>
+        <path d="M 400 0 L 458 58"/>
+        <path d="M 400 0 L 342 58"/>
+        <path d="M 800 0 L 742 58"/>
+        <path d="M 0 800 L 58 742"/>
+        <path d="M 800 800 L 742 742"/>
+        <path d="M 0 0 L 58 58"/>
+        <path d="M 458 342 L 342 458"/>
+      </g>
+      <g display="none" stroke="red" stroke-width="2">
+        <title>Grid centers</title>
+        <path class="stroke nofill" d="M 0 500 L 800 500"/>
+        <path class="stroke nofill" d="M -100 400 L 700 400" transform="matrix(0, 1, -1, 0, 700, 100)"/>
+        <path class="stroke nofill" d="M 100 400 L 900 400" transform="matrix(0, 1, -1, 0, 900, -100)"/>
+        <path class="stroke nofill" d="M 300 400 L 1100 400" transform="matrix(0, 1, -1, 0, 1100, -300)"/>
+        <path class="stroke nofill" d="M -300 400 L 500 400" transform="matrix(0, 1, -1, 0, 500, 300)"/>
+        <path class="stroke nofill" d="M 0 100 L 800 100"/>
+        <path class="stroke nofill" d="M 0 700 L 800 700"/>
+        <path class="stroke nofill" d="M 0 300 L 800 300"/>
+      </g>
+      <g stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g display="none" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+        <title>Squares 320</title>
+        <rect x="40" y="40" width="320" height="320"/>
+        <rect x="440" y="40" width="320" height="320"/>
+        <rect x="440" y="440" width="320" height="320"/>
+        <rect x="40" y="440" width="320" height="320"/>
+      </g>
+      <g display="none" stroke="red" stroke-width="2">
+        <title>Grid between</title>
+        <path class="stroke nofill" d="M 0 400 L 800 400"/>
+        <path class="stroke nofill" d="M 0 400 L 800 400" transform="matrix(0, 1, -1, 0, 800, 0)"/>
+        <path class="stroke nofill" d="M 200 400 L 1000 400" transform="matrix(0, 1, -1, 0, 1000, -200)"/>
+        <path class="stroke nofill" d="M -200 400 L 600 400" transform="matrix(0, 1, -1, 0, 600, 200)"/>
+        <path class="stroke nofill" d="M 0 600 L 800 600"/>
+        <path class="stroke nofill" d="M 0 200 L 800 200"/>
+      </g>
+      <g stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+        <title>Pattern boxes</title>
+        <g>
+          <title>Squares 360</title>
+          <rect x="20" y="20" width="360" height="360"/>
+          <rect x="420" y="20" width="360" height="360"/>
+          <rect x="20" y="420" width="360" height="360"/>
+          <rect x="420" y="420" width="360" height="360"/>
+          <rect x="220" y="220" width="360" height="360"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, -400)">
+          <title>cross top</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>cross center-y</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 400)">
+          <title>cross bottom</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>squares small</title>
+          <rect x="180" y="180" width="40" height="40"/>
+          <rect x="580" y="180" width="40" height="40"/>
+          <rect x="180" y="580" width="40" height="40"/>
+          <rect x="580" y="580" width="40" height="40"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="para">
+  Ich hoffe, das Pallas-Muster stimmt für alle Menschen.
+  Wenn es stimmt, dann ist das Pallas-Muster
   eine Grundlage für eine <b>bessere Welt</b>:
 
   Freunde sind
@@ -1363,11 +2097,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   <b>Forschung:</b>
-  Mein Muster ist nur eine Hypothese,
+  Das Pallas-Muster ist nur eine Hypothese,
   also ein Lösungsvorschlag (Research Proposal).
   Ich gebe dir <b>keine Garantie</b> dass es funktioniert.
 
-  Ist das Muster richtig oder falsch?
+  Ist das Pallas-Muster richtig oder falsch?
   Wie können wir das rausfinden?
   Dazu müssen wir ein Experiment machen.
   Ergebnisse darf jeder veröffentlichen auf meinen Websites (Github, Gitlab, ...).
@@ -1462,7 +2196,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Wie funktioniert dieses <b>Experiment</b>?
-  Dazu müssen wir Menschen so verbinden, wie sie auf dem Muster sind.
+  Dazu müssen wir Menschen so verbinden, wie im Pallas-Muster.
 
   Diese Bindungen müssen freiwillig sein.
 
@@ -1513,8 +2247,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<div class="center-x">
-  <svg class="foldme" title="pair M1S-F3S" style="height:4.5em;margin:2em"
+<div class="xcenter">
+  <svg class="foldme" title="pair M1S-F3S" style="width:9em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="200 200 400 200"
@@ -1663,7 +2397,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Vierer-Gruppen sind etwas komplizierter.
-  Auf dem Muster stehen die vier Menschen
+  Im Pallas-Muster stehen die vier Menschen
   in einem Quadrat (Statik),
   aber in der echten Welt gilt:
   Die Vierer-Gruppen "zerfallen" immer in zwei Paare,
@@ -1690,8 +2424,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<div class="center-x">
-  <svg class="foldme" title="square M1S-F3S-M4L-F2L" style="height:9em;margin:2em"
+<div class="xcenter">
+  <svg class="foldme" title="square M1S-F3S-M4L-F2L" style="width:9em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="200 200 400 400"
@@ -1900,7 +2634,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   kompatibilität = schönheit = attraktion.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg id="alchi-peer-exchange-partnertausch" style="height:8em; margin-top:1em"
     viewBox="-17 -21 296 117"
     version="1.1"
@@ -2103,7 +2837,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Schritt drei ist das <b>Wechseln zwischen Vierer-Gruppen</b>.
-  Das Muster zeigt 2 verschiedene Vierer-Gruppen:
+  Das Pallas-Muster zeigt 2 verschiedene Vierer-Gruppen:
   Kreuze und Quadrate.
   Kreuze verbinden alle 4 Typen.
   Quadrate verbinden nur 2 Typen (Beispiel: 1-2-1-2).
@@ -2128,8 +2862,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<div class="center-x">
-  <svg class="foldme" title="Pallas M1S" style="height:13.5em;margin:2em"
+<div class="xcenter">
+  <svg title="Pallas M1S" class="foldme" style="width:13.5em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 600 600"
@@ -2371,8 +3105,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<div class="center-x">
-  <svg class="foldme" title="two squares" style="width:18em;margin:2em"
+<div class="xcenter">
+  <svg title="two squares" class="foldme" style="width:18em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 800 400"
@@ -2563,7 +3297,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Also haben wir 4 stabile Paare:
   M1-F2, M2-F1, M3-F3, M4-F4.
 
-  Mein Muster sagt:
+  Das Pallas-Muster sagt:
   Typen 12 heiraten gleiches Alter.
   Typen 34 heiraten verschiedenes Alter.
 </div>
@@ -2586,7 +3320,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Vier Typen:</b>
 
-  Grundlage für mein Muster ist Persönlichkeits-Psychologie.
+  Grundlage für das Pallas-Muster ist Persönlichkeits-Psychologie.
   Also: Menschen in Schubladen stecken.
 
   Dieser Teil von Psychologie ist uralt, locker 2000 Jahre alt,
@@ -3186,109 +3920,108 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<div class="center-x">
-<!-- FIXME indent svg -->
-<svg class="foldme" title="four body shapes" style="margin-top:0.5em; height:10em; "
-  version="1.1"
-  viewBox="0 0 142.5 82.46"
-  xmlns="http://www.w3.org/2000/svg"
-  >
-  <style>
-    svg { --fg: black; --bg: white; } /* light mode */
-    @media screen {
-      @media (prefers-color-scheme: dark) { 
-        svg { --fg: white; --bg: black; } /* dark mode */
+<div class="xcenter">
+  <svg title="four body shapes" class="foldme" style="margin-top:0.5em; height:10em; "
+    version="1.1"
+    viewBox="0 0 142.5 82.46"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <style>
+      svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
       }
-      [data-darkreader-mode="dynamic"]
-        svg { --fg: white; --bg: black; } /* dark mode */
-    }
 
-    .fig-four-body-types .stroke {
-      stroke-width: .5;
-      stroke: black; /* fallback when css variables are not supported */
-      stroke: var(--fg);
-    }
+      .fig-four-body-types .stroke {
+        stroke-width: .5;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
 
-    .fig-four-body-types .dotstroke {
-      stroke-width: 2;
-      stroke-width: 4;
-      stroke: black; /* fallback when css variables are not supported */
-      stroke: var(--fg);
-      stroke-dasharray: 10, 10;
-    }
+      .fig-four-body-types .dotstroke {
+        stroke-width: 2;
+        stroke-width: 4;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+        stroke-dasharray: 10, 10;
+      }
 
-    .nofill {
-      fill: none;
-    }
+      .nofill {
+        fill: none;
+      }
 
-    .fillbg {
-      fill: white;
-      fill: var(--bg);
-    }
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
 
-    .fillfg {
-      fill: black;
-      fill: var(--fg);
-    }
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }
 
-    /* TODO fix xy values
-    .fig-four-body-types text {
-      dominant-baseline: middle; /* FIXME unknown css property? */
-      text-anchor: middle;
-      font-family: sans;
-    }
-    */
-  </style>
+      /* TODO fix xy values
+      .fig-four-body-types text {
+        dominant-baseline: middle; /* FIXME unknown css property? */
+        text-anchor: middle;
+        font-family: sans;
+      }
+      */
+    </style>
 
-  <!-- based on https://de.wikipedia.org/wiki/Datei:Bodyshapes.svg -->
-  <!-- TODO bigger heads, bigger numbers -->
-  <g class="fig-four-body-types" transform="translate(-31.42 -48.2)">
-    <g class="fillfg" transform="translate(124.8 18.74)">
-      <g>
-        <path d="m-5.284 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z" fill-rule="evenodd"/>
-        <path d="m-10.08 49.66s-3.286 3.8-3.286 4.128c0 0.3274 3.122 5.601 3.099 5.589 0 0-3.905-5.227-3.905-5.741 0-0.5145 3.976-4.046 4.116-4.046m-0.2222 1.567c0.2253 3.324 2.556 4.916 2.556 7.808 0 3.037-3.433 4.767-3.433 10.77 0 6.408 3.718 14.22 3.718 14.22s-0.0935 8.021 0.421 10.64c0.5145 2.619 1.66 7.577 1.66 8.419s-0.0936 2.572-0.7484 3.601c-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.181 1.777-4.303-1.231-7.468-1.871-9.354c-0.8653-2.549-0.1403-10.64-0.1403-10.64s-3.882-7.646-3.882-14.43c0-7.023 3.486-8.566 3.486-10.89 0-2.298-1.875-3.731-2.422-7.512"/>
-        <path d="m-1.975 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0936 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z" fill-rule="evenodd"/>
-        <path d="m2.825 49.66s3.286 3.8 3.286 4.128c0 0.3274-3.122 5.601-3.099 5.589 0 0 3.905-5.227 3.905-5.741 0-0.5145-3.976-4.046-4.116-4.046m0.2222 1.567c-0.2253 3.324-2.556 4.916-2.556 7.808 0 3.037 3.433 4.767 3.433 10.77 0 6.408-3.718 14.22-3.718 14.22s0.0935 8.021-0.421 10.64c-0.5145 2.619-1.66 7.577-1.66 8.419 0 2.314 1.625 4.606 1.625 5.354 0 0.5342-0.7647 2.663-0.7647 2.663s0.9772-1.933 0.9772-2.573c0-1.916-1.463-3.577-1.463-4.369 0-2.082 1.231-7.468 1.871-9.354 0.8653-2.549 0.1403-10.64 0.1403-10.64s3.882-7.646 3.882-14.43c0-7.023-3.486-8.566-3.486-10.89 0-2.298 1.875-3.731 2.422-7.512"/>
-        <g fill-rule="evenodd">
-        <path d="m-3.623 109.1c0.4514-12.57 0.525-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z"/>
-        <path d="m-5.068 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z"/>
-        <path d="m-80.13 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.811 1.51-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.902 7.928-10.27 3.797-1.617 5.655-2.243 5.244-5.63z"/>
+    <!-- based on https://de.wikipedia.org/wiki/Datei:Bodyshapes.svg -->
+    <!-- TODO bigger heads, bigger numbers -->
+    <g class="fig-four-body-types" transform="translate(-31.42 -48.2)">
+      <g class="fillfg" transform="translate(124.8 18.74)">
+        <g>
+          <path d="m-5.284 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z" fill-rule="evenodd"/>
+          <path d="m-10.08 49.66s-3.286 3.8-3.286 4.128c0 0.3274 3.122 5.601 3.099 5.589 0 0-3.905-5.227-3.905-5.741 0-0.5145 3.976-4.046 4.116-4.046m-0.2222 1.567c0.2253 3.324 2.556 4.916 2.556 7.808 0 3.037-3.433 4.767-3.433 10.77 0 6.408 3.718 14.22 3.718 14.22s-0.0935 8.021 0.421 10.64c0.5145 2.619 1.66 7.577 1.66 8.419s-0.0936 2.572-0.7484 3.601c-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.181 1.777-4.303-1.231-7.468-1.871-9.354c-0.8653-2.549-0.1403-10.64-0.1403-10.64s-3.882-7.646-3.882-14.43c0-7.023 3.486-8.566 3.486-10.89 0-2.298-1.875-3.731-2.422-7.512"/>
+          <path d="m-1.975 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0936 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z" fill-rule="evenodd"/>
+          <path d="m2.825 49.66s3.286 3.8 3.286 4.128c0 0.3274-3.122 5.601-3.099 5.589 0 0 3.905-5.227 3.905-5.741 0-0.5145-3.976-4.046-4.116-4.046m0.2222 1.567c-0.2253 3.324-2.556 4.916-2.556 7.808 0 3.037 3.433 4.767 3.433 10.77 0 6.408-3.718 14.22-3.718 14.22s0.0935 8.021-0.421 10.64c-0.5145 2.619-1.66 7.577-1.66 8.419 0 2.314 1.625 4.606 1.625 5.354 0 0.5342-0.7647 2.663-0.7647 2.663s0.9772-1.933 0.9772-2.573c0-1.916-1.463-3.577-1.463-4.369 0-2.082 1.231-7.468 1.871-9.354 0.8653-2.549 0.1403-10.64 0.1403-10.64s3.882-7.646 3.882-14.43c0-7.023-3.486-8.566-3.486-10.89 0-2.298 1.875-3.731 2.422-7.512"/>
+          <g fill-rule="evenodd">
+          <path d="m-3.623 109.1c0.4514-12.57 0.525-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z"/>
+          <path d="m-5.068 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z"/>
+          <path d="m-80.13 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.811 1.51-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.902 7.928-10.27 3.797-1.617 5.655-2.243 5.244-5.63z"/>
+          </g>
+          <path d="m-84.82 49.65s-3.625 3.987-3.625 4.315c0 0.3274 2.923 5.426 2.9 5.414 0 0-3.695-4.934-3.695-5.449 0-0.5145 4.303-4.35 4.443-4.35m-1.193 1.321c0.2253 3.324 0.83 6.431 1.375 9.048 0.3684 1.768 0.7732 3.312 0.7732 4.548 0 1.139-0.4569 4.427-0.4413 5.405 0.0468 2.947 1.637 14.45 1.637 14.45s0.1403 7.624 0.6548 10.24c0.5145 2.619 1.731 8.606 1.731 9.448 0 0.8419-0.0935 2.572-0.7484 3.601-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.18 1.777-4.303c0-1.123-1.38-8.466-1.918-10.38-0.5379-1.918-0.1871-10.29-0.1871-10.29s-2.152-11.79-2.152-14.78c0-0.7523 0.3645-3.913 0.3645-4.836-0.1376-1.377-0.2369-2.885-0.4561-4.25-0.4915-3.061-1.185-5.508-1.335-9.289"/>
+          <path d="m-77.07 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.811 1.51 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.902-7.928-10.27-3.797-1.617-5.655-2.243-5.244-5.63z" fill-rule="evenodd"/>
+          <path d="m-71.99 49.65s3.625 3.987 3.625 4.315c0 0.3274-2.923 5.426-2.9 5.414 0 0 3.695-4.934 3.695-5.449 0-0.5145-4.303-4.35-4.443-4.35m1.193 1.321c-0.2253 3.324-0.83 6.431-1.375 9.048-0.3684 1.768-0.7732 3.312-0.7732 4.548 0 1.139 0.4569 4.427 0.4413 5.405-0.0468 2.947-1.637 14.45-1.637 14.45s-0.1403 7.624-0.6548 10.24c-0.5145 2.619-1.896 7.531-1.896 8.373 0 2.182 1.79 4.786 1.79 5.602 0 1.352-0.4985 3.034-0.4985 3.034s0.8663-1.437 0.8663-2.836c0-1.045-1.486-3.945-1.486-5.486s1.247-6.63 1.785-8.548c0.5379-1.918 0.1871-10.29 0.1871-10.29s2.152-11.79 2.152-14.78c0-0.7523-0.3645-3.913-0.3645-4.836 0.1376-1.377 0.2369-2.885 0.4561-4.25 0.4915-3.061 1.185-5.508 1.335-9.289"/>
+          <path d="m-78.47 109.1c0.4514-12.57 0.5251-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z" fill-rule="evenodd"/>
+          <path d="m-80.04 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z" fill-rule="evenodd"/>
         </g>
-        <path d="m-84.82 49.65s-3.625 3.987-3.625 4.315c0 0.3274 2.923 5.426 2.9 5.414 0 0-3.695-4.934-3.695-5.449 0-0.5145 4.303-4.35 4.443-4.35m-1.193 1.321c0.2253 3.324 0.83 6.431 1.375 9.048 0.3684 1.768 0.7732 3.312 0.7732 4.548 0 1.139-0.4569 4.427-0.4413 5.405 0.0468 2.947 1.637 14.45 1.637 14.45s0.1403 7.624 0.6548 10.24c0.5145 2.619 1.731 8.606 1.731 9.448 0 0.8419-0.0935 2.572-0.7484 3.601-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.18 1.777-4.303c0-1.123-1.38-8.466-1.918-10.38-0.5379-1.918-0.1871-10.29-0.1871-10.29s-2.152-11.79-2.152-14.78c0-0.7523 0.3645-3.913 0.3645-4.836-0.1376-1.377-0.2369-2.885-0.4561-4.25-0.4915-3.061-1.185-5.508-1.335-9.289"/>
-        <path d="m-77.07 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.811 1.51 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.902-7.928-10.27-3.797-1.617-5.655-2.243-5.244-5.63z" fill-rule="evenodd"/>
-        <path d="m-71.99 49.65s3.625 3.987 3.625 4.315c0 0.3274-2.923 5.426-2.9 5.414 0 0 3.695-4.934 3.695-5.449 0-0.5145-4.303-4.35-4.443-4.35m1.193 1.321c-0.2253 3.324-0.83 6.431-1.375 9.048-0.3684 1.768-0.7732 3.312-0.7732 4.548 0 1.139 0.4569 4.427 0.4413 5.405-0.0468 2.947-1.637 14.45-1.637 14.45s-0.1403 7.624-0.6548 10.24c-0.5145 2.619-1.896 7.531-1.896 8.373 0 2.182 1.79 4.786 1.79 5.602 0 1.352-0.4985 3.034-0.4985 3.034s0.8663-1.437 0.8663-2.836c0-1.045-1.486-3.945-1.486-5.486s1.247-6.63 1.785-8.548c0.5379-1.918 0.1871-10.29 0.1871-10.29s2.152-11.79 2.152-14.78c0-0.7523-0.3645-3.913-0.3645-4.836 0.1376-1.377 0.2369-2.885 0.4561-4.25 0.4915-3.061 1.185-5.508 1.335-9.289"/>
-        <path d="m-78.47 109.1c0.4514-12.57 0.5251-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z" fill-rule="evenodd"/>
-        <path d="m-80.04 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z" fill-rule="evenodd"/>
+        <path class="nofill stroke" d="m-78.44 68.36-6.464-21.67 12.93-1e-6z"/>
+        <g class="fillfg">
+          <path d="m-42.98 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z" fill-rule="evenodd"/>
+          <path d="m-46.36 48.2s-4.747 5.262-4.747 5.589c0 0.3274 3.122 5.601 3.099 5.589 0 0-3.905-5.227-3.905-5.741 0-0.5145 5.437-5.507 5.578-5.507m-0.2806 0.3157c0.2253 3.324 0.662 5.144 0.662 7.762 0 3.49-1.507 6.915-2.033 8.29-0.5184 1.354-0.7375 4.427-0.722 5.405 0.0468 2.947 3.531 14.06 3.531 14.06s-0.0935 8.021 0.421 10.64c0.5145 2.619 1.777 8.396 1.777 9.238s-0.0935 2.572-0.7484 3.601c-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.181 1.777-4.303-1.45-8.255-1.988-10.17c-0.5379-1.918-0.2105-10.31-0.2105-10.31s-3.812-11.76-3.812-14.76c0-0.7523 0.3848-3.69 0.6919-4.836 0.3087-1.152 2.187-5.136 2.187-8.577 0-3.108-0.0746-3.52-0.6217-7.301"/>
+          <path d="m-39.37 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z" fill-rule="evenodd"/>
+          <path d="m-35.98 48.2s4.747 5.262 4.747 5.589c0 0.3274-3.122 5.601-3.099 5.589 0 0 3.905-5.227 3.905-5.741 0-0.5145-5.437-5.507-5.578-5.507m0.2806 0.3157c-0.2253 3.324-0.662 5.144-0.662 7.762 0 3.49 1.507 6.915 2.033 8.29 0.5184 1.354 0.7375 4.427 0.722 5.405-0.0468 2.947-3.531 14.06-3.531 14.06s0.0935 8.021-0.421 10.64c-0.5145 2.619-2.009 7.767-2.009 8.609 0 2.778 1.509 3.936 1.509 5.669 0 0.8011-0.482 2.935-0.482 2.935s1.015-1.758 1.015-2.926c0-1.198-1.585-3.366-1.585-5.495 0-1.123 1.599-6.734 2.137-8.652 0.5379-1.918 0.2105-10.31 0.2105-10.31s3.812-11.76 3.812-14.76c0-0.7523-0.3848-3.69-0.6919-4.836-0.3087-1.152-2.187-5.136-2.187-8.577 0-3.108 0.0746-3.52 0.6217-7.301"/>
+          <path d="m-41.22 109.1c0.4514-12.57 0.525-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z" fill-rule="evenodd"/>
+          <path d="m-42.72 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z" fill-rule="evenodd"/>
+        </g>
+        <path class="nofill stroke" d="m-41.09 46.69-6.464 21.67 12.93 1e-6z"/>
+        <g class="fillfg" fill-rule="evenodd">
+          <path d="m32.75 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z"/>
+          <path d="m32.61 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z"/>
+          <path d="m28.34 60.31s-4.794-5.87-4.794-6.384c0-0.5145 4.303-4.35 4.443-4.35s1.497 4.934 1.497 8.115-1.029 6.876-0.9822 9.822c0.0468 2.947 1.637 16.84 1.637 16.84s0.1403 7.624 0.6548 10.24c0.5145 2.619 1.731 8.606 1.731 9.448 0 0.8419-0.0935 2.572-0.7484 3.601-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.18 1.777-4.303c0-1.123-1.38-8.466-1.918-10.38-0.5379-1.918-0.1871-10.29-0.1871-10.29s-2.152-14.13-2.152-17.12 1.076-7.671 1.076-9.916-1.006-7.764-1.006-7.764-3.625 3.987-3.625 4.315c0 0.3274 4.022 6.361 3.999 6.349z"/>
+          <path d="m40.46 60.31s4.794-5.87 4.794-6.384c0-0.5145-4.303-4.35-4.443-4.35-0.1403 0-1.497 4.934-1.497 8.115 0 3.181 1.029 6.876 0.9822 9.822-0.0468 2.947-1.637 16.84-1.637 16.84s-0.1403 7.624-0.6548 10.24c-0.5145 2.619-2.243 7.763-2.243 8.605 0 3.132 1.807 4.614 1.807 5.834 0 0.7514-0.697 2.885-0.697 2.885s1.034-1.604 1.034-2.766c0-1.293-1.373-2.596-1.373-5.72 0-1.123 1.496-6.779 2.033-8.697 0.5379-1.918 0.1871-10.29 0.1871-10.29s2.152-14.13 2.152-17.12-1.076-7.671-1.076-9.916c0-2.245 1.006-7.764 1.006-7.764s3.625 3.987 3.625 4.315c0 0.3274-4.022 6.361-3.999 6.349z"/>
+          <path d="m35.84 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z"/>
+          <path d="m34.27 109.1c0.4514-12.57 0.5251-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z"/>
+        </g>
+        <path class="nofill stroke" d="m34.36 46.69-3.238 10.86 3.238 10.86 3.236-10.86z"/>
+        <path class="nofill stroke" d="m-10.13 46.69 4.234 10.86-4.234 10.78h12.93l-4.231-10.83 4.231-10.81z"/>
       </g>
-      <path class="nofill stroke" d="m-78.44 68.36-6.464-21.67 12.93-1e-6z"/>
-      <g class="fillfg">
-        <path d="m-42.98 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z" fill-rule="evenodd"/>
-        <path d="m-46.36 48.2s-4.747 5.262-4.747 5.589c0 0.3274 3.122 5.601 3.099 5.589 0 0-3.905-5.227-3.905-5.741 0-0.5145 5.437-5.507 5.578-5.507m-0.2806 0.3157c0.2253 3.324 0.662 5.144 0.662 7.762 0 3.49-1.507 6.915-2.033 8.29-0.5184 1.354-0.7375 4.427-0.722 5.405 0.0468 2.947 3.531 14.06 3.531 14.06s-0.0935 8.021 0.421 10.64c0.5145 2.619 1.777 8.396 1.777 9.238s-0.0935 2.572-0.7484 3.601c-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.181 1.777-4.303-1.45-8.255-1.988-10.17c-0.5379-1.918-0.2105-10.31-0.2105-10.31s-3.812-11.76-3.812-14.76c0-0.7523 0.3848-3.69 0.6919-4.836 0.3087-1.152 2.187-5.136 2.187-8.577 0-3.108-0.0746-3.52-0.6217-7.301"/>
-        <path d="m-39.37 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z" fill-rule="evenodd"/>
-        <path d="m-35.98 48.2s4.747 5.262 4.747 5.589c0 0.3274-3.122 5.601-3.099 5.589 0 0 3.905-5.227 3.905-5.741 0-0.5145-5.437-5.507-5.578-5.507m0.2806 0.3157c-0.2253 3.324-0.662 5.144-0.662 7.762 0 3.49 1.507 6.915 2.033 8.29 0.5184 1.354 0.7375 4.427 0.722 5.405-0.0468 2.947-3.531 14.06-3.531 14.06s0.0935 8.021-0.421 10.64c-0.5145 2.619-2.009 7.767-2.009 8.609 0 2.778 1.509 3.936 1.509 5.669 0 0.8011-0.482 2.935-0.482 2.935s1.015-1.758 1.015-2.926c0-1.198-1.585-3.366-1.585-5.495 0-1.123 1.599-6.734 2.137-8.652 0.5379-1.918 0.2105-10.31 0.2105-10.31s3.812-11.76 3.812-14.76c0-0.7523-0.3848-3.69-0.6919-4.836-0.3087-1.152-2.187-5.136-2.187-8.577 0-3.108 0.0746-3.52 0.6217-7.301"/>
-        <path d="m-41.22 109.1c0.4514-12.57 0.525-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z" fill-rule="evenodd"/>
-        <path d="m-42.72 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z" fill-rule="evenodd"/>
+      <g class="fillfg" transform="translate(0 0)" font-family="sans-serif" font-size="5.644px">
+        <text x="44.582211" y="54.929375">1</text>
+        <text x="81.746994" y="54.929375">2</text>
+        <text x="119.32879" y="54.929375">3</text>
+        <text x="157.20084" y="54.929375">4</text>
       </g>
-      <path class="nofill stroke" d="m-41.09 46.69-6.464 21.67 12.93 1e-6z"/>
-      <g class="fillfg" fill-rule="evenodd">
-        <path d="m32.75 29.95c-0.9724 0.6639-1.828 1.591-1.828 4.221 0 2.332 1.307 4.918 3.34 4.977 3.237 0.09449 3.007-5.163 3.007-5.163l-0.3471 0.0041s0.0267 0.7507-0.0433 1.266c-0.0892 0.6568-0.1618 3.345-2.567 3.463-1.503 0.07382-3.055-2.105-2.962-4.578 0.081-2.161 0.4294-2.835 0.8856-3.416 1.321-1.685 2.675-1.002 3.284-0.5498 0.4717 0.3507 0.9487 1.165 1.165 1.928 0.2786 0.9841 0.2384 1.887 0.2384 1.887l0.3471-0.0041s0.0808-0.6093-0.3153-2.099c-0.1746-0.6566-0.5754-1.508-1.42-2.001-1.217-0.7098-2.076-0.418-2.783 0.06468z"/>
-        <path d="m32.61 38.41s-0.2631 1.888-0.5905 2.403c-1.931 2.23-4.834 2.679-7.039 4.537-1.801 1.801-5.671 8.828-5.636 8.945 0.0351 0.1169 2.783 3.379 3.929 4.408 1.146 1.029 3.134 2.853 3.227 3.087 0.0935 0.2339 0.3508 3.064 0.3508 3.064s0.1871-2.689 0.1637-2.923c-0.0234-0.2339-2.268-2.76-3.508-3.999-1.239-1.239-4.069-3.531-4.069-3.625 2.342-3.45 4.335-7.622 7.928-9.986 2.651-1.149 5.655-2.524 5.244-5.911z"/>
-        <path d="m28.34 60.31s-4.794-5.87-4.794-6.384c0-0.5145 4.303-4.35 4.443-4.35s1.497 4.934 1.497 8.115-1.029 6.876-0.9822 9.822c0.0468 2.947 1.637 16.84 1.637 16.84s0.1403 7.624 0.6548 10.24c0.5145 2.619 1.731 8.606 1.731 9.448 0 0.8419-0.0935 2.572-0.7484 3.601-0.6548 1.029-1.403 1.777-1.403 1.777s1.777-3.18 1.777-4.303c0-1.123-1.38-8.466-1.918-10.38-0.5379-1.918-0.1871-10.29-0.1871-10.29s-2.152-14.13-2.152-17.12 1.076-7.671 1.076-9.916-1.006-7.764-1.006-7.764-3.625 3.987-3.625 4.315c0 0.3274 4.022 6.361 3.999 6.349z"/>
-        <path d="m40.46 60.31s4.794-5.87 4.794-6.384c0-0.5145-4.303-4.35-4.443-4.35-0.1403 0-1.497 4.934-1.497 8.115 0 3.181 1.029 6.876 0.9822 9.822-0.0468 2.947-1.637 16.84-1.637 16.84s-0.1403 7.624-0.6548 10.24c-0.5145 2.619-2.243 7.763-2.243 8.605 0 3.132 1.807 4.614 1.807 5.834 0 0.7514-0.697 2.885-0.697 2.885s1.034-1.604 1.034-2.766c0-1.293-1.373-2.596-1.373-5.72 0-1.123 1.496-6.779 2.033-8.697 0.5379-1.918 0.1871-10.29 0.1871-10.29s2.152-14.13 2.152-17.12-1.076-7.671-1.076-9.916c0-2.245 1.006-7.764 1.006-7.764s3.625 3.987 3.625 4.315c0 0.3274-4.022 6.361-3.999 6.349z"/>
-        <path d="m35.84 38.41s0.2631 1.888 0.5905 2.403c1.931 2.23 4.834 2.679 7.039 4.537 1.801 1.801 5.671 8.828 5.636 8.945-0.0351 0.1169-2.783 3.379-3.929 4.408-1.146 1.029-3.134 2.853-3.227 3.087-0.0935 0.2339-0.3508 3.064-0.3508 3.064s-0.1871-2.689-0.1637-2.923c0.0234-0.2339 2.268-2.76 3.508-3.999 1.239-1.239 4.069-3.531 4.069-3.625-2.342-3.45-4.335-7.622-7.928-9.986-2.651-1.149-5.655-2.524-5.244-5.911z"/>
-        <path d="m34.27 109.1c0.4514-12.57 0.5251-25.16-0.0525-37.73-0.3044 12.57-0.5393 25.16 0.0525 37.73z"/>
-      </g>
-      <path class="nofill stroke" d="m34.36 46.69-3.238 10.86 3.238 10.86 3.236-10.86z"/>
-      <path class="nofill stroke" d="m-10.13 46.69 4.234 10.86-4.234 10.78h12.93l-4.231-10.83 4.231-10.81z"/>
     </g>
-    <g class="fillfg" transform="translate(0 0)" font-family="sans-serif" font-size="5.644px">
-      <text x="44.582211" y="54.929375">1</text>
-      <text x="81.746994" y="54.929375">2</text>
-      <text x="119.32879" y="54.929375">3</text>
-      <text x="157.20084" y="54.929375">4</text>
-    </g>
-  </g>
-</svg>
+  </svg>
 </div>
 
 
@@ -3514,7 +4247,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <b>Zahlen:</b>
   Für mich sind die Zahlen wichtig,
   weil ich damit die Typen extrem kompakt beschreiben kann,
-  also mit nur einem Symbol (wichtig für mein Muster).
+  also mit nur einem Symbol (wichtig für das Pallas-Muster).
 
   Die Zahlen 1234 kann ich auch mit meinen 4 Fingern zeigen
   (Römische Zahlen: I II III IIII).
@@ -4181,7 +4914,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   also Typ 104 ist "mittel alt",
   also sind die Mundwinkel gerade.
   Also:
-  Typ 104 = <div class="smilie">)): |</div>.
+  <!-- Typ 104 = <div class="smilie">)): |</div>. // too much line height -->
+  Typ 104 = <code>)): |</code>.
+</div>
+
+<div class="para">
   Der Nachteil an dieser Darstellung:
   Man kann nicht unterscheiden zwischen Grundtyp und Subyp,
   also Typ 104 hat das gleiche Smilie wie Typ 401.
@@ -4192,7 +4929,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 
 
-<!--
+<!-- TODO? David Keirsey, Plato, wording
 <div class="para">
   <b>David Keirsey:</b>
   Die Vier Typen
@@ -4305,42 +5042,12 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 24 sind weiblich.
 </div>
 
-
-
-<!-- template
-
-<div class="para">
-  TODO
-</div>
-
-<table style="margin:auto; margin-top:0.5em; border:solid 1px black">
-  <tr>
-    <td>1. TODO</td>
-    <td></td>
-    <td>3. TODO</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>TODO</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>4. TODO</td>
-    <td></td>
-    <td>2. TODO</td>
-  </tr>
-</table>
-
--->
-
-
-
 <div class="para">
   Wenn ich bei einem Mensch den Typ gar nicht schätzen kann,
   dann kann ich auch "rückwärts" gehen:
   Ich frage: Wer sind deine Freunde? Wer sind deine Feinde?
   Dann schließe ich von Beziehungen auf den Persönlichkeitstyp,
-  weil mein Muster funktioniert in beide Richtungen.
+  weil das Pallas-Muster funktioniert in beide Richtungen.
   Sprich: "<b>Zeig mir deine Freunde</b>, und ich sag dir wer du
 
   <div class="annotation" onClick="clickAnnotation(this)" title='
@@ -4502,8 +5209,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Ich muss die Menschen finden,
   die in meine andere Vierer-Gruppe passen.
   Beispiel:
-  Ich habe schon die Vierer-Gruppe M1-F3-F2-M4 (Kreuz im Muster).
-  Meine andere Vierer-Gruppe ist M1-F2-F1-M2 (Quadrat im Muster).
+  Ich habe schon die Vierer-Gruppe M1-F3-F2-M4 (Kreuz im Pallas-Muster).
+  Meine andere Vierer-Gruppe ist M1-F2-F1-M2 (Quadrat im Pallas-Muster).
 </div>
 
 
@@ -4714,9 +5421,9 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  <b>Subtypen im Muster:</b>
+  <b>Subtypen im Pallas-Muster:</b>
 
-  Die Subtypen sieht man auch in meinem Muster.
+  Die Subtypen sieht man auch im Pallas-Muster.
   Regel: "einen Schritt weiter".
   Jeder Mensch hat 4 Freunde (in geraden Richtungen, nicht diagonal).
   Wir gehen "einen Schritt weiter" und landen beim Subtyp.
@@ -4732,8 +5439,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   und sie muss F302 spielen.
 </div>
 
-<div class="center-x">
-  <svg class="foldme" title="Line of four" style="width:18em;margin:2em"
+<div class="xcenter">
+  <svg title="Line of four: F2 M1 F3 M4" class="foldme" style="width:18em;margin:2em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 200 800 200"
@@ -4894,7 +5601,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Wenn auf dem Muster zwei Menschen nebeneinander stehen
+  Wenn im Pallas-Muster zwei Menschen nebeneinander stehen
   (Beispiel: M1 und F3 mit gleichem Alter),
   und wenn die <b>Subtypen parallel</b> liegen
   (Beispiel: M104 und F302 = Pfeile in der Grafik),
@@ -4915,8 +5622,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Verhalten (Stressreaktion, Bindungsverhalten).
 </div>
 
-<div class="center-x">
-  <svg class="foldme" title="Subtypes with arrows" style="width:27em;margin:2em"
+<div class="xcenter">
+  <svg title="Subtypes with arrows" class="foldme" style="width:27em;margin:2em"
     version="1.1" viewBox="0 200 1200 200"
     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   >
@@ -5109,7 +5816,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   <b>Aufbau von Gruppen:</b>
   Wir nehmen mehrere Paare,
   und wir bauen zwei große Gruppen:
-  Die "rechte" Gruppe realisiert mein Muster
+  Die "rechte" Gruppe realisiert das Pallas-Muster
   (4 oder 8 oder 16 Menschen),
   und in die "linke" Gruppe ("Kontrollgruppe") kommen alle,
   die bei der rechten Gruppe nicht reinpassen,
@@ -5160,7 +5867,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
     8 kleine wohnflächen + 8 große ackerflächen.
   '>aussen.</div>
 
-  Auf jeder Fläche stehen 16 Menschen, wie im Muster.
+  Auf jeder Fläche stehen 16 Menschen, wie im Pallas-Muster.
   Wenn die Mitte leer ist,
   dann sind das insgesamt 8 x 16 = 128 Menschen.
   Wenn die Mitte voll ist,
@@ -5329,7 +6036,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   und man sieht die "Explosion" der Bevölkerung seit 200 Jahren (Kohle, Dampfmaschinen, Industrie).
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg title="world-population-chart.linear-graph" style="width:100%"
     version="1.1" viewBox="0 0 182.38 123.17" xmlns="http://www.w3.org/2000/svg"
     >
@@ -5425,7 +6132,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Gleicher Abstand sind 10 Mal mehr Menschen.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <!-- based on http://econosystemics.com/?p=9 -->
   <svg title="world-population-chart.bryan-long-2009" style="width:100%"
     version="1.1" viewBox="0 0 182.38 123.17" xmlns="http://www.w3.org/2000/svg"
@@ -5909,12 +6616,18 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   <b>Hilfe gesucht:</b>
 
-  Ich brauche Hilfe bei meinen Zielen:
+  Ich brauche Hilfe bei <b>Meine Ziele:</b>
   Veröffentlichen Fertigschreiben Experiment.
 </div>
 
 <div class="para">
   Veröffentlichen heisst:
+  Durch <b>Breitensuche</b>
+  möglichst viele neue Menschen erreichen,
+  und mit jedem Mensch möglichst wenig Zeit verbringen,
+  also <b>nicht hängen bleiben</b>,
+  damit man noch viele andere Menschen findet.
+  Beispiele:
   Flyer drucken (50 EUR / 1000 Flyer)
   und verteilen (persönlich, nicht in Briefkästen).
   E-Mails, Briefe, Telefonate.
@@ -5926,9 +6639,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Zielgruppe?
+  <b>Zielgruppe?</b>
   Menschen mit Zukunft.
   Bauern und Soldaten.
+  Reiche und schlaue Menschen.
 </div>
 
 <div class="para">
@@ -6003,20 +6717,28 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
 <div class="para">
   Meine Theorie kann man beschreiben
-  als eine "Theorie der Freiwilligkeit":
+  als eine <b>Theorie der Freiwilligkeit:</b>
 
-  Das Ziel sind freiwillige Beziehungen:
-  Beide Bindungs-Partner haben ein Veto-Recht,
+  Das Ziel sind <b>Freiwillige Beziehungen</b>:
+  Beide Partner haben Veto-Recht,
   also wenn einer "Nein" sagt,
   dann ist die Beziehung vorbei.
+  Oder noch expliziter:
+  Beziehungen werden für ein Jahr geschlossen.
+  Nach einem Jahr müssen beide Partner explizit zustimmen,
+  damit die Beziehung weiter geht.
+  Also "Scheidung by default". Trennung als Normalfall.
+  Individualismus. Egoismus. Klassischer Liberalismus.
+  Kapitalismus (caput = Kopf). Narzissmus. Typen 12.
 </div>
 
 <div class="para">
   Auch Kleinkinder können "Ja" oder "Nein" sagen
   zu ihren biologischen Eltern,
-  aber Kleinkinder zeigen das durch Körpersprache,
+  aber <b>Kleinkinder nutzen Körpersprache</b>,
   und Kinder müssen verschiedene Eltern "ausprobieren" (Körperkontakt),
-  damit man vergleichen kann: Wer passt besser?
+  damit das Kind vergleichen kann: Wer passt besser?
+  <b>Vergleich macht schlau.</b> Monopol macht blöd.
 </div>
 
 <div class="para">
@@ -6024,10 +6746,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Wenn Eltern sagen:
   "Kinder gehören zu ihren Eltern" und "Keine Experimente",
   dann spielen diese Eltern ein Glückspiel:
-  Manche Kinder passen
-  (Glück gehabt, Kind und Eltern sind Freunde, beide Seiten gewinnen),
-  andere Kinder stören
-  (Pech gehabt, Kind und Eltern sind Feinde, beide Seiten verlieren).
+  Manche Kinder passen, andere Kinder stören.
+  Manche Kinder passen:
+  Glück gehabt, Kind und Eltern sind Freunde, beide Seiten gewinnen.
+  Andere Kinder stören:
+  Pech gehabt, Kind und Eltern sind Feinde, beide Seiten verlieren.
 </div>
 
 <div class="para">
@@ -6061,7 +6784,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   TODO move:
   Meine Theorie ist relativ einfach:
-  Man muss Menschen so verbinden, wie sie auf dem Muster stehen,
+  Man muss Menschen so verbinden, wie im Pallas-Muster,
   und die Subtypen müssen irgendwie zusammen passen.
   Kompliziert wird meine Theorie durch Grundlagen und Konsequenzen.
 </div>
@@ -6069,7 +6792,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   Die Grundlage für meine Theorie ist Persönlichkeits-Psychologie.
   Also: Ich brauche eine Methode, mit der ich Typen richtig schätzen kann.
-  Wenn die Typen falsch sind, dann ist mein Muster wertlos.
+  Wenn die Typen falsch sind, dann ist das Pallas-Muster wertlos.
   Also: Ich muss immer mit solchen Menschen anfangen,
   wo ich den Typ sicher schätzen kann.
 </div>
@@ -6234,8 +6957,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 12.
 </div>
 
-<div class="center-x">
-  <svg class="foldme" title="five value scales 1 2" style="width:18em;margin:1em"
+<div class="xcenter">
+  <svg title="five value scales 1 2" class="foldme" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
     <style>svg { --fg: black; --bg: white; } /* light mode */
@@ -6345,11 +7068,11 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Muster-Ausschnitt: Typen 12:
+  Pallas-Muster, Ausschnitt: Typen 12:
 </div>
 
-<div class="center-x">
-  <svg class="foldme" title="Compatibility Chart: 1 2 1 2" style="width:18em;margin:1em"
+<div class="xcenter">
+  <svg title="Compatibility Chart: 1 2 1 2" class="foldme" style="width:18em;margin:1em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="-200 -200 800 800"
@@ -6604,7 +7327,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 104 203.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales m104 f203" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -6717,10 +7440,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Muster-Ausschnitt: F104L und M203L:
+  Pallas-Muster, Ausschnitt: F104L und M203L:
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="Compatibility Chart: F104L M203L" style="width:18em;margin:1em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -6878,7 +7601,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 103 204.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales m103 m204" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -6993,10 +7716,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Muster-Ausschnitt: M103S und M204L:
+  Pallas-Muster, Ausschnitt: M103S und M204L:
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="Compatibility Chart: M103S M204L" style="width:18em;margin:1em"
   version="1.1" viewBox="-200 400 800 200" xmlns="http://www.w3.org/2000/svg">
     <style>svg { --fg: black; --bg: white; } /* light mode */
@@ -7066,7 +7789,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 13.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales 1 3" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -7179,7 +7902,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Mit den Skalen 34 = Typen 34 stehen senkrecht.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales 1 3" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >    <style>
@@ -7279,7 +8002,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Beispiel: Typen 104 302.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales m104-f302" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -7395,10 +8118,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Muster-Ausschnitt: M104S und F302S:
+  Pallas-Muster, Ausschnitt: M104S und F302S:
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="Compatibility Chart: F104L M203L" style="width:18em;margin:1em"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -7571,7 +8294,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Typen 14.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales 1 4" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -7677,7 +8400,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Mit den Skalen 34 = Typen 34 stehen senkrecht.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales 4 1" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -7773,7 +8496,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Beispiel: Typen 103 402.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five-value-scales 103 402" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg"
     >
@@ -7884,10 +8607,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  Muster-Ausschnitt: M103S und M402L:
+  Pallas-Muster, Ausschnitt: M103S und M402L:
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="Compatibility Chart: M103S M402L" style="width:18em;height:auto;margin:1em"
   version="1.1" viewBox="0 400 800 200" xmlns="http://www.w3.org/2000/svg">
     <style>svg { --fg: black; --bg: white; } /* light mode */
@@ -7977,7 +8700,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Alle Skalen-Werte sind +1 oder -1.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five value scales 1234" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 600" xmlns="http://www.w3.org/2000/svg"
     >
@@ -8123,7 +8846,7 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Subtypen Beispiel: F203 M104 M401 F302.
 </div>
 
-<div class="center-x">
+<div class="xcenter">
   <svg class="foldme" title="five value scales 1234" style="width:18em;margin:1em"
       version="1.1" viewBox="0 200 800 600" xmlns="http://www.w3.org/2000/svg"
     >
@@ -9044,13 +9767,19 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   TODO move:
   Warum schreibe ich so komisch?
+  Weil: <b>Ich weiss selber was schön ist.</b> (Autonom)
   Weil ich scheiss auf deine Grammatik.
-  Weil ich selber weiss was schön ist.
   Wichtige Wörter bleiben im Nominativ.
   Sätze werden entspannt, also:
   Hilfsverben bleiben beim Hauptverb.
   Alles steht im Präsens, im Hier und Jetzt.
   Wichtige Wörter schreibe ich groß.
+  Ich meide Überkompression, also:
+  ich erlaube Wiederholung und schreibe einfache Sätze.
+  Ich meide komplizierte vorher-nachher Signalwörter,
+  dafür schreibe ich Sätze in Zeit-Ordnung
+  (erst der Anfang, dann das Ende),
+  und verbinde die Satzteile mit dem Wort "und".
   Weil mein Style ist besser als deine Grammatik.
   Und ich scheiss auf deinen Deutschlehrer.
 </div>
@@ -9190,33 +9919,21 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 </div>
 
 <div class="para">
-  TODO move:
-
-  IDIOKRATIE
-  (Dummheit regiert)
+  Idiokratie: Dummheit regiert.
 
   Zu Beginn des 21. Jahrhunderts befand
   sich die Evolution an einem Wendepunkt.
 
-  Die natürliche Auslese,
-  die den Klügsten und Schnellsten
-  bei der Fortpflanzung den Vorzug
-  vor allen anderen gab
-  und damit die edelsten Eigenschaften
-  des Menschen förderte,
-  schien nun
-  andere Merkmale zu begünstigen.
+  Die <b>Natürliche Selektion</b>, die den Klügsten und Schnellsten
+  bei der Fortpflanzung den Vorzug vor allen anderen gab
+  und damit die edelsten Eigenschaften des Menschen förderte,
+  schien nun andere Merkmale zu begünstigen.
 
   Wie der Joey-Buttafuoco-Fall zeigt.
+  <!-- TODO wer ist Joey Buttafuoco? -->
 
-  <!--
-  TODO wer ist Joey Buttafuoco?
-  -->
-
-  Damals versprachen die
-  meisten Zukunftsvisionen
-  eine noch zivilisiertere
-  und intelligentere Welt.
+  Damals versprachen die meisten Zukunftsvisionen
+  eine noch zivilisiertere und intelligentere Welt.
 
   Aber die Zeichen der Zeit deuteten
   in die entgegengesetzte Richtung.
@@ -9226,22 +9943,27 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   <!-- Stadt der Zukunft -->
 
-  Intelligenz wird in der Evolution
-  nicht unbedingt belohnt.
+  <b>
+    Intelligenz wird in der Evolution
+    nicht unbedingt belohnt.
+  </b>
 
-  Obschon es uns
-  an natürlichen Feinden fehlte
-  die für das Ausdünnen
-  der Herde gesorgt hätten
+  Obschon es uns an natürlichen Feinden fehlte
+  die für das Ausdünnen der Herde gesorgt hätten
   setzte die Natur nun auf all jene
   die sich am häufigsten reproduzierten.
+
   Die Intelligenten wurden zur bedrohten Art.
 
   <!--
-  Fallstudie:
-  TODO namen?
+  idioten haben 100 kinder, schlaue haben ein kind,
+  der rest ist mathematik
   -->
 
+  &mdash; Idiocracy (2006)
+</div>
+
+<div class="para">
   Der Welt ein Kind zu schenken,
   ist eine schwerwiegende Entscheidung.
 
@@ -9252,6 +9974,10 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 
   Auf keinen Fall...
 
+  &mdash; Idiocracy , Schlaue Menschen
+</div>
+
+<div class="para">
   - Scheiße, schon wieder schwanger.
   - Ich hab zu viele verdammte Kinder.
 
@@ -9264,14 +9990,8 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
   Brittany?
   Das wirst du büßen, du mieser...
 
-  &mdash; Idiocracy (2006)
-
-  <!--
-  idioten haben 100 kinder, schlaue haben ein kind,
-  der rest ist mathematik
-  -->
+  &mdash; Idiocracy, Dumme Menschen
 </div>
-
 
 <div class="para">
   Ruhe bitte - Dummköpfe!
@@ -9356,6 +10076,63 @@ based on alchi/src/whoaremyfriends/whoaremyfriends.html
 <div class="para">
   Zeit ist Leben. Und das Leben wohnt im Herzen.
   &mdash; Michael Ende
+</div>
+
+<div class="para">
+  Wir kommen schnell in ein Gespräch über Gott und die Welt,
+  du glaubst nicht an Ersteren und Letztere zerfällt.
+  ...
+  Ich bin verliebt doch irgendwie beschleicht mich ein Gefühl,
+  dass du irgendetwas sagen wirst das ich nicht hören will.
+  Irgendwas mit Esoterik und Verschwörungstheorien,
+  dann wäre alles für die Katz, wir könnten uns nicht lieben.
+  ...
+  Also laufe ich so schnell ich kann bis ans Ende der Welt,
+  denn ich hab Angst dass du was Dummes sagst das mir nicht gefällt.
+  Solltest du mich finden, will ich nix hören,
+  nur ein dummer Satz würde alles zerstören.
+  Dann wär ich nicht mehr verliebt in dich,
+  dann wär ich nicht mehr verliebt.
+  ...
+  Solltest du mich finden will ich nix sagen,
+  nur ein dummer Satz und du würdest mich schlagen.
+  Dann wärst du nicht mehr verliebt in mich,
+  dann wärst du nicht mehr verliebt.
+
+  &mdash; Antilopen Gang - Verliebt
+</div>
+
+<div class="para">
+  Keiner teilt, alles Missgunst,
+  und jeder weiss dass er mit muss.
+  Keiner schreit, keiner kämpft, alles schweigt,
+  keiner weiss was du denkst, Schutzmechanismus.
+  &mdash; Mosh36 - Schutzmechanismus
+</div>
+
+<div class="para">
+  simple but effective
+  &mdash; Minimalismus
+</div>
+
+<div class="para">
+  Ich weiss selber was schön ist.
+  &mdash; Autonom
+</div>
+
+<div class="para">
+  Alles wird vorüber gehen
+  &mdash; Nihilismus
+</div>
+
+<div class="para">
+  Der Teufel steckt im Detail
+  &mdash; Perfektionismus
+</div>
+
+<div class="para">
+  Alles was ich dir anbiete ist die Wahrheit. Nicht mehr.
+  &mdash; Morpheus, Matrix [Wahrheit ist einfach]
 </div>
 
 <div class="para">
@@ -9679,6 +10456,24 @@ Nazz feat. Cr7z - Überdosis
 <div class="para">
   Fass nicht meine Bäume an, ich fackel auch nicht deine Träume ab
   &mdash; Lazy Lizzard Gang - Wald
+</div>
+
+<div class="para">
+  Laisse faire, la nature.<br>
+  Lass sie fahren, die Natur.<br>
+  &mdash; Pierre Le Pesant de Boisguilbert<br>
+  Physiokratie, Körper über Geist, Physik,
+  Herrschaft der Natur, Naturrecht, Naturalismus,
+  Kleinstaaten, Kleinbetriebe, Wettbewerb,
+  Minimalstaat, Minarchie, small government,
+  Kapitalismus, Individualismus, Egoismus,
+  freiwillig, classic liberal,
+  Economy, Ökonomie, effektiv
+</div>
+
+<div class="para">
+  The physiocrats, reacting against the excessive mercantilist regulations of the France of their day, expressed a belief in a 'natural order' or liberty under which individuals in following their selfish interests contributed to the general good. Since, in their view, this natural order functioned successfully without the aid of government, they advised the state to restrict itself to upholding the rights of private property and individual liberty, to removing all artificial barriers to trade, and to abolishing all useless laws
+  Laissez Faire and the General-Welfare State
 </div>
 
 <div class="para">
@@ -10041,6 +10836,21 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Do one thing, and do it right.
+  &mdash; Unix Philosophy [Modular Design]
+</div>
+
+<div class="para">
+  Keep it simple, stupid.
+  &mdash; KISS Principle [Minimalism]
+</div>
+
+<div class="para">
+  Lead by example.
+  &mdash; [Autorative Erziehung? viel fordern, viel helfen]
+</div>
+
+<div class="para">
   Nur wer beleidigen kann, der kann auch ehrlich sein.
   <!--
   He who dares not offend, cannot be honest.
@@ -10333,6 +11143,14 @@ Das ist keine Liebe, das ist Sportficken.
   ich feile an großen Plänen
   <br>
   &mdash; Rakede - Schlafen gehen
+</div>
+
+<div class="para">
+  <b>Anfang bestimmt den Rest.</b>
+  Habe ich beim Aufstehen gute Laune?
+  Dann wird es ein guter Tag.
+  Habe ich beim Aufstehen nur Scheisse im Hirn?
+  Dann werde ich den Tag verschwenden.
 </div>
 
 <div class="para">
@@ -11076,7 +11894,9 @@ but for deliverance from fear.
     weil man einen kontrast besser sehen kann als ein viereck.
 
     fass dich kurz! kurz ist wurz.
-  '>Träume sind die Wünsche unserer Herzen wenn wir schlafen.</div>
+  '>
+    Träume sind die Wünsche unserer Herzen wenn wir schlafen.
+  </div>
 
   &mdash; <a class="nofootnote" href="https://youtu.be/cxwv8qAx0bU"
   >Beasts Of No Nation - Jenseits von Allem</a>
@@ -11192,7 +12012,7 @@ but for deliverance from fear.
 
 
 <div class="para">
-  Anhang: Das Muster für 8 x 8 = 64 Menschen
+  Anhang: Pallas-Muster für 8 x 8 = 64 Menschen
 </div>
 
 <pre class="para" style="font-size:90%; margin-top:5em">
@@ -11231,21 +12051,12 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 
 
 
-<!-- end of pamphlet -->
-
-
-
-<!-- ######################################################################## -->
-
-
-
-</article><!-- end #content -->
+</article>
 
 
 
 <script title="bindery.umd.js" class="foldme">
-  // based on node_modules/bindery/dist/bindery.umd.js
-  // source https://github.com/evnbr/bindery
+  // based on https://github.com/evnbr/bindery
   // license MIT License, Copyright (c) 2017 Evan Brooks
 
   /* bindery Bindery v2.3.6 */
@@ -14842,7 +15653,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 
 
 
-<script>
+<script title="call Bindery.makeBook">
 
   async function main() {
 
@@ -14871,4 +15682,5 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 </script>
 
 </body>
+
 </html>
