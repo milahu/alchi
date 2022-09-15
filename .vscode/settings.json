@@ -1,0 +1,97 @@
+{
+
+  // automatic code folding
+  // https://github.com/zokugun/vscode-explicit-folding
+
+  "explicitFolding.autoFold": "none",
+
+  "explicitFolding.rules": {
+
+    // alchi html code folding
+
+    // problem: no syntax tree
+    // so this does not support nesting
+    // example:
+    // <div class="foldme"><div></div></div>
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // only this part is matched
+    // but the whole line should be matched
+    // -> nested nodes fail with regex. use syntax tree
+    // https://github.com/zokugun/vscode-explicit-folding/issues/92
+
+    "html": [
+        // FIXME regex
+        /*
+        {
+            "beginRegex": "<(?![a-z]+)(?:\\s+[^>]*)?\\s+class=(?:\"foldme\"|'foldme')",
+            "endRegex": "<\\/\\1>",
+            "autoFold": true
+        },
+        */
+        // xml comment
+        {
+            "beginRegex": "<!--",
+            "endRegex": "-->",
+            "autoFold": true
+        },
+        // note: meta has no close tag
+        {
+            "beginRegex": "<meta",
+            "endRegex": ">",
+            "autoFold": true
+        },
+        {
+            "beginRegex": "<style class=\"foldme\"",
+            "endRegex": "<\\/style>",
+            "autoFold": true
+        },
+        // note: head comes after style, meta, ...
+        {
+            "beginRegex": "<head",
+            "endRegex": "<\\/head>",
+            "autoFold": true
+        },
+
+        // workaround for broken regex:
+        // add some tags manually
+        
+        // always fold <div class="foldme"
+        // always fold <div class="annotation"
+        {
+            //"beginRegex": "<div class=\"(?:foldme|annotation)\"",
+            "beginRegex": "<div(?:\\s+[^>]*)?\\s+class=\"(?:foldme|annotation)\"",
+            "endRegex": "<\\/div>",
+            "autoFold": true
+        },
+
+        // always fold <div class="foldme"
+        // TODO allow whitespace in class
+        // TODO allow other classes in class
+        /*
+        {
+            "beginRegex": "<div(?:\\s+[^>]*)?\\s+class=\"foldme\"",
+            "endRegex": "<\\/div>",
+            "autoFold": true
+        },
+        */
+        // always fold svg
+        {
+            "beginRegex": "<svg",
+            "endRegex": "<\\/svg>",
+            "autoFold": true
+        },
+        // always fold table
+        {
+            "beginRegex": "<table",
+            "endRegex": "<\\/table>",
+            "autoFold": true
+        },
+        // always fold script
+        {
+            "beginRegex": "<script",
+            "endRegex": "<\\/script>",
+            "autoFold": true
+        },
+    ],
+  },
+}
