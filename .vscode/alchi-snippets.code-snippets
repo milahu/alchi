@@ -1,0 +1,75 @@
+{
+
+	"paragraph": {
+		"scope": "html",
+		"prefix": [
+			"para",
+		],
+		"body": [
+			"<div class=\"para\">\n  $1\n</div>",
+		],
+		"description": "add a horizontally-centered element. useful to wrap <svg> elements",
+	},
+
+	"split-paragraph": {
+		"scope": "html",
+		"prefix": [
+			"splitpara",
+		],
+		"body": [
+			"</div>\n\n<div class=\"para\">",
+		],
+		"description": "split a paragraph in two paragraphs",
+	},
+
+	"center-x": {
+		"scope": "html",
+		"prefix": [
+			"centerx",
+			"xcenter",
+		],
+		"body": [
+			"<div class=\"center-x\">\n  $1\n</div>",
+		],
+		"description": "add a horizontally-centered element. useful to wrap <svg> elements",
+	},
+
+	"annotation": {
+		"scope": "html",
+		"prefix": [
+			"annotate",
+			"annotation",
+		],
+		"body": [
+			"<div class=\"annotation\" onClick=\"clickAnnotation(this)\" title='\n  $2\n'>\n  $1\n</div>",
+		],
+		"description": "add annotation",
+	},
+
+	"fourtable": {
+		"scope": "html",
+		"prefix": [
+			"fourtable",
+			"fivetable",
+		],
+		"body": [
+			"\n\n<table style=\"margin:auto; margin-top:0.5em; border:solid 1px black\">\n  <tr>\n    <td>1. $1</td>\n    <td></td>\n    <td>3. $3</td>\n  </tr>\n  <tr>\n    <td></td>\n    <td>$5</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>4. $4</td>\n    <td></td>\n    <td>2. $2</td>\n  </tr>\n</table>"
+
+		],
+		"description": "add table with four elements + fifth element in center",
+	},
+
+}
+
+/*
+
+	string to json string in bash
+
+	s="$(cat <<'EOF'
+	hello
+	world
+	EOF
+	)"
+	echo '""' | jq '$x' --arg x "$s"
+
+*/
