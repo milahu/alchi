@@ -81,13 +81,13 @@
 
   <title>Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp</title>
 
-  <!-- TODO description -->
+  <!-- TODO keep in sync with intro -->
   <meta name="description" content='
     Gruppenaufbau nach Persönlichkeitstyp.
     Wer sind meine Freunde?
     Die Frage klingt einfach ... aber, es ist kompliziert,
     und die Psychologie-Experten haben bis heute keine Antwort.
-    Also: Wir müssen diese Frage selber lösen.
+    Also: Wir müssen uns selber helfen.
   '>
 
   <meta name="author" content="Milan Hauth">
@@ -95,7 +95,7 @@
   <!-- meta#version -->
   <!-- TODO update -->
   <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-  <meta id="version" name="dcterms.modified" content="2022-09-15">
+  <meta id="version" name="dcterms.modified" content="2022-09-16">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -455,6 +455,9 @@
     .nowrap {
       white-space: nowrap;
     }
+    div.hspace {
+      display: inline-block;
+    }
     div.nowrap {
       display: inline;
     }
@@ -547,6 +550,11 @@
 
   <script title="binderyOptions">
 
+    // layout options
+
+    // the layout rendering engine is bindery
+    // https://github.com/evnbr/bindery
+
     const lastPage = 16; // TODO update manually
 
     // called at end of file: Bindery.makeBook(binderyOptions(Bindery))
@@ -635,8 +643,8 @@
         printSetup: {
           // https://bindery.info/docs/#printsetup
           // setLayout(newVal) -> automatically set paper size from layout https://github.com/evnbr/bindery/issues/112
-          layout: Bindery.Layout.SPREADS, // PAGES SPREADS BOOKLET
-          paper: Bindery.Paper.A4_LANDSCAPE, // A5_PORTRAIT A4_LANDSCAPE
+          layout: Bindery.Layout.SPREADS, // default layout for print: PAGES SPREADS BOOKLET
+          paper: Bindery.Paper.A4_LANDSCAPE, // paper format: A5_PORTRAIT A4_LANDSCAPE
           marks: Bindery.Marks.NONE, // NONE CROP BLEED BOTH
           bleed: '-12pt', // workaround: bleed is biased by +12pt -> padding-top: calc(var(--bindery-bleed) + 12pt);
         },
@@ -655,7 +663,11 @@
         },
         //view: Bindery.View.PREVIEW, // LINEAR PREVIEW PRINT FLIPBOOK // note: cannot select text in PRINT view
         // "responsive" layout: set initial view from screen width
-        view: (window.innerWidth < 960) ? Bindery.View.LINEAR : Bindery.View.PREVIEW,
+
+        // FIXME the layout "snaps" after rendering, from half width to full width
+        // should be full width from the start
+        //view: (window.innerWidth < 960) ? Bindery.View.LINEAR : Bindery.View.PREVIEW,
+        view: Bindery.View.LINEAR, // default layout for screen
       };
     }
     function hoverBothLinksStart(a) {
@@ -732,7 +744,7 @@
 
 <div class="vspace" style="height:2em"></div>
 
-<h2>Wer sind meine Freunde</h2>
+<h2>Ich und meine sechs Freunde</h2>
 
 <div class="vspace" style="height:1em"></div>
 
@@ -749,11 +761,16 @@
 <!-- page 2 -->
 
 <div class="para">
-    <b>Wer sind meine Freunde?</b>
-    Die Frage klingt einfach ... aber, es ist kompliziert,
-    und die Psychologie-Experten haben bis heute keine Antwort.
-    Also: Wir müssen diese Frage selber lösen.
+  <b>Wer sind meine Freunde?</b>
 </div>
+
+<div class="para">
+  Die Frage klingt einfach ... aber es ist kompliziert,<br>
+  und die Psychologie-Experten haben bis heute keine Antwort.<br>
+  Also: Wir müssen uns selber helfen.
+</div>
+
+
 
 <!-- blah ... Idealisten vs Realisten, Fühlen vs Denken
 
@@ -808,11 +825,59 @@
 -->
 
 <div class="para">
-  TODO move:
-  Stichworte:
-  <a href="https://en.wikipedia.org/wiki/Interpersonal_compatibility">Interpersonal Compatibility</a>,
+  Thema:
+  <b>Gerechtigkeit.</b>
+  Menschen und Beziehungen.
+</div>
+
+<div class="para">
+  Zielgruppe:
+  Menschen mit Zukunft.
+  Bauern und Soldaten.
+</div>
+
+<div class="para">
+  Fachbegriffe:
+  Human Resource Management.
+  Matchmaking Algorithm.
+  <a href="https://en.wikipedia.org/wiki/Interpersonal_compatibility">Interpersonal Compatibility</a>.
   <a href="https://en.wikipedia.org/wiki/Team_composition">Team Composition</a>.
 </div>
+
+
+
+<div class="para">
+  <!-- yes i know <ol><li>a</li><li>b</li></ol>
+    but browsers like chrome are stupid,
+    as when i copy text from <ol>,
+    then the numbers are NOT copied.
+    with my version, this copy operation always works.
+  -->
+  Meine Thesen:<br>
+</div>
+
+<div class="para">
+  1. Jeder Mensch braucht <b>sechs Freunde</b>.
+</div>
+
+<div class="para">
+  2. Diese Freunde erfüllen ein bestimmtes Muster, das <b>Pallas-Muster</b>.
+</div>
+
+<div class="para">
+  3. Das Pallas-Muster gilt für <b>alle</b> Menschen.
+</div>
+
+<div class="para">
+  4. Menschen sind unterschiedlich nach:<br>
+  <div class="hspace" style="width:1.1em"></div>Geschlecht, Alter, Persönlichkeitstyp.<br>
+</div>
+
+<div class="para">
+  5. Persönlichkeitstyp gleich Inneres Geschlecht mal Inneres Alter.
+</div>
+
+
 
 <div class="para">
   Nur wenige Weltbilder geben eine Antwort,
@@ -851,9 +916,11 @@
 </div>
 
 <div class="para">
-  TODO ich suche eine "ganzheitliche" theorie zur anwendung in arbeitsleben UND privatleben.
+  TODO ich suche eine "ganzheitliche" theorie zur anwendung in arbeitsleben und privatleben.
   eine schwäche von organisationspsychologie ist die beschränkung aufs arbeitsleben.
+  weil "einmischen in privatspähre ist unprofessionell" ...
 </div>
+
 
 <div class="para">
   Also, "Wer sind meine Freunde?",
@@ -877,12 +944,18 @@
   Personality Type.
 </div>
 
+
+
+<!-- TODO remove this workaround, implement class="nopagebreak" -->
+
+<hr>
+
+<div class="nopagebreak">
+
 <div class="para">
   Wer sind meine Freunde?
   Meine Antwort ist das <b>Pallas-Muster</b>:
 </div>
-
-
 
 <script class="foldme" title="Compatibility Chart">
 
@@ -1151,6 +1224,8 @@
   </svg>
 </div>
 
+</div>
+
 
 
 <div class="para">
@@ -1190,7 +1265,7 @@
 </div>
 
 <div class="para">
-  ... das ist meine Kern-These, mein Key Concept.
+  ... das ist meine Kern-These.
   Also ein anderer Mensch ist zu mir genau dann kompatibel,
   wenn sein Körper und Geist bestimmte Eigenschaften erfüllen.
   (Geist = Persönlichkeitstyp = Innere Werte.)
@@ -1228,8 +1303,7 @@
   Wenn zwei Feinde direkt zusammen leben,
   dann gibt es immer wieder Missverständnisse,
   und jeder findet automatisch alles
-
-  <div class="annotation" onClick="clickAnnotation(this)" title='
+  <div content="scheisse," class="annotation" onClick="clickAnnotation(this)" title='
     "Nein! Das bleibt hier alles so wies ist!"
     Okay Andreas.
     <!-x- Okay <a href="https://youtu.be/gy39bTYYWs4">Andreas</a>. -x->
@@ -1259,7 +1333,6 @@
     Sympathie.
     Kompatibilität.
   '>scheisse,</div>
-
   was der andere sagt und macht (<b>Persönliche Gründe</b>),
   egal wie gut gemeint (Sachgründe).
   Zarathustra: "Ich bin nicht der Mund für diese Ohren."
@@ -1267,8 +1340,8 @@
 
 <div class="para">
   Die Glaubensfrage:
-  Falsch: "Was glaubst du?"
-  Richtig: "Wem glaubst du?"
+  Falsch: "Was glaube ich?"
+  Richtig: "Wem glaube ich?"
 </div>
 
 <div class="para">
@@ -1288,7 +1361,8 @@
 <div class="para">
   Was passiert am <b>Rand</b> vom Pallas-Muster?
   Das Muster wird einfach wiederholt,
-  wie ein Stempel, oder wie ein Kachel-Muster.
+  wie ein Stempel oder Kachel-Muster (Tessellation).
+  <br>
   Zeile 5:
   <div class="nowrap">
     F1L M2L F4L M3L.
@@ -1307,10 +1381,6 @@
 </div>
 
 <div class="para">
-  TODO Pallas-Symbol = Verbindung für 7 Punkte = Ich und meine 6 Freunde.
-</div>
-
-<div class="para">
   Quadrate und Kreuze:
   Im Pallas-Muster gibt es 2 verschiedene Vierer-Gruppen.
   Jede Kreuz-Gruppe hat alle 4 Typen: 1-3-2-4.
@@ -1318,27 +1388,142 @@
   Die Striche im Pallas-Muster verbinden immer die Gegentypen (1-2 und 3-4).
 </div>
 
-<div class="para">
-  TODO Alternative Darstellung:
-  Alle Striche in gerader Richtung.
-  Doppelbindungen zwischen Gegentypen in Quadrat-Gruppen.
-  Einfachbindungen in gerader Richtung in Kreuz-Gruppen.
-  Nachteil: Höhere Auflösung.
-</div>
-
 <!-- spam? -->
 <div class="para">
   Namen für das Pallas-Muster:
-  Friend Map,
+  <b>Friend Map</b>,
   Landkarte der Freunde,
-  Wer sind meine Freunde,
   Muster für Beziehungen,
   Mischkultur für Menschen,
   Familienaufstellung,
   Kompatibilitäts-Muster nach Persönlichkeitstyp,
-  Compatibility Chart for Personality Types,
+  <b>Compatibility Chart</b> for Personality Types,
   ...
 </div>
+
+<div class="para">
+  Mathematische Beschreibung für das Pallas-Muster:
+  Irregular Tessellation of Square and Irregular 90-135 Hexagon.
+  Auf Deutsch:
+  Parkettierung von Quadrat und Unregelmäßiges 90-135 Sechseck.
+  Tessellation, Parkettierung, Kachelung heisst:
+  ein kleines Grundmuster wird wiederholt in alle Richtungen.
+  Unregelmäßiges Sechseck mit zwei 90 Grad Winkeln und vier 135 Grad Winkeln.
+  Ich nenne es <b>Pallas-Sechseck</b>,
+  weil dieses Sechseck entsteht am Rand vom Pallas-Symbol.
+  Genau dieses Sechseck ist auch im Logo
+  der Chemie-Firma "F. Hoffmann-La Roche AG",
+  als Anspielung auf Hexagons in der organischen Chemie.
+</div>
+
+
+
+<!-- TODO avoid forced page break -->
+
+<hr>
+
+<div class="nopagebreak">
+
+<div class="para">
+  Pallas-Muster ohne Kreise:
+</div>
+
+<div class="xcenter">
+  <svg title="pallas-pattern.nocircles"
+    viewBox="0 0 800 800"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="width:18em;margin:2em"
+    >
+    <defs>
+      <style type="text/css">
+          svg { --fg: black; --bg: white; } /* light mode */
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: white; --bg: black; } /* dark mode */
+            }
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          @media screen {
+            @media (prefers-color-scheme: dark) { 
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+            }
+
+            [data-darkreader-mode="dynamic"]
+              svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          .fig1 .stroke {
+            stroke-width: 2;
+            stroke: black; /* fallback when css variables are not supported */
+            stroke: var(--fg);
+          }
+
+          .nofill {
+            fill: none;
+          }
+
+          .fillbg {
+            fill: white;
+            fill: var(--bg);
+          }
+
+          .fillfg {
+            fill: black;
+            fill: var(--fg);
+          }
+        </style>
+    </defs>
+
+    <g class="fig1">
+
+
+
+      <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+
+
+
+          
+          <g title="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+            <g title="simple pattern">
+              <g title="single lines orthogonal: single lines outside squares">
+                <g id="nocircles-square-top-right">
+                  <title>top right square, no circles</title>
+                  <path d="M 700 100 L 700 300"/>
+                  <path d="M 500 100 L 500 300"/>
+                  <path d="M 500 300 L 700 300"/>
+                  <path d="M 500 100 L 700 100"/>
+                </g>
+                
+                <use id="nocircles-square-top-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 0)" />
+                <use id="nocircles-square-bottom-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 400)" />
+                <use id="nocircles-square-bottom-right" xlink:href="#nocircles-square-top-right" transform="translate(0 400)" />
+              </g>
+              <g id="nocircles-cross-center">
+                <path title="center bottom-left to top-right" d="M 500 300 L 300 500"/>
+                <path title="center top-left to bottom-right" d="M 500 500 L 300 300"/>
+              </g>
+              <use id="nocircles-cross-left" xlink:href="#nocircles-cross-center" transform="translate(-400 0)" />
+              <use id="nocircles-cross-right" xlink:href="#nocircles-cross-center" transform="translate(400 0)" />
+              <use id="nocircles-cross-top" xlink:href="#nocircles-cross-center" transform="translate(0 -400)" />
+              <use id="nocircles-cross-bottom" xlink:href="#nocircles-cross-center" transform="translate(0 400)" />
+              <use id="nocircles-cross-top-left" xlink:href="#nocircles-cross-center" transform="translate(-400 -400)" />
+              <use id="nocircles-cross-top-right" xlink:href="#nocircles-cross-center" transform="translate(400 -400)" />
+              <use id="nocircles-cross-bottom-left" xlink:href="#nocircles-cross-center" transform="translate(-400 400)" />
+              <use id="nocircles-cross-bottom-right" xlink:href="#nocircles-cross-center" transform="translate(400 400)" />
+            </g>
+          </g>
+
+      </g>
+
+    </g>
+  </svg>
+</div>
+
+</div>
+
+
 
 <!-- spam? -->
 <div class="para">
@@ -1352,35 +1537,110 @@
   oder "Wer passt zusammen? Wer hat immer Streit?"
   Im Zweifel habe ich die "schönere" Lösung genommen
   (Symmetrie, Streifen-Muster und Sechseck-Muster),
-  und irgendwann ist dieses Muster rausgekommen.
+  und irgendwann ist das Pallas-Muster rausgekommen.
 </div>
 
 <div class="para">
-  <b>Alternative Darstellungen</b> vom Pallas Muster:
+  Warum heisst es "Pallas"?
+  Naja, das Symbol heisst Pallas.
+  Die Verbindung von Raute und Kreuz.
+</div>
+
+<div class="para">
+  Für mich ein Symbol für F4:
+  Frau = Kreuz = durchgestrichener Penis, Typ 4 = Raute.
+
+  Vermutlich ist Pallas eine weibliche Form von Phallus, also Penis.
+  Es gibt aber auch Männer mit dem Namen Pallas.
+</div>
+
+<div class="para">
+  Eine Bedeutung vom Pallas-Symbol:
+  Speer (spear), Lanze (lance), Wurfspieß, Pike.
+  Also eine primitive Waffe.
+
+  Die Raute ist die Spitze,
+  das Kreuz ist der Griff.
+</div>
+
+<div class="para">
+  Griechische Mythologie:
+  Pallas ist die Tochter
+  vom Meeresgott Triton (Meer, Wasser, Typ 4)
+  und einer unbekannten Mutter.
+  Triton ist der Ersatzvater für Athene, eine Tochter von Zeus.
+  Pallas und Athene sind wie Schwestern.
+  Triton trainiert beide Mädchen in Kampfkunst.
+  Pallas und Athene kämpfen mit Speer und Schild bei einem Sportfest.
+  Athene dominiert am Anfang, dann scheint Pallas zu gewinnen.
+  Zeus hat Angst dass seine Tochter verliert, und tut Pallas ablenken.
+  Aus Versehen trifft Athene ihre Schwester Pallas mit dem Speer, und Pallas stirbt.
+</div>
+
+<div class="para">
+  Astronomie:
+  Symbol für den Asteroid "2 Pallas".
+  Basierend auf Pallas aus der griechischen Mythologie.
+  <!--
+  https://en.wikipedia.org/wiki/2_Pallas#Name_and_symbol
+  -->
+
+  Wikipedia:
+
+  In the 19th century,
+  planetary symbols for the major asteroids
+  were also in use, including
+  1 Ceres (a reaper's sickle ⚳),
+  2 Pallas (a lance ⚴) and
+  3 Juno (a sceptre ⚵). 
+
+  The old astronomical symbol of Pallas, still used in astrology,
+  is a spear or lance, ⚴, one of the symbols of the goddess Pallas.
+  The blade was most often a lozenge ◊,
+  but various graphic variants were published,
+  including an acute/elliptic leaf shape (),
+  a cordate leaf shape ♤,
+  and a triangle △;
+  the last made it effectively the alchemical symbol for sulfur 🜍.
+
+  The generic asteroid symbol of a disk with its discovery number ②,
+  was introduced in 1852 and quickly became the norm.
+  The iconic symbol was resurrected for astroLOGICal use in 1973.
+</div>
+
+<div class="para">
+  <b>Alternative Darstellungen</b> vom Pallas-Muster:
 
   Der Nachteil an diesen Darstellungen ist:
   sie brauchen höhere Auflösung.
 
-  Dagegen: Das Pallas Muster ist die einfachste Darstellung,
+  Dagegen: Das Pallas-Muster ist die einfachste Darstellung,
   und ist auch bei niedriger Auflösung gut sichtbar.
-  Zum Beispiel als ein 16x16 Pixel Icon auf einem 72dpi Monitor.
+  Zum Beispiel als 16x16 Pixel Icon am Monitor.
 
-  Das Pallas Muster ist ähnlich zum Weiblich Muster O+.
+  Das Pallas-Symbol ist ähnlich zum Venus-Symbol ♀.
   Ich habe ganz bewusst nicht einen Kreis,
   sondern ein Viereck genommen, damit man sieht:
-  Der Pallas Schlüssel verbindet sieben Punkte.
+  Der Pallas-Schlüssel verbindet sieben Punkte.
 
   Aber zurück zu:
-  Alternative Darstellungen vom Pallas Muster.
+  Alternative Darstellungen vom Pallas-Muster.
 </div>
+
+
+
+<!-- TODO avoid forced page break -->
+
+<!-- not needed for now
+<hr>
+-->
+<div class="nopagebreak">
 
 <div class="para">
-  Pallas Muster mit <b>Doppelbindungen und Einfachbindungen</b>:
-  Das Doppelbindungen Muster braucht höhere Auflösung als das Pallas Muster.
+  Pallas-Muster mit <b>Doppelbindungen und Einfachbindungen</b>:
 </div>
 
-
-
+<!-- FIXME svg text color is black with darkreader browser extension, should be white -->
 
 <div class="xcenter">
   <svg id="pallas-pattern.doublelines" style="width:18em;margin:2em"
@@ -1779,11 +2039,15 @@
   </svg>
 </div>
 
-<div class="para">
-  Pallas Muster als <b>Überlagerte Vierecke</b>:
-  Das ist das TODO Muster
-  Das TODO Muster braucht höhere Auflösung als das Doppelbindungen Muster.
 </div>
+
+<div class="nopagebreak">
+
+<div class="para">
+  Pallas-Muster als <b>Überlagerte Vierecke</b>:
+</div>
+
+<!-- FIXME svg text color is black with darkreader browser extension, should be white -->
 
 <div class="xcenter">
   <svg title="pallas-pattern.boxes" style="width:18em;margin:2em" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
@@ -2002,6 +2266,14 @@
     </g>
   </svg>
 </div>
+
+</div>
+
+<!-- TODO avoid forced page break -->
+
+<hr>
+
+
 
 <div class="para">
   Ich hoffe, das Pallas-Muster stimmt für alle Menschen.
@@ -2845,22 +3117,34 @@
 
 
 
+<!-- FIXME avoid page break between this paragraph and the next svg
+
+  = implement class="nopagebreak"
+-->
+
+<!-- TODO remove workaround -->
+
+<!-- not needed for now
+<hr>
+-->
+
+<div class="nopagebreak">
+
 <div class="para">
-  Die Verbindung aus Kreuz und Quadrat heisst "Pallas".
+  Die Verbindung aus Kreuz und Quadrat heisst <b>Pallas</b>, oder Pallas-Schlüssel.
   Es ist eine Verbindung von Gegensätzen (conjunctio oppositorum),
   so wie "Tag und Nacht".
-  Das Pallas-Symbol verbindet 7 Punkte
-
-  <div class="annotation" onClick="clickAnnotation(this)" title='
+  Der Pallas-Schlüssel verbindet 7 Punkte
+  <div content="(Glückszahl 7)." class="annotation" onClick="clickAnnotation(this)" title='
     Der Anfangs-Buchstabe P von Pallas
     ist der 16. Buchstabe im Alphabet
     (immer diese Zufälle ...)
 
     G ist der 16. Buchstabe im Hexadezimal-Alphabet (0123 4567 89AB CDEF G)
   '>(Glückszahl 7).</div>
+
+  Deswegen: <b>Ich und meine sechs Freunde</b>
 </div>
-
-
 
 <div class="xcenter">
   <svg title="Pallas M1S" class="foldme" style="width:13.5em;margin:2em"
@@ -3055,6 +3339,8 @@
     </g>
 
   </svg>
+</div>
+
 </div>
 
 
@@ -3966,7 +4252,7 @@
 
       /* TODO fix xy values
       .fig-four-body-types text {
-        dominant-baseline: middle; /* FIXME unknown css property? */
+        dominant-baseline: middle; /xxxxx* FIXME unknown css property? *xxxxxx/
         text-anchor: middle;
         font-family: sans;
       }
@@ -4335,7 +4621,7 @@
   Natürlicher Dresscode.
 </div>
 
-<!-- nutzlos?
+<!-- Natürliche Flaggen - TODO
 <div class="para">
   Natürliche Flaggen = Kleid oben.
   1 = Schwarz-Gelb = Anarcho-Capitalism = AnCap.
@@ -4872,10 +5158,6 @@
   4 Calorien pro Gramm für Kohlenhydrate und Protein.
 </div>
 
-
-
-
-
 <div class="para">
   <b>Smilies:</b>
   Typen 13 sind optimistisch, also Mundwinkel hoch.
@@ -5216,8 +5498,6 @@
 
 
 <hr>
-
-
 
 <table class="four-basetypes" style="margin-top:1em;margin-bottom:1em">
 
@@ -6035,6 +6315,8 @@
   hat lineare Hochachse
   und man sieht die "Explosion" der Bevölkerung seit 200 Jahren (Kohle, Dampfmaschinen, Industrie).
 </div>
+
+<!-- FIXME text color in darkmode -->
 
 <div class="xcenter">
   <svg title="world-population-chart.linear-graph" style="width:100%"
@@ -9312,6 +9594,14 @@
 </div>
 
 <div class="para">
+  Isolation ist der erste Schritt bei Erziehung.
+  Kinder werden behandelt wie wilde Tiere,
+  "man" will sie zähmen, domestizieren, zivilisieren ...
+  aber "man" kämpft gegen Naturgewalt, gegen Naturordnung ...
+  deswegen, dieser Weg ist kurzsichtig und hat keine Zukunft.
+</div>
+
+<div class="para">
   Konzept: Gesundes Fett.
   Gut: Omega 3, Olivenöl, Kokosfett, Avocado, Hanföl (nur kalt),
   Butterschmalz, Schweineschmalz, Fischöl, Kürbiskerne, Leinsamen (nicht Leinöl).
@@ -10006,9 +10296,29 @@
 </div>
 
 <div class="para">
+  Life asked Death:
+  Why do people love me,
+  but hate you?
+  <br>
+  Death responded:
+  Because you are a beautiful lie,
+  and I am a painful truth.
+</div>
+
+<div class="para">
   Shaun! How's it going?
   - Surviving ...
   &mdash; Shaun Of The Dead
+</div>
+
+<div class="para">
+  One is the loneliest number.
+  &mdash; Harry Nilsson - One
+</div>
+
+<div class="para">
+  Save the planet. Kill all humans.
+  &mdash; Bender [M1], Futurama
 </div>
 
 <div class="para">
@@ -10245,6 +10555,28 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
+  unterhalt mich mit meim schatten, weil die wahrheit keiner liebt
+  &mdash; Olexesh - Wayauu
+</div>
+
+<div class="para">
+  Für die kaputten Köpfe mit Herz in der Brust,
+  Teer in der Luft es ist schwer doch ich muss,
+  diese Scheiße durchziehn trotz Schmerzen und Frust,
+  denn die Situation sie ist mehr als kaputt.
+  ...
+  Generation Hartz Vier,
+  Kriminalität als Ausweg Du hast meistens keine Wahl hier.
+  Ich brauch nicht lange reden komm vorbei du kannst es sehn,
+  Wie die Jungs sich Kante geben krankes Leben.
+
+  An jeder Ecke sind Spielos die Jugend ist ziellos.
+  Scarface-Mentalität die Eltern fragen "Wieso".
+
+  &mdash; Sa4 - Mehr als kaputt (feat. Blut61)
+</div>
+
+<div class="para">
   Erstickt in Routine
   ...
   Knast ist nicht wenn ein Mensch in einer Zelle sitzt.
@@ -10441,7 +10773,7 @@ Nazz feat. Cr7z - Überdosis
   Der weiche Gang geschmeidig starker Schritte,
   der sich im allerkleinsten Kreise dreht,
   ist wie ein Tanz von Kraft um eine Mitte,
-  in der betäubt <b>ein großer Wille</b> steht.
+  in der betäubt <b class="nowrap">ein großer Wille</b> steht.
   &mdash; Rilke - Der Panther
 </div>
 
@@ -10450,18 +10782,21 @@ Nazz feat. Cr7z - Überdosis
   Deine Mama soll losgehn, und die Wertsachen wegpacken.
   Wir ziehen Koks, ziehen Speed, das Leben eines G's.
   Wir boxen dich zu Kartoffelbrei, Ali, Murat, Rajid
+  <br>
   &mdash; K.I.Z - Was willst du machen
 </div>
 
 <div class="para">
   Fass nicht meine Bäume an, ich fackel auch nicht deine Träume ab
+  <br>
   &mdash; Lazy Lizzard Gang - Wald
 </div>
 
 <div class="para">
   Laisse faire, la nature.<br>
   Lass sie fahren, die Natur.<br>
-  &mdash; Pierre Le Pesant de Boisguilbert<br>
+  &mdash; Pierre Le Pesant de Boisguilbert, Physiokratie, Naturrecht
+  <!--
   Physiokratie, Körper über Geist, Physik,
   Herrschaft der Natur, Naturrecht, Naturalismus,
   Kleinstaaten, Kleinbetriebe, Wettbewerb,
@@ -10469,12 +10804,23 @@ Nazz feat. Cr7z - Überdosis
   Kapitalismus, Individualismus, Egoismus,
   freiwillig, classic liberal,
   Economy, Ökonomie, effektiv
+  -->
 </div>
 
+<!-- TODO?
 <div class="para">
-  The physiocrats, reacting against the excessive mercantilist regulations of the France of their day, expressed a belief in a 'natural order' or liberty under which individuals in following their selfish interests contributed to the general good. Since, in their view, this natural order functioned successfully without the aid of government, they advised the state to restrict itself to upholding the rights of private property and individual liberty, to removing all artificial barriers to trade, and to abolishing all useless laws
+  The physiocrats, reacting against
+  the excessive mercantilist regulations of the France of their day,
+  expressed a belief in a 'natural order' or liberty
+  under which individuals in following their selfish interests
+  contributed to the general good.
+  Since, in their view, this natural order functioned successfully without the aid of government,
+  they advised the state to restrict itself to upholding the rights of private property and individual liberty,
+  to removing all artificial barriers to trade, and to abolishing all useless laws.
+
   Laissez Faire and the General-Welfare State
 </div>
+-->
 
 <div class="para">
   Die wissenschaftliche Debatte fragt nicht mehr:
@@ -10482,6 +10828,9 @@ Nazz feat. Cr7z - Überdosis
   Sondern:
   Wie können wir den Kollaps der Zivilisation verhindern?
   &mdash; Paul Ehrlich
+  <!--
+    TODO zitat aus welchem jahr
+  -->
 </div>
 
 <div class="para">
@@ -11633,6 +11982,10 @@ but for deliverance from fear.
 </div>
 
 <div class="para">
+  Die größte Sünde ist Energieverschwendung.
+</div>
+
+<div class="para">
   "Nein" ist ein leeres Wort.
   Ich kämpfe "für" meine Freunde.
 </div>
@@ -11660,6 +12013,36 @@ but for deliverance from fear.
   back to normalcy and patriotism.
 
   &mdash; Yuri Bezmenov (Ex KGB Agent)
+</div>
+
+<div class="para">
+  we are opposed around the world
+  by a monolithic and ruthless conspiracy
+  that relies primarily on covert means for expanding its sphere of influence:
+  on infiltration instead of invasion,
+  on subversion instead of elections,
+  on intimidation instead of free choice,
+  on guerrillas by night instead of armies by day.
+  
+  It is a system which has conscripted vast human and material resources
+  into the building of a tightly knit, highly efficient <b>machine</b>
+  that combines <b>military, diplomatic, intelligence, economic, scientific and political</b> operations.
+  <br>
+  Its preparations are concealed, not published.
+  Its mistakes are buried, not headlined.
+  Its dissenters are silenced, not praised.
+  No expenditure is questioned, no rumor is printed, no secret is revealed.
+  
+  It conducts the <b class="nowrap">Cold War</b>, in short,
+  with a war-time discipline
+  no democracy would ever hope or wish to match.
+  <br>
+  &mdash; <a class="nofootnote" href="https://www.jfklibrary.org/archives/other-resources/john-f-kennedy-speeches/american-newspaper-publishers-association-19610427"
+  >John F. Kennedy, 1961</a>
+</div>
+
+<div class="para">
+  loose lips sink ships.
 </div>
 
 <div class="para">
@@ -12005,7 +12388,7 @@ but for deliverance from fear.
   MIT License,
   Copyright (c) 2022 Milan Hauth.
   Das heisst:
-  Du darfst <b>alles</b> mit meinem Text machen,
+  Du darfst alles mit meinem Text machen,
   und ich gebe dir keine Garantie.
 </div>
 
@@ -12058,6 +12441,13 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 <script title="bindery.umd.js" class="foldme">
   // based on https://github.com/evnbr/bindery
   // license MIT License, Copyright (c) 2017 Evan Brooks
+ 
+  // TODO incremental rendering in development mode
+  // https://github.com/evnbr/bindery/issues/129
+
+  const enableRendering = (document.location.hash != '#norender');
+
+  if (enableRendering) {
 
   /* bindery Bindery v2.3.6 */
   (function (global, factory) {
@@ -15649,11 +16039,15 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 
   })));
 
+  }
+
 </script>
 
 
 
 <script title="call Bindery.makeBook">
+
+  if (enableRendering) {
 
   async function main() {
 
@@ -15678,6 +16072,8 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
   }
 
   main();
+
+  }
 
 </script>
 
