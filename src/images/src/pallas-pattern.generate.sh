@@ -22,4 +22,6 @@ echo "configname: $configname"
 
 mv -v "$tempdir/$basename.svg.svg" "$basename.$configname.svg"
 
+echo
+
 done
