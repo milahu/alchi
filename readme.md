@@ -857,5 +857,46 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
     * F104 M203 F401 M302
     * F203 M104 F302 M401
     * ... so that all have balanced "inner age", and all have extreme "inner gender"
+* Pallas-Pattern
+  * Pallas-Muster
+  * Tessellation of Square and Irregular Hexagon
+    * https://www.tapeten1.de/de/geometrische-tapeten/tpn-710492.html
+      * alchi/src/images/tessellations/tapeten1.de--tpn-710492.jpg
+      * alchi/src/images/tessellations/tapeten1.de--tpn-710492.large.jpg
+      * Stil: Geometrischen Motiven
+      * Muster: Geometrie
+      * ... also auch kein name für dieses muster
+    * non-regular tessellation pattern, because the "hexagon" is no regular hexagon
+    * the hexagon has two 90 degree angles and four 135 degree angles
+    * https://www.drking.org.uk/hexagons/tess/tess.html
+      * almost there https://www.drking.org.uk/hexagons/tess/rt-hex-tess.png
+        * The hexagon has all side lengths equal and two opposite angles of 90 degrees
+    * To name a tessellation, go around a vertex and write down how many sides each polygon has, in order ... like "3.12.12". Always start at the polygon with the least number of sides, so "3.12.12", not "12.3.12" -- https://www.mathsisfun.com/geometry/tessellation.html
+    * Hexagon with two right angles
+      * https://artofproblemsolving.com/wiki/index.php/2006_AIME_II_Problems/Problem_1
+      * Roche logo (F. Hoffmann-La Roche AG)
+        * https://en.wikipedia.org/wiki/File:Hoffmann-La_Roche_logo.svg
+        * https://1000logos.net/roche-logo/
+  * Waffle Grid
+    * https://www.theedkins.co.uk/jo/tess/grids.htm
+      * https://www.theedkins.co.uk/jo/tess/waffle.htm
+
+<!--
+
+https://kathykwylie.com/2017/03/honeycomb-patchwork/#comment-69145
+
+wtf?
+
+honeycomb is a regular hexagon
+
+but whats the name for the other one?
+
+except "roche logo hexagon" or "irregular hexagon with 90 and 135 degree angles"
+
+i found this irregular hexagon in my research on human relations
+
+https://github.com/milahu/alchi
+
+-->
 
 </details>
