@@ -7,8 +7,8 @@ do
 
 pngfiles+=("$f")
 
-echo mv -v "$f" ../ # dry run
-#mv -v "$f" ../ # move files
+#echo mv -v "$f" ../ # dry run
+mv -v "$f" ../ # move files
 
 done
 
