@@ -8,7 +8,7 @@
 		"body": [
 			"<div class=\"para\">\n  $1\n</div>",
 		],
-		"description": "add a horizontally-centered element. useful to wrap <svg> elements",
+		"description": "",
 	},
 
 	"split-paragraph": {
@@ -22,14 +22,14 @@
 		"description": "split a paragraph in two paragraphs",
 	},
 
-	"center-x": {
+	"xcenter": {
 		"scope": "html",
 		"prefix": [
-			"centerx",
 			"xcenter",
+			"centerx",
 		],
 		"body": [
-			"<div class=\"center-x\">\n  $1\n</div>",
+			"<div class=\"xcenter\">\n  $1\n</div>",
 		],
 		"description": "add a horizontally-centered element. useful to wrap <svg> elements",
 	},
@@ -43,7 +43,7 @@
 		"body": [
 			"<div class=\"annotation\" onClick=\"clickAnnotation(this)\" title='\n  $2\n'>\n  $1\n</div>",
 		],
-		"description": "add annotation",
+		"description": "add a clickable annotation",
 	},
 
 	"fourtable": {
