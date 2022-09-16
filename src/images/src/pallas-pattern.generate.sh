@@ -2,6 +2,8 @@
 
 basename=pallas-pattern
 
+defaultconfigname='simple'
+
 tempdir=$(mktemp -d)
 echo "tempdir: $tempdir"
 
@@ -20,7 +22,13 @@ echo "configname: $configname"
   #npx nunjucks "$basename".svg.njk "$configfile" --out "$tempdir" --extension "" --path "" # TODO test
 )
 
-mv -v "$tempdir/$basename.svg.svg" "$basename.$configname.svg"
+outputfile="$basename.$configname.svg"
+if [[ "$configname" == "$defaultconfigname" ]]
+then
+  outputfile="$basename.svg"
+fi
+echo "outputfile: $outputfile"
+mv -v "$tempdir/$basename.svg.svg" "$outputfile"
 
 echo
 
