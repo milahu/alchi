@@ -1,5 +1,11 @@
 #! /usr/bin/env bash
 
+# dependencies:
+# nunjucks
+
+# install dependencies with
+# npm install
+
 basename=pallas-pattern
 
 defaultconfigname='simple'
