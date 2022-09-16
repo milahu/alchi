@@ -2,7 +2,7 @@
 
 
 
-<svg title="pallas-pattern.boxes"
+<svg title="pallas-pattern.simple"
   viewBox="0 0 800 800"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -95,76 +95,66 @@
     <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
 
 
-
-
-        <g title="boxes Pattern" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
-
-          <g title="Squares 360">
-            <rect x="20" y="20" width="360" height="360"/>
-            <rect x="420" y="20" width="360" height="360"/>
-            <rect x="20" y="420" width="360" height="360"/>
-            <rect x="420" y="420" width="360" height="360"/>
-            <rect x="220" y="220" width="360" height="360"/>
-          </g>
-
-          <g title="cross top" transform="matrix(1, 0, 0, 1, 0, -400)">
-            <g title="cross center">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g title="cross right" transform="matrix(1, 0, 0, 1, 400, 0)">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g title="cross left" transform="matrix(1, 0, 0, 1, -400, 0)">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-          </g>
-          <g>
-            <title>cross center-y</title>
+        <g title="simple pattern">
+          <g title="single lines orthogonal: single lines outside squares">
             <g>
-              <title>cross center</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
+              <title>bottom left</title>
+              <path title="right" d="M 300 560 L 300 640"/>
+              <path title="left" d="M 100 560 L 100 640"/>
+              <path title="bottom" d="M 160 700 L 240 700"/>
+              <path title="top" d="M 160 500 L 240 500"/>
             </g>
-            <g transform="matrix(1, 0, 0, 1, 400, 0)">
-              <title>cross right</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, -400, 0)">
-              <title>cross left</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-          </g>
-          <g transform="matrix(1, 0, 0, 1, 0, 400)">
-            <title>cross bottom</title>
             <g>
-              <title>cross center</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
+              <title>bottom right</title>
+              <path title="right" d="M 700 560 L 700 640"/>
+              <path title="left" d="M 500 560 L 500 640"/>
+              <path title="bottom" d="M 560 700 L 640 700"/>
+              <path title="top" d="M 560 500 L 640 500"/>
             </g>
-            <g transform="matrix(1, 0, 0, 1, 400, 0)">
-              <title>cross right</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
+            <g>
+              <title>top right</title>
+              <!-- TODO add titles -->
+              <path d="M 700 160 L 700 240"/>
+              <path d="M 500 160 L 500 240"/>
+              <path d="M 560 300 L 640 300"/>
+              <path d="M 560 100 L 640 100"/>
             </g>
-            <g transform="matrix(1, 0, 0, 1, -400, 0)">
-              <title>cross left</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
+            <g>
+              <title>top left</title>
+              <!-- TODO add titles -->
+              <path d="M 300 160 L 300 240"/>
+              <path d="M 100 160 L 100 240"/>
+              <path d="M 160 300 L 240 300"/>
+              <path d="M 160 100 L 240 100"/>
             </g>
           </g>
-          <g>
-            <title>squares small</title>
-            <rect x="180" y="180" width="40" height="40"/>
-            <rect x="580" y="180" width="40" height="40"/>
-            <rect x="180" y="580" width="40" height="40"/>
-            <rect x="580" y="580" width="40" height="40"/>
+          <g title="single lines diagonal">
+            <g title="left">
+              <path d="M 0 400 L 58 458"/>
+              <path d="M 0 400 L 58 342"/>
+            </g>
+            <g title="right">
+              <path d="M 800 400 L 742 458"/>
+              <path d="M 800 400 L 742 342"/>
+            </g>
+            <g title="bottom">
+              <path d="M 400 800 L 458 742"/>
+              <path d="M 400 800 L 342 742"/>
+            </g>
+            <g title="top">
+              <path d="M 400 0 L 458 58"/>
+              <path d="M 400 0 L 342 58"/>
+            </g>
+            <path title="top right" d="M 800 0 L 742 58"/>
+            <path title="bottom left" d="M 0 800 L 58 742"/>
+            <path title="bottom right" d="M 800 800 L 742 742"/>
+            <path title="top left" d="M 0 0 L 58 58"/>
+            <path title="center bottom-left to top-right" d="M 458 342 L 342 458"/>
+            <path title="center top-left to bottom-right" d="M 458 458 L 342 342"/>
           </g>
         </g>
+
+
     </g>
 
   </g>
