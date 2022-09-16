@@ -1,0 +1,7 @@
+{
+  "name": "alchi-src-images",
+  "version": "0",
+  "dependencies": {
+    "nunjucks-cli": "^1.0.0"
+  }
+}

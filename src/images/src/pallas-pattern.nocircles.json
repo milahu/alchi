@@ -1,0 +1,8 @@
+{
+  "development": false,
+  "nocircles": true,
+  "simple": false,
+  "circles": false,
+  "boxes": false,
+  "doublelines": false
+}

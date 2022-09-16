@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+{# todo bind title to variable, use as css class #}
+
+<svg title="pallas-pattern{% if simple %}.simple{% endif %}{% if doublelines %}.doublelines{% endif %}{% if nocircles %}.nocircles{% endif %}{% if boxes %}.boxes{% endif %}"
+  viewBox="0 0 800 800"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  style="width:auto;margin:auto"
+  >
+  <defs>
+    <style type="text/css">
+        svg { --fg: black; --bg: white; } /* light mode */
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        .fig1 .stroke {
+          stroke-width: 2;
+          stroke: black; /* fallback when css variables are not supported */
+          stroke: var(--fg);
+        }
+
+        .nofill {
+          fill: none;
+        }
+
+        .fillbg {
+          fill: white;
+          fill: var(--bg);
+        }
+
+        .fillfg {
+          fill: black;
+          fill: var(--fg);
+        }
+      </style>
+  </defs>
+
+  <g class="fig1">
+
+    {% if pallas %}
+      <g title="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <g title="simple pattern">
+          <g title="single lines orthogonal: single lines outside squares">
+            <g>
+              <title>top right</title>
+              <path d="M 700 100 L 700 300"/>
+              <path d="M 500 100 L 500 300"/>
+              <path d="M 500 300 L 700 300"/>
+              <path d="M 500 100 L 700 100"/>
+            </g>
+          </g>
+          <g title="single lines diagonal">
+            <path title="center bottom-left to top-right" d="M 500 300 L 300 500"/>
+            <path title="center top-left to bottom-right" d="M 500 500 L 300 300"/>
+          </g>
+        </g>
+      </g>
+    {% endif %}
+
+    {% if circles %}
+      <g title="text and circles">
+        <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
+          <text x="100" y="100">F1L</text>
+          <text x="300" y="100">M2L</text>
+          <text x="500" y="100">F4L</text>
+          <text x="700" y="100">M3L</text>
+          <text x="100" y="300">F2S</text>
+          <text x="300" y="300">M1S</text>
+          <text x="500" y="300">F3S</text>
+          <text x="700" y="300">M4S</text>
+          <text x="100" y="500">F3L</text>
+          <text x="300" y="500">M4L</text>
+          <text x="500" y="500">F2L</text>
+          <text x="700" y="500">M1L</text>
+          <text x="100" y="700">F4S</text>
+          <text x="300" y="700">M3S</text>
+          <text x="500" y="700">F1S</text>
+          <text x="700" y="700">M2S</text>
+        </g>
+        <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+          <title>Circles</title>
+          <circle cx="100" cy="100" r="60"/>
+          <circle cx="300" cy="100" r="60"/>
+          <circle cx="500" cy="100" r="60"/>
+          <circle cx="700" cy="100" r="60"/>
+          <circle cx="100" cy="300" r="60"/>
+          <circle cx="300" cy="300" r="60"/>
+          <circle cx="500" cy="300" r="60"/>
+          <circle cx="700" cy="300" r="60"/>
+          <circle cx="100" cy="500" r="60"/>
+          <circle cx="300" cy="500" r="60"/>
+          <circle cx="500" cy="500" r="60"/>
+          <circle cx="700" cy="500" r="60"/>
+          <circle cx="100" cy="700" r="60"/>
+          <circle cx="300" cy="700" r="60"/>
+          <circle cx="500" cy="700" r="60"/>
+          <circle cx="700" cy="700" r="60"/>
+        </g>
+      </g>
+    {% endif %}
+
+    <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+
+      {% if doublelines %}
+        <g title="doublelines pattern">
+          <g title="single lines">
+            <g title="single lines center">
+              <path title="right" d="M 500 360 L 500 440"/>
+              <path title="left" d="M 300 360 L 300 440"/>
+              <path title="bottom" d="M 440 500 L 360 500"/>
+              <path title="top" d="M 360 300 L 440 300"/>
+            </g>
+            <g title="single lines offscreen squares">
+              <!-- single lines center + translate by 400 -->
+              <g title="right" transform="translate(400 0)">
+                <path title="left" d="M 300 360 L 300 440"/>
+                <path title="bottom" d="M 440 500 L 360 500"/>
+                <path title="top" d="M 360 300 L 440 300"/>
+              </g>
+              <g title="left" transform="translate(-400 0)">
+                <path title="right" d="M 500 360 L 500 440"/>
+                <path title="bottom" d="M 440 500 L 360 500"/>
+                <path title="top" d="M 360 300 L 440 300"/>
+              </g>
+              <g title="top" transform="translate(0 -400)">
+                <path title="right" d="M 500 360 L 500 440"/>
+                <path title="left" d="M 300 360 L 300 440"/>
+                <path title="bottom" d="M 440 500 L 360 500"/>
+                <!--
+                <path title="top" d="M 360 300 L 440 300"/>
+                -->
+              </g>
+              <g title="bottom" transform="translate(0 400)">
+                <path title="right" d="M 500 360 L 500 440"/>
+                <path title="left" d="M 300 360 L 300 440"/>
+                <path title="top" d="M 360 300 L 440 300"/>
+              </g>
+              <g title="top left" transform="translate(-400 -400)">
+                <path title="right" d="M 500 360 L 500 440"/>
+                <path title="bottom" d="M 440 500 L 360 500"/>
+              </g>
+              <g title="top right" transform="translate(400 -400)">
+                <path title="left" d="M 300 360 L 300 440"/>
+                <path title="bottom" d="M 440 500 L 360 500"/>
+              </g>
+              <g title="bottom left" transform="translate(-400 400)">
+                <path title="right" d="M 500 360 L 500 440"/>
+                <path title="top" d="M 360 300 L 440 300"/>
+              </g>
+              <g title="bottom right" transform="translate(400 400)">
+                <path title="left" d="M 300 360 L 300 440"/>
+                <path title="top" d="M 360 300 L 440 300"/>
+              </g>
+            </g>
+          </g>
+          <g title="double lines">
+            <g display="none" title="double lines center">
+              <path title="right left" d="M 490 360 L 490 440"/>
+              <path title="right right" d="M 510 360 L 510 440"/>
+
+              <path title="left left" d="M 290 360 L 290 440"/>
+              <path title="left right" d="M 310 360 L 310 440"/>
+
+              <path title="bottom top" d="M 440 490 L 360 490"/>
+              <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+              <path title="top bottom" d="M 360 310 L 440 310"/>
+              <path title="top top" d="M 360 290 L 440 290"/>
+            </g>
+
+            <g title="double lines outside squares">
+              <!-- copy paste. different transform values -->
+              <g title="top left" transform="translate(-200 -200)">
+                <title>top-left double lines</title>
+                <path title="right left" d="M 490 360 L 490 440"/>
+                <path title="right right" d="M 510 360 L 510 440"/>
+
+                <path title="left left" d="M 290 360 L 290 440"/>
+                <path title="left right" d="M 310 360 L 310 440"/>
+
+                <path title="bottom top" d="M 440 490 L 360 490"/>
+                <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+                <path title="top bottom" d="M 360 310 L 440 310"/>
+                <path title="top top" d="M 360 290 L 440 290"/>
+              </g>
+
+              <g title="top left" transform="translate(200 -200)">
+                <title>top-left double lines</title>
+                <path title="right left" d="M 490 360 L 490 440"/>
+                <path title="right right" d="M 510 360 L 510 440"/>
+
+                <path title="left left" d="M 290 360 L 290 440"/>
+                <path title="left right" d="M 310 360 L 310 440"/>
+
+                <path title="bottom top" d="M 440 490 L 360 490"/>
+                <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+                <path title="top bottom" d="M 360 310 L 440 310"/>
+                <path title="top top" d="M 360 290 L 440 290"/>
+              </g>
+
+              <g title="top left" transform="translate(-200 200)">
+                <title>top-left double lines</title>
+                <path title="right left" d="M 490 360 L 490 440"/>
+                <path title="right right" d="M 510 360 L 510 440"/>
+
+                <path title="left left" d="M 290 360 L 290 440"/>
+                <path title="left right" d="M 310 360 L 310 440"/>
+
+                <path title="bottom top" d="M 440 490 L 360 490"/>
+                <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+                <path title="top bottom" d="M 360 310 L 440 310"/>
+                <path title="top top" d="M 360 290 L 440 290"/>
+              </g>
+
+              <g title="top left" transform="translate(200 200)">
+                <title>top-left double lines</title>
+                <path title="right left" d="M 490 360 L 490 440"/>
+                <path title="right right" d="M 510 360 L 510 440"/>
+
+                <path title="left left" d="M 290 360 L 290 440"/>
+                <path title="left right" d="M 310 360 L 310 440"/>
+
+                <path title="bottom top" d="M 440 490 L 360 490"/>
+                <path title="bottom bottom" d="M 440 510 L 360 510"/>
+
+                <path title="top bottom" d="M 360 310 L 440 310"/>
+                <path title="top top" d="M 360 290 L 440 290"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      {% endif %}
+
+      {% if simple %}
+        <g title="simple pattern">
+          <g title="single lines orthogonal: single lines outside squares">
+            <g>
+              <title>bottom left</title>
+              <path title="right" d="M 300 560 L 300 640"/>
+              <path title="left" d="M 100 560 L 100 640"/>
+              <path title="bottom" d="M 160 700 L 240 700"/>
+              <path title="top" d="M 160 500 L 240 500"/>
+            </g>
+            <g>
+              <title>bottom right</title>
+              <path title="right" d="M 700 560 L 700 640"/>
+              <path title="left" d="M 500 560 L 500 640"/>
+              <path title="bottom" d="M 560 700 L 640 700"/>
+              <path title="top" d="M 560 500 L 640 500"/>
+            </g>
+            <g>
+              <title>top right</title>
+              <!-- TODO add titles -->
+              <path d="M 700 160 L 700 240"/>
+              <path d="M 500 160 L 500 240"/>
+              <path d="M 560 300 L 640 300"/>
+              <path d="M 560 100 L 640 100"/>
+            </g>
+            <g>
+              <title>top left</title>
+              <!-- TODO add titles -->
+              <path d="M 300 160 L 300 240"/>
+              <path d="M 100 160 L 100 240"/>
+              <path d="M 160 300 L 240 300"/>
+              <path d="M 160 100 L 240 100"/>
+            </g>
+          </g>
+          <g title="single lines diagonal">
+            <g title="left">
+              <path d="M 0 400 L 58 458"/>
+              <path d="M 0 400 L 58 342"/>
+            </g>
+            <g title="right">
+              <path d="M 800 400 L 742 458"/>
+              <path d="M 800 400 L 742 342"/>
+            </g>
+            <g title="bottom">
+              <path d="M 400 800 L 458 742"/>
+              <path d="M 400 800 L 342 742"/>
+            </g>
+            <g title="top">
+              <path d="M 400 0 L 458 58"/>
+              <path d="M 400 0 L 342 58"/>
+            </g>
+            <path title="top right" d="M 800 0 L 742 58"/>
+            <path title="bottom left" d="M 0 800 L 58 742"/>
+            <path title="bottom right" d="M 800 800 L 742 742"/>
+            <path title="top left" d="M 0 0 L 58 58"/>
+            <path title="center bottom-left to top-right" d="M 458 342 L 342 458"/>
+            <path title="center top-left to bottom-right" d="M 458 458 L 342 342"/>
+          </g>
+        </g>
+      {% endif %}
+
+      {% if nocircles %}
+        {# based on pallas key #}
+        <g title="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+          <g title="simple pattern">
+            <g title="single lines orthogonal: single lines outside squares">
+              <g id="nocircles-square-top-right">
+                <title>top right square, no circles</title>
+                <path d="M 700 100 L 700 300"/>
+                <path d="M 500 100 L 500 300"/>
+                <path d="M 500 300 L 700 300"/>
+                <path d="M 500 100 L 700 100"/>
+              </g>
+              {# note: we must use xlink:href="..." for inkscape, which fails on href="..." #}
+              <use id="nocircles-square-top-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 0)" />
+              <use id="nocircles-square-bottom-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 400)" />
+              <use id="nocircles-square-bottom-right" xlink:href="#nocircles-square-top-right" transform="translate(0 400)" />
+            </g>
+            <g id="nocircles-cross-center">
+              <path title="center bottom-left to top-right" d="M 500 300 L 300 500"/>
+              <path title="center top-left to bottom-right" d="M 500 500 L 300 300"/>
+            </g>
+            <use id="nocircles-cross-left" xlink:href="#nocircles-cross-center" transform="translate(-400 0)" />
+            <use id="nocircles-cross-right" xlink:href="#nocircles-cross-center" transform="translate(400 0)" />
+            <use id="nocircles-cross-top" xlink:href="#nocircles-cross-center" transform="translate(0 -400)" />
+            <use id="nocircles-cross-bottom" xlink:href="#nocircles-cross-center" transform="translate(0 400)" />
+            <use id="nocircles-cross-top-left" xlink:href="#nocircles-cross-center" transform="translate(-400 -400)" />
+            <use id="nocircles-cross-top-right" xlink:href="#nocircles-cross-center" transform="translate(400 -400)" />
+            <use id="nocircles-cross-bottom-left" xlink:href="#nocircles-cross-center" transform="translate(-400 400)" />
+            <use id="nocircles-cross-bottom-right" xlink:href="#nocircles-cross-center" transform="translate(400 400)" />
+          </g>
+        </g>
+      {% endif %}
+
+      {% if boxes %}
+        <g title="boxes Pattern" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+
+          {% if boxes_320 %}
+          <g title="boxes 320" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
+            <rect x="40" y="40" width="320" height="320"/>
+            <rect x="440" y="40" width="320" height="320"/>
+            <rect x="440" y="440" width="320" height="320"/>
+            <rect x="40" y="440" width="320" height="320"/>
+          </g>
+          {% else %}
+          <g title="Squares 360">
+            <rect x="20" y="20" width="360" height="360"/>
+            <rect x="420" y="20" width="360" height="360"/>
+            <rect x="20" y="420" width="360" height="360"/>
+            <rect x="420" y="420" width="360" height="360"/>
+            <rect x="220" y="220" width="360" height="360"/>
+          </g>
+          {% endif %}
+
+          <g title="cross top" transform="matrix(1, 0, 0, 1, 0, -400)">
+            <g title="cross center">
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g title="cross right" transform="matrix(1, 0, 0, 1, 400, 0)">
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g title="cross left" transform="matrix(1, 0, 0, 1, -400, 0)">
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+          </g>
+          <g>
+            <title>cross center-y</title>
+            <g>
+              <title>cross center</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 400, 0)">
+              <title>cross right</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -400, 0)">
+              <title>cross left</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 0, 400)">
+            <title>cross bottom</title>
+            <g>
+              <title>cross center</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 400, 0)">
+              <title>cross right</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+            <g transform="matrix(1, 0, 0, 1, -400, 0)">
+              <title>cross left</title>
+              <path d="M 420 420 L 380 380"/>
+              <path d="M 420 380 L 380 420"/>
+            </g>
+          </g>
+          <g>
+            <title>squares small</title>
+            <rect x="180" y="180" width="40" height="40"/>
+            <rect x="580" y="180" width="40" height="40"/>
+            <rect x="180" y="580" width="40" height="40"/>
+            <rect x="580" y="580" width="40" height="40"/>
+          </g>
+        </g>
+      {% endif %}
+    </g>
+
+    {% if development %}
+      <g title="development helper grids">
+        <g title="Grid centers" stroke="red" stroke-width="2">
+          <path class="stroke nofill" d="M 0 500 L 800 500"/>
+          <path class="stroke nofill" d="M -100 400 L 700 400" transform="matrix(0, 1, -1, 0, 700, 100)"/>
+          <path class="stroke nofill" d="M 100 400 L 900 400" transform="matrix(0, 1, -1, 0, 900, -100)"/>
+          <path class="stroke nofill" d="M 300 400 L 1100 400" transform="matrix(0, 1, -1, 0, 1100, -300)"/>
+          <path class="stroke nofill" d="M -300 400 L 500 400" transform="matrix(0, 1, -1, 0, 500, 300)"/>
+          <path class="stroke nofill" d="M 0 100 L 800 100"/>
+          <path class="stroke nofill" d="M 0 700 L 800 700"/>
+          <path class="stroke nofill" d="M 0 300 L 800 300"/>
+        </g>
+        <g title="Grid between" stroke="red" stroke-width="2">
+          <path class="stroke nofill" d="M 0 400 L 800 400"/>
+          <path class="stroke nofill" d="M 0 400 L 800 400" transform="matrix(0, 1, -1, 0, 800, 0)"/>
+          <path class="stroke nofill" d="M 200 400 L 1000 400" transform="matrix(0, 1, -1, 0, 1000, -200)"/>
+          <path class="stroke nofill" d="M -200 400 L 600 400" transform="matrix(0, 1, -1, 0, 600, 200)"/>
+          <path class="stroke nofill" d="M 0 600 L 800 600"/>
+          <path class="stroke nofill" d="M 0 200 L 800 200"/>
+        </g>
+      </g>
+    {% endif %}
+  </g>
+</svg>
