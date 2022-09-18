@@ -639,7 +639,7 @@
         printSetup: {
           // https://bindery.info/docs/#printsetup
           // setLayout(newVal) -> automatically set paper size from layout https://github.com/evnbr/bindery/issues/112
-          layout: Bindery.Layout.SPREADS, // default layout for print: PAGES SPREADS BOOKLET
+          layout: Bindery.Layout.BOOKLET, // default layout for print: PAGES SPREADS BOOKLET
           paper: Bindery.Paper.A4_LANDSCAPE, // paper format: A5_PORTRAIT A4_LANDSCAPE
           marks: Bindery.Marks.NONE, // NONE CROP BLEED BOTH
           bleed: '-12pt', // workaround: bleed is biased by +12pt -> padding-top: calc(var(--bindery-bleed) + 12pt);
@@ -662,8 +662,8 @@
 
         // FIXME the layout "snaps" after rendering, from half width to full width
         // should be full width from the start
-        //view: (window.innerWidth < 960) ? Bindery.View.LINEAR : Bindery.View.PREVIEW,
-        view: Bindery.View.LINEAR, // default layout for screen
+        view: (window.innerWidth < 960) ? Bindery.View.LINEAR : Bindery.View.PREVIEW,
+        //view: Bindery.View.LINEAR, // default layout for screen
       };
     }
     function hoverBothLinksStart(a) {
