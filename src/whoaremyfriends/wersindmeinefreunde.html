@@ -555,11 +555,7 @@
     // the layout rendering engine is bindery
     // https://github.com/evnbr/bindery
 
-    const lastPage = 16; // TODO update manually
-
-    // called at end of file: Bindery.makeBook(binderyOptions(Bindery))
-    // FIXME bindery bug: cannot select text in print view = cannot create annotations
-    function binderyOptions(Bindery) {
+    function getBinderyOptions(Bindery) {
       return {
         content: '#content',
         rules: [
@@ -16860,7 +16856,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
   async function main() {
 
     console.time(`Bindery.makeBook`);
-    await Bindery.makeBook(binderyOptions(Bindery));
+    await Bindery.makeBook(getBinderyOptions(Bindery));
     console.timeEnd(`Bindery.makeBook`);
 
     /* not working
