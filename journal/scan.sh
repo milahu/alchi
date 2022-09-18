@@ -27,6 +27,7 @@ mkdir /run/user/$(id --user) 2>/dev/null
 # temp file
 t=/run/user/$(id --user)/scan.$d.png
 
+# TODO cache
 echo find scanners ...
 
 scanners="$(sudo scanimage -L)"
