@@ -13188,6 +13188,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
           classes.viewLinear,
       ];
       const classForMode = (mode) => {
+        console.log('classForMode') // milahu fixme
           switch (mode) {
               case ViewerMode.PREVIEW:
                   return classes.viewPreview;
@@ -13824,6 +13825,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
           afterAdd(element, book, continueOnNewPage, makeNewPage, overflowCallback) {
               const number = book.currentPage.footer.children.length + 1;
               const footnote = div('.footnote');
+              //console.log(`Footnote. afterAdd: render`);
               const contents = this.render(element, number);
               if (contents instanceof HTMLElement)
                   footnote.appendChild(contents);
@@ -14283,7 +14285,11 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
                       await addText(child, shouldSplit);
                   }
                   else if (isContentElement(child)) {
+                      // this is fast
+                      // noisy
+                      //console.time(`flowIntoRegions clearAndAddChildren: addElement`);
                       await addElement(child);
+                      //console.timeEnd(`flowIntoRegions clearAndAddChildren: addElement`);
                   }
               }
           };
@@ -14562,6 +14568,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               };
               this.references.push(ref);
               const currentResults = pageNumbersForTest(book.pages, testFunction);
+              console.log(`PageReference. createReference: render`);
               this.render(ref, currentResults); // Replace element immediately, to make sure it'll fit
               return ref;
           }
@@ -14596,7 +14603,10 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               const results = this.references.map(ref => {
                   return { ref, matchingPageNumbers: pageNumbersForTest(pages, ref.testFunction) };
               });
-              results.forEach(({ ref, matchingPageNumbers }) => this.render(ref, matchingPageNumbers));
+              results.forEach(({ ref, matchingPageNumbers }) => {
+                console.log(`PageReference. updatePageReferences: render`);
+                this.render(ref, matchingPageNumbers);
+              });
           }
           replace(template, number) {
               template.insertAdjacentHTML('beforeend', `, <span>${number}</span>`);
@@ -14660,7 +14670,10 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
                   page.element.appendChild(elmt);
                   page.runningHeader = elmt;
               }
+              // this is fast
+              //console.time(`RunningHeader.eachPage: render`);
               page.runningHeader.innerHTML = this.render(page);
+              //console.timeEnd(`RunningHeader.eachPage: render`);
           }
           render(page) {
               return `${page.number}`;
@@ -15030,6 +15043,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
           // init
           content.style.margin = '0';
           content.style.padding = '0';
+          console.time(`makeBook: flowIntoRegions`);
           await flowIntoRegions({
               content,
               createRegion: makeNextRegion,
@@ -15040,6 +15054,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               shouldTraverse: ruleSet.shouldTraverse,
               didWaitFor: t => estimator.addWaitTime(t),
           });
+          console.timeEnd(`makeBook: flowIntoRegions`);
           book.updatePageOrder();
           annotatePages(book.pages, pageNumberOffset);
           ruleSet.finishEveryPage(book);
@@ -15178,6 +15193,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
           update(state, actions) {
               var _a, _b;
               const oldElement = this.element;
+              console.log(`Controls.update: render`);
               const newElement = this.render(state, actions);
               const focusedId = document.hasFocus() ? (_a = document.activeElement) === null || _a === void 0 ? void 0 : _a.id : undefined;
               oldElement.replaceWith(newElement);
@@ -15225,12 +15241,15 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
           return div('.spread-wrapper.spread-centered.page-size', ...children);
       };
       function renderLinearViewer(bookPages) {
+        console.log('renderLinearViewer')
         const pages = bookPages;
           const linearLayout = document.createDocumentFragment();
           pages.forEach(pg => {
+              //console.log(`renderLinearViewer: page`, pg)
               const wrap = onePageSpread(pg.element);
               linearLayout.appendChild(wrap);
           });
+          console.log(`renderLinearViewer: return`)
           return {
               element: linearLayout,
           };
@@ -15468,6 +15487,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               this.currentLeaf = 0;
               listenForPrint(() => {
                   this.mode = ViewerMode.PRINT;
+                  console.log(`Viewer listenForPrint: render`);
                   this.render();
               });
               document.body.addEventListener('keydown', (e) => {
@@ -15513,6 +15533,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
                   return;
               this.mode = newMode;
               this.updateControls();
+              console.log(`Viewer setMode: render`);
               this.render();
           }
           get isInProgress() {
@@ -15543,6 +15564,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               this.pageSetup.paper = newVal;
               this.pageSetup.updateStyleVars();
               this.mode = ViewerMode.PRINT;
+              console.log(`Viewer setSheetSize: render`);
               this.render();
               this.scaleToFit();
               setTimeout(() => {
@@ -15569,6 +15591,7 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               this.pageSetup.printTwoUp = this.isTwoUp;
               this.pageSetup.updateStyleVars();
               this.mode = ViewerMode.PRINT;
+              console.log(`Viewer setLayout: render`);
               this.render();
 
               // milahu was here
@@ -15617,30 +15640,56 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
               this.isViewing = false;
           }
           render(newBook) {
-              if (newBook)
+              console.log(`render`);
+              if (newBook) {
+                  console.log(`render: this.book = newBook`);
                   this.book = newBook;
-              if (!this.book)
+              }
+              if (!this.book) {
+                  console.log(`render: this.book is empty -> return`);
                   return;
-              this.show();
-              this.updateControls();
+              }
+              console.log(`render: add style for mode`);
               this.element.classList.remove(...allModeClasses);
               this.element.classList.add(classForMode(this.mode));
+              console.log(`render: show`);
+              this.show();
+              console.log(`render: updateControls`);
+              this.updateControls();
+              console.log(`render: updateControls`);
+              // FIXME call classForMode earlier
+              /*
+              this.element.classList.remove(...allModeClasses);
+              this.element.classList.add(classForMode(this.mode));
+              */
               this.setShowingBleed(this.mode === ViewerMode.PRINT);
+              console.log(`render: getScrollAsPercent`);
               const prevScroll = getScrollAsPercent();
+              console.log(`render: getScrollAsPercent -> ${prevScroll}`);
               this.setProgressAmount(1);
+              console.log(`render: requestAnimationFrame`);
+
+              // FIXME this is where the layout "snaps" after loading
               window.requestAnimationFrame(() => {
+                  console.log(`render: requestAnimationFrame: renderViewMode`);
                   const result = this.renderViewMode();
                   this.currentResult = result;
                   this.content.innerHTML = '';
                   this.content.append(result.element);
-                  if (!this.hasRendered)
+                  if (!this.hasRendered) {
+                      console.log(`render: requestAnimationFrame: hasRendered = true`);
                       this.hasRendered = true;
-                  else
+                  }
+                  else {
+                      console.log(`render: requestAnimationFrame: scrollToPercent ${prevScroll}`);
                       scrollToPercent(prevScroll);
+                  }
+                  console.log(`render: requestAnimationFrame: scaleToFit`);
                   this.scaleToFit();
               });
           }
           renderViewMode() {
+              console.log(`renderViewMode`)
               if (!this.book)
                   throw Error('Book missing');
               const pages = this.book.pages.slice();
@@ -16689,8 +16738,9 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 
   async function main() {
 
-    console.log(`Bindery.makeBook`);
+    console.time(`Bindery.makeBook`);
     await Bindery.makeBook(binderyOptions(Bindery));
+    console.timeEnd(`Bindery.makeBook`);
 
     /* not working
     console.log(`add handleClick to annotation elements`);
