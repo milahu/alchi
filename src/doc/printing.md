@@ -27,16 +27,18 @@ wanted specs
 compare printers:
 
 * [new printers with wanted specs](https://geizhals.de/?cat=prl&xf=19151_15000%7E3309_A4%7E716_30%7E718_250%7E719_128%7E720_LAN%7E721_Duplexeinheit%7E9822_1)
-* [Samsung M3825 vs M2835](https://geizhals.de/?cmp=1115304&cmp=974929&cmp=974909)
+* [Samsung M3825 vs M2835 vs M3820](https://geizhals.de/?cmp=1115304&cmp=974929&cmp=974909&cmp=955880)
 
 ### Samsung ProXpress M3825
+
+search for "Samsung ProXpress"
 
 * 700 Watt power draw. max 800 Watt = 3.5 Ampere x 230 Volt
 * toner: MLT-D204E (E = Extra large), 10.000 pages, 20 eur = 0.2 cent per page
 * drum: MLT-R204, 30.000 pages, 30 eur = 0.1 cent per page
 * 600 dpi (or 1200?)
 * 38 pages per minute (or 33?)
-* 57 dB
+* 57 dB = loud!
 * 10 kg
 * pretty white-black case
 
@@ -56,6 +58,15 @@ https://geizhals.de/samsung-proxpress-m3825dw-sl-m3825dw-see-a974909.html
 * D = duplex
 * W = wifi (+ LAN)
 
+### Samsung ProXpress M3820
+
+https://geizhals.de/samsung-proxpress-m3820nd-40s-min-sl-m3820nd-see-a955880.html
+
+* older model than M3825
+* cheap, from 20 eur used on ebay
+* toner: MLT-D203
+* drum cannot be replaced??
+
 ### Brother?
 
 popular printers, higher used price
@@ -67,7 +78,7 @@ should have cheap toner
 #### Xerox B310
 
 * cheap printer
-* expensive toner
+* expensive toner, no "compatible" toner (?)
 
 #### Samsung Xpress M2835DW
 
