@@ -6,6 +6,7 @@ do
 (
 printf '# %s\n\n' "$month"
 find . -maxdepth 1 -name "$month-*.webp" -printf '%P\n' |
+sort |
 while read f
 do
   printf '## %s\n\n' "$f"
