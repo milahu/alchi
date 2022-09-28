@@ -161,4 +161,4 @@ echo keep tempfile "$t"
 # open result
 
 echo opening "$o_small" ...
-xdg-open "$o_small"
+xdg-open "$o_small" &
