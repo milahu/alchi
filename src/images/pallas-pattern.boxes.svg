@@ -10,161 +10,171 @@
   >
   <defs>
     <style type="text/css">
-        svg { --fg: black; --bg: white; } /* light mode */
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: white; --bg: black; } /* dark mode */
-          }
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: white; --bg: black; } /* dark mode */
+      svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: white; --bg: black; } /* dark mode */
         }
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-          }
-
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
         }
 
-        .fig1 .stroke {
-          stroke-width: 2;
-          stroke: black; /* fallback when css variables are not supported */
-          stroke: var(--fg);
-        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
 
-        .nofill {
-          fill: none;
-        }
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
 
-        .fillbg {
-          fill: white;
-          fill: var(--bg);
-        }
+      .nofill {
+        fill: none;
+      }
 
-        .fillfg {
-          fill: black;
-          fill: var(--fg);
-        }
-      </style>
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }
+    </style>
   </defs>
 
   <g class="fig1">
 
-
-      <g title="text and circles">
-        <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
-          <text x="100" y="100">F1L</text>
-          <text x="300" y="100">M2L</text>
-          <text x="500" y="100">F4L</text>
-          <text x="700" y="100">M3L</text>
-          <text x="100" y="300">F2S</text>
-          <text x="300" y="300">M1S</text>
-          <text x="500" y="300">F3S</text>
-          <text x="700" y="300">M4S</text>
-          <text x="100" y="500">F3L</text>
-          <text x="300" y="500">M4L</text>
-          <text x="500" y="500">F2L</text>
-          <text x="700" y="500">M1L</text>
-          <text x="100" y="700">F4S</text>
-          <text x="300" y="700">M3S</text>
-          <text x="500" y="700">F1S</text>
-          <text x="700" y="700">M2S</text>
-        </g>
-        <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
-          <title>Circles</title>
-          <circle cx="100" cy="100" r="60"/>
-          <circle cx="300" cy="100" r="60"/>
-          <circle cx="500" cy="100" r="60"/>
-          <circle cx="700" cy="100" r="60"/>
-          <circle cx="100" cy="300" r="60"/>
-          <circle cx="300" cy="300" r="60"/>
-          <circle cx="500" cy="300" r="60"/>
-          <circle cx="700" cy="300" r="60"/>
-          <circle cx="100" cy="500" r="60"/>
-          <circle cx="300" cy="500" r="60"/>
-          <circle cx="500" cy="500" r="60"/>
-          <circle cx="700" cy="500" r="60"/>
-          <circle cx="100" cy="700" r="60"/>
-          <circle cx="300" cy="700" r="60"/>
-          <circle cx="500" cy="700" r="60"/>
-          <circle cx="700" cy="700" r="60"/>
-        </g>
-      </g>
 
     <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
 
 
 
 
-        <g title="boxes Pattern" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
 
-          <g title="Squares 360">
-            <rect x="20" y="20" width="360" height="360"/>
-            <rect x="420" y="20" width="360" height="360"/>
-            <rect x="20" y="420" width="360" height="360"/>
-            <rect x="420" y="420" width="360" height="360"/>
-            <rect x="220" y="220" width="360" height="360"/>
-          </g>
+      <g title="boxes Pattern" stroke="black" stroke-width="2" fill="none" class="stroke nofill">
 
-          <g title="cross top" transform="matrix(1, 0, 0, 1, 0, -400)">
-            <g title="cross center">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g title="cross right" transform="matrix(1, 0, 0, 1, 400, 0)">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g title="cross left" transform="matrix(1, 0, 0, 1, -400, 0)">
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
+        <g title="Squares 360">
+          <rect id="boxes-box-top-left" x="20" y="20" width="360" height="360"/>
+          <use id="boxes-box-top-right" xlink:href="#boxes-box-top-left" transform="translate(400 0)" />
+          <use id="boxes-box-bottom-right" xlink:href="#boxes-box-top-left" transform="translate(400 400)" />
+          <use id="boxes-box-bottom-left" xlink:href="#boxes-box-top-left" transform="translate(0 400)" />
+
+          <use id="boxes-box-center" xlink:href="#boxes-box-top-left" transform="translate(200 200)" />
+          <use id="boxes-box-center-right" xlink:href="#boxes-box-center" transform="translate(400 0)" />
+          <use id="boxes-box-center-bottom-right" xlink:href="#boxes-box-center" transform="translate(400 400)" />
+          <use id="boxes-box-center-bottom" xlink:href="#boxes-box-center" transform="translate(0 400)" />
+          <use id="boxes-box-center-bottom-left" xlink:href="#boxes-box-center" transform="translate(-400 400)" />
+          <use id="boxes-box-center-left" xlink:href="#boxes-box-center" transform="translate(-400 0)" />
+          <use id="boxes-box-center-top-left" xlink:href="#boxes-box-center" transform="translate(-400 -400)" />
+          <use id="boxes-box-center-top" xlink:href="#boxes-box-center" transform="translate(0 -400)" />
+          <use id="boxes-box-center-top-right" xlink:href="#boxes-box-center" transform="translate(400 -400)" />
+        </g>
+
+        <g title="cross top" transform="matrix(1, 0, 0, 1, 0, -400)">
+          <g title="cross center">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
           </g>
-          <g>
-            <title>cross center-y</title>
-            <g>
-              <title>cross center</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 400, 0)">
-              <title>cross right</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, -400, 0)">
-              <title>cross left</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
+          <g title="cross right" transform="matrix(1, 0, 0, 1, 400, 0)">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1, 0, 400)">
-            <title>cross bottom</title>
-            <g>
-              <title>cross center</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, 400, 0)">
-              <title>cross right</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-            <g transform="matrix(1, 0, 0, 1, -400, 0)">
-              <title>cross left</title>
-              <path d="M 420 420 L 380 380"/>
-              <path d="M 420 380 L 380 420"/>
-            </g>
-          </g>
-          <g>
-            <title>squares small</title>
-            <rect x="180" y="180" width="40" height="40"/>
-            <rect x="580" y="180" width="40" height="40"/>
-            <rect x="180" y="580" width="40" height="40"/>
-            <rect x="580" y="580" width="40" height="40"/>
+          <g title="cross left" transform="matrix(1, 0, 0, 1, -400, 0)">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
           </g>
         </g>
+        <g>
+          <title>cross center-y</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 400)">
+          <title>cross bottom</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>squares small</title>
+          <rect x="180" y="180" width="40" height="40"/>
+          <rect x="580" y="180" width="40" height="40"/>
+          <rect x="180" y="580" width="40" height="40"/>
+          <rect x="580" y="580" width="40" height="40"/>
+        </g>
+      </g>
+    </g>
+
+    <g title="circles and text">
+      <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" class="fillfg">
+        <text fill="black" x="100" y="100">F1L</text>
+        <text fill="black" x="300" y="100">M2L</text>
+        <text fill="black" x="500" y="100">F4L</text>
+        <text fill="black" x="700" y="100">M3L</text>
+        <text fill="black" x="100" y="300">F2S</text>
+        <text fill="black" x="300" y="300">M1S</text>
+        <text fill="black" x="500" y="300">F3S</text>
+        <text fill="black" x="700" y="300">M4S</text>
+        <text fill="black" x="100" y="500">F3L</text>
+        <text fill="black" x="300" y="500">M4L</text>
+        <text fill="black" x="500" y="500">F2L</text>
+        <text fill="black" x="700" y="500">M1L</text>
+        <text fill="black" x="100" y="700">F4S</text>
+        <text fill="black" x="300" y="700">M3S</text>
+        <text fill="black" x="500" y="700">F1S</text>
+        <text fill="black" x="700" y="700">M2S</text>
+      </g>
     </g>
 
   </g>

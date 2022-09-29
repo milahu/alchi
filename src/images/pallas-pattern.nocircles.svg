@@ -10,85 +10,86 @@
   >
   <defs>
     <style type="text/css">
-        svg { --fg: black; --bg: white; } /* light mode */
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: white; --bg: black; } /* dark mode */
-          }
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: white; --bg: black; } /* dark mode */
+      svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: white; --bg: black; } /* dark mode */
         }
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-          }
-
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      @media screen {
+        @media (prefers-color-scheme: dark) { 
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
         }
 
-        .fig1 .stroke {
-          stroke-width: 2;
-          stroke: black; /* fallback when css variables are not supported */
-          stroke: var(--fg);
-        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
 
-        .nofill {
-          fill: none;
-        }
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
 
-        .fillbg {
-          fill: white;
-          fill: var(--bg);
-        }
+      .nofill {
+        fill: none;
+      }
 
-        .fillfg {
-          fill: black;
-          fill: var(--fg);
-        }
-      </style>
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }
+    </style>
   </defs>
 
   <g class="fig1">
-
 
 
     <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
 
 
 
-        
-        <g title="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
-          <g title="simple pattern">
-            <g title="single lines orthogonal: single lines outside squares">
-              <g id="nocircles-square-top-right">
-                <title>top right square, no circles</title>
-                <path d="M 700 100 L 700 300"/>
-                <path d="M 500 100 L 500 300"/>
-                <path d="M 500 300 L 700 300"/>
-                <path d="M 500 100 L 700 100"/>
-              </g>
-              
-              <use id="nocircles-square-top-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 0)" />
-              <use id="nocircles-square-bottom-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 400)" />
-              <use id="nocircles-square-bottom-right" xlink:href="#nocircles-square-top-right" transform="translate(0 400)" />
+
+      
+      <g title="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <g title="simple pattern">
+          <g title="single lines orthogonal: single lines outside squares">
+            <g id="nocircles-square-top-right">
+              <title>top right square, no circles</title>
+              <path d="M 700 100 L 700 300"/>
+              <path d="M 500 100 L 500 300"/>
+              <path d="M 500 300 L 700 300"/>
+              <path d="M 500 100 L 700 100"/>
             </g>
-            <g id="nocircles-cross-center">
-              <path title="center bottom-left to top-right" d="M 500 300 L 300 500"/>
-              <path title="center top-left to bottom-right" d="M 500 500 L 300 300"/>
-            </g>
-            <use id="nocircles-cross-left" xlink:href="#nocircles-cross-center" transform="translate(-400 0)" />
-            <use id="nocircles-cross-right" xlink:href="#nocircles-cross-center" transform="translate(400 0)" />
-            <use id="nocircles-cross-top" xlink:href="#nocircles-cross-center" transform="translate(0 -400)" />
-            <use id="nocircles-cross-bottom" xlink:href="#nocircles-cross-center" transform="translate(0 400)" />
-            <use id="nocircles-cross-top-left" xlink:href="#nocircles-cross-center" transform="translate(-400 -400)" />
-            <use id="nocircles-cross-top-right" xlink:href="#nocircles-cross-center" transform="translate(400 -400)" />
-            <use id="nocircles-cross-bottom-left" xlink:href="#nocircles-cross-center" transform="translate(-400 400)" />
-            <use id="nocircles-cross-bottom-right" xlink:href="#nocircles-cross-center" transform="translate(400 400)" />
+            
+            <use id="nocircles-square-top-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 0)" />
+            <use id="nocircles-square-bottom-left" xlink:href="#nocircles-square-top-right" transform="translate(-400 400)" />
+            <use id="nocircles-square-bottom-right" xlink:href="#nocircles-square-top-right" transform="translate(0 400)" />
           </g>
+          <g id="nocircles-cross-center">
+            <path title="center bottom-left to top-right" d="M 500 300 L 300 500"/>
+            <path title="center top-left to bottom-right" d="M 500 500 L 300 300"/>
+          </g>
+          <use id="nocircles-cross-left" xlink:href="#nocircles-cross-center" transform="translate(-400 0)" />
+          <use id="nocircles-cross-right" xlink:href="#nocircles-cross-center" transform="translate(400 0)" />
+          <use id="nocircles-cross-top" xlink:href="#nocircles-cross-center" transform="translate(0 -400)" />
+          <use id="nocircles-cross-bottom" xlink:href="#nocircles-cross-center" transform="translate(0 400)" />
+          <use id="nocircles-cross-top-left" xlink:href="#nocircles-cross-center" transform="translate(-400 -400)" />
+          <use id="nocircles-cross-top-right" xlink:href="#nocircles-cross-center" transform="translate(400 -400)" />
+          <use id="nocircles-cross-bottom-left" xlink:href="#nocircles-cross-center" transform="translate(-400 400)" />
+          <use id="nocircles-cross-bottom-right" xlink:href="#nocircles-cross-center" transform="translate(400 400)" />
         </g>
+      </g>
 
     </g>
+
 
   </g>
 </svg>
