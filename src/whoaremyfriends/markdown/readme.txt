@@ -9,6 +9,13 @@ elder.js
 svelte SSG
 https://github.com/elderjs/elderjs
 
+docpress
+https://github.com/docpress/docpress
+Documentation website generator
+examples with gitbook template
+https://mythbusters.js.org/
+https://help.mapgeo.io/
+
 Publii
 CMS, desktop app, beginner friendly
 https://github.com/GetPublii/Publii
