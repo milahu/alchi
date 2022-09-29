@@ -6,6 +6,11 @@
 # install dependencies with
 # npm install
 
+set -e
+
+# debug
+#set -x
+
 basename=pallas-pattern
 
 defaultconfigname='simple'
@@ -13,7 +18,28 @@ defaultconfigname='simple'
 tempdir=$(mktemp -d)
 echo "tempdir: $tempdir"
 
+configfile_list=()
+
+if [ -n "$1" ]; then
+configfile_list+=("$1")
+else
 for configfile in "$basename".*.json
+do
+configfile_list+=("$configfile")
+done
+fi
+
+# debug
+echo "configfile_list:"
+for configfile in "${configfile_list[@]}"
+do
+echo "  $configfile"
+done
+
+# debug
+#exit
+
+for configfile in "${configfile_list[@]}"
 do
 
 echo "configfile: $configfile"
