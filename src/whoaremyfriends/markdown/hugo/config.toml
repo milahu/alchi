@@ -1,0 +1,11 @@
+# TODO shorter
+baseURL = 'http://localhost/'
+languageCode = 'de-de'
+#title = 'Pallas. Ich und meine sechs Freunde. Gruppenaufbau nach Persönlichkeitstyp'
+title = 'Pallas'
+theme = "hugo-book"
+
+# https://gohugo.io/getting-started/configuration-markup
+[markup.goldmark.renderer]
+# allow raw html in markdown
+unsafe = true

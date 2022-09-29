@@ -1,0 +1,34 @@
+{
+  "name": "whoaremyfriends/markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+   "test-html": "html-validate --config=htmlvalidate.config.json wersindmeinefreunde.html",
+   "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "detect-indent": "^7.0.1",
+    "fast-glob": "^3.2.12",
+    "limax": "^3.0.0",
+    "node-html-parser": "^6.1.1"
+  },
+  "devDependencies": {
+    "hast-util-to-html": "^8.0.3",
+    "html-validate": "^7.5.0",
+    "prettier": "^2.7.1",
+    "rehype-parse": "^8.0.4",
+    "rehype-remark": "^9.1.2",
+    "rehype-stringify": "^9.0.3",
+    "remark-html": "^15.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-prettier": "^2.0.0",
+    "remark-rehype": "^10.1.0",
+    "remark-stringify": "^10.0.2",
+    "unified": "^10.1.2"
+  }
+}

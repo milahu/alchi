@@ -1,0 +1,293 @@
+<style type="text/css">
+  div.table > ol {
+    display: grid;
+    grid-template-columns: 12fr repeat(4, 10fr);
+    /* grid-gap has same size as outline */
+    grid-gap: 1px;
+
+    /*
+    justify-content: stretch;
+    start | end | center | stretch | space-around | space-between | space-evenly;    
+    */
+
+    /*
+    box-sizing: border-box;
+    grid-gap:10px;
+    */
+
+  }
+
+  div.table > ol > li > p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  div.table > ol > li {
+    text-align: center;
+  }
+
+  div.table > ol > li:nth-child(5n + 1) {
+    margin-right: 3px;
+    text-align: left;
+    /* debug
+    color: red;
+    */
+  }
+
+  div.table > ol > li {
+    display: block;
+    /*
+    border: solid 1px black;
+    */
+    outline: solid 1px black;
+    /* collapse borders. not working
+    margin-bottom: -1px
+    margin-right: -1px
+    */
+    /* border = grid line */
+    /* column/row = grid track */
+  }
+
+a.annotation {
+/*
+background: yellow;
+*/
+color: black !important;
+background: rgba(255, 255, 0, 0.6);
+}
+a.annotation:hover {
+/* ugly in darkmode */
+background: yellow;
+/* dont underline */
+text-decoration: none !important;
+}
+
+/* FIXME this has no effect */
+/* darkmode */
+@media (prefers-color-scheme: dark) {
+a.annotation {
+background: rgba(255, 255, 0, 0.3) !important;
+/* debug */
+background: red;
+}
+a.annotation:hover {
+background: rgba(255, 255, 0, 0.6) !important;
+}
+} /* darkmode */
+html[data-darkreader-mode] {
+a.annotation {
+background: rgba(255, 255, 0, 0.3) !important;
+/* debug */
+background: red;
+}
+a.annotation:hover {
+background: rgba(255, 255, 0, 0.6) !important;
+}
+} /* darkmode */
+
+@media print {
+a.annotation {
+background: none;
+}
+}
+
+/*details.annotation {*/
+/* details > */
+/*
+hide arrow of details
+https://stackoverflow.com/questions/60829427/how-to-remove-the-arrow-on-the-side-of-the-summary-element
+https://stackoverflow.com/questions/6195329/how-can-you-hide-the-arrow-that-is-displayed-by-default-on-the-html5-details-e
+https://stackoverflow.com/questions/45346806/details-and-summary-delete-or-hide-arrow
+*/
+/* not working in chrome */
+details summary::marker {
+  display:none;
+  content: "";
+}
+/* chrome? */
+details summary::-webkit-details-marker {
+  display:none;
+  content: "";
+}
+
+::marker{ display:none; }
+::marker { content: ""; }
+summary{ list-style: none }
+summary{ display: none; }
+summary{ content: ""; }
+/* ... not working */
+
+
+
+details.annotation.active,
+div.annotation-details.active {
+display: inline-block;
+}
+
+details.annotation.active {
+display: inline-block;
+}
+
+/* horizontal center */
+div.annotation-details-inner {
+/*background:red; /* debug */
+display: inline-block;
+/* left and right padding */
+padding: 0 1em;
+max-width: 100%;
+max-height: 80vh;
+border: solid 1px black;
+border-radius: 5px;
+background: white; /* not transparent */
+overflow: auto;
+}
+
+details,
+div.annotation-details,
+details.annotation {
+display: none;
+position: absolute;
+
+/* horizontal center */
+/* debug */
+/*border: solid 1px red;*/
+/* max width of annotation box. relative to window width */
+/* TODO should be relative to content width = 80% */
+width: 60%;
+margin: 0 auto;
+left: 0;
+right: 0;
+/* center the inner div */
+text-align: center;
+}
+
+</style>
+
+<script>
+
+function handleDOMContentLoaded() {
+
+console.log('handleDOMContentLoaded: transforming elements: <details class="annotation">')
+
+// TODO also transform <div class="annotation" title="..">
+
+// transform annotations
+// more fancy: http://www.bigfootjs.com/
+for (const a of Array.from(document.querySelectorAll('a'))) {
+const href = a.getAttribute('href');
+if (!href.startsWith('#')) continue;
+
+const id = href.slice(1);
+//const details = document.querySelector(`#${id}`);
+// workaround. mdbook adds <xxx id="asdf"> for internal links from headings
+const details = document.querySelector(`details#${id}`);
+if (!details) continue;
+
+a.classList.add('annotation')
+
+//console.log(`transform`, details);
+
+// hide details
+//details.hidden = true;
+//details.style.display = 'none';
+
+// replace <details class="annotation"> with <div class="annotation-details">
+// note: <div class="annotation" title=".."> is used already
+// to remove the default "> Details" summary element
+const div = document.createElement('div');
+// divInner is needed for horizontal center
+const divInner = document.createElement('div');
+divInner.classList.add('annotation-details-inner');
+div.appendChild(divInner);
+//div.innerHTML = details.innerHTML;
+divInner.innerHTML = details.innerHTML;
+div.classList.add('annotation-details');
+div.setAttribute('id', id);
+details.replaceWith(div);
+
+/* only on <details>
+details.ontoggle = () => {
+if (details.open == false) {
+details.classList.remove('active');
+}
+} // details.ontoggle
+*/
+
+// show details on click
+a.onclick = (event) => {
+console.log(`click`, event);
+
+// TODO close other annotations
+
+if (a.classList.contains('active')) {
+// close annotation
+a.classList.remove('active');
+//details.classList.remove('active');
+div.classList.remove('active');
+return false; // dont scroll to link target
+}
+
+a.classList.add('active');
+//details.classList.add('active');
+div.classList.add('active');
+
+// TODO sizes key? offset or client
+
+//details.style.top = (event.target.offsetTop + event.target.offsetHeight) + 'px';
+div.style.top = (event.target.offsetTop + event.target.offsetHeight) + 'px';
+
+// horizontal center: easy with a wrapper element
+//details.style.left = event.target.offsetLeft + 'px';
+//console.log(`div width`, div.offsetWidth, div.clientWidth)
+
+// only on <details>
+//details.open = true;
+
+//details.hidden = false;
+
+return false // dont scroll to link target
+
+} // a.onclick
+
+//a.removeAttribute('href')
+
+} // for (const a
+
+
+
+if (0) {
+
+//for (const details of document.querySelectorAll('details.annotation')) {
+for (const details of Array.from(document.querySelectorAll('details.annotation'))) {
+
+//console.log('details', details)
+
+// tabindex="-1"
+// make it focusable
+// https://allyjs.io/data-tables/focusable.html
+details.setAttribute('tabindex', '-1')
+
+details.onfocus = () => {
+if (!details.open) {
+details.open = true;
+
+// add a "close and back" button
+// TODO remove closeButton on details close
+let closeButton = `<a class="back" onclick="this.parentNode.open = false; window.history.go(-1)">back</a>`
+details.innerHTML = closeButton + details.innerHTML
+}
+
+} // onfocus
+
+} // for
+
+} // if (0)
+
+} // handleDOMContentLoaded
+
+document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+
+// this is called later, after all media (images...) are loaded
+//window.onload = handleDOMContentLoaded
+
+</script>

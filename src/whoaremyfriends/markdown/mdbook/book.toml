@@ -1,0 +1,32 @@
+[book]
+authors = ["Milan Hauth"]
+language = "de"
+
+# TODO
+multilingual = false
+
+src = "src"
+title = "Pallas: Ich und meine sechs Freunde"
+
+
+# https://rust-lang.github.io/mdBook/format/configuration/renderers.html#html-renderer-options
+[output.html]
+
+# Convert straight quotes to curly quotes, except for those that occur in code blocks and code spans. Defaults to false.
+# too much. i only want -- -> &mdash;
+# -> https://rust-lang.github.io/mdBook/format/configuration/preprocessors.html
+#curly-quotes = true
+
+git-repository-url = "https://github.com/milahu/alchi"
+git-repository-icon = "fa-github"
+
+# FIXME path
+#edit-url-template = "https://github.com/milahuu/alchi/edit/master/src/book/{path}"
+
+# escape doublequotes in attributes
+# done in transform-html.js
+#[preprocessor.fix-html]
+#command = "python mdbook-fix-html.py"
+
+#[preprocessor.inline-svg]
+#command = "node mdbook-inline-svg.js"
