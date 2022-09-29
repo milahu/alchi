@@ -1,0 +1,245 @@
+<svg title="alchi.pallas-pattern.1-2"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="-200 -200 800 800"
+  >
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) {
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) {
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig1 .stroke {
+      stroke-width: 2;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+    }
+
+    .nofill {
+      fill: none;
+    }
+
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <g class="fig1">
+    <g class="stroke nofill" transform="translate(800,800)">
+      <path d="m160 100h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-1340h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260 660h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-540h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m158 618-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m916 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-284 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-182-358h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80" stroke="#000"/>
+    </g>
+    <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+      <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="100" class="fillfg">F1L</text>
+
+      <circle cx="300" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="100" class="fillfg">M2L</text>
+
+      <circle cx="500" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="100" class="fillfg">F4L</text>
+
+      <circle cx="700" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="100" class="fillfg">M3L</text>
+
+      <circle cx="100" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="300" class="fillfg">F2S</text>
+
+      <circle cx="300" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="300" class="fillfg">M1S</text>
+
+      <circle cx="500" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="300" class="fillfg">F3S</text>
+
+      <circle cx="700" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="300" class="fillfg">M4S</text>
+
+      <circle cx="100" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="500" class="fillfg">F3L</text>
+
+      <circle cx="300" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="500" class="fillfg">M4L</text>
+
+      <circle cx="500" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="500" class="fillfg">F2L</text>
+
+      <circle cx="700" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="500" class="fillfg">M1L</text>
+
+      <circle cx="100" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="700" class="fillfg">F4S</text>
+
+      <circle cx="300" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="700" class="fillfg">M3S</text>
+
+      <circle cx="500" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="700" class="fillfg">F1S</text>
+
+      <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="700" class="fillfg">M2S</text>
+    </g>
+    <g transform="translate(-800,0)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+      <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="100" class="fillfg">F1L</text>
+
+      <circle cx="300" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="100" class="fillfg">M2L</text>
+
+      <circle cx="500" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="100" class="fillfg">F4L</text>
+
+      <circle cx="700" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="100" class="fillfg">M3L</text>
+
+      <circle cx="100" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="300" class="fillfg">F2S</text>
+
+      <circle cx="300" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="300" class="fillfg">M1S</text>
+
+      <circle cx="500" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="300" class="fillfg">F3S</text>
+
+      <circle cx="700" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="300" class="fillfg">M4S</text>
+
+      <circle cx="100" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="500" class="fillfg">F3L</text>
+
+      <circle cx="300" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="500" class="fillfg">M4L</text>
+
+      <circle cx="500" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="500" class="fillfg">F2L</text>
+
+      <circle cx="700" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="500" class="fillfg">M1L</text>
+
+      <circle cx="100" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="700" class="fillfg">F4S</text>
+
+      <circle cx="300" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="700" class="fillfg">M3S</text>
+
+      <circle cx="500" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="700" class="fillfg">F1S</text>
+
+      <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="700" class="fillfg">M2S</text>
+    </g>
+    <g transform="translate(-800,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+      <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="100" class="fillfg">F1L</text>
+
+      <circle cx="300" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="100" class="fillfg">M2L</text>
+
+      <circle cx="500" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="100" class="fillfg">F4L</text>
+
+      <circle cx="700" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="100" class="fillfg">M3L</text>
+
+      <circle cx="100" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="300" class="fillfg">F2S</text>
+
+      <circle cx="300" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="300" class="fillfg">M1S</text>
+
+      <circle cx="500" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="300" class="fillfg">F3S</text>
+
+      <circle cx="700" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="300" class="fillfg">M4S</text>
+
+      <circle cx="100" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="500" class="fillfg">F3L</text>
+
+      <circle cx="300" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="500" class="fillfg">M4L</text>
+
+      <circle cx="500" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="500" class="fillfg">F2L</text>
+
+      <circle cx="700" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="500" class="fillfg">M1L</text>
+
+      <circle cx="100" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="700" class="fillfg">F4S</text>
+
+      <circle cx="300" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="700" class="fillfg">M3S</text>
+
+      <circle cx="500" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="700" class="fillfg">F1S</text>
+
+      <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="700" class="fillfg">M2S</text>
+    </g>
+    <g transform="translate(0,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+      <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="100" class="fillfg">F1L</text>
+
+      <circle cx="300" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="100" class="fillfg">M2L</text>
+
+      <circle cx="500" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="100" class="fillfg">F4L</text>
+
+      <circle cx="700" cy="100" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="100" class="fillfg">M3L</text>
+
+      <circle cx="100" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="300" class="fillfg">F2S</text>
+
+      <circle cx="300" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="300" class="fillfg">M1S</text>
+
+      <circle cx="500" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="300" class="fillfg">F3S</text>
+
+      <circle cx="700" cy="300" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="300" class="fillfg">M4S</text>
+
+      <circle cx="100" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="500" class="fillfg">F3L</text>
+
+      <circle cx="300" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="500" class="fillfg">M4L</text>
+
+      <circle cx="500" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="500" class="fillfg">F2L</text>
+
+      <circle cx="700" cy="500" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="500" class="fillfg">M1L</text>
+
+      <circle cx="100" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="100" y="700" class="fillfg">F4S</text>
+
+      <circle cx="300" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="300" y="700" class="fillfg">M3S</text>
+
+      <circle cx="500" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="500" y="700" class="fillfg">F1S</text>
+
+      <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
+      <text x="700" y="700" class="fillfg">M2S</text>
+    </g>
+  </g>
+</svg>

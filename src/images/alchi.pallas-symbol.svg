@@ -1,0 +1,26 @@
+<svg class="pallas-symbol" 
+  viewBox="0 0 220 220"
+  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+  <!--
+    svg 2.0 is not yet supported by inkscape :(
+
+    svg 1.1: <use xlink:href="#alchi-pallas-symbol" />
+    svg 2.0: <use href="#alchi-pallas-symbol" />
+  -->
+  <defs>
+    <symbol id="alchi-pallas-symbol">
+      <path
+        transform="translate(110, 110)"
+        fill="none" stroke="black" stroke-width="4"
+        stroke-linejoin="round" stroke-linecap="round"
+        d="
+          M0+0 l50-50 l-50-50 l-50+50 z
+          M0+0 v100
+          M-50+50 h100
+        "
+      ></path>
+    </symbol>
+  </defs>
+  <use xlink:href="#alchi-pallas-symbol"/>
+</svg>

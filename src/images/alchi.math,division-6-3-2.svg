@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<svg title="multiplication" viewBox="-195 -195 390 390" style="width:auto;margin:auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg title="division" viewBox="-195 -195 390 390" style="width:auto;margin:auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- FIXME this breaks when embedding into html
+  the first arrow (id="arrow") is right
+  the other arrows are wrong
+  -->
   <defs>
     <style type="text/css">
         svg { --fg: black; --bg: white; } /* light mode */
@@ -50,29 +54,23 @@
       <circle cx="0" cy="0" r="100" fill="none" stroke="red" />
       <circle cx="0" cy="0" r="140" fill="none" stroke="red" />
     </g>
-    <!-- TODO top arc -->
-    <circle display="none" cx="0" cy="0" r="130" fill="none" stroke="black" stroke-width="2" />
-    <circle display="none" cx="0" cy="0" r="130" fill="none" stroke="black" stroke-width="2" />
-    <!-- arc path:
-      <path d="M -130 0 A rx ry x-axis-rotation large-arc-flag sweep-flag x y" stroke="black" stroke-width="2">
-    -->
     <path title="big arc top" d="M -130 0 m 90 0 h -90 A 130 130 0 0 1 130 0 h -90" fill="none" stroke="black" stroke-width="2"/>
 
     <g title="">
       <g title="division lines" stroke="black" stroke-width="2">
-        <g id="arrowin" transform="scale(-1 -1)">
-          <path d="M 0 0 M 0 50 V 80"/>
-          <path d="M 0 50 m 10 10 l -10 -10 l -10 10" fill="none" />
-        </g>
-        <use xlink:href="#arrowin" transform="rotate(60)"/>
-        <use xlink:href="#arrowin" transform="rotate(-60)"/>
-        <use xlink:href="#arrowin" transform="translate(0 130)"/>
+        <!-- inverse
+        <path id="arrow" d="M 0,0 m 0,-50 l 0,-30 m 0,30 m 10,-10 l -10,10 l -10,-10" fill="none"/>
+        -->
+        <path id="arrow" d="M 0,0 m 0,-50 l 0,-30 m 10,10 l -10,-10 l -10,10" fill="none"/>
+        <use xlink:href="#arrow" transform="rotate(60)"/>
+        <use xlink:href="#arrow" transform="rotate(-60)"/>
+        <use xlink:href="#arrow" transform="translate(0 130)"/>
         <!-- TODO arg segment border lines -->
         <g id="segmentborder" transform="scale(-1 -1)">
           <path d="M 0 40 V 130" transform="rotate(30)"/>
           <path d="M 0 40 V 130" transform="rotate(-30)"/>
         </g>
-        <g display="none" id="arrowout">
+        <g display="none" id="arrowin">
           <path d="M 0 0 M 0 30 V 70"/>
           <path d="M 0 70 l -10 -10"/>
           <path d="M 0 70 l +10 -10"/>

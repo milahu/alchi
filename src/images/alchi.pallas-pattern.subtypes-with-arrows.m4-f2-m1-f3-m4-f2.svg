@@ -1,0 +1,70 @@
+<svg title="pallas-pattern.subtypes-with-arrows.m4-f2-m1-f3-m4-f2"
+  version="1.1" viewBox="0 200 1200 200"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <style>svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) {
+          svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      @media screen {
+        @media (prefers-color-scheme: dark) {
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
+
+      .nofill {
+        fill: none;
+      }
+
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }</style>
+  <g class="fig1" transform="translate(200)">
+    <!-- start generated svg -->
+    <!-- variant: four squares, one cross -->
+    <g dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
+      <!-- NOTE no age -->
+      <circle class="stroke nofill" cx="100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="100" y="300">F2</text>
+      <circle class="stroke nofill" cx="300" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="300" y="300">M1</text>
+      <circle class="stroke nofill" cx="500" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="500" y="300">F3</text>
+      <circle class="stroke nofill" cx="700" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="700" y="300">M4</text>
+      <circle class="stroke nofill" cx="-100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="-100" y="300">M4</text>
+      <circle class="stroke nofill" cx="900" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
+      <text class="fillfg" x="900" y="300">F2</text>
+      <g id="g5966">
+        <!-- arrow head. workaround for chrome. inkscape arrow head is not working: <path marker-end="url(#Arrow2Mend)"> -->
+        <path transform="translate(-163 .63606)" d="m804.78 227.38 11.784 25.491-25.491-11.784c7.0239-1.0689 12.543-6.6222 13.707-13.707z" fill-rule="evenodd" fill="#000" stroke="#000" stroke-linejoin="round" stroke-width=".11963"/>
+        <!-- arrow line -->
+        <path d="m342.43 257.57c67.307-67.307 241.07-74.076 308.38-6.7697" fill="none" stroke="#000" stroke-width="2"/>
+      </g>
+      <use id="use6288" transform="rotate(180 300 300)" width="100%" height="100%" xlink:href="#g5966"/>
+      <use transform="translate(199.99)" width="100%" height="100%" xlink:href="#g5966"/>
+      <use transform="translate(200)" width="100%" height="100%" xlink:href="#use6288"/>
+    </g>
+    <!-- end generated svg -->
+  </g>
+</svg>

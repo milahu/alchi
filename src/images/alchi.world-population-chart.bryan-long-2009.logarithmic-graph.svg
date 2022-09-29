@@ -1,0 +1,135 @@
+<svg version="1.1" viewBox="0 0 182.38 123.17" xmlns="http://www.w3.org/2000/svg">
+  <title>world-population-chart.bryan-long-2009.logarithmic-graph</title>
+  <description>based on http://econosystemics.com/?p=9</description>
+  <defs>
+    <marker id="Arrow1Mstart" overflow="visible" orient="auto">
+      <path transform="matrix(.4 0 0 .4 4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+    </marker>
+    <marker id="Arrow1Mend" overflow="visible" orient="auto">
+      <path transform="matrix(-.4 0 0 -.4 -4 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd" stroke="context-stroke" stroke-width="1pt"/>
+    </marker>
+  </defs>
+  <g transform="translate(-20.087 -85.282)">
+    <rect x="20.087" y="85.282" width="182.38" height="123.17" fill="#fff" fill-rule="evenodd" stroke-width=".22482"/>
+    <path d="m27.95 197.15 151.88 8e-3v-108.91" fill="none" marker-end="url(#Arrow1Mend)" marker-start="url(#Arrow1Mstart)" stroke="#000" stroke-width=".26458px"/>
+    <!-- graph: global human population, log scale -->
+    <path d="m27.967 179.92c4.6979-0.48077 9.4302-0.94554 12.031-1.1459 6.391-0.49229 31.661 1.3488 41.037 0.35546 9.3767-0.99333 20.433-6.0141 26.023-9.8855 5.5896-3.8715 27.816-13.35 31.601-16.932 3.7852-3.5816 10.042-14.69 10.794-15.455s1.0906 0.27165 2.2671 0.14623c1.1765-0.12543 1.6419-1.9407 2.8587-1.7594 1.2168 0.18132 1.465 1.8066 3.1014 1.8054 1.6364-1e-3 3.3858-0.65495 3.9685-0.53959 0.58265 0.11535 0.54481-1.3118 1.3918-1.3118 0.84694 0 1.4028 0.52057 1.6411-0.19593 0.23834-0.71651-0.15303-3.2821 0.85768-3.5507 1.0107-0.26858 0.6776 0.77154 1.464 0.68183 0.78639-0.0897 0.56411-3.7512 1.5424-3.7301 0.97828 0.0211 1.4138 1.8013 2.3313 1.7948 0.91749-7e-3 1.4274-5.3566 2.547-5.2809 1.1197 0.0757 0.62212 1.2338 1.3256 1.2338s3.1254-11.29 3.6072-14.805c0.48177-3.5153 1.3125-14.903 1.3125-14.903" fill="none" stroke="#000" stroke-width=".51788"/>
+    <g transform="translate(-1.0876)" fill="none" stroke="#000" stroke-width=".26458px">
+      <path d="m180.92 189.23h3.7607"/>
+      <path d="m180.92 184.58h3.7607"/>
+      <path d="m180.92 181.33h3.7607"/>
+      <path d="m180.92 178.72h3.7607"/>
+      <path d="m180.92 176.63h3.7607"/>
+      <path d="m180.92 174.94h3.7607"/>
+      <path d="m180.92 173.43h3.7607"/>
+      <path d="m180.92 172.11h3.7607"/>
+      <path d="m180.92 170.85h3.7607"/>
+      <g transform="translate(0 -26.368)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+      <g transform="translate(0 -52.645)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+      <g transform="translate(0 -78.917)">
+        <path d="m180.92 189.23h3.7607"/>
+        <path d="m180.92 184.58h3.7607"/>
+        <path d="m180.92 181.33h3.7607"/>
+        <path d="m180.92 178.72h3.7607"/>
+        <path d="m180.92 176.63h3.7607"/>
+        <path d="m180.92 174.94h3.7607"/>
+        <path d="m180.92 173.43h3.7607"/>
+        <path d="m180.92 172.11h3.7607"/>
+        <path d="m180.92 170.85h3.7607"/>
+      </g>
+    </g>
+    <path d="m173.12 125.03v72.122" fill="none" stroke="#000" stroke-width=".26458px"/>
+    <path d="m149.43 136.89v60.26" fill="none" stroke="#000" stroke-width=".26458px"/>
+    <g transform="translate(.27565)">
+      <g transform="matrix(1 0 0 2.5604 0 -307.6)" fill="none" stroke="#000" stroke-width=".26458px">
+        <path d="m179.55 197.13v0.85321"/>
+        <path d="m165.77 197.13v0.85321"/>
+        <path d="m151.99 197.13v0.85321"/>
+        <path d="m138.21 197.13v0.85321"/>
+        <path d="m124.43 197.13v0.85321"/>
+        <path d="m110.64 197.13v0.85321"/>
+        <path d="m83.079 197.13v0.85321"/>
+        <path d="m96.861 197.13v0.85321"/>
+        <path d="m69.297 197.13v0.85321"/>
+        <path d="m55.514 197.13v0.85321"/>
+        <path d="m41.732 197.13v0.85321"/>
+      </g>
+      <g font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-anchor="middle">
+        <text x="179.55566" y="203.48607" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="179.55566" y="203.48607" font-size="3.5278px" stroke-width=".26458">0</tspan></text>
+        <text x="165.77254" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="165.77254" y="203.53603" font-size="3.5278px" stroke-width=".26458">1000</tspan></text>
+        <text x="151.99026" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="151.99026" y="203.53603" font-size="3.5278px" stroke-width=".26458">2000</tspan></text>
+        <text x="138.19594" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="138.19594" y="203.53603" font-size="3.5278px" stroke-width=".26458">3000</tspan></text>
+        <text x="124.40849" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="124.40849" y="203.53603" font-size="3.5278px" stroke-width=".26458">4000</tspan></text>
+        <text x="110.67445" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="110.67445" y="203.53603" font-size="3.5278px" stroke-width=".26458">5000</tspan></text>
+        <text x="96.842216" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="96.842216" y="203.53603" font-size="3.5278px" stroke-width=".26458">6000</tspan></text>
+        <text x="83.072861" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="83.072861" y="203.53603" font-size="3.5278px" stroke-width=".26458">7000</tspan></text>
+        <text x="69.296608" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="69.296608" y="203.53603" font-size="3.5278px" stroke-width=".26458">8000</tspan></text>
+        <text x="55.514324" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="55.514324" y="203.53603" font-size="3.5278px" stroke-width=".26458">9000</tspan></text>
+        <text x="41.738075" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10000</tspan></text>
+      </g>
+    </g>
+    <g font-family="sans-serif" stroke-width=".26458" text-anchor="middle">
+      <g font-size="3.5278px">
+        <text x="188.37381" y="198.43936" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="198.43936" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">1</tspan></text>
+        <text x="188.37381" y="172.13287" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="172.13287" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10</tspan></text>
+        <text x="188.37381" y="145.76482" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="145.76482" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">100</tspan></text>
+        <text x="188.37381" y="119.48749" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="119.48749" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">1000</tspan></text>
+        <text x="188.37381" y="93.216339" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="93.216339" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10000</tspan></text>
+        <text x="27.949768" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.949768" y="203.53603" font-size="3.5278px" stroke-width=".26458">Years</tspan></text>
+      </g>
+      <text x="27.785782" y="97.292755" font-size="4.9389px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.785782" y="97.292755" font-size="4.9389px" stroke-width=".26458" text-align="start" text-anchor="start">World Population</tspan></text>
+      <text x="27.488127" y="110.53831" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="110.53831" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">in Million Humans, logarithmic scale</tspan></text>
+      <text x="27.488127" y="117.02924" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="117.02924" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10000 years</tspan></text>
+      <text x="27.488127" y="137.44823" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="137.44823" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">(c) 2009 Bryan K. Long</tspan></text>
+      <text x="27.488127" y="143.30658" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="143.30658" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">http://econosystemics.com/?p=9</tspan></text>
+    </g>
+    <g transform="translate(-21.936)">
+      <text x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-align="center" text-anchor="middle" style="line-height:1.25" xml:space="preserve"><tspan x="135.72267" y="95.351952" font-size="3.5278px" stroke-width=".26458">8000 Million Humans in year 2020</tspan></text>
+      <path d="m168.3 94.379h8.2931" fill="none" marker-end="url(#Arrow1Mend)" stroke="#000" stroke-width=".26458px"/>
+    </g>
+    <g font-family="sans-serif" font-size="4.2333px" stroke-width=".26458" text-anchor="middle">
+      <text x="51.604794" y="188.05453" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="51.604794" y="188.05453" font-size="4.2333px" stroke-width=".26458">Semi-Nomadic Era</tspan></text>
+      <text x="119.68132" y="176.08015" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="119.68132" y="176.08015" font-size="4.2333px" stroke-width=".26458">City States</tspan></text>
+      <text x="159.93082" y="154.6176" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="159.93082" y="154.6176" font-size="4.2333px" stroke-width=".26458">Empires</tspan></text>
+      <text transform="rotate(-90)" x="-138.52907" y="177.94925" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="-138.52907" y="177.94925" font-size="4.2333px" stroke-width=".26458">Global</tspan></text>
+    </g>
+    <path d="m90.08 177.21v19.942" fill="none" stroke="#000" stroke-width=".26458px"/>
+    <g font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-anchor="middle">
+      <text x="42.339771" y="175.02097" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="42.339771" y="175.02097" font-size="3.5278px" stroke-width=".26458">Early Agriculture</tspan></text>
+      <text x="64.002998" y="168.44278" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="64.002998" y="168.44278" font-size="3.5278px" stroke-width=".26458">Copper</tspan></text>
+      <text x="90.966606" y="170.53709" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="90.966606" y="170.53709" font-size="3.5278px" stroke-width=".26458">Wheel</tspan></text>
+      <text x="101.05252" y="153.35725" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="101.05252" y="153.35725" font-size="3.5278px" stroke-width=".26458">Irrigation</tspan></text>
+      <text x="100.27689" y="159.16676" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="100.27689" y="159.16676" font-size="3.5278px" stroke-width=".26458">Wood Plow</tspan></text>
+      <text x="117.46384" y="146.5674" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="117.46384" y="146.5674" font-size="3.5278px" stroke-width=".26458">Bronze</tspan></text>
+      <text x="127.57859" y="139.46359" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="127.57859" y="139.46359" font-size="3.5278px" stroke-width=".26458">Iron</tspan></text>
+      <text x="141.02661" y="133.228" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="141.02661" y="133.228" font-size="3.5278px" stroke-width=".26458">Metal Plow</tspan></text>
+      <text x="154.90468" y="123.79401" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="154.90468" y="123.79401" font-size="3.5278px" stroke-width=".26458">Water Mills</tspan></text>
+      <text x="154.91161" y="128.19908" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="154.91161" y="128.19908" font-size="3.5278px" stroke-width=".26458">Wind Mills</tspan></text>
+      <text x="170.3678" y="122.80343" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="170.3678" y="122.80343" font-size="3.5278px" stroke-width=".26458">Coal</tspan></text>
+      <text x="170.31664" y="115.85435" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="170.31664" y="115.85435" font-size="3.5278px" stroke-width=".26458">Steam</tspan></text>
+      <text x="169.13686" y="107.78757" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="169.13686" y="107.78757" font-size="3.5278px" stroke-width=".26458">Electricity</tspan></text>
+      <text x="168.94328" y="101.43417" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="168.94328" y="101.43417" font-size="3.5278px" stroke-width=".26458">Oil + Gas</tspan></text>
+      <text x="168.90126" y="95.930222" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="168.90126" y="95.930222" font-size="3.5278px" stroke-width=".26458">Fertilizer</tspan></text>
+    </g>
+  </g>
+</svg>

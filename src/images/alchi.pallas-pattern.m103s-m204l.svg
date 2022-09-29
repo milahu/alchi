@@ -1,0 +1,56 @@
+<svg title="alchi.pallas-pattern.m103s-m204l"
+  version="1.1" viewBox="-200 400 800 200" xmlns="http://www.w3.org/2000/svg">
+  <style>svg { --fg: black; --bg: white; } /* light mode */
+      @media screen {
+        @media (prefers-color-scheme: dark) {
+          svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      @media screen {
+        @media (prefers-color-scheme: dark) {
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        [data-darkreader-mode="dynamic"]
+          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
+
+      .nofill {
+        fill: none;
+      }
+
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }</style>
+  <g class="fig1">
+    <g class="stroke nofill" transform="translate(800,600)">
+      <path d="m160 100h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-1340h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260 660h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-540h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m158 618-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m916 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-284 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-182-358h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80" stroke="#000"/>
+    </g>
+    <g dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
+      <circle class="stroke nofill" cx="100" cy="500" r="60" stroke-width="2"/>
+      <text class="fillfg" x="100" y="500">M1S</text>
+      <circle class="stroke nofill" cx="300" cy="500" r="60" stroke-width="2"/>
+      <text class="fillfg" x="300" y="500">M2L</text>
+      <circle class="stroke nofill" cx="500" cy="500" r="60" stroke-width="2"/>
+      <text class="fillfg" x="500" y="500">M3S</text>
+    </g>
+    <g transform="translate(-800,0)" dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
+      <circle class="stroke nofill" cx="700" cy="500" r="60" stroke-width="2"/>
+      <text class="fillfg" x="700" y="500">M4L</text>
+    </g>
+  </g>
+</svg>
