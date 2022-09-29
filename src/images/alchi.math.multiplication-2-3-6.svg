@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<svg title="multiplication" viewBox="-195 -195 390 390" style="width:auto;margin:auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg title="multiplication"
+  viewBox="-195 -195 390 390"
+  width="390" height="390"
+  style="margin: auto;"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
   <defs>
     <style type="text/css">
         svg { --fg: black; --bg: white; } /* light mode */

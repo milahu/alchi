@@ -1,0 +1,158 @@
+<svg title="pallas-pattern.simple"
+  viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin: auto;"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+  <defs>
+    <style type="text/css">
+        svg { --fg: black; --bg: white; } /* light mode */
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: white; --bg: black; } /* dark mode */
+          }
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: white; --bg: black; } /* dark mode */
+        }
+        @media screen {
+          @media (prefers-color-scheme: dark) { 
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+          }
+
+          [data-darkreader-mode="dynamic"]
+            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+        }
+
+        .fig1 .stroke {
+          stroke-width: 2;
+          stroke: black; /* fallback when css variables are not supported */
+          stroke: var(--fg);
+        }
+
+        .nofill {
+          fill: none;
+        }
+
+        .fillbg {
+          fill: white;
+          fill: var(--bg);
+        }
+
+        .fillfg {
+          fill: black;
+          fill: var(--fg);
+        }
+      </style>
+  </defs>
+
+  <g class="fig1">
+
+
+      <g title="text and circles">
+        <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
+          <text x="100" y="100">F1L</text>
+          <text x="300" y="100">M2L</text>
+          <text x="500" y="100">F4L</text>
+          <text x="700" y="100">M3L</text>
+          <text x="100" y="300">F2S</text>
+          <text x="300" y="300">M1S</text>
+          <text x="500" y="300">F3S</text>
+          <text x="700" y="300">M4S</text>
+          <text x="100" y="500">F3L</text>
+          <text x="300" y="500">M4L</text>
+          <text x="500" y="500">F2L</text>
+          <text x="700" y="500">M1L</text>
+          <text x="100" y="700">F4S</text>
+          <text x="300" y="700">M3S</text>
+          <text x="500" y="700">F1S</text>
+          <text x="700" y="700">M2S</text>
+        </g>
+        <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+          <title>Circles</title>
+          <circle cx="100" cy="100" r="60"/>
+          <circle cx="300" cy="100" r="60"/>
+          <circle cx="500" cy="100" r="60"/>
+          <circle cx="700" cy="100" r="60"/>
+          <circle cx="100" cy="300" r="60"/>
+          <circle cx="300" cy="300" r="60"/>
+          <circle cx="500" cy="300" r="60"/>
+          <circle cx="700" cy="300" r="60"/>
+          <circle cx="100" cy="500" r="60"/>
+          <circle cx="300" cy="500" r="60"/>
+          <circle cx="500" cy="500" r="60"/>
+          <circle cx="700" cy="500" r="60"/>
+          <circle cx="100" cy="700" r="60"/>
+          <circle cx="300" cy="700" r="60"/>
+          <circle cx="500" cy="700" r="60"/>
+          <circle cx="700" cy="700" r="60"/>
+        </g>
+      </g>
+
+    <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+
+
+        <g title="simple pattern">
+          <g title="single lines orthogonal: single lines outside squares">
+            <g>
+              <title>bottom left</title>
+              <path title="right" d="M 300 560 L 300 640"/>
+              <path title="left" d="M 100 560 L 100 640"/>
+              <path title="bottom" d="M 160 700 L 240 700"/>
+              <path title="top" d="M 160 500 L 240 500"/>
+            </g>
+            <g>
+              <title>bottom right</title>
+              <path title="right" d="M 700 560 L 700 640"/>
+              <path title="left" d="M 500 560 L 500 640"/>
+              <path title="bottom" d="M 560 700 L 640 700"/>
+              <path title="top" d="M 560 500 L 640 500"/>
+            </g>
+            <g>
+              <title>top right</title>
+              <!-- TODO add titles -->
+              <path d="M 700 160 L 700 240"/>
+              <path d="M 500 160 L 500 240"/>
+              <path d="M 560 300 L 640 300"/>
+              <path d="M 560 100 L 640 100"/>
+            </g>
+            <g>
+              <title>top left</title>
+              <!-- TODO add titles -->
+              <path d="M 300 160 L 300 240"/>
+              <path d="M 100 160 L 100 240"/>
+              <path d="M 160 300 L 240 300"/>
+              <path d="M 160 100 L 240 100"/>
+            </g>
+          </g>
+          <g title="single lines diagonal">
+            <g title="left">
+              <path d="M 0 400 L 58 458"/>
+              <path d="M 0 400 L 58 342"/>
+            </g>
+            <g title="right">
+              <path d="M 800 400 L 742 458"/>
+              <path d="M 800 400 L 742 342"/>
+            </g>
+            <g title="bottom">
+              <path d="M 400 800 L 458 742"/>
+              <path d="M 400 800 L 342 742"/>
+            </g>
+            <g title="top">
+              <path d="M 400 0 L 458 58"/>
+              <path d="M 400 0 L 342 58"/>
+            </g>
+            <path title="top right" d="M 800 0 L 742 58"/>
+            <path title="bottom left" d="M 0 800 L 58 742"/>
+            <path title="bottom right" d="M 800 800 L 742 742"/>
+            <path title="top left" d="M 0 0 L 58 58"/>
+            <path title="center bottom-left to top-right" d="M 458 342 L 342 458"/>
+            <path title="center top-left to bottom-right" d="M 458 458 L 342 342"/>
+          </g>
+        </g>
+
+
+    </g>
+
+  </g>
+</svg>

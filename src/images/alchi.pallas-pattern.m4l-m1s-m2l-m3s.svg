@@ -1,5 +1,7 @@
 <svg title="alchi.pallas-pattern.m103s-m204l"
-  version="1.1" viewBox="-200 400 800 200" xmlns="http://www.w3.org/2000/svg">
+  version="1.1" viewBox="-200 400 800 200" xmlns="http://www.w3.org/2000/svg"
+  style="width:auto; height:auto; margin: auto;"
+  >
   <style>svg { --fg: black; --bg: white; } /* light mode */
       @media screen {
         @media (prefers-color-scheme: dark) {
