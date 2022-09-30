@@ -1,4 +1,10 @@
-#!/bin/sh
+#! /bin/sh
+
+# start a webserver without caching
+# for local development and browsing
+
+# dont use "python -m http.server"
+# as we cannot easily disable caching
 
 script="$(readlink -f "$0")"
 
