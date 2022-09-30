@@ -1,0 +1,9 @@
+add 
+width="400" height="200"
+style="margin:auto;"
+to all svg images
+
+remove
+class="foldme" 
+
+sync from filename to <svg title="....">
