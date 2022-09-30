@@ -1,3 +1,0 @@
-[submodule "src/whoaremyfriends/new/node-html-parser"]
-	path = src/whoaremyfriends/new/node-html-parser
-	url = https://github.com/milahu/node-html-parser
