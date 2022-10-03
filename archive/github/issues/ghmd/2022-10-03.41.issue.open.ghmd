@@ -1,0 +1,30 @@
+# [\#41 Issue](https://github.com/milahu/alchi/issues/41) `open`: rendering-fehler in der grafik alchi.pallas-pattern.roundlines.svg
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-10-03 07:44](https://github.com/milahu/alchi/issues/41):
+
+[src/images/alchi.pallas-pattern.roundlines.svg](https://github.com/milahu/alchi/blob/master/src/images/alchi.pallas-pattern.roundlines.svg)
+
+manche viewer rendern die grafik richtig: chrome, firefox
+
+andere viewer renern die grafik falsch: inkscape, boxy svg editor
+
+idealer weise sollten alle viewer die grafik gleich rendern
+
+die png's sind [mit inkscape gerendert](https://github.com/milahu/alchi/blob/master/src/images/src/svg2png.sh), deswegen sind die auch falsch
+
+inkscape kann nur svg version 1
+vielleicht muss man den "roundline" pfad in `<svg><defs><symbol>....` stecken
+
+```xml
+<path title="top" id="roundline" d="M 300 300 A 140 140 0 0 0 500 300"/>
+```
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+[Export of Github issue for [milahu/alchi](https://github.com/milahu/alchi).]
