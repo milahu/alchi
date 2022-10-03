@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<svg title="addition" viewBox="0 0 390 190" xmlns="http://www.w3.org/2000/svg">
+<svg title="addition"
+  viewBox="0 0 390 190"
+  xmlns="http://www.w3.org/2000/svg"
+  >
   <defs>
     <style type="text/css">
         svg { --fg: black; --bg: white; } /* light mode */
