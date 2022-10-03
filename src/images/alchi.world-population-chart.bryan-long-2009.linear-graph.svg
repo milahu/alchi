@@ -10,7 +10,9 @@
   </defs>
   <g transform="translate(-20.087 54.74)">
     <g transform="translate(0 -276.88)">
+      <!-- white background
       <rect x="20.087" y="222.14" width="182.38" height="123.17" fill="#fff" fill-rule="evenodd" stroke-width=".22482"/>
+      -->
       <g transform="translate(0 13.717)">
         <path d="m27.95 320.32 151.88 8e-3v-110.16" fill="none" marker-end="url(#Arrow1Mend)" marker-start="url(#Arrow1Mstart)" stroke="#000" stroke-width=".26458px"/>
         <g transform="translate(.27565 123.17)">
