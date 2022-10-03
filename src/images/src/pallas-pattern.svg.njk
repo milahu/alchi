@@ -4,9 +4,10 @@
 
 <svg title="pallas-pattern{% if simple %}.simple{% endif %}{% if doublelines %}.doublelines{% endif %}{% if roundlines %}.roundlines{% endif %}{% if nocircles %}.nocircles{% endif %}{% if boxes %}.boxes{% endif %}"
   viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin:auto"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  style="width:auto;margin:auto"
   >
   <defs>
     <style type="text/css">
@@ -74,6 +75,11 @@
     <g title="Pattern lines" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
 
       {% if roundlines %}
+      <!-- FIXME the arcs should be between the circles, not between the center points,
+        so we dont need the <circle class="fillbg"> workaround.
+        class="fillbg" looks ugly in darkreader with external svg images <img src="image.svg">.
+        = svg should be fully transparent.
+      -->
       <g title="roundlines pattern">
         <g display="" title="concave lines = cross groups">
           <g id="concave-lines-center-row">
