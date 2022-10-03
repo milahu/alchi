@@ -1,0 +1,85 @@
+
+<svg version="1.1" viewBox="0 200 800 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    svg { --fg: black; --bg: white; } /* light mode */
+    @media screen {
+      @media (prefers-color-scheme: dark) {
+        svg { --fg: white; --bg: black; } /* dark mode */
+      }
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: white; --bg: black; } /* dark mode */
+    }
+    @media screen {
+      @media (prefers-color-scheme: dark) {
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+      }
+
+      [data-darkreader-mode="dynamic"]
+        svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
+    }
+
+    .fig1 .stroke {
+      stroke-width: 2;
+      stroke: black; /* fallback when css variables are not supported */
+      stroke: var(--fg);
+    }
+
+    .nofill {
+      fill: none;
+    }
+
+    .fillbg {
+      fill: white;
+      fill: var(--bg);
+    }
+
+    .fillfg {
+      fill: black;
+      fill: var(--fg);
+    }
+  </style>
+  <g class="fig1" transform="translate(0,500)">
+    <g dominant-baseline="middle" fill="none" font-family="sans" font-size="40px" stroke="#000" text-anchor="middle">
+      <g transform="translate(0,-600)">
+        <text class="fillfg" x="100" y="400" fill="#000" stroke="none">13</text>
+        <text class="fillfg" x="698.56" y="400" fill="#000" stroke="none">24</text>
+        <g transform="translate(0,200)" fill="none" stroke="#000" stroke-width="2">
+          <rect x="150" y="175" width="100" height="50"/>
+          <rect x="250" y="175" width="100" height="50"/>
+          <rect x="350" y="175" width="100" height="50"/>
+          <rect x="450" y="175" width="100" height="50"/>
+          <rect x="550" y="175" width="100" height="50"/>
+        </g>
+      </g>
+      <text class="fillfg" x="100" y="0" fill="#000" stroke="none">14</text>
+      <text class="fillfg" x="698.56" y="0" fill="#000" stroke="none">23</text>
+      <g transform="translate(0,-200)" fill="none" stroke="#000" stroke-width="2">
+        <rect x="150" y="175" width="100" height="50"/>
+        <rect x="250" y="175" width="100" height="50"/>
+        <rect x="350" y="175" width="100" height="50"/>
+        <rect x="450" y="175" width="100" height="50"/>
+        <rect x="550" y="175" width="100" height="50"/>
+      </g>
+      <g transform="translate(-200,-400)">
+        <text class="fillfg" x="500" y="300" fill="#000" font-size="34.667px" stroke="none">103</text>
+        <circle class="stroke nofill" cx="500" cy="300" r="50" fill="none" stroke="#000" stroke-width="2"/>
+      </g>
+      <g transform="translate(200,-400)">
+        <text class="fillfg" x="300" y="300" fill="#000" font-size="34.667px" stroke="none">402</text>
+        <circle class="stroke nofill" cx="300" cy="300" r="50" fill="none" stroke="#000" stroke-width="2"/>
+      </g>
+      <g transform="rotate(180,450,-100)">
+        <circle transform="scale(-1,1)" cx="-500" cy="-200" r="6" fill="#000" stroke="none"/>
+        <circle transform="scale(-1,1)" cx="-300" r="6" fill="#000" stroke="none"/>
+        <path d="m364.69-64.692-64.692 64.692" fill="none" stroke="#000" stroke-width="2"/>
+        <path d="m500-200-64.845 64.845" fill="none" stroke="#000" stroke-width="2"/>
+      </g>
+      <g transform="matrix(1,0,0,-1,-100,-200)">
+        <circle transform="scale(-1,1)" cx="-500" cy="-200" r="6" fill="#000" stroke="none"/>
+        <circle transform="scale(-1,1)" cx="-300" r="6" fill="#000" stroke="none"/>
+        <path d="m364.69-64.692-64.692 64.692" fill="none" stroke="#000" stroke-width="2"/>
+        <path d="m500-200-64.845 64.845" fill="none" stroke="#000" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
