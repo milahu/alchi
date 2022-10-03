@@ -430,8 +430,17 @@
       /*margin-bottom: -5em; TODO calc this with javascript? */
     }
     div.para {
+      /* note: margins are collapsed
+        https://stackoverflow.com/questions/3069921/what-is-the-point-of-css-collapsing-margins
+      */
       margin-top: 0.5em;
-      line-height: 120%;
+      margin-bottom: 0.5em;
+      line-height: 110%;
+    }
+    table.four-basetypes,
+    table.two-properties {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
     }
     .nowrap {
       white-space: nowrap;
@@ -507,6 +516,39 @@
     table.four-basetypes tbody+tbody tr:first-child * {
       border-top: solid 1px black;
     }
+
+    table.two-properties {
+      border-spacing: 2px 0;
+      /*white-space: nowrap;*//* no linebreaks */
+      font-size: 90%; /* FIXME this has no effect */
+      /* workaround for smaller font size */
+      /*
+      transform: scale(0.86);
+      margin-bottom: -2.5em;
+      */
+      transform-origin: top left;
+    }
+    table.two-properties th {
+      border-right: solid 1px black; /* FIXME pixel hinting */
+      text-align: right;
+      vertical-align: top;
+      padding-right: 5px;
+      font-weight: normal;
+    }
+    table.two-properties td {
+      border-left: solid 1px black; /* FIXME pixel hinting */
+      vertical-align: top;
+    }
+    table.two-properties td {
+      text-align: right;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+    table.two-properties td+td {
+      text-align: left;
+      padding-left: 5px;
+    }
+
     a {
       text-decoration: none;
       color: blue;
@@ -3804,93 +3846,106 @@ TODO style="break-before:page"?
 <div class="para">
   Eine Eigenschaft darf neutral sein,
   dann muss die andere Eigenschaft extrem sein.
-  Beispiel: mittel-alt und extrem männlich (Typen 104 und 401).
+  Beispiel: mittel-alt und extrem männlich = Typen 104 und 401.
   Später mehr dazu im Kapitel "Subtypen".
 </div>
+
+<div class="para">
+  Wortfelder sind besser als Tabellen mit Vier Typen,
+  weil Gegenwörter kann man leichter finden
+  als Vier-Wort-Gruppen.
+</div>
+
+
 
 <section id="inner-properties-inner-gender">
 
 <h3>Inneres Geschlecht</h3>
 
-<table>
+<table class="two-properties">
   <tr>
-    <td>Typen</td>
+    <th>Typen</th>
     <td>14</td>
     <td>23</td>
   </tr>
   <tr>
-    <td></td>
-    <td>männlich</td>
-    <td>weiblich</td>
+    <th>Gehirn</th>
+    <td>männliches Gehirn</td>
+    <td>weibliches Gehirn</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>tough-minded</td>
     <td>tender-minded</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>sachlich</td>
     <td>emotional</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Bindungen</th>
     <td>Einzelgänger</td>
     <td>gesellig</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>braucht Einsamkeit</td>
     <td>braucht Gesellschaft</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Freigeist</td>
     <td>Mitläufer</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Politik</th>
     <td>Rechts</td>
     <td>Links</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <th>Schlaf</th>
+    <td>leichter Schlaf</td>
     <td>tiefer Schlaf</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <th></th>
+    <td>schwache Träume</td>
     <td>lebhafte Träume</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Bewegung</th>
     <td>Feinmotorik</td>
     <td>Grobmotorik</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Talent</th>
     <td>Hard Skills</td>
     <td>Soft Skills</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Task Focus</td>
     <td>People Focus</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
+    <td>mit Autos spielen</td>
+    <td>mit Puppen spielen</td>
+  </tr>
+  <tr>
+    <th></th>
     <td>kompetent</td>
     <td>kommunikativ</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Denker</td>
     <td>Redner</td>
   </tr>
   <!-- template
   <tr>
-    <td></td>
+    <th></th>
     <td></td>
     <td></td>
   </tr>
@@ -3904,55 +3959,70 @@ TODO style="break-before:page"?
 
 <h3>Inneres Alter</h3>
 
-<table>
+<table class="two-properties">
   <tr>
-    <td>Typen</td>
+    <th>Typen</th>
     <td>13</td>
     <td>24</td>
   </tr>
   <tr>
-    <td></td>
-    <td>jung</td>
-    <td>alt</td>
+    <th>Gehirn</th>
+    <td>junges Gehirn</td>
+    <td>altes Gehirn</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
+    <td>Fühlen</td>
+    <td>Wissen</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>Neugier</td>
+    <td>Erfahrung</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>ablenkbar</td>
+    <td>Starrsinn</td>
+  </tr>
+  <tr>
+    <th>Politik</th>
     <td>Freiheit</td>
     <td>Sicherheit</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Arbeit</th>
     <td>Forschung</td>
     <td>Produktion</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Strategie</th>
     <td>Änderung</td>
     <td>Wiederholung</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Abwechslung</td>
     <td>Routine</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Variation</td>
     <td>Monotonie</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Open Minded</td>
     <td>Narrow Minded</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Glückspiel</td>
     <td>Geduldspiel</td>
   </tr>
   <!--
   <tr>
-    <td></td>
+    <th></th>
     <td></td>
     <td></td>
   </tr>
@@ -3974,50 +4044,60 @@ TODO style="break-before:page"?
   Jeder Typ ist <b>Doppeltes Gegenteil</b> vom anderen Typ.
 </div>
 
-<table>
+<table class="two-properties">
   <tr>
-    <td>Typen</td>
+    <th>Typen</th>
     <td>12</td>
     <td>34</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Korrelationen</th>
+    <td>männlich = jung</td>
+    <td>weiblich = jung</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>weiblich = alt</td>
+    <td>männlich = alt</td>
+  </tr>
+  <tr>
+    <th>Kultur</th>
     <td>Primitivkultur</td>
     <td>Hochkultur</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Politik</th>
     <td>Kapitalismus</td>
     <td>Sozialismus</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Individualismus</td>
     <td>Kollektivismus</td>
   </tr>
   <tr>
-    <td></td>
+    <th></th>
     <td>Egoisten</td>
     <td>Altruisten</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Sport</th>
     <td>Einzelkämpfer</td>
     <td>Teamsport</td>
   </tr>
   <tr>
-    <td>William Sheldon</td>
+    <th>William Sheldon</th>
     <td>mesomorph</td>
     <td>extramorph</td>
   </tr>
   <tr>
-    <td></td>
+    <th>Gewichtsklasse</th>
     <td>Mittelgewicht</td>
     <td>Extremgewicht</td>
   </tr>
   <!--
   <tr>
-    <td></td>
+    <th></th>
     <td></td>
     <td></td>
   </tr>
@@ -7763,25 +7843,6 @@ TODO are <section> nested or flat?
 
 
 
-<section id="pallas-fragments-wordfield-13-24">
-
-<h3>Wortfeld 13-24</h3>
-
-<div class="para">
-  13 - 24
-  = Generalist - Spezialist
-  = Fühlen - Wissen
-  = Neugier - Erfahrung
-  = Ablenkung - Geduld
-  = Open Mind - Narrow Mind
-  = Forschung - Produktion
-  = junges Hirn - altes Hirn
-</div>
-
-</section>
-
-
-
 <!-- TODO move -->
 <section id="pallas-todo-why-am-i-doing-this">
 
@@ -10476,11 +10537,6 @@ but for deliverance from fear.
     auch "autoritarismus"?
     auch "totalitarismus": monokultur, universalismus, gleichschaltung, homogene gruppen, gleichheit.
     "fashion" ist oberflächlich, äussere werte, symptome.
-
-    TODO wortfelder zeigen als tabelle mit 2 spalten.
-    besser als tabelle mit 4 spalten,
-    weil man gegenwörter leichter finden kann,
-    weil man einen kontrast besser sehen kann als ein viereck.
 
     fass dich kurz! kurz ist wurz.
   '>
