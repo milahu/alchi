@@ -11,7 +11,10 @@ set -e
 # debug
 #set -x
 
-basename=pallas-pattern
+basename=$(basename "$0")
+basename=${basename%*.generate.sh}
+
+echo "basename: $basename"
 
 defaultconfigname='simple'
 
