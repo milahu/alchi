@@ -1,5 +1,7 @@
 <!doctype html>
 
+<!-- TODO messung körperspannung gegen signal ground -->
+
 <html lang="de">
 
 <!-- NOTE please use a text editor with automatic code folding
@@ -76,7 +78,7 @@
   <!-- meta#version -->
   <!-- TODO update -->
   <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-  <meta id="version" name="dcterms.modified" content="2022-10-05">
+  <meta id="version" name="dcterms.modified" content="2022-10-27 draft">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -470,6 +472,7 @@
       line-height: 110%;
     }
     table.four-basetypes,
+    table.two-parents,
     table.two-properties {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
@@ -586,6 +589,43 @@
       text-align: left;
       padding-left: 5px;
     }
+
+
+
+    table.two-parents {
+      border-spacing: 0;
+      font-size: 90%; /* FIXME this has no effect */
+      transform-origin: top left;
+    }
+    table.two-parents thead > tr > th {
+      border-bottom: solid 1px black;
+      padding-bottom: 5px;
+    }
+    table.two-parents tbody > tr:first-child > td {
+      padding-top: 5px;
+    }
+    table.two-parents th {
+      text-align: left;
+      vertical-align: top;
+      font-weight: normal;
+    }
+    table.two-parents td {
+      vertical-align: top;
+    }
+    table.two-parents th,
+    table.two-parents td {
+      text-align: right;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+    table.two-parents th+th,
+    table.two-parents td+td {
+      border-left: solid 1px black;
+      text-align: left;
+      padding-left: 5px;
+    }
+
+
 
     a {
       text-decoration: none;
@@ -2426,6 +2466,15 @@
       <td>Sommer</td>
       <td>Winter</td>
     </tr>
+    <!--
+    <tr>
+      <th scope="row"></th>
+      <td>Fall</td>
+      <td>Wuchs</td>
+      <td>Leben</td>
+      <td>Tod</td>
+    </tr>
+    -->
     <tr>
       <th scope="row"><a class="nofootnote" href="https://en.wikipedia.org/wiki/Jungian_cognitive_functions">Carl Jung</a></th>
       <td>Ntuition</td>
@@ -2983,8 +3032,12 @@ TODO style="break-before:page"?
   Weil "Tier" ist das Gegenteil von "Pflanze".
 </div>
 
-</section>
+<div class="para">
+  Oder:
+  1234 = Tier Pflanze Mensch Geist.
+</div>
 
+</section>
 
 
 
@@ -3209,10 +3262,6 @@ TODO style="break-before:page"?
   Deswegen tragen Typen 34 lieber rote oder grüne Kleider,
   oder wählen lieber rote oder grüne Parteien.
 </div>
-
-
-
-<hr>
 
 
 
@@ -3907,13 +3956,18 @@ TODO style="break-before:page"?
   </tr>
   <tr>
     <th scope="row">Politik</th>
-    <td>Rechts</td>
-    <td>Links</td>
+    <td>Rechts?</td>
+    <td>Links?</td>
   </tr>
   <tr>
     <th scope="row">Schlaf</th>
     <td>leichter Schlaf</td>
     <td>tiefer Schlaf</td>
+  </tr>
+  <tr>
+    <th scope="row">Schlaf</th>
+    <td>spät Einschlafen</td>
+    <td>früh Einschlafen</td>
   </tr>
   <tr>
     <th scope="row"></th>
@@ -4026,6 +4080,11 @@ TODO style="break-before:page"?
     <td>Wiederholung</td>
   </tr>
   <tr>
+    <th scope="row">Schlaf</th>
+    <td>früh Aufstehen</td>
+    <td>spät Aufstehen</td>
+  </tr>
+  <tr>
     <th scope="row"></th>
     <td>Abwechslung</td>
     <td>Routine</td>
@@ -4049,6 +4108,46 @@ TODO style="break-before:page"?
     <th scope="row"></th>
     <td>Glückspiel</td>
     <td>Geduldspiel</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Spannung lösen</td>
+    <td>Spannung aufbauen</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>spontan aktiv</td>
+    <td>geplant aktiv</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Macher</td>
+    <td>Denker</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>erst Machen (dann Denken)</td>
+    <td>erst Denken (dann Machen)</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>erst Probieren</td>
+    <td>erst Verstehen</td>
+  </tr>
+  <tr>
+    <th scope="row">Oberkörper</th>
+    <td>breit</td>
+    <td>lang</td>
+  </tr>
+  <tr>
+    <th scope="row">Haare</th>
+    <td>kurz</td>
+    <td>lang</td>
+  </tr>
+  <tr>
+    <th scope="row">T-Shirt</th>
+    <td>Round-Neck</td>
+    <td>V-Neck</td>
   </tr>
   <!--
   <tr>
@@ -4142,10 +4241,6 @@ TODO style="break-before:page"?
 
 </section>
 <!-- end of <section id="inner-properties" -->
-
-
-
-<hr>
 
 
 
@@ -4515,6 +4610,7 @@ TODO move
   also wenn sein Subtyp stabilere Bindungen zum gleichen Geschlecht hat,
   dann hat dieser Mensch auch "heterosexuelle" Bindungen (zum anderen Geschlecht),
   aber diese Bindungen sind eher labil (weniger stabil, seltener).
+  Sex ist auch "nur" ein Bonding Ritual, also ein Weg zu mehr Nähe.
 </div>
 
 </section>
@@ -6395,11 +6491,11 @@ TODO move
 
 <section id="concepts-electrosmog">
 
-<h3>Elektrosmog</h3>
+<h3>Elektrosmog macht müde</h3>
 
 <div class="para">
   TODO move:
-  Elektrosmog macht müde.
+  (TODO messung. Woher 16 KHz? Stromnetz? Monitor? Netzteil? Messfehler?)
   Mit Elektrosmog meine ich vor allem die 16 KiloHertz Oberwellen im Stromnetz.
   Diese Oberwellen werden produziert von Leistungselektronik (Inverter, Netzteile).
   Elektrosmog stört die Schlafqualität, deswegen sind alle immer so müde ("Esmog ist Opium fürs Volk").
@@ -6407,6 +6503,25 @@ TODO move
   trockene Nase, trockener Mund, rote Augen, Tinnitus.
   Das 16 KHz Fiepen wird lauter, wenn wir in Displays glotzen oder Tochscreens berühren,
   deswegen sind diese Elektronik-"Spielzeuge" so interessant für Kinder und Erwachsene.
+</div>
+
+<div class="para">
+  "Das System" sagt Elektrosmog ist toll,
+  weil damit sind die Untertanen zu schwach für Widerstand.
+  Technische Unterdrückung.
+  Massen-Hypnose.
+  Crowd Control.
+  Eine Minderheit kontrolliert die Mehrheit.
+  Wenige Wärter gegen viele Gefangene.
+</div>
+
+<div class="para">
+  Elektrosmog macht Displays so faszinierend.
+  Wenn wir in Displays glotzen, dann wird das Fiepen lauter.
+  Wir haben eine "Sucht nach Displays".
+  Wir wollen das Fiepen konfrontieren und bekämpfen,
+  aber jedes Display ist eine Falle, die unser Hirn stört.
+  Esmog macht müde, Esmog macht unsensibel (blind und taub) ...
 </div>
 
 </section>
@@ -6433,10 +6548,6 @@ TODO move
 </div>
 
 </section>
-
-
-
-<hr>
 
 
 
@@ -6560,10 +6671,6 @@ TODO move
   und unsere Körper schwimmen kopf-voraus nach oben.
   Also "Flugträume" sind eigentlich Schwimmträume von unserem Fisch-Hirn.
 </div>
-
-
-
-<hr>
 
 
 
@@ -7689,8 +7796,11 @@ TODO are <section> nested or flat?
   Jeder soll dieses Grundwissen haben.
   Weil Geld verdirbt alles.
   Weil Geld verschleiert die wahren Kosten.
-  Die wahren Kosten sind:
-  Man muss sich reinlesen und reindenken in meiner Arbeit.
+</div>
+
+<div class="para">
+  Was sind die wahren Kosten?
+  Man muss sich reinlesen und reindenken in meine Arbeit.
   Man muss aus dem Kaninchenbau (Rabbit Hole)
   wieder zurückfinden in die echte Welt.
   Man muss die Welt nicht schöner reden, sondern schöner machen.
@@ -7815,6 +7925,149 @@ TODO are <section> nested or flat?
 
 
 
+<hr>
+
+
+
+<!-- TODO move -->
+<!--
+<section id="todo-death-by-boredom">
+-->
+<section id="todo-repetition-is-hypnosis">
+
+<h4>Hamsterrad und Tunnelblick</h4>
+
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:90%" src="../images/memes/animal-traps.why-would-a-fly-ever-land-on-something-that-looks-like-that.square.svg">
+</div>
+
+<div class="para">
+  Wiederholung ist die Grundlage für Hypnose ...<br>
+  Wiederholung ist die Grundlage für Hypnose ...<br>
+  Wiederholung ist die Grundlage für Hypnose ...<br>
+  Wiederholung ist die Grundlage für Hypnose ...
+</div>
+
+<div class="para">
+  Verstehst du's jetzt?
+</div>
+
+<div class="para">
+  Wir machen JEDEN TAG die gleiche Scheisse,
+  und wir wundern uns warum wir so blöd sind.
+  Monotonie macht blöd.
+  Einseitigkeit macht blöd.
+  Und genau das ist ja das Ziel unserer Vorgesetzten:
+  Und blöd machen, damit wir uns weiter ausbeuten lassen.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<!-- TODO more research. messfehler? 16 khz signal von PC monitor?
+<section id="electrosmog-is-psychotorture">
+
+<h4>
+  Elektrosmog macht müde
+</h4>
+
+<!-xxxxxxxxxxx- TODO messung körperspannung gegen signal ground
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:90%" src="../images/memes/todo.svg">
+</div>
+-xxxxxxxxxxxxxx->
+
+<div class="para">
+  Elektrosmog ist ein Tabu-Thema.
+  Wer an Elektrosmog glaubt er ist verrückt.
+  Warum?
+</div>
+
+<div class="para">
+  Was ist Elektrosmog?
+  Ich meine vor allem die niedrigen Frequenzen:
+  Die Netzfrequenz (50 Hertz)
+  und die Störsignale im Akustik-Spektrum bis 20 KiloHertz.
+</div>
+
+<div class="para">
+  Störsignale?
+  Vor allem im Bereich von 16 KiloHertz.
+  Warum?
+  IGBT Transistoren.
+  <!-xxxxxxxxxxxxxxxx-
+    https://en.wikipedia.org/wiki/Insulated-gate_bipolar_transistor
+    high voltage, high current, low switching frequencies = IGBT Transistor
+    low voltage, medium current, high switching frequencies = MOSFET Transistor
+
+    igbt transistor switching frequency
+    https://www.google.com/search?q=igbt+transistor+switching+frequency
+    IGBTs are commonly used at a switching frequency lower than 20 kHz
+
+    some of my "confused" posts ...
+    https://www.tinnitustalk.com/threads/16-khz-tinnitus.15638/
+  -xxxxxxxxxxxxxxxx->
+  Leistungselektronik.
+  Schaltnetzteile.
+</div>
+
+<div class="para">
+  16 KiloHertz ist genau mein Tinnitus-Ton.
+  Such mal bei Youtube nach "16 khz sine wave"
+  und gönn dir das Fiepen. Ätzend oder?
+  Dieses Fiepen höre ich vor allem beim Einschlafen ...
+</div>
+
+<div class="para">
+  Problem?
+  Schlafmangel.
+  Schlechte Schlaf-Qualität.
+  Egal wie lange ich schlafe, ich bin den ganzen Tag müde.
+  (Schlafentzug ist eine Form von Folter.)
+  Vielleicht ist Kaffee deswegen so beliebt.
+</div>
+
+<div class="para">
+  Weitere Symptome von Elektrosmog:
+  Trockene Schleimhäute (Immunschwäche),
+  trockene Nase, gereizte Augen.
+</div>
+
+<div class="para">
+  Das Problem ist:
+  Man kann die Scheisse nicht abschirmen.
+  Ich habs versucht,
+  ich habe für 2000 EUR mein Schlafzimmer "abgeschirmt",
+  aber das Material (YShield HNV 80) schirmt nur hohe Frequenzen.
+  Jetzt hab ich in meinem Schlafzimmer kein WLAN und kein Mobilfunk,
+  aber immer noch das 50 Hz Brummen und das 16 KHz Fiepen.
+</div>
+
+<div class="para">
+  Deswegen macht mir LSD keinen Spaß.
+  In dieser kaputten Welt will ich nicht sensibel sein,
+  in dieser kaputten Welt brauche ich "Betäubungsmittel" wie Alkohol.
+</div>
+
+<div class="para">
+  Die niedrigen Frequenzen sind so penetrant (durchdringend),
+  dass sie genutzt werden für Uboot-Kommunikation durch Salzwasser ...
+  von wegen "Aluhut".
+</div>
+
+<div class="para">
+  Das Einzige was wirklich hilft ist Stromausfall.
+  Aber der Stromausfall kommt ja bald,
+  also wenigstens hab ich dann ein Problem weniger.
+</div>
+
+</section>
+-->
+
+
+
 <!-- TODO move -->
 <section id="todo-believing-together-or-living-together">
 
@@ -7829,6 +8082,663 @@ TODO are <section> nested or flat?
   Reiche Menschen leben in Lebensgemeinschaft,
   und unterhalten Glaubensgemeinschaften als "Krümel" für die Armen
   (Trickle-Down Economy).
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="direct-voting-for-kids">
+
+<h4>
+  Direktes Wahlrecht für Kinder
+</h4>
+
+<div class="para">
+  Kinder dürfen ihre Erzieher wählen.
+  Jeder darf Erzieher sein.
+</div>
+
+<div class="para">
+  Nicht nur ein "indirektes" Wahlrecht,
+  wo ich alle 4 Jahre Irgendwen wähle,
+  der Irgendwen wählt,
+  der Irgendwem sagen soll,
+  dass Irgendwer Irgendwas anders machen soll ...
+  wie dumm muss man sein, um das zu glauben?
+</div>
+
+<div class="para">
+  Ich will ein "direktes" Wahlrecht,
+  also direkten Einfluss auf meine Erzieher, Lehrer, Ausbilder, Trainer.
+</div>
+
+<div class="para">
+  Wenn ich einen scheisse finde, dann will ich weg von dem.
+  (Lieber alleine als falsche Freunde.)
+  Wenn ich einen Anderen besser finde, dann will ich zu dem.
+</div>
+
+<div class="para">
+  Ich will nicht gefangen sein unter irgendwelchen Vorgesetzten,
+  die ich nicht gewählt habe, die ich nicht abwählen kann,
+  die immer ihren Pauschallohn kriegen, egal wie scheisse ihre Arbeit ist.
+</div>
+
+<div class="para">
+  Ich will nicht gefangen sein unter dummen Eltern,
+  wenn es genug Nachbarn gibt, die mir eine bessere Erziehung bieten können.
+</div>
+
+<!-- nutzlos
+<div class="para">
+  Was ist daran so schwer?
+  Warum ist "Kinder ficken" so toll?
+</div>
+-->
+
+<!-- zu weit weg
+<div class="para">
+  Ich will nicht gefangen sein in fristlosen Verträgen
+  wie Ehevertrag, Zwangsversicherung, Zivilisation.
+</div>
+-->
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="doing-or-talking">
+
+<h4>
+  Machen oder Reden
+</h4>
+
+<div class="para">
+  Wer machen kann der macht.
+  Wer nicht machen kann der redet.
+</div>
+
+<div class="para">
+  Warum rede ich?
+  Weil:
+  Ich kann nichts machen.
+
+  Genauer:
+  Was ich will ist das darf ich nicht.
+  Was ich soll, das will ich nicht.
+
+  Dazwischen gibt es keinen Kompromiss.
+  Jeder zeigt auf den Anderen,
+  und letztendlich hilft nur Gewalt.
+  Deswegen:
+  Gegen Dummheit hilft nur Gewalt.
+</div>
+
+<div class="para">
+  Ich bin zu arm, um meine Ideale zu leben.
+  Meine Ideale sind verboten,
+  also Privilegien für Reiche und "Gute" (Gute Gewalt).
+
+  Ich bin "schlau und arm",
+  und letztendlich suche ich einen Sponsor,
+  der meine Forschung bezahlt.
+  "Schlau und reich" müsste man sein ...
+
+  <!--
+    philosoph und diktator
+    schlauheit und gewalt
+    benevolent dictator
+
+    die Taliban machen es vor ...
+    die haben auch "Gute Gewalt"
+  -->
+</div>
+
+<div class="para">
+  Bis dahin:
+  Mein Buch ist meine Antwort auf die Frage
+  "Was würde ich machen wenn ich ALLES darf?"
+  Ich habe alle Freiheiten,
+  ich darf "von Null" eine neue Kultur schaffen ...
+  Was mache ich? Was lasse ich machen?
+</div>
+
+<!-- nutzlos
+-->
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="good-violence-and-bad-violence">
+
+<h4>
+  Gute Gewalt und Böse Gewalt
+</h4>
+
+<div class="para">
+  Böse sind immer die Anderen ... also: alles relativ
+</div>
+
+<!--
+  TODO passive gewalt
+  abhängig machen von hilfe
+  hilfe verweigern als strafe
+-->
+
+<div class="para">
+  Aber wer hat dann Recht?
+  <!-- nicht hier
+  Der Starke oder der Schlaue?
+  Warum nicht beide?
+  -->
+  Wenn zwei sich streiten, dann soll man wetten.
+</div>
+
+<div class="para">
+  Beispiel Erziehung:
+  Mutter und Vater streiten um ihr Kind.
+  Jeder sagt: Ich bin gut, du bist scheisse.
+  Wer hat Recht? Beide und Keiner.
+  Wenn zwei Hypothesen streiten,
+  dann muss man beide testen.
+  Bei Erziehung hilft das <b>Wechselmodell</b>:
+  Eine Woche Mama, eine Woche Papa.
+  Nach ein paar Monaten wird sich zeigen:
+  Wer ist besser für das Kind?
+  Also: Bei wem will das Kind bleiben?
+</div>
+
+<div class="para">
+  Dagegen:
+  Sogenannte Experten, die sich hier einmischen,
+  und mit irgendwelchen Indizien entscheiden:
+  Wem gehört dieses Kind?
+  Solche Entscheider können nur falsch entscheiden,
+  weil sie noch nicht Mal verstehen:
+  Alle Hypothesen sind gleichwertig,
+  und nur durch Experiment kommt man zu Wahrheit.
+  Aber wie gesagt:
+  Gegen Dummheit hilft nur Gewalt.
+  Diese Vorgesetzten haben überhaupt kein Interesse
+  an "Wahrheit" oder "Gerechtigkeit",
+  sondern <b>diese Bürokraten wollen immer unschuldig sein</b>,
+  also immer "sicher" gehen, und nie was riskieren.
+  Und "billige Tricks für arme Leute" sind auch besser
+  als die mühsame dreckige Suche nach Wahrheit.
+  Man will sich ja die Finger nicht schmutzig machen.
+  Dafür hat man ja 10 Jahre Schlausein studiert ...
+</div>
+
+<!--
+  ... genug gebrüllt
+
+  ... genug "hass und hetze" verteilt
+
+  denk dran:
+  alle "medien" werden kontrolliert von unseren feinden.
+  also der mainstream ist der letzte ort, wo irgendwas nützliches steht.
+-->
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="blood-or-tears">
+
+<h4>
+  Blut oder Tränen
+</h4>
+
+<div class="para">
+  Die Verteidiger von Passive Gewalt sagen:
+  "Tränen sind besser als Blut".
+  Also:
+  Psychische Gewalt ist besser als Körper-Gewalt.
+  Passive Gewalt ist besser als Aktive Gewalt.
+  Einsperren, Wegsperren, Verdrängen, Ignorieren, Totschweigen ...
+  sind besser als Angreifen, Draufgeben, Umbringen.
+</div>
+
+<div class="para">
+  Ich als Verteidiger von Aktive Gewalt sage:
+  Ich wage zu widersprechen.
+  I beg to disagree.
+  Ich will ein "Paradies auf Erden"
+  und nicht nur ein "Paradies im Kopf".
+  Der Preis dafür ist Blut.
+  Echte Entscheidungen.
+  Natürliche Selektion.
+  Richten über Leben und Tod.
+  Das was bei euch nur ein "Gott" darf
+  (also ein Reicher mit Privilegien).
+  Aber vielleicht bin ich ein "Gott"?
+  Warum gibts nur einen Gott?
+  Warum müssen Götter tot sein?
+  Für euch bin ich ein Ketzer,
+  für mich seid ihr Versager.
+  Fuck the system! Aber richtig.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="slave-morality-and-master-morality">
+
+<h4>
+  Sklavenmoral und Herrenmoral
+</h4>
+
+<div class="para">
+  Sklaven und Herren.<br>
+  Bauern und Soldaten.
+</div>
+
+<div class="para">
+  Ich sage: Beide sind wichtig.
+  Also brauchen wir gleich viele.
+  Einem Dorf mit 144 Menschen
+  braucht also 72 Bauern und 72 Soldaten.
+</div>
+
+<div class="para">
+  Vor vielen Jahren hat ein Klugscheisser gesagt:
+  "Bauern sind toll und Soldaten sind scheisse"
+  und seit dem haben wir zu viele Bauern und zu wenige Soldaten.
+  Diese Schieflage nennen wir "Zivilisation" und fühlen uns toll.
+  Aber ich finds scheisse,
+  weil 1. zu viele Menschen und 2. zu hässliche Menschen.
+  Also Übervölkerung und Degeneration.
+</div>
+
+<div class="para">
+  Auch deswegen scheitern Bauerndörfer und Landkommunen:
+  Nur Bauern, keine Soldaten.
+  Nur Feldarbeit, kein Kampfsport.
+  Für mich sind Shaolin-Mönche ein gutes Vorbild,
+  die machen beides: Feldarbeit und Kampfsport.
+</div>
+
+<div class="para">
+  "Bauern sind toll ..."
+  - Daher das Problem "symmetrische Kriegsführung"
+  also "Soldaten gegen Soldaten".
+  Richtig wäre "Soldaten gegen Bauern",
+  also antisymmetrische Kriegsführung.
+  Zivilisten tun so als wären sie heilig und unschuldig,
+  als hätten sie ein "Recht auf Leben".
+  Ist ja eine schöne Idee, nur leider nicht nachhaltig.
+</div>
+
+<div class="xcenter">
+<table class="two-properties">
+  <tr>
+    <th scope="row"></th>
+    <td>Sklavenmoral</td>
+    <td>Herrenmoral</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Masochismus</td>
+    <td>Narzissmus</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>sozial</td>
+    <td>antisozial</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Altruisten</td>
+    <td>Egoisten</td>
+  </tr>
+  <tr>
+    <th scope="row">Prinzip</th>
+    <td>Angst</td>
+    <td>Lust</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Grundrechte</td>
+    <td>Privilegien</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>niedrige Ansprüche</td>
+    <td>hohe Ansprüche</td>
+  </tr>
+  <tr>
+    <th scope="row">Ziel</th>
+    <td>Paradies im Kopf</td>
+    <td>Paradies auf Erden</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Schwäche ist gut (NormoPathie)</td>
+    <td>Stärke ist gut</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>zurückhalten</td>
+    <td>einmischen</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>verdrängen</td>
+    <td>konfrontieren</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Ignoranz</td>
+    <td>Draufgänger</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>defensiv</td>
+    <td>aggresiv</td>
+  </tr>
+</table>
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="bulls-and-bubbles">
+
+<h4>
+  Bullen und Blasen
+</h4>
+
+<div class="para">
+  Bullen wetten auf steigende Kurse,<br>
+  Bären wetten auf fallende Kurse.
+</div>
+
+<div class="para">
+  Welche Kurse?
+  Letztendlich: Menschen.
+  Viele Menschen =
+  viel Nachfrage =
+  hohe Preise.
+</div>
+
+<div class="para">
+  So gesehen ist "Pro Life" Politik
+  eine künstliche Spekulations-Blase.
+  Mordverbot, Übervölkerung, Kurse steigen, Blasen platzen.
+  Und wir sind so blöd, und fallen rein auf den Betrug.
+  Weil Mordverbot ist nur eine "gute Idee", aber nicht nachhaltig.
+</div>
+
+<div class="para">
+  Das wichtigste Gesetz ist Mordverbot.
+  Alle anderen Gesetze sind nur logische Konsequenz.
+</div>
+
+<div class="para">
+  "Du sollst nicht töten."<br>
+  Aber mit "Du" fühle ich mich nicht angesprochen ...
+  ich scheiss auf dein Gesetz.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="gold-outside-and-shit-inside">
+
+<h4>
+  Aussen Gold - Innen Scheisse
+</h4>
+
+<div class="para">
+  Aussen hui - Innen pfui
+  Etikettenschwindel.
+  Der Schein trügt.
+  Betrug.
+  Psycho-Krieg.
+  False Flag.
+  Falsche Flagge.
+  Selektion für Schlauheit.
+  Etikettenschwindel.
+  Etikettenschwindel.
+  Etikettenschwindel.
+</div>
+
+<!-- TODO expectation vs reality. stock market vs economy
+https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
+<div class="xcenter">
+  <img src="todo.svg">
+</div>
+-->
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="infallible">
+
+<h4>
+  Unfehlbar
+</h4>
+
+<div class="para">
+  Beamte sind unfehlbar,
+  Titanic ist unsinkbar,
+  World Trade Center ist unzerstörbar,
+  Tabak ist harmlos,
+  Alkohol ist harmlos,
+  Heroin ist harmlos (Heroin war früher Medizin),
+  Asbest ist harmlos,
+  Fluor ist harmlos (PTFE-Plastik),
+  Plastik ist harmlos,
+  DDT ist harmlos,
+  Impfungen sind harmlos,
+  Schulmedizin ist harmlos,
+  Patente sind harmlos,
+  Kunstdünger sind harmlos,
+  Milch ist harmlos,
+  Solarzellen sind harmlos,
+  Lithium-Akkus sind harmlos,
+  ...
+</div>
+
+<div class="para">
+  Wie dumm muss man sein
+  um so viel Scheisse zu glauben?
+  Wahrscheinlich endlos dumm,
+  aber Dummheit ist auch ein Talent ...
+</div>
+
+<div class="para">
+  "Dumme" Menschen <b>überschätzen Nutzen, unterschätzen Kosten</b>.
+  Also: Positiv Denken, Lösungs-zentriertes Denken,
+  Starrsinn, Fixierung, "Besessen vom Guten", Profitgier und Kostenblind.
+</div>
+
+<div class="para">
+  Wenn ich dagegen halte, bin ich ein
+  Pessimist, Kritiker, Schwarz-Denker, Zweifler, Ungläubiger,
+  "Fortschritts-Feind", ...
+  Ich sag nur: Wir sehen uns in der Zukunft,
+  dann kennen wir die Nebenwirkungen und Langzeitfolgen.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="devil-stuff">
+
+<h4>
+  Teufelszeug
+</h4>
+
+<div class="para">
+  Menschen töten ist böse,
+  Kampfsport ist böse,
+  Aggression ist böse,
+  Beleidigung ist böse,
+  Schmutzwörter sind böse,
+  TryptAmine sind böse,
+  PhenEtylAmine sind böse,
+  Amphetamine sind böse,
+  Messer sind böse,
+  Gewehre sind böse,
+  ...
+</div>
+
+<div class="para">
+  Die Normalos kreischen "Pfui Teufel!"
+  aber ich (als ein Teufel) finde das nützlich.
+</div>
+
+<div class="para">
+  Und ich sehe nicht ein,
+  warum passive Gewalt (Zivilisation, Krieg gegen Natur)
+  besser ist als aktive Gewalt (Tribe Wars, Stammkriege, Bürgerkriege).
+  Wie immer: Gut gemeint, schlecht für die Zukunft.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="bulls-and-bubbles">
+
+<h4>
+  Bauern-Aufstand
+</h4>
+
+<div class="para">
+  Unsere Vorgesetzten haben jeden Tag Angst
+  vor dem nächsten Bauern-Aufstand,
+  und lieber tun sie alles tot regulieren
+  als zu viel Freiheit riskieren.
+</div>
+
+<div class="para">
+  Sicherheitswahn,
+  Passive Gewalt,
+  Angst,
+  ...
+  so langweilig wie ein Fußballspiel ohne Angriff.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="miracle-juice">
+
+<h4>
+  Wunderheilung
+</h4>
+
+<div class="para">
+  In Afrika saufen sie Benzin und Orangensaft,
+  und nennen es Miracle Juice (Wunder-Saft).
+</div>
+
+<div class="para">
+  In Europa lassen sie sich Irgendwas spritzen
+  und nennen es Impfung und Wissenschaft.
+</div>
+
+<div class="para">
+  Für beide Mittel gilt:
+  Wenn man krank wird,
+  dann hat man zu wenig "Medizin" genommen.
+</div>
+
+<div class="para">
+  Beide Mittel sind ein <b>Intelligenztest</b>
+  mit dem Ziel: Dumme Menschen töten.
+  Also: Selektion für Schlauheit.
+</div>
+
+<div class="para">
+  Was fehlt?
+  Selektion für Schönheit.
+  Hässliche Menschen töten.
+  Dafür brauchen wir Serienmord.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="forced-schooling">
+
+<h4>
+  Schulzwang
+</h4>
+
+<div class="para">
+  When you remove the <b>free will</b> from education,
+  you turn education into schooling.
+  &mdash; John Taylor Gatto - Weapons of Mass Instruction
+</div>
+
+<div class="para">
+  south park: stan aus der zukunft will stan warnen, aber stan hört nicht.
+  generationen-konflikt. die schwierige beziehung zwischen alten und jungen menschen.
+  alte menschen haben erfahrung aber sind müde.
+  junge menschen sind dumm aber motiviert.
+  problem: schulzwang, zu wenig privatlehrer.
+  staat hat monopol auf erziehung:
+  nur systemfreunde dürfen als lehrer arbeiten.
+  deswegen: alle lehrer sind versager.
+  für mich sind das "staatlich geprüfte vollidioten".
+  (TODO pretty)
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="refusal">
+
+<h4>
+  Verweigerung
+</h4>
+
+<div class="para">
+  Ich will beides: Lieb sein und böse sein.
+</div>
+
+<div class="para">
+  Wenn ich nicht böse sein darf,
+  und immer nur lieb sein muss,
+  dann mache ich lieber gar nichts.
+</div>
+
+<div class="para">
+  Passiver Widerstand.
+  Verweigerung.
+  Streik.
+</div>
+
+<div class="para">
+  Alles oder Nix.
+  My Way or the Highway.
+  Scheiss auf Kompromisse.
 </div>
 
 </section>
@@ -7885,6 +8795,194 @@ TODO are <section> nested or flat?
   wird ausgenutzt als "Motivation zum Arbeiten",
   aber auch das ist wieder ein dummes Spiel mit dem Feuer,
   das langfristig alles kaputt macht.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="future-is-in-africa">
+
+<h4>
+  Zukunft ist in Afrika
+</h4>
+
+<div class="para">
+  Reiche und schlaue Chinesen kaufen Land in Afrika,
+  weil in Zukunft gilt: Afrika hat besseres Klima.
+</div>
+
+<div class="para">
+  Europa:
+  Steinkohle verbrennen &rarr;
+  Global Warming &rarr;
+  Arktis schmilzt &rarr;
+  Blue Ocean Event &rarr;
+  Golf-Strom stirbt &rarr;
+  Wetter ist Chaos &rarr;
+  Ackerbau stirbt &rarr;
+  Menschen verhungern
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<!-- TODO wording: inherited, inheritable, hereditary -->
+<section id="basetype-is-hereditary">
+
+<h4>
+  Grundtyp ist erblich
+</h4>
+
+<div class="para">
+  Manche Kinder kommen nach der Mutter,
+  manche Kinder kommen nach dem Vater.
+</div>
+
+<div class="para">
+  Vermutlich gibt es auch Ausnahmen,
+  zum Beispiel: F3 und M3 haben ein Typ 4 Kind.
+  Aber meistens gilt: Grundtyp ist erblich.
+</div>
+
+<div class="para">
+  Beispiel:
+  Ich (M1) komme nach unserer Mutter (F1),
+  mein Bruder (M3) kommt nach unserem Vater (M3).
+  Hätte ich mehr Geschwister, dann wären das Typen 13.
+</div>
+
+<div class="xcenter">
+<table class="two-parents">
+  <thead>
+    <tr>
+      <th scope="column">Ivana F1</th>
+      <th scope="column">M3 Karl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Milan M1</td>
+      <td>M3 Philipp</td>
+    </tr>
+    <tr>
+      <td>... F1</td>
+      <td>F3 ...</td>
+    </tr>
+    <tr>
+      <td>... M1</td>
+      <td>M3 ...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!--
+<div class="para">
+  Beispiel:
+  Meine Tochter (F1) kommt nach mir (M1)
+</div>
+
+<div class="xcenter">
+<table class="two-parents">
+  <thead>
+    <tr>
+      <th scope="column">M1 Milan</th>
+      <th scope="column">F2 Ramona</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F1 Lena</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+-->
+
+<div class="para">
+  Wer ist der bessere Erzieher?
+  Wer passt besser zusammen?
+  Welchen Subtyp "wählt" das Kind?
+  Meine Antworten stehen im Pallas-Muster.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="digitalization-and-blackout">
+
+<h4>
+  Digitalisierung und Stromausfall
+</h4>
+
+<div class="para">
+  Unsere "schöne neue" digitale Verwaltung
+  funktioniert genau bis zum nächsten Stromausfall.
+</div>
+
+<div class="para">
+  Stromausfall ist der Anfang vom Ende.
+  Supermärkte verschenken ihre Kühlware.
+  Kassensysteme funktionieren nicht.
+  Tankstellen können kein Benzin pumpen.
+  Wasserwerke können kein Wasser pumpen.
+</div>
+
+<div class="para">
+  Wie lange dauert der Stromausfall?
+  Für Chaos und Anarchie reichen drei Tage,
+  aber der Stromausfall wird mehrere Wochen dauern,
+  vielleicht sogar Monate oder Jahre.
+  Der Stromausfall markiert den Höhepunkt unserer Zivilisation.
+  Der Absturz danach wird tief und hart.
+</div>
+
+<div class="para">
+  "Brace for impact." (Ice Age Farmer)
+  Bereit machen zum Aufprall.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="talking-to-dying-people">
+
+<h4>
+  Gespräche mit Sterbenden
+</h4>
+
+<div class="para">
+  Wenn man mit Menschen redet,
+  die nur noch wenige Tage oder Stunden leben werden,
+  dann hört man oft:
+  "Ich hätte mehr machen sollen" und
+  "Ich habe zu viel Zeit verschwendet".
+</div>
+
+<div class="para">
+  Weniger warten, mehr machen.
+  Weniger Angst, mehr riskieren.
+  Warum nicht?
+</div>
+
+<div class="para">
+  Memento Mori.
+  Denk drank, du wirst sterben.
+</div>
+
+<div class="para">
+  Aber klar, Freiheit geht in beide Richtungen.
+  Wir haben die Freiheit zum besser machen,
+  aber auch die Freiheit zum Faulsein ...
 </div>
 
 </section>
@@ -8361,6 +9459,15 @@ TODO are <section> nested or flat?
 </div>
 
 <div class="para">
+  Wem nutzt unsere Furcht? Wir wollens nicht wissen.
+
+  Denn weil Wissen nur belastet wolln wir nicht Mitwisser sein,
+  wir lassen es unangetastet das Gewissen es bleibt rein ... porentief rein
+  <br>
+  &mdash; Die Ärzte - NichtWissen
+</div>
+
+<div class="para">
   Es muss weitergehn, ich bleib so ungern stehn
   <br>
   &mdash; Terrorgruppe - Weitergehen
@@ -8482,14 +9589,72 @@ TODO are <section> nested or flat?
 </div>
 
 <div class="para">
+  Wir sind jeden Tag umgeben von lebenden Toten,
+  umgeben von Schildern die uns sagen "Betreten verboten!"
+  ...
+  Weck mich bitte auf aus diesem Albtraum,
+  Menschen sehen vor lauter Bäumen den Wald kaum.
+  Man versucht uns ständig einzureden,
+  dass es noch möglich wär hier frei zu leben.
+  ...
   Ich und du und er und sie und es sind,
-  <br>
-  besser dran wenn wir uns selber helfen.
+  <b>besser dran wenn wir uns selber helfen.</b>
   &mdash; Samy Deluxe - Weck mich auf
 </div>
 
+<!-- wichtig, deswegen 2 mal -->
 <div class="para">
   Es gibt nichts was so fehlt wie verlorene Zeit
+  &mdash; Fiva MC - Verlorene Zeit
+</div>
+
+<div class="para">
+  Ich hab soviel verpasst von den wichtigen Dingen
+  So viel nicht gemacht und das ohne Grund
+  Und weil solche Gedanken doch eigentlich nichts bringen
+  Halt ich die Augen zu und die Hand Vor den Mund
+
+  Ich bin krankhaft gesund und dumm gebildet
+  Schön geschminkt und schlecht gelaunt
+  so maßlos mutig dass ich zu feig bin fürs Leben
+  So maßlos feig dass ich mir selbst alles glaub
+  ... und es fällt nicht Mal wem auf
+
+  &mdash; Fiva MC - Verlorene Zeit
+</div>
+
+<div class="para">
+  Nur der Tisch und der Stuhl und das Glas hörn mir zu,
+  und weil mich niemand sieht ist mir egal was ich tu.
+
+  Und weil ich gar nichts mach seh ich allem nur zu,
+  mit dem Glas in der Hand vor dem Tisch auf dem Stuhl.
+  Fühlt sich alles so an wie es ist,
+  und umso mehr man vergisst was passiert wird das Glas wieder leer.
+
+  Jeder Tag zu kurz und die Stunden zu lang,
+  wozu jeder Morgen ich fang nichts damit an.
+  Wozu jeder Abend wenn ich nicht schlafen kann,
+  <b>wach sein tut weh ohne Tatendrang.</b>
+
+  Damit ich atmen kann halt ich Fenster geschlossen,
+  Türen verriegelt und mein Herz in der Hand.
+  Und Zug um Zug vergess ich die Stimme die es gut mit mir meint,
+  und mir sagt dass man was ändern kann.
+
+  Schau dir die Augenränder an ich hab lange Zeit nachgedacht,
+  ob Vergangenheit zu ändern ist doch es ist nicht möglich.
+  Denn alles was ich nicht tat ist ab jetzt mein Hindernis,
+  und glaub mir das zu überwinden geht nicht.
+
+  Ich leb nicht mehr in meinen Träumen die sind geplatzt,
+  der Rest ist Ballast und landet im Glas.
+  Es macht mir Spaß nichts mehr zu spüren von dem was ich vergaß zu tun,
+  Als es die beste Zeit dafür war weil es nur die Zeit dafür gab.
+
+  Es ist vorbei kein Traum kein Ziel auf das man sich freut,
+  <b>es gibt nichts was so fehlt wie verlorene Zeit.</b>
+
   &mdash; Fiva MC - Verlorene Zeit
 </div>
 
@@ -8564,6 +9729,14 @@ TODO are <section> nested or flat?
   Alles was ich dir anbiete ist die Wahrheit. Nicht mehr.
   <br>
   &mdash; Morpheus, Matrix [Wahrheit ist einfach]
+  <!-- T = 29:30 -->
+</div>
+
+<div class="para">
+  Die Zeit arbeitet gegen uns
+  <br>
+  &mdash; Morpheus, Matrix
+  <!-- T = 30:00 -->
 </div>
 
 <div class="para">
@@ -8663,6 +9836,8 @@ Nazz feat. Cr7z - Überdosis
   Eure Welt ist Plastik, alles falsch, alles Fassade.
   Erst wenn die Schneekugel geplatzt ist, kann ich atmen, kann ich atmen.
   &mdash; Genetikk - Plastik
+  <br>
+  ["platzen" wird die Spekulations-Blase. So wie immer. Nur eine Frage der Zeit.]
 </div>
 
 <div class="para">
@@ -8721,6 +9896,128 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
+  Auch du warst mal ein Kind und auch ich war mal klein,
+  und auch uns ham sie was erzählt.
+  Und dann macht man das alles und versucht so zu sein,
+  und dann merkt man das einem <b>was fehlt</b>.
+
+  Und dann verlernt man sich richtig zu spüren,
+  und man flüchtet sich in Kunst oder Konsum.
+  Und während ihr fleissig Pläne macht,
+  lachen die Götter sich krumm.
+
+  Lasst eure Kinder mal was dazu sagen,
+  hört ihnen richtig zu.
+  Die spürn sich noch die ham Feeling für die Welt,
+  Die sind klüger als ich und du.
+
+  Und denkt dran bevor ihr antwortet,
+  Ihr seid auch nur verletzte Kinder.
+  Am Ende gibts wieder ganz neue Symptome,
+  und ihr wart die Erfinder.
+
+  Und dann sagt ihnen wieder wie es richtig geht,
+  "Werd erwachsen" und "bist du naiv".
+  Predigt Formeln, lasst alles in Hefte schreiben,
+  die Götter lachen sich schief.
+
+  Achtet auf Schönschrift und Lehrpläne,
+  und dass sie die Bleistifte spitzen.
+  Zeigt ihnen Bilder von Eichenblättern,
+  während sie drinnen an Tischen sitzen.
+
+  Und dann ackern und büffeln und wieder auskotzen,
+  und am Nachmittag RTL 2.
+  Am Wochenende gehts was Schönes kaufen,
+  fertig ist der Einheitsbrei.
+
+  Und jeder der sich nicht anpasst,
+  wird zum <b>Problemkind</b> erklärt.
+  Und jede die zu lebhaft ist,
+  kriegt ne Pille damit sie nicht stört.
+
+  Und <b>damit betrügt ihr euch selber</b> denn,
+  kein Kind ist ein Problem.
+  Und all die Freigeister all die Schulschwänzer,
+  nur Symptomträger im System.
+
+  Doch bedenkt wenn ihr so hart urteilt,
+  ihr seid auch nur gefangene Geister.
+  Der Unmut wird immer lauter,
+  und die Lehrer schreien sich heiser.
+
+  Empört euch dass Hänschen nicht ist was er sein soll,
+  sondern nur wer er nunmal ist.
+  Die Götter pullern sich ein vor Lachen,
+  und <b>ihr denkt dass ihr was wisst</b>.
+
+  Und wenn Hänschen dann Hans ist,
+  der eigene Kinder hat denen er was erzählt.
+  Dann merkt Hans und Kunz und ihr vielleicht auch,
+  dass wieder <b>irgendwas fehlt</b>.
+
+  Ihr habt Wünsche und Träume,
+  und rennt damit ständig an imaginäre Wände.
+  Und jeder Wunsch den ihr euch erfüllt,
+  der ist dann halt auch zu Ende.
+
+  Geht ihr nur malochen für erfundene Zahlen,
+  und wartet bis die Burnouts kommen.
+  Schmeisst euer Geld für Plastik raus,
+  um ein kleines Glück zu bekommen.
+
+  Das Beste aus Cerealien und Milch,
+  noch n Carport und noch n Kredit.
+  Und alle findens scheisse,
+  aber alle machen sie mit.
+
+  Ihr klugscheissert und kauft trotzdem,
+  und die Werbung verkauft euch für dumm.
+  Und dann sitzt ihr vor neuen Flachbildfernsehern,
+  und meckert auf den Konsum.
+
+  <b>Wenn ihr das Welt nennt bin ich gern weltfremd</b>,
+  die Götter lachen sich krumm.
+
+  Ihr Traumverkäufer Symptomdesigner,
+  merkt ihr noch was passiert?
+  Wer hat euch das Land und das Wasser geschenkt,
+  das ihr jetzt privatisiert.
+
+  Ihr Heuchler ihr Lügner ihr Rattenfänger,
+  ihr Wertpapierverkäufer.
+  Man hat euch Geist und <b>Gefühl</b> gegeben,
+  und doch seid ihr nur Mitläufer.
+
+  Ihr grossen vernarbten hilflosen Riesen,
+  ihr wart doch auch mal klein.
+  Und jemand hat euch mit Schweigen gestraft,
+  und liess euch darin <b>allein</b>.
+
+  Und jetzt hört ihr nicht nur die Götter nicht lachen,
+  uhr hört auch ihr die Kinder nicht weinen.
+  Und <b>sagt ihnen weiter es würde nicht wehtun,
+  ohne es so zu meinen.</b>
+
+  Macht ihr ruhig Pläne ich steh am Rand,
+  ich sehe euch und ich bin nicht allein.
+  Hinter mir stehen mehr und mehr Weltfremde,
+  die passen auch nicht hinein.
+
+  Und jetzt <b>wartet nicht auf ein versöhnliches Ende</b>,
+  den Gefallen tu ich euch nicht.
+  Kein Augenzwinkern keine milde Pointe,
+  die das Unwohlsein wieder bricht.
+
+  Irgendwann werden die Götter nicht mehr lachen,
+  und falls es mich dann nicht mehr gibt.
+  Hinterlass ich ein Kind das sich selbst gehört,
+  und dies unhandliche Lied.
+  <br>
+  &mdash; Sarah Lesch - Testament
+</div>
+
+<div class="para">
   TODO move:
   Mischkultur.
   Companion planting.
@@ -8740,6 +10037,13 @@ Nazz feat. Cr7z - Überdosis
   Rettich und Gurken,
   Zwiebeln und Buschbohnen,
   Zwiebeln und Kohl.
+</div>
+
+<div class="para">
+  Wie lange sollen wir noch warten,
+  bis wieder bessere Zeiten starten?
+
+  &mdash; Sportfreunde Stiller - Wie lange
 </div>
 
 <!--
@@ -9010,6 +10314,19 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
+  Hey doll. Looks like I let you down again. like all my life I've just been going, going, going ...
+  I wish I'd taken more time to stop and smell the roses, so to speak. I guess it's too late now ...
+  You were the greatest, baby.
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=hBIRhyERkak#title=Crank+Ending">Crank (2006)</a>
+</div>
+
+<!-- TODO
+  keanu reeves
+  jason bourne
+  what goes up, must come down, spinning wheel, got to turn round
+-->
+
+<div class="para">
   This town's alright, But it's not enough.
   I'm looking for a quick exit, like a prisoner on the run
   &mdash; Chase &amp; Status - Embrace (feat. White Lies)
@@ -9022,6 +10339,14 @@ Nazz feat. Cr7z - Überdosis
   the war is bullshit, its all bullshit.
   <br>
   &mdash; Akala - Bullshit (Chase &amp; Status Remix)
+</div>
+
+<div class="para">
+  Ich hab fünf Meter Mauern und keiner kommt rein,
+  hinter fünf Metern Mauern sollte mein Palast sein.
+  Ich hab fünf Meter Mauern ich komm nicht raus,
+  hab hinter fünf Metern Mauern ein Gefängnis aufgebaut.
+  &mdash; Elen - 5 Meter Mauern
 </div>
 
 <!--
@@ -9047,10 +10372,132 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
+  Your love is lifting me higher
+  <br>
+  &mdash; The Glitch Mob - Higher [sinnvolle arbeit, freiwilligkeit]
+</div>
+
+<div class="para">
   Why did you have him, then? Nothing uses carbon like a first-world human.
   <br>
-  &mdash; Utopia (UK 2013)
+  &mdash; Utopia S02E06 (UK 2014)
 </div>
+
+<div class="para">
+  There are no sides.
+  Just people who help you, and people who dont.
+  <br>
+  &mdash; Jessica Hyde, Utopia S01E02 (UK 2013)
+</div>
+
+<!-- TODO full quote
+  Bless you.
+
+  - Sorry. He's got a touch of flu.
+  - Yeah, it's going round.
+
+  Here we are, here you go.
+  Just have a little lie-down.
+
+  That's it, yeah?
+
+  - Are you going somewhere nice?
+  - Just getting away for a bit.
+
+  Somewhere
+  no-one can find me.
+
+  God, that sounds great.
+
+  We're off on holiday.
+
+  - To the south of France.
+  - Oh, nice.
+
+  It's a long way by coach.
+
+  I know.
+
+  It's just, you know...
+
+  - the environment.
+  - Yes, we should all think of that.
+
+  I don't want to sound like a twat,
+  but I just...
+
+  You know, I do think
+  that we've all got a responsibility.
+
+  - I just do.
+  - No, you're right, we do. We all do.
+
+  - Why did you have him, then?
+  - Sorry?
+
+  Nothing uses carbon like a first-world
+  human. Yet you created one.
+
+  Why?
+  Why would you do that?
+
+  He will produce 515 tonnes
+  of carbon in his lifetime.
+
+  That's 40 trucks' worth.
+
+  Having him was the equivalent
+  of nearly 6,500 flights to Paris.
+
+  You could have flown 90 times a year,
+  there and back...
+
+  nearly every week
+  of your life...
+
+  and still not had the same impact
+  on the planet as his birth had.
+
+  - Yeah, but I don't think...
+  - Not to mention the pesticides, detergents...
+
+  the huge quantity of plastics,
+  the nuclear fuels used to keep him warm.
+
+  His birth was a selfish act.
+
+  It was brutal.
+
+  You have condemned others
+  to suffering.
+
+  In fact, if you really cared...
+
+  what you'd do
+  is cut his throat open right now.
+
+  - Excuse me?
+  - Or I could do it for you.
+
+  I could take out my knife...
+
+  make an incision in his neck,
+  walk away.
+
+  I'd get my coach over there...
+
+  and you would have done more than
+  your bit for the future of humanity.
+
+  I could do it now.
+
+  But look at me chatting.
+  I think they're about to leave.
+
+  I hope he gets over that flu.
+
+  But maybe he just shouldn't.
+-->
 
 <div class="para">
   What have you done today, to earn your place in this crowded world?
@@ -9113,6 +10560,33 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Not everyone is coming to the future,
+  not everyone is learning from the past.
+  &mdash; Madonna - Future
+</div>
+
+<div class="para">
+  Your heart is not open so I must go,
+  the spell has been broken I loved you so.
+  Freedom comes when you learn to let go,
+  creation comes when you learn to say no.
+
+  You were my lesson I had to learn,
+  I was your fortress you had to burn.
+  Pain is a warning that somethings wrong,
+  I pray to God that it wont be long.
+
+  Theres nothing left to try,
+  theres no place left to hide.
+  Theres no greater power,
+  than the power of good-bye.
+
+  Learn to say good-bye
+
+  &mdash; Madonna - The Power of Good-Bye
+</div>
+
+<div class="para">
   Fuck the police!
   I was born in jail, you dont know me
   <br>
@@ -9167,12 +10641,13 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Was wir sind, sind wir zusammen,
+  Was wir sind sind wir zusammen,
   rauben dem Leben die Köder von den Fallen.
-  Weiter, immer weiter, immer weiter gehn
-  Weiter, immer weiter, bleib niemals stehen.
-  Weiter, immer weiter und du findest deinen Weg,
-  Den Weg, der stark macht, wenn man ihn geht.
+
+  Weiter immer weiter immer weiter gehn,
+  Weiter immer weiter bleib niemals stehen.
+  Weiter immer weiter und du findest deinen Weg,
+  Den Weg der stark macht wenn man ihn geht.
   <br>
   &mdash; Böhse Onkelz - Kinder dieser Zeit
 </div>
@@ -9191,6 +10666,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Willst du lieb sein?
   <br>
   &mdash; Nils Bjurman zu Lisbeth Salander, Verblendung (2009)
+  (Stieg Larsson - Millennium Trilogie)
 </div>
 
 <div class="para">
@@ -9200,13 +10676,52 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  Die Welt ist ein Haufen Scheisse, wem sagst du das?
+  ...
+  Wir sehn uns wieder ich weiss alles hat seine Zeit,
+  geniesst das Leben habt Freude an jeder Kleinigkeit.
+  Denkt an mich denkt zurück an die verrückte Zeit,
+  wenn ich nochn Wunsch frei hab dann wünsch ich dass ihr glücklich seid.
+  &mdash; Sido - Mein Testament
+</div>
+
+<div class="para">
   Es bleibt spannend.
 </div>
 
+<!-- low value
+<div class="para">
+  Nobody Seems To Care
+  <br>
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=zmJ9_y64KUc"
+  >16 Bit Lolitas - Nobody Seems To Care (feat. Jennifer Horne)</a>
+</div>
+-->
+
+<!-- soundtrack in movie: maze runner -->
+<!-- low value
+<div class="para">
+  Travelling somewhere, could be anywhere,
+  There is a coldness in the air but I dont care.
+  We drift deeper into the sound life goes on,
+  We drift deeper into the sound feeling strong.
+  <br>
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=SyI6aABVOt4"
+  >Motorcycle - As The Rush Comes (Gabriel & Dresden Chillout Mix)</a>
+</div>
+-->
+
+<!-- https://genius.com/Lemur-dazugehirn-lyrics -->
 <div class="para">
   Ich versuch nicht mehr, dazu zu gehören,
   tu du dies, tu du das, bin dazu zu gestört.
   &mdash; Lemur - Dazugehirn (feat. Nazz)
+  (Lemur aka Herr von Grau)
+</div>
+
+<div class="para">
+  Im so happy, cos today I found my friends, theyre in my head.
+  &mdash; Nirvana - Lithium
 </div>
 
 <!-- nee man, ich bin kein hippie, ich bin kein pazifist ...
@@ -9321,6 +10836,31 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  We've survived by hiding from them, by running from them.
+  But they are the gatekeepers.
+  They are guarding all the doors, they are holding all the keys,
+  which means that sooner or later, someone is going to have to fight them.
+  […]
+  I won't lie to you, Neo.
+  Every man or woman who has stood their ground,
+  everyone who has fought an Agent, has died.
+  &mdash; Morpheus, Matrix (1999)
+</div>
+
+<div class="para">
+  <!-- TODO deutsch? -->
+  I know you're out there. I can feel you now.
+  I know that you're afraid. You're afraid of us. You're afraid of change.
+  I don't know the future. I didn't come here to tell how this is going to end.
+  I came to tell you how it's going to begin.
+
+  I'm going to hang up this phone and I'm going to show these people what you don't want them to see.
+  I'm going to show them a world without you. <b>A world without rules</b> and controls, without borders or boundaries.
+  A world where anything is possible. Where we go from there is a choice I leave to you.
+  &mdash; Neo, Matrix (1999)
+</div>
+
+<div class="para">
   Ich will als tödlicher Virus wiedergeboren werden,
   und die menschliche Bevölkerung reduzieren.
   &mdash; Prince Philip, 1988
@@ -9424,6 +10964,13 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Ich ficke, wie du ficken willst.
   Ich bin intelligent, begabt und das Wichtigste:
   Ich hab all die Freiheiten, die du nicht hast.
+  &mdash; Tyler Durden
+</div>
+
+<div class="para">
+  Das ist meine Meinung.
+  Ich könnte mich täuschen.
+  Vielleicht ist alles eine furchtbare Tragödie.
   &mdash; Tyler Durden
 </div>
 
@@ -9804,9 +11351,130 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Ich glaubte an das Gute, doch die Pille schmeckt so bitter.
-  Diese Welt geht langsam unter, deshalb will ich keine Kinder.
-  &mdash; Antifuchs - Mama
+  Mama wir warn lange nicht mehr ehrlich zueinander,
+  ich hab so viel gelächelt wenn ich da war.
+  Im Grunde gehts mir scheisse doch die Wumme kann ich mir nicht leisten,
+  den Kummer kann ich dir nicht zeigen.
+
+  Mama hör mir zu ich schwör ich schaff es nicht alleine,
+  ich bin gefallen hilf mir wieder auf die Beine.
+  Wem mach ich was vor meine Flügel sind gebrochen,
+  ich bin erschöpft doch trotzdem üb ich bis ich kotze.
+
+  Bis das letzte Mic gedroppt ist und das letzte Wort gesprochen,
+  Mum du hast gesagt "Kind die Welt steht dir offen".
+  Doch die Welt hat mich verbittert und mein kleines Herz gebrochen,
+  Mama bitte sag mir doch wo find ich diese Hoffnung.
+
+  Du weisst nicht wer ich bin du weisst nur wer ich war,
+  ich hab Scheisse gebaut doch auch Gutes getan.
+  Mama bitte glaub mir die Entscheidung fiel mir schwer,
+  doch ich gehöre ans Mic und nicht an den Herd.
+
+  <b>Ich glaubte an das Gute doch die Pille schmeckt so bitter,
+  diese Welt geht langsam unter deshalb will ich keine Kinder.</b>
+
+  Mama ich will ehrlich zu dir sein,
+  doch <b>ich hab mehr Angst zu leben als zu sterben</b>.
+  Aber mach dir keine Sorgen aus mir wird schon etwas werden,
+  aus mir wird schon etwas werden.
+
+  Es tut mir leid doch <b>diese Welt hat mich verbittert</b>,
+  Mama kannst du mich verstehn deshalb will ich keine Kinder.
+  Deshalb will ich keine Kinder.
+  Deshalb will ich keine Kinder.
+
+  <b>Wieso war es damals noch so leicht</b> daran zu glauben?
+  Ich wusste dass egal wie hoch ich meine Pyramiden bau
+  mich immer jemand fängt aber <b>immer wenn du fällst
+  merkst du dass es weh tut wenn dann niemand für dich steht.</b>
+
+  Ich hätt mein Leben für die Gang gegeben,
+  Doch die Gang nicht ihrs für mich jeder gegen jeden jeder gegen mich.
+  <b>Ich bin der Hoffnungsträger ohne Hoffnung</b>,
+  wohin das ganze führn soll das weiss doch nicht mal Gott Punkt.
+
+  Und Mama bitte frag nicht <b>warum ich niemandem traun kann</b>,
+  Ich glaub nicht an den Frieden wenn der Krieg ihn aufgebaut hat.
+  Die Logik ist ernüchternd ich bin sowas wie erleuchtet,
+  <b>ich glaub nicht was sie sagen</b> doch ich tu als ob ich wollte.
+
+  Denn was man von mir verlangt kann ich keiner Seele antun,
+  Dem Groosteil geht es schlecht die Andern schwitzen innem Anzug.
+  Mama es ist eklig aber niemand ist hier gleich,
+  Wir werden nur danach bewertet ob wir arm sind oder reich.
+
+  Deshalb zieh ich meine Schlüsse zeig der Welt den Mittelfinger,
+  <b>Niemand kann uns retten</b> deshalb will ich keine Kinder.
+
+  &mdash; Antifuchs [F1?] - Mama
+</div>
+
+<div class="para">
+  Wenn du bis jetzt keine Gänsehaut hast,
+  dann hab ich was falsch gemacht ...
+  oder du bist kein Typ 1 : D
+</div>
+
+<div class="para">
+  Erst paar Tropfen auf Parkett, doch auf einmal steht das Wasser,
+  aus den unteren Etagen dann auch in der ersten Klasse.
+
+  Möbel treiben durch die Gegend ein paar kämpfen noch dagegen,
+  doch am Himmel leuchten schon die roten Notsignalraketen.
+
+  Und die Band spielt weiter aber ändert nix daran,
+  immer weiter stundenlang die <b>Begleitmusik zum Untergang.</b>
+
+  Ein leichtes Schaudern beim Blick auf die da draussen:
+  "Jetzt schaut euch diese Bauern an schaut wie sie ersaufen!"
+
+  Für uns gibt es keine Rettungsringe Boote oder Westen,
+  aber konstruktive Diskussion von schlauen Talkshow-Gästen.
+
+  Doch schon morgen geht es weiter nächstes Thema nächster Gast,
+  dann sind wir das nächste Wrack das man bald vergessen hat.
+
+  <b>Ich sitze fest auf diesem Schiff im Nirgendwo,</b>
+  frag mich jetzt bitte bloß nicht wieso.
+
+  Es riecht nach Pisse es riecht nach Tod,
+  aber ich fühl mich hier wohl.
+
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=5TpjIxdmtf8"
+  >Kummer - Schiff</a>
+</div>
+
+<div class="para">
+  Wer kann schon sagen was mit uns geschieht,
+  vielleicht stimmt es ja doch.
+  Dass das Leben eine Prüfung ist,
+  in der wir uns bewähren sollen.
+
+  Nur wer sie mit Eins besteht,
+  darf in den Himmel kommen.
+  Für den ganzen dreckigen Rest,
+  bleibt die Hölle der Wiedergeburt.
+  Als Tourist auf Ibiza,
+  als Verkehrspolizist.
+  Als <b>ein Clown in einer Zirkusshow,
+  den keiner sehen will.</b>
+
+  Um diesem Schicksal zu entfliehen,
+  sollen wir uns redlich bemühen.
+  Jeden Tag mit nem Gebet beginnen,
+  an Stelle von Aspirin.
+  Nur wer immer gleich zum Beichtstuhl rennt,
+  als wär es ein Wettlauf.
+  Und dort alle seine Sünden nennt,
+  der handelt einen Freispruch aus.
+
+  <b>Ich will nicht ins Paradies,
+  wenn der Weg dorthin so schwierig ist.</b>
+  Ich stelle keinen Antrag auf Asyl,
+  meinetwegen bleib ich hier.
+
+  &mdash; Die Toten Hosen - Paradies
 </div>
 
 <div class="para">
@@ -9882,9 +11550,13 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  When you remove the <b>free will</b> from education,
-  you turn education into schooling.
-  &mdash; John Taylor Gatto - Weapons of Mass Instruction
+  (Mittagschlaf ist heilig)
+  &mdash; Albert Einstein
+</div>
+
+<div class="para">
+  (Barfuß laufen ist heilig)
+  &mdash; Albert Einstein
 </div>
 
 <div class="para">
@@ -10064,6 +11736,107 @@ but for deliverance from fear.
 </div>
 
 <div class="para">
+  "Gut gebrüllt Löwe" sagt der Wärter,
+  und spuckt in den Käfig.
+  <br>
+  "Dann stirb doch an Grippe" sagt der Löwe,
+  und dreht sich weiter.
+</div>
+
+<div class="para">
+  ich dreh in OCB slim meine knospen,
+  wo willst du hin digger alles sind nur fotzen.
+  loyalität zerbricht schneller als ne scheibe glas,
+  du warst mein hund diggi als du noch alleine warst.
+  ...
+
+  ich hab gehört die sind nicht real (was),
+  doch <b>dieser kreis hier bleibt klein</b> nutte shaq o'neal.
+  ...
+
+  Paar Leute werden platt gemacht Diggi das ist totsicher.
+
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=9FlCuff9k44"
+  >Blut 61 - Zidane</a>
+</div>
+
+<div class="para">
+  Erst kommt die Ebbe, dann kommt die Flut
+
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=UFXOd179kOA"
+  >Gzuz - Ebbe &amp; Flut</a>
+</div>
+
+<div class="para">
+  Life's a bitch and then you die, thats why we get high.
+  <br>
+  Cause you never know, when youre gonna go.
+  <br>
+  &mdash; Nas - Life's a bitch
+</div>
+
+<div class="para">
+  She had more than the five senses, she knew more than books could teach,
+  and raised everyone she touched just a little bit higher
+  <br>
+  &mdash; Gil Scott-Heron - On Coming From A Broken Home
+</div>
+
+<div class="para">
+  I cry when angels deserve to die
+  ...
+  Father into your hands I commend my spirit.
+  Why have you forsaken me?
+  In your eyes forsaken me?
+  In your thoughts forsaken me?
+  In your heart forsaken me?
+  <br>
+  &mdash; System of a Down - Chop Suey
+</div>
+
+<div class="para">
+  I cry when angels deserve to die
+  ...
+  Father into your hands I commend my spirit.
+  Why have you forsaken me?
+  In your eyes forsaken me?
+  In your thoughts forsaken me?
+  In your heart forsaken me?
+  <br>
+  &mdash; System of a Down - Chop Suey
+</div>
+
+<div class="para">
+  Jetzt werden Jäger zu Gejagten.
+
+  Ich komm von unten wie Dreck unter Fingernägel,
+  wo Jungs Probleme mit der Sechs Millimeter regeln.
+
+  <!-- nutzlos
+  Ich schließ die Augen und versink in Depression,
+  hab die Wumme unterm Kissen mit dem Infrarot.
+
+  Yeah immer noch Sechs Eins,
+  immer noch in den Blocks wie ein Crackstein.
+  Für die echten Jungs mit Kapseln in Taschen,
+  Wenn einer von uns redet hast du Faxen zu lassen.
+
+  Und für die South Side .... Deich
+  mit Haschplatten bunkern werden Brüder reich.
+  Wir sind abgefuckt komm mir nicht mit Schreckschuss,
+  eine rechte Grade Digger auf dein Solar Plexus.
+
+  Zwischen Jackie-Dosen Haze-Joints und Peace-Platten
+  sitzen zwei mit .... und Skimasken.
+  Die zum Runterkommen ein Zwanni Weed paffen,
+  die ihr Para mit astreinem Speed machen.
+  -->
+
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=v3H9ieT6-mI"
+  >Blut 61 - Vallah alles Schafe</a>
+</div>
+
+<div class="para">
   Wir haben geträumt, von einer besseren Welt,
   wir haben sie uns, so einfach vorgestellt.
 
@@ -10094,9 +11867,31 @@ but for deliverance from fear.
 </div>
 
 <div class="para">
-  Der beste Trick vom Teufel ist:
-  <br>
-  Den Menschen einreden: es gibt keinen Teufel.
+  Der beste Trick vom Teufel ist seine Unsichtbarkeit.
+</div>
+
+<div class="para">
+  Böse verstecken sich immer hinter Dummen.
+</div>
+
+<div class="para">
+  They say, the world is about to end ... I say fuck it!
+  We all deserve to die!
+  ...
+  Let's fuck the world with all it's trend,
+  they say it's all about to end.
+  ...
+  There's a prison that's gone but the fear lives on,
+  I watch you walk on the dotted line.
+  Maybe you don't see what's in front of me,
+  <b>maybe you won't stand the test of time</b>.
+  ...
+  I fall in love with the old times,
+  I never mention my own mind.
+  Let's fuck the world with all it's trend,
+  thank god it's all about to end.
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=6wRh-RvSBXI"
+  >Scars On Broadway - They Say (live at the camden underworld)</a>
 </div>
 
 <div class="para">
@@ -10170,6 +11965,65 @@ but for deliverance from fear.
 </div>
 
 <div class="para">
+  Ich rapp immer noch aus Hass kein versöhnliches Blabla,
+  und meine Idole von damals klingen wie Vermögensberater.
+
+  Auf dein Kopfhörern schrei ich Rachefantasien,
+  Mukke zum mit zwei Fingern auf den Klassenschläger zielen.
+
+  Jetzt bin ich Mitte Dreissig und langsam ist es peinlich,
+  ist das noch Pubertät oder schon Midlife-Crisis?
+  <br>
+  &mdash; K.I.Z - Kinderkram
+</div>
+
+<div class="para">
+  Ich hab nur Scheisse im Hirn
+  <br>
+  &mdash; Terrorgruppe - Pubertät
+</div>
+
+<div class="para">
+  Häng in der Bar häng überm Glas,
+  glaub mir dass ich den Urlaub brauch.
+  Doch ein Mensch der muss sterben ein Tod der muss töten,
+  man kann ja nicht nicht aus seiner Haut.
+
+  Ich hab dich tanzen sehn und gleich gewusst dir geht es scheisee,
+  Wesen unserer Art wir tragen geheime Zeichen.
+  Wir gingen aus dem Club die Vögel singen ein Auto brennt,
+  ich steh auf großen Bühnen du kommst zur Zeit kaum aus dem Bett.
+
+  Und denkst viel übers Leben nach,
+  ich fahr mit dir ins Grüne und du bist den Tränen nah.
+  Ich sage "Ich mag dich wie du bist" du sagst "Ja genau",
+  berührst ein Baum und schon fällt das Laub.
+
+  Ich scheiss drauf was man über dich sagt,
+  die werden noch lästern liege ich schon im Sarg.
+  Für dich kämpfe ich alleine gegen alle,
+  aber erstmal leg ich mich in deine Arme.
+  ...
+  Hier liegt ein Schatz vergraben,
+  aber es ist zu viel Arbeit den zu heben
+  <br>
+  &mdash; Zugezogen Maskulin - Der müde Tod
+</div>
+
+<div class="para">
+  Ich will nicht werden wie viele dieser Leute,
+  Möchtegern-Gangster die auf einmal Liebeslieder heulen.
+
+  Was? Was erzählst du mir da?
+  Erzählst mir von denen... <b>im echten Leben</b> sind das Pisser.
+
+  Du hast Recht, doch genau diese Lieder gehen dann Gold,
+  Schwul und ohne Stolz ist der Weg zum Erfolg
+  <br>
+  &mdash; Xatar - Alles oder Nix
+</div>
+
+<div class="para">
   Wahrheit ist da wos weh tut.
 </div>
 
@@ -10209,6 +12063,22 @@ but for deliverance from fear.
   back to normalcy and patriotism.
 
   &mdash; Yuri Bezmenov (Ex KGB Agent)
+</div>
+
+<div class="para">
+  In der Natur wirst du ganz langsam verrückt,
+  und plötzlich wünscht du dich so sehr zum Hermannplatz zurück.
+  In der Natur gibt es weder Kuchen noch Empfang,
+  In der Natur da hat die Liebe keine Chance.
+  In der Natur da ham die Tiere keine Angst,
+  Da gehst du einfach lang und krepierst dann irgendwann.
+  &mdash; Deichkind - In der Natur
+</div>
+
+<div class="para">
+  The sound of the rain against my window pane,
+  is slowly slowly driving me insane.
+  &mdash; Royalston - Sound of the Rain
 </div>
 
 <div class="para">
@@ -10291,7 +12161,7 @@ but for deliverance from fear.
   Ja, jetzt ist es wieder aus, aber unsere Kinder weinen nicht,
   denn wir ziehen sie alle <b>miteinander</b> auf.
   ...
-  Sie dachten echt ihre Scheiße hält ewig
+  <b>sie dachten echt ihre Scheisse hält ewig</b>
   ...
   Hurra diese Welt geht unter!
   Auf den Trümmern das Paradies
@@ -10304,7 +12174,20 @@ but for deliverance from fear.
 </div>
 
 <div class="para">
-  Als die ersten Missionare nach Afrika kommen,
+  Willkommen in der echten Welt,
+  wo du um Luft auf der Bühne ringst.
+
+  Wo man erkennt dass <b>dein ganzes Leben ne Lüge</b> ist,
+  wo dich keiner deiner Soldaten beschützt und hütet.
+
+  Es ist anders jetzt was du konntest genügt hier nicht,
+  ich reiss dich aus der Matrix werf dich in die echte Welt.
+  <br>
+  &mdash; Kool Savas - Matrix
+</div>
+
+<div class="para">
+  Als die ersten <b>Missionare</b> nach Afrika kommen,
   besitzen sie die Bibel und wir das Land.
   Sie sagen: Lasst uns beten!
   Und wir schließen die Augen.
@@ -10326,7 +12209,7 @@ but for deliverance from fear.
 <div class="para">
   Wegen Bomben die ich baute nannten sie mich Attentäter,
   Terrorist Gegenläufer und Verräter.
-  Aber später werden Menschen die wie ich sind euch regieren,
+  Aber <b>später werden Menschen die wie ich sind euch regieren</b>,
   Und so sage ich mir täglich nur den Glauben nicht verlieren.
   ...
   Untergrund ist Medizin Rap Antidepressiva,
@@ -10334,7 +12217,7 @@ but for deliverance from fear.
   Wer will Liebeslieder und wer will tighte Raps?
   Ich will raus aus diesem Knast, mein Mikro Geld und Sex.
   ...
-  Wie kann so etwas Gutes so falsch sein?
+  <b>Wie kann so etwas Gutes so falsch sein?</b>
   Warum ist so etwas Schönes so schlecht?
   Weshalb gibt es auf der Welt keine Liebe?
   Und weswegen hab ich eigentlich immer recht?
@@ -10347,11 +12230,11 @@ but for deliverance from fear.
   die Devise lautet "Hände weg vom Mic oder Kopf ab!"
   ...
   Wonderbras und Silikon sollten Pflicht sein für Gehirne,
-  denn bis jetzt hat jeder Zweite von euch Scheiße in der Birne.
+  denn bis jetzt hat jeder Zweite von euch Scheisse in der Birne.
   Hier kommt Anti gegen Alles, ich misstraue auch mir selbst,
   Hauptsache ist du stirbst, egal durch wessen Schwert du fällst.
   Alle <b>Hippies und Versager</b> kommen ins Hiphop-Arbeitslager.
-  "Untergrund" zu sein heißt tot sein oder Krieg wie Intifada.
+  "Untergrund" zu sein heisst tot sein oder Krieg wie Intifada.
   <br>
   &mdash; Prinz Pi [M1] - Keine Liebe
 </div>
@@ -10577,9 +12460,12 @@ but for deliverance from fear.
   Email:
   milahu@gmail.com,
   milahu@protonmail.com,
+  <br>
   Chat:
+  <!--
   milahu@irc.libera.chat,
   milahu@jabber.de,
+  -->
   @milahu:matrix.org
 </div>
 
