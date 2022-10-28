@@ -4,6 +4,9 @@
 # sane-backends -> scanimage
 # imagemagick -> convert
 
+set -e
+set -x
+
 # date
 d=$(date +%Y-%m-%d.%H-%M-%S)
 
@@ -36,7 +39,7 @@ small_scale=50%
 # 15 MByte png file
 resolution=300
 
-mkdir /run/user/$(id --user) 2>/dev/null
+mkdir /run/user/$(id --user) 2>/dev/null || true
 
 # temp file
 t=/run/user/$(id --user)/scan.$d.$title.png
