@@ -7,3 +7,31 @@ remove
 class="foldme" 
 
 sync from filename to <svg title="....">
+
+add "anchor links" to headings
+make headings clickable
+<h2 id="some-id">
+  <a href="#some-id">some heading</a>
+</h2>
+
+parse query string for section routing and options
+example: #/some-section?render
+-> render book layout and scroll to "some-section"
+
+debug
+./scripts/validate-html.sh 
+  10424:2  error  Mismatched close-tag, expected '</div>' but found '</article>'                close-order
+where is the unclosed <div> tag??
+
+https://stackoverflow.com/questions/6272327/how-to-find-the-unclosed-div-tag
+  https://htmlhint.com/
+    https://htmlhint-playground.netlify.app/
+https://stackoverflow.com/questions/3269822/find-unclosed-html-tags
+
+
+
+
+continue layout
+
+Die Karavane zieht weiter
+

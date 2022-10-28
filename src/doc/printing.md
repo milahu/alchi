@@ -27,7 +27,7 @@ wanted specs
 compare printers:
 
 * [new printers with wanted specs](https://geizhals.de/?cat=prl&xf=19151_15000%7E3309_A4%7E716_30%7E718_250%7E719_128%7E720_LAN%7E721_Duplexeinheit%7E9822_1)
-* [Samsung M3825 vs M2835 vs M3820](https://geizhals.de/?cmp=1115304&cmp=974929&cmp=974909&cmp=955880)
+* [Samsung M3825 vs M4025](https://geizhals.de/?cmp=955880&cmp=974929&cmp=966762&active=1)
 
 ### Samsung ProXpress M3825
 
@@ -41,6 +41,14 @@ search for "Samsung ProXpress"
 * 57 dB = loud!
 * 10 kg
 * pretty white-black case
+
+### Samsung ProXpress M4025
+
+new model of M3825
+
+* same toner, same drum
+* higher resolution: 1200 dpi
+* more RAM: 256 MByte
 
 #### Samsung ProXpress M3825ND
 

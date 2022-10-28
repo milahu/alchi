@@ -2,6 +2,260 @@
 
 small part of my todo list
 
+## better than html
+
+i want a better toolchain
+
+modular = split files
+
+must be compatible with github/gitlab/gitea blob api
+
+== must be readable on github/gitlab/gitea
+
+alternatives to html:
+
+* markdown
+* org-mode
+* asciidoc
+
+## markdown
+
+https://github.com/milahu/random/blob/master/markdown/test-github-markdown-renderer.md
+
+warning, this is one large file with 8000 lines of source code
+
+https://github.com/milahu/alchi/blob/master/src/whoaremyfriends/markdown/wersindmeinefreunde.md
+
+## org-mode
+
+https://orgmode.org/
+
+<blockquote>
+
+Org Mode
+
+Your life in plain text
+
+A GNU Emacs major mode for keeping notes, authoring documents, computational notebooks, literate programming, maintaining to-do lists, planning projects, and more — in a fast and effective plain text system.
+
+</blockquote>
+
+Org Mode Syntax Is One of the Most Reasonable Markup Languages to Use for Text
+
+https://karl-voit.at/2017/09/23/orgmode-as-markup-only/
+
+### more complex than markdown
+
+this is a problem for contributors
+
+most people know markdown, but only the "pros" know org-mode
+
+contributing should be as "low barriers" as possible
+
+### images not working in github blob api
+
+example
+
+https://github.com/zzamboni/emacs-org-leanpub/blob/master/book.org#setting-up
+
+actual image
+
+https://github.com/zzamboni/emacs-org-leanpub/raw/master/manuscript/resources/images/leanpub-pricing-plans.png
+
+image expected by github
+
+https://github.com/zzamboni/emacs-org-leanpub/raw/master/images/leanpub-pricing-plans.png
+
+workaround: symlink the images folder to every folder with org files
+
+### org-mode and pandoc
+
+https://pandoc.org/org.html
+
+### org-mode books
+
+https://github.com/zzamboni/emacs-org-leanpub/blob/master/book.org
+
+### org-mode to html
+
+#### ox-leanpub
+
+https://github.com/zzamboni/ox-leanpub
+
+> Note: you should use the Markua exporter, as it’s more mature, complete and actively developed by me. Some Org constructs might not be exported correctly to Markdown.
+
+### leanpub
+
+Publishing with Emacs, Org-mode and Leanpub
+
+Easy and Powerful self-publishing
+
+https://github.com/zzamboni/emacs-org-leanpub
+
+https://leanpub.com/emacs-org-leanpub - commercial??
+
+<blockquote>
+
+Write and Publish on Leanpub
+You can use Leanpub to easily write, publish and sell in-progress and completed ebooks and online courses!
+
+Leanpub is a powerful platform for serious authors, combining a simple, elegant writing and publishing workflow with a store focused on selling in-progress ebooks.
+
+Leanpub is a magical typewriter for authors: just write in plain text, and to publish your ebook, just click a button. (Or, if you are producing your ebook your own way, you can even upload your own PDF and/or EPUB files and then publish with one click!) It really is that easy.
+
+</blockquote>
+
+<details>
+
+<summary>tags relevant for my book</summary>
+
+https://leanpub.com/bookstore?type=all&category=organizational_psychology
+
+https://leanpub.com/bookstore?type=all&category=business_and_management
+
+https://leanpub.com/bookstore?type=all&category=leadership
+
+https://leanpub.com/bookstore?type=all&category=psychology
+
+https://leanpub.com/bookstore?type=all&category=psychotherapy
+
+https://leanpub.com/bookstore?type=all&category=anthropology
+
+https://leanpub.com/bookstore?type=all&category=personal_science
+
+https://leanpub.com/bookstore?type=all&category=social_science
+
+https://leanpub.com/bookstore?type=all&category=social_justice
+
+https://leanpub.com/bookstore?type=all&category=social_equity
+
+https://leanpub.com/bookstore?type=all&category=family_and_parenting
+
+https://leanpub.com/bookstore?type=all&category=economics
+
+https://leanpub.com/bookstore?type=all&category=education
+
+https://leanpub.com/bookstore?type=all&category=equality
+
+https://leanpub.com/bookstore?type=all&category=chemistry
+
+https://leanpub.com/bookstore?type=all&category=teamwork
+
+https://leanpub.com/bookstore?type=all&category=startups
+
+https://leanpub.com/bookstore?type=all&category=distributed_systems
+
+https://leanpub.com/bookstore?type=all&category=leadership_agile
+
+https://leanpub.com/bookstore?type=all&category=religion_and_spirituality
+
+https://leanpub.com/bookstore?type=all&category=atheism
+
+https://leanpub.com/bookstore?type=all&category=philosophy
+
+https://leanpub.com/bookstore?type=all&category=selfhelp
+
+https://leanpub.com/bookstore?type=all&category=diy
+
+https://leanpub.com/bookstore?type=all&category=childrens_books
+
+https://leanpub.com/bookstore?type=all&category=teen_and_young_adult
+
+</details>
+
+#### Markua format
+
+example
+
+https://github.com/zzamboni/emacs-org-leanpub/blob/master/manuscript/introduction.markua
+
+https://leanpub.com/lfm/read
+
+On Leanpub, there are two ways to write in plain text:
+
+1. Leanpub Flavoured Markdown (LFM)
+2. Markua 0.10
+
+### org-mode to html
+
+#### org-reveal
+
+presentation in slides (slideshow)
+
+https://github.com/yjwen/org-reveal
+
+based on https://github.com/hakimel/reveal.js/ - The HTML Presentation Framework
+
+### org-brain
+
+mindmapping tool
+
+https://github.com/Kungsgeten/org-brain
+
+## asciidoc
+
+* https://github.com/TalAter/awesome-book-authoring/issues
+  * https://medium.com/hackernoon/living-the-future-of-technical-writing-2f368bd0a272
+    * local copy: [living-the-future-of-technical-writing](living-the-future-of-technical-writing)
+    * https://github.com/git/git-scm.com
+    * https://github.com/progit/progit2
+
+<blockquote>
+
+Asciidoc
+
+So I switched large portions of Pro Git to Asciidoc. The issue with Markdown was that it was too simple. It didn’t specify things like table formatting, cross references, indexing, callouts, source code examples, etc. All of which Asciidoc does in a format that is just as easy to write.
+
+</blockquote>
+
+problem: not really compatible with github blob api
+
+example: images are missing in
+
+https://github.com/progit/progit2/blob/main/book/01-introduction/sections/about-version-control.asc
+
+for example, this image is not visible
+
+```asc
+.Local version control
+image::images/local.png[Local version control diagram]
+```
+
+actual location:
+https://github.com/progit/progit2/raw/main/images/local.png
+
+location expected by github renderer:
+https://github.com/progit/progit2/raw/main/book/01-introduction/sections/images/local.png
+
+so, image paths in asciidoc are relative to the project root
+but github interprets the image path as relative to the asc file
+
+### asciidoctor
+
+render asciidoc to html, docbook, manpages, pdf, epub
+
+https://github.com/asciidoctor
+
+https://github.com/asciidoctor/asciidoctor in ruby
+
+https://github.com/asciidoctor/asciidoctor.js in javascript
+
+### asciidoc vs markdown vs org-mode
+
+https://duckduckgo.com/?q=asciidoc+vs+markdown+limitations
+
+https://duckduckgo.com/?q=asciidoc+vs+markdown+vs+org-mode
+
+https://www.slant.co/versus/8769/23065/~org-mode_vs_asciidoc
+
+https://www.slant.co/versus/1903/23065/~markdown_vs_asciidoc
+
+slant.co
+
+* 130 org-mode
+* 60 markdown
+* 30 asciidoc
+
 ## remove bindery
 
 bindery is old, slow
@@ -65,6 +319,14 @@ just: split into multiple html files
 
 best of both worlds? use markdown with html for tables, annotations, ...
 
+### markdown
+
+started converting html to markdown:
+
+[src/whoaremyfriends/markdown/](../whoaremyfriends/markdown/)
+
+more notes there
+
 ### unified
 
 code transformer
@@ -72,6 +334,13 @@ code transformer
 parsing, inspecting, transforming, and serializing content through syntax trees
 
 https://github.com/unifiedjs/unified
+
+problem:
+original formatting is lost (indents + newlines),
+cannot prettify output (markdown with embedded html)
+
+Format HTML in Markdown
+https://github.com/prettier/prettier/issues/8480
 
 #### remark
 
@@ -81,11 +350,15 @@ https://github.com/remarkjs/remark
 
 https://github.com/remarkjs/remark#example-turning-markdown-into-html
 
+https://github.com/remarkjs/remark-rehype - markdown to html
+
 #### rehype
 
 transform html to other formats
 
 https://github.com/rehypejs/rehype
+
+https://github.com/rehypejs/rehype-remark - html to markdown
 
 rehype-inline — inline JS, CSS, and image files
 
