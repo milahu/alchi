@@ -736,7 +736,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
         * harmoniesucht und verlustangst. "lass uns zusammen bleiben." klammern an falsche freunde
         * lieber falsche freunde als keine freunde
         * angst vor einsamkeit, alleine schwach
-        " „Für das Management ist es eine schmerzhafte Entscheidung. In der Begründung heisst es: das harmonisches Gruppendenken ist oberstes Ziel in unserer Firma, und wenn wir den hervorragenden Mitarbeiter befördern, dann zerstört das die bestehende Rangordnung der zwischenmenschlichen Beziehungen. Die Manager klagen: Was sollen wir sonst tun?“ – William H. Whyte
+        " "Für das Management ist es eine schmerzhafte Entscheidung. In der Begründung heisst es: das harmonisches Gruppendenken ist oberstes Ziel in unserer Firma, und wenn wir den hervorragenden Mitarbeiter befördern, dann zerstört das die bestehende Rangordnung der zwischenmenschlichen Beziehungen. Die Manager klagen: Was sollen wir sonst tun?" - William H. Whyte
         * "Caring Culture" vs "Results Culture" in Culture Alignment Framework (CAF) by Spencer Stuart
         * [Gruppennarzissmus](https://de.wikipedia.org/wiki/Gruppennarzissmus)
           * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/…, wobei sie bei anderen nur Negatives erkennen"
@@ -776,7 +776,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * [naturreligion](https://de.wikipedia.org/wiki/Naturreligion_(Begriff))
   * schriftlose Kultur: gefühl ist alles. schrift wird immer nur falsch verstanden.
   * "Der Sammelbegriff Naturreligion ist eine heute von vielen Ethnologen und Religionswissenschaftlern als veraltet und irreführend abgelehnte Bezeichnung für die ethnischen Religionen schriftloser Kulturen. Im Gegensatz zu den gleichfalls beanstandeten Bezeichnungen „Primitivreligion“, „archaische Religion“ oder „Stammesreligion“ wird Naturreligion dennoch in populärer Literatur nach wie vor häufig verwendet."
-  * "Ältere Darstellungen stellen ‚Naturreligionen‘ oft den ‚Kulturreligionen‘ gegenüber."
+  * ""Ältere Darstellungen stellen "Naturreligionen" oft den "Kulturreligionen" gegenüber.""
   * "Natur, Primitivität und Zivilisationslosigkeit werden in krassen Gegensatz zu Kultur gestellt."
   * "Die Begriffe Naturreligionen und Naturvölker verweisen außerdem auf einen vermeintlich idealen Urzustand, auf den Traum von der Ganzheitlichkeit des Lebens." (paradies auf erden vs paradies im himmel) (echtes glück vs virtuelles glück) (herrenmoral vs sklavenmoral)
   * "unabhängig von der wissenschaftshistorischen Verwendung bezeichnen auch einige Anhänger neuheidnischer Bewegungen ihre Überzeugung als „Naturreligion“."
@@ -804,14 +804,14 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
         * "Dezidiert antichristliche Positionen vertrat der byzantinische Philosoph Georgios Gemistos Plethon, der eine zweite platonische Akademie gründete und auf neuplatonischer Basis die alte griechische Religion wiederbeleben wollte."
         * "Wegen ihrer Beschäftigung mit den antiken heidnischen Philosophen wurde vielen Humanisten vorgeworfen, „Heiden“, insbesondere Epikureer, zu sein."
         * epikur: lebe im verborgenen, lebe privat, lebe in kleinen gruppen
-      * "Die „Modernisten“ versuchen, vom Stand der heutigen wissenschaftlichen Erkenntnisse ausgehend, eine Religion des Einklangs der beseelten Natur mit dem Menschen – wie in animistischen Religionen – zu leben. Sie bekennen sich dazu, neue religiöse Formen zu erschaffen."
+      * "Die „Modernisten“ versuchen, vom Stand der heutigen wissenschaftlichen Erkenntnisse ausgehend, eine Religion des Einklangs der beseelten Natur mit dem Menschen - wie in animistischen Religionen - zu leben. Sie bekennen sich dazu, neue religiöse Formen zu erschaffen."
       * "Für das neuheidnische Hexenbild ist die Interpretation von Jacob Grimm am wichtigsten, der in seiner Deutschen Mythologie den Hexenglauben als Ausdruck des naturcultus unserer vorfahren interpretiert und die Hexen auf weise Frauen zurückführte, die in der heidnischen Gesellschaft als Heilkundige, Seherinnen und Priesterinnen eine zentrale Funktion erfüllt hätten."
       * "... neuzeitlichen Hexenverfolgung, welche auch Männer betraf ..."
   * glaube an eine naturordnung
     * natur ist stärker als kultur
     * kindischer eigenwille ist wichtiger als falsche erwartungen von lehrern. schlaue kinder und dumme eltern.
   * Stammesreligion, réligion tribale, tribal religion
-  * "Die sogenannten „Stammesreligionen“ werden in vielen Staaten der dritten Welt immer noch als „primitiv und unterentwickelt“ stigmatisiert, zumal die herrschende Klasse dieser Länder in der Regel nach christlichen, islamischen oder kommunistischen Vorlagen ausgebildet wurde. In den Schwellenländern ist die Situation noch ungünstiger, da traditionell lebende Gruppen hier meist als entwicklungshemmend gelten: Entweder werden sie offensiv unterdrückt oder die Errichtung moderner technischer und sozialer Infrastruktur zerstört automatisch das alte Weltbild – und mit ihm die Religion."
+  * "Die sogenannten „Stammesreligionen“ werden in vielen Staaten der dritten Welt immer noch als „primitiv und unterentwickelt“ stigmatisiert, zumal die herrschende Klasse dieser Länder in der Regel nach christlichen, islamischen oder kommunistischen Vorlagen ausgebildet wurde. In den Schwellenländern ist die Situation noch ungünstiger, da traditionell lebende Gruppen hier meist als entwicklungshemmend gelten: Entweder werden sie offensiv unterdrückt oder die Errichtung moderner technischer und sozialer Infrastruktur zerstört automatisch das alte Weltbild - und mit ihm die Religion."
   * römer gegen gallier
     * römer gegen germanen
   * [Neo-ethnische Religionen](https://de.wikipedia.org/wiki/Ethnische_Religionen#Neo-ethnische_Religionen)
