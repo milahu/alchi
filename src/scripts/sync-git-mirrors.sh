@@ -25,7 +25,14 @@ git push srht
 git push srht --tags
 
 # http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
-torsocks git push darktea
+(
+torsocks git push darktea &&
 torsocks git push darktea --tags
+) ||
+(
+echo retrying darktea
+torsocks git push darktea &&
+torsocks git push darktea --tags
+)
 
 git stash pop
