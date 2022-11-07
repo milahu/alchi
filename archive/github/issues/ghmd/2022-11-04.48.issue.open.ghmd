@@ -88,7 +88,95 @@ selfhosted, localfirst, nocloud, anyone can start a new instance
 javascript is optional
 no build steps, no SSR, no markdown
 
-## local-first
+## progressive web app
+
+https://github.com/topics/progressive-web-app
+
+## offline-first
+
+aka: local-first, dweb
+
+https://github.com/topics/offline-first
+https://github.com/topics/local-first
+https://github.com/topics/dweb
+https://github.com/topics/dapp
+
+### pazguille/offline-first
+
+https://github.com/pazguille/offline-first
+Everything you need to know to create offline-first web apps
+
+### workbox
+
+https://github.com/GoogleChrome/workbox
+JavaScript libraries for Progressive Web Apps
+service workers
+
+### berty
+
+https://github.com/berty/berty
+peer-to-peer messaging app that works with or without internet access
+
+### UpUp
+
+https://github.com/TalAter/UpUp
+create sites that work offline as well as online
+
+### vuejs-templates/pwa
+
+https://github.com/vuejs-templates/pwa
+PWA template for vue-cli based on the webpack template
+
+### client-side-databases
+
+https://github.com/pubkey/client-side-databases
+An implementation of the exact same app in Firestore, AWS Datastore, PouchDB, RxDB and WatermelonDB
+
+### pouchdb
+
+https://github.com/pouchdb/pouchdb - 15K stars
+
+> PouchDB is an open-source JavaScript database inspired by [Apache CouchDB](http://couchdb.apache.org/) that is designed to run well within the browser.
+> 
+> PouchDB was created to help web developers build applications that work as well offline as they do online.
+> https://pouchdb.com/
+
+### couchdb
+
+https://couchdb.apache.org/
+
+> [The Couch Replication Protocol](https://docs.couchdb.org/en/stable/replication/protocol.html) lets your data flow seamlessly between server clusters to mobile phones and web browsers, enabling a compelling [offline-first](https://offlinefirst.org/) user-experience while maintaining high performance and strong reliability.
+
+### wora
+
+https://github.com/morrys/wora
+Write Once, Render Anywhere.
+typescript libraries: cache-persist, apollo-offline, relay-offline, offline-first, apollo-cache, relay-store, netinfo, detect-network
+
+### git-documentdb
+
+https://github.com/sosuisen/git-documentdb
+Offline-first Database that Syncs with Git
+
+### tool-db
+
+https://github.com/Manwe-777/tool-db
+A peer-to-peer decentralized database
+
+### offlinefirst.org
+
+https://offlinefirst.org/
+via https://couchdb.apache.org/
+https://github.com/offlinefirst/research
+https://github.com/offlinefirst/ux-examples
+
+> We live in a disconnected & battery powered world, but our technology and best practices are a leftover from the always connected & steadily powered past.
+>
+> Offline capability is a key characteristic of modern Progressive Web Applications.
+
+> Tools and techniques for building offline capable apps
+
+### inkandswitch.com
 
 https://www.inkandswitch.com/local-first/
 
@@ -133,6 +221,13 @@ rabbithole
 
 ## CRDT
 
+aka: distributed database
+
+### gun
+
+https://github.com/amark/gun
+protocol for syncing decentralized graph data
+
 ### automerge
 
 https://automerge.org/
@@ -154,6 +249,7 @@ a p2p document synchronization system for automerge
 https://github.com/yjs/yjs - 9K stars
 https://github.com/yjs/y-prosemirror
 https://github.com/yjs/y-indexeddb
+https://github.com/YousefED/SyncedStore
 
 ## collaborative editors
 
@@ -386,6 +482,17 @@ https://github.com/zadam/trilium
 https://github.com/athensresearch/athens
 https://github.com/documize/community
 https://obsidian.md/ - desktop app
+
+### rxdb
+
+https://rxdb.info/
+https://github.com/pubkey/rxdb - 18K stars
+A fast, offline-first, reactive database for JavaScript Applications
+
+> Premium Plugins
+> [IndexedDB RxStorage](https://rxdb.info/rx-storage-indexeddb.html)
+
+found the problem. we need IndexedDB but it must be open source, not "Premium"
 
 
 
