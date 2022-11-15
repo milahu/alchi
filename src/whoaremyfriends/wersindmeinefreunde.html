@@ -78,7 +78,7 @@
   <!-- meta#version -->
   <!-- TODO update -->
   <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-  <meta id="version" name="dcterms.modified" content="2022-10-28">
+  <meta id="version" name="dcterms.modified" content="2022-11-15">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -240,10 +240,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- load annotations -->
-  <!-- hypothesis only works online, so this script is external -->
-  <script async src="https://hypothes.is/embed.js"></script>
-
   <!-- non-standard tags, human readable -->
   <!-- TODO maybe use dc tags -->
   <meta name="author.email" content="milahu@gmail.com">
@@ -264,6 +260,7 @@
 
   <meta name="homepage" content="https://github.com/milahu/alchi">
   <meta name="homepage.gitea" content="https://try.gitea.io/milahu/alchi">
+  <meta name="homepage.codeberg" content="https://codeberg.org/milahu/alchi">
   <meta name="homepage.gitlab" content="https://gitlab.com/milahu/alchi">
   <meta name="homepage.srht" content="https://sr.ht/~milahu/alchi">
   <meta name="homepage.tor.darktea" content="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi">
@@ -296,6 +293,54 @@
 
   '>
 
+
+
+  <!-- book layout engine, based on https://github.com/evnbr/bindery -->
+  <script src="src/bindery/bindery.umd.js"></script>
+
+
+
+  <!--
+    bootstrap user interface library
+    https://getbootstrap.com/
+
+    changes in default style
+    https://getbootstrap.com/docs/5.2/content/reboot/
+
+    FIXME headings too large
+  -->
+
+  <link rel="stylesheet" type="text/css" href="src/bootstrap/bootstrap.css">
+  <script defer src="src/bootstrap/bootstrap.bundle.js"></script>
+
+  <!-- TODO move script + style to external files -->
+
+  <style>
+    /*
+      bootstrap: fix darkmode: black stroke -> white stroke
+      TODO find a better framework that works with darkreader extension
+    */
+    .navbar {
+      --darkreader-bgimg--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath opacity='0.55' stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    :root[data-darkreader-mode]
+    .btn-close {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath opacity='0.55' stroke='white' d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+    }
+  </style>
+
+
+
+  <!-- annotations -->
+  <!-- hypothesis only works online, so this script is external -->
+  <!-- uses <link rel="canonical" to identify this document -->
+  <!-- default off. TODO enable from navbar
+  <script async src="https://hypothes.is/embed.js"></script>
+  -->
+
+
+
+  <!-- note: our style must come after bootstrap.min.css -->
   <style>
     /* FIXME width 1105px, zoom 100%, dpi 144? -> horizontal scrollbar in grid view */
     body.js-enabled hr {
@@ -408,6 +453,9 @@
       div.annotation {
         background: none;
       }
+      .screen-layout-only {
+        display: none;
+      }
     }
 
     .bindery-print-sheet {
@@ -465,6 +513,13 @@
       transform-origin: top left;
       /*margin-bottom: -5em; TODO calc this with javascript? */
     }
+    /*
+      TODO refactor
+      a: <div class="para">
+      b: <div>
+      css selector:
+      section > div
+    */
     div.para {
       /* note: margins are collapsed
         https://stackoverflow.com/questions/3069921/what-is-the-point-of-css-collapsing-margins
@@ -662,8 +717,7 @@
 
   </style>
 
-  <!-- book layout engine, based on https://github.com/evnbr/bindery -->
-  <script src="src/bindery/bindery.umd.js"></script>
+
 
   <script>
     function clickAnnotation(element) {
@@ -672,6 +726,8 @@
       alert(text); // TODO show pretty modal
     }
   </script>
+
+
 
   <script title="binderyOptions">
 
@@ -806,6 +862,115 @@
     }
   </script>
 
+
+
+  <script title="call Bindery.makeBook">
+
+    /* dom + assets are ready
+    window.onload = function() {
+      alert('window.onload');
+    };
+    */
+
+    // dom is ready
+    document.addEventListener("DOMContentLoaded", function(){
+      //alert('DOMContentLoaded');
+
+      window.makeBinderyBook =
+      async function makeBinderyBook(onResult) {
+
+        const options = getBinderyOptions(Bindery);
+
+        options.onResult = onResult;
+
+        console.time(`Bindery.makeBook`);
+        await Bindery.makeBook(options);
+        console.timeEnd(`Bindery.makeBook`);
+
+        // note: rendering is not done here
+
+        /* not working
+        console.log(`add handleClick to annotation elements`);
+        Array.from(document.getElementsByClassName("annotation")).forEach(element => {
+          console.log(`add handleClick to element`, element);
+          function clickAnnotation(event) {
+            const element = event.target;
+            console.log(`clicked element`, element);
+            alert(element.getAttribute("title"));
+          }
+          element.addEventListener("click", clickAnnotation);
+          element.addEventListener("mouseover", clickAnnotation);
+          //element.onclick = handleClick;
+        });
+        */
+
+      }
+
+      // call this from <button id="render-print-layout"
+      //makeBinderyBook();
+
+      // page loaded
+
+      const renderButton = document.querySelector('#render-print-layout-button');
+
+      // show the render button
+      renderButton.classList.remove("disabled");
+      renderButton.setAttribute("href", "javascript: renderPrintLayout()");
+
+      function renderPrintLayout() {
+        console.log('renderPrintLayout', renderButton);
+        renderButton.classList.add("disabled");
+        renderButton.removeAttribute("href");
+        makeBinderyBook(book => {
+          //renderButton.parentNode.remove();
+          // remove the render button
+          console.dir(book);
+          renderButton.parentElement.remove();
+          const sec = (ms) => (ms / 1000).toFixed(2);
+          if (
+            document.location.hash != '#renderbook' &&
+            document.location.hash != '#render'
+          ) {
+              // render was called manually
+              // verbose feedback
+              //alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
+              alert(`Druck-Layout fertig nach ${sec(book.stats.layout)} Sekunden`);
+              const header = document.querySelector('header');
+              if (header) {
+                // workaround so the bindery navbar is visible
+                // TODO better: make bindery headless, add bindery controls to our navbar
+                header.remove();
+              }
+
+          }
+          // move bindery menu
+          const binderyControls = document.querySelector(".bindery-controls")
+          if (binderyControls) {
+            binderyControls.style.marginTop = "100px"; // TODO better
+          }
+        });
+        // TODO? remove navbar now, show long status message
+        renderButton.innerHTML = 'Drucken...';
+        renderButton.setAttribute("title", "Bitte ein paar Sekunden warten, bis das Druck-Layout fertig ist");
+        document.body.classList.remove('screen-layout');
+        //document.body.classList.add('print-layout'); // not used
+      }
+
+      window.renderPrintLayout = renderPrintLayout;
+
+      if (
+        document.location.hash == '#renderbook' ||
+        document.location.hash == '#render'
+      ) {
+        renderPrintLayout();
+      }
+
+    });
+
+  </script>
+
+
+
 </head>
 
 
@@ -816,9 +981,173 @@
 
 <script>document.body.classList.add('js-enabled')</script>
 
-<noscript>This page works better with Javascript</noscript>
+<noscript class="screen-layout-only">This page works better with Javascript</noscript>
 
-<button id="make-bindery-book" type="button" class="bindery-control" hidden>Render book layout for printing</button>
+
+
+<header class="screen-layout-only">
+  <!--
+    https://stackoverflow.com/questions/71710494/bootstrap-5-navbar-offcanvas
+
+    TODO less padding in navbar
+
+    TODO this is a "toolbar" so there are no active items
+  -->
+  <nav id="navbar" class="navbar navbar-expand-sm mb-4 navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <!--
+      <a class="navbar-brand" href="#">Pallas</a>
+      -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarExample-expand-sm" aria-controls="offcanvasNavbarExample-expand-sm">
+        <span class="navbar-toggler-icon darkmode-invert" data-bs-target="#offcanvasNavbarExample-expand-sm"></span>
+      </button>
+      <div class="offcanvas offcanvas-start " data-bs-hideresize="true" tabindex="-1" id="offcanvasNavbarExample-expand-sm" aria-labelledby="offcanvasNavbarExample-expand-sm">
+        <div class="offcanvas-header">
+          <!--
+          <h5 class="offcanvas-title" id="offcanvasLabel">Pallas</h5>
+          -->
+          <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasTableOfContents" aria-controls="offcanvasTableOfContents">
+                Inhalt
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <!--
+              <a class="nav-link" id="render-print-layout-button" href="javascript: renderPrintLayout()">Drucken</a>
+              -->
+              <a class="nav-link disabled" id="render-print-layout-button">Drucken</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ändern</a>
+            </li>
+
+            <li class="nav-item">
+              <!-- TODO open modal, ask to load annotations from hypothesis -->
+              <a class="nav-link" href="#">Notizen</a>
+            </li>
+
+            <!--  class dropdown-toggle = down-arrow next to button -->
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Quellen
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://github.com/milahu/alchi">github.com</a></li>
+                <li><a class="dropdown-item" href="https://gitlab.com/milahu/alchi">gitlab.com</a></li>
+                <li><a class="dropdown-item" href="https://codeberg.org/milahu/alchi">codeberg.org</a></li>
+                <li><a class="dropdown-item" href="https://try.gitea.io/milahu/alchi">gitea.io</a></li>
+                <li><a class="dropdown-item" href="https://sr.ht/~milahu/alchi">sr.ht</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <!-- TODO open modal, ask to open *.onion link -->
+                <li><a class="dropdown-item" href="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi">darktea.onion</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <!-- TODO open modal, show help -->
+              <a class="nav-link" href="#">Speichern</a>
+            </li>
+
+            <li class="nav-item">
+              <!-- TODO open modal, show help -->
+              <a class="nav-link" href="#">Teilen</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- table of contents -->
+  <div class="offcanvas offcanvas-start text-start" tabindex="-1" id="offcanvasTableOfContents" aria-labelledby="offcanvasTableOfContentsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasTableOfContentsLabel">Inhalt</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+      <ol id="table-of-contents">
+        <li><a href="#">Wer sind meine Freunde?</a></li>
+        <li>
+          <a href="#">Pallas-Muster</a>
+          <ol>
+            <li><a href="#">Woher kommt das Pallas-Muster?</a></li>
+            <li><a href="#">Freunde sind nah, Feinde sind fern</a></li>
+            <li><a href="#">Bessere Welt</a></li>
+            <li><a href="#">Pallas-Symbol</a></li>
+            <li>
+              <a href="#">Alternative Darstellungen vom Pallas-Muster</a>
+              <ol>
+                <li><a href="#">Runde Linien</a></li>
+                <li><a href="#">Doppelbindungen und Einfachbindungen</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a href="#">Hypothese</a><ol>
+          <li><a href="#">Wahrheitsmatrix</a></li>
+          <li><a href="#">Experiment</a></li>
+        </ol></li>
+        <li>
+          <a href="#">Pallas-Experiment</a>
+          <ol>
+            <li><a href="#">Zweier-Gruppen</a></li>
+            <li><a href="#">Vierer-Gruppen</a></li>
+          </ol>
+        </li>
+      </ol>
+      <!-- TODO generate from headings in <article id="content" -->
+
+    </div>
+  </div>
+
+  <script>
+    /*
+      hide menu on scroll down
+      show menu on scroll up
+      https://stackoverflow.com/a/36449756/10440128
+    */
+    var lastScrollTop = 0;
+    window.scrollListener = function handleScroll() {
+      const navbar = document.getElementById("navbar");
+      if (!navbar) {
+        //window.addEventListener("scroll", window.scrollListener, false);
+        window.removeEventListener("scroll", window.scrollListener, false);
+        window.scrollListener = undefined;
+        return;
+      }
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop){
+          document.getElementById("navbar").style.top = "-100%";
+      } else {
+          document.getElementById("navbar").style.top = "0";
+      }
+      lastScrollTop = st;
+    }
+    window.addEventListener("scroll", window.scrollListener, false);
+  </script>
+  <style>
+    #navbar {
+      top: 0;
+      transition: top 1s;
+      /*
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      background: var(--bg);
+      */
+    }
+  </style>
+</header>
 
 
 
@@ -1850,17 +2179,6 @@
 
   immer zwischen
   Horizontal-Paare und Vertikal-Paare.
-</div>
-
-<div class="para">
-  TODO
-  exodus. brain drain.
-  alle guten laufen weg.
-  übrig bleibt nur der abschaum.
-  die karavane zieht weiter.
-  wertvolle menschen rekrutieren:
-  schöne, schlaue, starke, high value male, high value female.
-  arche noah.
 </div>
 
 <div class="para">
@@ -3648,6 +3966,39 @@ TODO style="break-before:page"?
     <td style="padding-top:0.5em; padding-right:0.5em">Calorien</td>
   </tr>
 </table>
+
+<div class="para">
+  Nährstoffmangel:
+  Pauschal kann man sagen:
+  Die meisten Menschen essen zu wenig Protein
+  und zu wenig Mikronährstoffe (Vitamine, Mineralien).
+  Dieser Nährstoffmangel hat viele Symptome:
+  dünne Haare, brüchige Nägel, Übergewicht, niedrige Stress-Toleranz, ...
+</div>
+
+<div class="para">
+  Grundnahrung:
+  Meine Lösung für das "Problem Nährstoffmangel"
+  ist eine Grundnahrung wo alles drin ist:
+  "Huel "
+
+  Haferflocken, Erbsen, Leinsamen, Kokosfett, Lecithin, Vitamine, Mineralien, Aroma, Salz.
+  Nachteile: kein Kauen, Pulver bleibt zwischen Zähnen, Geschmack ist auf Dauer langweilig.
+  Nachteil: Huel ist nicht regional:
+  Verpackung in England,
+  Haferflocken aus England,
+  Erbsen aus Kanada und China,
+  Reis aus China,
+  Leinsamen aus Kanada,
+  Kokosfett aus Indonesien und China,
+  Lecithin aus Indien.
+</div>
+
+<div class="para">
+  Pauschal kann man sagen:
+  Die meisten Menschen essen zu wenig Protein
+  und zu wenig Mikronährstoffe (Vitamine, Mineralien).
+</div>
 
 <div class="para">
   Beispiel:
@@ -5698,6 +6049,80 @@ TODO move
   ob der mich featuren will.
 </div>
 
+<section id="todo-help-wanted-book-printing">
+
+<h4>Buch drucken</h4>
+
+<!--
+  based on
+  alchi/src/doc/printing.md
+  alchi/src/doc/costs.md
+-->
+
+<div class="para">
+  Meine "Druckerei" besteht aus Laserdrucker und Heftgerät.
+  Kaufe ich gebraucht für 100 + 50 = 150 Euro bei
+  <a class="nofootnote" href="https://www.ebay-kleinanzeigen.de/"
+  >ebay-kleinanzeigen.de</a>.
+  Toner und Drum kaufe ich bei
+  <a class="nofootnote" href="https://www.ebay.de/"
+  >ebay.de</a> (Händler: europcart, gorilla-ink).
+  Das teuerste am Toner ist dieser scheiss Chip,
+  mit dem Drucker-Hersteller kleine Druckereien sabotieren.
+  Idealerweise habe ich einen
+  <a class="nofootnote" href="https://github.com/milahu/awesome-reset-toner"
+  >Resetter für den Toner Chip</a>,
+  dann kann ich den Toner selber nachfüllen.
+  <!--
+    https://github.com/search?q=reset+toner
+    https://github.com/milahu/awesome-reset-toner # TODO rename
+    https://github.com/lugu/toner_chip_reset
+  -->
+</div>
+
+<div class="para">
+  Laserdrucker:
+  <a class="nofootnote" href="https://geizhals.de/samsung-proxpress-m3825nd-sl-m3825nd-see-a974929.html"
+  >Samsung ProXpress M3825</a>.
+  Nachfolge-Modell:
+  <a class="nofootnote" href="https://geizhals.de/samsung-proxpress-m4025nd-sl-m4025nd-see-a966762.html"
+  >Samsung ProXpress M4025</a>.
+  Strom-Verbrauch: 700 Watt.
+  Toner: MLT-D204E (E = Extra large), 20 Euro / 10.000 Seiten = 0.2 Cent pro Seite.
+  Drum: MLT-R204, 30 Euro / 30.000 Seiten = 0.1 Cent pro Seite.
+  Auflösung: 1200 dpi, ich drucke mit 300 dpi.
+  Speed: 38 Seiten / Minute.
+  Duplex Speed: 20 Seiten / Minute.
+  Noise: 57 dB = laut.
+  Gewicht: 10 kg.
+  Papierzufuhr: 250 Blatt.
+  Steht in meinem Badezimmer, weil laut und stinkt.
+  Anschluss über 20 Meter LAN Kabel.
+</div>
+
+<div class="para">
+  Blockhefter:
+  Novus B54 Blockhefter.
+  Nachfolge-Modell: Novus B56XL Blockhefter.
+  Alternative: Skrebba Skre 120 lang Blockhefter.
+  Bis 170 Blatt (billige Hefter schaffen nur 15 Blatt).
+  Tiefe: 25 cm (A5 Breite: 15 cm).
+  Klammern: 23/8.
+  Nicht: dünne Klammern (24/8).
+  Kosten: 3,15 Euro / 1000 Klammern bei
+  <a class="nofootnote" href="https://www.ebay.de/itm/232998955137"
+  >ebay.de</a>.
+</div>
+
+<div class="para">
+  Ich mache ganz absichtlich kein schönes Buch mit Softcover,
+  weil das ist mehr Arbeit (Schneiden + Kleben).
+  Keep It Simple:
+  Jeder kann mein Buch einfach kopieren.
+</div>
+
+</section>
+
 </section>
 <!-- end of <section id="todo-help-wanted" -->
 
@@ -6034,6 +6459,14 @@ TODO move
 
   Ein seriöser Test muss auch den Körpertyp messen:
   Neigung zu: Untergewicht / Mittelgewicht / Übergewicht = Typ: 4 / 12 / 3.
+</div>
+
+<div class="para">
+  Ein Persönlichkeitstest ist immer eine Entscheidung
+  zwischen 2 Optionen, die objektiv gleichwertig, aber subjektiv verschieden sind.
+  Beispiel: Was ist besser, Glück oder Geduld?
+  Sicherheit oder Freiheit?
+  Soft Skills oder Hard Skills?
 </div>
 
 </section>
@@ -6505,18 +6938,6 @@ TODO move
 <div class="para">
   Illusion von Bewegung, falsche Arbeit,
   Zeitverschwendung, controlled opposition, ... TODO
-</div>
-
-</section>
-
-
-
-<section id="concepts-illusion-of-choice">
-
-<h3>Illusion von Wahl</h3>
-
-<div class="para">
-  Konzept: <b>Illusion von Wahl</b>, Illusion of choice, falsche Wahl, TODO
 </div>
 
 </section>
@@ -7957,8 +8378,7 @@ TODO are <section> nested or flat?
 
 
 
-<!--
-  film: divergent
+<!-- film: divergent
   negative darstellung von gruppen = factions.
   seltsam:
   man wird in eine "faction" geboren = die faction der eltern,
@@ -7991,7 +8411,7 @@ TODO are <section> nested or flat?
 
 
 <!-- TODO move to limitations -->
-<!-- kein platz
+<!-- kein platz: Selbsteinschätzung
 <section id="todo-self-assessment">
 
 <h4>Selbsteinschätzung</h4>
@@ -8029,8 +8449,7 @@ TODO are <section> nested or flat?
 </section>
 -->
 
-<!--
-  slave morality = passive = indecisive = follow
+<!-- slave morality = passive = indecisive = follow
 
   https://www.thehumancapitalhub.com/articles/Agreeableness-Personality-The-Bad-Side-Of-This-Trait
 
@@ -8113,7 +8532,7 @@ TODO are <section> nested or flat?
 
 
 <!-- TODO move -->
-<!-- TODO more research. messfehler? 16 khz signal von PC monitor?
+<!-- Elektrosmog. TODO more research. messfehler? 16 khz signal von PC monitor?
 <section id="electrosmog-is-psychotorture">
 
 <h4>
@@ -8296,6 +8715,28 @@ TODO are <section> nested or flat?
 
 
 
+<section id="illusion-of-choice">
+
+<h4>Illusion von Wahl</h4>
+
+<div class="para">
+  Falsche Wahl ist eine Wahl zwischen Scheisse und Scheisse.
+  Ich sage: Lieber Nix als Scheisse.
+  Lieber keine Lehrer als scheiss Lehrer.
+  Lieber keine Freunde als scheiss Freunde.
+  ... also ich kann gut alleine sein.
+  Andere Menschen brauchen mehr die Wärme von Gesellschaft,
+  machen dafür Kompromisse, und lassen sich damit erpressen.
+</div>
+
+<div class="xcenter">
+  <img style="width:60%" class="darkmode-invert" src="../images/illusion-of-choice.cow-before-the-slaughterhouse.svg">
+</div>
+
+</section>
+
+
+
 <!-- TODO move -->
 <section id="doing-or-talking">
 
@@ -8314,8 +8755,8 @@ TODO are <section> nested or flat?
   Ich kann nichts machen.
 
   Genauer:
-  Was ich will ist das darf ich nicht.
-  Was ich soll, das will ich nicht.
+  <b>Was ich will das darf ich nicht,
+  was ich soll das will ich nicht.</b>
 
   Dazwischen gibt es keinen Kompromiss.
   Jeder zeigt auf den Anderen,
@@ -8895,6 +9336,99 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 
 <!-- TODO move -->
+<section id="grampa-wants-to-die">
+
+<h4>
+  Opa will sterben
+</h4>
+
+<div class="para">
+  ... ist meine Lieblings-Folge bei South Park (S01E06 Death)
+</div>
+
+<div class="para">
+  Stan's Opa will sterben weil er zu alt ist,
+  aber er selber schaffts nicht,
+  und keiner von den Erwachsenen will helfen (Versager).
+  Sogar Chefkoch und Jesus sagen
+  "das Thema würde ich nicht mal mit der Kneifzange anfassen"
+  (Original: I wont touch that with a twenty foot pole).
+</div>
+
+<div class="para">
+  Wir haben viel zu viele Menschen (Übervölkerung),
+  aber Menschen töten ist immer noch ein Tabu-Thema,
+  weil wir glauben "das Mordverbot ist eine Grundlage unserer Zivilisation"
+  und "wenn wir das Mordverbot aufgeben dann sind wir wieder in der Steinzeit".
+  Naja, dafür macht die einseitige "Pro Life" Politik den ganzen Planet kaputt.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="brain-drain">
+
+<h4>
+  Brain Drain
+</h4>
+
+<div class="para">
+  Wer schlau und reich ist, der geht ins Ausland.
+  Zum Beispiel nach Afrika oder Südamerika.
+  Lieber im Ausland als Sklave weiter leben,
+  als hier bleiben und einen verlorenen Krieg kämpfen.
+</div>
+
+<div class="para">
+  Alle Guten laufen weg, übrig bleibt nur der Abschaum.
+  Flucht. Exit. Exodus.
+  Die Karavane zieht weiter.
+  Arche Noah.
+  Wertvolle Menschen rekrutieren:
+  Schöne, Schlaue, Starke, High value males, High value females.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="too-little-or-too-much">
+
+<h4>
+  Zu wenig oder zu viel
+</h4>
+
+<div class="para">
+  Haben wir zu wenig Gewalt oder zu viel Gewalt?
+  Die Symptome sind ähnlich,
+  wie bei Vitamin-Mangel und Vitamin-Überdosis.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="all-want-justice">
+
+<h4>
+  Alle wollen Gerechtigkeit
+</h4>
+
+<div class="para">
+  ... aber auf welchem Weg kommen wir zu Gerechtigkeit?
+  Beim Weg scheiden sich die Geister:
+  Manche wollen kämpfen, manche wollen warten.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
 <section id="hope-dies-last">
 
 <h4>Die Hoffnung stirbt zuletzt</h4>
@@ -9046,6 +9580,220 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   Aber klar, Freiheit geht in beide Richtungen.
   Wir haben die Freiheit zum besser machen,
   aber auch die Freiheit zum Faulsein ...
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="medicine-makes-sick">
+
+<h4>
+  Medizin macht krank
+</h4>
+
+<div class="para">
+  Medizin hilft nur kurze Zeit,
+  langfristig macht Medizin abhängig und krank.
+  Die Symptome werden schwächer,
+  aber die Ursachen werden stärker.
+  Mediziner wollen immer "Leben retten"
+  ganz egal ob dieses Leben "würdig" oder "unwüridig" ist,
+  und Mord ist das letzte Mittel (ultima ratio).
+</div>
+
+<div class="para">
+  Ich als Typ 1 sage:
+  Mord ist das erste Mittel.
+  Schlechte Augen? Weg damit.
+  Schiefe Zähne? Weg damit.
+  Behindert? Weg damit.
+  Hässlich? Weg damit.
+  Zu alt? Weg damit.
+  Zu groß? Weg damit.
+  Zu klein? Weg damit.
+  ...
+  Je früher desto besser.
+  Mein Weg ist kurzfristig destruktiv,
+  aber langfristig besser,
+  weil so schaffe ich gesunde Genetik,
+  also die Ursache für gesunde Menschen.
+</div>
+
+<div class="para">
+  Medizin ist das Gegenteil:
+  Kranke werden belohnt,
+  Gesunde werden bestraft durch Zwangsversicherung.
+  Langfristig gibts mehr Kranke,
+  und die Gesunden werden sinnlos belastet.
+</div>
+
+<div class="para">
+  Passive Gewalt, Folterknechte: Opfer langsam sterben lassen.
+  Aktive Gewalt, Mörder: Opfer schnell töten.
+</div>
+
+<div class="para">
+  Folterknechte machen es spannend,
+  und geben ihrem Opfer immer wieder falsche Hoffnung.
+  Ich als Mörder bin einfach nur ehrlich,
+  und sage gleich was Sache ist.
+  Warum soll ich Energie verschwenden für wertloses Leben?
+  So als würde ein Tierzüchter kranke Tiere weiter füttern,
+  nur weil er zu schwach ist, kranke Tiere zu töten.
+</div>
+
+<div class="para">
+  Der lange Weg lässt sich auch schönreden mit Sklavenmoral.
+  Sklaven sollen hässlich und krank sein,
+  dann erkennt man sie gleich,
+  und dann sind sie zu schwach für Widerstand.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="state-is-church">
+
+<h4>
+  Staat ist Kirche
+</h4>
+
+<div class="para">
+  Manche Leute glauben an eine "Trennung von Staat und Kirche",
+  <!-- diese opfer glauben auch an eine gewaltenteilung, weil das irgendwo im gesetz steht ... -->
+  aber diese Leute sind zu blöd zum Sehen:
+  Die Kirche von gestern ist der Staat von heute.
+</div>
+
+<div class="para">
+  Also "staatliche" Lehrer sind nur Missionare,
+  die mit Gewalt ihre Religion verbreiten, und jede Konkurrenz ausrotten.
+  Genau so dumm und brutal wie die Glaubenskriege vor 500 Jahren.
+</div>
+
+<div class="para">
+  Der sogenannte "Religions-Unterricht" in der Schule ist nur eine Ablenkung.
+  "Reli" ist offensichtliche Verblödung,
+  damit die anderen Schulfächer weniger nach Verblödung aussehen,
+  aber dort passiert unterschwellige Verblödung.
+</div>
+
+<div class="para">
+  Werbung hat die gleiche Funktion:
+  Werbung ist offensichtliche Manipulation (KAUF DEN SCHEISS!!),
+  damit der Rest weniger nach Manipulation aussieht,
+  aber dort passiert unterschwellige Manipulation.
+</div>
+
+<div class="para">
+  Wer sensibel ist für diese unterschwellige Gewalt,
+  den nennt man "verrückt" und dem gibt man Beruhigungsmittel,
+  dann wird er weniger sensibel,
+  und die unterschwellige Gewalt kann ungestört weiter gehen.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="school-makes-stupid">
+
+<h4>
+  Schule macht dumm
+</h4>
+
+<div class="para">
+  Schule ist für Idioten,
+  und die größten Idioten bleiben an der Schule und werden Lehrer.
+</div>
+
+<div class="para">
+  Schlaue Menschen lernen selber, und nur wenns sein muss,
+  also wenn ich etwas wissen muss für meine Arbeit.
+</div>
+
+<div class="para">
+  Schule will "Grundwissen" lehren ... und dann?
+  Dann gehts weiter mit Spezialwissen ... und dann?
+</div>
+
+<div class="para">
+  Das Problem ist:
+  Bis Kinder endlich arbeiten dürfen, vergehen so viele Jahre,
+  dass viele Kinder keine Kraft haben für schwere Arbeit,
+  und dann nur "leichte" und "schöne" Arbeit machen wollen ...
+  Unterforderung: Was man nicht trainiert das verkümmert.
+</div>
+
+<div class="para">
+  In meiner Welt sollen Kinder beides gleichzeitig machen: Lernen und Arbeiten.
+  Jede Schule ist ein Internat, wo die Schüler fest wohnen (wie bei Harry Potter ...),
+  wie in einem Kloster, mit Selbstversorgung und Selbstverteidigung.
+</div>
+
+<div class="para">
+  In meiner Welt sollen Kinder nur das tragen was sie brauchen:
+  2 Stifte, 10 Blätter, ein kleines Buch.
+  Keine schweren Schultaschen mit 95% Ballast, der den Oberkörper kaputt macht:
+  Schultern vor, Brust rein = Scham, Angst, Sklave, Opfer.
+</div>
+
+<div class="para">
+  Kampfsport gehört zur Grundausbildung für alle Kinder.
+  Ein gesunder Geist wohnt in einem gesunden Körper.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="powerless">
+
+<h4>
+  Machtvakuum
+</h4>
+
+<div class="para">
+  Ein Problem ist das Machtvakuum zwischen Eltern und Lehrern.
+  Jeder zeigt auf den Anderen, und am Schluss machts Keiner.
+</div>
+
+<div class="para">
+  Lehrer haben die Ausrede "Erziehung ist Privatsache",
+  Eltern haben die Ausrede "Schule hat einen Bildungsauftrag",
+  und so werden Kinder jeden Tag hin und her geschoben (Pendeln),
+  zwischen Versager und Versager ...
+  Die Alten wollen unschuldig sein,
+  aber wenn keiner schuld ist, dann sind alle schuld.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="you-think-you-have-time">
+
+<h4>
+  Du glaubst du hast Zeit
+</h4>
+
+<div class="para">
+  Du glaubst du kannst warten auf ein besseres Angebot,
+  aber besser wirds nicht, nur deine Zeit vergeht.
+</div>
+
+<div class="para">
+  There is no free lunch.
+  Fürs Paradies auf Erden muss man kämpfen.
+  Willst du Frieden dann rüste für Krieg.
+  Wer sich verlässt der ist verlassen.
 </div>
 
 </section>
@@ -9834,6 +10582,17 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 <div class="para">
   Der Teufel steckt im Detail
   &mdash; Perfektionismus
+</div>
+
+<div class="para">
+  Alleine ist jeder überfordert mit Große Probleme,
+  und flüchtet sich in Kleine Probleme. [Lost in Details]
+  <!--
+    TODO ... und genau da liegt auch der Fluch an meiner Theorie.
+    "Aufbau von Gruppen" geht nur mit einer Gruppe von Menschen,
+    aber jede alte Gruppe ist irgendwie scheisse.
+    -> "Bestehende Gruppen reparieren ist schwer bis unmöglich ..." -> Karavane
+  -->
 </div>
 
 <div class="para">
@@ -10689,9 +11448,14 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Fuck the police!
-  I was born in jail, you dont know me
+  I was born in jail, you dont know me.
   <br>
   &mdash; Bros Before Hos (2013)
+</div>
+
+<div class="para">
+  Was ich will das darf ich nicht,
+  was ich soll das will ich nicht.
 </div>
 
 <div class="para">
@@ -10822,6 +11586,11 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 <div class="para">
   Im so happy, cos today I found my friends, theyre in my head.
   &mdash; Nirvana - Lithium
+</div>
+
+<div class="para">
+  Über Geschmack soll man nicht streiten,
+  man wird sich nie einig.
 </div>
 
 <!-- nee man, ich bin kein hippie, ich bin kein pazifist ...
@@ -12199,6 +12968,18 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
+  So viele Leute um mich rum und trotzdem fühl ich mich einsam.
+  Hab nur noch Liebe für Euros weil Liebe für Fotzen scheitert.
+  ...
+  In meinem Kopf seh ich Menschen die mir nah sind sterben,
+  alles wird grau und dann rot brennt die ganze Erde.
+  Du suchst Glück in der Liebe ich hab andere Werte.
+  ...
+  Scheiss drauf, alles brennt, Leben auf der Sonnenseite.
+  &mdash; Klapse Mane - Sonnenseite
+</div>
+
+<div class="para">
   Weißt du noch? Als wir in die Tische ritzten in den Schulen,
   bitte Herr vergib ihnen nicht denn sie wissen was sie tun.
   Unter den Pflastersteinen wartet der Sandstrand,
@@ -12586,71 +13367,6 @@ M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
 
 </article>
 <!-- end of <article id="content"> -->
-
-
-
-<script title="call Bindery.makeBook">
-
-  //if (enableRendering) {
-  //}
-
-  window.makeBinderyBook =
-  async function makeBinderyBook() {
-
-    console.time(`Bindery.makeBook`);
-    await Bindery.makeBook(getBinderyOptions(Bindery));
-    console.timeEnd(`Bindery.makeBook`);
-
-    /* not working
-    console.log(`add handleClick to annotation elements`);
-    Array.from(document.getElementsByClassName("annotation")).forEach(element => {
-      console.log(`add handleClick to element`, element);
-      function clickAnnotation(event) {
-        const element = event.target;
-        console.log(`clicked element`, element);
-        alert(element.getAttribute("title"));
-      }
-      element.addEventListener("click", clickAnnotation);
-      element.addEventListener("mouseover", clickAnnotation);
-      //element.onclick = handleClick;
-    });
-    */
-
-  }
-
-  // call this from <button id="make-bindery-book"
-  //makeBinderyBook();
-
-// page loaded
-
-// show render button
-
-const renderButton = document.querySelector('button#make-bindery-book');
-
-renderButton.hidden = false;
-
-function callMakeBinderyBook(_event) {
-  //const renderButton = event.target;
-  console.log('make-bindery-book', renderButton);
-  makeBinderyBook();
-  renderButton.innerHTML = 'Rendering book layout for printing. Please wait a few seconds ...';
-  document.body.classList.remove('screen-layout');
-  //document.body.classList.add('print-layout'); // not used
-  renderButton.onclick = null;
-  // TODO is this doing what i mean?
-  renderButton.enabled = false;
-}
-
-renderButton.onclick = callMakeBinderyBook;
-
-if (
-  document.location.hash == '#renderbook' ||
-  document.location.hash == '#render'
-) {
-  callMakeBinderyBook();
-}
-
-</script>
 
 </body>
 
