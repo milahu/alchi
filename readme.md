@@ -62,7 +62,7 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
-* book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
+* book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
   * [google translate](https://milahu-gitlab-io.translate.goog/alchi/src/whoaremyfriends/wersindmeinefreunde.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment. I made [a translation tool](src/alchi-book/scripts/translate.js) for my alchi-book, which I will use here too.
 * flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html))
   * [villagecults are the future, but ... who are my friends?](src/dorfkultur/villagecults.html.pdf) english version. automatic translation by google translate
@@ -210,19 +210,16 @@ this is a space-separeted list of all languages codes for the language menu
 
 ## mirrors
 
-in the rare case that this project (https://github.com/milahu/alchi)
-is censored by github (owned by microsoft ...), here are some mirror locations
+in the rare case that this project is censored, here are some mirror locations
 
-only some mirrors allow users to send feedback, for example `gitlab.com` or `galaxy*.onion`
-
-### repo mirrors
-
-the main repository https://github.com/milahu/alchi is mirrored to
-
-* gitlab: https://gitlab.com/milahu/alchi
+* github.com: https://github.com/milahu/alchi + https://milahu.github.io/alchi/
+* gitlab.com: https://gitlab.com/milahu/alchi + https://milahu.gitlab.io/alchi/
+* codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
 * gitea.io: https://try.gitea.io/milahu/alchi
-* srht: https://git.sr.ht/~milahu/alchi
+* sr.ht: https://git.sr.ht/~milahu/alchi
 * darktea (with Tor Browser): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
+
+note: only some git hosters also offer static webhosting
 
 ### clone commands
 

@@ -423,6 +423,8 @@ http://gbraad.gitlab.io/blog-content/0013-document-generation.html
 
 #### extract svg from html
 
+pandoc --extract-media=path/to/output/images
+
 https://github.com/jgm/pandoc/issues/6770
 
 pandoc --extract-media=assets -s -f html -t html -o out.html "https://www.nouvelobs.com/coronavirus-de-wuhan/20201023.OBS35141/bientot-un-million-de-cas-de-covid-en-france-mais-ce-n-est-pas-le-chiffre-le-plus-inquietant.html"
