@@ -554,6 +554,10 @@
                 height: lengthChecker,
             }),
         },
+        function: {
+            name: 'function',
+            check: (x) => (typeof x == 'function'),
+        },
     };
 
     class Counter extends Rule {
@@ -1911,19 +1915,18 @@
                 const total = end - start;
                 const layout = total - timeWaiting;
                 console.log(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
-                // remove the "render book layout" button
-                document.querySelector('button#make-bindery-book').remove();
-                if (document.location.hash != '#renderbook') {
-                  // render was called manually
-                  // verbose feedback
-                  alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
-                }
-
+                const stats = {
+                    layout,
+                    total,
+                    timeWaiting,
+                    completed,
+                    capacity,
+                };
+                return stats;
             },
         };
     };
-
-    const makeBook = async (content, rules, updateProgress) => {
+    const makeBook = async (content, rules, updateProgress, onResult) => {
         if (!Page.isSizeValid())
             throw Error('Page is too small');
         const estimator = estimateFor(content);
@@ -1989,7 +1992,9 @@
         book.updatePageOrder();
         annotatePages(book.pages, pageNumberOffset);
         ruleSet.finishEveryPage(book);
-        estimator.end();
+        const stats = estimator.end();
+        book.stats = stats;
+        if (onResult) onResult(book);
         return book;
     };
 
@@ -2404,7 +2409,7 @@
         constructor({ pageSetup, mode, layout, marks }) {
             this.hasRendered = false;
             this.pageSetup = pageSetup;
-            this.controls = new Controls();
+            this.controls = new Controls(); // TODO optional
             this.updateControls();
             this.progressBar = div('.progress-bar');
             this.content = div('.zoom-content');
@@ -2748,6 +2753,7 @@
                     paper: RuntimeTypes.enum(...vals(SheetSize)),
                 }),
                 rules: RuntimeTypes.array,
+                onResult: RuntimeTypes.function,
             });
             this.autorun = (_a = opts.autorun) !== null && _a !== void 0 ? _a : true;
             this.autoupdate = (_b = opts.autoupdate) !== null && _b !== void 0 ? _b : false;
@@ -2778,6 +2784,7 @@
                     throw Error(`Bindery: The following is not an instance of Bindery.Rule and will be ignored: ${rule}`);
                 }
             });
+            this.onResult = opts.onResult || null;
             if (this.autorun)
                 this.makeBook(opts.content);
         }
@@ -2813,7 +2820,7 @@
                 this.viewer.updateProgress(currentBook, progress);
             };
             try {
-                const book = await makeBook(content, this.rules, onProgress);
+                const book = await makeBook(content, this.rules, onProgress, this.onResult);
                 this.viewer.setProgressAmount(1);
                 await nextFrame();
                 this.viewer.render(book);
@@ -2824,6 +2831,7 @@
                 this.viewer.setInProgress(false);
                 this.viewer.displayError("Layout couldn't complete", e.message);
                 // throw e;
+                console.error(e);
                 return undefined;
             }
         }
