@@ -78,7 +78,7 @@
   <!-- meta#version -->
   <!-- TODO update -->
   <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-  <meta id="version" name="dcterms.modified" content="2022-11-15">
+  <meta id="version" name="dcterms.modified" content="2022-11-22">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -396,6 +396,15 @@
     /* NOTE h4 is font-weight:bold by default */
     /* FIXME h5 is too small */
     /* FIXME too much vertical space before headings */
+
+    h1, h2, h3, h4 {
+      margin-block-start: 0.33em;
+      margin-block-end: 0.33em;
+    }
+
+    h4 {
+      font-weight: bold;
+    }
 
     div.smilie {
       display: inline-block;
@@ -936,13 +945,13 @@
               // verbose feedback
               //alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
               alert(`Druck-Layout fertig nach ${sec(book.stats.layout)} Sekunden`);
-              const header = document.querySelector('header');
-              if (header) {
-                // workaround so the bindery navbar is visible
-                // TODO better: make bindery headless, add bindery controls to our navbar
-                header.remove();
-              }
 
+          }
+          const header = document.querySelector('header');
+          if (header) {
+            // workaround so the bindery navbar is visible
+            // TODO better: make bindery headless, add bindery controls to our navbar
+            header.remove();
           }
           // move bindery menu
           const binderyControls = document.querySelector(".bindery-controls")
@@ -2164,6 +2173,10 @@
 
 
 
+<hr>
+
+
+
 <section id="pallas-experiment-groups-of-four-peer-exchange">
 
 <h4>Partnertausch</h4>
@@ -2388,10 +2401,6 @@
 </div>
 
 </section>
-
-
-
-<hr>
 
 
 
@@ -3018,10 +3027,6 @@
 
 
 
-<hr>
-
-
-
 <div class="para">
   Grundlage für das Pallas-Muster ist Persönlichkeits-Psychologie.
   Also: Menschen in Schubladen stecken.
@@ -3121,10 +3126,6 @@ TODO style="break-before:page"?
 <div class="xcenter">
   <img class="darkmode-invert" style="max-width:17em;margin-top:0.5em;" src="../images/alchi.four-body-shapes.svg">
 </div>
-
-
-
-<hr>
 
 
 
@@ -4290,6 +4291,10 @@ TODO style="break-before:page"?
 
 
 
+<hr>
+
+
+
 <!-- TODO move -->
 <!-- TODO wording: inherited, inheritable, hereditary -->
 <section id="basetype-is-hereditary">
@@ -4541,13 +4546,38 @@ TODO style="break-before:page"?
   </tr>
   <tr>
     <th scope="row"></th>
-    <td>Fühlen</td>
-    <td>Wissen</td>
+    <td>"Ich weiss was ich nicht will"</td>
+    <td>"Ich weiss was ich will"</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Fühlen treibt</td>
+    <td>Wissen treibt</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>diffuse Ziele</td>
+    <td>klare Ziele</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Wissen hemmt</td>
+    <td>Fühlen hemmt</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>bewusste Angst</td>
+    <td>diffuse Angst</td>
   </tr>
   <tr>
     <th scope="row"></th>
     <td>Neugier</td>
     <td>Erfahrung</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Aufgeber</td>
+    <td>Streber</td>
   </tr>
   <tr>
     <th scope="row"></th>
@@ -4573,6 +4603,16 @@ TODO style="break-before:page"?
     <th scope="row">Arbeit</th>
     <td>Forschung</td>
     <td>Produktion</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Problem-zentriert</td>
+    <td>Lösungs-zentriert</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Antimaterie: Kern ist negativ</td>
+    <td>Materie: Kern ist positiv</td>
   </tr>
   <tr>
     <th scope="row">Strategie</th>
@@ -4603,6 +4643,16 @@ TODO style="break-before:page"?
     <th scope="row"></th>
     <td>Open Minded</td>
     <td>Narrow Minded</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Hörer, Musiker</td>
+    <td>Seher, Maler</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Liebe ist blind</td>
+    <td>Angst ist taub</td>
   </tr>
   <tr>
     <th scope="row"></th>
@@ -4661,10 +4711,6 @@ TODO style="break-before:page"?
 
 </section>
 <!-- end of <section id="inner-properties-inner-age" -->
-
-
-
-<hr>
 
 
 
@@ -4870,6 +4916,8 @@ TODO style="break-before:page"?
 -->
 
 <!-- TODO less height -->
+
+<div style="font-size:92%">
 
 <div class="xcenter">
 <table class="four-basetypes">
@@ -5082,7 +5130,13 @@ TODO move
 
 -->
 
+</div>
+
 </section>
+
+
+
+<hr>
 
 
 
@@ -5164,6 +5218,10 @@ TODO move
 </div>
 
 </section>
+
+
+
+<hr>
 
 
 
@@ -5551,6 +5609,10 @@ TODO move
 
 
 
+<hr>
+
+
+
 <section id="applications-village-culture-tribalism">
 
 <h4>Stamm-Kultur</h4>
@@ -5592,6 +5654,63 @@ TODO move
   kann man sehen als ein "Zurück zu Stammkriege".
   Angela Merkel:
   "Ich kämpfe für meinen Plan: aus Illegalität Legalität machen"
+</div>
+
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:70%" src="../images/memes/islamisierung.2018-04-13.janson-karikatur.de.svg">
+</div>
+
+</section>
+
+
+
+<section id="conquering-foreign-land">
+
+<h4>Fremdes Land erobern</h4>
+
+<div class="para">
+  Wenn man Staaten in einem Gebiet erobert,
+  in dem eine andere Sprache gesprochen wird,
+  und andere Sitten und Gesetze herrschen,
+  gibt es Schwierigkeiten.
+
+  Man muss schon großes Glück haben
+  und viel Geschicklichkeit aufwenden, um sie zu erobern.
+</div>
+
+<div class="para">
+  Eines der besten und wirksamsten Mittel ist es,
+  <b>wenn der Eroberer seine Residenz dorthin verlegt.</b>
+  Dies wird seine Herrschaft sicherer und dauerhafter machen.
+
+  So hat es der Türke mit Griechenland gemacht;
+  dieses hätte trotz aller Maßnahmen zu seiner Eroberung nicht gehalten werden können,
+  wenn nicht sein Herrscher die Residenz dorthin verlegt hätte.
+</div>
+
+<div class="para">
+  Hast du nämlich dort deine Residenz und entdeckst entstehende Unruhen,
+  so kannst du sie schnell unterdrücken.
+  Wohnst du aber nicht dort, so erfährst du von ihnen erst,
+  wenn sie sich schon weit ausgebreitet haben
+  und es kein Mittel mehr dagegen gibt.
+  Ausserdem kann das Land auch nicht von deinen Beamten ausgeplündert werden.
+</div>
+
+<div class="para">
+  Die Untertanen sind froh, den neuen Herrscher in ihrer Nähe zu haben;
+  daher werden sie häufiger Anlass haben, ihn zu lieben, wenn sie reich sind,
+  und ihn zu fürchten, wenn sie arm sind.
+</div>
+
+<div class="para">
+  Wenn ein fremder Machthaber ein solches Land angreift,
+  so wird er größere Hemmungen haben;
+  denn solange der Herrscher dort residiert,
+  kann es ihm nur sehr schwer wieder entrissen werden.
+
+  &mdash; <a class="nofootnote" href="https://www.gutenberg.org/ebooks/39816"
+  >Niccolo Machiavelli - Der Fürst, Kapitel 3 (1513)</a>
 </div>
 
 </section>
@@ -5668,7 +5787,15 @@ TODO move
 
 
 
+<hr>
+
+
+
 <section id="applications-problem-child">
+
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:30%" src="../images/devilchild.svg">
+</div>
 
 <h3>Problemkind: Festhalten oder Loslassen?</h3>
 
@@ -5701,8 +5828,6 @@ TODO move
   also mit Gewalt diese "gefangenen Kinder" befreien
   und zu besseren Eltern bringen.
 </div>
-
-
 
 <section id="pallas-problem-child-child-robber">
 
@@ -5749,10 +5874,6 @@ TODO move
 </div>
 
 </section>
-
-
-
-<hr>
 
 
 
@@ -6109,12 +6230,14 @@ TODO move
   Toner und Drum kaufe ich bei
   <a class="nofootnote" href="https://www.ebay.de/"
   >ebay.de</a> (Händler: europcart, gorilla-ink).
+  <!--
   Das teuerste am Toner ist dieser scheiss Chip,
   mit dem Drucker-Hersteller kleine Druckereien sabotieren.
   Idealerweise habe ich einen
-  <a class="nofootnote" href="https://github.com/milahu/awesome-reset-toner"
+  <a class="nofootnote" href="https://github.com/milahu/reset-toner-chip"
   >Resetter für den Toner Chip</a>,
   dann kann ich den Toner selber nachfüllen.
+  -->
   <!--
     https://github.com/search?q=reset+toner
     https://github.com/milahu/reset-toner-chip
@@ -6130,7 +6253,7 @@ TODO move
   <a class="nofootnote" href="https://geizhals.de/samsung-proxpress-m4025nd-sl-m4025nd-see-a966762.html"
   >Samsung ProXpress M4025</a>.
   Strom-Verbrauch: 700 Watt.
-  Toner: MLT-D204E (E = Extra large), 20 Euro / 10.000 Seiten = 0.2 Cent pro Seite.
+  Toner: MLT-D204E, 20 Euro / 10.000 Seiten = 0.2 Cent pro Seite.
   Drum: MLT-R204, 30 Euro / 30.000 Seiten = 0.1 Cent pro Seite.
   Auflösung: 1200 dpi, ich drucke mit 300 dpi.
   Speed: 38 Seiten / Minute.
@@ -6313,10 +6436,6 @@ TODO move
 
 
 
-<hr>
-
-
-
 <!-- TODO move -->
 <section id="todo-help-wanted-followers-wanted">
 
@@ -6385,17 +6504,12 @@ TODO move
 
 
 
-<hr>
-
-
-
 <!-- TODO move -->
 <section id="other-theories">
 
 <h2>Andere Theorien</h2>
 
 <div class="para">
-  TODO move:
   <b>Hochmut:</b>
   Meine Arroganz ist die Behauptung:
   In 10.000 Jahren Zivilisation
@@ -6867,10 +6981,6 @@ TODO move
 
 
 
-<hr>
-
-
-
 <section id="concepts">
 
 <h2>Anhang: Konzepte</h2>
@@ -6998,18 +7108,87 @@ TODO move
   nur einfache Probleme lösen, kein Risiko, keine Experimente,
   kein Kampfsport, "Schlagen ist böse",
   nur "gutes" Verhalten fördern,
-  "böses" Verhalten bestrafen.
+  "böses" Verhalten totschweigen oder bestrafen.
   Kinder werden behandelt wie wilde Tiere,
   "man" will sie zähmen, domestizieren, zivilisieren ...
   "man" verbietet den Kindern ihre Körpersprache (Beispiel: Schlagen),
+  "man" nimmt den Kindern ihre Waffen (Fingernägel),
   und zwingt alle Kinder zum "schlau" sein,
   zum "Probleme mit dem Kopf lösen",
-  auch wenn viele Kinder darauf "eigentlich" keine Lust haben,
+  auch wenn viele Kinder darauf "eigentlich" (freiwillig) keine Lust haben,
   und nur mitspielen, weil sie wehrlos sind, weil sie gefangen sind.
   Aber "man" kämpft gegen Naturgewalt, gegen Naturordnung,
   gegen angeborene Neigungen, gegen Persönlichkeitstypen ...
   deswegen, dieser Weg hat keine Zukunft,
   und wir müssen "zurück zur Natur".
+</div>
+
+</section>
+
+
+
+<section id="industry-has-no-future">
+
+<h3>Industrie hat keine Zukunft</h3>
+
+<div class="para">
+  Industrie heisst vor allem: Maschinen.
+</div>
+
+<div class="para">
+  Maschinen haben wir deswegen erfunden,
+  weil wir vorher Billige Energie gefunden haben:
+  Kohle, Öl, Gas.
+</div>
+
+<div class="para">
+  Aber diese Billige Energie ist endlich,
+  und am Ende verhungern unsere Maschinen,
+  und am nächsten Tag verhungern wir Menschen,
+  weil unser Leben ist abhängig von Maschinen.
+</div>
+
+<div class="para">
+  Wie geht es weiter?
+  Dafür müssen wir nur 200 Jahre zurück schauen.
+  Statt Kühlschrank hatten wir einen kalten Keller.
+  Statt Waschmaschine hatten wir Seife und Hände.
+  Statt Internet hatten wir Briefe und Bücher.
+  Statt Drucker hatten wir Tusche und Feder.
+  Statt Waschzwang waren wir dreckig und gesund.
+  Statt "Bananen aus Afrika" hatten wir Selbstversorgung.
+  Statt "Bananen im Winter" hatten wir Früchte der Saison.
+  Statt "Konserven von Edeka" haben wir unseren Winter-Vorrat selber eingekocht.
+  <!--
+  Statt Nylon hatten wir Hanf.
+  -->
+</div>
+
+<div class="para">
+  Amische als Vorbild:
+  Die Amish People hatten Recht.
+  Die haben schon vor 200 Jahren gesagt: Industrie hat keine Zukunft.
+  Vor 200 Jahren war das noch eine riskante Wette, aber heute ist klar:
+  Die Amish haben die Wette gewonnen, und wir sind die Dummen.
+</div>
+
+<div class="para">
+  Wie so oft:
+  Unsere schlausten Köpfe tun wir wegsperren in Knast und Psychiatrie,
+  oder vertreiben in die Großstadt oder ins Ausland ...
+  und die größten Idioten werden unsere Führer
+  (Falsche Propheten, Betrüger und Versager, inkompetent),
+  weil die ihre Scheisse schön verpacken,
+  weil die "dumm und brutal" jede Konkurrenz ausrotten,
+  und weil wir zu blöd sind,
+  ein "reiches Herz im armen Pelz" zu schätzen.
+</div>
+
+<div class="para">
+  ... und bequem wie wir sind, sagen wir:
+  Überleben wollen wir schon, aber nur wenns leicht geht.
+  Wenn wir um unser Leben wieder hart arbeiten und kämpfen müssen,
+  dann nicht ... dafür sind wir zu schwach.
 </div>
 
 </section>
@@ -7029,10 +7208,6 @@ TODO move
 </div>
 
 </section>
-
-
-
-<hr>
 
 
 
@@ -7820,10 +7995,6 @@ TODO are <section> nested or flat?
 
 
 
-<hr>
-
-
-
 <section id="fragments">
 
 <h2>Anhang: Fragmente</h2>
@@ -7887,7 +8058,13 @@ TODO are <section> nested or flat?
 
 
 
+<hr>
+
+
+
 <section id="todo-politics-population">
+
+<!-- FIXME margin-block-start is wrong, should collapse to zero -->
 
 <h4>Übervölkerung ist die Ursache aller Probleme</h4>
 
@@ -7920,12 +8097,8 @@ TODO are <section> nested or flat?
 <!-- FIXME use less height -->
 
 <div class="xcenter">
-  <img class="darkmode-invert" style="max-width:44em; /* transform: scale(1, 0.7); margin: -10% 0; */" src="../images/alchi.world-population-chart.bryan-long-2009.linear-graph.svg">
+  <img class="darkmode-invert" style="max-width:44em; transform: scale(1, 0.9); margin: -3% 0; /* transform: scale(1, 0.7); margin: -10% 0; */" src="../images/alchi.world-population-chart.bryan-long-2009.linear-graph.svg">
 </div>
-
-
-
-<hr>
 
 
 
@@ -7940,8 +8113,14 @@ TODO are <section> nested or flat?
 
 <div class="xcenter">
   <!-- based on http://econosystemics.com/?p=9 -->
-  <img class="darkmode-invert" style="max-width:44em; /* transform: scale(1, 0.7); margin: -10% 0; */" src="../images/alchi.world-population-chart.bryan-long-2009.logarithmic-graph.svg">
+  <img class="darkmode-invert" style="max-width:44em; transform: scale(1, 0.9); margin: -3% 0; /* transform: scale(1, 0.7); margin: -10% 0; */" src="../images/alchi.world-population-chart.bryan-long-2009.logarithmic-graph.svg">
 </div>
+
+
+
+<hr>
+
+
 
 <div class="para">
   Das Problem Übervölkerung ist bekannt seit über 40 Jahren
@@ -7963,7 +8142,11 @@ TODO are <section> nested or flat?
   keine Heizung.
   Drei Tage später herrscht Anarchie.
   Wann? Winter 2022.
-  (Worst Case: Oktober 2022. Best Case: Jahr 2025.)
+  (Worst Case: Dezember 2022. Best Case: Jahr 2025.)
+  <!-- haha, ich weiss schon, mit jedem release muss ich das datum anpassen
+    auf meiner doomsday clock. noch isses lustig.
+    comic: homer simpson: the end is near.
+  -->
 </div>
 
 <div class="para">
@@ -7975,10 +8158,6 @@ TODO are <section> nested or flat?
 
 </section>
 <!-- end of <section id="todo-politics-population"> -->
-
-
-
-<hr>
 
 
 
@@ -8097,10 +8276,6 @@ TODO are <section> nested or flat?
 </div>
 
 </section>
-
-
-
-<hr>
 
 
 
@@ -8544,7 +8719,7 @@ TODO are <section> nested or flat?
 <h4>Hamsterrad und Tunnelblick</h4>
 
 <div class="xcenter">
-  <img class="darkmode-invert" style="width:80%" src="../images/memes/animal-traps.why-would-a-fly-ever-land-on-something-that-looks-like-that.square.svg">
+  <img class="darkmode-invert" style="width:75%" src="../images/memes/animal-traps.why-would-a-fly-ever-land-on-something-that-looks-like-that.square.svg">
 </div>
 
 <div class="para">
@@ -8905,6 +9080,30 @@ TODO are <section> nested or flat?
   als die mühsame dreckige Suche nach Wahrheit.
   Man will sich ja die Finger nicht schmutzig machen.
   Dafür hat man ja 10 Jahre Schlausein studiert ...
+</div>
+
+<div class="para">
+  Diese Monopolisten schaffen immer nur Falsche Sicherheit.
+  Sie sagen "lass uns nicht streiten",
+  sie verdrängen Probleme,
+  sie tun ihre Gegner rausekeln und wegsperren.
+
+  Und wenn dann alles so richtig schön scheisse und langweilig ist,
+  wer ist schuld? Klar, immer noch "der Andere",
+  weil der so schwach ist und sich rausekeln und wegsperren lässt,
+  weil der den "shit test" verloren hat.
+
+  Das Problem ist, dieses Spiel ist ungerecht,
+  weil dumme Opfer werden geschützt durch "gute Gewalt"
+  (Beamte, Staatsanwälte, Polizei),
+  und werden ihr Leben lang versichert und subventioniert,
+  und ich als böser Angreifer werde mein Leben lang
+  kaputt gemacht und klein gehalten.
+
+  Das Gegenteil von Gerechtigkeit ist Gleichheit.
+  Diese Gleichheit wird erreicht durch Gleichmacherei,
+  also Opfer belohnen und Täter bestrafen.
+  Auch das: Eine schöne Idee mit katastrophalen Langzeit-Folgen.
 </div>
 
 <!--
@@ -9907,6 +10106,116 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 
 
+<section id="punks-not-dead">
+
+<h4>Punks Not Dead</h4>
+
+<div class="para">
+  <a class="nofootnote" href="https://de.wikipedia.org/wiki/Underground_(Kultur)"
+  >Wikipedia: Underground (Kultur)</a>:
+  Der Underground spielt häufig die Rolle einer Avantgarde (Forscher, Pioniere),
+  seine Formen werden später im Mainstream aufgegriffen,
+  dabei aber auch <b>ihres subversiven Gehalts beraubt</b>
+  (kastriert, weichgespült, entwaffnet, zivilisiert)
+  und auf rein formal-ästhetische Elemente reduziert.
+
+  Besonders zwischen den Szenen der
+  Punkmusik (Independent) und Popmusik (Popkultur),
+  hat sich hierbei seit den 1980er Jahren ein Konflikt
+  zwischen Under- und Overground entwickelt ("Punker gegen Popper").
+
+  Auch in der Jugendkultur und bei den Clubs
+  gibt es eine klare Trennung zwischen Underground und Mainstream.
+
+  AKA: Punk, Trash, Pulp, Schmutz, Schund, Dekadenz, entartete Kunst.
+  Dagegen: Schulzwang, Kinderschutz, Jugendschutz, Zensur, Index, FSK, BPJM.
+</div>
+
+<div class="para">
+  <a class="nofootnote" href="https://de.wikipedia.org/wiki/Untergrundliteratur"
+  >Wikipedia: Untergrundliteratur</a>:
+  Literatur, die in autoritär regierten Staaten geheim produziert und verbreitet wird.
+  Literatur, die nicht zu den Normen und Werten pluralistischer Gesellschaften passt.
+  Texte, die nur kopiert oder in Eigenverlagspublikationen erscheinen
+  (Japp, ich scheiss auf deinen Hurensohn-Verlag!)
+
+  Im früheren kommunistischen Block, besonders in der ehemaligen Sowjetunion und in Polen,
+  wurde politische Untergrundliteratur in großem Umfang im sogenannten Samisdat (Selbstverlag) publiziert.
+  Verbreitungsstellen befanden sich bei Angehörigen der lokalen Intelligenzija
+  im literarischen, studentischen oder wissenschaftlichen Milieu.
+  Der Untergrund verstand seine Publikationen als
+  "Antithese der parteistaatlich-kontrollierten Öffentlichkeit"
+  (Gegenöffentlichkeit)
+</div>
+
+<div class="para">
+  <a class="nofootnote" href="https://de.wikipedia.org/wiki/Gegenkultur"
+  >Wikipedia: Gegenkultur</a>:
+  das Infragestellen von primären Werten und Normen der Mehrheitskultur.
+  Dabei spielen mitunter (gesellschaftliche) Visionen und Utopievorstellungen eine Rolle.
+  Aus einer Gegenkultur heraus kann sich eine Gegenöffentlichkeit oder gar eine Parallelgesellschaft bilden.
+</div>
+
+<!--
+  Parallelgesellschaft via https://de.wikipedia.org/wiki/Amische
+  Einerseits verschafft es Amischen mehr und mehr Möglichkeiten, in ihrer Parallelgesellschaft zu verbleiben
+  und dort ihre Einkäufe und Reparaturbedürfnisse zu befriedigen, ohne viel „Weltkontakt“ zu haben
+-->
+
+</section>
+
+
+
+<section id="no-go-areas-for-all">
+
+<h4>No Go Areas für Alle</h4>
+
+<div class="para">
+  No Go Areas sind eine extreme Form von Parallelgesellschaft.
+  Fremde werden mit Gewalt draussen gehalten.
+  Das einzig "rebellische" daran ist, dass hier arme Menschen wohnen.
+  Für reiche Menschen sind solche "no go areas" selbstverständlich,
+  und heissen dort "gated communities",
+  wo die Reichen unter sich sind und ihre Ruhe haben.
+</div>
+
+</section>
+
+
+
+<section id="feedback">
+
+<h4>Rezensionen</h4>
+
+<div class="para">
+  Was meine Feinde über mich sagen ...
+</div>
+
+<div class="para">
+  Sie haben Hausverbot! Gehen sie arbeiten!
+  &mdash; ein Lehrer
+</div>
+
+<div class="para">
+  Das ist Schund! Ich erteile Ihnen Hausverbot!
+  &mdash; ein Lehrer
+</div>
+
+<div class="para">
+  Ihre Zettel tun wir beschlagnahmen.
+  &mdash; ein Bulle
+</div>
+
+<div class="para">
+  Sie sind verrückt und gefährlich!
+  Sie gehören in den Knast!
+  &mdash; das Jugendamt
+</div>
+
+</section>
+
+
+
 <h3>TODO ...</h3>
 
 <div class="para">
@@ -9945,6 +10254,111 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   Wer sich verlässt auf seine Feinde,
   der ist von seinen Freunden verlassen.
 </div>
+
+
+<div class="para">
+  TODO move:
+  Warum "Alice" im Wunderland?
+  Alice = Chalice = Kelch = Herzform = Typ 1.
+  Kelch = Graals-Kelch = der heilige Graal = the holy grail = Ritter suchen Kelch
+  = Artus-Sage = König Arthur und die Ritter der Tafelrunde.
+  Graal = Kraal = König.
+</div>
+
+
+<div class="para">
+  TODO move:
+  Warum sind Araber schön? Weil die selektieren.
+  Weil die hässliche Menschen umbringen.
+  Warum sind Sklaven hässlich? Weil die tolerant sind.
+  Weil die Probleme verdrängen,
+  kranke Menschen pflegen,
+  hässliche Körper verstecken,
+  schlechte Augen "reparieren" mit Brillen,
+  kaputte Gelenke "reparieren" mit Protesen,
+  etc.
+</div>
+
+
+
+<div class="para">
+  TODO move:
+  Inneres Geschlecht:
+  Erziehung in "same age groups" (Schulklassen).
+  Folge:
+  Kinder werden "sexistisch",
+  also entweder extrem männlich (Typen 104 und 401),
+  oder extrem weiblich (Typen 203 und 302).
+  Also, sie definieren sich primär über Geschlecht.
+</div>
+
+<div class="para">
+  Warum?
+  Siehe Pallas-Muster.
+  Wenn nur gleichaltrige Bindungspartner da sind,
+  dann erzwingt das diese Subtypen.
+  Weil die Bindung an Gleichaltrige
+  ist gleichbedeutend mit diesen Subtypen.
+  Note:
+  Zwischen Partner und Subtyp ist eine "bidirektionale" Verbindung,
+  also beide können Ursache oder Wirkung sein.
+</div>
+
+<div class="xcenter">
+<table class="two-properties">
+  <tr>
+    <th scope="row">Typen</th>
+    <td>14</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <th scope="row">Gehirn</th>
+    <td>männliches Gehirn</td>
+    <td>weibliches Gehirn</td>
+  </tr>
+  <tr>
+    <th scope="row">Bindungen</th>
+    <td>Einzelgänger</td>
+    <td>gesellig</td>
+  </tr>
+  <tr>
+    <th scope="row">Politik</th>
+    <td>Langzeit-Strategie</td>
+    <td>Tagespolitk</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Recht haben</td>
+    <td>Beliebt sein</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Autoritär</td>
+    <td>Populär</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Starke Meinungen</td>
+    <td>Schwache Meinungen</td>
+  </tr>
+  <tr>
+    <th scope="row">Bewegung</th>
+    <td>Feinmotorik</td>
+    <td>Grobmotorik</td>
+  </tr>
+  <tr>
+    <th scope="row">Talent</th>
+    <td>Hard Skills</td>
+    <td>Soft Skills</td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td>Task Focus</td>
+    <td>People Focus</td>
+  </tr>
+</table>
+</div>
+
 
 
 <div class="para">
@@ -9992,7 +10406,27 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   bis zum nächsten Hard Limit = Systemcrash = Bust = die Blase platzt.
 </div>
 
+<div class="para">
+  TODO move:
+  Mischkultur.
+  Companion planting.
+  Im biologischen Gartenbau gibt es Faustregeln zur Frage:
+  Welche Pflanzen passen zusammen?
+  (Problem: keine empirische Bestätigung? Wunschdenken?)
 
+  Manche Pflanzen passen gut zusammen:
+  Karotte und Zwiebel,
+  Mais und Bohne und Kürbis,
+  Linsen und Getreide,
+  Hafer und Gerste.
+
+  Manche Pflanzen passen schlecht zusammen:
+  Erbsen und Knoblauch,
+  Rettich und Tomaten,
+  Rettich und Gurken,
+  Zwiebeln und Buschbohnen,
+  Zwiebeln und Kohl.
+</div>
 
 <div class="para">
   Warum heisst es "Pallas"?
@@ -10146,7 +10580,8 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   so wie Don Quichote gegen Windmühlen.
   Zivilisten kämpfen gegen Naturordnung,
   so wie Lucifer mit seine kurzsichtigen Schlauheit,
-  der langfristig immer ein tragischer Held ist.
+  ist langfristig immer nur ein tragischer Held,
+  der mit Altruismus sich selbst zerstört.
 </div>
 
 <div class="para">
@@ -10239,6 +10674,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 <div class="para">
   Man findet immer dort besonders viel Chaos, wo man nach Ordnung sucht.
   Das Chaos besiegt die Ordnung, weil es besser organisiert ist.
+  <br>
   &mdash; Terry Pratchett
 </div>
 
@@ -10247,15 +10683,22 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 
 
-<hr>
-
-
-
 <!-- TODO "sayings"? yes. aka "proverbs" or "slogans" -->
 
 <section id="quotes-and-sayings">
 
 <h2>Anhang: Zitate und Sprüche</h2>
+
+<div class="para">
+  Auch hier stellt sich die Frage:
+  Welcher Typ spricht hier?
+  Also:
+  Welchen Persönlichkeitstyp hat "das lyrische Ich"?
+
+  Ich bin Typ 104,
+  also sammle ich Sprüche, die zu meinem Typ passen,
+  die mir "aus der Seele" sprechen.
+</div>
 
 <div class="para">
   Werdet nicht abhängig von Wasser.
@@ -10473,18 +10916,6 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 -->
 
 
-
-<div class="para">
-  Anhang: <b>Zitate und Sprüche.</b>
-  Auch hier stellt sich die Frage:
-  Welcher Typ spricht hier?
-  Also:
-  Welchen Persönlichkeitstyp hat "das lyrische Ich"?
-
-  Ich bin Typ 104,
-  also sammle ich Sprüche, die zu meinem Typ passen,
-  die mir "aus der Seele" sprechen.
-</div>
 
 <div class="para">
   Any fool can make things more complex.
@@ -10749,6 +11180,12 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 </div>
 
 <div class="para">
+  Ihr werdet sehen ihr gottverdammten arroganten Gestalten,
+  morgen werd ich kommen und dann den Schultag anders gestalten.
+  &mdash; Swiss - Der letzte Schultag
+</div>
+
+<div class="para">
   Tempus fugit, dolor manet.
   Zeit vergeht, Scheisse bleibt.
 </div>
@@ -10786,7 +11223,7 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
-  unterhalt mich mit meim schatten, weil die wahrheit keiner liebt
+  unterhalt mich mit meim Schatten weil die Wahrheit keiner liebt
   <br>
   &mdash; Olexesh - Weyauu
 </div>
@@ -10813,7 +11250,6 @@ Nazz feat. Cr7z - Überdosis
   ...
   Knast ist nicht wenn ein Mensch in einer Zelle sitzt.
   Knast ist wenn die Angst im Kopf deine Zelle ist
-  <br>
   &mdash; Danger Dan - Gesiebte Luft
 </div>
 
@@ -10830,10 +11266,93 @@ Nazz feat. Cr7z - Überdosis
   und trotzdem ist es irgendwie passiert.
   Als wir uns schließlich selbst erkannten,
   und alles ziemlich scheiße fanden,
-  hatten wir das Wichtigste kapiert
+  hatten wir das Wichtigste kapiert.
+  ...
+  Einem Körper der gesund ist dem genügt ein leerer Geist,
+  wir trinken bis der Alkohol gewinnt.
+  Auch wenn wir nur Statisten sind in einem Film der ständig reisst,
+  wir halten unsre Fahne in den Wind.
   <br>
   &mdash; Danger Dan - Filmriss
 </div>
+
+<div class="para">
+  Hin und wieder stell ich fest,
+  dass ich nicht mehr lachen kann,
+  über Sachen die ich früher lustig fand.
+  Hin und wieder merk ich auch,
+  dass ich keine Menschen brauch,
+  Und lieber ganz alleine bin.
+  //
+  Doch der Schmerz ist zuckersüß,
+  und irgendwie auch so vertraut,
+  Ich hab mich dran gewöhnt.
+  So fehlt zur letzten Konsequenz,
+  einmal mehr das Bisschen Mut.
+  Und die paradoxe Wut darüber wird im Traum ertränkt,
+  von der beschissenen Leichtigkeit des Scheins.
+  //
+  Hin und wieder wird mir klar,
+  dass alles anders geworden ist,
+  Als es scheint dass es früher einmal war.
+  Hin und wieder spüre ich,
+  dass die Sonne nicht mehr mag,
+  Weil ich das helle Licht mehr ertrag.
+  //
+  Wie ein Quadrat in einem Kreis,
+  eck ich immer wieder an.
+  Obwohl ich doch schon lange weiß,
+  dass ich niemals ändern kann,
+  was sich niemals ändern wird.
+  Weil das Schlechte immer bleibt,
+  und doch die Sonne wieder scheint,
+  scheiss egal was auch passiert.
+  <br>
+  &mdash; Wizo - Quadrat im Kreis
+</div>
+
+<!-- TODO Loikaemie - Wir kommen auf die Welt
+
+Tagein tagaus Jahr für Jahr Ein Leben lang
+Immer schön Routine Alle ziehen am selben Strang
+Damit es meinem Chef gut geht Und seine Firma weiter wächst
+Ist man auf der Welt Und mit 60 verreckt
+
+Ich komme auf die Welt Und ich weiß nicht warum
+Ich arbeite und sterbe
+Alle werden reich und ich bleib dumm
+Auf dass ich niemals glücklich werde
+
+Ihr wundert euch über Kinder Die wie Kriminelle leben
+Über Mütter, die aus Verzweiflung Ihre Kinder töten
+Über Drogen und Gewalt Und den asozialen Dreck
+Regt ihr euch fleißig auf Und schaut doch trotzdem drüber weg
+
+Ich komme auf die Welt Und ich weiß nicht warum
+Ich arbeite und sterbe
+Alle werden reich und ich bleib dumm
+Auf dass ich niemals glücklich werde
+
+Ihr diskutiert über Abtreibung Und die Todesstrafe
+Über die Amis am Golf Und was wir davon haben
+Ihr diskutiert über Dinge Die nicht wirklich wichtig sind
+So rennt ihr durch euer Leben Und seid dabei noch völlig blind
+
+Ich komme auf die Welt Und ich weiß nicht warum
+Ich arbeite und sterbe
+Alle werden reich und ich bleib dumm
+Auf dass ich niemals glücklich werde
+
+Wir kommen auf die Welt Und jetzt wissen wir warum
+Zum arbeiten und sterben
+Alle werden reich, manche bleiben dumm
+Auf dass wir alle glücklich werden
+
+-- Loikaemie - Wir kommen auf die Welt
+
+https://www.youtube.com/watch?v=xM4kFB5AGpg
+
+-->
 
 <div class="para">
   Ihr seid auch nur verletzte Kinder
@@ -10960,28 +11479,6 @@ Nazz feat. Cr7z - Überdosis
   und dies unhandliche Lied.
 
   &mdash; Sarah Lesch - Testament
-</div>
-
-<div class="para">
-  TODO move:
-  Mischkultur.
-  Companion planting.
-  Im biologischen Gartenbau gibt es Faustregeln zur Frage:
-  Welche Pflanzen passen zusammen?
-  (Problem: keine empirische Bestätigung? Wunschdenken?)
-
-  Manche Pflanzen passen gut zusammen:
-  Karotte und Zwiebel,
-  Mais und Bohne und Kürbis,
-  Linsen und Getreide,
-  Hafer und Gerste.
-
-  Manche Pflanzen passen schlecht zusammen:
-  Erbsen und Knoblauch,
-  Rettich und Tomaten,
-  Rettich und Gurken,
-  Zwiebeln und Buschbohnen,
-  Zwiebeln und Kohl.
 </div>
 
 <div class="para">
@@ -11223,6 +11720,254 @@ Nazz feat. Cr7z - Überdosis
 </div>
 
 <div class="para">
+  It was becoming clear that
+  what we have been calling
+  green, renewable energy
+  and industrial civilization,
+  are one and the same.
+
+  Desperate measures not
+  to save the planet,
+  but to save our way of life.
+
+  Desperate measures rather
+  than face the reality,
+  humans are experiencing
+  the planet's limits
+  all at once.
+  <br>
+  &mdash; Planet of the Humans (2019)
+</div>
+
+<div class="para">
+  Every different
+  perspective I look at
+  and imagine, well, we
+  could do more of this,
+  or go to a larger area
+  or use more of that.
+
+  Well, it turns out,
+  there isn't more.
+
+  I looked at marine production
+  and fish production
+  and found that
+  peaked 20 years ago.
+
+  More and more of what we
+  eat is from fish farming.
+  The current acres of
+  actively farmed land,
+  that has peaked also.
+
+  The rivers are already
+  being irrigated
+  to about the limits of
+  what they can sustain.
+  The Colorado River doesn't
+  get to the ocean anymore.
+
+  Well, then you start
+  looking at ground water,
+  the Southern Great Plains,
+  and I think they can almost
+  predict when they will run out
+  of ground water and
+  it's in a decade or two.
+
+  A human vulnerability
+  at the global scale,
+  that any one of them we
+  could maybe compartmentalize,
+  but we're seeing
+  them propagating
+  across topic after topic of
+  society and the earth system.
+
+  And I don't think the people
+  in charge are near
+  nervous enough.
+  <br>
+  &mdash; Steven Running, Planet of the Humans (2019)
+</div>
+
+<div class="para">
+  Species hit the population
+  wall a lot and then they crash.
+  I mean, that's a common
+  story in biology.
+
+  If that happens to us, in a way,
+  it's the natural
+  order of things.
+  ...
+
+  And I don't think we're gonna
+  find a way out of this one.
+  I don't.
+
+  - As a scientist,
+  what leads you to
+  that conclusion?
+
+  - Well, because right
+  now, <b>a large percentage
+  of that number is supported
+  by industrial agriculture,
+  which is heavily
+  subsidized by oil,
+  and it's not sustainable</b>
+  ...
+
+  and there's no going back
+  without seeing some sort of
+  major die-off in population
+  <br>
+  &mdash; Steven Churchill, Planet of the Humans (2019)
+</div>
+
+<div class="para">
+  Every culture offers its denizens the <b>hope of immortality</b>.
+
+  Then the question is, well,
+  what happens when you bump into people who don't share those beliefs?
+
+  Whether you know it or not, whether you like it or not,
+  that's undermining the confidence
+  with which you subscribe to your own views,
+  and exposing you to the very anxiety
+  that those beliefs were constructed
+  to eradicate in the first place.
+
+  If we're to make progress, whatever that word means,
+  or even to persist as a form of life,
+  we're gonna need to radically overhaul
+  our basic conception of who and what we are,
+  and what it is that we value.
+
+  Because the people that you referred to earlier,
+  both on the left and the right
+  that think we're gonna be able to discover more oil,
+  or solar panel ourselves into the future,
+  where life will look pretty much like it does now,
+  you know, only cleaner and better,
+  I think that's just frankly delusional.
+
+  - What I'm hearing is that, if I haven't come to grips
+  with my own <b>anxiety about death</b> and life,
+  and presented with a reminder of that anxiety,
+  I'm highly likely to make some tragic decisions for the community.
+
+  - Yes.
+  The only solution in principle is, as Albert Camus put it, he said,
+  "<b>There's only one liberty: To come to terms with death.</b>
+  Thereafter anything is possible."
+  <br>
+  &mdash; Sheldon Solomon, Planet of the Humans (2019)
+  [Fear of death, cult mentality, ignorance]
+</div>
+
+<div class="para">
+  Nichts ist so verächtlich wie auf Furcht beruhender Respekt.
+  [Herrschaft durch Angst, Terror-Herrschaft, die echten Terroristen]
+
+  Die heuchlerische Ungerechtigkeit ruft die Kriege hervor,
+  die gewalttätige Gerechtigkeit überstürzt sie.
+
+  Grausamkeit empört, Dummheit entmutigt.
+
+  Die meisten großen Taten, die meisten großen Gedanken,
+  haben einen belächelnswerten Anfang.
+
+  Was ist ein Mensch in der Revolte? Ein Mensch der Nein sagt.
+
+  Die Kunst und die Revolte werden erst mit dem letzten Menschen sterben.
+
+  Das Gebot der Stunde heisst: Der Wille zur Gerechtigkeit muß den Willen zur Macht ablösen.
+
+  Das Leben ist kurz und seine Zeit zu verlieren ist eine Sünde.
+
+  Sünde ist das Warten auf ein zweites Leben, und das Weglaufen vor dem ersten Leben und seiner gnadenlosen Größe.
+
+  Warte nicht auf das jüngste Gericht, es passiert jeden Tag.
+
+  Ganzheit braucht keine Regeln.
+
+  Politik und Zukunft werden geformt von Menschen ohne Ideen, ohne Größe ...
+  Menschen mit Größe meiden die Politik.
+
+  Das Leben verlieren ist keine große Sache,
+  aber zusehen wie der Sinn des Lebens aufgelöst wird, das ist unerträglich.
+  [schnell sterben, langsam sterben]
+
+  Die Angst vor dem Tod ist eine Tatsache, aber Tatsache ist auch:
+  Diese Angst (und mag sie noch so groß sein)
+  war noch nie stark genug, zu Bremsen die menschliche Lust.
+
+  Eine übertriebene Tugend ist: seine Leidenschaften abtöten,
+  eine tiefere Tugend ist: seine Leidenschaften ins Gleichgewicht bringen.
+
+  Im Herzen eines Werkes, auch wenn es dunkel ist, strahlt eine unversiegbare Sonne.
+
+  Jemanden verurteilen heißt ihn nicht verstehen.
+
+  Zuerst trachtet man nach Gerechtigkeit, und zum Schluß organisiert man eine Polizei.
+
+  Alle modernen Revolutionen führen zu mehr Staat.
+
+  Jeder Revoluzzer endet als Tyrann oder Verräter.
+
+  Die Kunst ist der Schamhaftigkeit ähnlich, sie kann die Dinge nicht direkt aussprechen.
+
+  Man hat erst spät den Mut zu dem, was man weiss.
+
+  <!--
+  Das Reisen führt uns zu uns selbst zurück.
+
+  Die allen intelligenten Menschen gemeinsame Versuchung ist der Zynismus.
+
+  Die Arbeit ist wichtig, ohne Arbeit ist das Leben trostlos,
+  aber wenn die Arbeit seelenlos ist, erstickt das Leben und stirbt langsam.
+
+  Das Träumen tröstet die Menschen über das was sie nicht sein können,
+  das Lachen tröstet die Menschen über das was sie wirklich sind.
+
+  Die größte Berühmtheit besteht heute darin,
+  Bewunderung oder Abscheu zu erregen, ohne gelesen worden zu sein.
+
+  Ein Intellektueller ist ein Mensch, dessen Geist sich selbst beobachtet.
+
+  Lieber aufrecht sterben als auf Knien leben.
+
+  Man muss sich Sisyphos als glücklichen Menschen vorstellen.
+
+  Man will Geld verdienen, zum glücklich leben,
+  und die ganze Anstrengung, die beste Kraft, die beste Zeit,
+  konzentrieren sich auf den Erwerb von Geld ...
+  Aber das Glück wird vergessen, und das Mittel wird Zweck.
+
+  Mein Lieber, für jemanden, der allein ist, ohne Gott, ist das Gewicht der Tage schrecklich.
+  [Gott = Sinn im Leben]
+
+  Nicht die Revolte und ihre hohe Gesinnung glänzen heute über die Welt, sondern der Nihilismus.
+
+  Nichts macht weniger Eroberungen als die Vernunft,
+  mit wissenschaftlicher Bedachtsamkeit macht man keine Geschichte.
+
+  Um sich selbst zu erkennen, muß man handeln.
+
+  Was ist Ehre? Was mich aufrecht hält.
+
+  Wir helfen einem Menschen mehr, wenn wir ihm ein günstiges Bild seiner selbst vorhalten,
+  als wenn wir ihn unablässig mit seinen Fehlern konfrontieren.
+  [typ 4, transformative leadership style, positives feedback]
+  -->
+  <br>
+  &mdash; Albert Camus [M4?]
+</div>
+
+<div class="para">
   no changes in behavior or technology can save us,
   unless we can achieve control over the size of the human population.
   The birth rate must be brought into balance with the death rate.
@@ -11330,6 +12075,27 @@ Nazz feat. Cr7z - Überdosis
   Your love is lifting me higher
   <br>
   &mdash; The Glitch Mob - Higher [sinnvolle arbeit, freiwilligkeit]
+</div>
+
+<div class="para">
+  As you may or may not be aware, Sweden is not a state in the United States of America.
+  Sweden is a country in northern Europe.
+  Unless you figured it out by now, US law does not apply here.
+  For your information, no Swedish law is being violated.
+
+  Please be assured that any further contact with us, regardless of medium, will result in
+  a) a suit being filed for harassment
+  b) a formal complaint lodged with the bar of your legal counsel, for sending frivolous legal threats.
+
+  It is the opinion of us and our lawyers that you are .... morons,
+  and that you should please go sodomize yourself with retractable batons.
+
+  Please also note that your e-mail and letter will be published in full on https://www.thepiratebay.org.
+
+  <b>Go fuck yourself. Polite as usual, anakata</b>
+  <br>
+  &mdash; <a class="nofootnote" href="https://crazyvagabond.wordpress.com/2008/02/03/polite-as-usual-go-fuck-yourself/"
+  >thepiratebay.org in response to Copyright Trolls</a>
 </div>
 
 <div class="para">
@@ -11926,8 +12692,47 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   wo man diese Theorie wirklich leben kann.
   Es muss ein Ort sein, wo nur Gleichgesinnte leben,
   wo keine Fremden sind, die stören.
-  Beispiel: Landkommune, Ökodorf, Shaolin-Kloster, historisches Dorf.
+  Beispiel: Landkommune, Ökodorf, Shaolin-Kloster, historisches Dorf,
+  Amish People, traditionelle Landwirtschaft, Handarbeit.
 </div>
+
+<!--
+  https://www.aerzteblatt.de/nachrichten/70487/Warum-Hutterer-haeufiger-an-Allergien-und-Asthma-erkranken-als-Amische
+
+  Die Kinder der Amischen, einer zurückgezogenen Religionsgemeinschaft im ländlichen Amerika,
+  erkranken vier bis sechsmal seltener an Asthma und anderen Allergien
+  als die Kinder von Hutterern,
+  die ebenfalls abgeschieden leben,
+  aber im Gegensatz zu den Amischen eine industrielle Landwirtschaft betreiben.
+
+  Eine Studie im New England Journal of Medicine (2016; 375: 411-421)
+  führt die Unterschiede auf den höheren Endotoxin-Gehalt im Hausstaub der Amischen zurück,
+  der in Mausmodellen das angeborene Immunsystem zu einer Schutzreaktion veranlasst.
+
+  Dennoch leiden bei den Hutterern 21,3 Prozent der Schulkinder an Asthma
+  gegenüber nur 5,2 Prozent bei den Amischen.
+  Auch die Prävalenz positiver Allergietests ist
+  mit 33,3 versus 7,2 Prozent deutlich höher.
+
+  Die Ursache vermuten Forscher in der unterschiedlichen Form der Viehzucht
+  in den beiden Gemeinschaften.
+  Die Amischen betreiben eine traditionelle Landwirtschaft ohne Traktoren und Maschinen,
+  während die Hutterer keine Berührungsangst mit moderner Technik haben.
+  Bei den Amischen befinden sich die Viehställe in der Nähe der Wohnung,
+  die Kinder dürfen darin spielen.
+  Bei den Hutterern befinden sich die High-Tech Viehställe
+  oft fern der Wohnhäuser und Kinder haben in ihnen nichts zu suchen.
+
+  Bei den Endotoxinen handelt es sich zumeist um Bestandteile von Bakterien,
+  die bei einer traditionellen Landwirtschaft
+  über Kleidung und Schuhe mit in die Wohnungen getragen werden.
+
+  Diese Endotoxine (und andere Staubbestandteile)
+  bilden einen ständigen Reiz für das Immunsystem der Kinder,
+  was offenbar die Entwicklung einer Allergie verhindert.
+
+  also "dreck ist gesund" und "waschen macht krank"
+-->
 
 <div class="para">
   Wir sind Konsumenten ...
@@ -13018,7 +13823,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   ...
   In meinem Kopf seh ich Menschen die mir nah sind sterben,
   alles wird grau und dann rot brennt die ganze Erde.
-  Du suchst Glück in der Liebe ich hab andere Werte.
+  Du suchst Glück in der Liebe <b>ich hab andere Werte.</b>
   ...
   Scheiss drauf, alles brennt, Leben auf der Sonnenseite.
   &mdash; Klapse Mane - Sonnenseite
