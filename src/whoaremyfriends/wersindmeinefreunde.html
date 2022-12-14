@@ -78,7 +78,7 @@
   <!-- meta#version -->
   <!-- TODO update -->
   <link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-  <meta id="version" name="dcterms.modified" content="2022-11-22">
+  <meta id="version" name="dcterms.modified" content="2022-12-14">
 
   <!-- document ID for hypothesis annotations -->
   <!-- 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c = initial commit of the "alchi" project -->
@@ -261,6 +261,7 @@
   <meta name="homepage" content="https://github.com/milahu/alchi">
   <meta name="homepage.gitea" content="https://try.gitea.io/milahu/alchi">
   <meta name="homepage.codeberg" content="https://codeberg.org/milahu/alchi">
+  <meta name="homepage.codeberg" content="https://codeberg.org/milahu/alchi">
   <meta name="homepage.gitlab" content="https://gitlab.com/milahu/alchi">
   <meta name="homepage.srht" content="https://sr.ht/~milahu/alchi">
   <meta name="homepage.tor.darktea" content="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi">
@@ -310,9 +311,10 @@
     FIXME headings too large
   -->
 
-  <link rel="stylesheet" type="text/css" href="src/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="src/bootstrap/bootstrap.css">
+  <script defer src="src/bootstrap/bootstrap.bundle.js"></script>
 
-  <script defer src="src/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- TODO move script + style to external files -->
 
   <style>
     /*
@@ -723,6 +725,30 @@
       }
     }
 
+    /*
+    FIXME
+    <img class="darkmode-invert"
+    the class "darkmode-invert" should be applied AFTER the image has loaded.
+    otherwise darkreader shows the not-yet-loaded image as a white square on black ground, which is ugly.
+
+    this is not working:
+    img:loading {
+      background: transparent;
+      border: solid 10px red; // test
+    }
+
+    TODO rename the css class from darkmode-invert to darkmode-invert-loaded
+    attach an event listener to every image
+    when the image has loaded, change the image's class from darkmode-invert to darkmode-invert-loaded
+    see also
+    https://stackoverflow.com/questions/21148820/is-it-possible-to-detect-broken-unloaded-error-images-with-css
+
+    not working ...
+    */
+    img.darkmode-invert {
+      background: transparent;
+    }
+
   </style>
 
 
@@ -943,13 +969,13 @@
               // verbose feedback
               //alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
               alert(`Druck-Layout fertig nach ${sec(book.stats.layout)} Sekunden`);
-              const header = document.querySelector('header');
-              if (header) {
-                // workaround so the bindery navbar is visible
-                // TODO better: make bindery headless, add bindery controls to our navbar
-                header.remove();
-              }
 
+          }
+          const header = document.querySelector('header');
+          if (header) {
+            // workaround so the bindery navbar is visible
+            // TODO better: make bindery headless, add bindery controls to our navbar
+            header.remove();
           }
           // move bindery menu
           const binderyControls = document.querySelector(".bindery-controls")
@@ -1019,11 +1045,13 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
 
+            <!-- TODO generate table of contents
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasTableOfContents" aria-controls="offcanvasTableOfContents">
                 Inhalt
               </a>
             </li>
+            -->
 
             <li class="nav-item">
               <!--
@@ -1032,14 +1060,17 @@
               <a class="nav-link disabled" id="render-print-layout-button">Drucken</a>
             </li>
 
+            <!-- TODO inplace editor
             <li class="nav-item">
               <a class="nav-link" href="#">Ändern</a>
             </li>
+            -->
 
+            <!-- TODO open modal, ask to load annotations from hypothesis
             <li class="nav-item">
-              <!-- TODO open modal, ask to load annotations from hypothesis -->
               <a class="nav-link" href="#">Notizen</a>
             </li>
+            -->
 
             <!--  class dropdown-toggle = down-arrow next to button -->
             <li class="nav-item dropdown">
@@ -1058,15 +1089,17 @@
               </ul>
             </li>
 
+            <!-- TODO open modal, show help
             <li class="nav-item">
-              <!-- TODO open modal, show help -->
               <a class="nav-link" href="#">Speichern</a>
             </li>
+            -->
 
+            <!-- TODO open modal, show help
             <li class="nav-item">
-              <!-- TODO open modal, show help -->
               <a class="nav-link" href="#">Teilen</a>
             </li>
+            -->
 
           </ul>
         </div>
@@ -1075,6 +1108,8 @@
   </nav>
 
   <!-- table of contents -->
+  <!-- TODO generate from headings in <article id="content" -->
+  <!-- TODO generate table of contents
   <div class="offcanvas offcanvas-start text-start" tabindex="-1" id="offcanvasTableOfContents" aria-labelledby="offcanvasTableOfContentsLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasTableOfContentsLabel">Inhalt</h5>
@@ -1112,10 +1147,9 @@
           </ol>
         </li>
       </ol>
-      <!-- TODO generate from headings in <article id="content" -->
-
     </div>
   </div>
+  -->
 
   <script>
     /*
@@ -1151,7 +1185,7 @@
       z-index: 1;
       width: 100%;
       height: auto;
-      background: var(--bg);  
+      background: var(--bg);
       */
     }
   </style>
@@ -1175,7 +1209,7 @@
 
 <div class="vspace" style="height:2em"></div>
 
-<img class="darkmode-invert" style="max-width:16em" src="../images/alchi.pallas-symbol.svg">
+<img class="darkmode-invert" alt="alchi.pallas-symbol" style="max-width:16em" src="../images/alchi.pallas-symbol.svg">
 
 <div class="vspace" style="height:2em"></div>
 
@@ -4045,6 +4079,39 @@ TODO style="break-before:page"?
 </div>
 
 <div class="para">
+  Nährstoffmangel:
+  Pauschal kann man sagen:
+  Die meisten Menschen essen zu wenig Protein
+  und zu wenig Mikronährstoffe (Vitamine, Mineralien).
+  Dieser Nährstoffmangel hat viele Symptome:
+  dünne Haare, brüchige Nägel, Übergewicht, niedrige Stress-Toleranz, ...
+</div>
+
+<div class="para">
+  Grundnahrung:
+  Meine Lösung für das "Problem Nährstoffmangel"
+  ist eine Grundnahrung wo alles drin ist:
+  "Huel "
+
+  Haferflocken, Erbsen, Leinsamen, Kokosfett, Lecithin, Vitamine, Mineralien, Aroma, Salz.
+  Nachteile: kein Kauen, Pulver bleibt zwischen Zähnen, Geschmack ist auf Dauer langweilig.
+  Nachteil: Huel ist nicht regional:
+  Verpackung in England,
+  Haferflocken aus England,
+  Erbsen aus Kanada und China,
+  Reis aus China,
+  Leinsamen aus Kanada,
+  Kokosfett aus Indonesien und China,
+  Lecithin aus Indien.
+</div>
+
+<div class="para">
+  Pauschal kann man sagen:
+  Die meisten Menschen essen zu wenig Protein
+  und zu wenig Mikronährstoffe (Vitamine, Mineralien).
+</div>
+
+<div class="para">
   Beispiel:
   Typ 3 soll essen:
   <br>
@@ -6231,15 +6298,17 @@ TODO move
   Toner und Drum kaufe ich bei
   <a class="nofootnote" href="https://www.ebay.de/"
   >ebay.de</a> (Händler: europcart, gorilla-ink).
+  <!--
   Das teuerste am Toner ist dieser scheiss Chip,
-  mit dem alle Drucker-Hersteller (Kartell) kleine Druckereien sabotieren.
+  mit dem Drucker-Hersteller kleine Druckereien sabotieren.
   Idealerweise habe ich einen
-  <a class="nofootnote" href="https://github.com/milahu/awesome-reset-toner"
+  <a class="nofootnote" href="https://github.com/milahu/reset-toner-chip"
   >Resetter für den Toner Chip</a>,
   dann kann ich den Toner selber nachfüllen.
+  -->
   <!--
     https://github.com/search?q=reset+toner
-    https://github.com/milahu/awesome-reset-toner
+    https://github.com/milahu/reset-toner-chip
     https://github.com/lugu/toner_chip_reset
   -->
 </div>
@@ -6252,15 +6321,13 @@ TODO move
   <a class="nofootnote" href="https://geizhals.de/samsung-proxpress-m4025nd-sl-m4025nd-see-a966762.html"
   >Samsung ProXpress M4025</a>.
   Strom-Verbrauch: 700 Watt.
-  Toner: MLT-D204E (E = Extra large), 20 Euro / 10.000 Seiten = 0.2 Cent pro Seite.
+  Toner: MLT-D204E, 20 Euro / 10.000 Seiten = 0.2 Cent pro Seite.
   Drum: MLT-R204, 30 Euro / 30.000 Seiten = 0.1 Cent pro Seite.
-  Auflösung: 1200 dpi, ich drucke mit 300 dpi.
   Speed: 38 Seiten / Minute.
   Duplex Speed: 20 Seiten / Minute.
   Noise: 57 dB = laut.
   Gewicht: 10 kg.
-  Papier: 250 Blatt.
-  Schönes Gehäuse.
+  Papierzufuhr: 250 Blatt.
   Steht in meinem Badezimmer, weil laut und stinkt.
   Anschluss über 20 Meter LAN Kabel.
 </div>
@@ -6272,16 +6339,11 @@ TODO move
   Alternative: Skrebba Skre 120 lang Blockhefter.
   Bis 170 Blatt (billige Hefter schaffen nur 15 Blatt).
   Tiefe: 25 cm (A5 Breite: 15 cm).
-  Klammern: 23/8.
-  Nicht: dünne Klammern (24/8).
-  Kosten: 3,15 Euro / 1000 Klammern bei
-  <a class="nofootnote" href="https://www.ebay.de/itm/232998955137"
-  >ebay.de</a>.
 </div>
 
 <div class="para">
-  Ich mache ganz absichtlich kein "schönes" Buch mit Softcover,
-  weil das ist viel mehr Arbeit (Schneiden + Kleben).
+  Ich mache ganz absichtlich kein schönes Buch mit Softcover,
+  weil das ist mehr Arbeit (Schneiden + Kleben).
   Keep It Simple:
   Jeder kann mein Buch einfach kopieren.
 </div>
@@ -7172,6 +7234,9 @@ TODO move
   Die Amish haben die Wette gewonnen, und wir sind die Dummen.
 </div>
 
+</section>
+
+<!-- crybaby mode
 <div class="para">
   Wie so oft:
   Unsere schlausten Köpfe tun wir wegsperren in Knast und Psychiatrie,
@@ -7189,6 +7254,35 @@ TODO move
   Überleben wollen wir schon, aber nur wenns leicht geht.
   Wenn wir um unser Leben wieder hart arbeiten und kämpfen müssen,
   dann nicht ... dafür sind wir zu schwach.
+</div>
+-->
+
+
+
+<section id="traditional-agriculture">
+
+<h3>Traditionelle Landwirtschaft</h3>
+
+<div class="para">
+  In der Zukunft haben wir keine Brennstoffe und keine Maschinen.
+  Also: Viel mehr Handarbeit, viel mehr Handwerk.
+  Also: Wir müssen <b>Menschen effizient organisieren</b>.
+  Also: Wir brauchen typgerechte Erziehung,
+  Frühförderung von Naturtalent,
+  echte Toleranz (Problemkinder loslassen),
+  echte Gerechtigkeit (Beide haben Recht),
+  aktiver Aufbau von Beziehungen,
+  aktives Herstellen von personeller Gerechtigkeit
+  durch Menschen-Austausch zwischen Dörfern,
+  Frühförderung von Teamwork, Ergänzung, Feedback,
+  Gemeinsame Freunde, Selbstverwaltung.
+</div>
+
+<div class="para">
+  Unser Kampf gegen die Natur braucht billige Energie.
+  Billige Energie erlaubt Energieverschwendung und Ineffizienz.
+  Diese "schöne" Zeit ist vorbei (Peak Oil, Peak Phosphor),
+  und je früher wir "zurück zur Natur" kommen, desto besser.
 </div>
 
 </section>
@@ -9985,6 +10079,9 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   2 Stifte, 10 Blätter, ein kleines Buch.
   Keine schweren Schultaschen mit 95% Ballast, der den Oberkörper kaputt macht:
   Schultern vor, Brust rein = Scham, Angst, Sklave, Opfer.
+  <!--
+    verkrampfte Körperhaltung, Bewegungsmangel, Rückenschmerzen
+  -->
 </div>
 
 <div class="para">
@@ -10820,6 +10917,10 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Terrorgruppe - Weitergehen
 </div>
 
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:60%" src="../images/memes/white-collar-crime.bank.this-is-a-robbery.amateur.steve-kelley-2010.svg">
+</div>
+
 <div class="para">
   The problem is, you think you have time.
   <br>
@@ -10893,6 +10994,22 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 <div class="para">
   Save the planet. Kill all humans.
   &mdash; Bender [M1], Futurama
+</div>
+
+<div class="para">
+  "Die Experten" haben uns Lügen erzählt über
+  Tabak, Quecksilber, Opiate, Cannabis, Aluminium,
+  Plastik, Talk (?), DDT, Heroin, Süßstoffe,
+  Gesättigte Fettsäuren, Gentechnik, Rohmilch, Cholesterol,
+  Fluor, Glyphosat, geozentrisches Weltbild,
+  Gewaltenteilung, Trennung von Staat und Kirche,
+  Leben nach dem Tod, Sünden und Ablasshandel, Hexen und Teufel ...
+  aber jetzt sagen "die Experten" die Wahrheit?
+</div>
+
+<div class="para">
+  Sir, the orcs are here.
+  - Well, dont be racist, let them in
 </div>
 
 <div class="para">
@@ -11807,6 +11924,10 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Planet of the Humans (2019)
 </div>
 
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:80%" src="../images/memes/trash-world.sweetie-one-day-all-of-this-will-be-yours.dad-there-is-nothing-but-trash-what-the-fuck.svg">
+</div>
+
 <div class="para">
   Every different
   perspective I look at
@@ -12031,7 +12152,6 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   als wenn wir ihn unablässig mit seinen Fehlern konfrontieren.
   [typ 4, transformative leadership style, positives feedback]
   -->
-  <br>
   &mdash; Albert Camus [M4?]
 </div>
 
@@ -12624,8 +12744,12 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   &mdash; Prince Philip
 </div>
 
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:60%" src="../images/memes/save-the-planet.kill-all-humans.bender.futurama.svg">
+</div>
+
 <div class="para">
-  1. Halte die Menschen unter 500 Millionen,
+  1. Halte alle Menschen unter 500 Millionen,
   für immer im Gleichgewicht mit der Natur.<br>
   2. Vermehre dich schlau, für mehr Stärke und Vielfalt.<br>
   &mdash; Georgia Guidestones, 1980
@@ -12687,6 +12811,14 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Reiches Herz trägt armen Pelz
+</div>
+
+<div class="para">
+  Du bist geistreich wie der Papst, Bitch ich scheisse auf den Staat
+  und sammle Gleichgesinnte um mich rum wie freie Radikale.
+  Das ist Hank ich bin ein homophober Menschenfeind,
+  doch so menschlich zum Verständnis meiner Fans senk ich das Niveau.
+  &mdash; JAW & Hollywood Hank - Ackergaul Konfekt Remix
 </div>
 
 <div class="para">
@@ -12761,7 +12893,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Es muss ein Ort sein, wo nur Gleichgesinnte leben,
   wo keine Fremden sind, die stören.
   Beispiel: Landkommune, Ökodorf, Shaolin-Kloster, historisches Dorf,
-  Amish People, traditionelle Landwirtschaft, Handarbeit.
+  Amish People, <b>traditionelle Landwirtschaft</b>, Handarbeit.
 </div>
 
 <!--
@@ -13126,16 +13258,29 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 
 <div class="para">
-  Die Freiheitsstatue ist ne Hure, und ich fick sie
+  Die Freiheitsstatue ist ne Hure und ich fick sie
   <br>
   &mdash; Haftbefehl - Lass die Affen aus'm Zoo
 </div>
 
 <div class="para">
-  In die Schule zurück gehen tät ich nie wieder.
-  Und wenn ichs doch tun würde dann reiss ich sie nieder
+  In die Schule zurück gehen tät ich nie wieder,
+  und wenn ichs doch tun würd dann reiss ich sie nieder.
   &mdash; BBou - Eigentlich
 </div>
+
+<div class="para">
+  Woher kommt es, dass mich niemand versteht und jeder mag?
+  &mdash; Albert Einstein
+</div>
+
+<!-- funny but useless. example of truth vs lies
+<div class="para">
+  There is only one immigration policy that I believe in
+  and thats "fuck them all to death".
+  &mdash; Mister Garrison, South Park S19E02
+</div>
+-->
 
 <div class="para">
   Mama wir warn lange nicht mehr ehrlich zueinander,
@@ -13205,8 +13350,12 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 </div>
 -->
 
+<div class="xcenter">
+  <img class="darkmode-invert" style="width:60%" src="../images/memes/the-end-is-near.homer-simpson.s16e19.svg">
+</div>
+
 <div class="para">
-  Erst paar Tropfen auf Parkett, doch auf einmal steht das Wasser,
+  Erst paar Tropfen aufs Parkett, doch auf einmal steht das Wasser,
   aus den unteren Etagen dann auch in der ersten Klasse.
 
   Möbel treiben durch die Gegend ein paar kämpfen noch dagegen,
@@ -13345,38 +13494,23 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   Beauty without expression is boring.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   People do not seem to realise,
   that their opinion of the world,
   is also a confession of their character.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   Make your own Bible.
   Select and collect all the words and sentences,
   that in all your readings have been to you,
   like the blast of a trumpet.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   Trust instinct to the end,
   even though you can give no reason.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   The wise man in the storm prays God,
   not for safety from danger,
   but for deliverance from fear.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   We are students of words:
   we are shut up in schools
   and colleges and recitation-rooms,
@@ -13384,80 +13518,38 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   and come out at last with a bag of wind,
   a memory of words,
   and do not know a thing.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   What is success? To win the respect of intelligent people, and the affection of children.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   The end of the human race will be,
   that it will eventually die of civilization.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   Fear defeats more people, than any other one thing in the world.
-  &mdash; RWO
-</div>
-
-<div class="para">
-  Do not be too timid and squeamish about your actions.
-  <br>
-  All life is an experiment.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
+  Do not be too timid and squeamish about your actions, all life is an experiment.
+  ...
   Colleges hate geniuses, just as convents hate saints.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   No law can be sacred to me, but that of <b>my nature</b>.
   Good and bad are but names,
   very readily transferable to that or this.
   The only right is what is after <b>my constitution</b>.
   The only wrong is what is against it.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   Love of beauty is taste.
   The creation of beauty is art.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
   How much of human life is lost in waiting.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   Science does not know its debt to imagination.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   Happy will the house be, in which the relationships are formed from character.
-  &mdash; Ralph Waldo Emerson
-</div>
-
-<div class="para">
+  ...
   What I need is someone, who will make me do what I can.
-  &mdash; RWO
-</div>
-
-<div class="para">
-  Every man alone is sincere.
-  <br>
-  At the entrance of a second person, hypocrisy begins.
-  &mdash; RWO
-</div>
-
-<div class="para">
+  ...
+  Every man alone is sincere -
+  at the entrance of a second person, hypocrisy begins.
+  ...
   Always do what you are afraid to do.
   &mdash; Ralph Waldo Emerson
 </div>
@@ -13919,7 +14011,7 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   ...
   In meinem Kopf seh ich Menschen die mir nah sind sterben,
   alles wird grau und dann rot brennt die ganze Erde.
-  Du suchst Glück in der Liebe ich hab andere Werte.
+  Du suchst Glück in der Liebe <b>ich hab andere Werte.</b>
   ...
   Scheiss drauf, alles brennt, Leben auf der Sonnenseite.
   &mdash; Klapse Mane - Sonnenseite
@@ -13985,7 +14077,12 @@ It's a virus called RD9. Or as I like to call it, World Cure.
 
 <div class="para">
   The only true power is violence
-  &mdash; South Park - Cartoon Wars
+  &mdash; Kyle, <a class="nofootnote" href="https://www.youtube.com/watch?v=8TMHIYDHMSE">South Park - Cartoon Wars</a> (201, S10E03) (zensiert von Comedy Central)
+</div>
+
+<div class="para">
+  If you wanna find some quality friends, you gotta wait through all the dicks first.
+  &mdash; Cartman, <a class="nofootnote" href="https://www.youtube.com/watch?v=RZLDAVNTBBs">South Park - Chatroulette</a>
 </div>
 
 <div class="para">
@@ -14037,6 +14134,45 @@ It's a virus called RD9. Or as I like to call it, World Cure.
   Ich glaube eher an die Unschuld einer Hure,
   als an die Gerechtigkeit der deutschen Justiz.
   &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=AoRy7q-OnIc">Slime - Gerechtigkeit</a>
+</div>
+
+<div class="para">
+  Socrates:
+  Corrupting the youth since 470 BC.
+  Kill your idols:
+  Erst als Sokrates tot war, wurde er gefeiert als Denker.
+</div>
+
+<div class="para">
+  Socrates:
+  Corrupting the youth since 470 BC.
+  Kill your idols:
+  Erst als Sokrates tot war, wurde er gefeiert als Denker.
+  Tote Götter:
+  Erst als Jesus tot war, wurde er von Staat und Kirche anerkannt als Heiliger.
+</div>
+
+<div class="para">
+  The first part of the Yippie program, you know, is kill your parents.
+  And I mean that quite seriously, because
+  unless you are prepared to kill your parents,
+  you're not really prepared to change the country,
+  because <b>our parents are our first oppressors</b>.
+  [then, kill your teachers, because our teachers are our second oppressors.]
+  ...
+  Politics is how you live your life, not whom you vote for.
+  ...
+  We create revolution by living it.
+  ...
+  ... in your living room, you're scared shitless.
+  And that's just where the power structure wants you.
+  ...
+  Don't trust anyone over thirty.
+  ...
+  If you had everything but a gun, you were a radical but not a revolutionary.
+  ...
+  The youth is looking for a reason to die.
+  &mdash; Jerry Rubin [M3]
 </div>
 
 <div class="para">
