@@ -75,6 +75,22 @@ https://geizhals.de/samsung-proxpress-m3820nd-40s-min-sl-m3820nd-see-a955880.htm
 * toner: MLT-D203
 * drum cannot be replaced??
 
+### Brother HL-L6400DW
+
+* speed: 50 pages/minute simplex = about 22 pages/minute duplex
+* feed: 500 pages
+* price: 600 eur new https://geizhals.de/brother-hl-l6400dw-hll6400dwg1-a1391284.html
+* toner
+   * TN-3520 = 20.000 pages = 20 eur
+   * TN-3512 = 12.000 pages
+   * TN-3480 = 8.000 pages
+   * TN-3430 = 3.000 pages
+* drum: DR-3400 = 50.000 pages = 20 eur
+* weight: 13.4 kg
+* white case
+
+compare: https://geizhals.de/?cat=prl&xf=716_50%7E720_LAN%7E721_Duplexeinheit
+
 ### Brother?
 
 popular printers, higher used price
