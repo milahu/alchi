@@ -217,7 +217,8 @@ in the rare case that this project is censored, here are some mirror locations
 * codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
 * gitea.io: https://try.gitea.io/milahu/alchi
 * sr.ht: https://git.sr.ht/~milahu/alchi
-* darktea (with Tor Browser): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
+* darktea (with [Tor Browser](https://www.torproject.org/download/)): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
+* humanrightstech (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
 
 note: only some git hosters also offer static webhosting
 
@@ -238,6 +239,9 @@ git clone https://git.sr.ht/~milahu/alchi
 
 # darktea
 torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
+
+# humanrightstech
+torsocks git clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
 ```
 
 ### static mirrors
