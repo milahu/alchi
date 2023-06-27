@@ -5,6 +5,11 @@ set -x
 
 opts="--force"
 
+# build git with patched curl to fix:
+# Not resolving .onion address (RFC 7686)
+# https://github.com/curl/curl/pull/11236
+export CURL_ALLOW_DOT_ONION=1
+
 # pull changes from main repo
 git stash -m "git pull-push $(date)"
 git pull github master
