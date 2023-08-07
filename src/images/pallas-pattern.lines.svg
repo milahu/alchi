@@ -9,21 +9,6 @@ https://boxy-svg.com/
   <defs>
     <style type="text/css">
         svg { --fg: black; --bg: white; } /* light mode */
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: white; --bg: black; } /* dark mode */
-          }
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: white; --bg: black; } /* dark mode */
-        }
-        @media screen {
-          @media (prefers-color-scheme: dark) { 
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-          }
-
-          [data-darkreader-mode="dynamic"]
-            svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-        }
 
         .fig1 .stroke {
           stroke-width: 2;

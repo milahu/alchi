@@ -2,22 +2,8 @@
   version="1.1" viewBox="0 200 1200 200"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 >
-  <style>svg { --fg: black; --bg: white; } /* light mode */
-      @media screen {
-        @media (prefers-color-scheme: dark) {
-          svg { --fg: white; --bg: black; } /* dark mode */
-        }
-        [data-darkreader-mode="dynamic"]
-          svg { --fg: white; --bg: black; } /* dark mode */
-      }
-      @media screen {
-        @media (prefers-color-scheme: dark) {
-          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-        }
-
-        [data-darkreader-mode="dynamic"]
-          svg { --fg: #ffffff; --bg: #000000; } /* dark mode */
-      }
+  <style>
+      svg { --fg: black; --bg: white; } /* light mode */
 
       .fig1 .stroke {
         stroke-width: 2;

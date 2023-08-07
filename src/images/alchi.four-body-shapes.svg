@@ -8,13 +8,6 @@
   <!-- TODO bigger heads, bigger numbers -->
   <style>
     svg { --fg: black; --bg: white; } /* light mode */
-    @media screen {
-      @media (prefers-color-scheme: dark) {
-        svg { --fg: white; --bg: black; } /* dark mode */
-      }
-      [data-darkreader-mode="dynamic"]
-        svg { --fg: white; --bg: black; } /* dark mode */
-    }
 
     .fig-four-body-types .stroke {
       stroke-width: .5;
