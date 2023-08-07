@@ -822,12 +822,21 @@
               var linkList = [
                 ['github.com/milahu/alchi', ''],
                 ['gitlab.com/milahu/alchi', 'Mirror'],
+                ['try.gitea.io/milahu/alchi', 'Mirror'],
+                ['codeberg.org/milahu/alchi', 'Mirror'],
+                ['sr.ht/~milahu/alchi', 'Mirror'],
+                // FIXME: onion urls are too long for one printed line
+                //['it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi', 'Mirror'],
+                //['gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi', 'Mirror'],
               ];
               var linkOffset = 1; // which link is first in linkList
               var linkIdx = (Math.floor(page.number / 2) + linkOffset) % linkList.length;
               var link = linkList[linkIdx][0];
               var desc = linkList[linkIdx][1];
               var href = `https://${link}`;
+              if (link.indexOf(".onion/") > -1) {
+                href = `http://${link}`;
+              }
               var linkText = desc ? `${link} (${desc})` : link;
               /* pretty effect, but version is missing
               var headerTitle = (page.isLeft)
