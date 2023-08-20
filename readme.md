@@ -145,7 +145,7 @@ git clone https://github.com/milahu/alchi.git
 
 the program `git` is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
 
-this also works with our [repo mirrors](#repo-mirrors)
+this also works with our [repo mirrors](#mirrors)
 
 ## future work
 
@@ -238,11 +238,28 @@ git clone https://try.gitea.io/milahu/alchi
 git clone https://git.sr.ht/~milahu/alchi
 
 # darktea
-torsocks git clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
+cd alchi
+git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 
 # humanrightstech
-torsocks git clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
+cd alchi
+git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 ```
+
+#### tor hidden services
+
+accessing .onion domains requires a running tor client (not the "tor browser"),
+usually as a system-wide tor service,
+started with `sudo systemctl start tor` on linux,
+or `tor.exe --service start` on windows.
+
+see also:
+
+- https://www.torproject.org/
+- https://community.torproject.org/onion-services/setup/install/
+- https://askubuntu.com/questions/6522/how-to-install-tor
 
 ### static mirrors
 
@@ -901,3 +918,31 @@ https://github.com/milahu/alchi
 -->
 
 </details>
+
+### german keywords
+
+* systemkritik
+   * sklavenmoral gegen herrenmoral
+   * sklavenmoral versus herrenmoral
+   * sklavenmoral vs herrenmoral
+* schulzwang
+   * schulpflicht
+   * homeschooling in deutschland
+   * freilernen
+   * freischulen
+   * freischule
+   * lerngruppen
+* selbstorganisation
+   * gruppenaufbau
+   * gruppenaufbau nach persönlichkeitstyp
+   * geführter widerstand
+   * bauernaufstand
+   * revolution von unten
+   * aussteigen aus dem system
+   * system-aussteiger
+   * querfront
+   * staatsfeinde
+   * staatsfeindschaft
+   * fick den staat
+   * fick die schule
+   * fick die uni
