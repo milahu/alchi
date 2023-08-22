@@ -746,12 +746,16 @@
 
     /* dark mode */
     @media screen {
+      /* no. the user's desktop can be in dark mode,
+      but the web browser can be in light mode.
+      so require the "darkreader extension" for dark mode.
       @media (prefers-color-scheme: dark) {
         :root { --fg: white; --bg: black; }
         .darkmode-invert {
           filter: invert();
         }
       }
+      */
       /* darkreader extension */
       :root[data-darkreader-mode="dynamic"] {
         --fg: white; --bg: black;
