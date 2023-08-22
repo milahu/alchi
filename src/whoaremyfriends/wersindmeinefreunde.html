@@ -824,7 +824,12 @@
           Bindery.Footnote({
             selector: "a:not(.nofootnote)",
             render: (el, number) => {
-              var hrefPretty = el.href.replace(/https?:\/\//g, '');
+              // problem: chrome returns "https://torproject.org/" instead of "https://torproject.org"
+              // from el = <a href="https://torproject.org">Tor Browser</a>
+              // fix: instead of el.href use el.getAttribute("href")
+              //console.log(`Bindery.Footnote.render: el`, el);
+              //var hrefPretty = el.href.replace(/https?:\/\//g, '');
+              var hrefPretty = el.getAttribute("href").replace(/https?:\/\//g, '');
               //return `<span class="footnote"><span class="footnote-number">${ number }</span> <a href="${ el.href }">${ hrefPretty }</a></span>`;
               return `<span class="footnote"><span class="footnote-number">[${ number }]</span> <a href="${ el.href }">${ hrefPretty }</a></span>`;
             },
