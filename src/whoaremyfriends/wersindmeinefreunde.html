@@ -394,7 +394,8 @@
       --narrow-screen-margin: 5%;
       text-align: left;
       /* DIN A5 */
-      max-width: 148mm;
+      --paper-page-width: 148mm;
+      max-width: calc(var(--paper-page-width) - 2 * var(--print-margin));
       margin: 0 auto;
       /*
       padding: 0 min(var(--print-margin), var(--narrow-screen-margin));
