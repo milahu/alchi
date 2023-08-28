@@ -12,6 +12,8 @@
     "svg-focusable": "off",
     "wcag/h67": "off",
     "element-permitted-content": "error",
+    "text-content": "off",
+    "prefer-native-element": "off",
 
 "attr-spacing": "off",
 "attr-case": "off",
