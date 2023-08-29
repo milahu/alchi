@@ -2120,6 +2120,23 @@
       return [
         //h('a', '.btn-print.btn-main', { href: 'https://github.com/milahu/alchi' }, 'Github'),
         h('a', '.btn.control', { href: 'https://github.com/milahu/alchi' }, 'Github'),
+        // TODO add "Pages" button to select pages to render
+        /*
+          TODO add "Help" button
+          explain print settings:
+
+          print from web browser: google chrome / chromium / ungoogled-chromium (thats what i use)
+
+          maybe select a range of pages (like 1-66) to skip empty last page (bug in bindery)
+          resolution: 600 dpi
+          enable duplex = print on both sides, flip on short edge
+          paper size: A4
+          no margins
+
+          chrome creates large PDF files (bug in chrome)
+          compress the PDF to 50% file size:
+          pdftk input.pdf cat output output.pdf
+        */
       ];
     }
     class Controls {
