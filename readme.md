@@ -64,6 +64,7 @@ or use github's [watch repo](https://docs.github.com/en/github/managing-subscrip
 
 * book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
   * [google translate](https://milahu-gitlab-io.translate.goog/alchi/src/whoaremyfriends/wersindmeinefreunde.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment. I made [a translation tool](src/alchi-book/scripts/translate.js) for my alchi-book, which I will use here too.
+  * rendered PDF files: https://github.com/milahu/alchi-pdf
 * flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html))
   * [villagecults are the future, but ... who are my friends?](src/dorfkultur/villagecults.html.pdf) english version. automatic translation by google translate
   * [google translate](https://milahu-github-io.translate.goog/alchi/src/dorfkultur/dorfkultur.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment.
