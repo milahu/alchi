@@ -2,7 +2,7 @@
 
 set -e
 set -u
-set -x
+#set -x
 
 md_dir="$1"
 out_path="$2"
