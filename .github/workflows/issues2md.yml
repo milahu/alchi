@@ -60,6 +60,11 @@ jobs:
     #  run: |
     #    mkdir -p $GH2MD_OUTPUT_PATH/ghmd/
     #    mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATH/ghmd/
+    # remove .ghmd files to save space
+    # usually, the .ghmd files can be reconstructed from the .md files
+    - name: "cleanup: remove .ghmd files"
+      run: |
+        rm -rf $GH2MD_OUTPUT_PATH/ghmd
     - name: Build index readme.md
       run: |
         # debug
