@@ -38,9 +38,10 @@ jobs:
         git rm -rf $GH2MD_OUTPUT_PATH
         # workaround for https://github.com/mattduck/gh2md/pull/31
         mkdir -p $GH2MD_OUTPUT_PATH || true
-        gh2md $GITHUB_REPOSITORY $GH2MD_OUTPUT_PATH --idempotent --multiple-files --file-extension .ghmd
+        gh2md $GITHUB_REPOSITORY $GH2MD_OUTPUT_PATH/ghmd --idempotent --multiple-files --file-extension .ghmd
         #sudo apt-get install pandoc # pandoc 2.5 == too old
     # install nix to install pandoc 2.17
+    # FIXME use "apt install", this should be faster than nix, which is not cached on github servers
     - name: install nix
       uses: cachix/install-nix-action@master
       with:
@@ -52,15 +53,25 @@ jobs:
         script: |
           set -x
           pandoc --version || true
-          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read path
+          mkdir -p $GH2MD_OUTPUT_PATH/md
+          find $GH2MD_OUTPUT_PATH/ghmd -name '*.ghmd' -type f | while read ghmd_path
           do
-            base="${path%.*}"
-            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$base.ghmd" -o "$base.md"
+            base=$(basename $ghmd_path)
+            base=${base%.*}
+            md_path=$GH2MD_OUTPUT_PATH/md/$base.md
+            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict $ghmd_path -o $md_path
           done
-    - name: "cleanup: move .ghmd files to separate folder"
+    #- name: "cleanup: move .ghmd files to separate folder"
+    #  run: |
+    #    mkdir -p $GH2MD_OUTPUT_PATH/ghmd/
+    #    mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATH/ghmd/
+    - name: Build index readme.md
       run: |
-        mkdir -p $GH2MD_OUTPUT_PATH/ghmd/
-        mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATH/ghmd/
+        # debug
+        echo "workdir: $PWD"
+        echo "ls -A"
+        ls -A
+        ./issues2md-build-index.sh $GH2MD_OUTPUT_PATH/md $GH2MD_OUTPUT_PATH/readme.md
     - name: Commit files
       run: |
         git add $GH2MD_OUTPUT_PATH
