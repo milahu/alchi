@@ -67,11 +67,7 @@ jobs:
         rm -rf $GH2MD_OUTPUT_PATH/ghmd
     - name: Build index readme.md
       run: |
-        # debug
-        echo "workdir: $PWD"
-        echo "ls -A"
-        ls -A
-        ./issues2md-build-index.sh $GH2MD_OUTPUT_PATH/md $GH2MD_OUTPUT_PATH/readme.md
+        ./.github/workflows/issues2md-build-index.sh $GH2MD_OUTPUT_PATH/md $GH2MD_OUTPUT_PATH/readme.md
     - name: Commit files
       run: |
         git add $GH2MD_OUTPUT_PATH
