@@ -3,6 +3,8 @@
 
 name: Issues2Markdown
 on:
+  # allow to run the workflow manually
+  workflow_dispatch:
   #push: # comment it to reduce update.
   schedule:
     # every day
