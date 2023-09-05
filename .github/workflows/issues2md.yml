@@ -42,27 +42,20 @@ jobs:
         mkdir -p $GH2MD_OUTPUT_PATH || true
         gh2md $GITHUB_REPOSITORY $GH2MD_OUTPUT_PATH/ghmd --idempotent --multiple-files --file-extension .ghmd
         #sudo apt-get install pandoc # pandoc 2.5 == too old
-    # install nix to install pandoc 2.17
-    # FIXME use "apt install", this should be faster than nix, which is not cached on github servers
-    - name: install nix
-      uses: cachix/install-nix-action@master
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
+    - name: install pandoc
+      uses: nikeee/setup-pandoc@v1
     - name: "pandoc: convert github-markdown to strict-markdown"
-      uses: workflow/nix-shell-action@main
-      with:
-        packages: pandoc
-        script: |
-          set -x
-          pandoc --version || true
-          mkdir -p $GH2MD_OUTPUT_PATH/md
-          find $GH2MD_OUTPUT_PATH/ghmd -name '*.ghmd' -type f | while read ghmd_path
-          do
-            base=$(basename $ghmd_path)
-            base=${base%.*}
-            md_path=$GH2MD_OUTPUT_PATH/md/$base.md
-            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict $ghmd_path -o $md_path
-          done
+      run: |
+        set -x
+        pandoc --version || true
+        mkdir -p $GH2MD_OUTPUT_PATH/md
+        find $GH2MD_OUTPUT_PATH/ghmd -name '*.ghmd' -type f | while read ghmd_path
+        do
+          base=$(basename $ghmd_path)
+          base=${base%.*}
+          md_path=$GH2MD_OUTPUT_PATH/md/$base.md
+          pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict $ghmd_path -o $md_path
+        done
     #- name: "cleanup: move .ghmd files to separate folder"
     #  run: |
     #    mkdir -p $GH2MD_OUTPUT_PATH/ghmd/
