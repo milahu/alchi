@@ -46,11 +46,11 @@ jobs:
       uses: nikeee/setup-pandoc@v1
     - name: "pandoc: convert github-markdown to strict-markdown"
       run: |
-        set -x
         pandoc --version || true
         mkdir -p $GH2MD_OUTPUT_PATH/md
         find $GH2MD_OUTPUT_PATH/ghmd -name '*.ghmd' -type f | while read ghmd_path
         do
+          echo "ghmd_path: $ghmd_path"
           base=$(basename $ghmd_path)
           base=${base%.*}
           md_path=$GH2MD_OUTPUT_PATH/md/$base.md
