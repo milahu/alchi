@@ -223,7 +223,61 @@ in the rare case that this project is censored, here are some mirror locations
 
 note: only some git hosters also offer static webhosting
 
-### clone commands
+you may find other mirrors by the initial commit 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c of this repo.
+this is why i have the string `git9c6e723296fc7d8534cd901de0f0dcfd4765ea3c` in the repo description
+
+### git log
+
+this may be useful to verify mirrors of this repo
+
+ideally, the old git history should not be modified.
+rewriting of new git history may be necessary,
+so commit hashes of new commits may change
+
+git log format:
+
+- %H = commit hash
+- %T = tree hash
+- %ai = author date
+- %s = subject
+
+#### last 10 commits
+
+todo: keep this section up to date
+
+```
+git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (.*)$/\1\\. \2  /' | tac | head -n10
+```
+
+909\. 69a50468005a644eb56dbd3afc35dacba95f0c7c `1a7caa2cba3293ec85a02f8caa07932581df83e8` 2023-09-12 15:47:09 +0200 add-section-git-log  
+908\. 5c23d477dbf3584896ee0f92d80e6020706d5a1d `2a91283c0e49bbc4c7fd91b36696439ec9044b0b` 2023-09-09 00:28:13 +0000 up-archive-github-issues  
+907\. 5af1dbe3ebc19ed6e52ed4da5a57b354b76cfa41 `3232805eea0d80794ba2ab9ea450496fe0cc00b4` 2023-09-05 08:06:21 +0200 issues2md-be-quiet  
+906\. 2cdc0f3b3ac3bbe0f13a1c5038a20143fbae8ccc `98ee835656d8563ebd54e91970ae19e8af7f9535` 2023-09-05 08:04:50 +0200 issues2md-build-index.sh-be-quiet  
+905\. ad60c52dbb1583d7a85b935742ffeed172b35cad `6c71d92dd01af9b91823217b6e6a3c4db86badcb` 2023-09-05 06:02:04 +0000 up-archive-github-issues  
+904\. f6fff902bf524e037e02ca3436b84e0ff76f7535 `e83ced61fb38b02ddee313e8841b0b5a234dd9eb` 2023-09-05 08:00:41 +0200 issues2md-fix-path-to-issues2md-build-index.sh  
+903\. d6fee644bb48249b55fdd602890c42b69c004bdc `beb0e1adc340a5eb1141ce208080e2d8fc503763` 2023-09-05 07:59:22 +0200 issues2md-remove-.ghmd-files-to-save-space  
+902\. 580c8c9f30a5a18628005ced8652b84d16c33e65 `33315f0c9625d96329a3764e308817db6fe8ed3b` 2023-09-05 07:59:07 +0200 issues2md-remove-nix-to-run-faster  
+901\. 68622d5de86f2cdb72bbcc8dadf99b6a3f0ec159 `0d42f71ce7d44df7a513937bd5a5e82b3f80f743` 2023-09-05 07:50:25 +0200 issues2md-allow-to-run-manually  
+900\. 880ad00b75376f6cc3fba0588d210162957fd157 `eaccd44a9bcd009cd331eede9c01bab5749c3d7f` 2023-09-05 07:47:21 +0200 add-issues2md-build-index.sh  
+
+#### first 10 commits
+
+```
+git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (.*)$/\1\\. \2  /' | tac | tail -n10
+```
+
+10\. 918f6358f7457555e8d9432e246dfaf2b5d11a3f `2828d23ab070e2b1e00c9f6013f23c1fb27a624e` 2019-05-10 10:33:09 +0200 Add-files-via-upload  
+9\. 8baf376ebb6c2de02acd400a0bdd27846baa94a4 `4bfbd1f0a5853dc095bfbb1e3f2b5ed7e4614454` 2019-05-10 10:26:45 +0200 Update-README.md  
+8\. 294b99b08780789de0624b8000983b6b1a9c5dae `15dfb178760799674e6e786a0a7e8e90e778eb83` 2019-05-10 10:22:11 +0200 Add-files-via-upload  
+7\. a19773feb290f5b04277dee64aa42ca06379bfa5 `1420b8eb9be0df50ed59d898dbd72c7afd4475a4` 2019-05-04 07:30:36 +0200 Update-README.md  
+6\. 034c18a3a5706170a4fb512c3015dd9eaabdd345 `1961e239d20ea7824e45468910d1a7ddb0501450` 2019-05-04 07:28:24 +0200 Add-files-via-upload  
+5\. a97352b1af2552a9d166de0876f39f100135a24d `b4e009b85f3d6bd62f3b63d66106a8c9a17dd749` 2019-04-11 19:43:59 +0200 Update-README.md  
+4\. 7bb48a5cc4e9dedcfd7acd9d9eb0f724bbe45df2 `cabdeb3e978f54d0711172a45f85808b876ec564` 2019-04-11 19:36:13 +0200 Update-README.md  
+3\. 20ef755fc0d3a50c68e8f2833d7b1757fd2836ac `6ee4bbff30aa0ca10a5ba8ac3b81d60c5b79f765` 2019-04-11 19:05:17 +0200 Add-existing-files  
+2\. 48127c4f49b3a3954453bb1cffc684d0253e9ae8 `8ade89190989bbb69dcace36688a3a6d33b2274b` 2019-02-19 16:09:32 +0100 Add-files-via-upload  
+1\. 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c `6a09968b401196949ba49065701f88d8dcf474e4` 2019-02-19 12:06:18 +0100 Initial-commit  
+
+### git clone
 
 ```
 # github.com
