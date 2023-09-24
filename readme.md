@@ -141,7 +141,7 @@ moved to <a href="path/to/new/file.html">path/to/new/file.html</a>
 all files and versions can be downloaded with the linux command
 
 ```txt
-git clone https://github.com/milahu/alchi.git
+git clone https://github.com/milahu/alchi
 ```
 
 the program `git` is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
@@ -217,6 +217,9 @@ in the rare case that this project is censored, here are some mirror locations
 * gitlab.com: https://gitlab.com/milahu/alchi + https://milahu.gitlab.io/alchi/
 * codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
 * gitea.io: https://try.gitea.io/milahu/alchi
+* notabug.org: https://notabug.org/milahu/alchi
+* disroot.org: https://git.disroot.org/milahu/alchi
+* dev-hub.eu: https://git.dev-hub.eu/milahu/alchi
 * sr.ht: https://git.sr.ht/~milahu/alchi
 * darktea (with [Tor Browser](https://www.torproject.org/download/)): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
 * humanrightstech (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
@@ -249,16 +252,16 @@ todo: keep this section up to date
 git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (.*)$/\1\\. \2  /' | tac | head -n10
 ```
 
-909\. 69a50468005a644eb56dbd3afc35dacba95f0c7c `1a7caa2cba3293ec85a02f8caa07932581df83e8` 2023-09-12 15:47:09 +0200 add-section-git-log  
+914\. 6ffd4bee49704848e95031a8258c3396e6f9239b `f013377a7c88b461bd46226d88f9c5e31ad80ffb` 2023-09-24 00:31:43 +0000 up-archive-github-issues  
+913\. 34491e9829b56769d3daa3e85c94ffca02c8d577 `4e703e9e24657026a4e6b7571fe0eaab2e19e8a0` 2023-09-23 00:28:16 +0000 up-archive-github-issues  
+912\. c0d10fc76e47453aa4c2168a92705b0ff71e71f7 `8a7b50b28a279f9a1d1a3361d2c60fa688f0cfe7` 2023-09-21 00:29:11 +0000 up-archive-github-issues  
+911\. 6faa86c1ffbcfdfa856db5b55e73a0a29bfdd145 `aef51be9f47a50822757f6b9662e9a448bb2ca79` 2023-09-14 00:29:16 +0000 up-archive-github-issues  
+910\. 6fdf885ca02e875a210f6debde24756da84fe5d6 `f2f7b4e80b41192f5afb01ac48da93e821d5f658` 2023-09-13 00:29:42 +0000 up-archive-github-issues  
+909\. 62942604aac910b232fa92f18a3b60debfd7ca5f `94cdf99a24c46287ca8e2a17a2bf35ce9e0cef35` 2023-09-12 15:47:09 +0200 add-section-git-log  
 908\. 5c23d477dbf3584896ee0f92d80e6020706d5a1d `2a91283c0e49bbc4c7fd91b36696439ec9044b0b` 2023-09-09 00:28:13 +0000 up-archive-github-issues  
 907\. 5af1dbe3ebc19ed6e52ed4da5a57b354b76cfa41 `3232805eea0d80794ba2ab9ea450496fe0cc00b4` 2023-09-05 08:06:21 +0200 issues2md-be-quiet  
 906\. 2cdc0f3b3ac3bbe0f13a1c5038a20143fbae8ccc `98ee835656d8563ebd54e91970ae19e8af7f9535` 2023-09-05 08:04:50 +0200 issues2md-build-index.sh-be-quiet  
 905\. ad60c52dbb1583d7a85b935742ffeed172b35cad `6c71d92dd01af9b91823217b6e6a3c4db86badcb` 2023-09-05 06:02:04 +0000 up-archive-github-issues  
-904\. f6fff902bf524e037e02ca3436b84e0ff76f7535 `e83ced61fb38b02ddee313e8841b0b5a234dd9eb` 2023-09-05 08:00:41 +0200 issues2md-fix-path-to-issues2md-build-index.sh  
-903\. d6fee644bb48249b55fdd602890c42b69c004bdc `beb0e1adc340a5eb1141ce208080e2d8fc503763` 2023-09-05 07:59:22 +0200 issues2md-remove-.ghmd-files-to-save-space  
-902\. 580c8c9f30a5a18628005ced8652b84d16c33e65 `33315f0c9625d96329a3764e308817db6fe8ed3b` 2023-09-05 07:59:07 +0200 issues2md-remove-nix-to-run-faster  
-901\. 68622d5de86f2cdb72bbcc8dadf99b6a3f0ec159 `0d42f71ce7d44df7a513937bd5a5e82b3f80f743` 2023-09-05 07:50:25 +0200 issues2md-allow-to-run-manually  
-900\. 880ad00b75376f6cc3fba0588d210162957fd157 `eaccd44a9bcd009cd331eede9c01bab5749c3d7f` 2023-09-05 07:47:21 +0200 add-issues2md-build-index.sh  
 
 #### first 10 commits
 
@@ -953,6 +956,48 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * Waffle Grid
     * https://www.theedkins.co.uk/jo/tess/grids.htm
       * https://www.theedkins.co.uk/jo/tess/waffle.htm
+* pattern of attraction for sixteen people
+  * pattern of human attraction for sixteen people
+  * laws of attraction for sixteen people
+* crazy idea
+  * crazy ideas
+  * crackpot theory
+  * smartest man in the world
+  * god complex
+  * megalomaniac
+  * megalomania
+  * world formula
+  * arrogance
+* radical solutions for radical problems
+  * a radical solution for a radical problem
+  * "radical" as in ...
+    * early
+      * early childhood
+      * early education
+      * start of life
+    * basic
+      * basic needs
+      * fundamental
+      * simple
+      * essential
+      * axioms
+      * basic research
+      * principles
+* postcollapse order
+  * post-collapse order
+  * natural order
+  * sustainable order
+  * radical justice
+  * justice of personality types
+* radical solution
+  * radical solutions
+  * fuck the system, but this time right
+  * listen to your heart: overthrow the state
+  * there is no political solution
+* antisocialism
+  * antisocial
+  * individualism
+  * capitalism (latin "caput" is one head)
 
 <!--
 
@@ -971,8 +1016,6 @@ i found this irregular hexagon in my research on human relations
 https://github.com/milahu/alchi
 
 -->
-
-</details>
 
 ### german keywords
 
@@ -1001,3 +1044,16 @@ https://github.com/milahu/alchi
    * fick den staat
    * fick die schule
    * fick die uni
+* verrückt und gefährlich
+  * fuck the system, aber diesmal richtig
+  * anleitung zum bauernaufstand
+  * anleitung zur kulturrevolution
+  * anleitung zur revolution von unten
+* selbsthilfe
+  * wir müssen uns selber helfen
+  * wir sind besser dran wenn wir uns selber helfen (Samy Deluxe - Weck Mich Auf)
+* freiwilligkeit
+  * eine große theorie der freiwilligkeit
+  * beziehungen müssen freiwillig sein, also beide seiten dürfen "nein" sagen = beide seiten haben ein vetorecht
+
+</details>
