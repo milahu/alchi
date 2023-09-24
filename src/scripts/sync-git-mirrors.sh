@@ -23,37 +23,30 @@ git stash pop
 
 # push changes to all repos
 
-# https://github.com/milahu/alchi
-git push github $opts
-git push github --tags $opts
-
-# https://gitlab.com/milahu/alchi
-git push gitlab $opts
-git push gitlab --tags $opts
-
-# https://try.gitea.io/milahu/alchi
-# this is an automatic mirror
-# updates are pulled by try.gitea.io
-#git push gitea
-
-git push srht $opts
-git push srht --tags $opts
-
-# no. this is an automatic mirror if the github repo at https://github.com/milahu/alchi
 if false; then
-remote=try.gitea.io
-git push $remote $opts
-git push $remote --tags $opts
+  git remote add github https://github.com/milahu/alchi
+
+  git remote add gitlab https://gitlab.com/milahu/alchi
+
+  git remote add srht https://git.sr.ht/~milahu/alchi
+
+  # https://try.gitea.io/milahu/alchi is an automatic mirror of the github repo https://github.com/milahu/alchi
+
+  git remote add darktea http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
+  git config --add remote.darktea.proxy socks5h://127.0.0.1:9050
+
+  git remote add humanrightstech http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
+  git config --add remote.humanrightstech.proxy socks5h://127.0.0.1:9050
+
+  git remote add notabug https://notabug.org/milahu/alchi
+
+  git remote add disroot https://git.disroot.org/milahu/alchi
+
+  #git remote add dev-hub.eu https://git.dev-hub.eu/milahu/alchi
+  # dev-hub.eu repos are "internal" so not visible to the public
 fi
 
-# http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
-# enable tor:
-# git config --add remote.darktea.proxy socks5h://127.0.0.1:9050
-git push darktea $opts &&
-git push darktea --tags $opts || true
-
-# http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
-# enable tor:
-# git config --add remote.humanrightstech.proxy socks5h://127.0.0.1:9050
-git push humanrightstech $opts &&
-git push humanrightstech --tags $opts || true
+for remote in github gitlab srht darktea humanrightstech notabug disroot; do
+  git push $remote $opts &&
+  git push $remote --tags $opts || true
+done
