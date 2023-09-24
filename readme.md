@@ -219,7 +219,6 @@ in the rare case that this project is censored, here are some mirror locations
 * gitea.io: https://try.gitea.io/milahu/alchi
 * notabug.org: https://notabug.org/milahu/alchi
 * disroot.org: https://git.disroot.org/milahu/alchi
-* dev-hub.eu: https://git.dev-hub.eu/milahu/alchi
 * sr.ht: https://git.sr.ht/~milahu/alchi
 * darktea (with [Tor Browser](https://www.torproject.org/download/)): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
 * humanrightstech (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
@@ -289,8 +288,17 @@ git clone https://github.com/milahu/alchi
 # gitlab.com
 git clone https://gitlab.com/milahu/alchi
 
+# codeberg.org
+git clone https://codeberg.org/milahu/alchi
+
 # gitea.io
 git clone https://try.gitea.io/milahu/alchi
+
+# notabug.org
+git clone https://notabug.org/milahu/alchi
+
+# disroot.org
+git clone https://git.disroot.org/milahu/alchi
 
 # srht
 git clone https://git.sr.ht/~milahu/alchi
