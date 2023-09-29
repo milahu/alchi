@@ -28,9 +28,25 @@ if false; then
 
   git remote add gitlab https://gitlab.com/milahu/alchi
 
-  git remote add srht https://git.sr.ht/~milahu/alchi
+  git remote add codeberg https://codeberg.org/milahu/alchi
 
+  # https://sourceforge.net/projects/milahu-alchi/
+  # note: by default, force-push is disabled on sourceforge
+  # to enable force-push:
+  #   ssh -t milahu@shell.sourceforge.net create
+  #   sed -i 's/denyNonFastforwards = true/denyNonFastforwards = false/' /home/git/p/milahu-alchi/code.git/config
+  # see also https://stackoverflow.com/questions/31640933/force-git-push-on-sourceforge
+  git remote add sourceforge https://git.code.sourceforge.net/p/milahu-alchi/code
+
+  # pull only
   # https://try.gitea.io/milahu/alchi is an automatic mirror of the github repo https://github.com/milahu/alchi
+  git remote add gitea https://try.gitea.io/milahu/alchi
+
+  git remote add notabug https://notabug.org/milahu/alchi
+
+  git remote add disroot https://git.disroot.org/milahu/alchi
+
+  git remote add srht https://git.sr.ht/~milahu/alchi
 
   git remote add darktea http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
   git config --add remote.darktea.proxy socks5h://127.0.0.1:9050
@@ -38,15 +54,11 @@ if false; then
   git remote add humanrightstech http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
   git config --add remote.humanrightstech.proxy socks5h://127.0.0.1:9050
 
-  git remote add notabug https://notabug.org/milahu/alchi
-
-  git remote add disroot https://git.disroot.org/milahu/alchi
-
   #git remote add dev-hub.eu https://git.dev-hub.eu/milahu/alchi
   # dev-hub.eu repos are "internal" so not visible to the public
 fi
 
-for remote in github gitlab srht darktea humanrightstech notabug disroot; do
+for remote in github gitlab srht darktea humanrightstech notabug disroot sourceforge; do
   git push $remote $opts &&
   git push $remote --tags $opts || true
 done

@@ -62,16 +62,16 @@ we can open markdown files offline with (for example) the [Markdown Preview Plus
 subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom) for notifications of project commits,
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
-* book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/whoaremyfriends/wersindmeinefreunde.html))
+* book: [Pallas. Wer sind meine Freunde? Gruppenaufbau nach Persönlichkeitstyp](https://milahu.github.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html). draft. rewrite of `whoaremyfriends` in german ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/wersindmeinefreunde.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/whoaremyfriends/wersindmeinefreunde.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/whoaremyfriends/wersindmeinefreunde.html))
   * [google translate](https://milahu-gitlab-io.translate.goog/alchi/src/whoaremyfriends/wersindmeinefreunde.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment. I made [a translation tool](src/alchi-book/scripts/translate.js) for my alchi-book, which I will use here too.
   * rendered PDF files: https://github.com/milahu/alchi-pdf
-* flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html))
+* flyer: [Dorfkultur ist Zukunft, aber ... Wer sind meine Freunde?](https://milahu.github.io/alchi/src/dorfkultur/dorfkultur.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/dorfkultur/dorfkultur.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/dorfkultur/dorfkultur.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/dorfkultur/dorfkultur.html))
   * [villagecults are the future, but ... who are my friends?](src/dorfkultur/villagecults.html.pdf) english version. automatic translation by google translate
   * [google translate](https://milahu-github-io.translate.goog/alchi/src/dorfkultur/dorfkultur.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment.
-* visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html))
-* book: [Pallas. Extended Families and Small States](https://milahu.github.io/alchi/src/alchi-book/build/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/))
-  * rewrite: [Who are my friends? Team composition by personality type](https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/whoaremyfriends.html))
-* personality test: [alchi-test](https://milahu.github.io/alchi/src/alchi-test/public/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/)). combination of multiple personality tests (mostly Big Five), returns result in the four elements (four basetypes)
+* visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-maps/public/alchi-maps.html))
+* book: [Pallas. Extended Families and Small States](https://milahu.github.io/alchi/src/alchi-book/build/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-book/build/)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-book/build/)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-book/build/))
+  * rewrite: [Who are my friends? Team composition by personality type](https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/whoaremyfriends/whoaremyfriends.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/whoaremyfriends/whoaremyfriends.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/whoaremyfriends/whoaremyfriends.html))
+* personality test: [alchi-test](https://milahu.github.io/alchi/src/alchi-test/public/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-test/public/)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-test/public/)). combination of multiple personality tests (mostly Big Five), returns result in the four elements (four basetypes)
 
 <details>
 
@@ -216,6 +216,7 @@ in the rare case that this project is censored, here are some mirror locations
 * github.com: https://github.com/milahu/alchi + https://milahu.github.io/alchi/
 * gitlab.com: https://gitlab.com/milahu/alchi + https://milahu.gitlab.io/alchi/
 * codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
+* sourceforge.net: https://sourceforge.net/projects/milahu-alchi/ + https://milahu-alchi.sourceforge.io/
 * gitea.io: https://try.gitea.io/milahu/alchi
 * notabug.org: https://notabug.org/milahu/alchi
 * disroot.org: https://git.disroot.org/milahu/alchi
@@ -290,6 +291,10 @@ git clone https://gitlab.com/milahu/alchi
 
 # codeberg.org
 git clone https://codeberg.org/milahu/alchi
+
+# sourceforge.net
+# https://sourceforge.net/projects/milahu-alchi/
+git clone https://git.code.sf.net/p/milahu-alchi/code alchi
 
 # gitea.io
 git clone https://try.gitea.io/milahu/alchi
