@@ -204,6 +204,12 @@ maxibrief: A4, height 5 cm, weight 1000 grams = 190 A4 sheets (80 g/m2) = 10 to 
 
 maxibrief prio: with tracking, 3,85 EUR
 
+https://www.deutschepost.de/de/b/briefe-ins-ausland/brief-postkarte-international.html
+
+groosbrief international: A4, height 2 cm, weight 500 grams, L + B + H = max. 90 cm = 95 A4 sheets (80 g/m2) = 3,70 EUR
+
+maxibrief international: A4, height 5 cm, weight 1000 grams, L + B + H = max. 90 cm = 190 A4 sheets (80 g/m2) = 7,00 EUR
+
 https://www.deutschepost.de/de/w/buecherundwarensendung.html
 
 büwa 500 = Bücher- und Warensendung, weight 500 grams, height 5 cm = 1,95 EUR
