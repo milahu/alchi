@@ -2,6 +2,8 @@
 
 <!-- TODO messung körperspannung gegen signal ground -->
 
+<!-- TODO bekannte menschen und ihr persönlichkeitstyp -->
+
 <html lang="de">
 
 <!-- NOTE please use a text editor with automatic code folding
@@ -284,7 +286,16 @@
   <meta name="homepage.tor.darktea" content="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi">
   <meta name="homepage.tor.humanrightstech" content="http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi">
 
-  <!-- legal stuff. short: zero limits and zero warranty -->
+  <!-- legal stuff. short: zero limits and zero warranty
+
+    sorry, i must include a license,
+    otherwise the braindead legal system assumes "all rights reserved".
+    [since when, actually? in the past, all content was "public domain" by default.]
+
+    i want my content to be "public domain".
+    the closest license to "public domain" is the "MIT license",
+    which gives you all freedoms and zero warranty:
+  -->
   <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
   <meta name="dc.rights" content='
 
@@ -867,6 +878,8 @@
                 ['gitlab.com/milahu/alchi', 'Mirror'],
                 ['try.gitea.io/milahu/alchi', 'Mirror'],
                 ['codeberg.org/milahu/alchi', 'Mirror'],
+                ['notabug.org/milahu/alchi', 'Mirror'],
+                ['git.disroot.org/milahu/alchi', 'Mirror'],
                 ['sr.ht/~milahu/alchi', 'Mirror'],
                 // FIXME: onion urls are too long for one printed line
                 //['it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi', 'Mirror'],
@@ -1054,7 +1067,7 @@
         renderButton.innerHTML = 'Drucken...';
         renderButton.setAttribute("title", "Bitte ein paar Sekunden warten, bis das Druck-Layout fertig ist");
         document.body.classList.remove('screen-layout');
-        //document.body.classList.add('print-layout'); // not used
+        document.body.classList.add('print-layout');
       }
 
       window.renderPrintLayout = renderPrintLayout;
@@ -2024,6 +2037,85 @@
 
 
 
+<section id="active-reading">
+
+<h2>Aktiv Lesen</h2>
+
+<!--
+  src/dorfkultur/dorfkultur.html:  Zum Lernen muss man <b>Aktiv Lesen:</b>
+  src/whoaremyfriends/wersindmeinefreunde.trash.html:  Zum Lernen muss man <b>Aktiv Lesen:</b>
+-->
+
+<div class="para">
+  Lesen ist das Wichtigste, was man in der Schule lernt.
+  Alles andere kann man dann selber lernen.
+  Zum Lernen muss man Aktiv Lesen:
+</div>
+
+<div class="para">
+  Wichtige Wörter unterstreichen.
+  (Ja das darfst du, es ist dein Text.)
+</div>
+
+<div class="para">
+  Flüchtige Gedanken sofort aufschreiben,
+  bevor du sie wieder vergisst.
+  (Dafür ist der weisse Rand.)
+</div>
+
+<div class="para">
+  Nicht-verstandene Sätze nochmal lesen.
+  Nicht-verstandene Wörter entschlüsseln.
+  Regelmäßig Pausen machen: Bewegen oder Hinlegen.
+</div>
+
+<div class="para">
+  Auch Lesen ist subjektiv:
+  Typen 24 wollen "linear" lesen,
+  also von Aah bis Zett genau ein Mal durchlesen.
+  Typen 13 lesen eher chaotisch,
+  lassen sich leichter ablenken, haben weniger Geduld.
+</div>
+
+<div class="para">
+  Wenn du das anonym machen willst,
+  dann schau im Abschnitt "Hilfe gesucht" auf Seite 40.
+  <!-- TODO update this page number.
+    ideally bindery would return the dynamic page number of a section:
+    binderyPageNumber('#todo-help-wanted')
+  -->
+</div>
+
+</section>
+
+
+
+<section id="feedback-early-often">
+
+<h2>Feedback</h2>
+
+<div class="para">
+  Wenn du deine Kommentare veröffentlichen willst,
+  dann mach das bitte früh und häufig.
+  Beim Programmieren sagt man: "release early, release often."
+
+  Es gibt dabei nicht nur um mich, oder um "mein" Buch.
+  Vielleicht können wir alle etwas von dir lernen.
+</div>
+
+<div class="para">
+  Wenn du das anonym machen willst,
+  dann schau im Abschnitt "Hilfe gesucht" auf Seite 40.
+  <!-- TODO update this page number.
+    ideally bindery would return the dynamic page number of a section.
+    something like binderyPageNumber('#todo-help-wanted')
+  -->
+</div>
+
+</section>
+
+
+
 <section id="pallas-hypothesis">
 
 <h2>Hypothese</h2>
@@ -2047,9 +2139,9 @@
   also zufällige Beziehungen sind genauso gut und belastbar
   wie die "kompatiblen" Beziehungen im Muster.
 
-  2. dieses Muster ist falsch, aber es gibt ein anderes Muster
-  (Du darfst gerne ein anderes Muster vorschlagen,
-  dann können wir verschiedene Muster probieren und vergleichen.)
+  2. dieses Muster ist falsch, aber es gibt ein anderes Muster.
+  Du darfst gerne ein anderes Muster vorschlagen,
+  dann können wir verschiedene Muster probieren und vergleichen.
 </div>
 
 <div class="para">
@@ -2058,7 +2150,7 @@
   weil hier suche ich <b>Grundlagen</b> (Axiome, höchste Wahrheiten),
   und dahinter gibt es keine rationalen Gründe,
   sondern dahinter steht nur mein persönlicher Grund:
-  "Ich glaube dass meine Hypothese richtig ist".
+  "Ich glaube, meine Hypothese ist richtig."
 </div>
 
 <div class="para">
@@ -5425,8 +5517,8 @@ TODO move
 
     Weil bei Polyamorie immer Gefühle
     mit im Spiel sein dürfen und sogar sein sollen,
-    ist dieser Beziehungstypus  keineswegs „unkomplizierter"
-    als eine monogame Beziehung, sondern in erster Linie „anders".
+    ist dieser Beziehungstypus  keineswegs "unkomplizierter"
+    als eine monogame Beziehung, sondern in erster Linie "anders".
 
     Polyamorie: Vorteile und Nachteile
 
@@ -6165,6 +6257,27 @@ TODO move
   Serienmord ist die billigste Lösung gegen Übervölkerung (hohe Quantität)
   und gegen Degeneration (niedrige Qualität, Erbkrankheiten, hässliche Menschen).
 
+  Pazifismus ersetzt Serienmord durch Massenmord (Übervölkerung und Systemcrash),
+  also Pazifismus kann den Tod nur verzögern,
+  also Pazifismus ist Energieverschwendung.
+  <!--
+  also Pazifismus ist Energieverschwendung um den Tod zu verzögern.
+  also Pazifismus spielt auf Zeit und verschwendet Energie.
+  also Pazifismus ist Zeitverschwendung und Energieverschwendung.
+  -->
+  <!--
+  "Nie wieder Krieg" ist die Lüge der Pazifisten.
+  -->
+  <!--
+    https://www.youtube.com/watch?v=8OVQCCE1F8E
+
+    "Corona wird zu einem Ende des Euro führen": Markus Krall im Interview
+    COMPACTTV
+
+    grund vom crash ist die globale übervölkerung. genau so einfach.
+    pazifismus ersetzt serienmord durch massenmord, also spielt auf zeit und verschwendet energie.
+  -->
+
   Mir ist klar:
   Viele Menschen sagen:
   Beim Thema "Menschen umbringen"
@@ -6532,12 +6645,42 @@ TODO move
   Anonymes Feedback geht per Tor Browser von <a class="nofootnote" href="https://torproject.org">torproject.org</a>:
   <br>
   Darktea: <a class="nofootnote monospace" title="darktea" href="http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi"
-  >http://it7o&nbsp;tdan&nbsp;qu7k&nbsp;tntx&nbsp;zm42&nbsp;7cba&nbsp;6i53<br>&nbsp;w6wl&nbsp;anlh&nbsp;23v5&nbsp;i3si&nbsp;qmos&nbsp;47pz&nbsp;hvyd.onion/milahu/alchi</a>
+  >http://it7o tdan qu7k tntx zm42 7cba 6i53<br> w6wl anlh 23v5 i3si qmos 47pz hvyd.onion/milahu/alchi</a>
   <br>
   Human Rights Tech: <a class="nofootnote monospace" title="humanrightstech" href="http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi"
-  >http://gg6z&nbsp;xtre&nbsp;ajii&nbsp;jzty&nbsp;y5g6&nbsp;bt5o&nbsp;6l3q<br>&nbsp;u32n&nbsp;rg7e&nbsp;ulye&nbsp;mlhx&nbsp;wwl6&nbsp;enk6&nbsp;ghad.onion/milahu/alchi</a>
+  >http://gg6z xtre ajii jzty y5g6 bt5o 6l3q<br> u32n rg7e ulye mlhx wwl6 enk6 ghad.onion/milahu/alchi</a>
   <br>
   (...ohne Leerzeichen)
+
+  <!-- TODO better than tor? tor is still too centralized.
+
+    https://www.youtube.com/watch?v=cX3DV3TkgfI
+    Veilid - The Next Generation of Tor?
+    https://veilid.com/
+    https://gitlab.com/veilid
+
+    https://github.com/berty/berty
+    berty: offline-first messenger, via ad-hoc wifi and bluetooth
+
+    https://github.com/cjb/GitTorrent
+    gittorrent: dead project, but should work...
+
+    radicle: not really decentralized?
+
+    https://meshtastic.org/
+    https://www.youtube.com/watch?v=EAQI2ZSmxPU
+    Rutgers University Confirmed: Meshtastic and LoRa are dangerous
+    In 2020, I was the first YouTuber to make a video about “Meshtastic,” created by Kevin Hester.
+    The project name was a merge between Mesh and Fantastic.
+    Already then, I loved the project.
+    But why is it the “most dangerous LoRa project”?
+    Here is the proof:
+    My video was included in a study titled “NETWORK-ENABLED ANARCHY”
+    by an organization featured by the US government
+    under the topic “instructions for encrypted messaging”.
+    So stay tuned when I show you what you can do with it
+    even if you have a normal profession.
+  -->
 </div>
 
 </section>
@@ -7379,6 +7522,7 @@ TODO move
   Dafür müssen wir nur 200 Jahre zurück schauen.
   Statt Kühlschrank hatten wir einen kalten Keller.
   Statt Waschmaschine hatten wir Seife und Hände.
+  Statt Rasenmäher hatten wir Ziegen.
   Statt Internet hatten wir Briefe und Bücher.
   Statt Drucker hatten wir Tusche und Feder.
   Statt Waschzwang waren wir dreckig und gesund.
@@ -7580,34 +7724,57 @@ TODO move
 
 
 
-<!--
-  TODO move: "Kinder verstehen das nicht"
+<!-- TODO move -->
+<section id="children-dont-understand-this">
+
+<h3>Kinder verstehen das nicht</h3>
+
+<div class="para">
+  "Kinder verstehen das nicht"
   sagen die Lehrer, die mich rausschmeissen,
   wenn ich meine Zettel an ihre Schüler verteile.
+
   Die Lehrer sagen, mein Text ist "nicht hilfreich"
   und er verwirrt die Schüler nur...
   aber genau den gleichen Vorwurf/Anklage mache ich gegen Lehrer:
   Der Schulzwang ist Zeitverschwendung und Kindesmissbrauch.
+
   Die Lehrer machen Kinder dumm und schwach,
   damit sie später als brave Sklaven für die Industrie arbeiten gehen.
-  Das Problem ist, diese Industrie hat keine Zukunft,
-  also die Kinder werden auf Etwas vorbereitet,
-  das keine Zukunft hat.
 
-  Schule ist politisch.
+  Das Problem ist, die Industrie hat keine Zukunft,
+  also die Kinder werden auf etwas vorbereitet, das keine Zukunft hat.
+</div>
+
+</section>
+
+
+
+<!-- TODO move -->
+<section id="school-is-political">
+
+<h3>Schule ist politisch</h3>
+
+<div class="para">
   Das Homeschooling-Verbot in Deutschland ist politisch.
+
   Lehrer tun so, als wäre Schule "politisch neutral"...
   aber nur tote Menschen sind neutral,
   jeder lebende Mensch hat seine angeborenen Vorurteile,
   und seine subjektive Weltsicht.
+
   Man muss dumm oder böse sein,
   um seine subjektive Weltsicht
-  zu einem objektiven Standard für Alle zu machen,
+  zu einem objektiven Standard für Alle zu machen (Totalitarismus),
   und Alle, die eine andere angeborene subjektive Weltsicht haben,
-  werden als "krank" beschimpft,
-  und entweder umerzogen oder aussortiert.
-  (Ich bin so ein "Aussortierter", bei dem die Umerziehung versagt hat...)
--->
+  werden als "krank" beschimpft, und entweder umerzogen oder aussortiert
+  (Künstliche Selektion, Kunstordnung).
+
+  Ich bin so ein "Aussortierter", bei dem die Umerziehung versagt hat,
+  und jetzt stehe ich auf der Todesliste vom Regime.
+</div>
+
+</section>
 
 
 
@@ -7625,12 +7792,12 @@ TODO move
 
 
 
+<!-- TODO move -->
 <section id="concepts-simple-problem">
 
 <h3>Einfaches Problem</h3>
 
 <div class="para">
-  TODO move:
   Auch ein "design goal" für meine Theorie:
   Das Problem muss radikal einfach sein,
   so einfach, dass viele Menschen das Problem übersehen
@@ -8231,7 +8398,7 @@ TODO move
 
   Alles begann vor über 35 Jahren:
 
-  Da bemerkte Roland Liebscher-Bracht – damals Leiter einer Schule für Kampfkunst –,
+  Da bemerkte Roland Liebscher-Bracht - damals Leiter einer Schule für Kampfkunst -,
   dass bestimmte Bewegungen einen positiven Einfluss auf Schmerzen hatten.
   Was dahinter steckte, fand er dann gemeinsam mit seiner Frau, der Ärztin Dr. Petra Bracht, heraus:
   Mit ihrer medizinischen Expertise systematisierten sie die Bewegungsabläufe
@@ -8362,6 +8529,16 @@ TODO move
 <hr>
 
 
+
+<!-- TODO Die meisten Bücher sind scheisse
+
+  Zensur durch Informationsflut.
+  99% der öffentlichen Informationen sind Spam, Müll, Zeitverschwendung.
+  Deswegen sind auch 99% aller Bücher nur wertlose Scheisse.
+  Die wichtigen Informationen sind gut versteckt,
+  damit nur die Elite rankommt.
+
+-->
 
 <section id="concepts-trauma-based-mind-control">
 
@@ -8744,8 +8921,8 @@ TODO are <section> nested or flat?
 
     Vogel- und Insektenschredder, rieseige Müllberge
 
-    Interessant ist, dass das Riesenwindrad die buchstäblich einzige „Höchstleistung“ ist, die Deutschland seit langem vorzuweisen hat.
-    Das Land befindet sich nämlich in jeder Hinsicht in einer Abwärtsspirale:  Ob in Wirtschaft, Politik, Kultur oder Sport - überall wird es nach unten durchgereicht und ist längst wieder zum „kranken Mann Europas“ geworden.
+    Interessant ist, dass das Riesenwindrad die buchstäblich einzige "Höchstleistung" ist, die Deutschland seit langem vorzuweisen hat.
+    Das Land befindet sich nämlich in jeder Hinsicht in einer Abwärtsspirale:  Ob in Wirtschaft, Politik, Kultur oder Sport - überall wird es nach unten durchgereicht und ist längst wieder zum "kranken Mann Europas" geworden.
 
     Dem deutschen Größenwahn tut dies jedoch keinen Abbruch.
     Bislang ist das Land bereits mit 30.000 Windkraftanlagen verschandelt.
@@ -8754,7 +8931,7 @@ TODO are <section> nested or flat?
 
     Dürren durch Windkraft-Anlagen
 
-    Schlimmer noch: Durch den Effekt des sogenannten „Terrestrial Stillings” nehmen sie sich auch noch gegenseitig den Wind weg.
+    Schlimmer noch: Durch den Effekt des sogenannten "Terrestrial Stillings" nehmen sie sich auch noch gegenseitig den Wind weg.
     Die von den Rotoren verbrauchte Windenergie fehlt bei der Entstehung von Regenwolken.
     Dadurch wird das Klima negativ beeinflusst, die Gefahren von Dürren und Temperaturanstiegen steigen massiv.
 
@@ -8775,7 +8952,7 @@ TODO are <section> nested or flat?
 
     Obwohl die Lebenszeit von Windrädern über 30 Jahre betragen könnte, werden viele nach 20 Jahren abgeschaltet.
     Der Grund: das im Jahr 2000 erlassene Erneuerbare-Energien-Gesetz (EEG).
-    Es garantiert den Anlagenbetreibern Einspeisevergütungen – aber nur für 20 Jahre.
+    Es garantiert den Anlagenbetreibern Einspeisevergütungen - aber nur für 20 Jahre.
     Ohne die Bezuschussung rechnet sich der Weiterbetrieb vieler Windräder älteren Baujahrs nicht mehr,
     da insbesondere die Kosten für Wartung und Reparatur mit zunehmendem Anlagenalter steigen.
 
@@ -8785,7 +8962,7 @@ TODO are <section> nested or flat?
 
     Viele Betreiber brüsten sich damit,
     dass bei der Demontage eines Windrads 80 bis 90 Prozent der verbauten Materialien recycelt werden können
-    – die genauere Betrachtung trübt jedoch diese Bilanz.
+    - die genauere Betrachtung trübt jedoch diese Bilanz.
     Die im Mast enthaltenen Materialien wie Beton, Stahl und Kupfer können zwar wiedergewonnen werden,
     wirtschaftlich rentables Recycling funktioniert aber lediglich bei den Metallen.
 
@@ -8799,7 +8976,7 @@ TODO are <section> nested or flat?
 
     Aus diesem Grund landen die alten Windradflügel bisher im Ofen, als Brennstoff für die Zementherstellung.
     Es ersetzt zwar damit den Einsatz von Schweröl,
-    doch von Recycling kann hier nicht die Rede sein – bei der Verbrennung entsteht viel CO2.
+    doch von Recycling kann hier nicht die Rede sein - bei der Verbrennung entsteht viel CO2.
   -->
 </div>
 
@@ -10238,6 +10415,32 @@ expectation vs reality
 
 
 
+<!-- TODO Warum ich keine Drogen mehr nehme
+
+  Warum nehme ich keine Drogen mehr?
+  Weil meine Lieblingsdrogen passen nicht zu dieser Welt.
+
+  Meine Lieblingsdrogen?
+  Meskalin, 2C-E, 2C-P, Amphetamin, MDMA, Tryptamine, Phenethylamine, LSD, Psilocin, THC.
+  Diese Drogen machen wach und sensibel ("rote Pillen"),
+  das heisst, mir wird voll bewusst,
+  dass ich gefangen bin in dieser scheiss Welt
+  (Armut, Einsamkeit, toxischer Lebensraum, keine Zukunft, bad setting),
+  und diese Drogen produzieren immer wieder "bad trips",
+  also ich will dann immer nur Weglaufen, aber ich weiss nicht wohin.
+  Diese Zustände sind immer wieder "schwer zu genießen",
+  immer eine Gratwanderung zwischen Spaß und Schmerz.
+
+  Welche Drogen passen besser zu dieser Welt?
+  Alkohol, Tabak, Heroin, Fentanyl.
+  Diese Drogen machen müde und stumpf ("blaue Pillen"),
+  also ein "alles ist mir scheiss egal" Zustand,
+  in dem man diese scheiss Welt viel leichter ertragen kann.
+
+-->
+
+
+
 <!-- TODO move -->
 <section id="bulls-and-bears">
 
@@ -10901,8 +11104,15 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 <div class="para">
   Die Leute, die dir deinen Papa weggenommen haben,
-  weil dein Papa ein Staatsfeind ist,
+  weil dein Papa ein Staatsfeind ist, also "erziehungs-unfähig" ist,
   sind die gleichen Leute die ...
+</div>
+
+<div class="para">
+  ... sagen dass deine Mama "erziehungs-fähig" ist,
+  weil sie dumm ist, und alles macht, was das Jugendamt fordert,
+  weil sie Angst hat, dass das Jugendamt das Kind wegnimmt.
+  Also deine Mama hat lieber ein kaputtes Kind als gar kein Kind.
 </div>
 
 <div class="para">
@@ -11169,6 +11379,10 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   -->
 </div>
 
+<div class="para">
+  Böse und Dumme regieren die Welt.
+</div>
+
 </section>
 
 
@@ -11258,7 +11472,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   Warum nicht?
 
   Memento Mori.
-  Denk drank, du wirst sterben.
+  Denk drank: Du wirst sterben, alles wird sterben.
 </div>
 
 <div class="para">
@@ -11273,7 +11487,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 
 <!-- TODO move -->
-<section style="display:none" class="hidden" id="no-future-we-are-all-going-to-die">
+<section id="no-future-we-are-all-going-to-die">
 
 <div class="xcenter">
   <!-- note: dont invert. use white-filled text in dark mode, and black-stroked text in light mode -->
@@ -11301,7 +11515,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 <div class="para">
   Oder wer für "Extinction Rebellion" arbeitet,
-  die rebellieren gegen das Aussterben der Spezies Mensch,
+  als "Rebell" gegen das Aussterben der Spezies Mensch,
   der muss auch ein Idiot sein, der nicht versteht,
   dass die Spezies Mensch früher oder später zu 100% aussterben wird.
 </div>
@@ -11321,21 +11535,41 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   >Timeline of the far future</a>":
   <br>
   <!--
-  100 million:
+  in 50,000 years:
+
+  According to Berger and Loutre (2002),
+  the current interglacial period will end,
+  sending the Earth back into a glacial period of the current ice age,
+  regardless of the effects of anthropogenic global warming.
+
+  However, according to more recent studies in 2016,
+  anthropogenic climate change, if left unchecked,
+  may delay this otherwise expected glacial period
+  by as much as an additional 50,000 years,
+  potentially skipping it entirely.
+
+  Niagara Falls will have eroded the remaining 32 km to Lake Erie,
+  and will therefore cease to exist.
+
+  The many glacial lakes of the Canadian Shield
+  will have been erased by post-glacial rebound and erosion.
+  -->
+  <!--
+  in 100 million years:
   Earth will likely have been hit by an asteroid
   comparable in size to the one
-  that triggered the K–Pg extinction 66 million years ago,
+  that triggered the K-Pg extinction 66 million years ago,
   assuming this is not averted.
   -->
   In 100 Millionen Jahren wird vielleicht ein Asteroid die Erde treffen,
   der gleich groß ist wie der Asteroid vor 66 Millionen Jahren,
-  der die Dinosaurier ausgerottet hat.
+  der alle Dinosaurier getötet hat.
   Dazu passt der Film:
   <a class="nofootnote" href="magnet:?xt=urn:btih:97287a68d1db0c26772775bb1954b0f878000fcd&dn=Dont.Look.Up.2021.720p.NF.WEBRip.900MB.x264-GalaxyRG%5bTGx%5d&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fexplodie.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.birkenwald.de%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2fopentor.org%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2970%2fannounce&tr=https%3a%2f%2ftracker.foreverpirates.co%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce"
   >Don't Look Up (2021)</a>.
   <br>
   <!--
-  > 250 million:
+  in 250 million years:
   Rapid biological evolution may occur
   due to the formation of a supercontinent
   causing lower temperatures and higher oxygen levels.
@@ -11353,7 +11587,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   und werden vielleicht ein Massensterben auslösen.
   <br>
   <!--
-  500 million:
+  in 500 million years:
   The estimated time until a gamma-ray burst,
   or massive, hyperenergetic supernova,
   occurs within 6,500 light-years of Earth;
@@ -11361,7 +11595,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   and potentially trigger a mass extinction,
   assuming the hypothesis is correct
   that a previous such explosion triggered
-  the Ordovician–Silurian extinction event.
+  the Ordovician-Silurian extinction event.
   However, the supernova would have to be
   precisely oriented relative to Earth to have such effect.
   -->
@@ -11370,8 +11604,8 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   und ein Massensterben auslösen.
   <br>
   <!--
-  500–600 million:
-  The Sun's increasing luminosity begins to disrupt the carbonate–silicate cycle;
+  in 500-600 million years:
+  The Sun's increasing luminosity begins to disrupt the carbonate-silicate cycle;
   higher luminosity increases weathering of surface rocks,
   which traps carbon dioxide in the ground as carbonate.
   As water evaporates from the Earth's surface, rocks harden,
@@ -11394,7 +11628,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   so dass 99% der heutigen Pflanzen sterben werden.
   <br>
   <!--
-  1.6 billion:
+  in 1.6 billion years:
   Lower estimate until all remaining life,
   which by now had been reduced to
   colonies of unicellular organisms in isolated microenvironments
@@ -11419,9 +11653,10 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 <div class="para">
   Wir sind also irgendwo mitten drin im Lebenszyklus der Spezies Mensch,
-  und jetzt stellt sich höchstens noch die Frage: Wie wollen wir sterben?
+  und jetzt stellt sich höchstens noch die Frage: <b class="nowrap">Wie wollen wir sterben?</b>
   Mir persönlich ist es scheiss-egal, weil es macht überhaupt keinen Unterschied,
-  ob alle Menschen heute sterben oder erst in 1000 Millionen Jahren.
+  ob alle Menschen heute sterben durch Atombomben,
+  oder erst in 1000 Millionen Jahren durch natürliche Prozesse.
 </div>
 
 <div class="para">
@@ -11430,8 +11665,48 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   auch wenn das Langzeit-Ergebnis genau das gleiche ist,
   wie wenn man Nichts macht.
   Aber Hauptsache "gut gemeint"...
-  <!-- Gesinnungsethik -->
+  <!-- TODO Gesinnungsethik -->
+  <!--
+  alchi $ grep -r -i Gesinnungsethik src/alchi-book/ deutsch/ src/alchi-flyer/ src/dorfkultur/ src/whoaremyfriends/
+
+  src/alchi-book/notes/intro-simple.2.txt:gesinnungsethik: "die richtige einstellung" ist wichtiger als ...
+
+  deutsch/fragmente/alchi-fragmente.html:gesinnungsethik ("hauptsache gut gemeint")
+  gesinnungsethik ("hauptsache gut gemeint")
+  schafft die hölle auf erden
+  für ein paradies im himmel
+  "im himmel" = wenn alle tot sind, leben nach dem tod, second life
+  -> "todestrieb"? endlich tot sein wollen damit man seine ruhe hat
+
+  deutsch/fragmente/alchi-fragmente.html:gesinnungsethik: anfang ist wichtiger, neurotiker ist kindisch (luft)
+  gesinnungsethik: anfang ist wichtiger, neurotiker ist kindisch (luft)
+  pragmatik: ende ist wichtiger, neurotiker ist erwachsen (erde)
+  -> neurotiker representieren/verkörpern "was wichtig ist", oder "die realität", oder "die öffentlichkeit"
+
+  deutsch/fragmente/paradox - schwäche leben.md:einem gesinnungsethiker reicht ja schon die "suche nach stärke"
+  alte frage: suchen oder haben?
+  suche ich eine stärke? oder habe ich eine stärke?
+  einem gesinnungsethiker reicht ja schon die "suche nach stärke"
+  damit er sich glücklich fühlt
+  und je weiter er weg ist von der stärke die er eigentlich sucht, desto besser fühlt er sich
+
+  deutsch/fragmente/re meiden sie diese menschen. ignoranz. gesinnungsethik.txt:wäre der typ hier "wirklich" schlau dann würde er faust zitieren: "habe alles studiert, und bin genauso blöd wie vorher." aber nein, der hier bildet sich was ein auf seinen doktortitel und auf seinen "erfolg" in der academia. naja. paradies im himmel und hölle auf erden. good intentions. gesinnungsethik (sowas von mainstream und langweilig, klar dass sowas auf youtube bleibt)
+  paradies im himmel und hölle auf erden.
+  good intentions.
+  gesinnungsethik
+
+  deutsch/alchi-flyer.html:                       GesinnungsEthik (gut gemeint)
+  Elemente: Feuer+Erde / Luft+Wasser =
+  Zahlen: 12 / 34 =
+  LeistungsPrinzip (gut gemacht) / GesinnungsEthik (gut gemeint)
+
+  src/alchi-flyer/intro-simple.2.html:      gesinnungsethik: "die richtige einstellung" ist wichtiger als ...
+  gesinnungsethik: "die richtige einstellung" ist wichtiger als ...
+
+  -->
 </div>
+
+
 
 <!-- tangping - lay down in china - no future -->
 
@@ -11603,6 +11878,45 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   <a class="nofootnote" href="https://kirschsubstack.com/p/if-vaccines-dont-cause-autism-then"
   >kirschsubstack.com</a>)
 </div>
+
+<!--
+  https://petermcculloughmd.substack.com/p/world-council-for-health-proposes
+
+  World Council for Health Proposes New Approach for Childhood Vaccines
+  Cautionary Message to Parents in Wake of Growing Safety Concerns
+  By Peter A. McCullough, MD, MPH
+
+  The World Council for Health is the first international body of physicians, scientists, and health professionals to issue a cautionary statement on the ever-expanding routine childhood vaccine schedule.
+  This is in response to growing concerns over the safety of many vaccines given early at life during the same administration.
+  Here is what the Council said:
+
+  "The number of vaccines given to babies and children has increased dramatically without the necessary due diligence by regulatory authorities.
+  Parents are urged to adopt a common-sense, 'Safer to Wait" approach."
+
+  Growing international concerns about vaccine regulatory processes and vaccine safety have emerged following the widespread regulatory failure of Covid-19 vaccines.
+  The Covid-19 crisis has demonstrated that regulatory bodies, once public protectors, have been deeply corrupted by vaccine industry interests.
+
+  Several research studies now indicate that vaccinated children have far worse health outcomes with higher rates of many chronic diseases than non-vaccinated children.
+
+  Pharmaceutical corporations have a long-standing history of misrepresenting products that cause injuries and deaths.
+  Pfizer, for instance, has paid the largest criminal settlement in history for drug fraud.
+  The childhood vaccination schedule provides these unscrupulous corporations with unregulated access to the bodies of our children.
+
+  Modern society is experiencing unprecedented rates of autism, asthma, allergies, inflammatory bowel disease, diabetes, obesity, depression and more, for which the root cause/s have not been established.
+
+  Much of what we have been told about the success of early vaccines, including smallpox and polio vaccines is emerging as untrue.
+  Clean water, modern plumbing, hygiene, refrigeration, and improved nutrition are real factors that have correlated with the dramatic reduction in many infectious diseases over the past century.
+
+  National regulatory agencies have NEVER done the necessary evaluation to determine whether vaccines given to children alone or together according to the ever-expanding childhood vaccination schedules are associated with poor health outcomes compared with children who are not vaccinated.
+
+  National regulatory agencies have been turning a blind eye to the mounting evidence linking childhood vaccination with autism that has emerged since a possible link was first suggested in 1998.
+
+  National regulatory agencies have also been turning a blind eye to the mounting evidence linking childhood vaccination with other diseases, including asthma, allergies, bowel disease.
+
+  There are serious concerns among experts that existing childhood vaccines will be converted to mRNA technology, which has never been proven safe for use in vaccines for adults let alone children, and that this will be done without public awareness, consent and a robust research and regulatory process.
+
+  The Bio-Pharmaceutical Complex is creating legislation that would give it power to mandate injections by force.
+-->
 
 </section>
 
@@ -12001,7 +12315,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 <!--
   Parallelgesellschaft via https://de.wikipedia.org/wiki/Amische
   Einerseits verschafft es Amischen mehr und mehr Möglichkeiten, in ihrer Parallelgesellschaft zu verbleiben
-  und dort ihre Einkäufe und Reparaturbedürfnisse zu befriedigen, ohne viel „Weltkontakt" zu haben
+  und dort ihre Einkäufe und Reparaturbedürfnisse zu befriedigen, ohne viel "Weltkontakt" zu haben
 -->
 
 </section>
@@ -12354,8 +12668,8 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   Das Pallas-Symbol ist die Verbindung von Raute und Kreuz.
 </div>
 
-<div class="para">
-  Etymologie:
+<div lang="en" class="para">
+  <span lang="de">Etymologie:</span>
 
   Pallas:
   Name of Greek goddess,
@@ -12549,11 +12863,11 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   alleine schon um mich zu provozieren,
   und zum Beweisen dass ich "falsch" bin.
 
-  TODO charts: money supply usd/eur, gold vs usd/eur
+  <span lang="en">TODO charts: money supply usd/eur, gold vs usd/eur
   &rarr; inflation, banks create money from nothing, boom-bust cycles
   movies: lets make money (2008)
   selfish, accelerate the collapse: sell all your money and buy food/tools/gold.
-  social, postpone the collapse: keep holding all your money and watch its value shrink to zero.
+  social, postpone the collapse: keep holding all your money and watch its value shrink to zero.</span>
 </div>
 
 <div class="para">
@@ -12683,7 +12997,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Böhse Onkelz - Macht für den der sie nicht will
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Preacher preacher, fifth grade teacher,
   you cant reach me, my mom can neither.
   You cant teach me a goddamn thing,
@@ -12701,7 +13015,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Eminem - Im a criminal
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   Go call you a lawyer, file you a lawsuit,
   I'll smile in the courtroom, and buy you a wardrobe.
   I'm tired of all you, I don't mean to be mean,
@@ -12710,12 +13024,12 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Eminem - The Way I Am [hass mich weil ich ehrlich bin]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Since we cannot all be saints, let us all be sinners.
   <br>
   &mdash; Sabbatai Zevi, Jacob Frank
   <br>
-  [Gleichschaltung, Sozialismus, Armut für Alle]
+  <span lang="de">[Gleichschaltung, Sozialismus, Armut für Alle]</span>
 </div>
 
 <div class="para">
@@ -12940,7 +13254,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   <img class="darkmode-invert" style="width:60%" src="../images/memes/white-collar-crime.bank.this-is-a-robbery.amateur.steve-kelley-2010.svg">
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   The problem is, you think you have time.
   <br>
   &mdash; Jack Kornfield, Buddha's Little Instruction Book
@@ -13004,14 +13318,14 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   Wie verzweifelt muss man sein, um diesen Menschen zu glauben?
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Sir, the orcs are here.
   - Well, dont be racist, let them in!
   <br>
   [Sarkasmus zur Migranten-Invasion]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Have you ever heard of salt?
   - Yes we are familiar with salt.
   - Aah, you fell into my trap!
@@ -13173,6 +13487,69 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 
 <div class="para">
+  Und ich saufe mich ins Koma,
+  an der Wand hängt mein Onkelz-Poster.
+  Anfang zwanzig, Leberzirrhose,
+  schuld an allem sind die da oben.
+  <br>
+
+  Wir hassen euch und ihr hasst uns,
+  häng auf der Parkbank mit mein Jungs.
+  Wir sind blau wie unsre Knasttattoos,
+  in unsrer Kehle brennt der Absolut.
+  <br>
+
+  &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=v0Xh9M4s4_w"
+  >Finch Asozial &amp; Tarek K.I.Z - Onkelz Poster</a>
+
+  <!--
+  [Part 1: Tarek K.I.Z]
+  Ich wünsch sie mir zurück, meine DDR
+  Mache Karriere bei der Bundeswehr
+  Mein Sohn, der fällt mir vom Wickeltisch
+  Ich bin auf Crystal und ich kriegs nicht mit
+  Und die Stripperin hat ein Pitti bei
+  Damits bei dummen Sprüchеn und bei Blicken bleibt
+  Wochеnende, tote Hose
+  Vielleicht verbrennen wir ein Obdachlosen
+
+  [Hook: Tarek K.I.Z]
+  Und ich saufe mich ins Koma
+  An der Wand hängt mein Onkelz-Poster
+  Anfang zwanzig, Leberzirrhose
+  Schuld an allem sind die da oben
+  Wir hassen euch und ihr hasst uns
+  Häng auf der Parkbank mit mein Jungs
+  Wir sind blau wie unsre Knasttattoos
+  In unsrer Kehle brennt der Absolut
+
+  [Part 2: FiNCH]
+  Auf dem Dorffest nah bei Dresden
+  Tanz ich zu Wolfgang Petry
+  Schweineschnitzel vom Discounter
+  Uns gings besser mit der Mauer
+  Geh ins Stadion, lass ma Dampf ab
+  Ich leb und sterb für meine Mannschaft
+  Es fliegen Fäuste in der Kneipe
+  Erst kommt mein Auto, dann die Alte
+
+  [Bridge: FiNCH & Tarek K.I.Z]
+  (Erst kommt mein Auto, dann die Alte)
+  (Wochenende, tote Hose)
+
+  [Hook: Tarek K.I.Z]
+  Und ich saufe mich ins Koma
+  An der Wand hängt mein Onkelz-Poster
+  Anfang zwanzig, Leberzirrhose
+  Schuld an allem sind die da oben
+  Wir hassen euch und ihr hasst uns
+  Häng auf der Parkbank mit mein Jungs
+  Wir sind blau wie unsre Knasttattoos
+  In unsrer Kehle brennt der Absolut
+  -->
+</div>
+
+<div class="para">
   Der Minister nimmt flüsternd den Bischof beim Arm:
   "Halt du sie dumm, ich halt sie arm!"
   &mdash; Reinhard Mey - Sei wachsam
@@ -13194,7 +13571,7 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 </div>
 -->
 
-<div class="para">
+<div lang="en" class="para">
   Life asked Death:
   Why do people love me,
   but hate you?
@@ -13204,22 +13581,22 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   and I am a painful truth.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Shaun! How's it going?
   - Surviving...
   &mdash; Shaun Of The Dead
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   One is the loneliest number.
   &mdash; Harry Nilsson - One
 </div>
 
-<div class="para">
-  Fuck the system, aber diesmal richtig.
+<div lang="en" class="para">
+  Fuck the system, <span lang="de">aber diesmal richtig.</span>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Any fool can make things more complex.
   <br>
   It takes genius to find things that are simple but effective.
@@ -13439,13 +13816,23 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
 
 <div class="para">
   Memento mori.
-  Denk dran: Du wirst sterben.
+  Denk dran: Du wirst sterben, alles wird sterben.
 </div>
 
 <div class="para">
   Tu was DU willst.
   &mdash; Michael Ende, Die unendliche Geschichte
 </div>
+
+<!--
+  TODO Kopfschuss ist billiger
+
+  Kopfschuss ist billiger als Schulmedizin.
+  Lieber ein "Ende mit Schrecken" als ein "Schrecken ohne Ende".
+  Lieber "jung und gesund" sterben, als "alt und krank" sterben.
+
+  bild: counter-strike headshot icon
+-->
 
 <div class="para">
   Zeit ist Leben. Und das Leben wohnt im Herzen.
@@ -13484,9 +13871,9 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Mosh36 - Schutzmechanismus
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   simple but effective
-  &mdash; Minimalismus
+  &mdash; Minimalism
 </div>
 
 <div class="para">
@@ -13615,17 +14002,17 @@ https://starecat.com/the-stock-market-house-vs-the-economy-collapsed-trashed/
   &mdash; Swiss - Der letzte Schultag
 </div>
 
-<div class="para">
+<div lang="latin+de" class="para">
   Tempus fugit, dolor manet.
   Zeit vergeht, Scheisse bleibt.
 </div>
 
-<div class="para">
+<div lang="latin+de" class="para">
   Si vis pacem, para bellum.
   Willst du Frieden, rüste für Krieg.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Winter is coming.
   &mdash; Game of Thrones
 </div>
@@ -13646,10 +14033,107 @@ Nazz feat. Cr7z - Überdosis
   Eure Welt ist Plastik, alles falsch, alles Fassade.
   Erst wenn die Schneekugel geplatzt ist, kann ich atmen, kann ich atmen.
   &mdash; Genetikk - Plastik
-  <br>
   <!--
   ["platzen" wird die Spekulations-Blase. So wie immer. Nur eine Frage der Zeit.]
   -->
+</div>
+
+<div class="para">
+  Das "E" im Wort "Elektro-Auto" steht für "extra-schwul".
+</div>
+
+<!-- TODO Lunikoff - Frei geboren, Frei sterben. youtube: FTXlkHhfpXg -->
+
+<div class="para">
+  Ich häng rum und warte darauf dass mein Leben sich ändert,
+  und jeder Tag im Kalender scheint mir so sinnlos verschwendet.
+  Immer dieselben vier Wände, dieselben Fressen wie gestern,
+  dieselben Gespräche und dieselben leeren Versprechen.
+  <br>
+
+  Es macht mich krank zu wissen dass morgen derselbe Tag ist,
+  derselbe Arschfick und dass das nächste Jahr wieder dasselbe Jahr ist.
+  Kann nicht weiter zusehn wie Jungs die nur halb so gut sind,
+  meine Träume leben weil ich Versager es nicht mal versuche.
+  <br>
+
+  Aber ich wach auf, geh raus und mach was draus,
+  von Abschaum nach Uptown, ich rapp bis die Stadt bounced.
+  Ihr habt solang gewartet, ich hab solang gewartet,
+  jetzt kann keiner glauben, dass es wahr ist, dass ich endlich da bin.
+  <br>
+
+  Als ihr geschlafen habt war ich wach und hab nachgedacht,
+  Nacht für Nacht hab ich nach und nach was ich dachte aufs Blatt gebracht.
+  Jetzt ist es zu spät um umzudrehn, es gibt kein Weg zurück,
+  und ganz egal, was es mich auch kostet, ich bereue nichts!
+  <br>
+
+
+
+  Solang ich Träume hab kann mir keiner von euch was,
+  ich bin bereit dafür zu sterben und zwar heute Nacht.
+  Bereit zu sterben um nur einmal nach den Sternen zu greifen,
+  mit jedem Vers den ich schreibe komm ich der Freiheit näher.
+  <br>
+
+  &mdash; Genetikk - Solang ich Träume hab
+
+
+
+  <!--
+  Ich hab gehört, wie sie lästern, hab gehört, wie sie lachten
+  Dachten, dass ich zu schwach bin, doch meine Wörter sind Waffen
+  Bruder, ich schwöre, ich schaff es, ich bin für Höheres geschaffen
+  Das ist mein Song für euch, es gibt keine schönere Rache
+
+  Heut bin ich König der Narren, es war ein böses Erwachen
+  Für euch, ihr habt gedacht, es gibt keinn mit ner größeren Klappe
+  Und ihr habt Recht behalten, sowas wie mich gibt es nicht ein zweites Mal
+  Und scheiße ja! Ja, ich hab geweint, als ich alleine war!
+
+  Beißt euch die Zähne aus, auch nach der zehnten Faust steh ich auf
+  Jeden auf, ihr Kakerlaken seid Kerben in meinem Lebenslauf
+  Ihr schafft mich nicht, rafft ihrs nicht? Nicht, solang ich Träume hab
+  Weil ich seitdem ich denken kann schon mehr Feinde als Freunde hab
+
+  Ihr wollt mich runterdrücken, die Worte im Mund ersticken
+  Lieber stehend sterben als kniend lebend, ihr Mutterficker!
+  Was ihr mir antut, ist nur Futter für all den Hass in mir
+  Um frei zu sein, brauch ich nur einn Stift und ein Blatt Papier
+
+
+
+  Solang ich Träume hab, kann mir keiner von euch was
+  Ich bin bereit, dafür zu sterben und zwar heute Nacht
+  Bereit zu sterben, um nur einmal nach den Sternen zu greifen
+  Mit jedem Vers, den ich schreibe, komm ich der Freiheit näher
+
+
+
+  Auch wenn der Rest der Welt mich nicht versteht und niemand mehr an mich glaubt
+  Mach ich weiter wie bisher, denn ihr haltet mich niemals auf
+  Ich bin ein Träumer und für alle Träumer ist dieser Sound
+  Ganz egal, wie schlimm es ist, ich heb die Faust
+
+  Auch wenn der Rest der Welt mich nicht versteht und niemand mehr an mich glaubt
+  Mach ich weiter wie bisher, denn ihr haltet mich niemals auf
+  Ich bin ein Träumer und für alle Träumer ist dieser Sound
+  Scheißegal, Sikk macht immer dass es bounced
+
+
+
+  Solang ich Träume hab, kann mir keiner von euch was
+  Ich bin bereit, dafür zu sterben und zwar heute Nacht
+  Bereit zu sterben, um nur einmal nach den Sternen zu greifen
+  Mit jedem Vers, den ich schreibe, komm ich der Freiheit näher
+
+  -->
+
+  <!--
+  https://genius.com/Genetikk-solang-ich-traume-hab-lyrics
+  -->
+
 </div>
 
 <div class="para">
@@ -13955,7 +14439,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 
 <div class="para">
-  There's class warfare, all right, but it's my class, the rich class, that's making war, and we're winning.
+  <span lang="en">There's class warfare, all right, but it's my class, the rich class, that's making war, and we're winning.</span>
   <br>
   Der zentrale Konflikt unserer Tage ist <b>der Krieg Reich gegen Arm</b>.<br>
   Wir, die Klasse der Reichen, haben diesen Krieg angefangen,<br>
@@ -13967,10 +14451,10 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
     https://soheit.de/2019/vom-krieg-reich-gegen-arm/
 
     https://complexsystems.org/439/the-war-between-the-rich-and-the-poor/
-    Plato, in his great book about social justice the Republic, in 321 B.C., warned us that “Any State, however small, is in fact divided into two — one the State of the poor, the other that of the rich – and these are [forever] at war with one another.”
-    Plato’s most famous student, Aristotle, in the Politics, went a step further.  He stressed that, if the poor are driven to extreme hardship and deprivation, the conflict between the rich and poor may explode into violence and destroy the state.  When the poor have nothing more to lose, the social contract that binds any society together may break down.
-    The French Revolution was, at bottom, about bread for the poor.  And so were the Russian and Chinese revolutions in the twentieth century.  More recently, the turmoil in the Middle East – ranging from the (mostly) disastrous Arab Spring to the Syrian civil war, the rise of ISIS and the flood of refugees – may in fact have been triggered by severe droughts and steep spikes in global food prices, according to an in-depth analysis by the New England Complex Systems Institute.  Extreme poverty was the root cause, and many Middle Eastern governments were oblivious to the needs of their citizens and were unresponsive.
-    In our own country, the right wing has been making war on the poor, and the common good, for more than a generation, according to Nancy MacLean’s eye-opening new book, Democracy in Chains.  And now it seems to be getting worse.   We see the ideological justification for it in the libertarian novelist Ayn Rand’s glorification of the captains of industry — the “creators” and “makers” — versus the “masses” who are “moochers” and “takers”.
+    Plato, in his great book about social justice the Republic, in 321 B.C., warned us that "Any State, however small, is in fact divided into two — one the State of the poor, the other that of the rich - and these are [forever] at war with one another."
+    Plato's most famous student, Aristotle, in the Politics, went a step further.  He stressed that, if the poor are driven to extreme hardship and deprivation, the conflict between the rich and poor may explode into violence and destroy the state.  When the poor have nothing more to lose, the social contract that binds any society together may break down.
+    The French Revolution was, at bottom, about bread for the poor.  And so were the Russian and Chinese revolutions in the twentieth century.  More recently, the turmoil in the Middle East - ranging from the (mostly) disastrous Arab Spring to the Syrian civil war, the rise of ISIS and the flood of refugees - may in fact have been triggered by severe droughts and steep spikes in global food prices, according to an in-depth analysis by the New England Complex Systems Institute.  Extreme poverty was the root cause, and many Middle Eastern governments were oblivious to the needs of their citizens and were unresponsive.
+    In our own country, the right wing has been making war on the poor, and the common good, for more than a generation, according to Nancy MacLean's eye-opening new book, Democracy in Chains.  And now it seems to be getting worse.   We see the ideological justification for it in the libertarian novelist Ayn Rand's glorification of the captains of industry — the "creators" and "makers" — versus the "masses" who are "moochers" and "takers".
 
   -->
   <!--
@@ -14005,6 +14489,11 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 <div class="para">
   Menschliche Dummheit ist endlos.
   &mdash; Albert Einstein
+
+  [Schlaue Menschen kennen Grenzen, sowohl ihre eigenen Grenzen,
+  als auch die Grenzen von anderen Menschen.
+  Totalitarismus ist wenn Idioten ihre subjektive Weltsicht
+  mit Gewalt zu einem objektiven Standard für Alle machen wollen.]
 </div>
 
 <div class="para">
@@ -14016,7 +14505,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   [Schulkritik, fick die Schule, dumme Lehrer]
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   Government:
   We have been lying to you all since the beginning,
   but we did it to protect you.
@@ -14102,7 +14591,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Sebastian Bosse [M4?], der Amokläufer von Emsdetten
 </div>
 
-<div class="para">
+<div lang="fr+de" class="para">
   Laisse faire, la nature. Lass sie fahren, die Natur.<br>
   &mdash; Pierre Le Pesant de Boisguilbert, Physiokratie, Naturrecht
   <!--
@@ -14518,7 +15007,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 
 
 
-<div class="para">
+<div lang="en" class="para">
   Everyone who has ever been to school knows that school is prison,
   but almost nobody beyond school age says it is.
 
@@ -14550,7 +15039,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   <!-- https://www.goodreads.com/quotes/tag/unschooling -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Learning can only happen when a child is interested.
 
   If he's not interested,
@@ -14561,7 +15050,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   <!-- https://www.goodreads.com/quotes/tag/unschooling -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Leaders are not, as we are often led to think,
   people who go along with huge crowds following them.
 
@@ -14595,7 +15084,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Population growth continues to be,
   not the elephant in the room,
   <br>
@@ -14604,17 +15093,17 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Nina Jablonski, Planet of the Humans (2019)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   There are too many humans, using too much, too fast.
   <br>
   &mdash; Richard Heinberg, Planet of the Humans (2019)
 </div>
 
-<div class="xcenter">
+<div lang="en" class="xcenter">
   <img class="darkmode-invert" style="width:80%" src="../images/memes/trash-world.sweetie-one-day-all-of-this-will-be-yours.dad-there-is-nothing-but-trash-what-the-fuck.svg">
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   It was becoming clear that
   what we have been calling
   green, renewable energy
@@ -14634,7 +15123,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Planet of the Humans (2019)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Every different
   perspective I look at
   and imagine, well, we
@@ -14687,7 +15176,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Steven Running, Planet of the Humans (2019)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Species hit the population
   wall a lot and then they crash.
   I mean, that's a common
@@ -14722,7 +15211,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Steven Churchill, Planet of the Humans (2019)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Every culture offers its denizens the <b>hope of immortality</b>.
 
   Then the question is, well,
@@ -14771,7 +15260,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Thomas Malthus [M4?] - Essay on the Principle of Population (1799)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   No changes in behavior or technology can save us,
   unless we can achieve control over the size of the human population.
   <br>
@@ -14780,13 +15269,13 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Paul Ehrlich - The Population Bomb
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   If we do not voluntarily bring population growth under control in the next one or two decades,
   then nature will do it for us in the most brutal way, whether we like it or not.
   &mdash; Henry Way Kendall
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Anyone whose major concern is the sanctity of human life,
   is in effect, by leaving population growth unchecked, ensuring death by famine.
   Nature is pitiless, and if humans will not themselves limit population,
@@ -14794,7 +15283,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Christopher Hitchens
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Which is the greater danger, nuclear warfare or the population explosion?
   The latter, absolutely!
 
@@ -14810,13 +15299,13 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Isaac Asimov
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Gentlemen, it has been a privilege playing with you tonight.
   <br>
   &mdash; Titanic (1997)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Hey doll. Looks like I let you down again. like all my life I've just been going, going, going ...
   I wish I'd taken more time to stop and smell the roses, so to speak. I guess it's too late now ...
   You were the greatest, baby.
@@ -14831,13 +15320,111 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 -->
 
 
-<div class="para">
+<div lang="en" class="para">
   This town's alright, But it's not enough.
   I'm looking for a quick exit, like a prisoner on the run
   &mdash; Chase &amp; Status - Embrace (feat. White Lies)
+  <!--
+  [Verse 1: White Lies]
+  When the daylight weighs a tonne
+  And all my friends are gone
+  There's rust around the things I'd loved
+
+  When it's fraying at the seams
+  Of reality and dreams
+  All those dreams are quiet and dull
+
+  [Pre-Chorus: White Lies]
+  This town's alright
+  But it's not enough
+  I'm looking for a quick exit
+  Like a prisoner on the run
+
+  This town's alright
+  But it's not enough
+  I'm looking for a quick exit
+  Like a prisoner on the run
+
+  [Chorus: White Lies]
+  Big time breakdown
+  Look how the stars come out
+  Big time breakdown
+  Why didn't you just shout?
+
+  I'm lonely
+  I'm looking for a place to go
+  Where everything's an embrace
+  And everybody wants to know
+
+  [Verse 2: White Lies]
+  I'm your absent Valentine
+  And the pigtails in the bride
+  I'm the steel that carves the toes in your bathtub
+  I'm the lynch mob in the dark
+  I'm the silk worm in your heart
+  Spinning out my perfect circles
+
+  [Pre-Chorus]
+  This town's alright
+  But it's not enough
+  I'm looking for a quick exit
+  Like a prisoner on the run
+
+  This town's alright
+  But it's not enough
+  I'm looking for a quick exit
+  Like a prisoner on the run
+
+  [Chorus]
+  Big time breakdown
+  Look how the stars come out
+  Big time breakdown
+  Why didn't you just shout?
+
+  I'm lonely
+  I'm looking for a place to go
+  Where everything's an embrace
+  And everybody wants to know
+
+  [Bridge: White Lies]
+  Calm on the water
+  Fetch your brother, fetch your daughter
+  Come, come undone
+  Fetch your sister, fetch your son
+
+  [Pre-Chorus + Bridge (simultaneous)]
+  This town's alright (Calm on the water)
+  But it's not enough (Fetch your brother, fetch your daughter)
+  I'm looking for a quick exit (Come, come undone)
+  Like a prisoner on the run (Fetch your sister, fetch your son)
+
+  This town's alright (Calm on the water)
+  But it's not enough (Fetch your brother, fetch your daughter)
+  I'm looking for a quick exit (Come, come undone)
+  Like a prisoner on the run (Fetch your sister, fetch your son)
+
+  [Chorus]
+  Big time breakdown
+  Look how the stars come out
+  Big time breakdown
+  Why didn't you just shout?
+
+  I'm lonely
+  I'm looking for a place to go
+  Where everything's an embrace
+  And everybody wants to know
+
+  [Outro: White Lies]
+  I'm lonely
+  I'm looking for a place to go
+  Where everything's an embrace
+  And everybody wants to know
+
+  https://genius.com/Chase-and-status-embrace-lyrics
+  -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Politicians talk never do shit,
   all of what they feed us in the news,
   plus what they teach us in the schools,
@@ -14862,7 +15449,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   where everything's an embrace [Umarmung], and everybody wants to know
 -->
 
-<div class="para">
+<div lang="en" class="para">
   I have shut the window all ready to defend,
   what is left to die for what is left to give.
 
@@ -14878,7 +15465,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   >Rawthang - Scorned</a> [mother nature vs stupid humans]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Imagine a city like Prague vanishing in a cloud of poison gas,
   then Hamburg, London, Washington.
   Imagine governments disappearing,
@@ -14890,7 +15477,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   wish i could be somebody else,
   i need to break it all apart.
   i want to go just run away,
@@ -14899,21 +15486,21 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Blu Mar Ten - Break It All Apart
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   There are no sides.
   Just people who help you, and people who dont.
   <br>
   &mdash; Jessica Hyde, Utopia S01E02 (UK 2013)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Why did you have him, then? Nothing uses carbon like a first-world human.
   <br>
   &mdash; <a class="nofootnote" href="https://www.youtube.com/watch?v=rcx-nf3kH_M"
   >Utopia S02E06 (UK 2014)</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Are you going somewhere nice?
   - Just getting away for a bit.
   Somewhere no one can find me.
@@ -14971,7 +15558,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   >Utopia S02E06 (UK 2014)</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   What have you done today, to earn your place in this crowded world?
   <br>
   &mdash; Utopia (US 2020)
@@ -14981,7 +15568,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
     https://www.youtube.com/watch?v=NUVNDvfY4Ps
   -->
 
-<div class="para">
+<div lang="en" class="para">
   <!-- Utopia.2020.S01E08.720p.AMZN.WEBRip.x264-GalaxyTV.mkv 00:07:34 -->
 
   CHRISTIE:
@@ -15278,21 +15865,21 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   <br>
   -->
 
-  &mdash; Utopia S01E08 (US 2020)
+  &mdash; Kevin Christie [M1?], Utopia S01E08 (US 2020)
   [übervölkerung]
   <!--
   https://www.youtube.com/watch?v=Y2QNnoqc3XU
   -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   I am the only ONE who can help you,
   so shut up and do as I say.
   <br>
-  &mdash; Jessica Hyde, Utopia (US 2020)
+  &mdash; Jessica Hyde [F1], Utopia (US 2020)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Rallies dont work.
   They make us feel better about doing nothing.
   ...
@@ -15315,7 +15902,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Witten Untouchable - Zusammen singen
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   As you may or may not be aware, Sweden is not a state in the United States of America.
   Sweden is a country in northern Europe.
   Unless you figured it out by now, US law does not apply here.
@@ -15337,7 +15924,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   >thepiratebay.org in response to Copyright Trolls</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   It's a virus called RD9, or as I like to call it, World Cure.
   At the end of the game, everyone in the stadium will be infected.
   It should take two to three weeks for symptoms to start showing up.
@@ -15364,19 +15951,19 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   <!-- TODO exact quote -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Not everyone is coming to the future,
   not everyone is learning from the past.
   &mdash; Madonna - Future
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Your love is lifting me higher
   <br>
-  &mdash; The Glitch Mob - Higher [sinnvolle arbeit, freiwilligkeit]
+  &mdash; The Glitch Mob - Higher <span lang="de">[sinnvolle arbeit, freiwilligkeit]</span>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Your heart is not open so I must go,
   the spell has been broken I loved you so.
   Freedom comes when you learn to let go,
@@ -15398,7 +15985,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Madonna - The Power of Good-Bye
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Fuck the police!
   I was born in jail, you dont know me.
   <br>
@@ -15406,11 +15993,12 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 
 <div class="para">
-  Was ich will das darf ich nicht,
-  was ich soll das will ich nicht.
+  Was ich will, das darf ich nicht,
+  <br>
+  was ich soll, das will ich nicht.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Even thinkin bout the city makes my brain fuckin hurt.
   I dont rep no fuckin city cause I came from the dirt.
   ...
@@ -15419,7 +16007,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Snak The Ripper - From The Dirt
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   Everything is burning,
   everywhere I go I see the flames.
   Something I've been learning,
@@ -15506,7 +16094,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 <div class="para">
   Ich komm von dort wo Politiker nicht hingehen,
   wo Bandenmitglieder verfickt nochmal ihr Ding drehen.
-  Parallelgesellschaft – <b>Niemand möchte hinsehen,
+  Parallelgesellschaft - <b>Niemand möchte hinsehen,
   doch das Jugendamt der Mutter wieder mal ihr Kind nehmen.</b>
 
   &mdash; Eko Fresh - Das Ghetto nicht aus mir
@@ -15572,23 +16160,23 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   (Stieg Larsson - Millennium Trilogie)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Government's view of the economy could be summed up in a few short phrases:
   If it moves, tax it.
   If it keeps moving, regulate it.
   And if it stops moving, subsidize it.
   &mdash; Ronald Reagan (1986)
   <br>
-  [planwirtschaft, sicherheitswahn]
+  <span lang="de">[planwirtschaft, sicherheitswahn]</span>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   The most terrifying words in the English language are:
   I'm from the government and I'm here to help.
   &mdash; Ronald Reagan
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   They say the world has become too complex for simple answers.
   They are wrong.
   &mdash; Ronald Reagan
@@ -15600,7 +16188,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Lenin
 </div>
 
-<div class="para caption">
+<div lang="en" class="para caption">
   Computer says no.
   &mdash; Little Britain
 </div>
@@ -15617,7 +16205,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 
 <!--
-<div class="para">
+<div lang="en" class="para">
   I've become so numb, I can't feel you there,
   become so tired, so much more aware.
   I'm becoming this, all I want to do,
@@ -15702,7 +16290,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 
 -->
 
-<div class="para">
+<div lang="en" class="para">
   Movements are synchronized to puppeteer strings.
   <br>
   &mdash; DRS - The Puppeteer
@@ -15741,13 +16329,13 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Ich versuch nicht mehr, dazu zu gehören,
   tu du dies, tu du das, bin dazu zu gestört.
   &mdash; Lemur - Dazugehirn (feat. Nazz)
-  (Lemur aka Herr von Grau)
+  (Lemur aka Herr von Grau: M3)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Im so happy, cos today I found my friends, theyre in my head.
   <br>
-  &mdash; Nirvana - Lithium
+  &mdash; Nirvana - Lithium (Kurt Cobain: M1/M4)
 </div>
 
 <div class="para">
@@ -15794,7 +16382,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 -->
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   They live, we sleep,
   the alarms going off, beep beep!
   Time to wake up, wake up to the deceit,
@@ -15938,7 +16526,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Agent Smith, Matrix (1999)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   We've survived by hiding from them, by running from them.
   But <b>they are the gatekeepers</b>.
   They are guarding all the doors, they are holding all the keys,
@@ -15950,7 +16538,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Morpheus, Matrix (1999)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   <!-- TODO deutsch? -->
   I know you're out there. I can feel you now.
   I know that you're afraid. You're afraid of us. You're afraid of change.
@@ -15963,11 +16551,11 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Neo, Matrix (1999)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   All you can do is warn them.
   <br>
   If they dont listen, move on, so you can warn others.
-  [Breitensuche]
+  <span lang="de">[Breitensuche]</span>
 </div>
 
 <div class="para">
@@ -15986,18 +16574,19 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Prince Philip
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Save the planet. Kill all humans.
   &mdash; Bender [M1], Futurama
   <br>
-  [Übervölkerung, Was würde eine Künstliche Intelligenz tun?<!-- What would Bender do?-->]
+  <span lang="de">[Übervölkerung, Was würde eine Künstliche Intelligenz tun?]</span>
+  <!-- What would Bender do?-->
 </div>
 
-<div class="xcenter">
+<div lang="en" class="xcenter">
   <img class="darkmode-invert" style="width:60%" src="../images/memes/save-the-planet.kill-all-humans.bender.futurama.svg">
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   <!-- based on George.Carlin.Life.Is.Worth.Losing.2005.720p.BluRay.x264.AAC-[YTS.MX].en.1951888972.srt -->
   Consumption.
   It's the new national pastime.
@@ -16161,7 +16750,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; George Carlin - Life Is Worth Losing (2005)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Be excellent to each other [and fuck politeness]
   <br>
   &mdash; Linus Torvalds, creator of Linux
@@ -16185,24 +16774,24 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Buddha
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   What I cannot create, I do not understand.
   &mdash; Richard Feynman
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Do one thing, and do it right.
   &mdash; Unix Philosophy [Modular Design]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Keep it simple, stupid.
   &mdash; KISS Principle [Minimalism]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Lead by example.
-  &mdash; [Autorative Erziehung? viel fordern, viel helfen]
+  &mdash; <span lang="de">[Autorative Erziehung? viel fordern, viel helfen]</span>
 </div>
 
 <div class="para">
@@ -16301,7 +16890,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   vielleicht ist alles eine furchtbare Tragödie.
   ...
 
-  Scheiss auf Martha Stuart,
+  Scheiss auf Martha Stewart,
   Martha poliert das Messing auf der Titanic,
   es geht alles unter, Mann!
   ...
@@ -16470,10 +17059,28 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; 2ara - Bullenschwein
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   We should forget about small efficiencies about 97% of the time.
   Premature optimization is the root of all evil.
   &mdash; Donald Knuth
+</div>
+
+<div lang="en" style="display:none" class="hidden para">
+  It is impossible to sharpen a pencil with a blunt ax.
+  It is equally vain to try to do it with ten blunt axes instead.
+  &mdash; Edsger Dijkstra
+</div>
+
+<div lang="en" style="display:none" class="hidden para">
+  I have been told that one of the reasons for the longevity of the Roman bridges
+  is that their designers had to stand under them when they were first used.
+  It may be time to put a similar discipline into the software field.
+  &mdash; Henry Baker
+</div>
+
+<div lang="en" style="display:none" class="hidden para">
+  The critical driver of every successful project is its focused ruthlessness.
+  &mdash; Grady Booch
 </div>
 
 <div class="para">
@@ -16524,7 +17131,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; K.I.Z - Geld Essen
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   <!--
   I'm walking through a misery, the mystery is killing me.
   The feeling I'm recieving, looks to be decieving.
@@ -16609,7 +17216,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; K.I.Z - Selbstjustiz
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   For the first time in history,
   our planet is threatened by humans and our behavior,
   to such an extent that the climate,
@@ -17099,7 +17706,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 
   Warum fühl' ich mich grad so allein?
   Warum wahren wir alle mit Masken den Schein?
-  Ich höre sie sagen: „Du musst etwas werden, du musst etwas sein“
+  Ich höre sie sagen: "Du musst etwas werden, du musst etwas sein"
   Ha, okay
 
   [Refrain: Xavier Naidoo]
@@ -17280,6 +17887,233 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Haftbefehl - Lass die Affen aus'm Zoo (Babos Remix) (feat. K.I.Z)
 </div>
 
+<div class="para">
+  <!--
+  [Part 1]
+  Nike-Socken, Schuhe Reebok, ich zieh' sie an und steig' ein im siebten Stock
+  Aus der Wohnung durch den Flur in den Aufzug, lauf' raus in die Blocks
+  Das ist OF-Main und nicht NY D-Block
+  Hafti abi und nicht Sheek Louch
+  Mainpark bleibt Afrika, hier siehst du keine Amis in der Siedlung
+  Messerstiche, Kopf- und Knieschuss, Kopfnuss, Highkick, Nase-, Kieferbruch
+  Kids drehen ab wie Chucky, die Mörderpuppe: du kriegst ohne Grund einen Stich in die Brust
+  Du Hundesohn ergreifst die Flucht, so wie wir vor der Kripo
+  Außer, du kaufst schlechten Schnuff für viel Geld, dann komm in die Hood
+  Mathildenviertel, Hermann, Dealer, Diebe, Räuber, Mörder
+  Kinder sind kaputt im Kopf, nenn sie KKK oder Gestörte
+  Kriegsgebiet, meine Herkunft, der Grund, warum mein Vater herkam
+  Vorname Hass, Nachname Gewalt steht in meinem Dokument im Pass von German
+
+  [Hook]
+  Engel im Herz, Teufel im Kopf
+  Engel im Herz, Teufel im Kopf
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die, hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die, hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme und nicht auf die in deinem Kopf
+
+  [Part 2]
+  Neuf-zéro-Narco, Chabo, neunzig-prozentiges Öl legt Wale um
+  Misch' bisschen Edelweiß rein und Knete, Cho, sonst klebt die Nase
+  Nasenscheidenwand weggefressen, Zähne fehlen in Kanacks' Fressen
+  Kinder auf 0,3 Lines, Gesetze keine Interesse
+  Butterflymesser stecken, so groß wie Justin Biebers Arm
+  Wenn ich sage: "jeder hat hier Dreck am Stecken", red ich nicht von Haschisch, von Arbia
+  Ich sag: "Blasen soll Justitia!", während dem Drive-by aus dem Honda Civic
+  Sorry, das war nicht ich, sondern Iblis
+  Sik, Sik, Sik, Sikiş, Brüder ficken mit dem Dajjāl
+  Estagfurullah - ah, Bruder
+  Mit "geh Lesen" mein ich nicht Book of Ra
+  Kriegsgebiet, meine Herkunft, der Grund, warum mein Vater herkam
+  Vorname Hass, Nachname Gewalt steht in meinem Dokument im Pass von German
+
+  [Hook]
+  Engel im Herz, Teufel im Kopf
+  Engel im Herz, Teufel im Kopf
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die, hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die, hör auf die Stimme in dir
+  Hör auf die Stimme in dir
+  Hör auf die Stimme und nicht auf die in deinem Kopf
+  -->
+
+  Engel im Herz, Teufel im Kopf.
+  <br>
+  Hör auf die Stimme in dir, und nicht auf die in deinem Kopf.
+  <br>
+
+  &mdash; Haftbefehl - Engel im Herz, Teufel im Kopf
+</div>
+
+<div class="para">
+  Rucksäcke voll mit Engelstrompeten,
+  wir lernen nicht für die Schule, wir lernen fürs Leben.
+
+  Das Viertel das ist klein,
+  doch der Horizont ist weit.
+
+  Verschwende deine Zeit,
+  verschwende deine Zeit.
+
+  &mdash; Zugezogen Maskulin - Plattenbau O.S.T.
+
+  <!--
+  [Part 1: Testo]
+  Ist bei dir zuhause alles Scheiße?
+  Jeden Tag bis in die Nacht Fußballplatz alleine
+  Mach dir nix drauß, uns geht's hier allen gleich
+  Wenn du ein Bier exen kannst, dann ham wir ein' Platz frei
+  Yüah - Grasflecken auf Tobehosen, Fischgräten auf Pullovern
+  Wir sind die coolen Jungs mit Gas in unser'n Kinderlungen
+  Bunte Plattenbauten, Himmel aschgrau
+  Yeah, hier sind wir zuhaus'
+  Uns're Gangzeichen eingeritzt im Arm
+  Fenster, die mal Hakenkreuze war'n und Feuerzeugbrandnarben
+  Skinhead Girl, Haarpracht, Pony lang, Rest ab
+  Düngen uns're Akne mit Billigschnaps
+
+  [Bridge 1: Testo]
+  Komm mit uns, verschwende deine Zeit
+  Spielplatz zwischen Riesenblocks, wir stell'n uns auf im Kreis
+  Saufen um die Wette und dann tanzen wir zu Aggro Ansagen
+  Im Blaulicht der Krankenwagen
+
+  [Hook: Ada Sternberg](2x)
+  Das Viertel das ist klein
+  Doch der Horizont ist weit
+  Verschwende deine Zeit
+  Verschwende deine Zeit
+
+  [Part 2: Testo]
+  Wo mal dein Fahrrad stand, liegt jetzt nur dein Schloss im Graben
+  Dein schönes, neues Fahrrad ging im Moorteich baden
+  Wir machen dich besoffen und dann gehst du kippen klau'n - Yeah
+  Wir sind genau die Freunde, die du brauchst
+  Komm, wir fangen Stress an und kriegen auf die Fresse
+  Klettern auf junge Bäume, um sie abzubrechen
+  Badeanstalt - werden rausgeschmissen, denn wir werfen mit Matsch und zeigen Penis den Mädchen
+  Rucksäcke voll mit Engelstrompeten
+  Wir lern' nicht für die Schule, wir lernen für's Leben
+  Wollten noch ein Mädchen daten - lieber doch nicht
+  Das ist kein Deutsch mehr, was ich quatsche ist Kartofflisch
+
+  [Bridge 2: Testo]
+  Keiner kann uns kleinen Pisser mehr versteh'n
+  Doch irgendwo geh'n wir schon hin, überall sind wir im Weg
+  Seit dem Magenauspumpen geht dein Blick ins Leere
+  Und im Fernsehen läuft 'ne Teeniekomödie
+
+  [Hook: Ada Sternberg](1x)
+  Das Viertel das ist klein
+  Doch der Horizont ist weit
+  Verschwende deine Zeit
+  Verschwende deine Zeit
+
+  https://genius.com/Zugezogen-maskulin-plattenbau-ost-lyrics
+  -->
+</div>
+
+<div class="para">
+  Ich komm nicht aus der East Side, komm nicht aus der West Side,
+  Bruder ich komme aus der Steinzeit.
+
+  Gestern saß ich vor dem Wahl-O-Mat,
+  Was kam raus Bruder? Kalifat!
+
+  &mdash; K.I.Z - VIP in der Psychiatrie
+
+  <!--
+  [Intro: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie
+
+  [Part 1: Tarek K.I.Z]
+  Schizo-Schizo-Schizophrene Störung, Arme wie Mike Tyson (Ah)
+  Mit mir willst du nicht im Fahrstuhl stecken bleiben
+  Tarek K.I.Z, ich kam aus Afrika geschwomm'n
+  Du denkst, es regnet, doch ich schlachte grad ein Schaf auf dem Balkon
+  Wenn es einen Gott gibt, wieso kann er's nicht verhindern?
+  Silvester mach' ich Gulasch aus abgesprengten Fingern
+  Amputiere mir das Bein mit der elektronischen Fußfessel (Was?)
+  Ramm' meine Zunge zwei Meter in deine Schwulenfresse
+  Geil! Ich bin ein gottloser Hund
+  Ich reiß' dein'n Schädel ab und scheiße in dein'n kopflosen Rumpf
+  Ah, Tarek K.I.Z, ich bin ein Kannibale (Hast du gehört?)
+  Zersäge deine Leiche in der Badewanne
+
+  [Pre-Hook: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  Luxus-Suite, Zwangsjacke Givenchy (Ey)
+
+  [Hook: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  Luxus-Suite, Zwangsjacke Givenchy (Ey)
+
+  [Part 2: Maxim K.I.Z]
+  Meine Schreibmaschine hat keine Buchstaben
+  Außer H-U-R-E-N-S-O-H-N
+  Ich komm' nicht aus der East Side, komm' nicht aus der West Side
+  Bruder, ich komme aus der Steinzeit, eh
+  Ich hau' dir deine Schädeldecke ein
+  Und dafür geht mein Doppelgänger lebenslänglich rein
+  Blutige Balenciagas in meiner Bärenfalle
+  In meinem DNA-Test steht, ich bin ein Rhesusaffe (Wuh, wuh)
+  Ich bin auf dem Asphalt aufgeklatscht
+  Weil ich keinen Fallschirm öffne, der nicht zu mei'm Outfit passt, eh
+  Jeder hier sagt, ich bin sympathisch und nett
+  Ein Gysi auf der Straße und ein Stalin im Bett, eh
+
+  [Pre-Hook: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  Luxus-Suite, Zwangsjacke Givenchy (Ey)
+
+  [Hook: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  Luxus-Suite, Zwangsjacke Givenchy (Ey)
+
+  [Part 3: Nico K.I.Z & Maxim K.I.Z]
+  Nico K.I.Z, der Rapper mit dem Damenbart (Wuh)
+  Zum tagsüber Saufen brauch' ich keinen Vatertag (Eh-eh)
+  Gestern saß ich vor dem Wahl-O-Mat
+  "Was kam raus Bruder?" Kalifat!
+  D-D-Das ist jetzt das zwanzigste Dick-Pic, bitte um Feedback (Feedback, Feedback)
+  Mit Mitte dreißig übe ich nicht mehr, wie man vorm Beat rappt
+  Die verdammten Groupies nehmen sich, was ihnen zusteht, mit Gewalt
+  Meine Olle kommt durch die Tür, wittert die versteckten Girls wie Christoph Waltz
+  Ich hab' Grillz aus Elefantenzähnen
+  Ich scheiße auf die JUICE, denn ich kann nicht lesen (Nein)
+  Ich zieh' den Schwanz aus meiner Stiefschwester
+  Und mach' 'n Abgang, so wie Heath Ledger
+
+  [Hook: Stunna666]
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  V.I.P. in der Psychiatrie, ey
+  Luxus-Suite, Zwangsjacke Givenchy (Ey)
+
+  https://genius.com/Kiz-vip-in-der-psychiatrie-lyrics
+  -->
+</div>
+
 <!--
   TODO lyrics
   Haftbefehl - Lass die Affen aus'm Zoo (Babos Remix) (feat. K.I.Z)
@@ -17434,7 +18268,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Und nehmen dir deins, weil ihres nicht reicht.
 
   Guck, diese Opfer machens wieder zu leicht,
-  Alles weg – seine Schuld!
+  Alles weg - seine Schuld!
   Wenn er Glück hat, kommen zwei, drei Bullen,
   Also, Masafaka, wähl die 110!
 
@@ -17534,7 +18368,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Und nehmen dir deins, weil ihres nicht reicht
 
   Guck, diese Opfer machen's wieder zu leicht
-  Alles weg – seine Schuld!
+  Alles weg - seine Schuld!
   Wenn er Glück hat, komm'n zwei, drei Bull'n
   Also, Masafaka, wähl die 110!
 
@@ -17574,6 +18408,136 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   TODO zitate: Volker Pispers
   Kapitalismus ist eine Religion
 -->
+
+<!-- weniger relevant, zu schwammig -->
+<div style="display:none" class="hidden para">
+  [Hook]
+  Niemand weiß, was ich gesehen hab', niemand war dabei
+  Du hast dein Bild und ich mein Bild und die Schnittmenge wir zwei
+  Das macht drei Bilder, die sich weiter streiten und vereinen
+  Doch die Wahrheit bleibt, egal ob wir zu zweit oder allein sind
+
+  Niemand weiß, was ich gesehen hab', niemand war dabei
+  Du hast dein Bild und ich mein Bild und die Schnittmenge wir zwei
+  Das macht drei Bilder, die sich weiter streiten und vereinen
+  Doch die Wahrheit bleibt, egal ob wir zu zweit oder allein sind
+
+  [Part]
+  Ich weiß mehr, als du denkst, kenn' den Schmerz, den du kennst
+  Der die Erde durchtränkt, doch mein Herz hat ihn längst
+  Anerkannt als den Tribut für das Geschenk der Existenz
+  Doch er vergiftet dir das Blut, wenn du ihn in dir selbst bekämpfst
+
+  Es gibt keinen Ausweg also renn nicht weg sondern drauf zu
+  Wer sein Leiden mit der Faust schlägt tut ihm Unrecht
+  Es braucht Mut es mit beiden Armen fest zu umschlingen und zu trösten
+  Statt es taub abzuweisen als Verbündeten des Bösen
+
+  Es im Innern zu erlösen, um euch beide zu befreien
+  Von dem Weinen und dem Schreien, es zu kleiden in dein Sein
+  Dunkelheit kann dich nicht jagen, du läufst nur mit dem Licht davon
+  In die falsche Richtung bis du denkst, dass sie nicht mehr kommt
+
+  Doch du hast mir nicht geglaubt, also nahm ich dich
+  Und habe in die Nacht mit dir geschaut
+  Du sagtest, dass du dich nicht traust und ich dacht' ich wäre schlau
+  Als ich vorging mit den Worten "Komm, ich passe auf dich auf"
+
+  Wie viel Kraft hab ich gebraucht, für die Last auf meinem Haupt
+  Manchmal kämpfte ich mit Krämpfen gegen den Hass in meinem Bauch
+  Doch dann schaffte ich es auch, aus dem Knast und aus dem Grau
+  Ob du sahst was ich gesehen hab, mach' ich mir nix mehr draus
+
+  [Hook]
+  Niemand weiß, was ich gesehen hab', niemand war dabei
+  Du hast dein Bild und ich mein Bild und die Schnittmenge wir zwei
+  Das macht drei Bilder, die sich weiter streiten und vereinen
+  Doch die Wahrheit bleibt, egal ob wir zu zweit oder allein sind
+
+  Niemand weiß, was ich gesehen hab', niemand war dabei
+  Du hast dein Bild und ich mein Bild und die Schnittmenge wir zwei
+  Das macht drei Bilder, die sich weiter streiten und vereinen
+  Doch die Wahrheit bleibt, egal ob wir zu zweit oder allein sind
+
+  &mdash; Amewu - Schnittmenge
+</div>
+
+<div class="para">
+  Ich trinke auf...
+  Auf gute Freunde, verlorene Liebe, auf alte Götter, und auf neue Ziele.
+  Auf den ganz normalen Wahnsinn, auf das was einmal war.
+  Darauf dass alles endet, und auf ein neues Jahr.
+  <br>
+  &mdash; Böhse Onkelz - Auf gute Freunde
+
+  <!--
+  [Strophe 1]
+  Verschüttete Träume, Bilder aus alten Tagen
+  Vom Wahnsinn, den ich lebte und was sie mir heute sagen
+  Ich schlief zu wenig und ich trank zuviel
+  Die Schmerzen im Kopf war'n ein vertrautes Gefühl
+
+  [Refrain]
+  Ich trinke auf
+  Auf gute Freunde, verlorene Liebe
+  Auf alte Götter und auf neue Ziele
+  Auf den ganz normalen Wahnsinn
+  Auf das, was einmal war
+  Darauf, dass alles endet
+  Und auf ein neues Jahr
+  Auf ein neues Jahr
+
+  [Strophe 2]
+  Blutige Küsse, bittere Pillen
+  Vom Schicksal gefickt und immer drei Promille
+  Ich war Teil der Lösung und mein größtes Problem
+  Ich stand vor mir und konnte mich nicht seh'n
+
+  [Refrain]
+  Ich trinke auf
+  Auf gute Freunde, verlorene Liebe
+  Auf alte Götter und auf neue Ziele
+  Auf den ganz normalen Wahnsinn
+  Auf das, was einmal war
+  Darauf, dass alles endet
+  Und auf ein neues Jahr
+  Auf ein neues Jahr
+
+  [Strophe 3]
+  Das Gras war grüner, die Linien schneller
+  Der Reiz war größer und die Nächte waren länger
+  Alles Geschichte und ich bin froh, dass es so ist
+  Oder glaubst du, es ist schön, wenn man Scheiße frisst?
+
+  [Strophe 4]
+  Alles nur Splitter im Treibsand meiner Seele
+  Nur wenige Momente in einem Leben
+  Ich höre himmlisches Gelächter
+  Wenn ich d'ran denke, wie ich war
+  An das Rätsel, das ich lebte
+  Und den Gott, den ich nicht sah
+
+  [Refrain]
+  Ich trinke auf
+  Auf gute Freunde, verlorene Liebe
+  Auf alte Götter und auf neue Ziele
+  Auf den ganz normalen Wahnsinn
+  Auf das, was einmal war
+  Darauf, dass alles endet
+  Und auf ein neues Jahr
+  Auf ein neues Jahr
+
+  [Refrain]
+  Ich trinke auf...
+  Auf gute Freunde, verlorene Liebe
+  Auf alte Götter und auf neue Ziele
+  Auf den ganz normalen Wahnsinn
+  Auf das, was einmal war
+  Darauf, dass alles endet
+  Und auf ein neues Jahr
+  Auf ein neues Jahr
+  -->
+</div>
 
 <div class="para">
   Woher kommt es, dass mich niemand versteht und jeder mag?
@@ -17867,7 +18831,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   -->
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   All around me are familiar faces
   Worn-out places, worn-out faces
   Bright and early for their daily races
@@ -17954,9 +18918,9 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 
   [Part 1]
   Die See ist rau, die Wolken sind schwer
-  Alles grau, der Kopf ist taub, die Lunge voller Teer
-  Ich dachte immer, irgendwann kann ich nicht mehr
-  Ein Leben lang zusammengepfercht auf diesem Dampfer im Meer
+  Alles grau, der Kopf ist taub, die Lunge voller Teer
+  Ich dachte immer, irgendwann kann ich nicht mehr
+  Ein Leben lang zusammengepfercht auf diesem Dampfer im Meer
 
   Aber sieht so aus, als wär' ich hier zu Hause
   Atme tief ein, atme tief aus
@@ -17998,7 +18962,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Und die Band spielt weiter aber ändert nix daran
   Immer weiter, stundenlang, die Begleitmusik zum Untergang
   Ein leichtes Schaudern beim Blick auf die da draußen:
-  „Jetzt schaut euch diese Bauern an, schaut, wie sie ersaufen!“
+  "Jetzt schaut euch diese Bauern an, schaut, wie sie ersaufen!"
 
   Für uns gibt es keine Rettungsringe, Boote oder Westen
   Aber konstruktive Diskussion von schlauen Talkshowgästen
@@ -18143,7 +19107,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Albert Einstein
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Beauty without expression is boring.
   ...
   People do not seem to realise,
@@ -18210,6 +19174,38 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Vladimir Lenin
 </div>
 
+<div class="para">
+  Ich traf Ignazio Silone in Genf am Tag, an dem er aus dem Exil nach Italien zurückkehrte,
+  und plötzlich sagte er:
+
+  Wenn der Faschismus wiederkehrt, wird er nicht sagen: "Ich bin der Faschismus",
+  nein, er wird sagen: "Ich bin der Antifaschismus".
+
+  Viele Jahre später, als "Antifaschismus" in der Tat instrumentalisiert wurde und zu einem Slogan herunterkam,
+  verstand ich, dass dieses scharfe Aussage prophetisch war.
+
+  &mdash; François Bondy
+
+  [Antifa sind Modeopfer, "Anti" ist ein leeres Wort,
+  Linke sind unlogisch, Linke sind Lügner,
+  Linke missbrauchen Sprache zum Psychokrieg]
+
+  <!--
+    https://www.fischundfleisch.com/elmar-forster/wenn-der-faschismus-zurueckkehrt-wird-er-sagen-ich-bin-der-antifaschismus-60005
+    https://www.andreas-unterberger.at/2019/10/ijwenn-der-faschismus-zurckkehrt-wird-er-sagen-ijich-bin-der-antifaschismusijij/
+    https://de.wikipedia.org/wiki/Ignazio_Silone
+  -->
+</div>
+
+<div class="para">
+  Der Durst nach Einheit muss gestillt werden, sei es im Massengrab.
+  &mdash; Albert Camus
+  <!--
+    https://www.fischundfleisch.com/elmar-forster/wenn-der-faschismus-zurueckkehrt-wird-er-sagen-ich-bin-der-antifaschismus-60005
+    https://www.andreas-unterberger.at/2019/10/ijwenn-der-faschismus-zurckkehrt-wird-er-sagen-ijich-bin-der-antifaschismusijij/
+  -->
+</div>
+
 <!-- useless
 <div class="para">
   I wonder, do you think of me?
@@ -18217,7 +19213,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 -->
 
-<div class="para">
+<div lang="en" class="para">
   Everyone says "You just got to let it go"
   &mdash; Eels - I need some sleep
 </div>
@@ -18229,11 +19225,11 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Fight Club
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Riddle riddle, whats your middle?
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   The intelligent investor is a realist,
   who sells to optimists and buys from pessimists.
   &mdash; Benjamin Graham
@@ -18245,7 +19241,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   und verliert sein Gesicht.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   all talents are beautiful.
 </div>
 
@@ -18261,7 +19257,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   und dreht sich weiter.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   time wants to move on...
   <br>
   but pacifism is standing in the way, trying to live forever.
@@ -18298,14 +19294,14 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Antwort: Damit keine Panik entsteht.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Life's a bitch and then you die, thats why we get high.
   <br>
   Cause you never know, when youre gonna go.
   &mdash; Nas - Life's a bitch
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   She had more than the five senses, she knew more than books could teach,
   and raised everyone she touched just a little bit higher
   <br>
@@ -18318,7 +19314,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
 </div>
 
 <!--
-<div class="para">
+<div lang="en" class="para">
   I cry when angels deserve to die
   ...
   Father into your hands I commend my spirit.
@@ -18517,7 +19513,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   &mdash; Albert Camus [M4?]
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   They say, the world is about to end... I say fuck it!
   We all deserve to die!
   ...
@@ -18538,7 +19534,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   <!-- (live at the camden underworld) -->
 </div>
 
-<div style="display:none" class="hidden para">
+<div lang="en" style="display:none" class="hidden para">
   Is there anyone listening? To this beautiful tragedy?
   <!-- TODO more -->
   <br>
@@ -18630,7 +19626,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Doch heute habe ich ein'n Affen und ein Pferd
 
   [Part 1: Tarek]
-  Ich mach' Mousse aus deiner Fresse – boom, verrecke!
+  Ich mach' Mousse aus deiner Fresse - boom, verrecke!
   Wenn ich den Polenböller in deine Kapuze stecke
   Die halbe Schule war querschnittsgelähmt von mein'n Nackenklatschen
   Meine Hausaufgaben mussten irgendwelche deutschen Spasten machen
@@ -18667,7 +19663,7 @@ https://www.youtube.com/watch?v=xM4kFB5AGpg
   Wenn wir wieder da sind, Vierer mit Tommi und Annika
   Vom Speed sieht unsre Pisse mittlerweile aus wie Sangria
 
-  Eva Herman sieht mich, denkt sich: „Was 'n Deutscher!“
+  Eva Herman sieht mich, denkt sich: "Was 'n Deutscher!"
   Und ich gebe ihr von hinten, wie ein Staffelläufer
   Ich fick' sie grün und blau wie mein kunterbuntes Haus
   Nich' alles, was man oben reinsteckt, kommt unten wieder raus (*Schuss*)
@@ -18872,7 +19868,17 @@ people can vote for candidates, not for parties.
     &mdash; <a class="nofootnote" href="https://www.gnosticwarrior.com/yuri-bezmenov.html"
     >Yuri Bezmenov - Ideological Subversion (1984)</a> (Ex KGB Agent, aka Tomas Schuman)
 
+
   </div>
+  -->
+
+  <!--
+    tags: critical-thinking, main-stream-media, propaganda, subversion, true-facts
+    https://www.goodreads.com/quotes/10202216-as-i-mentioned-before-exposure-to-true-information-does-not
+
+
+    https://www.goodreads.com/quotes/11831707-exposure-to-true-information-does-not-matter-anymore-a-person
+    tags: critical-thinking, mainstream-media, propaganda, demoralization, subversion, ideological-subversion, true-facts, redpill, hard-truth, master-morality
   -->
 
   <!--
@@ -19087,6 +20093,208 @@ people can vote for candidates, not for parties.
 
   &mdash; <a class="nofootnote" href="https://www.gnosticwarrior.com/yuri-bezmenov.html"
   >Yuri Bezmenov - Ideologische Subversion (1984)</a> (Ex KGB Agent, alias Tomas Schuman)
+</div>
+
+<div lang="en" class="para">
+  <!-- https://www.goodreads.com/quotes/11347727-nietzsche-talked-about-good-and-bad-in-the-context-of -->
+  Nietzsche talked about "good and bad" in the context of nobility.
+  The nobles regarded the exceptional as good and the mediocre as bad.
+  When the "good and bad" of the nobility was replaced by the "good and evil" of the mob,
+  exceptionalism was declared evil, and mediocrity was sanctified.
+  The holy mediocrities are now everywhere.
+  The kingdom of mediocrity is absolute... absolute shit!
+  <br>
+
+  <!-- https://www.goodreads.com/quotes/11347715-we-are-the-overcomers-the-overmen-not-the-last-men -->
+  <!-- too much
+  We are the Overcomers, the Overmen, not the Last Men.
+  The Last Men want a petty, trivial,
+  comfortable world without any suffering. Fuck them!
+  The task is not to eliminate suffering, but to sublimate it.
+  All people who accomplish anything great
+  impose tremendous discipline, suffering, and hardship on themselves.
+  They deny themselves an easy, hedonistic life.
+  They train hard, study hard, try hard, make tremendous sacrifices.
+  They are certainly not in the Last Man game
+  of removing suffering from their life.
+  They don't want to end suffering.
+  They want to use suffering to develop.
+  <br>
+  -->
+
+  <!-- https://www.goodreads.com/quotes/11347720-the-happiness-equation-it-seems-is-to-be-stupid-unconscious -->
+  <!-- too much
+  The happiness equation, it seems,
+  is to be stupid, unconscious, and a slave to God.
+  Then God will love you and everything will be perfect.
+  It's amazing how many people love that equation.
+  It's basically the equation that rules the lives of dogs!
+  If you want to keep your freedom, then you must kill God!
+  That's the only way.
+  God must die so that God may live - the new God.
+  To repeat, God is dead, long live the new God.
+  <br>
+  -->
+
+  <!-- https://www.goodreads.com/quotes/11347724-veganism-is-merely-the-continuation-of-christianity-by-other-means -->
+  <!-- too much
+  Veganism is merely the continuation of Christianity by other means.
+  It's the Sermon on the Mount,
+  extended from the poor, weak and meek to animals.
+  It gives every vegan the opportunity to posture as a Messiah,
+  saving the poor little animals from Leviathan.
+  Vegans are addicted to having a Messiah Complex.
+  The powerless often posture as activists
+  on behalf of the even more powerless.
+  It makes them feel better about themselves.
+  <br>
+  -->
+
+  <!-- https://www.goodreads.com/quotes/11347718-look-at-a-dog-on-a-leash-this-monstrous-abject -->
+  <!-- too much
+  Look at a dog on a leash.
+  This monstrous, abject "pet"
+  used to be a magnificent, powerful, proud wolf.
+  Now it's a joke.
+  That's what human interference with carnivorous nature achieves:
+  the opposite of evolution, the removal of animals from vibrant nature,
+  to make them pathetic, enfeebled playthings and projections of human beings,
+  with all their crazy neuroses and subjective mental traumas.
+  The example of dogs should provide a horrific warning from history
+  of how strong animals can be turned by humans into the most pathetic creatures.
+  <br>
+  -->
+
+  <!-- https://www.goodreads.com/quotes/11347722-when-you-see-someone-attacking-plato-and-many-people -->
+  <!-- too much
+  When you see someone attacking Plato (and many people do)
+  you should understand that these people are defenders of psychopathy
+  (especially of unrestricted libertarianism, a psychopath's dream).
+  They hate Plato and accuse him of being a totalitarian and fascist.
+  Why?
+  Because he was prepared to use the awesome power of the State,
+  to ensure that undesirables did not prosper,
+  and certainly didn't get to the top of society.
+  All the opponents of Plato are extremist anti-Statists,
+  whether they are anarchists, libertarians,
+  predatory capitalists, free marketeers, liberals, or whatever.
+  They are terrified of a designed, engineered society,
+  where the benevolent, wise State seeks to create the optimized State,
+  and where psychos don't get to weave their webs.
+  <br>
+  -->
+
+  <!-- https://www.goodreads.com/quotes/11347726-when-nietzsche-said-god-is-dead-he-himself-immediately-replaced -->
+  <!-- too much
+  When Nietzsche said, "God is dead",
+  he himself immediately replaced God with a new God, the Superman [Übermensch].
+  Who would bother with Nietzsche's philosophy,
+  if he pronounced God dead and then hanged himself?
+  Nietzsche immediately resurrected God, hence God was never dead.
+  God is always ready to be re-expressed.
+  It's not the concept of God that's wrong.
+  <b>The concept of the wrong God is wrong</b>,
+  wrongly defined and wrongly understood.
+  <br>
+  -->
+
+  <!-- i dont get this one.
+  Are you one of the dwellers in the wood?
+  Neither by land nor by sea shall they find us.
+  But, when the time comes, we shall find them.
+  <br>
+  -->
+
+  &mdash; David Sinclair - The Wolf Tamers: How They Made the Strong Weak
+  <br>
+
+  <!--
+  https://www.goodreads.com/book/show/60222529-the-wolf-tamers
+
+  In the war of the wolves and the sheep,
+  what if the sheep started winning?
+
+  Are human wolves a keystone species of the human race?
+  If they were hunted to extinction,
+  leaving no one to winnow the mediocre mob,
+  what would happen to humanity?
+  The narrator in the movie Idiocracy was on point when he said:
+
+  "Evolution does not necessarily reward intelligence.
+  With no natural predators to thin the herd,
+  it began to simply reward those who reproduced the most,
+  and left the intelligent to become an endangered species."
+
+  The same is true of strength.
+  Without the strong, the weak will reproduce more and more and eventually,
+  there will only be weakness, mediocrity, an inability (an impossibility),
+  to achieve anything great and glorious.
+
+  The strangest war is being fought.
+  It's a war to destroy human intelligence and human strength.
+  This war says that wolves must be exterminated,
+  or made into non-wolves, by taming them.
+  And then they can become... pets.
+  You know, just like dogs.
+  You put a collar on them.
+  You put a leash on them.
+  You take them for walks.
+  You tickle their tummy.
+  You make them perform tricks.
+  You make them roll over and play dead.
+  They are wholly dependent on you.
+  They have separation anxiety when you're not there.
+
+  They have to make the intelligent stupid.
+  They have to make the strong weak.
+  But they don't know what they're doing.
+  The task is not to tame wolves.
+  It's to make them smarter and stronger.
+  It's to sublimate them.
+  Without the wolves, there is only decadence and degeneration.
+  Without the wolves to control mediocrity, mediocrity grows exponentially.
+  Why did the Roman Empire fall?
+  It was because all the Roman wolves had gone.
+  Only mediocrities were left.
+  They could do nothing to hold back the barbarian tide.
+
+  Civilizations always end when the wolves vanish.
+  New cultures begin when new wolves start a new lupine era,
+  full of strength and vigor.
+
+  Are you a lone wolf?
+  Are you one of the wolf pack?
+  Or are you part of the gang trying to tame all wolves?
+
+  Do you want to see the empire fall?
+  When it no longer has any strength left,
+  when mediocrities are in charge of everything,
+  then the end is certain.
+  As Wilfred Owen said:
+
+  "What passing-bells for these, who die as cattle? ...
+  Was it for this, the clay grew tall?"
+  -->
+
+  <!--
+    this book seems to be censored by amazon
+    probably labelled as "hate speech"
+
+    https://www.amazon.com/s?k=David+Sinclair+The+Wolf+Tamers
+    https://www.amazon.de/s?k=David+Sinclair+The+Wolf+Tamers
+    https://www.amazon.co.uk/s?k=David+Sinclair+The+Wolf+Tamers
+
+    here it is listed:
+    https://www.kobo.com/gb/en/ebook/the-wolf-tamers-how-they-made-the-strong-weak
+    the related books also look interesting
+
+    download:
+    David Sinclair - The Wolf Tamers. How They Made the Strong Weak. 2023.epub
+    https://library.bz/main/uploads/2DDCEE5EC9BE5CF52C9B2D3F39D69B09
+
+  -->
+
+  [redpills, hard truth, master morality, seek risk, learn from mistakes]
 </div>
 
 <div class="para">
@@ -19588,7 +20796,7 @@ people can vote for candidates, not for parties.
 
   Liminski: Leben ohne Schule, aber mit Bildung,
   das war <span class="nowrap">Dagmar Neubronner,</span>
-  Mutter einer – wie sie es nennen – <b>Freilerner</b>-Familie.
+  Mutter einer - wie sie es nennen - <b>Freilerner</b>-Familie.
   Besten Dank für das Gespräch, Frau Neubronner!
   <br>
 
@@ -19605,7 +20813,428 @@ people can vote for candidates, not for parties.
 
 <!-- TODO John Taylor Gatto - Verdummt noch mal -->
 
-<div class="para">
+<div lang="en" class="para">
+  Most people don't understand how governments operate,
+  and even people in high positions in governments, including our own,
+  do not really understand how and where decisions are made.
+  People who really influence decisions
+  are names that for the most part would be familiar to most of us
+  [Rockefeller, Rothschild, Gates, Soros, Blackrock, ...].
+  They are not primarily people in public office,
+  but people of prominence who are primarily known
+  in their private occupations or <b>private positions</b>.
+  <br>
+
+  The upcoming changes are changes that are very surprising,
+  and in some ways difficult for people to accept.
+  People will have to get used to the idea of change,
+  so used to change, that they will be expecting change.
+  <b class="nowrap">Nothing will be permanent.</b>
+  This often comes out in societies
+  where people have no roots,
+  but are be passively willing to accept change,
+  simply because it is all they have ever known.
+  Change is to be anticipated and expected, and accepted,
+  no questions asked.
+  <br>
+
+  <span class="nowrap">Sadly, people are too trusting,</span>
+  <b class="nowrap">people do not ask the right questions.</b>
+  <br>
+
+  <b>Everything has two purposes</b>:
+  One is the visible purpose, which will make it acceptable to people,
+  and second is the real purpose, which will further the goals of the new system.
+  There is just no other way.
+  <br>
+
+  <b class="nowrap">The population is growing too fast.</b>
+  Numbers of people living at any one time on the planet must be limited,
+  or we will run out of space to live.
+  We will outgrow our food supply and we will over-populate the world with our waste.
+  Most people will be allowed to have only two babies.
+  The zero population growth rate is 2.1 children per completed family.
+  <br>
+
+  The sex education is to get kids interested early,
+  making the connection between sex and the <b class="nowrap">need for contraception</b> early in their lives,
+  even before they become sexually active.
+  Many cities in the United States have already set up school-based clinics
+  which are primarily contraception, birth control, <b class="nowrap">population control</b> clinics.
+  The idea then is that the connection between sex and contraception,
+  introduced and reinforced in school, would carry over into marriage.
+  <br>
+
+  <!-- too much, less relevant
+  People will be given permission to be homosexual.
+  <br>
+
+  Divorce will be made easier and more prevalent.
+  <br>
+
+  Medicine will be much more tightly controlled.
+  <br>
+
+  If you don't work or can't work, you won't have access to medical care.
+  <br>
+
+  Medical care will be closely connected to work.
+  If you don't work or can't work, you won't have access to medical care.
+  The days of hospitals giving away free care will gradually wind down,
+  to where it is virtually nonexistent.
+  Costs will be forced up, so that people won't be able to afford to go without insurance.
+  Everybody is made dependent on insurance.
+  <br>
+
+  Access to hospitals will be tightly controlled.
+  The security in hospitals will be established and gradually increased,
+  so that nobody without identification can get in.
+  <br>
+
+  Hospitals can be used to confine people, for the treatment of criminals.
+  [political abuse of psychiatry.]
+  <br>
+
+  Elimination of private doctors:
+  The solo practitioner will become a thing of the past.
+  A few die-hards might try to hold out,
+  but most doctors will be employed by an institution.
+  Group practice would be encouraged, corporations would be encouraged,
+  and then, as this gradually becomes more and more acceptable,
+  doctors will more and more become employees rather than independent contractors.
+  And along with that, of course, unstated but necessary, is
+  <b>the employee serves his employer, not his patient.</b>
+  <br>
+
+  Independent doctors will suffer a great loss of income.
+  <br>
+
+  There will be new diseases to appear, which had not ever been seen before.
+  They would be very difficult to diagnose and be untreatable, at least for a long time.
+  [Probably AIDS is a manufactured disease?]
+  <br>
+  -->
+
+  We can cure almost every cancer right now.
+  But consider:
+  If people stop dying of cancer, how rapidly we would become overpopulated.
+  Efforts at cancer treatment will be geared more toward comfort than toward cure.
+  [painkillers, sedatives.]
+  At least for now, <b class="nowrap">letting people die of cancer</b> is a good thing to do,
+  because it will slow down the problem of overpopulation.
+  <br>
+
+  There is now a way to simulate a real heart attack.
+  It can be used as a means of assassination.
+  [directed energy weapons.]
+  <br>
+
+  People will have to eat right and exercise right,
+  to live as long as before, but most people won't.
+  <b class="nowrap">Most people are too stupid or too lazy,</b>
+  so they will eat wrong and exercise wrong, so they will get sick and die early.
+  <br>
+
+  Something about diet information, about proper diet, will be widely available,
+  but most people, particularly stupid people, who will have no right to continue living anyway,
+  they will ignore the advice and just go on and eat what is convenient and tastes good.
+  <br>
+
+  <!--
+  We think that we can push evolution faster and in the direction we want it to go.
+  <br>
+  -->
+
+  Religion is not necessarily bad.
+  A lot of people seem to need religion, with it's mysteries and rituals, so they will have religion.
+  But the major religions of today have to be changed, because they are not compatible with the changes to come.
+  The old religions will have to go, especially Christianity.
+  Once the Roman Catholic Church is brought down, the rest of Christianity will follow easily.
+  Then a new religion can be accepted for use all over the world.
+  <br>
+
+  <!--
+  The Bible will be changed. It will be rewritten to fit the new religion.
+  Gradually, key words will be replaced with new words having various shades of meaning.
+  Then, the meaning attached to the new word can be close to the old word,
+  and as time goes on, other shades of meaning of that word can be emphasized,
+  and then, gradually, that word will be replaced with another word.
+  The idea is that everything in Scripture need not be rewritten,
+  just key words replaced by other words.
+  <br>
+
+  Some of you probably think
+  the churches won't stand for this...
+  but the churches will help us.
+  <br>
+
+  Restructuring education as a tool of indoctrination.
+  <br>
+
+  The classics in Literature will be changed, for example the writings of Mark Twain.
+  The changes will be such as to promote the acceptability of the new system.
+  <br>
+  -->
+
+  [School will be a waste of time:]
+  Kids will spend more time in schools, but in many schools, they will learn nothing.
+  They will learn some things, but much less than before.
+  Better schools in better areas with better people, their kids will learn more.
+  We think we can push evolution.
+  <span class="nowrap">[social darwinism.]</span>
+  School will go all summer, and the summer school vacation will become a thing of the past.
+  For most people, it will take longer to complete their education.
+  <b class="nowrap">A lot of school time will be just wasted time.</b>
+  <br>
+
+  Studies will be concentrated in much greater depth, but narrowed.
+  You will not have access to material in other fields, outside your own area of study.
+  People will be very specialized in their own area of expertise,
+  but they won't be able to get a broad education,
+  and won't be able to understand what is going on overall.
+  <br>
+
+  [Schools as the hub of the community:]
+  Schools will become more important in people's overall life.
+  Kids wanting any activities will be forced to get them through the school.
+  There will be few opportunities outside.
+  All activities will be planned,
+  there will be no spontaneous activities among kids.
+  <br>
+
+  Kids will feel, they have to be part of something.
+  <b>Smart kids will learn how to cope with pressure and how to survive.</b>
+  There will be some help available to students in handling stress,
+  but the unfit won't be able to make it.
+  They will then move on to other things. [Drugs...]
+  <br>
+
+  Psychiatric services to help will be increased dramatically.
+  Worthy people will be able to accept and benefit from that help.
+  Unworthy people will be destroyed by that help.
+  <br>
+
+  [Censorship:]
+  Some books will just disappear from the libraries, they will be stolen and hidden.
+  Some books contain information or ideas that should not be kept around.
+  Only some people will be allowed to own books.
+  Some books will be made illegal.
+  <br>
+
+  Drug use will he increased.
+  Alcohol use will be increased.
+  Law enforcement efforts against drugs will be increased.
+  On first hearing that, it sounds like a contradiction.
+  Why increase drug abuse and simultaneously increase law enforcement against drug abuse?
+  But the idea is that, in part, the increased availability of drugs
+  would provide a sort of "law of the jungle"
+  whereby the weak and the unfit would be selected out.
+  <br>
+
+  <b>Before the earth was overpopulated,
+  there was a law of the jungle, where only the fittest survived.</b>
+  You had to be able to protect yourself against the elements and wild animals and disease,
+  and if you were fit you survived.
+  But now we have become so civilized (we are over-civilized)
+  and the unfit are enabled to survive only at the expense of those who are more fit.
+  <br>
+
+  The abusive drugs then will restore, in a certain sense, the law of the jungle,
+  and selection of the fittest for survival.
+  <br>
+
+  The same thing will happen with alcohol.
+  Alcohol abuse will be both promoted and limited at the same time.
+  The vulnerable and the weak would respond to the promotions,
+  and therefore use and abuse more alcohol.
+  <br>
+
+  <!--
+  Not everybody will be free to travel the way they do now.
+  People don't have a need to travel that way. It's a privilege!
+  <br>
+  -->
+
+  <!-- part 2 -->
+  <!--
+  We think we can effectively limit crime to the slum areas, so it won't be spread heavily into better areas.
+  -->
+
+  <!--
+  "The Day Tapes"
+
+  part 1:
+  https://sagehana.substack.com/p/everything-is-in-place-and-nobody
+
+  part 2:
+  https://sagehana.substack.com/p/if-population-growth-didnt-slow-down
+
+  part 3:
+  https://sagehana.substack.com/p/in-1969-ex-planned-parenthood-medical
+
+  part 4:
+  https://sagehana.substack.com/p/the-day-tapes-final-tape-for-the
+
+  The dominant concern and motivational driver
+  of all of these campaigns of propaganda and social engineering
+  as relayed by Richard Day in 1969
+  was that "even an 8th grader" could do the math
+  and sort out that Human Population would spiral out of control
+  and overwhelm the planet unless it was managed.
+
+  The Day Tapes recall the prescient warnings of Richard Day from 1969,
+  and explain the concept of the Ostensible Reason vs. the Real Reason
+  which provide the methods by which all of the various strategies
+  of herd culling social engineering would be employed.
+
+  Rockefellers All the Way Down
+
+  The Ostensible Reason
+  (Idealism, Religion, Illusion, Lies, Slave Morality)
+  is seductive and creates True Believer Middle Managers
+  (useful idiots).
+
+  One of the producers of the "Trading Places" movie, Aaron Russo,
+  confirms several elements of the grand designs
+  in this interview with Alex Jones.
+
+  Aaron Russo was friendly with one of the Rockefellers
+  and resisted their attempts to welcome them into the club.
+
+  That this interview is now allowed on YouTube indicates to me
+  that there is no need to censor this stuff so aggressively
+  and much like the Koncentration Kamp Ops
+  in Aussie and Kanadian Konvoy Reax in Kanada...
+  suggests that the Global Power Structures (GPS)
+  are extremely confident and have no fall back plan.
+  This is end game.
+
+  "Normal is not coming back."
+
+  -->
+  &mdash; Dr. Richard Day, 1968
+  <span class="nowrap">(Planned Parenthood Medical Director,</span>
+  <span class="nowrap">Rockefeller insider)</span>
+  (via Dr. Lawrence Dunegan, "The Day Tapes", 1988)
+</div>
+
+<div lang="en" style="display:none" class="hidden para">
+  Vaccines are the backbone of the entire pharmaceutical industry.
+  The vaccinated children become customers for life.
+  <br>
+  &mdash; <a class="nofootnote" href="https://libgen.rs/search.php?req=Sherri+Tenpenny"
+  >Dr. Sherri Tenpenny</a>, author of: Saying No to Vaccines. A Resource Guide for All Ages (2008)
+  <br>
+  [addiction to legal drugs]
+  <!--
+  TODO source?
+  https://gab.com/Predestination/posts/110896622453076294
+  https://ifunny.co/picture/vaccines-are-the-backbone-of-the-entire-pharmaceutical-industry-the-fHX5oQXL8
+  https://www.instagram.com/p/Cb_fcYMMM4j/
+  -->
+</div>
+
+<div lang="en" style="display:none" class="hidden para">
+  https://petermcculloughmd.substack.com/p/the-trees-of-lahaina
+  The Trees of Lahaina
+  Interview with arborist sparks firestorm controversy about Directed-Energy Weapons
+
+  On the Lahaina Fire, several readers have sent me a video of an arborist
+  talking about the phenomenon of a fire
+  that reduces houses to white ash while leaving trees still standing.
+
+  Viewing this photograph, he states:
+
+  "Yeah, all the houses are missing, they're white ash,
+  but what are all the trees doing there.
+  Many of these are pines and eucalyptus, and very flammable leaves.
+  It just made no sense to me.
+  I've got a background of cooking on campfires for my entire adult life,
+  from sea level to twelve or thirteen thousand feet in the Sierras.
+  I've burned everything, and everything burns in a tiny campfire.
+  And this is a horrific firestorm, they said.
+  Why are all the trees still there?
+  So it didn't work well for me.
+  And I waited a couple of months and I went up there after things died down,
+  and I analyzed every street I could for eight hours.
+  Nothing, I mean nothing, added up."
+
+  Based on these observations,
+  the arborist proposes that directed-energy weapons (DEW) were used
+  to ignite and energize the Santa Rosa fire in 2017.
+  As the video progresses, he makes similar remarks about aerial photographs of Lahaina after the fire there.
+  From his observations, he concludes that the still standing trees in Lahaina are evidence that DEW were used to ignite and energize the fire. Though he doesn't identify the perpetrators, he states:
+
+  We have to fight this at every level we can, because they own the military.
+  The billionaires own the government, and that one percent is ruling the planet.
+  Less than one percent.
+  We have to group up together and make a stand.
+  At any level we can. We have to do something.
+
+  Before I address the content of these statements,
+  I would like to say a word about conspiracies.
+  In Chapter 30 of our book,
+  The Courage to Face COVID-19:
+  Preventing Hospitalization and Death While Battling the Bio-Pharmaceutical Complex,
+  we discuss the reality of criminal conspiracies.
+
+  After an exposition of the 1953 play, Biedermann and the Arsonists
+  in which we explicitly describe how it is often difficult for people
+  to comprehend the reality of criminal malevolence in their midst, we remark:
+
+  "The greatest trick that powerful interest groups ever pulled was convincing the world
+  that everyone who detects and reports their activities is a conspiracy theorist."
+
+  Only the naivest consumer of mainstream news reporting would fail to recognize
+  that powerful interest groups in the military, financial, and bio-pharmaceutical industries
+  work in concert to further their interests.
+  Their activities cross the line into conspiracy
+  when they commit fraud or other crimes to advance their interests.
+  The term "conspiracy theory" suggests the feverish imaginings of a crackpot mind.
+  This ignores the fact that the United States government
+  prosecutes the crime of conspiracy all the time.
+  As one prominent defense attorney described this reality:
+
+  "Any time the government believes that it can allege
+  that two or more individuals were a part of a common agreement to commit the same crime,
+  they will include a charge of conspiracy into the indictment.
+  There is no requirement that all of the members of the conspiracy
+  even know about each other, or even know each other personally."
+
+  In my Substack columns about the origin of SARS-CoV-2,
+  I present evidence that Dr. Fauci and his virologist cronies
+  conspired to conceal the true (laboratory) origin
+  of the causative agent of COVID-19.
+  Thus, I myself have often been called a "conspiracy theorist."
+  I reply to this accusation with the remark
+  that nowadays the difference between a conspiracy theory and a proven conspiracy is about six months.
+
+  again:
+  the difference between a conspiracy theory and a proven conspiracy is about six months.
+
+  Since the financial crisis in 2008 and the ensuing Federal Reserve bailouts of the billionaire class, I have been telling everyone who will listen that the billionaire class has captured our federal government and endangered our Constitutional Republic. I am therefore entirely sympathetic to the underlying political sentiments expressed by the arborist.
+
+  https://www.youtube.com/watch?v=Bs3o3z0G8tw
+  48-yr Arborist questions Maui WildFire and shares insights.
+
+  The technology of the military is always 20 years ahead of what is shown to the public.
+</div>
+
+<div lang="en" class="para">
+  The greatest trick that powerful interest groups ever pulled was convincing the world,
+  that everyone who detects and reports their activities is a "conspiracy theorist".
+</div>
+
+<div lang="en" class="para">
+  The difference between a conspiracy theory and a proven conspiracy is about six months.
+</div>
+
+<div lang="en" class="para">
+  The technology of the military is always 20 years ahead of what is shown to the public.
+  [directed energy weapons, mind control, ...]
+</div>
+
+<div lang="en" class="para">
   The government has been in bed
   with the entire telecommunications
   industry since the 1940s.
@@ -19650,6 +21279,17 @@ people can vote for candidates, not for parties.
   &mdash; Enemy Of The State (1998)
 </div>
 
+<div style="display:none" class="hidden para">
+  Weiter Vollgas Richtung Regenbogen,
+  wir nehmen jeden Eisberg mit, wir sinken.
+  Love, peace and harmony,
+  man sieht sich und bis bald.
+  &mdash; Tim Kellner, aka "The Love Priest"
+  <!--
+    https://www.youtube.com/@TimKellner
+  -->
+</div>
+
 <div class="para">
   Wenn du wissen willst, wer dich beherrscht,
   finde heraus, wen du nicht kritisieren darfst.
@@ -19657,7 +21297,7 @@ people can vote for candidates, not for parties.
   &mdash; Kevin Alfred Strom (nicht von Voltaire)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   To determine the true rulers of any society, all you must do is ask yourself this question:
   <b>Who is it that I am not permitted to criticize?</b>
   <br>
@@ -19896,7 +21536,7 @@ people can vote for candidates, not for parties.
 </div>
 -->
 
-<div class="para">
+<div lang="en" class="para">
   The sound of the rain against my window pane,
   is slowly slowly driving me insane.
   &mdash; Royalston - Sound of the Rain
@@ -20045,7 +21685,7 @@ people can vote for candidates, not for parties.
   &mdash; Hannes Hofbauer - Zensur (2022)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   we are opposed around the world
   by a monolithic and ruthless conspiracy
   that relies primarily on covert means for expanding its sphere of influence:
@@ -20070,14 +21710,14 @@ people can vote for candidates, not for parties.
   >John F. Kennedy, 1961</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   they are pirates.
   <!-- TODO more -->
   &mdash; <a class="nofootnote" href="magnet:?xt=urn:btih:ba7f1ad9916dfcb66c79b89df010d04bd3dbdae7&dn=JFK%20to%20911%20Everything%20Is%20A%20Rich%20Man%27s%20Trick%20(2015)&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969"
   >JFK to 911: Everything Is A Rich Man's Trick (2015)</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   loose lips sink ships.
 </div>
 
@@ -20376,7 +22016,7 @@ people can vote for candidates, not for parties.
   &mdash; K.I.Z - Hurra die Welt geht unter
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Teacher leave them kids alone.
   &mdash; Pink Floyd - Another Brick in the Wall
 </div>
@@ -20416,17 +22056,17 @@ people can vote for candidates, not for parties.
   &mdash; Klapse Mane - Sonnenseite
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   The only true power is violence
   &mdash; Kyle, <a class="nofootnote" href="https://www.youtube.com/watch?v=8TMHIYDHMSE">South Park - Cartoon Wars</a> (201, S10E03) (zensiert von Comedy Central)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   If you wanna find some quality friends, you gotta wait through all the dicks first.
   &mdash; Cartman, <a class="nofootnote" href="https://www.youtube.com/watch?v=RZLDAVNTBBs">South Park - Chatroulette</a>
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   I don't have to tell you things are bad.
   Everybody knows things are bad.
   It's a depression.
@@ -20610,7 +22250,7 @@ people can vote for candidates, not for parties.
   -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   <!--
   (2x)
   -->
@@ -20739,7 +22379,7 @@ people can vote for candidates, not for parties.
   -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   There are no crimes, only actions.
   &mdash; Irreversible (2002)
 </div>
@@ -20776,7 +22416,7 @@ people can vote for candidates, not for parties.
   Erst als Jesus tot war, wurde er von Staat und Kirche anerkannt als Heiliger.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   The first part of the Yippie program, you know, is <b>kill your parents</b>.
   And I mean that quite seriously, because
   unless you are prepared to kill your parents,
@@ -20921,14 +22561,14 @@ people can vote for candidates, not for parties.
   remember sammy jenkis
 -->
 
-<div class="para">
+<div lang="en" class="para">
   Remember Sammy Jankis
   &mdash; Memento (2000)
 </div>
 
 <div class="para">
   "Memento" ist eine Anspielung auf:
-  Memento Mori = Denk dran, du wirst sterben.
+  Memento Mori = Denk dran: Du wirst sterben, alles wird sterben.
   Was kann man lernen aus dem Film Memento (2000)?
   Alles festhalten.
   Vor allem das festhalten, was flüchtig ist.
@@ -20968,7 +22608,7 @@ people can vote for candidates, not for parties.
   &mdash; Der Typ - Evidance (feat. Skitekk)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   CO<sub>2</sub>PSEC: CO<sub>2</sub> emissions =
   People x Services x Energy per service x CO<sub>2</sub> per energy.
 
@@ -20995,15 +22635,15 @@ people can vote for candidates, not for parties.
 
 
 
-<div class="para">
+<div lang="en" class="para">
   The greatest trick the Devil ever pulled, was convincing the world he did not exist.
   <br>
-  Der beste Trick vom Teufel ist seine Unsichtbarkeit.
+  <span lang="de">Der beste Trick vom Teufel ist seine Unsichtbarkeit.</span>
   <br>
   &mdash; The Usual Suspects (1995)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Despite all my rage I am still just a rat in a cage. [...]
   I still believe that I cannot be saved.
   <br>
@@ -21014,7 +22654,7 @@ people can vote for candidates, not for parties.
   <!-- all "decadent" behavior is a direct result of overpopulation -->
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   <b>young people</b> can more readily be persuaded
   to attack the legal institutions of the government
   or real property of the 'establishment', 'imperialists',
@@ -21028,13 +22668,13 @@ people can vote for candidates, not for parties.
   (NSSM-200: National Security Study Memorandum 200)
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   Humans are the virus.
   <br>
   Human overpopulation is the global pandemic.
 </div>
 
-<div class="para">
+<div lang="en" class="para">
   We're sick of your treason, sick of your lies
   &mdash; Pennywise - Fuck Authority
 </div>
