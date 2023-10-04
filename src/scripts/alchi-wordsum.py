@@ -132,13 +132,13 @@ def wordsum(w):
 		_print('n%i = ' % i + ' + '.join(map('{:2d}'.format, s)) + ' = ' + str(n))
 		dr = digroot(n)
 		if dr:
-			_print(' --> ' + ' '.join(map(str, dr)))
+			_print(' -> ' + ' '.join(map(str, dr)))
 			drs.append(dr)
 			# modulo five
 			drm5 = map(lambda i: i % 5, filter(lambda i: i < 10, dr))
 			#drm5 = filter(lambda i: i != 0, map(lambda i: i % 5, dr))
 			if dr != drm5:
-				_print(' --> ' + ' '.join(map(str, drm5)))
+				_print(' -> ' + ' '.join(map(str, drm5)))
 		else:
 			drs.append([s])
 		print() # new line
@@ -164,7 +164,7 @@ def wordsum(w):
 			print("%s %03i %03i" % (w, ns[0], ns[1]))
 #			for (i, dr) in enumerate(drs):
 #				_print('n%i = ' % i + ' + '.join(map('{:2d}'.format, ss[i])) + ' = ' + str(ns[i]))
-#				print(' --> ' + ' --> '.join(map(str, dr)))
+#				print(' -> ' + ' -> '.join(map(str, dr)))
 
 
 import os.path
