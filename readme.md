@@ -236,7 +236,7 @@ in the rare case that this project is censored, here are some mirror locations
 * disroot.org: https://git.disroot.org/milahu/alchi
 * sr.ht: https://git.sr.ht/~milahu/alchi
 * darktea (with [Tor Browser](https://www.torproject.org/download/)): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
-* humanrightstech (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
+* righttoprivacy (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
 
 note: only some git hosters also offer static webhosting
 
@@ -368,7 +368,7 @@ git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://it7otdanqu7ktnt
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 
-# humanrightstech
+# righttoprivacy
 git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi alchi/.git
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
