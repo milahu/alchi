@@ -141,12 +141,17 @@ moved to <a href="path/to/new/file.html">path/to/new/file.html</a>
 all files and versions can be downloaded with the linux command
 
 ```txt
-git clone https://github.com/milahu/alchi
+git clone --mirror https://github.com/milahu/alchi alchi/.git
+cd alchi
+git config --bool core.bare false
+git checkout master
 ```
 
 the program `git` is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
 
 this also works with our [repo mirrors](#mirrors)
+
+see also [git clone](#git-clone)
 
 ## future work
 
@@ -208,6 +213,15 @@ the imported text fragments look like `<lang.ar rev="en#L1S/h9eR">`
 and must be fixed manually, since auto-translate is never perfect.
 * [src/alchi-book/src/\_data/metadata.js](src/alchi-book/src/_data/metadata.js) - see `languages`.
 this is a space-separeted list of all languages codes for the language menu
+
+## journal
+
+i have scanned some of my hand-written journal.
+
+these are many large files, so they are stored in a separate git branch called `journal`.
+
+when you clone this git repo with `git clone --mirror` then you get all branches.
+see also [git clone](#git-clone) and [git worktree add](#git-worktree-add).
 
 ## mirrors
 
@@ -282,44 +296,103 @@ git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (
 
 ### git clone
 
+use `git clone --mirror` to fetch all branches of a remote
+
+you only need to clone from one remote. later, you can add other remotes with [git remote add](#git-remote-add)
+
 ```
 # github.com
-git clone https://github.com/milahu/alchi
+git clone --mirror https://github.com/milahu/alchi alchi/.git
 
 # gitlab.com
-git clone https://gitlab.com/milahu/alchi
+git clone --mirror https://gitlab.com/milahu/alchi alchi/.git
 
 # codeberg.org
-git clone https://codeberg.org/milahu/alchi
+git clone --mirror https://codeberg.org/milahu/alchi alchi/.git
 
 # sourceforge.net
 # https://sourceforge.net/projects/milahu-alchi/
-git clone https://git.code.sf.net/p/milahu-alchi/code alchi
+git clone --mirror https://git.code.sf.net/p/milahu-alchi/code alchi/.git
 
 # gitea.io
-git clone https://try.gitea.io/milahu/alchi
+git clone --mirror https://try.gitea.io/milahu/alchi alchi/.git
 
 # notabug.org
-git clone https://notabug.org/milahu/alchi
+git clone --mirror https://notabug.org/milahu/alchi alchi/.git
 
 # disroot.org
-git clone https://git.disroot.org/milahu/alchi
+git clone --mirror https://git.disroot.org/milahu/alchi alchi/.git
 
 # srht
-git clone https://git.sr.ht/~milahu/alchi
+git clone --mirror https://git.sr.ht/~milahu/alchi alchi/.git
 
 # darktea
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi alchi/.git
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 
 # humanrightstech
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi alchi/.git
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 ```
 
-#### tor hidden services
+after running `git clone --mirror` you have to convert the bare repo in `alchi/.git` to a normal repo
+
+```sh
+cd alchi
+git config --bool core.bare false
+git checkout master
+```
+
+see also https://stackoverflow.com/questions/67699/how-do-i-clone-all-remote-branches
+
+### git worktree add
+
+mount the `journal` branch on the `journal/` folder
+
+```sh
+git worktree add journal/ journal
+```
+
+now you can read my journal in your web browser
+
+```sh
+xdg-open journal/index.html
+```
+
+### git pull
+
+to fetch updates, run
+
+```sh
+git pull --ff-only
+```
+
+or to fetch updates from all remotes, run
+
+```sh
+git pull --ff-only --all
+```
+
+or use [src/scripts/git-fetch-from-all-remotes.sh](src/scripts/git-fetch-from-all-remotes.sh)
+
+### git remote add
+
+add more remotes by running [src/scripts/git-remote-add-all.sh](src/scripts/git-remote-add-all.sh)
+
+```sh
+./src/scripts/git-remote-add-all.sh
+```
+
+so if one remote goes down, you can pull updates from another remote
+
+```sh
+git branch --set-upstream-to=gitlab.com/master master
+git pull --ff-only
+```
+
+### tor hidden services
 
 accessing .onion domains requires a running tor client (not the "tor browser"),
 usually as a system-wide tor service,
