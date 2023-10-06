@@ -19,7 +19,6 @@ branches="master journal"
 
 # pull changes from main repo
 git stash -m "git pull-push $(date)"
-git pull github master
 git pull github master --tags
 git stash pop
 
@@ -61,6 +60,5 @@ if false; then
 fi
 
 for remote in github gitlab srht darktea humanrightstech notabug disroot sourceforge; do
-  git push $remote $branches $opts &&
   git push $remote $branches $opts --tags || true
 done
