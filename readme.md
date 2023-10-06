@@ -266,16 +266,16 @@ todo: keep this section up to date
 git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (.*)$/\1\\. \2  /' | tac | head -n10
 ```
 
+935\. 437b416999fde6cf5d67e70e67da6a999f90760e `5250038e84d74ff68c542bc1c8c47ae7df163346` 2023-10-07 00:01:52 +0200 add  
+934\. f7e2bfac936fa2d85cb3f446c26fbe3d0f540692 `87bd12d2ca772ede5186907daac95eed48018123` 2023-10-06 22:51:56 +0200 up  
+933\. 311ca67dae34803189a7d244697f917deacf28d0 `e53bbd91e408c27d7005c243423c71f408903cd9` 2023-10-06 22:50:00 +0200 move-journal-to-branch  
+932\. 8cd1bb8e67be70c530f1313363b53cce477c0b5a `b0242a0b4dfd01fff8553b23e05cac6c1f7d1b1e` 2023-10-06 21:43:30 +0200 add  
+931\. 9347784962c306991409a62170c612fd222b460d `b19606f8d9e25a5d80e18228e10e1f36b707923a` 2023-10-06 22:08:32 +0200 add  
+930\. ee5c6613a7b7f0dac95f828909daad865ce16bbf `32c38862ad79269af0f58f5dd98ddeac8aead9e4` 2023-10-06 20:32:46 +0200 up  
 929\. c29612a110403d4c73dde40ee0a112db0a51b8bd `fb42fa8f0dc368515bbb01d77ff1a40a206c6f0c` 2023-10-04 15:26:10 +0200 add-sections-add-lang-en-unicode-to-ascii  
 928\. df83d44502d5555090a187ac477a5cdbe3bf5962 `daffe49f7f27e6dd7a00a398df2877f83d6d630d` 2023-10-04 14:00:38 +0200 up  
 927\. 2d7e6c57f666ad0772eefdab38b2aeff3e970bfb `0cb965a7d37a0a56fdee207da83a4f41d705183b` 2023-10-04 14:00:26 +0200 up  
 926\. c9d04d8a22839950853a2958e968190c7fe465df `1a7d0113e71a614040ef544b6d9341ea51f38278` 2023-10-04 14:00:11 +0200 up  
-925\. f1b16452e8b29365c6bc9dad13db325fbd1144a9 `e1f5293de522af4e6e227726125c4e7189f80227` 2023-10-04 13:59:39 +0200 add  
-924\. e692c57925a7a09d9bf9fba549590b2cd93f34f1 `cce729397df8dcc369554b3f4f276e26296e6a43` 2023-10-04 13:59:24 +0200 up  
-923\. 9655a984cb730f38f7c30c7812dcd949a3e9520e `f4d0d0e2dc6ac3b0a7bde24cd182441462d941ec` 2023-10-04 13:59:01 +0200 add  
-922\. 956739a628996b65d5fd62daefe397083eeb9be8 `894d9d703d9c4b86f4a83f7bde9a690bc56adb93` 2023-10-04 13:58:46 +0200 up  
-921\. bbc40bdcfa313b443903b808882d615e51f1f696 `dc02a156461639bac136710ba0e76e2e611890fc` 2023-10-04 13:23:00 +0200 add  
-920\. 8b968dba37b22c77faf7869514bb5570b8449a36 `eac61191cbe10eb6368ae81c4920675daded520d` 2023-09-30 01:53:56 +0200 add  
 
 #### first 10 commits
 
@@ -293,6 +293,44 @@ git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (
 3\. 20ef755fc0d3a50c68e8f2833d7b1757fd2836ac `6ee4bbff30aa0ca10a5ba8ac3b81d60c5b79f765` 2019-04-11 19:05:17 +0200 Add-existing-files  
 2\. 48127c4f49b3a3954453bb1cffc684d0253e9ae8 `8ade89190989bbb69dcace36688a3a6d33b2274b` 2019-02-19 16:09:32 +0100 Add-files-via-upload  
 1\. 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c `6a09968b401196949ba49065701f88d8dcf474e4` 2019-02-19 12:06:18 +0100 Initial-commit  
+
+#### git tags
+
+```
+git tag -l --format='%(objectname) %(refname)' --sort=authordate |
+while read hash ref; do
+  tree=$(git show --format=format:%T $hash | head -n1);
+  echo " $hash $tree $ref";
+done |
+grep -n '.*' | tac | sed -E 's|^([0-9]+): ([0-9a-f]+) ([0-9a-f]+) refs/tags/(.*)$|\1\\. \2 `\3` \4  |'
+
+{
+  git_ls_remote="$(git ls-remote https://github.com/milahu/alchi)";
+  echo "$git_ls_remote" | while read hash ref; do
+    if [[ "$ref" != "refs/tags/init" ]]; then continue; fi;
+    tree=$(git show --format=format:%T $hash | head -n1);
+    echo " $hash \`$tree\` $ref";
+  done;
+  echo "$git_ls_remote" | sort -k2 | while read hash ref; do
+    if ! echo "$ref" | grep -q -E -x "refs/tags/[0-9]{4}-[0-9]{2}-[0-9]{2}"; then continue; fi;
+    tree=$(git show --format=format:%T $hash | head -n1);
+    echo " $hash \`$tree\` $ref";
+  done;
+} |
+grep -n '.*' | tac | sed -E 's|^([0-9]+): ([0-9a-f]+) ([0-9a-f]+) refs/tags/(.*)$|\1\\. \2 `\3` \4  |'
+```
+
+11\. b1ffdcd5dc14527dbee3f6e16a98344f93f03ce1 `3fb3c3af96bc015ae2ef3e277b5a75f410e5cc49` 2023-08-28  
+10\. adcd827d873f613d7987b153d9df2e58f62a56d0 `58511db7acaae4e2e612f8ab5ab4832ce0645cd6` 2023-06-26  
+9\. 51de1ffbcbfdb489e679d3d4ed1de6f552a87b28 `53c039377f30647f1e30f58f96381c12b4e7484a` 2023-06-17  
+8\. eb6bf8433f84ca7e39f4bdc89a7d0bea800709f1 `3ba96a038e52e9ac25fc4bd1b9ba35b184621e76` 2022-12-14  
+7\. 568f72cde82ef621e553cd763fa935116be5c59e `93460d9973cdd980d762e3610467e9a9b3ab463a` 2022-11-22  
+6\. 386182e26c00e3a58bcf0d30d9db144799cd67c5 `04f2fa5d43f4bacc3524d966c6b0b4506af37740` 2022-10-28  
+5\. 682fb95f838574408a80576eab9c31bf0b6a78d8 `0d80bf7b8096784ee708050728958d0247afb1c4` 2022-10-27  
+4\. efbe1b9e37e38b0c534c7ace9f5be4522ac355be `cb248310aa7565a74b42ddb566839daed6f95f03` 2022-10-05  
+3\. 25b2807251fb03b88d4f0b9dd0ce5eca56650812 `9316fe1760dca554016b68262d2db5e8aa827460` 2022-09-30  
+2\. a2aecae678b84b863c8c168f4a5dd617694d8b6a `ddf3114c7e4ffc4119403b5b92225464308f3a6d` 2022-09-18  
+1\. 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c `6a09968b401196949ba49065701f88d8dcf474e4` init  
 
 ### git clone
 
