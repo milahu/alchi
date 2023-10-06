@@ -5,6 +5,8 @@ set -x
 
 opts="--force"
 
+branches="master journal"
+
 # done: remove. better: socks5h proxy:
 # git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone
 # git config --add remote.darktea.proxy socks5h://127.0.0.1:9050
@@ -59,6 +61,6 @@ if false; then
 fi
 
 for remote in github gitlab srht darktea humanrightstech notabug disroot sourceforge; do
-  git push $remote $opts &&
-  git push $remote --tags $opts || true
+  git push $remote $branches $opts &&
+  git push $remote $branches $opts --tags || true
 done
