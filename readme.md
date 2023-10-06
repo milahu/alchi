@@ -240,8 +240,7 @@ in the rare case that this project is censored, here are some mirror locations
 
 note: only some git hosters also offer static webhosting
 
-you may find other mirrors by the initial commit 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c of this repo.
-this is why i have the string `git9c6e723296fc7d8534cd901de0f0dcfd4765ea3c` in the repo description
+you may find other mirrors by searching for commit hashes of the [git log](#git-log)
 
 ### git log
 
