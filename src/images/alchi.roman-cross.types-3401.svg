@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 42.1">
+  <g font-family="sans-serif" font-size="3.5">
+    <path fill="none" stroke="#000" stroke-width=".3" d="M17 7.7v26.7m-6.7-6.7h13.4"/>
+    <text x="16" y="5.1">2</text>
+    <text x="16.2" y="39.5">1</text>
+    <text x="2.5" y="29">401</text>
+    <text x="26.1" y="29">301</text>
+  </g>
+</svg>
