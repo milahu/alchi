@@ -32,7 +32,7 @@ for branch in $branches; do
   if [[ "$branch" == "master" ]]; then
     git rebase remotes/$remote/$branch
   else
-    branch_path="$(git worktree list | grep " \[$branch\]$")"
+    branch_path="$(git worktree list | grep " \[$branch\]$" || true)"
     is_temp_branch_path=false
     if [ -n "$branch_path" ]; then
       branch_path="$(echo "$branch_path" | sed -E 's| +[0-9a-f]+ \[[^]]+\]$||')"
