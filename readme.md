@@ -364,12 +364,14 @@ git clone --mirror https://git.disroot.org/milahu/alchi alchi/.git
 git clone --mirror https://git.sr.ht/~milahu/alchi alchi/.git
 
 # darktea
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi alchi/.git
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone --mirror \
+  http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi alchi/.git
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 
 # righttoprivacy
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi alchi/.git
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone --mirror \
+  http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi alchi/.git
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 ```
