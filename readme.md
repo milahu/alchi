@@ -145,9 +145,12 @@ git clone --mirror https://github.com/milahu/alchi alchi/.git
 cd alchi
 git config --bool core.bare false
 git checkout master
+git worktree add journal/ journal
+xdg-open src/whoaremyfriends/whoaremyfriends.html
+xdg-open journal/index.html
 ```
 
-the program `git` is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
+the `git` program is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
 
 this also works with our [repo mirrors](#mirrors)
 
