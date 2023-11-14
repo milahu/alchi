@@ -26,11 +26,13 @@ git fetch $remote $branches --tags
 
 # rebase the main branches with changes from the main repo
 date=$(date +%F-%H-%M-%S)
+# stash changes to the master branch
 git stash -m "git pull-push $(date)"
 for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
   if [[ "$branch" == "master" ]]; then
     git rebase remotes/$remote/$branch
+    git stash pop
   else
     branch_path="$(git worktree list | grep " \[$branch\]$" || true)"
     is_temp_branch_path=false
@@ -41,13 +43,14 @@ for branch in $branches; do
       git worktree add "$branch_path" $branch
       is_temp_branch_path=true
     fi
+    git -C "$branch_path" stash -m "git pull-push $(date)"
     git -C "$branch_path" rebase remotes/$remote/$branch
     if $is_temp_branch_path; then
       git worktree remove "$branch_path"
     fi
+    git -C "$branch_path" stash pop
   fi
 done
-git stash pop
 
 # push changes to all repos
 
