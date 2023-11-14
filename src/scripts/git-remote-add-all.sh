@@ -40,7 +40,7 @@ git_remote_add notabug.org https://notabug.org/milahu/alchi
 
 git_remote_add disroot.org https://git.disroot.org/milahu/alchi
 
-git_remote_add sr.ht https://git.sr.ht/~milahu/alchi
+git_remote_add sr.ht git@git.sr.ht:~milahu/alchi
 
 git_remote_add darktea.onion http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
 
