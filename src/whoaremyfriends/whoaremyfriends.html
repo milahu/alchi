@@ -1083,7 +1083,7 @@
               // render was called manually
               // verbose feedback
               //alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
-              alert(`Druck-Layout fertig nach ${sec(book.stats.layout)} Sekunden`);
+              alert(`print layout ready after ${sec(book.stats.layout)} seconds`);
 
           }
           const header = document.querySelector('header');
@@ -1099,8 +1099,8 @@
           }
         });
         // TODO? remove navbar now, show long status message
-        renderButton.innerHTML = 'Drucken ...';
-        renderButton.setAttribute("title", "Bitte ein paar Sekunden warten, bis das Druck-Layout fertig ist");
+        renderButton.innerHTML = 'Print ...';
+        renderButton.setAttribute("title", "Please wait some seconds until the print layout is ready");
         document.body.classList.remove('screen-layout');
         document.body.classList.add('print-layout');
       }
