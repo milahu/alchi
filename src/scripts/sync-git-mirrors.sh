@@ -58,6 +58,9 @@ for remote in $(git remote show); do
   if [[ " $ignore_remotes " =~ " $remote " ]]; then
     continue
   fi
+  if echo "$remote" | grep -q readonly; then
+    continue
+  fi
   git push $remote $branches $opts || true
   git push $remote $branches $opts --tags || true
 done
