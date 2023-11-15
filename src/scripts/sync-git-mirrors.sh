@@ -8,8 +8,7 @@ opts="--force"
 branches="master journal"
 
 # try.gitea.io is a read-only mirror of the repo on github.com
-# we push manually to github.com
-ignore_remotes="try.gitea.io github.com"
+ignore_remotes="try.gitea.io"
 
 # done: remove. better: socks5h proxy:
 # git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone
@@ -25,6 +24,7 @@ remote=github.com
 git fetch $remote $branches --tags
 
 # rebase the main branches with changes from the main repo
+# usually, these changes come from the Issues2Markdown github action
 date=$(date +%F-%H-%M-%S)
 # stash changes to the master branch
 git stash -m "git pull-push $(date)"
