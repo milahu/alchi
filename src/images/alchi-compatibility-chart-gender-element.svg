@@ -40,46 +40,18 @@ width="900px" height="900px" -> dont "scale to fit" browser window
 
 </style>
 
-<defs>
-
-<!--
-  wontfix: svg pattern is blurry in some renderers
-  try to "print page" in chrome browser
-  workaround: use "print page" in firefox browser
--->
-
-<pattern id="same_class_lines" width="800" height="800" patternUnits="userSpaceOnUse">
-<g class="stroke nofill">
-
-<line x1="500" y1="500" x2="300" y2="300"/>
-<line x1="500" y1="300" x2="300" y2="500"/>
-<line x1="0" y1="0" x2="100" y2="100"/>
-<line x1="800" y1="800" x2="700" y2="700"/>
-<line x1="0" y1="800" x2="100" y2="700"/>
-<line x1="800" y1="0" x2="700" y2="100"/>
-<line x1="400" y1="0" x2="300" y2="100"/>
-<line x1="400" y1="0" x2="500" y2="100"/>
-<line x1="400" y1="800" x2="300" y2="700"/>
-<line x1="400" y1="800" x2="500" y2="700"/>
-<line x1="0" y1="400" x2="100" y2="300"/>
-<line x1="0" y1="400" x2="100" y2="500"/>
-<line x1="800" y1="400" x2="700" y2="300"/>
-<line x1="800" y1="400" x2="700" y2="500"/>
-
-<rect x="100" y="100" width="200" height="200"/>
-<rect x="500" y="100" width="200" height="200"/>
-<rect x="100" y="500" width="200" height="200"/>
-<rect x="500" y="500" width="200" height="200"/>
-</g>
-</pattern>
-</defs>
-
 <!-- 300/800 = 0.375 -->
-
+<!--
+5.3333333333 * 0.375 = 2
+8 * 0.375 = 3
+10.6666666666 * 0.375 = 4
+-->
+<!-- TODO remove -->
 <g transform="scale(0.375)">
 
+<!-- debug darkmode: black background -->
 <!--
-<rect id="bg-pattern" x="0" y="0" width="100%" height="100%" fill="url(#same_class_lines)"/>
+<rect x="0" y="0" width="800" height="800" fill="#000"/>
 -->
 
 <!-- micro bug: pattern lines are not clipped at boundary box -->
@@ -94,6 +66,27 @@ width="900px" height="900px" -> dont "scale to fit" browser window
   stroke-width="8"
   stroke-width="5.33333333333"
 -->
+
+<!-- darkmode: white shadow of black lines -->
+<path stroke="#fff" stroke-width="8" d="
+  M 500 500 L 300 300
+  M 500 300 L 300 500
+
+  M 0 0 L 100 100
+  M 800 800 L 700 700
+  M 0 800 L 100 700
+  M 800 0 L 700 100
+
+  M 400 0 L 300 100
+  M 400 0 L 500 100
+  M 400 800 L 300 700
+  M 400 800 L 500 700
+
+  M 0 400 L 100 300
+  M 0 400 L 100 500
+  M 800 400 L 700 300
+  M 800 400 L 700 500
+" />
 
 <path stroke-width="5.3333333333" d="
   M 500 500 L 300 300
@@ -115,6 +108,14 @@ width="900px" height="900px" -> dont "scale to fit" browser window
   M 800 400 L 700 500
 " />
 
+<!-- darkmode: white shadow of black lines -->
+<g stroke="#fff" stroke-width="8">
+<rect x="100" y="100" width="200" height="200"/>
+<rect x="500" y="100" width="200" height="200"/>
+<rect x="100" y="500" width="200" height="200"/>
+<rect x="500" y="500" width="200" height="200"/>
+</g>
+
 <rect x="100" y="100" width="200" height="200"/>
 <rect x="500" y="100" width="200" height="200"/>
 <rect x="100" y="500" width="200" height="200"/>
@@ -126,85 +127,68 @@ width="900px" height="900px" -> dont "scale to fit" browser window
 <g id="grid" dominant-baseline="middle" text-anchor="middle" font-family="sans">
 
 
+    <!-- darkmode: white shadow of black lines -->
+    <g fill="none">
+    <circle cx="0" cy="0" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="200" cy="0" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="400" cy="0" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="600" cy="0" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="0" cy="200" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="200" cy="200" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="400" cy="200" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="600" cy="200" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="0" cy="400" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="200" cy="400" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="400" cy="400" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="600" cy="400" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="0" cy="600" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="200" cy="600" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="400" cy="600" r="60" stroke-width="8" stroke="#fff" />
+    <circle cx="600" cy="600" r="60" stroke-width="8" stroke="#fff" />
+    </g>
+
+
+
     <circle cx="0" cy="0" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="0" y="0" font-size="60">F1</text>
-
-    
-
     <circle cx="200" cy="0" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="200" y="0" font-size="60">F2</text>
-
-    
-
     <circle cx="400" cy="0" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="400" y="0" font-size="60">F3</text>
-
-    
-
     <circle cx="600" cy="0" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="600" y="0" font-size="60">F4</text>
-
-    
-
     <circle cx="0" cy="200" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="0" y="200" font-size="60">M2</text>
-
-    
-
     <circle cx="200" cy="200" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="200" y="200" font-size="60">M1</text>
-
-    
-
     <circle cx="400" cy="200" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="400" y="200" font-size="60">M4</text>
-
-    
-
     <circle cx="600" cy="200" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="600" y="200" font-size="60">M3</text>
-
-    
-
     <circle cx="0" cy="400" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="0" y="400" font-size="60">F4</text>
-
-    
-
     <circle cx="200" cy="400" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="200" y="400" font-size="60">F3</text>
-
-    
-
     <circle cx="400" cy="400" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="400" y="400" font-size="60">F2</text>
-
-    
-
     <circle cx="600" cy="400" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="600" y="400" font-size="60">F1</text>
-
-    
-
     <circle cx="0" cy="600" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="0" y="600" font-size="60">M3</text>
-
-    
-
     <circle cx="200" cy="600" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="200" y="600" font-size="60">M4</text>
-
-    
-
     <circle cx="400" cy="600" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="400" y="600" font-size="60">M1</text>
-
-    
-
     <circle cx="600" cy="600" r="60" stroke-width="2" class="stroke fillbg" />
-    <text x="600" y="600" font-size="60">M2</text>
 
-    
+
+    <!-- useless, we need fillbg on <circle> to hide the pattern lines
+    also this would make the text smaller
+    so we would need to copy all <text> to create a white shadow
+    <g stroke="#fff" stroke-width="1">
+    </g>
+    -->
+    <text x="0" y="0" font-size="60">F1</text>
+    <text x="200" y="0" font-size="60">F2</text>
+    <text x="400" y="0" font-size="60">F3</text>
+    <text x="600" y="0" font-size="60">F4</text>
+    <text x="0" y="200" font-size="60">M2</text>
+    <text x="200" y="200" font-size="60">M1</text>
+    <text x="400" y="200" font-size="60">M4</text>
+    <text x="600" y="200" font-size="60">M3</text>
+    <text x="0" y="400" font-size="60">F4</text>
+    <text x="200" y="400" font-size="60">F3</text>
+    <text x="400" y="400" font-size="60">F2</text>
+    <text x="600" y="400" font-size="60">F1</text>
+    <text x="0" y="600" font-size="60">M3</text>
+    <text x="200" y="600" font-size="60">M4</text>
+    <text x="400" y="600" font-size="60">M1</text>
+    <text x="600" y="600" font-size="60">M2</text>
 
 </g>
 
