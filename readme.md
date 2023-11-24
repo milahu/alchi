@@ -401,29 +401,9 @@ git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (
 
 #### git tags
 
-```
-git tag -l --format='%(objectname) %(refname)' --sort=authordate |
-while read hash ref; do
-  tree=$(git show --format=format:%T $hash | head -n1);
-  echo " $hash $tree $ref";
-done |
-grep -n '.*' | tac | sed -E 's|^([0-9]+): ([0-9a-f]+) ([0-9a-f]+) refs/tags/(.*)$|\1\\. \2 `\3` \4  |'
+todo: [keep this section up to date](src/scripts/readme-update-git-tags.sh)
 
-{
-  git_ls_remote="$(git ls-remote https://github.com/milahu/alchi)";
-  echo "$git_ls_remote" | while read hash ref; do
-    if [[ "$ref" != "refs/tags/init" ]]; then continue; fi;
-    tree=$(git show --format=format:%T $hash | head -n1);
-    echo " $hash \`$tree\` $ref";
-  done;
-  echo "$git_ls_remote" | sort -k2 | while read hash ref; do
-    if ! echo "$ref" | grep -q -E -x "refs/tags/[0-9]{4}-[0-9]{2}-[0-9]{2}"; then continue; fi;
-    tree=$(git show --format=format:%T $hash | head -n1);
-    echo " $hash \`$tree\` $ref";
-  done;
-} |
-grep -n '.*' | tac | sed -E 's|^([0-9]+): ([0-9a-f]+) ([0-9a-f]+) refs/tags/(.*)$|\1\\. \2 `\3` \4  |'
-```
+<!-- <git-tags> -->
 
 11\. b1ffdcd5dc14527dbee3f6e16a98344f93f03ce1 `3fb3c3af96bc015ae2ef3e277b5a75f410e5cc49` 2023-08-28  
 10\. adcd827d873f613d7987b153d9df2e58f62a56d0 `58511db7acaae4e2e612f8ab5ab4832ce0645cd6` 2023-06-26  
@@ -436,6 +416,8 @@ grep -n '.*' | tac | sed -E 's|^([0-9]+): ([0-9a-f]+) ([0-9a-f]+) refs/tags/(.*)
 3\. 25b2807251fb03b88d4f0b9dd0ce5eca56650812 `9316fe1760dca554016b68262d2db5e8aa827460` 2022-09-30  
 2\. a2aecae678b84b863c8c168f4a5dd617694d8b6a `ddf3114c7e4ffc4119403b5b92225464308f3a6d` 2022-09-18  
 1\. 9c6e723296fc7d8534cd901de0f0dcfd4765ea3c `6a09968b401196949ba49065701f88d8dcf474e4` init  
+
+<!-- </git-tags> -->
 
 ### git clone
 
