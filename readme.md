@@ -36,7 +36,8 @@ but usually, personality types are **not** balanced (the usual "mental incest" a
 
 this repository is organized as a monorepo of multiple packages
 
-* [src/alchi-book/](src/alchi-book/)
+* [src/whoaremyfriends/](src/whoaremyfriends/)
+* [src/alchi-book/](src/alchi-book/) - old version of `src/whoaremyfriends/`
 * [src/alchi-flyer/](src/alchi-flyer/)
 * [src/alchi-tables/](src/alchi-tables/)
 * [src/alchi-maps/](src/alchi-maps/)
