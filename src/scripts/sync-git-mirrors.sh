@@ -64,3 +64,12 @@ for remote in $(git remote show); do
   git push $remote $branches $opts || true
   git push $remote $branches $opts --tags || true
 done
+
+# codeberg.org has no automatic update like github pages
+echo updating https://milahu.codeberg.page/alchi/
+git push codeberg.org master:pages
+
+# sourceforge.net has no automatic update like github pages
+echo updating https://milahu-alchi.sourceforge.io/
+repo_root="$(dirname "$0")"/../..
+"$repo_root/src/scripts/sync-sourceforge-pages.sh"
