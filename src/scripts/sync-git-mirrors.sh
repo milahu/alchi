@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# chdir to repo root
+cd "$(dirname "$0")"/../..
+
 opts="--force"
 
 main_branch="master"
