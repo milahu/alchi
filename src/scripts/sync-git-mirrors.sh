@@ -5,10 +5,18 @@ set -x
 
 opts="--force"
 
-branches="master journal"
+main_branch="master"
+
+extra_branches="journal"
+
+branches="$main_branch $extra_branches"
 
 # try.gitea.io is a read-only mirror of the repo on github.com
 ignore_remotes="try.gitea.io"
+
+# force english language so we can parse git output
+export LANG=C
+export LC_ALL=C
 
 # done: remove. better: socks5h proxy:
 # git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone
@@ -26,13 +34,21 @@ git fetch $remote $branches --tags
 # rebase the main branches with changes from the main repo
 # usually, these changes come from the Issues2Markdown github action
 date=$(date +%F-%H-%M-%S)
-# stash changes to the master branch
-git stash -m "git pull-push $(date)"
+# stash changes to the main branch
+stash_output="$(git stash -m "git pull-push $(date)")"
+echo "$stash_output"
+if [[ "$stash_output" == "No local changes to save" ]]; then
+  did_stash_main=false
+else
+  did_stash_main=true
+fi
 for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
-  if [[ "$branch" == "master" ]]; then
+  if [[ "$branch" == "$main_branch" ]]; then
     git rebase remotes/$remote/$branch
-    git stash pop
+    if $did_stash_main; then
+      git stash pop
+    fi
   else
     branch_path="$(git worktree list | grep " \[$branch\]$" || true)"
     is_temp_branch_path=false
@@ -43,12 +59,20 @@ for branch in $branches; do
       git worktree add "$branch_path" $branch
       is_temp_branch_path=true
     fi
-    git -C "$branch_path" stash -m "git pull-push $(date)"
+    stash_output="$(git -C "$branch_path" stash -m "git pull-push $(date)")"
+    echo "$stash_output"
+    if [[ "$stash_output" == "No local changes to save" ]]; then
+      did_stash=false
+    else
+      did_stash=true
+    fi
     git -C "$branch_path" rebase remotes/$remote/$branch
     if $is_temp_branch_path; then
       git worktree remove "$branch_path"
     fi
-    git -C "$branch_path" stash pop
+    if $did_stash; then
+      git -C "$branch_path" stash pop
+    fi
   fi
 done
 
@@ -61,13 +85,14 @@ for remote in $(git remote show); do
   if echo "$remote" | grep -q readonly; then
     continue
   fi
+  # TODO push branches and tags in one command
   git push $remote $branches $opts || true
   git push $remote $branches $opts --tags || true
 done
 
 # codeberg.org has no automatic update like github pages
 echo updating https://milahu.codeberg.page/alchi/
-git push codeberg.org master:pages
+git push codeberg.org $main_branch:pages
 
 # sourceforge.net has no automatic update like github pages
 echo updating https://milahu-alchi.sourceforge.io/
