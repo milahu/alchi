@@ -634,6 +634,10 @@ milahu's location is near Munich, Germany.
 
 -->
 
+## related projects
+
+- [personality-database.com](https://www.personality-database.com/) - personality types of famous people. everyone can contribute his opinion
+
 ## keywords
 
 some keywords (tags) for search engine optimization (SEO)
@@ -1215,6 +1219,9 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * antisocial
   * individualism
   * capitalism (latin "caput" is one head)
+* Pallas. Who are my friends. Group composition by personality type
+  * Pallas. Who are my friends. Stable groups by personality type
+  * Pallas. Wer sind meine Freunde. Gruppenaufbau nach Persönlichkeitstyp
 
 <!--
 
