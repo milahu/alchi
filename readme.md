@@ -675,6 +675,18 @@ some keywords (tags) for search engine optimization (SEO)
   * personality type is NOT related to birthday
 * alternative to calendar astrology
 * what is natural order
+* natural communism
+  * real communism
+  * actual communism
+  * communism only works in small groups of 150 people (dunbar's number)
+  * all large groups (all groups larger than 150 people) are ruled by socialists and fascists = personality types 34 (type 3 and type 4)
+  * capitalism is the natural partner of communism = type 2 is the natural partner of type 1
+    * capitalism and communism go hand in hand = type 2 and type 1
+      * capitalism in public, communism in private
+      * captialism on the outside, communism on the inside
+    * socialism and fascism go hand in hand = type 3 and type 4
+      * socialism in public, fascism in private
+      * socialism on the outside, fascism on the inside
 * primitive culture
   * minimalism
   * natural religion
@@ -735,7 +747,7 @@ some keywords (tags) for search engine optimization (SEO)
       * liberals prefer friends over family
         * [reddit: Liberals, relative to conservatives, express greater moral concern toward friends relative to family, and the world relative to the nation](https://www.reddit.com/r/science/comments/dbynle/liberals_relative_to_conservatives_express/)
           * [2016election.procon.org: Differences in Conservative and Liberal Brains. 20 peer-reviewed studies show liberals and conservatives physiologically different (disgusting image of cutting fingers)](https://2016election.procon.org/view.resource.php?resourceID=005927)
-          * Study suggests that leftists have an almost precisely inverted scale of values compared to rightists. Instead of a hierarchy of concern with one’s own family, nation, and race highest on the scale, leftists place abstractions like “all objects in the universe” — including such things as rocks — or “all mankind” — in first place. ([nationalvanguard: Psychology: Liberals Care More About Rocks Than About Their Own Families](https://nationalvanguard.org/2020/07/psychology-liberals-care-more-about-rocks-than-their-own-families/))
+          * Study suggests that leftists have an almost precisely inverted scale of values compared to rightists. Instead of a hierarchy of concern with one’s own family, nation, and race highest on the scale, leftists place abstractions like "all objects in the universe" — including such things as rocks — or "all mankind" — in first place. ([nationalvanguard: Psychology: Liberals Care More About Rocks Than About Their Own Families](https://nationalvanguard.org/2020/07/psychology-liberals-care-more-about-rocks-than-their-own-families/))
           * Liberals as you may suspect are more open to new ideas and are therefore more willing to change.  They are more likely to focus on the good things in change, hoping for the best.  Conservatives tend to be reluctant to change, fearing that change may ruin the good things and bring more problems; unintended consequences.  Such an outlook tends to track with age; younger people tend to be more liberal and older people tend to be more conservative. ([ethicsdefined: Conservatives VS. Liberals](http://ethicsdefined.org/the-problem-with-morality/conservatives-vs-liberals/))
             * "Such an outlook tends to track with age", so this is expression of mental age.
               * type 1 + type 3 = young brain = liberal = driven by lust = positive motivation = seeking types = agressive
@@ -774,7 +786,7 @@ some keywords (tags) for search engine optimization (SEO)
     * systemic bias towards extraverts
     * systemic bias against extraverts
       * [Susan Cain: QUIET. The Power of Introverts in a World That Can’t Stop Talking](https://books-that-can-change-your-life.net/power-of-introverts/)
-        * Summary of “Quiet, The Power of Introverts in a World that Can’t Stop Talking”: This book praises the many qualities of the introverted in a society that favours extroversion to excess; there is an overview of current theories on introversion, many tips on how to be happier as an introvert and some ideas on how to find a harmonious balance between introverted and extroverted.
+        * Summary of "Quiet, The Power of Introverts in a World that Can’t Stop Talking": This book praises the many qualities of the introverted in a society that favours extroversion to excess; there is an overview of current theories on introversion, many tips on how to be happier as an introvert and some ideas on how to find a harmonious balance between introverted and extroverted.
         * define version! what exactly is introversion/extraversion? carl jung says: version is a subtype, so it's variable (same as modality in astrology). (opposed to jungian functions, which are constant = basetype)
   * systemic racism (define race!)
 * physiognomy
@@ -837,6 +849,45 @@ some keywords (tags) for search engine optimization (SEO)
   * start small, stay small
   * dunbar's number 150
     * [exact value for dunbar's number is 144 = 12 x 12 = 3 x 4 x 3 x 4](src/images/dunbar-number--natural-hierarchy--base-twelve-system--natural-coordinate-system.svg)
+* legalize serial murder
+  * decriminalize serial murder
+  * the criminalization of serial murder is a desperate rebellion against the laws of nature
+  * fuck pacifism
+  * hate pacifism
+  * pacifism was the most stupid invention in human history
+  * serial murder is the only alternative to mass murder (wars and famines)
+  * serial murder is the best solution to the problems of overpopulation and degeneration
+  * serial murder is the only way of natural selection,
+    for more beauty, fitness, strength, smartness, real value
+  * https://www.quora.com/Are-serial-killers-a-possible-tool-of-nature-to-regulate-overpopulation-to-an-extent/answer/Mila-Nautikus
+    * Are serial killers a possible tool of nature to regulate overpopulation to an extent?
+    * no, to fight overpopulation we need mass murder.
+    * the goal is to kill around 90% of the current population. see the georgia guidestones: "Maintain humanity under 500,000,000". to realize this mass murder, we recruit "born serial killers" (25% of the population, element fire), organize militias, and start a global civil war, everywhere at the same time (operation lockstep).
+    * after this "purge" we will legalize serial murder, to regularly get rid of all the trash humans, that we always will produce (ugly, sick, weak, unloved) -> human sacrifice, child sacrifice, euthanasia.
+    * source: i see myself as a "born serial killer" and to me its ridiculously obvious that the criminalization of murder (aka civilization) is the root of all evil. my enemies (luciferians, high agreeableness, socialists, pro life, red blood, hot temper, emotional, sympathicotonia, elements air and water) call me "satan", they tell me that my feelings are wrong, and make me an outlaw ...
+    * but its them who build the "hell on earth", and its me who could build paradise on earth. the only missing link is "interpersonal compatibility" which im trying to solve in my "alchi" project at https://github.com/milahu/alchi
+* 99 percent of all people are idiots
+  * ninetynine percent of all people are idiots
+  * im with stupid
+  * im with idiots
+  * im surrounded by idiots
+  * idiocracy is here and now
+  * the world is ruled by stupid and evil people
+  * the world is ruled by evil and stupid people
+  * by nature, only about 90 percent are idiots,
+    but most of the 10 percent smart people do not use their potential,
+    and they act stupid and polite, to fit in with the stupid majority
+* red pills
+  * redpills
+  * redpill
+  * redpilled
+  * hard truth
+  * hard truths
+  * bitter truth
+  * bitter truths
+  * dirty facts
+  * hate me cos im honest
+  * hate me because i am honest
 
 ### more keywords
 
@@ -875,12 +926,21 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * choreography
 * dualism
 * justice
+  * justice is better than equality
+  * communism is better than socialism
+  * many small-states are better than one global empire
+* hate imperialism
+  * fuck imperialism
+  * hate the empire
+  * fuck the empire
 * balance
 * small states
 * cultural mosaic
 * natural education
 * school of life
 * post collapse
+  * post collapse culture
+  * post-collapse culture
 * family versus friends
 * bottom-up organization
 * small is beautiful
@@ -889,8 +949,6 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * human resources management
 * world formula
 * basic principles
-* post collapse culture
-* post-collapse culture
 * village culture
 * postmodern culture
 * what would noah do?
@@ -1026,7 +1084,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
       * [Gruppendenken](https://de.wikipedia.org/wiki/Gruppendenken)
         * "Gruppendenken ist ein möglicher Prozess innerhalb einer Gruppe. Kompetente Personen treffen dabei schlechtere oder realitätsfernere Entscheidungen, weil jede ihre Meinung an die erwartete Gruppenmeinung anpasst."
         * "Daraus können Situationen entstehen, bei denen die Gruppe Handlungen oder Kompromissen zustimmt, die jedes einzelne Gruppenmitglied unter anderen Umständen ablehnen würde."
-        * "Nach Janis ist Groupthink ein „Denkmodus, den Personen verwenden, wenn das Streben nach Einmütigkeit in einer kohäsiven Gruppe derart dominant wird, dass es dahin tendiert, die realistische Abschätzung von Handlungsalternativen außer Kraft zu setzen“."
+        * "Nach Janis ist Groupthink ein „Denkmodus, den Personen verwenden, wenn das Streben nach Einmütigkeit in einer kohäsiven Gruppe derart dominant wird, dass es dahin tendiert, die realistische Abschätzung von Handlungsalternativen außer Kraft zu setzen"."
         * geist der quantität, mehrheitswahlrecht, safety in numbers, mitläufer
         * kollektivismus, sozialismus, faschismus, große gruppen, städte, kirchen, staaten, imperien
         * freiheit wird geopfert zum gewinn von sicherheit
@@ -1036,7 +1094,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
         " "Für das Management ist es eine schmerzhafte Entscheidung. In der Begründung heisst es: das harmonisches Gruppendenken ist oberstes Ziel in unserer Firma, und wenn wir den hervorragenden Mitarbeiter befördern, dann zerstört das die bestehende Rangordnung der zwischenmenschlichen Beziehungen. Die Manager klagen: Was sollen wir sonst tun?" - William H. Whyte
         * "Caring Culture" vs "Results Culture" in Culture Alignment Framework (CAF) by Spencer Stuart
         * [Gruppennarzissmus](https://de.wikipedia.org/wiki/Gruppennarzissmus)
-          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/…, wobei sie bei anderen nur Negatives erkennen"
+          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/..., wobei sie bei anderen nur Negatives erkennen"
           * verschwörung
             * manche menschen (typen 34?) haben ein natürliche neigung zum aufbau von verschwörungen
             * wer solche verschwörungen bewusst wahrnimmt, der ist für diese menschen ein "verschwörungstheoretiker"
@@ -1048,7 +1106,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
           * faschismus = bündelung zu großer zahl
           * alleine sind wir schwach, gemeinsam sind wir stark
           * "Gruppennarzissmus ist die Übertragung des eigenen Narzissmus einer Person auf eine soziale Gruppe, auf die Nation, auf eine Kirche (religiöser Narzissmus) oder eine Gruppierung, die eine bestimmte Anschauung vertritt u. ä."
-          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/…, wobei sie bei anderen nur Negatives erkennen"
+          * "Die betroffenen Personen behaupten z. B., ihre Nation sei die Beste unter allen Nationen. Dabei sehen sie nur die positiven Seiten ihrer eigenen Nation/Religion/..., wobei sie bei anderen nur Negatives erkennen"
           * gegenteil: individualnarzissmus = typen 12
             * typ 1 = grandiose narciss = "teufel" = lebendes vorbild für herrenmoral (34x1) = könig der herren
               "Grandiose narcissism is defined by an inflated sense of self-worth and high self-esteem, interpersonal exploitativeness, social dominance and assertiveness, shamelessness and a sense of entitlement derived from feelings of superiority or prestige"
@@ -1072,14 +1130,14 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * "Since the beginning of the 20th century, Canada has been one of the world's major immigrant-receiving societies. Until the 1960s immigrants were expected to assimilate into the mainstream society. Arriving as it did during a time of social upheaval, Porter's work had a marked influence on Canadian social policy. The view of Canada as a mosaic of cultures became the basis for the Trudeau government's multiculturalism policies in the early 1970s."
 * [naturreligion](https://de.wikipedia.org/wiki/Naturreligion_(Begriff))
   * schriftlose Kultur: gefühl ist alles. schrift wird immer nur falsch verstanden.
-  * "Der Sammelbegriff Naturreligion ist eine heute von vielen Ethnologen und Religionswissenschaftlern als veraltet und irreführend abgelehnte Bezeichnung für die ethnischen Religionen schriftloser Kulturen. Im Gegensatz zu den gleichfalls beanstandeten Bezeichnungen „Primitivreligion“, „archaische Religion“ oder „Stammesreligion“ wird Naturreligion dennoch in populärer Literatur nach wie vor häufig verwendet."
+  * "Der Sammelbegriff Naturreligion ist eine heute von vielen Ethnologen und Religionswissenschaftlern als veraltet und irreführend abgelehnte Bezeichnung für die ethnischen Religionen schriftloser Kulturen. Im Gegensatz zu den gleichfalls beanstandeten Bezeichnungen „Primitivreligion", „archaische Religion" oder „Stammesreligion" wird Naturreligion dennoch in populärer Literatur nach wie vor häufig verwendet."
   * ""Ältere Darstellungen stellen "Naturreligionen" oft den "Kulturreligionen" gegenüber.""
   * "Natur, Primitivität und Zivilisationslosigkeit werden in krassen Gegensatz zu Kultur gestellt."
   * "Die Begriffe Naturreligionen und Naturvölker verweisen außerdem auf einen vermeintlich idealen Urzustand, auf den Traum von der Ganzheitlichkeit des Lebens." (paradies auf erden vs paradies im himmel) (echtes glück vs virtuelles glück) (herrenmoral vs sklavenmoral)
-  * "unabhängig von der wissenschaftshistorischen Verwendung bezeichnen auch einige Anhänger neuheidnischer Bewegungen ihre Überzeugung als „Naturreligion“."
-  * „Ethnische Religionen werden [von den neuheidnischen Bewegungen] vorwiegend als Naturreligionen wahrgenommen, und der selektive Zugriff auf sie ist Bestandteil spätmoderner Spiritualität.“
+  * "unabhängig von der wissenschaftshistorischen Verwendung bezeichnen auch einige Anhänger neuheidnischer Bewegungen ihre Überzeugung als „Naturreligion"."
+  * „Ethnische Religionen werden [von den neuheidnischen Bewegungen] vorwiegend als Naturreligionen wahrgenommen, und der selektive Zugriff auf sie ist Bestandteil spätmoderner Spiritualität."
   * [Neopaganismus](https://de.wikipedia.org/wiki/Neopaganismus) (neuheidnische Bewegungen)
-    * von lateinisch paganus „heidnisch“
+    * von lateinisch paganus „heidnisch"
     * "religiöse und kulturelle Strömungen, die sich vor allem an antikem, keltischem, germanischem und slawischem Heidentum sowie an außereuropäischen ethnischen Religionen orientieren"
     * "häufig nicht in großen Organisationen zusammengefasst" (kleine gruppen)
     * "Wicca und verwandte Bewegungen sind nach unterschiedlichen Schätzungen von mehreren Tausend mit bis zu 100.000 Anhängern in Deutschland die größte neuheidnische Richtung."
@@ -1089,7 +1147,7 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
       * "Betonung der Freiheit des Einzelnen" (individualismus) (typen 12)
       * "Kritik an monotheistischen, hierarchischen und dogmatischen Religionen wie dem Christentum" (gegenteil: typen 34)
       * dualismus
-        * "Hexentum und Wicca: Der Wicca-Glaube wird manchmal, aufgrund seiner Ausrichtung auf die Verehrung von Gott und Göttin, als „Duotheismus“ oder „Bitheismus“ bezeichnet"
+        * "Hexentum und Wicca: Der Wicca-Glaube wird manchmal, aufgrund seiner Ausrichtung auf die Verehrung von Gott und Göttin, als „Duotheismus" oder „Bitheismus" bezeichnet"
       * "Einen großen Einfluss auf den Neopaganismus hatten auch die Theorien des Psychologen Carl Gustav Jung, welcher die verschiedenen Gottheiten als Archetypen der Seele aller Menschen interpretierte."
       * "C. G. Jung wird in vielen Strömungen, wie z. B. Wicca, rezipiert: So wird sein Mutterarchetyp mit der Göttin und der Vaterarchetyp mit dem Gott identifiziert und sogar Jungs Theorie selbst ein inhärenter Paganismus attestiert."
       * paradies auf erden
@@ -1099,16 +1157,16 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
         * makrokosmos ist nicht relevant
       * "Die Wurzeln des Neopaganismus reichen zurück bis in die Renaissance, als antike Mythologie und Philosophie wiederentdeckt wurden."
         * "Dezidiert antichristliche Positionen vertrat der byzantinische Philosoph Georgios Gemistos Plethon, der eine zweite platonische Akademie gründete und auf neuplatonischer Basis die alte griechische Religion wiederbeleben wollte."
-        * "Wegen ihrer Beschäftigung mit den antiken heidnischen Philosophen wurde vielen Humanisten vorgeworfen, „Heiden“, insbesondere Epikureer, zu sein."
+        * "Wegen ihrer Beschäftigung mit den antiken heidnischen Philosophen wurde vielen Humanisten vorgeworfen, „Heiden", insbesondere Epikureer, zu sein."
         * epikur: lebe im verborgenen, lebe privat, lebe in kleinen gruppen
-      * "Die „Modernisten“ versuchen, vom Stand der heutigen wissenschaftlichen Erkenntnisse ausgehend, eine Religion des Einklangs der beseelten Natur mit dem Menschen - wie in animistischen Religionen - zu leben. Sie bekennen sich dazu, neue religiöse Formen zu erschaffen."
+      * "Die „Modernisten" versuchen, vom Stand der heutigen wissenschaftlichen Erkenntnisse ausgehend, eine Religion des Einklangs der beseelten Natur mit dem Menschen - wie in animistischen Religionen - zu leben. Sie bekennen sich dazu, neue religiöse Formen zu erschaffen."
       * "Für das neuheidnische Hexenbild ist die Interpretation von Jacob Grimm am wichtigsten, der in seiner Deutschen Mythologie den Hexenglauben als Ausdruck des naturcultus unserer vorfahren interpretiert und die Hexen auf weise Frauen zurückführte, die in der heidnischen Gesellschaft als Heilkundige, Seherinnen und Priesterinnen eine zentrale Funktion erfüllt hätten."
       * "... neuzeitlichen Hexenverfolgung, welche auch Männer betraf ..."
   * glaube an eine naturordnung
     * natur ist stärker als kultur
     * kindischer eigenwille ist wichtiger als falsche erwartungen von lehrern. schlaue kinder und dumme eltern.
   * Stammesreligion, réligion tribale, tribal religion
-  * "Die sogenannten „Stammesreligionen“ werden in vielen Staaten der dritten Welt immer noch als „primitiv und unterentwickelt“ stigmatisiert, zumal die herrschende Klasse dieser Länder in der Regel nach christlichen, islamischen oder kommunistischen Vorlagen ausgebildet wurde. In den Schwellenländern ist die Situation noch ungünstiger, da traditionell lebende Gruppen hier meist als entwicklungshemmend gelten: Entweder werden sie offensiv unterdrückt oder die Errichtung moderner technischer und sozialer Infrastruktur zerstört automatisch das alte Weltbild - und mit ihm die Religion."
+  * "Die sogenannten „Stammesreligionen" werden in vielen Staaten der dritten Welt immer noch als „primitiv und unterentwickelt" stigmatisiert, zumal die herrschende Klasse dieser Länder in der Regel nach christlichen, islamischen oder kommunistischen Vorlagen ausgebildet wurde. In den Schwellenländern ist die Situation noch ungünstiger, da traditionell lebende Gruppen hier meist als entwicklungshemmend gelten: Entweder werden sie offensiv unterdrückt oder die Errichtung moderner technischer und sozialer Infrastruktur zerstört automatisch das alte Weltbild - und mit ihm die Religion."
   * römer gegen gallier
     * römer gegen germanen
   * [Neo-ethnische Religionen](https://de.wikipedia.org/wiki/Ethnische_Religionen#Neo-ethnische_Religionen)
@@ -1191,6 +1249,9 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * arrogance
 * radical solutions for radical problems
   * a radical solution for a radical problem
+  * radical problems require radical solutions
+  * radical problems need radical solutions
+  * radical problems call for radical solutions
   * "radical" as in ...
     * early
       * early childhood
@@ -1222,6 +1283,94 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * Pallas. Who are my friends. Group composition by personality type
   * Pallas. Who are my friends. Stable groups by personality type
   * Pallas. Wer sind meine Freunde. Gruppenaufbau nach Persönlichkeitstyp
+* private
+  * secret
+  * esoteric
+    * extraterrestrial
+    * not from this earth
+    * not from this world
+    * alien
+* rational intelligence
+  * hard skill
+  * hard skills
+  * emos gonna cry
+  * snowflakes gonna melt
+  * pussies gonna bleed
+* taboo
+  * banned from public
+  * censored
+  * illegal
+  * criminalized
+  * wrongthink
+  * thoughtcrime
+  * thought crime
+  * thoughtcriminal
+  * thought criminal
+  * illegal feelings
+  * illegal thoughts
+  * where you stop thinking, i start thinking
+  * where your fun ends, my fun starts
+  * your taboos are my interests
+  * your hell is my heaven
+  * your crimes are my duties
+  * your crimes are my work
+* hunted by the thought-police
+  * hunted by the thoughtpolice
+  * hunted by the ministry of truth
+  * hunted by the CIA
+  * hunted by the catholics in action
+  * hunted by militant pacifists
+  * hunted by militant citizens
+  * hunted by extreme leftists
+  * hunted by thought-stopping
+  * hunted by thoughtstopping
+  * hunted by useful idiots who feel offended and call the cops
+* censored
+  * banned on reddit
+  * banned on twitter
+* citizen science
+  * amateur science
+  * children science
+  * i am 14 and i think this is deep
+* i am too smart for this world
+* my enemies say that my work is...
+  * hatespeech
+  * disturbing the public peace
+  * antipacifist
+  * antipacifism
+  * intellectual tourette syndrome
+  * intelligent tourette syndrome
+  * rational tourette syndrome
+  * intellectual tourette's syndrome
+  * intelligent tourette's syndrome
+  * rational tourette's syndrome
+  * intellectual terrorism
+  * intelligent terrorism
+  * rational terrorism
+  * mental terrorism
+  * psychological terrorism
+  * crazy and dangerous
+  * a provocation
+* my enemies say that i am...
+  * crazy and dangerous
+  * a provocateur
+  * an intellectual terrorist
+  * a devil's advocate
+  * an advocatus diaboli
+  * a devil
+  * a satan
+  * too smart for this world
+  * crazy and proud of it (grandiose narciss)
+  * too proud
+    * too attention-seeking
+* master morality
+  * mastermorality
+  * friedrich nietzsche would like this
+  * friedrich nietzsche would applaud my work
+* i am a grandiose narciss = personality type 1
+  * i am a natural opposite of all "vulnerable" people = personality type 2
+    (basetype 2 or subtype 2)
+    (subtype 2 = types 3402 = type 302 and type 402)
 
 <!--
 
@@ -1269,6 +1418,15 @@ https://github.com/milahu/alchi
    * fick die schule
    * fick die uni
 * verrückt und gefährlich
+  * §63 StGB
+    * § 63 StGB
+    * paragraph 63
+    * paragraf 63
+    * paragraph63
+    * paragraf63
+    * 63er
+    * dreiundsechziger
+    * https://dejure.org/gesetze/StGB/63.html
   * fuck the system, aber diesmal richtig
   * anleitung zum bauernaufstand
   * anleitung zur kulturrevolution
@@ -1279,5 +1437,28 @@ https://github.com/milahu/alchi
 * freiwilligkeit
   * eine große theorie der freiwilligkeit
   * beziehungen müssen freiwillig sein, also beide seiten dürfen "nein" sagen = beide seiten haben ein vetorecht
+* meine feinde sagen dass meine arbeit ist...
+  * hassrede
+  * volksverhetzung
+  * den öffentlichen frieden stören
+  * eine gefahr für den öffentlichen frieden
+* ist das noch pubertät, oder schon mid-life-crisis? (Maxim, K.I.Z - kinderkram)
+* ich bin fertig mit dieser welt
+  * ich habe die wichtigsten probleme verstanden,
+    und ich habe einen lösungsvorschlag (eine hypothese) gefunden,
+    und jetzt will ich wissen:
+    ist mein lösungsvorschlag richtig oder falsch?
+    ist meine hypothese richtig oder falsch?
+    viele menschen werden versuchen,
+    diese frage "rein intellektuell" zu beantworten,
+    also viele menschen werden versuchen,
+    meinen lösungsvorschlag zu vergleichen mit ihrer subjektiven "moral",
+    und wenn ihre subjektive moral sagt "dieser lösungsvorschlag" ist falsch,
+    dann ist er "falsch".
+    aber das ist keine wissenschaft, sondern religion.
+    wissenschaft fordert experimente:
+    learning by doing.
+    probieren geht über studieren.
+    vergleich macht schlau, monotonie macht dumm.
 
 </details>
