@@ -1,55 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="utf-8">
-
-  <title>pallas</title>
-
-  <style type="text/css">
-
-    #center {
-      position: absolute; top: 50%;
-      height: 1em; margin-top: -0.5em;      
-      width: 100%;
-      text-align: center;
-    }
-
-    body, a {
-      background: #000000;
-      color: #ffffff;
-      font-family: sans-serif;
-      margin: 0; padding: 0;
-      text-decoration: none;
-    }
-
-  </style>
-
-</head>
-<body>
-
-<div id="center">
-  
-  redirecting to ....
-  
-  <a id="redir" href="src/whoaremyfriends/whoaremyfriends.html">src/whoaremyfriends/whoaremyfriends.html</a>
-
-</div>
-
-<script>
-
-  const link = document.getElementById('redir');
-  const new_url = link.getAttribute('href');
-  const redir_delay = 1000 * 2;
-
-  setTimeout(
-    function(){
-      window.location.replace(new_url);
-    },
-    redir_delay
-  );
-
-</script>
-
-</body>
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=src/whoaremyfriends/whoaremyfriends.html" />
+  </head>
+  <body>
+    redirecting to
+    <a href="src/whoaremyfriends/whoaremyfriends.html"
+    >src/whoaremyfriends/whoaremyfriends.html</a>
+  </body>
 </html>
