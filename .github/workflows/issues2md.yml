@@ -54,7 +54,8 @@ jobs:
           base=$(basename $ghmd_path)
           base=${base%.*}
           md_path=$GH2MD_OUTPUT_PATH/md/$base.md
-          pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict --wrap preserve $ghmd_path -o $md_path
+          #pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict --wrap preserve $ghmd_path -o $md_path
+          pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict $ghmd_path -o $md_path
         done
     #- name: "cleanup: move .ghmd files to separate folder"
     #  run: |
