@@ -2,23 +2,39 @@
 
 main_branches="master journal"
 
+username=milahu
 
+force=true
 
 function git_remote_add() {
 
   local name="$1"
   local url="$2"
 
+  exists=false
   if git remote get-url "$name" >/dev/null 2>&1; then
+    exists=true
+  fi
+
+  if ! $force && $exists; then
     # remote with this name already exists
     echo "remote exists: $name"
     return
   fi
 
-  echo "adding remote: $name"
-  git remote add "$name" "$url"
+  # add username
+  url="$(echo "$url" | sed -E "s|^(https?://)|\1${username}@|")"
+
+  if ! $exists; then
+    echo "adding remote: $name"
+    git remote add "$name" "$url"
+  else
+    echo "updating remote: $name"
+    git remote set-url "$name" "$url"
+  fi
 
   if echo "$name" | grep -q '.onion$'; then
+    echo "torifying remote: $name"
     git config --add "remote.$name.proxy" socks5h://127.0.0.1:9050
   fi
 
