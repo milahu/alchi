@@ -99,5 +99,5 @@ git push codeberg.org $main_branch:pages
 
 # sourceforge.net has no automatic update like github pages
 echo updating https://milahu-alchi.sourceforge.io/
-repo_root="$(dirname "$0")"/../..
+repo_root="$(readlink -f "$(dirname "$0")"/../..)"
 "$repo_root/src/scripts/sync-sourceforge-pages.sh"
