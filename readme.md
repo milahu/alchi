@@ -225,7 +225,6 @@ in the rare case that this project is censored, here are some mirror locations
 * gitlab.com: https://gitlab.com/milahu/alchi + https://milahu.gitlab.io/alchi/
 * codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
 * sourceforge.net: https://sourceforge.net/projects/milahu-alchi/ + https://milahu-alchi.sourceforge.io/
-* gitea.io: https://try.gitea.io/milahu/alchi
 * notabug.org: https://notabug.org/milahu/alchi
 * disroot.org: https://git.disroot.org/milahu/alchi
 * sr.ht: https://git.sr.ht/~milahu/alchi
@@ -428,9 +427,6 @@ git clone --mirror https://codeberg.org/milahu/alchi alchi/.git
 # sourceforge.net
 # https://sourceforge.net/projects/milahu-alchi/
 git clone --mirror https://git.code.sf.net/p/milahu-alchi/code alchi/.git
-
-# gitea.io
-git clone --mirror https://try.gitea.io/milahu/alchi alchi/.git
 
 # notabug.org
 git clone --mirror https://notabug.org/milahu/alchi alchi/.git
