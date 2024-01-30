@@ -127,20 +127,6 @@ would be merged into the alchi-book:
 * [deutsch/](deutsch/)
 * [src/images/](src/images/) (todo: remove old files)
 
-### permalinks
-
-a note to myself and other contributors:
-
-when moving files, make sure that the old URLs are still reachable
-
-ideally replace the old file with a relative link to the new location, like
-
-```html
-<html>
-moved to <a href="path/to/new/file.html">path/to/new/file.html</a>
-</html>
-```
-
 ## download
 
 all files and versions can be downloaded with the linux command
@@ -277,6 +263,92 @@ git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (
 
 <!-- <last-100-commits> -->
 
+1067\. 6c72d7be978477106dbc29b03e2f53d844cd2c9d `da4c761b9a32c4dfca4b44ca258cae45a501e1f2` 2024-01-30 08:23:23 +0100 fix-redirect  
+1066\. 771513c186e4309421c6f1256241e1a53b900677 `9c929fd4906a9135746aac5cc56d3645b122f8fe` 2024-01-30 08:22:09 +0100 add-redirects  
+1065\. 9825cf16e1707f6e27ed04fc3351339ab180a9f0 `0f685d683e5c67f2bf08be11f2530bdc73fca214` 2024-01-29 13:21:16 +0100 split-para  
+1064\. 8ef2b49769ad1b723df3f723e3a852b86d630402 `af2748b1ca2457e1ec13c0a5de012c828198b5ba` 2024-01-29 13:20:53 +0100 add-section-linear-groups-of-four  
+1063\. bbea1db0941da57d3b81c9fb54cd882ae1b73ff2 `e322cb9bd8e6873b45dfc716aedc470c19a93b46` 2024-01-29 13:10:37 +0100 add-alchi.pallas-pattern.square-F1L-F2S-F3L-F4S.svg  
+1062\. 6e804557dfe1f83c2a62644a00e3c979d01e5297 `8c0a07eda8e677bdf3cb4ee4685608ffc12275e5` 2024-01-29 13:10:20 +0100 add-alchi.pallas-pattern.square-F1L-M2L-F4L-M3L.svg  
+1061\. 9eea5363981f6752b8a365c8fab2c843aec21e2c `47268c9154ae3716eaf25cb7b83b787f99f6c276` 2024-01-28 11:41:24 +0100 fix-wording  
+1060\. 6d0d573f90db74e0e502785ec3a3fc21b01e309b `4ba0baa5c9b3a3b41fd4ca0d38f6e59da703e7fc` 2024-01-28 11:41:14 +0100 expand-section-adolf-hitler-the-jewish-question  
+1059\. 6ce0c2d2556d87e5355e4aa628ee9f3832a04d24 `968486ddcb0dd1aa5c78662b765c5d82980d85d2` 2024-01-28 11:19:11 +0100 expand-section-afd-is-moderate-right  
+1058\. c7f6d206ca2f9f50fa14ec563eb4b08677d37120 `93e29fb7031ba082ae06d0976fe2d4a498933680` 2024-01-28 10:56:02 +0100 fix-print-layout  
+1057\. 4dbaba1aeb37538b13067e60825fbb3f7c77fcc5 `7a87b538d4cd839c1fbf6a59c61c6e2765655e9c` 2024-01-28 10:53:26 +0100 expand-section-afd-is-moderate-right  
+1056\. 0b136d833e58756842f8cc7b10568e078dfd20a3 `b1f27710065886e71ff9d2e6cf526905049e3dc5` 2024-01-28 10:52:34 +0100 add-section-justice-at-sex  
+1055\. 9dd7c8ff82a0b04f6c7de069c07ed1a738b9997b `6fa85986e35236c412be92efe5002bf25bc60af4` 2024-01-28 10:51:52 +0100 expand-section-concepts-serious-personality-tests  
+1054\. 5316113eb1a033492e259cd1e9bb47dca9ad100c `90e3b4545c10a52484c9ea534c99a39291612402` 2024-01-28 10:43:18 +0100 update-printer  
+1053\. 583a34770ef7c913c90a031ec62298dc0817b8b2 `c105f366c7319fa847def703334b52aa2b480877` 2024-01-28 10:18:08 +0100 fix-heading  
+1052\. faeffc93448a66e64fbe6be821e1e11c73e1d1ba `3131ad15d27d02103efe65ea536a3120b49a111a` 2024-01-28 10:17:59 +0100 fix-html  
+1051\. 3f41c05beed703753df00a063305f7c9ea71f430 `24007cde71ba5a8f4ff550357f591afa0ec6343a` 2024-01-28 10:17:22 +0100 expand  
+1050\. 2b0819f7b68a31ea928dbb5a1c1cc2302fdaa5c8 `973cd4a66a2f39eea2d109292c5f7a0884138098` 2024-01-28 10:16:40 +0100 fix-html  
+1049\. d5b8e743793811a2c96bfcef8aeab6118174d15a `67294b27b6f7b6f254383f252e3efb5126b88bbe` 2024-01-28 10:15:58 +0100 add-links-to-sections  
+1048\. 0af429d3655f03015c89b7f5eba53bcb9274959c `0a465d208b5c14b9fb3b75fb00d0d9f2cb712891` 2024-01-28 10:14:18 +0100 fix-nav-ids  
+1047\. 7c4c1deb61614590dd385d0166748424b6316928 `a22c71f997c6189202b324f6f3f659211900b46a` 2024-01-17 11:05:46 +0100 add-quote-by-Albert-Bartlett  
+1046\. a3dcbf91a658bff41ccff8aff2fca21c1e1fe491 `883d6f21741f788997f5f9845abe7f05dc220b30` 2024-01-07 13:21:31 +0100 add-section-vitamin-c-synthesis-in-the-human-body  
+1045\. e9986bf4e3389cb28e1e6c4fd7570424deedd489 `08ea381cdaf1ae60afb78f79b64688a881176e96` 2024-01-07 13:22:39 +0100 fix-quote-by-Sherri-Tenpenny  
+1044\. 8dbcd59b5a9aa8243d1b89cd9c87b0724a6c6709 `762677c0d69bb44a85801faede4346c5fdc57186` 2024-01-07 09:04:46 +0100 add-quote-Utopia-S02E01-A-monologue-on-overpopulation  
+1043\. 71921d0ef43a8756b7cee19d25b9847d78ce209f `7eaba624c0d0b13b3f15b53d0d86b0461ced0a68` 2024-01-06 14:06:14 +0100 move-section-concepts-math-modulo-five  
+1042\. 1269fb5bd9127fd8ce679985995e9e6692aa04bc `439a13e4ebe026c2f9b114983873becf6a85d193` 2024-01-06 14:04:01 +0100 wording-expand-fix  
+1041\. bd987d450796592665f9f456cece4a557a3ce0ca `24f635ff51c66065132c91166c0d33a0a8c73605` 2024-01-06 12:07:45 +0100 fix-para-Niccolo-Machiavelli-The-Prince  
+1040\. 0448f7fffdfa3466755d55844e39bb5e019660e1 `e8ff8561040b8c6de46dd64f06c6bc54d6684440` 2024-01-06 12:03:32 +0100 fix-translation  
+1039\. a5c743c5444a923407a0d50c5660dee4ccbb5314 `992e955a8d35151919d984d9daed94a475856c9b` 2024-01-06 12:03:12 +0100 add-quote-by-Thomas-Jefferson  
+1038\. 06cb3c5559217c14ec66cbd5355dae35d5a8dd62 `8414bab99efbe1aaf0d1d5ef368e2754f1d5d47a` 2024-01-26 00:30:52 +0000 up-archive-github-issues  
+1037\. 880ae5dd108139d422eed8e3d3ac1ca002c9f7c2 `0a072d4557702ec7f58ddb20dee5f5f8a4abe6c3` 2024-01-24 00:33:23 +0000 up-archive-github-issues  
+1036\. eeb87c2ec964f33dccef0b604b7dd6c1f78a49c1 `d1e7c7fc6fdb5af23e9ad740b7a717eae7810957` 2024-01-17 00:32:55 +0000 up-archive-github-issues  
+1035\. c0fbc64bbbb988b6c8f752477441c93012c8f938 `10b14e3e5df6402954649cc4aa7938f27871b882` 2023-12-27 15:33:28 +0100 fix  
+1034\. 6dd651577957c9c68fdd5fae6813536823c1d5e1 `80be84ed034e24ac4d3eb6c990ad66a87a79b9ac` 2023-12-27 10:24:34 +0100 up  
+1033\. 7276175e387254de70ea4638c71094c3e9dd1fa1 `b0601bd4fac6204af052b9323b0efb0a645c3914` 2023-12-27 10:11:14 +0100 fix-section-five-value-scales  
+1032\. 8705375ca14dc089b4ba7a5c8ea2d3000dda4ddc `4520a6f1b6620ebcea13c9a09b6579201f2e7f04` 2023-12-27 10:10:14 +0100 up  
+1031\. b98455071af0d3cce8e331feca7bb3f5cbc6ee8f `7e979bd6c0322092cebab2bcfd46fe2822d9b8f6` 2023-12-27 09:40:36 +0100 style-add-custom-element-note  
+1030\. dff504846d8b38f58dfd1cdea9619a99849888a3 `fc7a13799e0a3710ce1ee877ccaff1934c79859b` 2023-12-27 09:39:07 +0100 rm-pandoc-wrap-preserve  
+1029\. e40b2f901f64f5a72e373cb182fefde3a09b925a `a980aff9a926f25eb6cc0381ddc3b70692e9e5be` 2023-12-21 17:51:45 +0100 rm-wersindmeinefreunde.md  
+1028\. 5661e5ef922724266143f59daefa0d085cc723fd `b4a9f5873443cdd2be54b1440e77647b875a1733` 2023-12-21 17:45:39 +0100 pandoc-wrap-preserve  
+1027\. 6a844f8c6a757fceee23d324da959c98c689377a `8c75742d3f26b45901e95e6f48ddb6b56a1a4414` 2023-12-18 13:56:51 +0100 svg-move-fix  
+1026\. c3347291c421d773a2ec9384027566b59d7a9b0c `9c132826d9b1b2c7194104696bbe94143526ee06` 2023-12-14 18:22:56 +0100 fix-redirect  
+1025\. 7a53f1d458513e604579601dc4378f6ac42159a9 `561f22801add3659145b6dff3b3931eca4987808` 2023-12-14 18:20:52 +0100 fix-redirect  
+1024\. c999dfe124404744d77f38106c90647dac7bc592 `28c963f7f0d87225964d67dcf4ed391846ae3a99` 2023-12-14 17:43:14 +0100 up  
+1023\. 0e64f0e7ed5e9446a31984af0c9829d86dce557d `6ed2340faae937a5f3e2081a6744e91344141869` 2023-12-14 17:19:14 +0100 up  
+1022\. fafd485c27502d3fd18210f3ab990bcacb3d6567 `89320188fb9aa3f9832149c421477e7ef2bc5e35` 2023-12-19 00:32:17 +0000 up-archive-github-issues  
+1021\. 8a74e12c1b1b1f78cc1259c63d8cf98269b65bbb `006a0105c0056241f0415c6d4b47ee4b2a2862c0` 2023-12-14 15:03:05 +0100 fix-description  
+1020\. 7771a822cda6b1c759f5943b06fc4d2b28721402 `f3ba3a3e9d27eb67e3e1bdba38595a460280fb53` 2023-12-14 09:09:24 +0100 fix-style  
+1019\. 65d569c5055e97681f7430d4b5dee04268a3676e `0b59f64e10bc262f4ecd6417e8bce43190966bc5` 2023-12-13 17:22:26 +0100 fix-english-translation-add-sections  
+1018\. 3da1026df987d06f653a433a689a4e08cd203c80 `ca2ae04941a6fdd0b322db3698855738e5e152c9` 2023-12-13 16:22:43 +0100 up  
+1017\. ac9d5100da507147141b2a56d149a508012ecf0b `c51f37698bcf0175dc90b1672a863c4585c06808` 2023-12-13 16:16:36 +0100 up  
+1016\. 0f3db71670aa1626dc2a9a41d3607cadab61476a `821bdad8eea6ee7822b643869c6086771fdbb0e6` 2023-11-28 14:28:26 +0100 add-more-cancer-cures  
+1015\. 4f16a829697456b110c9974cdd01cb328bf91975 `1799de380784e6d2abe45a4e4ea0c00508487649` 2023-11-28 07:11:15 +0100 add-quote-by-Mark-Twain  
+1014\. a6ad1d0b784a4fc4070a1011934d3c1d2af407c8 `4407b945c9017f3728cd6de9caed27bed4c49b91` 2023-11-28 07:07:53 +0100 add-quote-by-Mark-Twain  
+1013\. fabb48e484aaca770cd0ccce7d0c775d7739ec47 `2db3db4961f9edc130924a6da3c85676df72b305` 2023-11-27 11:28:14 +0100 fix-translation  
+1012\. 218874c4918082377f55df4741850baf68d9b191 `416f05bed784d508413d4225b3c972c2bb813f94` 2023-11-26 21:17:49 +0100 add-quote-by-Epicurus  
+1011\. c331c7f013e8fa08a10ff5c341c70d1a6d258755 `e674e7162e04838615df94d1935cfa642eda8abc` 2023-11-26 20:50:09 +0100 add-Yuri-Bezmenov-Ideological-Subversion  
+1010\. 41ad8c4b2c124dfc20547047ba85e5bfbc0ab19e `5fe6517ce2ef15cfb881db3a0e07239c6f65caa1` 2023-11-26 20:47:42 +0100 add-quote-by-Thomas-Jefferson  
+1009\. 5db77168f34eb9735b1de4bc3ecc68014fee10cc `99dbdc57eb7feb12ab6303f170523c122710cbbf` 2023-11-26 20:43:12 +0100 add-quote-by-Bernard-Dalbergue  
+1008\. eccedcd7558ae3db464b87f98b44f520cd559bda `c29ad76c0a472bc595a79a83d801755b863ec3a3` 2023-11-26 20:37:05 +0100 fix-quotes  
+1007\. 1e14d872adbac39cb9185a3840f8063b85843675 `232af61b25b0a15f40a340d34fa0f044f4b7bc05` 2023-11-26 20:32:28 +0100 uppercase-DOCTYPE  
+1006\. 882b66966442e7b10c459999d7622926170c5d5e `f7ab72ba877d975ca05685668fb45b16cc406523` 2023-11-26 20:31:25 +0100 add-symlink-pallas.html  
+1005\. 4bbefa58a96931e4929a4e70aa272bdd31765e88 `40eb40e339b460c1422afa6bdcf9af348f8067ef` 2023-11-26 20:29:03 +0100 add-quote-from-Futurama-S06E07-The-Late-Philip-J-Fry  
+1004\. e494023f8e35f92c73ea42049271056af0eef32f `a1d0042e5791f73ea5fa4aa37b39b022f92fb8f1` 2023-11-26 20:22:22 +0100 add-quote-by-Cushing-Daniel  
+1003\. 352dd0dc81dea8cc9c9292a2a95119e60838ead2 `9f7f15ef671b217e3b58c736a381c232f947d644` 2023-11-26 18:33:42 +0100 fix-stgb-63  
+1002\. 74f2a5c8c9b0115e81274c8d0e5ee1031fd3e382 `921d7547f0955e20ae2c100e54ec3d98d4981a52` 2023-11-26 18:33:07 +0100 fix-english-title  
+1001\. ec573593680c24222de8be54054ece9657827bd5 `073a8107c1e082716542f287600f54757eb8f92b` 2023-11-26 16:28:41 +0100 add-quote-by-Noel-Ignatiev  
+1000\. 9b1bb8038241c3c7754275d9429338739b08f8cc `fc333ad3022ad37799ec86e9100caec13210127c` 2023-11-26 16:23:42 +0100 add-social-links  
+999\. 1e38519462090104ff98008d7861c4552bf30a58 `b58868356d0d260c6c8a8ecc6cb99b61c0f8f0a7` 2023-11-26 16:21:22 +0100 expand-quote  
+998\. 1d0c9d54a30a89ec91b53bc690f900e2d27f9d58 `11617411d18ffa1cdbd837454536bf4af9cbb647` 2023-11-26 16:18:25 +0100 add-saying  
+997\. 03f37d586c7889cfc7868fea656c018794251ec1 `7924a5b06880d40aa7c112aba04978b3959fa532` 2023-11-26 16:16:34 +0100 fix-lang-attrs  
+996\. d81430df6700631dba404480ba81a7f60e281fb3 `427762b7b01f3c6d77b0b76cedcaf487e6ae24ab` 2023-11-26 16:14:46 +0100 add-keywords  
+995\. 7f3180db679243702debce7940e39c5b174357bc `40f7329ca92f358b1f4aceb3a21bf723dfa043ff` 2023-11-26 16:11:38 +0100 fix-quotes-in-comment  
+994\. bf05a0ddedea60ace2432f7cbdeeda42db889744 `a84221857b46d16b8c71da4d813eb67b9808b1db` 2023-11-26 16:11:08 +0100 add-A-Christian-reflection-on-the-New-Age  
+993\. 521d06c16eff5082dd6818ff791489a939f5ac2b `53147c7d448b783fcd74282ae3e1e4b9c55c2718` 2023-11-26 15:52:57 +0100 add-Hans-Eysenck  
+992\. 8354491817ee426aba1ff1e8dc566990c05102de `6aa6c39c5176bd80ec340fa1a9f4fd4b9e3c5ce2` 2023-11-25 14:25:41 +0100 add-hausdurchsuchung-gegen-buchdrucker.html  
+991\. 04d34f84a7b4c3b603114d79172a56ec9422449b `b66f6beeb5239df738a79b822e9bb1bf42aefbd0` 2023-11-25 11:41:10 +0100 add-milahu-avatar.jpg  
+990\. d4710d221dbae58b6f443e2e8cb142dbbf6e0a44 `ee150eae05f1a005a9cd1b4e72b9781802486501` 2023-11-25 10:33:15 +0100 up-sync-git-mirrors.sh  
+989\. c13875db89eaf2f6df4e0681d05c6ee32c20f309 `54abf7935fa6c0eefac80c529784fb0d6f4d7b33` 2023-11-25 09:39:05 +0100 up-sync-git-mirrors.sh  
+988\. 0e3b1ae7f85d4ed6e778c3a7e833cfbefafdc3cb `26b50c40b50c620df965cfb77eab7852d30399dc` 2023-11-25 00:30:03 +0000 up-archive-github-issues  
+987\. ac2f5c40b3e4991b5ed4871c2263b7e80fef61c8 `7072a5cfdc66d9f6825efafd39225eec6113ce01` 2023-11-24 10:12:08 +0100 up-readme.md  
+986\. d8de7a536b376d55dc9e340682373508bbf3c7de `510bb655f28f1e4005ee33d058078dfa3f295085` 2023-11-24 10:08:49 +0100 svg-fix-darkmode  
+985\. 50ff493691579182bcbebe3042819a8a41259df2 `757f99b51cb9bc41fee2ec486cd42059601ae76f` 2023-11-24 09:34:37 +0100 up-readme.md  
+984\. d4e54e5f64b9f08f3155593646b4e6fbd66eaa1e `40bc5fe1b59785e224ca26cca2bdbc2994810ccf` 2023-11-24 09:34:29 +0100 add-readme-update-git-tags.sh  
+983\. 25101e0a87d8375889e06daaa88f084acf5551c9 `254931885b98088f5295b3c7eb234a26ddb46b18` 2023-11-24 09:21:29 +0100 add-readme-update-last-100-commits.sh  
+982\. 5e997c082a53650ad18a60c666312de5309a0d6c `33769a663dd438400e672cd53a95fc290b12ae39` 2023-11-24 09:21:10 +0100 up-readme.md  
 981\. 976dfa610f77d4b9dd97bb169e79e91a5ec82977 `6663f1aafc6bbdfad52bc68a53ae405527fda652` 2023-11-24 08:40:19 +0100 up-sync-git-mirrors.sh  
 980\. 05cfcf88c68981a8a6aa1ba662d03034d061e432 `413a273e1ceef685998ff05a64f3f4a3ad0ae303` 2023-11-24 07:46:02 +0100 add-2-empty-pages  
 979\. 48be50370bb21246939b77b1d1f7b4c8598e5647 `fc499bb91794b4e8e21063def86aa54866ee2c26` 2023-11-24 07:45:45 +0100 fix-alt-text-of-pallas-symbol  
@@ -291,92 +363,6 @@ git log --format=' %H `%T` %ai %f' | tac | grep -n '.*' | sed -E 's/^([0-9]+): (
 970\. 2947eb695123e562e5f84b7380e17dbe374ae584 `95dad2f164258036e494f29aee3d24af57945bd5` 2023-11-14 18:42:16 +0100 rename-mirror-to-righttoprivacy  
 969\. 1acee72a9c5f90febc927e38f9233950067181cd `5b2e523880d8a169ef6c0cd813e7ee980800f759` 2023-11-14 18:41:47 +0100 fix-title  
 968\. c03e29717ccbdbcc47e7fb962d67d6740b123df2 `ba5e98728301eec9af3bb337f2d230a930893e3f` 2023-11-14 18:23:11 +0100 up  
-967\. 4938d4ee7ffd23100684e33d72bac214015adc84 `db3b12ef1014a5507f4d14f8696745878bbe2fa6` 2023-11-14 18:11:56 +0100 up  
-966\. 2abd258a570c64f36888ac5d4bfc335f9d122ac3 `ab6da98c1e0508b290c949e1d45a76d8effcdc09` 2023-11-14 17:58:48 +0100 up  
-965\. 2c4b25951ee9c932ec7ddc4a32f59c5d8ee4c5b1 `be5d6ffe36d786f7a045560c6f1270eaf9b57338` 2023-11-15 00:31:26 +0000 up-archive-github-issues  
-964\. fd684d588077e3f05f479b4a4975cfdd3fa269cd `83d2af46cf277a45236934756c1003efe35bd2a5` 2023-11-14 17:51:18 +0100 up  
-963\. e043ac0e052d62ae1f8c5a3626082199e035acf0 `1803d46281b0a9ad1150285078d84d13f35b3647` 2023-11-14 17:50:23 +0100 update-german-version  
-962\. f9356650451a732ce96c8fc0ded2450bb71e46b1 `c286ccf7de8ff0ff9c26c91e1e36fe96a46cd162` 2023-11-14 17:50:10 +0100 fix-english-translation.-mostly-done  
-961\. c33c5ad569bc48f91530b180a13f1a7ecb399568 `2e6ccc8331ab0f5301a38d4a32b7cbafdd553ef4` 2023-10-26 19:38:12 +0200 fix-english-translation.-WIP.-done-about-30  
-960\. 8e01e172dadaa990bd9431809ed7b2d8f08cadcd `b9cd8468ca2efaf9072985b7d1adad1473f1ea23` 2023-10-26 11:49:26 +0200 add-english-translation-from-google-translate  
-959\. 1bcabff62baf4463728eb6588043500a980de2bc `5a390ad77d0d39c6b1ac9a0a8b3ddb782954b5c6` 2023-10-17 08:39:26 +0200 fix  
-958\. 92464edd72b40bac942f2140083e397033c2cdc9 `1e235d72733b6a36701f4381f9064b6ec84704c3` 2023-10-17 08:43:25 +0200 up  
-957\. 80e1c06d29c750da27f536e171be43145c85dd76 `19efd7a06729061fc01c4814bd1fe87b37ce0658` 2023-10-17 08:38:47 +0200 run-refactor-html.js  
-956\. 10f41a4305bbf6264ac6a2af789c85026d30f7ff `fdad8adbe6ec8296e1b3459e5c4a804249eb4b06` 2023-10-17 08:38:26 +0200 add-refactor-html.js  
-955\. 7f449d018754a89ca36ed3f4b7fbaecbbe6f9820 `71e013ba934c85fbc77f0528a098e3031c3c82dc` 2023-10-17 08:37:42 +0200 up  
-954\. 8d3a295254435c4767a17114623c7cbd87b735cf `3d6e3cf910dfd4b71b8691d86064d5b1a138a7bc` 2023-10-17 08:34:28 +0200 up  
-953\. 81f43ed049f84ea4d9a863e55e6a0c3104493801 `dee61b4a46fa49fad83fb47061e8553067a3f7b4` 2023-10-17 08:32:26 +0200 up  
-952\. b52c63eff0b7b60d2295c390621762187b4470de `f323317f4fdbf30f316cb8b51303381c6601050d` 2023-10-11 18:01:09 +0200 fix-english-translation  
-951\. c981f57021a43b237700e962720c9d1a038f5709 `58f3f2c617e595c1d186f750308fef7c7bdd77d8` 2023-10-11 14:55:09 +0200 add-english-translation-from-google-translate  
-950\. 02846cf6d2bde84e8658a37a4934109c956ac252 `0df7ba80bb5e9874d6cbfb70621e2450fe17e355` 2023-10-10 09:40:50 +0200 up  
-949\. c4350cff047b10312b772ebdb95d206dbadbae76 `f04e7cb7761e582205146de3df839668eb65fd1a` 2023-10-10 09:29:21 +0200 mv  
-948\. fcec802a6996a3d4f9f85bd3f35ca69ca8be5233 `7e1319e144d4536f326d3ae7fa19156b7618a9f5` 2023-10-09 21:06:50 +0200 up  
-947\. ca5173c6de76125352f708c614354e602a7508d9 `30df3780316aa5fd0c23170cafec6acb545aabe4` 2023-10-09 20:22:51 +0200 up  
-946\. 25a3fba78252fb17a0549eeebb043f2c7ada0189 `9ba9a4bf79057401b150898bb18a34ecdd481f89` 2023-10-09 19:29:34 +0200 fix-git-clone  
-945\. d4db1f565e5ae98965f4229eca641d273a680d63 `a536f4a91b754b18f8191d40d78b1ea1f947a9e7` 2023-10-09 17:37:26 +0200 up  
-944\. 96dbc96e475b15d2080a28d30fa8c95f566e396f `e9fb3516a06c01a1e423bc45426d9b57fcd006d0` 2023-10-07 17:37:44 +0200 add  
-943\. a60a4be4770d989fc9a292198424239d54179bc5 `d9d17c27e2fd1eff4e2ff6b0e5e3d3f92fcd4051` 2023-10-07 11:51:42 +0200 lowercase  
-942\. a67ce01e02f1252983832f895462829a089083b4 `dea160cef472ec28bcf07f8506985ceb6fe8abf6` 2023-10-07 01:41:51 +0200 up  
-941\. 8b3a5eb387bedb21c2834c7fb8cf1a889ff58941 `a169b9b246d452a4b5bfc4b75287bf4dc59129e2` 2023-10-07 01:38:51 +0200 up  
-940\. ec332930461763f564c6159673aa92cc8ab3e5a4 `a4f2316d12a49001bcbdf6cbb8160ae6adc86582` 2023-10-07 01:32:49 +0200 up  
-939\. 3795644c601b6e1d2cfadb6b0eff82629875da09 `03326b2a2f3f3f94c3f14021dcffd3dad99419a3` 2023-10-07 01:17:57 +0200 up  
-938\. 527fd3f9913dae795c7208260ce68acf59107a92 `9aebcd81cce2570f5751f29b3858148785fac5db` 2023-10-07 00:59:35 +0200 add  
-937\. 30d3f077495fd112de30678bdac488d1a8291f59 `9c9b1fca6958eb32bff8aecb77b0df8d840d6079` 2023-10-07 00:09:19 +0200 up  
-936\. 988c91612e09d82ce3e2d605e1baf5aae06a915d `1c8eb572cd67f2990b3e6368dab64d6bbb49abd4` 2023-10-07 00:04:15 +0200 add-section-git-tags  
-935\. 437b416999fde6cf5d67e70e67da6a999f90760e `5250038e84d74ff68c542bc1c8c47ae7df163346` 2023-10-07 00:01:52 +0200 add  
-934\. f7e2bfac936fa2d85cb3f446c26fbe3d0f540692 `87bd12d2ca772ede5186907daac95eed48018123` 2023-10-06 22:51:56 +0200 up  
-933\. 311ca67dae34803189a7d244697f917deacf28d0 `e53bbd91e408c27d7005c243423c71f408903cd9` 2023-10-06 22:50:00 +0200 move-journal-to-branch  
-932\. 8cd1bb8e67be70c530f1313363b53cce477c0b5a `b0242a0b4dfd01fff8553b23e05cac6c1f7d1b1e` 2023-10-06 21:43:30 +0200 add  
-931\. 9347784962c306991409a62170c612fd222b460d `b19606f8d9e25a5d80e18228e10e1f36b707923a` 2023-10-06 22:08:32 +0200 add  
-930\. ee5c6613a7b7f0dac95f828909daad865ce16bbf `32c38862ad79269af0f58f5dd98ddeac8aead9e4` 2023-10-06 20:32:46 +0200 up  
-929\. c29612a110403d4c73dde40ee0a112db0a51b8bd `fb42fa8f0dc368515bbb01d77ff1a40a206c6f0c` 2023-10-04 15:26:10 +0200 add-sections-add-lang-en-unicode-to-ascii  
-928\. df83d44502d5555090a187ac477a5cdbe3bf5962 `daffe49f7f27e6dd7a00a398df2877f83d6d630d` 2023-10-04 14:00:38 +0200 up  
-927\. 2d7e6c57f666ad0772eefdab38b2aeff3e970bfb `0cb965a7d37a0a56fdee207da83a4f41d705183b` 2023-10-04 14:00:26 +0200 up  
-926\. c9d04d8a22839950853a2958e968190c7fe465df `1a7d0113e71a614040ef544b6d9341ea51f38278` 2023-10-04 14:00:11 +0200 up  
-925\. f1b16452e8b29365c6bc9dad13db325fbd1144a9 `e1f5293de522af4e6e227726125c4e7189f80227` 2023-10-04 13:59:39 +0200 add  
-924\. e692c57925a7a09d9bf9fba549590b2cd93f34f1 `cce729397df8dcc369554b3f4f276e26296e6a43` 2023-10-04 13:59:24 +0200 up  
-923\. 9655a984cb730f38f7c30c7812dcd949a3e9520e `f4d0d0e2dc6ac3b0a7bde24cd182441462d941ec` 2023-10-04 13:59:01 +0200 add  
-922\. 956739a628996b65d5fd62daefe397083eeb9be8 `894d9d703d9c4b86f4a83f7bde9a690bc56adb93` 2023-10-04 13:58:46 +0200 up  
-921\. bbc40bdcfa313b443903b808882d615e51f1f696 `dc02a156461639bac136710ba0e76e2e611890fc` 2023-10-04 13:23:00 +0200 add  
-920\. 8b968dba37b22c77faf7869514bb5570b8449a36 `eac61191cbe10eb6368ae81c4920675daded520d` 2023-09-30 01:53:56 +0200 add  
-919\. 0138fe91ae1289f2d6e1c0ffa9a8eb4c8890dd8e `f41ce6f8a88c76528c68bd8c5b8fd88584912ace` 2023-09-30 00:28:59 +0000 up-archive-github-issues  
-918\. b0fbf70f2c7a4bad77b655a41e2532699682cf5e `2881fecedb7c3cdceefdf70a8b592f14a1111e5f` 2023-09-29 17:57:17 +0200 add-mirror-sourceforge.net  
-917\. 66666bfdd17a8379e4e65eba760dafa7f751af2b `d5758b1e8684a23b17499e6f7d645d0d0b44e1a5` 2023-09-24 12:20:25 +0200 up  
-916\. 23aaf7c325ed1429a7fac954ce7f982a4905d1b0 `7b6970868310a43c5696036abefafdab493ae51e` 2023-09-24 12:14:21 +0200 up  
-915\. 0c590e28f091d7f6737da310dca29f0c2d4f51a9 `5ccb73815f6fc568a23e7f76b0819e44b3ea184d` 2023-09-24 12:05:01 +0200 up  
-914\. 6ffd4bee49704848e95031a8258c3396e6f9239b `f013377a7c88b461bd46226d88f9c5e31ad80ffb` 2023-09-24 00:31:43 +0000 up-archive-github-issues  
-913\. 34491e9829b56769d3daa3e85c94ffca02c8d577 `4e703e9e24657026a4e6b7571fe0eaab2e19e8a0` 2023-09-23 00:28:16 +0000 up-archive-github-issues  
-912\. c0d10fc76e47453aa4c2168a92705b0ff71e71f7 `8a7b50b28a279f9a1d1a3361d2c60fa688f0cfe7` 2023-09-21 00:29:11 +0000 up-archive-github-issues  
-911\. 6faa86c1ffbcfdfa856db5b55e73a0a29bfdd145 `aef51be9f47a50822757f6b9662e9a448bb2ca79` 2023-09-14 00:29:16 +0000 up-archive-github-issues  
-910\. 6fdf885ca02e875a210f6debde24756da84fe5d6 `f2f7b4e80b41192f5afb01ac48da93e821d5f658` 2023-09-13 00:29:42 +0000 up-archive-github-issues  
-909\. 62942604aac910b232fa92f18a3b60debfd7ca5f `94cdf99a24c46287ca8e2a17a2bf35ce9e0cef35` 2023-09-12 15:47:09 +0200 add-section-git-log  
-908\. 5c23d477dbf3584896ee0f92d80e6020706d5a1d `2a91283c0e49bbc4c7fd91b36696439ec9044b0b` 2023-09-09 00:28:13 +0000 up-archive-github-issues  
-907\. 5af1dbe3ebc19ed6e52ed4da5a57b354b76cfa41 `3232805eea0d80794ba2ab9ea450496fe0cc00b4` 2023-09-05 08:06:21 +0200 issues2md-be-quiet  
-906\. 2cdc0f3b3ac3bbe0f13a1c5038a20143fbae8ccc `98ee835656d8563ebd54e91970ae19e8af7f9535` 2023-09-05 08:04:50 +0200 issues2md-build-index.sh-be-quiet  
-905\. ad60c52dbb1583d7a85b935742ffeed172b35cad `6c71d92dd01af9b91823217b6e6a3c4db86badcb` 2023-09-05 06:02:04 +0000 up-archive-github-issues  
-904\. f6fff902bf524e037e02ca3436b84e0ff76f7535 `e83ced61fb38b02ddee313e8841b0b5a234dd9eb` 2023-09-05 08:00:41 +0200 issues2md-fix-path-to-issues2md-build-index.sh  
-903\. d6fee644bb48249b55fdd602890c42b69c004bdc `beb0e1adc340a5eb1141ce208080e2d8fc503763` 2023-09-05 07:59:22 +0200 issues2md-remove-.ghmd-files-to-save-space  
-902\. 580c8c9f30a5a18628005ced8652b84d16c33e65 `33315f0c9625d96329a3764e308817db6fe8ed3b` 2023-09-05 07:59:07 +0200 issues2md-remove-nix-to-run-faster  
-901\. 68622d5de86f2cdb72bbcc8dadf99b6a3f0ec159 `0d42f71ce7d44df7a513937bd5a5e82b3f80f743` 2023-09-05 07:50:25 +0200 issues2md-allow-to-run-manually  
-900\. 880ad00b75376f6cc3fba0588d210162957fd157 `eaccd44a9bcd009cd331eede9c01bab5749c3d7f` 2023-09-05 07:47:21 +0200 add-issues2md-build-index.sh  
-899\. db70a2694468d12f6345bb4effbb8f3943654b9d `3de6bdab2ffd303614d5efb56a0eb14ab5cb9486` 2023-09-05 07:29:38 +0200 issues2md-run-only-once-per-day  
-898\. d7b8b1cb1d88f41e7edb781849ee3056206d3612 `e52e88e4f950050d60b2a879b62bcf413c40d10d` 2023-08-29 17:15:08 +0200 add-todo-comment  
-897\. c739e7596da1d2014c5289e6560db8faaef489e0 `e6789a6909fd1bfdbaea86ed8e2291245d43f6fa` 2023-08-29 15:54:26 +0200 add-link-to-alchi-pdf  
-896\. b1ffdcd5dc14527dbee3f6e16a98344f93f03ce1 `3fb3c3af96bc015ae2ef3e277b5a75f410e5cc49` 2023-08-29 15:34:56 +0200 move-sections-fix-layout  
-895\. b7991b15dbfc7e149b61b4c031bf7fb319b16d6d `9d05bbf68d11a80b1050275a75b5f9ac37272909` 2023-08-29 11:53:24 +0200 expand-fix-layout  
-894\. d9e2e5d3c075a10d39ebfe5454b56dbdb33f6d8c `f1d63059e6f5954067c6458bac07e1c012c734c9` 2023-08-29 11:52:49 +0200 fix-html  
-893\. 235d42599d5818c5f73033ad222da7fa22af1df7 `57f2455c13b5c4fb35afa4596b48b29c88cf2049` 2023-08-29 11:52:36 +0200 fix-html  
-892\. 9743b50b557039972b830641b941880c3f7de6c1 `fe71280b769fde4194edf0a550e6d1d9e4e3b34e` 2023-08-29 11:43:13 +0200 expand  
-891\. 2fd7a6750b02fdcb46eb9878a6dcb5c81a7a22f2 `51c48c02f675b34ff795de396bdc9f4346544ca0` 2023-08-29 11:41:28 +0200 add-comment  
-890\. 36b148f0eee5c0331bca78a92acc21107176bef5 `8cbbd685d33c5504eb2beea68414566a57bc3aef` 2023-08-29 11:41:16 +0200 expand  
-889\. 3cd71c63e9e04e6dc732d227cf050297b1c0777d `cc8362c7859cafffe375e0176871be7db91beba4` 2023-08-28 21:15:40 +0200 up-sync-git-mirrors.sh  
-888\. 5962985a6ce1da2ec3b5e5188ff41afc745adfd5 `9333b292f44fb6ee60aff2d44d9a4a797c6a6813` 2023-08-28 21:11:57 +0200 fix-layout-add-sections  
-887\. fa9b657046d1a9f94aab1a85b08562ab3cfd3736 `87e5dfd196918b71d0b762170170478b92f513ba` 2023-08-28 18:39:49 +0200 fix-layout-move-sections  
-886\. 4ae1d205df764b2d7542bc1e994a7787f5656839 `b75f4a4f6d8c714865dc4f5a47e4ddd6381ac813` 2023-08-28 17:22:55 +0200 move-sections  
-885\. c233ea9e07ab3bf5f17f5779a0d5751323bac08c `12b424ac9ed0bde1e7ed12edb27fe964dbf60a3c` 2023-08-28 17:19:37 +0200 fix-layout  
-884\. a412d1570634762f0f3174b8915640edf1010269 `14fa2e0b909dcf556635bed6f635ff62ea61135c` 2023-08-28 15:06:23 +0200 update-version-to-2023-08-28  
-883\. 7a11537b77af383f9536482c474c9f6bbba140b5 `6e316f66de0ae0b2e08c86aa2796a52117a1047d` 2023-08-28 14:55:04 +0200 expand-Meine-Todesliste  
-882\. a71eeb4025e7b076d5585cf3a35a32103ec9a89f `f1dc2693ac5eb210a914e76dc5e94a13401cf215` 2023-08-28 13:54:36 +0200 fix-layout  
 
 <!-- </last-100-commits> -->
 
@@ -540,7 +526,7 @@ see also:
 
 * archive.org: https://web.archive.org/web/*/https://github.com/milahu/alchi
 
-### discussions
+## discussions
 
 dont worry, its very empty there ...
 blame `milahu`, who is just too damn lazy to push his project
@@ -551,7 +537,7 @@ blame `milahu`, who is just too damn lazy to push his project
 * personalitycafe: [alchi. a general theory of interpersonal compatibility
 ](https://www.personalitycafe.com/threads/alchi-a-general-theory-of-interpersonal-compatibility.1354920/#post-44121050)
 
-### contact
+## contact
 
 * gmail: milahu
 * protonmail: milahu
@@ -575,7 +561,7 @@ milahu does have some enemies, who want him broken, in jail or dead ...
 What milahu has published here is only a part of his hand-written diary,  
 but it should be enough information to realize and test his concept
 
-### wrong
+## wrong
 
 In case milahu's concept is wrong:
 
@@ -633,6 +619,36 @@ milahu's location is near Munich, Germany.
 (See [Contact](#contact))
 
 -->
+
+
+
+## todo
+
+
+
+### permalinks
+
+a note to myself and other contributors:
+
+when moving files, make sure that the old URLs are still reachable
+
+ideally replace the old file with an html redirect to the new location, like
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=path/to/new-file.html" />
+  </head>
+  <body>
+    redirecting to
+    <a href="path/to/new-file.html"
+    >path/to/new-file.html</a>
+  </body>
+</html>
+```
+
+
 
 ## related projects
 
@@ -888,6 +904,22 @@ some keywords (tags) for search engine optimization (SEO)
   * dirty facts
   * hate me cos im honest
   * hate me because i am honest
+* why cant we have nice things
+  * why do we humans fail to create a paradise on earth
+    * https://www.quora.com/Why-dont-humans-make-this-world-as-good-as-paradise-No-one-has-seen-what-follows-this-life-Why-are-humans-stupid-and-still-fighting-each-other/answer/Milan-Hauth
+  * why are most people so stupid
+  * why is life so hard
+* legalize hatspeech
+  * make hatspeech great again
+  * make hatspeech legal again
+* legalize serial murder
+  * make serial murder great again
+  * make serial murder legal again
+* game of relations
+  * game of human relations
+* devil's advocate
+  * hitman with a heart
+  * what would satan do
 
 ### more keywords
 
@@ -1371,6 +1403,64 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * i am a natural opposite of all "vulnerable" people = personality type 2
     (basetype 2 or subtype 2)
     (subtype 2 = types 3402 = type 302 and type 402)
+* the topic of overpopulation is a reliable intelligence test
+  * overpopulation denial is a strong indicator of stupidity
+* i'm a devil
+  * i'm a devil's advocate
+  * devil advocate
+  * violence is good
+  * aggression is good
+  * passive violence is not better than active violence
+  * passive violence and active violence are equally important
+  * passive violence and active violence are equally legitimate
+  * passive violence and active violence are equally reasonable
+* post-apocalyptic culture
+  * post-apocalyptic world
+  * post-apocalypse culture
+  * post-apocalypse world
+  * permanent tribal warfare
+  * realistic utopia
+  * paradise on earth
+* unwritten laws
+  * laws of nature
+  * natural order
+  * many people feel like me, but most of them are confused by false education
+  * many people feel like me, but most of them have never learned to capture and stabilize and express their feelings, what i am doing by excessive journal-writing
+* voices of hate
+  * summer of love? winter of hate!
+  * righteus anger
+  * legitimate hate
+* human life has zero value
+  * human life is worth nothing
+  * no one is innocent
+  * all humans are guilty
+  * "homo sapiens" is the most stupid animal on this planet
+  * "homo sapiens" is the most cruel animal on this planet
+  * "homo sapiens" is the most destructive animal on this planet
+  * "homo sapiens" is the most evil animal on this planet
+  * "homo sapiens" is the most disgusting animal on this planet
+  * "homo sapiens" is the worst parasite on this planet
+* santa muerte
+  * hitman with a heart
+    * https://tvtropes.org/pmwiki/pmwiki.php/Main/HitmanWithAHeart
+  * natural born killers
+  * eros and thanatos are equally important
+  * aeros and thanatos are equally important
+  * eugenics and euthanasia are equally important
+  * "pro life" and "pro choice" are equally important
+  * birth and murder are equally important
+* real justice
+  * real tolerance
+  * radical tolerance
+  * radical justice
+* intellectual tourette syndrome
+  * intellectual tourette's syndrome
+  * intelligent tourette syndrome
+  * rational tourette syndrome
+  * psychotic tourette syndrome
+  * tough-minded tourette syndrome
+* "paranoid schizophrenic" is what my enemies call me to deny my reasons
+  * "paranoid schizophrenia" is what my enemies call me to deny my reasons
 
 <!--
 
@@ -1460,5 +1550,29 @@ https://github.com/milahu/alchi
     learning by doing.
     probieren geht über studieren.
     vergleich macht schlau, monotonie macht dumm.
+* pfui teufel
+  * teufels-advokat
+  * advokat des teufels
+  * was würde satan tun
+* sogenannte volksverhetzung
+  * staatlich geprüfte volksverhetzung
+  * anleitung zur revolution
+  * anleitung zur kulturrevolution
+  * anleitung zum aktiven widerstand
+  * anleitung zum effektiven widerstand
+  * anleitung zum effizienten widerstand
+  * ... aber kein "aufruf" zu irgendwas, höchstens meine persönlichen gewaltfantasien. alles ist freiwillig, ich zwinge keinen, ich manipuliere keinen, ich verführe keinen... und jeder ist selber verantwortlich für seine handlungen. "wir" sind doch alle "mündige bürger", oder?
+  * zensiert in 3... 2... 1...
+  * wer nicht zensiert wird, der ist nicht interessant
+* wahrheit macht frei
+  * wer sich selbst zensiert, damit er nicht zensiert wird, der ist ein versager, verräter, schwächling, kompromissler
+  * stay radical. radikal bleiben
+  * wenn jeder seine wahrheit frei aussprechen darf, ohne angst vor strafe, dann kommt die beste lösung raus
+  * siehe auch: Wahrheitskommissionen = Truth Commissions https://de.wikipedia.org/wiki/Wahrheits-_und_Vers%C3%B6hnungskommission
+  * siehe auch: Hundert-Blumen-Bewegung = Hundred Flowers Campaign https://de.wikipedia.org/wiki/Hundert-Blumen-Bewegung
+    * einseitig: nur positives feedback ist erlaubt
+    * Zwischen 1956 und 1957 forderte die Kommunistische Partei Chinas das Volk auf, sich kritisch zur Situation des Staates zu äußern. Als die Bewegung auszuufern drohte, wurde sie von der Kommunistischen Partei wieder beendet.
+    * Obwohl niemand die Abschaffung des derzeitigen Systems forderte, sah die Parteiführung in der plötzlich nicht mehr kanalisierbaren Kritik eine unmittelbare Bedrohung gegen sich. Das Ende der Bewegung kam abrupt und wurde mit der Veröffentlichung der Rede Maos vom 27. Februar 1957 eingeläutet. Diese Rede wurde jedoch vor der Veröffentlichung noch umgearbeitet. Diese Änderungen definierten klar, was im Rahmen der Aufforderung zur Kritik als erwünscht galt: Lediglich das, was den Sozialismus auf seinem Weg weiterbringen und stärken würde, war erlaubt. Damit riss die Partei die Deutungshoheit über dieses Thema wieder an sich.
+    * Durch die Ausrufung der nun folgenden "Anti-Rechts-Bewegung" wurde die Hundert-Blumen-Bewegung mit Gewalt gestoppt, und viele Kritiker wurden in Arbeitslager verbannt.
 
 </details>
