@@ -50,8 +50,6 @@ git_remote_add codeberg.org https://codeberg.org/milahu/alchi
 
 git_remote_add sourceforge.net https://git.code.sourceforge.net/p/milahu-alchi/code
 
-git_remote_add try.gitea.io https://try.gitea.io/milahu/alchi
-
 git_remote_add notabug.org https://notabug.org/milahu/alchi
 
 git_remote_add disroot.org https://git.disroot.org/milahu/alchi
