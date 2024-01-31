@@ -455,9 +455,12 @@
   <!--(lang="en") note: our style must come after bootstrap.min.css -->
   <style>
     /* FIXME width 1105px, zoom 100%, dpi 144? -> horizontal scrollbar in grid view */
-    body.js-enabled hr {
+
+    hr {
       height: 0;
       border: none;
+      margin-block-start: 0;
+      margin-block-end: 0;
     }
 
     .pre-line {
