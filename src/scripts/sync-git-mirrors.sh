@@ -10,12 +10,11 @@ opts="--force"
 
 main_branch="master"
 
-extra_branches="journal"
+extra_branches=""
 
 branches="$main_branch $extra_branches"
 
-# try.gitea.io is a read-only mirror of the repo on github.com
-ignore_remotes="try.gitea.io"
+ignore_remotes=""
 
 # force english language so we can parse git output
 export LANG=C
