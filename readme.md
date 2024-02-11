@@ -530,19 +530,21 @@ blame `milahu`, who is just too damn lazy to push his project
 * github: https://github.com/milahu/alchi/issues
 * gitlab: https://gitlab.com/milahu/alchi/-/issues
 * lemmy: https://lemmy.ml/c/alchi
-* personalitycafe: [alchi. a general theory of interpersonal compatibility
-](https://www.personalitycafe.com/threads/alchi-a-general-theory-of-interpersonal-compatibility.1354920/#post-44121050)
+* personalitycafe: [alchi. a general theory of interpersonal compatibility](https://www.personalitycafe.com/threads/alchi-a-general-theory-of-interpersonal-compatibility.1354920/#post-44121050)
 
 ## contact
 
-* gmail: milahu
-* protonmail: milahu
+* gmail: milahu@gmail.com
+* protonmail: milahu@protonmail.com
+* tutamail: milahu@tutamail.com
+* torbox: milahu@torbox36ijlcevujx7mjb4oiusvwgvmue7jfn2cvutwa6kl6to3uyqad.onion
+* sector: milahu@sector2nyjrxphgrj3cvnueanomz4trvgyxofvu3cexltoxuegtlmzid.onion
 * gab: https://gab.com/milahu
 * scored: https://communities.win/u/milahu or https://communities.win/u/milahu2
 * mastodon: https://freespeechextremist.com/milahu
-* galaxy (with Tor Browser): `http://galaxy3m2mn5iqtn.onion/profile/milahu`
 * minds: https://www.minds.com/milahu
-* facebook: https://www.facebook.com/mila.nautikus (many posts. happy stalking)
+* facebook: https://www.facebook.com/mila.nautikus
+* facebook: https://www.facebook.com/findus.kohlhase
 
 if you really want to reach me, better send your request to multiple sites
 
