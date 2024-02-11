@@ -1,0 +1,64 @@
+<svg title="alchi.parliament-types23-half-circle"
+  viewBox="0 0 400 400"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+  <defs>
+    <style type="text/css">
+      svg { --fg: black; --bg: white; } /* light mode */
+
+      .fig1 .stroke {
+        stroke-width: 2;
+        stroke: black; /* fallback when css variables are not supported */
+        stroke: var(--fg);
+      }
+
+      .nofill {
+        fill: none;
+      }
+
+      .fillbg {
+        fill: white;
+        fill: var(--bg);
+      }
+
+      .fillfg {
+        fill: black;
+        fill: var(--fg);
+      }
+    </style>
+  </defs>
+
+  <g class="fig1">
+
+    <g title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+      <circle cx="200" cy="200" r="170"/>
+    </g>
+
+    <g title="lines" stroke-width="2" fill="none" stroke="black" class="stroke">
+      <path d="M 30 200 H 370"/>
+      <path d="M 200 30 V 370"/>
+    </g>
+
+
+
+
+    <g title="circles and text">
+      <g display="none" title="circles" stroke-width="2" fill="none" stroke="black" class="stroke nofill">
+        <title>Circles</title>
+        <circle cx="130" cy="130" r="60"/>
+        <circle cx="270" cy="130" r="60"/>
+        <circle cx="130" cy="270" r="60"/>
+        <circle cx="270" cy="270" r="60"/>
+      </g>
+      <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="70" class="fillfg">
+        <text fill="black" x="130" y="130">2</text>
+        <text fill="black" x="270" y="130">3</text>
+        <text fill="black" x="270" y="270">1</text>
+        <text fill="black" x="130" y="270">4</text>
+      </g>
+    </g>
+
+
+  </g>
+</svg>
