@@ -522,7 +522,7 @@ see also:
 
 * archive.org: https://web.archive.org/web/*/https://github.com/milahu/alchi
 
-## discussions
+### discussions
 
 dont worry, its very empty there ...
 blame `milahu`, who is just too damn lazy to push his project
@@ -532,7 +532,7 @@ blame `milahu`, who is just too damn lazy to push his project
 * lemmy: https://lemmy.ml/c/alchi
 * personalitycafe: [alchi. a general theory of interpersonal compatibility](https://www.personalitycafe.com/threads/alchi-a-general-theory-of-interpersonal-compatibility.1354920/#post-44121050)
 
-## contact
+### contact
 
 * gmail: milahu@gmail.com
 * protonmail: milahu@protonmail.com
@@ -559,7 +559,7 @@ milahu does have some enemies, who want him broken, in jail or dead ...
 What milahu has published here is only a part of his hand-written diary,  
 but it should be enough information to realize and test his concept
 
-## wrong
+### wrong
 
 In case milahu's concept is wrong:
 
