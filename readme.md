@@ -132,13 +132,7 @@ would be merged into the alchi-book:
 all files and versions can be downloaded with the linux command
 
 ```txt
-git clone --mirror https://github.com/milahu/alchi alchi/.git
-cd alchi
-git config --bool core.bare false
-git checkout master
-git worktree add journal/ journal
-xdg-open src/whoaremyfriends/whoaremyfriends.html
-xdg-open journal/index.html
+git clone https://github.com/milahu/alchi
 ```
 
 the `git` program is also available for [Windows, Android, Apple, etc.](https://git-scm.com/downloads/guis/)
@@ -212,26 +206,45 @@ this is a space-separeted list of all languages codes for the language menu
 
 i have scanned some of my hand-written journal.
 
-these are many large files, so they are stored in a separate git branch called `journal`.
+these are many large files, so they are stored in a separate git repo called `alchi-journal`.
 
-when you clone this git repo with `git clone --mirror` then you get all branches.
-see also [git clone](#git-clone) and [git worktree add](#git-worktree-add).
+see the repo urls in [mirrors](#mirrors)
+
+to download the `alchi-journal` repo, you have to run a separate [git clone](#git-clone)
 
 ## mirrors
 
 in the rare case that this project is censored, here are some mirror locations
 
-* github.com: https://github.com/milahu/alchi + https://milahu.github.io/alchi/
-* gitlab.com: https://gitlab.com/milahu/alchi + https://milahu.gitlab.io/alchi/
-* codeberg.org: https://codeberg.org/milahu/alchi + https://milahu.codeberg.page/alchi/
-* sourceforge.net: https://sourceforge.net/projects/milahu-alchi/ + https://milahu-alchi.sourceforge.io/
-* notabug.org: https://notabug.org/milahu/alchi
-* disroot.org: https://git.disroot.org/milahu/alchi
-* sr.ht: https://git.sr.ht/~milahu/alchi
-* darktea (with [Tor Browser](https://www.torproject.org/download/)): [http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
-* righttoprivacy (with [Tor Browser](https://www.torproject.org/download/)): [http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
+* github.com
+  * [alchi](https://github.com/milahu/alchi) + [alchi pages](https://milahu.github.io/alchi/)
+  * [alchi-journal](https://github.com/milahu/alchi-journal) + [alchi-journal pages](https://milahu.github.io/alchi-journal/)
+* gitlab.com
+  * [alchi](https://gitlab.com/milahu/alchi) + [alchi pages](https://milahu.gitlab.io/alchi/)
+  * [alchi-journal](https://gitlab.com/milahu/alchi-journal) + [alchi-journal pages](https://milahu.gitlab.io/alchi-journal/)
+* codeberg.org
+  * [alchi](https://codeberg.org/milahu/alchi) + [alchi pages](https://milahu.codeberg.page/alchi/)
+  * [alchi-journal](https://codeberg.org/milahu/alchi-journal) + [alchi-journal pages](https://milahu.codeberg.page/alchi-journal/)
+* sourceforge.net
+  * [alchi](https://sourceforge.net/projects/milahu-alchi/) + [alchi pages](https://milahu-alchi.sourceforge.io/)
+  * [alchi-journal](https://sourceforge.net/projects/milahu-alchi-journal/) + [alchi-journal pages](https://milahu-alchi-journal.sourceforge.io/)
+* notabug.org
+  * [alchi](https://notabug.org/milahu/alchi)
+  * [alchi-journal](https://notabug.org/milahu/alchi-journal)
+* disroot.org
+  * [alchi](https://git.disroot.org/milahu/alchi)
+  * [alchi-journal](https://git.disroot.org/milahu/alchi-journal)
+* sr.ht
+  * [alchi](https://git.sr.ht/~milahu/alchi)
+  * [alchi-journal](https://git.sr.ht/~milahu/alchi-journal)
+* darktea with [Tor Browser](https://www.torproject.org/download/)
+  * [alchi](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi)
+  * [alchi-journal](http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi-journal)
+* righttoprivacy with [Tor Browser](https://www.torproject.org/download/)
+  * [alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
+  * [alchi-journal](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi-journal)
 
-note: only some git hosters also offer static webhosting
+note: only some git hosters also offer static webhosting = pages
 
 you may find other mirrors by searching for commit hashes of the [git log](#git-log)
 
@@ -410,68 +423,54 @@ todo: [keep this section up to date](src/scripts/readme-update-git-tags.sh)
 
 ### git clone
 
-use `git clone --mirror` to fetch all branches of a remote
-
 you only need to clone from one remote. later, you can add other remotes with [git remote add](#git-remote-add)
 
 ```
 # github.com
-git clone --mirror https://github.com/milahu/alchi alchi/.git
+git clone https://github.com/milahu/alchi
 
 # gitlab.com
-git clone --mirror https://gitlab.com/milahu/alchi alchi/.git
+git clone https://gitlab.com/milahu/alchi
 
 # codeberg.org
-git clone --mirror https://codeberg.org/milahu/alchi alchi/.git
+git clone https://codeberg.org/milahu/alchi
 
 # sourceforge.net
 # https://sourceforge.net/projects/milahu-alchi/
-git clone --mirror https://git.code.sf.net/p/milahu-alchi/code alchi/.git
+git clone https://git.code.sf.net/p/milahu-alchi/code
 
 # notabug.org
-git clone --mirror https://notabug.org/milahu/alchi alchi/.git
+git clone https://notabug.org/milahu/alchi
 
 # disroot.org
-git clone --mirror https://git.disroot.org/milahu/alchi alchi/.git
+git clone https://git.disroot.org/milahu/alchi
 
 # srht
-git clone --mirror https://git.sr.ht/~milahu/alchi alchi/.git
+git clone https://git.sr.ht/~milahu/alchi
 
 # darktea
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone --mirror \
-  http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi alchi/.git
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone \
+  http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos47pzhvyd.onion/milahu/alchi
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 
 # righttoprivacy
-git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone --mirror \
-  http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi alchi/.git
+git -c remote.origin.proxy=socks5h://127.0.0.1:9050 clone \
+  http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
 cd alchi
 git config --add remote.origin.proxy socks5h://127.0.0.1:9050
 ```
 
-after running `git clone --mirror` you have to convert the bare repo in `alchi/.git` to a normal repo
+similar commands for the `alchi-journal` repo
 
-```sh
-cd alchi
-git config --bool core.bare false
-git checkout master
 ```
+# github.com
+git clone https://github.com/milahu/alchi-journal
 
-see also https://stackoverflow.com/questions/67699/how-do-i-clone-all-remote-branches
+# gitlab.com
+git clone https://gitlab.com/milahu/alchi-journal
 
-### git worktree add
-
-mount the `journal` branch on the `journal/` folder
-
-```sh
-git worktree add journal/ journal
-```
-
-now you can read my journal in your web browser
-
-```sh
-xdg-open journal/index.html
+# ...
 ```
 
 ### git pull
