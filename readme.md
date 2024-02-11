@@ -918,6 +918,20 @@ some keywords (tags) for search engine optimization (SEO)
 * devil's advocate
   * hitman with a heart
   * what would satan do
+* post-apocalypse culture
+  * post-apocalyptic culture
+  * post-collapse culture
+  * future primitive
+    * futureprimitive
+    * https://tvtropes.org/pmwiki/pmwiki.php/Main/FuturePrimitive
+  * movie: The Survivalist (2015)
+    * cut: The end of all things is near. Ending Scene. The Survivalist (2015)
+      * https://www.youtube.com/watch?v=7F81RQL_AeY - blocked in: Germany, Austria
+      * https://www.bitchute.com/video/J1FJ4YtsZmRH/
+* pacifism is a beautiful lie
+* they lied about everything
+  * they lie about everything
+  * theyliedabout
 
 ### more keywords
 
@@ -1480,6 +1494,8 @@ https://github.com/milahu/alchi
 
 ### german keywords
 
+deutsche stichworte
+
 * systemkritik
    * sklavenmoral gegen herrenmoral
    * sklavenmoral versus herrenmoral
@@ -1572,5 +1588,14 @@ https://github.com/milahu/alchi
     * Zwischen 1956 und 1957 forderte die Kommunistische Partei Chinas das Volk auf, sich kritisch zur Situation des Staates zu äußern. Als die Bewegung auszuufern drohte, wurde sie von der Kommunistischen Partei wieder beendet.
     * Obwohl niemand die Abschaffung des derzeitigen Systems forderte, sah die Parteiführung in der plötzlich nicht mehr kanalisierbaren Kritik eine unmittelbare Bedrohung gegen sich. Das Ende der Bewegung kam abrupt und wurde mit der Veröffentlichung der Rede Maos vom 27. Februar 1957 eingeläutet. Diese Rede wurde jedoch vor der Veröffentlichung noch umgearbeitet. Diese Änderungen definierten klar, was im Rahmen der Aufforderung zur Kritik als erwünscht galt: Lediglich das, was den Sozialismus auf seinem Weg weiterbringen und stärken würde, war erlaubt. Damit riss die Partei die Deutungshoheit über dieses Thema wieder an sich.
     * Durch die Ausrufung der nun folgenden "Anti-Rechts-Bewegung" wurde die Hundert-Blumen-Bewegung mit Gewalt gestoppt, und viele Kritiker wurden in Arbeitslager verbannt.
+* leistungskurs ethik
+  * leistungskurse gibts nur für "normale" schulfächer wie mathe, physik, deutsch, chemie, biologie... aber nicht für ethik
+  * das hier ist sowas wie eine facharbeit im leistungskurs ethik
+  * bei uns am gymnasium gab es nur einen grundkurs ethik, und ich hab in ethik meine mündliche abiturprüfung gemacht, zum thema "recht und gerechtigkeit", also zu dem widerspruch zwischen "legal und legitim". also man kann sagen, ich beschäftige mich "schon ewig" mit diesem thema...
+* physikalische grundlagen für politik
+  * physikalische grundlagen für psychologie
+  * physikalische grundlagen für soziologie
+  * physikalische grundlagen für organisation
+  * physikalische grundlagen für beziehungen
 
 </details>
