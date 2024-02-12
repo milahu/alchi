@@ -899,6 +899,24 @@
       background: transparent;
     }
 
+    .bindery-page {
+      /*
+        in some cases, bindery fails to break elements
+        so they overflow div.bindery-page but the overflow is hidden
+        some cases?
+        when a <div class="para"> has too much height
+        quickfix:
+        add <hr> to force page break
+        quickfix:
+        split the para content into blocks
+        <div class="para">
+          <div>block 1</div>
+          <div>block 2</div>
+        </div>
+      */
+      overflow: visible;
+    }
+
   </style>
 
 
