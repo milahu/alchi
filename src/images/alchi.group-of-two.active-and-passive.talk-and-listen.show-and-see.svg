@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <marker id="marker-0" overflow="visible" bx:pinned="true" orient="auto" refX="50" refY="50" viewBox="0 0 100 100">
+      <path transform="matrix(0 1 -1 0 -40.99 -97.287)" d="m114.2 67.683 76.883 146.42h-153.77l76.884-146.42z" style="transform-box:fill-box;transform-origin:50% 50%" bx:shape="triangle 37.318 67.683 153.767 146.423 0.5 0 1@ccbcdf92"/>
+    </marker>
+  </defs>
+  <g transform="translate(0 -7.1054e-15)">
+    <ellipse cx="100" cy="100" rx="50" ry="50" fill="none" stroke="#000"/>
+    <g stroke="#000">
+      <g transform="matrix(.74108 0 0 1 25.811 6.1181)" fill="#d8d8d8" style="">
+        <line x1="109.83" x2="130.33" y1="82.727" y2="82.727"/>
+        <line x1="69.05" x2="89.842" y1="82.727" y2="82.727"/>
+      </g>
+      <line x1="89.33" x2="109.83" y1="118.86" y2="118.86" fill="#d8d8d8"/>
+      <polyline points="94.272 103.12 100 105.77 105.66 103.12" fill="none"/>
+    </g>
+    <g fill="none" stroke="#000">
+      <ellipse cx="156.71" cy="100.02" rx="6.713" ry="17.297"/>
+      <ellipse cx="156.71" cy="100.02" rx="2.906" ry="7.488"/>
+    </g>
+    <g transform="translate(-113.43)" fill="none" stroke="#000">
+      <ellipse cx="156.71" cy="100.02" rx="6.713" ry="17.297"/>
+      <ellipse cx="156.71" cy="100.02" rx="2.906" ry="7.488"/>
+    </g>
+    <g fill="none" stroke="#000">
+      <path d="m249.17 100c39.041-17.273 50.826 32.856 16.688 36.821"/>
+      <path transform="matrix(.010936 -.99994 .99994 .010936 0 8e-6)" d="m299.62 50.234c38.445 0 62.473 41.618 43.25 74.912-19.222 33.294-67.278 33.294-86.5 0-10.929-18.93-8.278-42.767 6.543-58.833" style="transform-box:fill-box;transform-origin:50% 50%"/>
+    </g>
+    <ellipse cx="289.13" cy="79.919" rx="11.517" ry="11.517" fill="none" stroke="#000"/>
+    <ellipse cx="286.63" cy="80.192" rx="2.535" ry="2.535" style=""/>
+    <g fill="#d8d8d8" stroke="#000">
+      <line x1="307.33" x2="324.92" y1="91.193" y2="108.52"/>
+      <line x1="325.18" x2="307.2" y1="91.062" y2="108.38"/>
+    </g>
+  </g>
+  <g fill="none" marker-end="url('#marker-0')" stroke="#000">
+    <path transform="matrix(.97789 -.20911 .20911 .97789 3.3374e-5 2.4229e-5)" d="m310.87 69.192c22.462 0 36.5 24.315 25.269 43.767-6.712 11.626-20.491 17.171-33.385 13.437" style="transform-origin:321.422px 98.3712px"/>
+    <path transform="matrix(-.97789 -.20911 .20911 -.97789 2.7329e-5 1.0359e-5)" d="m68.3 127.55c22.462 0 36.5-24.315 25.269-43.767-6.712-11.626-20.491-17.171-33.385-13.437" style="transform-origin:78.853px 98.371px"/>
+    <path d="m163.09 137.43c17.38-3.6457 30.05-13.411 40.119-25.795 10.682-13.139 25.759-28.962 39.001-31.512"/>
+    <path d="m247.01 123.63c-5.914 1.545-25.473-0.62813-44.254-12.44-13.51-8.4968-22.053-10.801-32.592-12.449"/>
+  </g>
+</svg>
