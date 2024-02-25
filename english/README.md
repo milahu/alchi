@@ -1,1 +1,1 @@
-moved to [../README.md](../README.md)
+moved to [../readme.md](../readme.md)
