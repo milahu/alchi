@@ -6,6 +6,9 @@ set -x
 # chdir to repo root
 cd "$(dirname "$0")"/../..
 
+# get absolute path so we can cd/pushd
+git_rebase_order_commits_by_author_date="$(readlink -f src/scripts/git-rebase-order-commits-by-author-date.sh)"
+
 opts="--force"
 
 main_branch="master"
@@ -47,7 +50,9 @@ fi
 for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
   if [[ "$branch" == "$main_branch" ]]; then
-    git rebase remotes/$remote/$branch
+    last_head=$(git rev-parse $branch)
+    git rebase remotes/$remote/$branch --committer-date-is-author-date
+    "$git_rebase_order_commits_by_author_date" $last_head --committer-date-is-author-date
     if $did_stash_main; then
       git stash pop
     fi
@@ -61,20 +66,24 @@ for branch in $branches; do
       git worktree add "$branch_path" $branch
       is_temp_branch_path=true
     fi
-    stash_output="$(git -C "$branch_path" stash -m "git pull-push $(date)")"
+    pushd "$branch_path" >/dev/null
+    stash_output="$(git stash -m "git pull-push $(date)")"
     echo "$stash_output"
     if [[ "$stash_output" == "No local changes to save" ]]; then
       did_stash=false
     else
       did_stash=true
     fi
-    git -C "$branch_path" rebase remotes/$remote/$branch
+    last_head=$(git rev-parse $branch)
+    git rebase remotes/$remote/$branch --committer-date-is-author-date
+    "$git_rebase_order_commits_by_author_date" $last_head --committer-date-is-author-date
     if $is_temp_branch_path; then
       git worktree remove "$branch_path"
     fi
     if $did_stash; then
-      git -C "$branch_path" stash pop
+      git stash pop
     fi
+    popd >/dev/null
   fi
 done
 
@@ -94,7 +103,7 @@ done
 
 # codeberg.org has no automatic update like github pages
 echo updating https://milahu.codeberg.page/alchi/
-git push codeberg.org $main_branch:pages
+git push codeberg.org $main_branch:pages --force
 
 # sourceforge.net has no automatic update like github pages
 echo updating https://milahu-alchi.sourceforge.io/
