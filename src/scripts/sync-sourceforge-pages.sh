@@ -2,6 +2,15 @@
 
 set -e
 
+# check dependencies
+for dep in git rsync ssh sshpass; do
+  if command -v "$dep" >/dev/null; then
+    continue
+  fi
+  echo "error: missing command: $dep"
+  exit 1
+done
+
 # chdir to alchi/src/scripts
 cd "$(dirname "$0")"
 # chdir to alchi
