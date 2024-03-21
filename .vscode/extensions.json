@@ -6,8 +6,6 @@ https://code.visualstudio.com/docs/editor/extension-marketplace#_workspace-recom
   "recommendations": [
     "zokugun.explicit-folding",
     "jock.svg",
-    "vscode.handlebars",
-    "eseom.nunjucks-template",
     "anteprimorac.html-end-tag-labels"
   ],
 }
