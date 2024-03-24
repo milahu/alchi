@@ -87,7 +87,7 @@
         <text x="83.072861" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="83.072861" y="203.53603" font-size="3.5278px" stroke-width=".26458">7000</tspan></text>
         <text x="69.296608" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="69.296608" y="203.53603" font-size="3.5278px" stroke-width=".26458">8000</tspan></text>
         <text x="55.514324" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="55.514324" y="203.53603" font-size="3.5278px" stroke-width=".26458">9000</tspan></text>
-        <text x="41.738075" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10000</tspan></text>
+        <text x="41.738075" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10 000</tspan></text>
       </g>
     </g>
     <g font-family="sans-serif" stroke-width=".26458" text-anchor="middle">
@@ -96,12 +96,12 @@
         <text x="188.37381" y="172.13287" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="172.13287" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10</tspan></text>
         <text x="188.37381" y="145.76482" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="145.76482" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">100</tspan></text>
         <text x="188.37381" y="119.48749" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="119.48749" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">1000</tspan></text>
-        <text x="188.37381" y="93.216339" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="93.216339" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10000</tspan></text>
+        <text x="188.37381" y="93.216339" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="188.37381" y="93.216339" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">10 000</tspan></text>
         <text x="27.949768" y="203.53603" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.949768" y="203.53603" font-size="3.5278px" stroke-width=".26458">Years</tspan></text>
       </g>
       <text x="27.785782" y="97.292755" font-size="4.9389px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.785782" y="97.292755" font-size="4.9389px" stroke-width=".26458" text-align="start" text-anchor="start">World Population</tspan></text>
       <text x="27.488127" y="110.53831" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="110.53831" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">in Million Humans, logarithmic scale</tspan></text>
-      <text x="27.488127" y="117.02924" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="117.02924" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10000 years</tspan></text>
+      <text x="27.488127" y="117.02924" font-size="4.2333px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="117.02924" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10 000 years</tspan></text>
       <text x="27.488127" y="137.44823" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="137.44823" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">(c) 2009 Bryan K. Long</tspan></text>
       <text x="27.488127" y="143.30658" font-size="3.5278px" text-align="center" style="line-height:1.25" xml:space="preserve"><tspan x="27.488127" y="143.30658" font-size="3.5278px" stroke-width=".26458" text-align="start" text-anchor="start">http://econosystemics.com/?p=9</tspan></text>
     </g>

@@ -40,7 +40,7 @@
             <text x="83.072861" y="203.53603" text-align="center"><tspan x="83.072861" y="203.53603" font-size="3.5278px" stroke-width=".26458">7000</tspan></text>
             <text x="69.296608" y="203.53603" text-align="center"><tspan x="69.296608" y="203.53603" font-size="3.5278px" stroke-width=".26458">8000</tspan></text>
             <text x="55.514324" y="203.53603" text-align="center"><tspan x="55.514324" y="203.53603" font-size="3.5278px" stroke-width=".26458">9000</tspan></text>
-            <text x="41.738075" y="203.53603" text-align="center"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10000</tspan></text>
+            <text x="41.738075" y="203.53603" text-align="center"><tspan x="41.738075" y="203.53603" font-size="3.5278px" stroke-width=".26458">10 000</tspan></text>
           </g>
         </g>
       </g>
@@ -73,8 +73,8 @@
       <g font-family="sans-serif" stroke-width=".26458" text-anchor="middle">
         <text x="27.785782" y="232.70168" font-size="4.9389px" text-align="center"><tspan x="27.785782" y="232.70168" font-size="4.9389px" stroke-width=".26458" text-align="start" text-anchor="start">World Population</tspan></text>
         <text x="27.488127" y="245.94724" font-size="4.2333px" text-align="center"><tspan x="27.488127" y="245.94724" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">in Million Humans, linear scale</tspan></text>
-        <text x="27.488127" y="252.43819" font-size="4.2333px" text-align="center"><tspan x="27.488127" y="252.43819" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10000 years</tspan></text>
-        <text x="27.949768" y="339.92209" font-size="3.5278px" text-align="center"><tspan x="27.949768" y="339.92209" font-size="3.5278px" stroke-width=".26458">Time</tspan></text>
+        <text x="27.488127" y="252.43819" font-size="4.2333px" text-align="center"><tspan x="27.488127" y="252.43819" font-size="4.2333px" stroke-width=".26458" text-align="start" text-anchor="start">over the last 10 000 years</tspan></text>
+        <text x="27.949768" y="339.92209" font-size="3.5278px" text-align="center"><tspan x="27.949768" y="339.92209" font-size="3.5278px" stroke-width=".26458">Years</tspan></text>
       </g>
       <g transform="translate(-2.5318 136.86)">
         <text x="135.72267" y="95.351952" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" text-align="center" text-anchor="middle"><tspan x="135.72267" y="95.351952" font-size="3.5278px" stroke-width=".26458">8000 Million Humans in year 2020</tspan></text>
