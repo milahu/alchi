@@ -6,6 +6,8 @@ set -x
 # chdir to repo root
 cd "$(dirname "$0")"/../..
 
+repo_root="$PWD"
+
 # get absolute path so we can cd/pushd
 git_rebase_order_commits_by_author_date="$(readlink -f src/scripts/git-rebase-order-commits-by-author-date.sh)"
 
@@ -107,5 +109,4 @@ git push codeberg.org $main_branch:pages --force
 
 # sourceforge.net has no automatic update like github pages
 echo updating https://milahu-alchi.sourceforge.io/
-repo_root="$(readlink -f "$(dirname "$0")"/../..)"
 "$repo_root/src/scripts/sync-sourceforge-pages.sh"
