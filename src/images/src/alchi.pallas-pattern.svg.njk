@@ -390,6 +390,26 @@
         <circle cx="500" cy="700" r="60"/>
         <circle cx="700" cy="700" r="60"/>
       </g>
+      {% if text_4dim %}
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
+        <text x="100" y="100">FPEL</text>
+        <text x="300" y="100">MNIL</text>
+        <text x="500" y="100">FPIL</text>
+        <text x="700" y="100">MNEL</text>
+        <text x="100" y="300">FNIS</text>
+        <text x="300" y="300">MPES</text>
+        <text x="500" y="300">FNES</text>
+        <text x="700" y="300">MPIS</text>
+        <text x="100" y="500">FNEL</text>
+        <text x="300" y="500">MPIL</text>
+        <text x="500" y="500">FNIL</text>
+        <text x="700" y="500">MPEL</text>
+        <text x="100" y="700">FPIS</text>
+        <text x="300" y="700">MNES</text>
+        <text x="500" y="700">FPES</text>
+        <text x="700" y="700">MNIS</text>
+      </g>
+      {% else %}
       <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
         <text x="100" y="100">F1L</text>
         <text x="300" y="100">M2L</text>
@@ -408,6 +428,7 @@
         <text x="500" y="700">F1S</text>
         <text x="700" y="700">M2S</text>
       </g>
+      {% endif %}
     </g>
     {% endif %}
 
