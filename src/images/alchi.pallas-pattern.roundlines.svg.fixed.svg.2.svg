@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#f00"/>
+  <g fill="none" stroke="#000" stroke-width="2">
+    <use transform="translate(400 400)" href="#cross-lines"/>
+    <use transform="translate(0 400)" href="#cross-lines"/>
+    <use transform="translate(-400 400)" href="#cross-lines"/>
+    <use transform="translate(400)" href="#cross-lines"/>
+    <g id="cross-lines">
+      <!-- TODO exact formula for these numbers. c = curve? circle? s73.471 = ? -->
+      <path d="m300 300c54.895 56.027 145.1 56.027 200 0"/>
+      <path d="m300 500c26.523-26.523 62.497-41.424 100.01-41.423s73.471 14.899 99.994 41.423"/>
+      <path d="m500 500c-26.525-26.522-41.425-62.485-41.426-99.996-1e-3 -37.51 14.903-73.481 41.426-100"/>
+      <path d="m300 300c26.524 26.524 41.428 62.494 41.426 100-1e-3 37.51-14.901 73.473-41.426 99.995"/>
+    </g>
+    <use transform="translate(-400)" href="#cross-lines"/>
+    <use transform="translate(400 -400)" href="#cross-lines"/>
+    <use transform="translate(0 -400)" href="#cross-lines"/>
+    <use transform="translate(-400 -400)" href="#cross-lines"/>
+    <!-- math.sqrt(2)*100 = 141.4213562373095 -->
+    <circle cx="600" cy="600" r="141.43"/>
+    <circle cx="200" cy="600" r="141.43"/>
+    <circle cx="600" cy="200" r="141.43"/>
+    <circle cx="200" cy="200" r="141.43"/>
+  </g>
+  <g fill="#fff" stroke="#000" stroke-width="2">
+    <circle cx="100" cy="100" r="60"/>
+    <circle cx="300" cy="100" r="60"/>
+    <circle cx="500" cy="100" r="60"/>
+    <circle cx="700" cy="100" r="60"/>
+    <circle cx="100" cy="300" r="60"/>
+    <circle cx="300" cy="300" r="60"/>
+    <circle cx="500" cy="300" r="60"/>
+    <circle cx="700" cy="300" r="60"/>
+    <circle cx="100" cy="500" r="60"/>
+    <circle cx="300" cy="500" r="60"/>
+    <circle cx="500" cy="500" r="60"/>
+    <circle cx="700" cy="500" r="60"/>
+    <circle cx="100" cy="700" r="60"/>
+    <circle cx="300" cy="700" r="60"/>
+    <circle cx="500" cy="700" r="60"/>
+    <circle cx="700" cy="700" r="60"/>
+  </g>
+  <g dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
+    <text x="100" y="100">F1L</text>
+    <text x="300" y="100">M2L</text>
+    <text x="500" y="100">F4L</text>
+    <text x="700" y="100">M3L</text>
+    <text x="100" y="300">F2S</text>
+    <text x="300" y="300">M1S</text>
+    <text x="500" y="300">F3S</text>
+    <text x="700" y="300">M4S</text>
+    <text x="100" y="500">F3L</text>
+    <text x="300" y="500">M4L</text>
+    <text x="500" y="500">F2L</text>
+    <text x="700" y="500">M1L</text>
+    <text x="100" y="700">F4S</text>
+    <text x="300" y="700">M3S</text>
+    <text x="500" y="700">F1S</text>
+    <text x="700" y="700">M2S</text>
+  </g>
+  <g id="new-cross" fill="#ff0" stroke="#000" stroke-width="2">
+    <path d="m300.00199 300.00201a141.42136 141.42136 0 0 1 41.42137 100 141.42136 141.42136 0 0 1-41.42136 100" opacity=".8"/>
+    <path d="m500.00201 500.00201a141.42136 141.42136 0 0 1 0-200" opacity=".8"/>
+    <path d="m500.00201 300.002a141.42136 141.42136 0 0 1-100 41.42136 141.42136 141.42136 0 0 1-100-41.42136" opacity=".8"/>
+    <path d="m300.00201 500.00202a141.42136 141.42136 0 0 1 200-1e-5" opacity=".8"/>
+  </g>
+</svg>

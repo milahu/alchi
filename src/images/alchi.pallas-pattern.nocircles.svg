@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin:auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  inkscape:label="pallas-pattern.nocircles"
+>
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g inkscape:label="clipped image" clip-path="url(#clip-image)">
+
+
+    <g fill="none" stroke="#000" stroke-width="2" inkscape:label="lines">
+
+
+
+
+      
+      <g inkscape:label="pallas key: center cross, top-right square" stroke-width="2" fill="none" stroke="black">
+        <g inkscape:label="simple pattern">
+          <g inkscape:label="single lines orthogonal: single lines outside squares">
+            <g id="nocircles-square-top-right">
+              <title>top right square, no circles</title>
+              <path d="M 700 100 L 700 300"/>
+              <path d="M 500 100 L 500 300"/>
+              <path d="M 500 300 L 700 300"/>
+              <path d="M 500 100 L 700 100"/>
+            </g>
+            <use id="nocircles-square-top-left" href="#nocircles-square-top-right" transform="translate(-400 0)" />
+            <use id="nocircles-square-bottom-left" href="#nocircles-square-top-right" transform="translate(-400 400)" />
+            <use id="nocircles-square-bottom-right" href="#nocircles-square-top-right" transform="translate(0 400)" />
+          </g>
+          <g id="nocircles-cross-center">
+            <path inkscape:label="center bottom-left to top-right" d="M 500 300 L 300 500"/>
+            <path inkscape:label="center top-left to bottom-right" d="M 500 500 L 300 300"/>
+          </g>
+          <use id="nocircles-cross-left" href="#nocircles-cross-center" transform="translate(-400 0)" />
+          <use id="nocircles-cross-right" href="#nocircles-cross-center" transform="translate(400 0)" />
+          <use id="nocircles-cross-top" href="#nocircles-cross-center" transform="translate(0 -400)" />
+          <use id="nocircles-cross-bottom" href="#nocircles-cross-center" transform="translate(0 400)" />
+          <use id="nocircles-cross-top-left" href="#nocircles-cross-center" transform="translate(-400 -400)" />
+          <use id="nocircles-cross-top-right" href="#nocircles-cross-center" transform="translate(400 -400)" />
+          <use id="nocircles-cross-bottom-left" href="#nocircles-cross-center" transform="translate(-400 400)" />
+          <use id="nocircles-cross-bottom-right" href="#nocircles-cross-center" transform="translate(400 400)" />
+        </g>
+      </g>
+
+    </g>
+
+
+  </g>
+</svg>

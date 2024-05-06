@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin:auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  inkscape:label="pallas-pattern.boxes"
+>
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g inkscape:label="clipped image" clip-path="url(#clip-image)">
+
+
+    <g fill="none" stroke="#000" stroke-width="2" inkscape:label="lines">
+
+
+
+
+
+      <g inkscape:label="boxes Pattern" stroke="black" stroke-width="2" fill="none">
+
+        <g inkscape:label="Squares 360">
+          <rect id="boxes-box-top-left" x="20" y="20" width="360" height="360"/>
+          <use id="boxes-box-top-right" href="#boxes-box-top-left" transform="translate(400 0)" />
+          <use id="boxes-box-bottom-right" href="#boxes-box-top-left" transform="translate(400 400)" />
+          <use id="boxes-box-bottom-left" href="#boxes-box-top-left" transform="translate(0 400)" />
+
+          <use id="boxes-box-center" href="#boxes-box-top-left" transform="translate(200 200)" />
+          <use id="boxes-box-center-right" href="#boxes-box-center" transform="translate(400 0)" />
+          <use id="boxes-box-center-bottom-right" href="#boxes-box-center" transform="translate(400 400)" />
+          <use id="boxes-box-center-bottom" href="#boxes-box-center" transform="translate(0 400)" />
+          <use id="boxes-box-center-bottom-left" href="#boxes-box-center" transform="translate(-400 400)" />
+          <use id="boxes-box-center-left" href="#boxes-box-center" transform="translate(-400 0)" />
+          <use id="boxes-box-center-top-left" href="#boxes-box-center" transform="translate(-400 -400)" />
+          <use id="boxes-box-center-top" href="#boxes-box-center" transform="translate(0 -400)" />
+          <use id="boxes-box-center-top-right" href="#boxes-box-center" transform="translate(400 -400)" />
+        </g>
+
+        <g inkscape:label="cross top" transform="matrix(1, 0, 0, 1, 0, -400)">
+          <g inkscape:label="cross center">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g inkscape:label="cross right" transform="matrix(1, 0, 0, 1, 400, 0)">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g inkscape:label="cross left" transform="matrix(1, 0, 0, 1, -400, 0)">
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>cross center-y</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 400)">
+          <title>cross bottom</title>
+          <g>
+            <title>cross center</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, 400, 0)">
+            <title>cross right</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+          <g transform="matrix(1, 0, 0, 1, -400, 0)">
+            <title>cross left</title>
+            <path d="M 420 420 L 380 380"/>
+            <path d="M 420 380 L 380 420"/>
+          </g>
+        </g>
+        <g>
+          <title>squares small</title>
+          <rect x="180" y="180" width="40" height="40"/>
+          <rect x="580" y="180" width="40" height="40"/>
+          <rect x="180" y="580" width="40" height="40"/>
+          <rect x="580" y="580" width="40" height="40"/>
+        </g>
+      </g>
+    </g>
+
+    <g inkscape:label="circles and text">
+      <g inkscape:label="circles" stroke-width="2" fill="none" stroke="black">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
+        <text x="100" y="100">F1L</text>
+        <text x="300" y="100">M2L</text>
+        <text x="500" y="100">F4L</text>
+        <text x="700" y="100">M3L</text>
+        <text x="100" y="300">F2S</text>
+        <text x="300" y="300">M1S</text>
+        <text x="500" y="300">F3S</text>
+        <text x="700" y="300">M4S</text>
+        <text x="100" y="500">F3L</text>
+        <text x="300" y="500">M4L</text>
+        <text x="500" y="500">F2L</text>
+        <text x="700" y="500">M1L</text>
+        <text x="100" y="700">F4S</text>
+        <text x="300" y="700">M3S</text>
+        <text x="500" y="700">F1S</text>
+        <text x="700" y="700">M2S</text>
+      </g>
+    </g>
+
+  </g>
+</svg>
