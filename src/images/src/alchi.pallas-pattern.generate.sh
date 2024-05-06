@@ -53,8 +53,7 @@ echo "configname: $configname"
 
 (
   set -x
-  npx nunjucks "$basename".svg.njk "$configfile" --out "$tempdir" --extension svg --path ""
-  #npx nunjucks "$basename".svg.njk "$configfile" --out "$tempdir" --extension "" --path "" # TODO test
+  ./node_modules/nunjucks-cli/main.js "$basename".svg.njk "$configfile" --out "$tempdir" --extension svg --path ""
 )
 
 outputfile="$basename.$configname.svg"
