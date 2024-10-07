@@ -3,8 +3,23 @@
 set -e
 set -x
 
+# some file typical for this repo
+repo_file="src/whoaremyfriends/wersindmeinefreunde.html"
+
+bak_pwd="$PWD"
+
 # chdir to repo root
-cd "$(dirname "$0")"/../..
+while true; do
+  if [ -e "$repo_file" ]; then
+    echo "found the alchi repo root at ${PWD@Q}"
+    break
+  fi
+  if [ "$PWD" = "/" ]; then
+    echo "error: failed to find the alchi repo root from ${bak_pwd@Q}"
+    exit 1
+  fi
+  cd ..
+done
 
 repo_root="$PWD"
 
