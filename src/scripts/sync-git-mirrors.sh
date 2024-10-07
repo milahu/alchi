@@ -1,0 +1,1 @@
+src/scripts/git-push-all-remotes.sh
