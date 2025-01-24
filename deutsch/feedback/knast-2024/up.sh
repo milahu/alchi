@@ -14,6 +14,7 @@ else
   # update old file
   git commit --amend --no-edit
 fi
+git push github.com -f
 torpid=$(pidof tor)
 if [ -z "$torpid" ]; then
   echo starting tor
