@@ -29,7 +29,7 @@ s = re.sub(
 s = s.replace("<!--", "\n\n</blockquote>\n\n")
 s = s.replace("-->", "\n\n<blockquote>\n\n")
 
-s = s.replace("\n.\n"), "\n\n")
+s = s.replace("\n.\n", "\n\n")
 
 # debug
 # print("\n".join(s.split("\n")[0:30]))
