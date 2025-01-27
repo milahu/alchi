@@ -26,6 +26,12 @@ s = re.sub(
   re.S | re.M
 )
 
+if s.startswith("<!--"):
+  s = s[4:]
+
+if s.endswith("-->\n"):
+  s = s[:-4] + "\n"
+
 s = s.replace("<!--", "\n\n</blockquote>\n\n")
 s = s.replace("-->", "\n\n<blockquote>\n\n")
 
