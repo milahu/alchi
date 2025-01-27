@@ -8,29 +8,17 @@ o = "2024-12-31.gutachten-obermaier.kommentiert.md"
 with open(i) as f:
   s = f.read()
 
-s = (
-  "<blockquote>\n\n" +
-  s +
-  "\n\n</blockquote>"
-)
-
-# fixme: no effect
-s = re.sub(
-  " ?<!-- ?([.\n]*) ?--> ?",
-  (
-    "\n\n</blockquote>\n\n" +
-    r"\1" +
-    "\n\n<blockquote>\n\n"
-  ),
-  s,
-  re.S | re.M
-)
-
 if s.startswith("<!--"):
   s = s[4:]
+else:
+  s = "<blockquote>\n\n" + s
 
 if s.endswith("-->\n"):
   s = s[:-4] + "\n"
+elif s.endswith("-->"):
+  s = s[:-3] + "\n"
+else:
+  s = s + "\n\n</blockquote>"
 
 s = s.replace("<!--", "\n\n</blockquote>\n\n")
 s = s.replace("-->", "\n\n<blockquote>\n\n")
