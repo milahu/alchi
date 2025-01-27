@@ -45,3 +45,5 @@ with open(o, "w") as f:
   f.write(s)
 
 print("done", o)
+
+# test
