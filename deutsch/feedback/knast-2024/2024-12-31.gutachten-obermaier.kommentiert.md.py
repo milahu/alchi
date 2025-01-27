@@ -14,15 +14,24 @@ s = (
   "\n\n</blockquote>"
 )
 
+# fixme: no effect
 s = re.sub(
-  r" ?<!-- ?(.+) ?--> ?",
+  " ?<!-- ?([.\n]*) ?--> ?",
   (
-    r"\n\n</blockquote>\n\n" +
+    "\n\n</blockquote>\n\n" +
     r"\1" +
-    r"\n\n<blockquote>\n\n"
+    "\n\n<blockquote>\n\n"
   ),
-  s
+  s,
+  re.S | re.M
 )
+
+s = s.replace("<!--", "\n\n</blockquote>\n\n")
+s = s.replace("-->", "\n\n<blockquote>\n\n")
+
+# debug
+# print("\n".join(s.split("\n")[0:30]))
+# sys.exit()
 
 with open(o, "w") as f:
   f.write(s)
