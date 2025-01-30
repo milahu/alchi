@@ -2,8 +2,8 @@
 
 import os, sys, re
 
-i = "2024-12-31.gutachten-obermaier.md"
-o = "2024-12-31.gutachten-obermaier.kommentiert.md"
+i = "2025-01-29.gutachten-obermaier.md"
+o = "2025-01-29.gutachten-obermaier.kommentiert.md"
 
 with open(i) as f:
   s = f.read()
