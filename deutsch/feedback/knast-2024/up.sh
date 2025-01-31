@@ -7,14 +7,16 @@ cd "$(dirname "$(readlink -f "$0")")"
 cp /storage/sdcard0/Documents/markor/"$s" "$d"
 chmod 0666 "$d"
 git add "$d"
+flags=
 if [ $# = 2 ] && [ "$2" = i ]; then
   # init new file
   git commit --no-edit -m "add $d"
 else
   # update old file
   git commit --amend --no-edit
+  flags=-f
 fi
-git push github.com -f
+git push github.com $flags
 torpid=$(pidof tor)
 if [ -z "$torpid" ]; then
   echo starting tor
@@ -26,7 +28,7 @@ fi
 for (( i=0; i<10; i++ )); do
   echo "git push: try $i"
   timeout 10 \
-  git push darktea.onion -f &&
+  git push darktea.onion $flags &&
   break
   sleep 1
 done
