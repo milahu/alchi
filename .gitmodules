@@ -1,0 +1,3 @@
+[submodule "journal"]
+	path = journal
+	url = https://github.com/milahu450/alchi-journal
