@@ -46,4 +46,5 @@ Beispiel Einkauf:
 1 Liter Bio Olivenöl
 2 Glas Senf mittelscharf
 2 Dose Frikadellen (Buletten)
+10 Schokolade Zartbitter
 1 "Sub" vom Subway (bei Aral Tankstelle)
