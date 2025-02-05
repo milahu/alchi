@@ -41,6 +41,7 @@ proot \
 	-b /sys/ \
 	-b /proc/ \
 	-b /data/data/com.termux/files/home \
+	-b /storage \
 	/usr/bin/env -i \
 	HOME=/root \
 	TERM="xterm-256color" \
