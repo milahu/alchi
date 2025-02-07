@@ -1,34 +1,46 @@
 # Briefe gesendet
 
 - [2024-12-23.beschwerde-gegen-beschluss.md](2024-12-23.beschwerde-gegen-beschluss.md)
+  - 22 Seiten
   - Email an Landgericht Traunstein am 23.12.2024
   - Brief an Landgericht Traunstein am 23.12.2024 - nicht angekommen?
   - Brief an Landgericht Traunstein am 13.1.2025
 - [2025-01-09.beschwerde-nachtrag-1.md](2025-01-09.beschwerde-nachtrag-1.md)
+  - 75 Seiten
   - Fax an Landgericht Traunstein am TODO
   - Brief an Landgericht Traunstein am 13.1.2025
 - [2025-01-10.beschwerde-nachtrag-2-sabotage-meiner-kommunikation.md](2025-01-10.beschwerde-nachtrag-2-sabotage-meiner-kommunikation.md)
+  - 1 Seite
   - Fax an Landgericht Traunstein am TODO
   - Brief an Landgericht Traunstein am 13.1.2025
 - [2025-01-13.beschwerde-nachtrag-3-gegen-alle-beschluesse.md](2025-01-13.beschwerde-nachtrag-3-gegen-alle-beschluesse.md)
+  - 1 Seite
   - Fax an Landgericht Traunstein am TODO
   - Brief an Landgericht Traunstein am 13.1.2025
   - ersetzt durch 2025-01-17.beschwerde-nachtrag-4-gegen-alle-beschluesse.md
 - [2025-01-15.akteneinsicht-antrag.md](2025-01-15.akteneinsicht-antrag.md)
+  - 1 Seite
   - Brief an Landgericht Traunstein am TODO
 - [2025-01-17.beschwerde-nachtrag-4-gegen-alle-beschluesse.md](2025-01-17.beschwerde-nachtrag-4-gegen-alle-beschluesse.md)
+  - 1 Seite
   - Brief an Landgericht Traunstein am TODO
   - ersetzt durch 2025-01-21.beschwerde-nachtrag-5-gegen-alle-beschluesse.md
 - [2025-01-21.beschwerde-nachtrag-5-gegen-alle-beschluesse.md](2025-01-21.beschwerde-nachtrag-5-gegen-alle-beschluesse.md)
+  - 1 Seite
   - Brief an Landgericht Traunstein am 3.2.2025 ?
 - [2025-01-29.gutachten-obermaier.kommentiert.md](2025-01-29.gutachten-obermaier.kommentiert.md)
+  - 55 Seiten
   - Brief an Landgericht Traunstein am 3.2.2025
 - [2025-01-30.beschwerde-nachtrag-6-keine-faxe-mehr.md](2025-01-30.beschwerde-nachtrag-6-keine-faxe-mehr.md)
+  - 1 Seite
   - Brief an Landgericht Traunstein am 3.2.2025
 - [2025-02-01.kinderpornos-einlassung.md](2025-02-01.kinderpornos-einlassung.md)
+  - 3 Seiten
   - Brief an Amtsgericht Traunstein am 3.2.2025
 - [2025-02-03.beschwerde-nachtrag-7-medizin-aendert-nichts.md](2025-02-03.beschwerde-nachtrag-7-medizin-aendert-nichts.md)
+  - 1 Seite
   - Brief an Landgericht Traunstein am 3.2.2025
 - [2025-02-05.frage-zum-beschluss.medikation.gleichzeitig.md](2025-02-05.frage-zum-beschluss.medikation.gleichzeitig.md)
+  - 1 Seite
   - Fax an Landgericht Traunstein am 5.2.2025
   - Brief an Landgericht Traunstein am TODO
