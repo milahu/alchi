@@ -108,3 +108,7 @@ TODO run a scraper github action every week to find forks on github
 - https://github.com/techgaun/active-forks
   - https://techgaun.github.io/active-forks/index.html#https://github.com/milahu/alchi
   - limited to github
+
+### search by pull requests
+
+- https://github.com/milahu/alchi/pulls
