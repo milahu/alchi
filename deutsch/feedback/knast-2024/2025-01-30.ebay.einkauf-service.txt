@@ -25,7 +25,7 @@ Patienten-Telefon Station KS2
 +498071718119
 
 Email
-milahu450 at gmail.com
+milahu at gmail.com
 
 Session Chat
 0528f44eec76d6aa7c801a8f5c36ec5a86aee9682ddaa3c30c188fbb4dfc524b59
@@ -33,7 +33,7 @@ Session Chat
 Warum bin ich im ISK?
 Weil passiver Widerstand gegen Bullen.
 Siehe auch:
-https://github.com/milahu450/alchi/tree/master/deutsch/feedback/knast-2024
+https://github.com/milahu/alchi/tree/master/deutsch/feedback/knast-2024
 
 Beispiel Einkauf:
 2 Netz Bio Zitronen
