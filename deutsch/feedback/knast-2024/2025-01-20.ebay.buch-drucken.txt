@@ -9,7 +9,7 @@ Pallas. Wer sind meine Freunde.
 Gruppenaufbau nach Persönlichkeitstyp.
 
 Das Buch ist "open source" auf
-https://github.com/milahu450/alchi
+https://github.com/milahu/alchi
 
 Du brauchst:
 
@@ -60,7 +60,7 @@ Patienten-Telefon Station KS2
 Warum bin ich im ISK?
 Weil passiver Widerstand gegen Bullen.
 Siehe auch:
-https://github.com/milahu450/alchi/tree/master/deutsch/feedback/knast-2024
+https://github.com/milahu/alchi/tree/master/deutsch/feedback/knast-2024
 
 Angst vor den Bullen?
 Mein Buch ist legal.
