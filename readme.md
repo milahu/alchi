@@ -702,6 +702,9 @@ some keywords (tags) for search engine optimization (SEO)
       * socialism on the outside, fascism on the inside
 * primitive culture
   * minimalism
+    * macro management
+    * macromanagement
+    * macromanaging
   * natural religion
   * voluntarism
     * https://en.wikipedia.org/wiki/Voluntarism
