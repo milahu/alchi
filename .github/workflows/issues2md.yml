@@ -1,6 +1,18 @@
 # .github/workflows/issues2md.yml
 # https://github.com/mattduck/gh2md/issues/11
 
+# note: the secret "GITHUB_TOKEN"
+# is passed automatically.
+# you only have to make sure
+# to give write permissions
+# to the action:
+# repo > settings > actions >
+# Workflow permissions >
+# Read and write permissions >
+# Save
+# see also
+# https://github.com/ad-m/github-push-action/issues/96#issuecomment-889984928
+
 name: Issues2Markdown
 on:
   # allow to run the workflow manually
@@ -17,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set output path
-      run: echo "GH2MD_OUTPUT_PATH=archive/github/issues/" >> $GITHUB_ENV
+      run: echo "GH2MD_OUTPUT_PATH=issues/github/" >> $GITHUB_ENV
     - name: Check output path
       run: |
         if ! [[ "$GH2MD_OUTPUT_PATH" =~ ^[a-zA-Z0-9_/.+~-]+$ ]]; then
@@ -37,7 +49,7 @@ jobs:
         gh2md --version || true
         export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
         # fix: RuntimeError: Output directory already exists and has files in it
-        git rm -rf $GH2MD_OUTPUT_PATH
+        git rm -rf $GH2MD_OUTPUT_PATH || true
         # workaround for https://github.com/mattduck/gh2md/pull/31
         mkdir -p $GH2MD_OUTPUT_PATH || true
         gh2md $GITHUB_REPOSITORY $GH2MD_OUTPUT_PATH/ghmd --idempotent --multiple-files --file-extension .ghmd
