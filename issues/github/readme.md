@@ -2,7 +2,7 @@
 <details>
 <summary>open issues</summary>
 <table>
-<tr><td><b><a href="md/2025-03-17.60.issue.open.md" title="continue #55&#10;&#10;milahu commented at 2025-03-17 05:20:&#10;&#10;usa versus china&#10;&#10;https://michaelyon.su6bstack.com/p/panama-going-hot-important-update&#10;&#10;Panama Going Hot -- Important Update&#10;&#10;Massive protests plan&#10;">news of collapse 3</a></b><br>#60 opened on 2025-03-17 05:20 by milahu &#x1f4ac; 4</td></tr>
+<tr><td><b><a href="md/2025-03-17.60.issue.open.md" title="continue #55&#10;&#10;milahu commented at 2025-03-17 05:20:&#10;&#10;usa versus china&#10;&#10;https://michaelyon.su6bstack.com/p/panama-going-hot-important-update&#10;&#10;Panama Going Hot -- Important Update&#10;&#10;Massive protests plan&#10;">news of collapse 3</a></b><br>#60 opened on 2025-03-17 05:20 by milahu &#x1f4ac; 5</td></tr>
 <tr><td><b><a href="md/2024-01-23.56.issue.open.md" title="wer den weltuntergang NICHT sieht, der liest die falschen nachrichten (blaue pillen)&#10;&#10;welche news lese ich? also, wem glaube ich?&#10;&#10;---------------------------------------------------------------------&#10;">schlechte nachrichten. german news of collapse</a></b><br>#56 opened on 2024-01-23 09:46 by milahu &#x1f4ac; 5</td></tr>
 <tr><td><b><a href="md/2024-01-23.55.issue.open.md" title="who does NOT see the end of the world, is reading the wrong news (blue pills)&#10;&#10;what news do i read? who do i trust?&#10;&#10;------------------------------------------------------------------------&#10;&#10;continue &#10;">news of collapse 2</a></b><br>#55 opened on 2024-01-23 09:37 by milahu &#x1f4ac; 16</td></tr>
 <tr><td><b><a href="md/2023-11-23.54.issue.open.md" title="wer ist milan hauth?&#10;&#10;autobiografie, lebenserfahrung, meine vergangenheit&#10;welche level vom leben hab ich schon durchgespielt&#10;&#10;https://www.tz.de/muenchen/stadt/angeklagter-will-scheiterhaufen-sterben-t&#10;">Als Strafe fordere ich meine öffentliche Verbrennung auf dem Scheiterhaufen, in der Tradition der Heiligen Inquisition</a></b><br>#54 opened on 2023-11-23 14:45 by milahu &#x1f4ac; 1</td></tr>
@@ -54,7 +54,7 @@
 <details>
 <summary>closed issues</summary>
 <table>
-<tr><td><b><a href="md/2024-12-24.58.issue.closed.md" title="since 2024-12-09 im in prison&#10;for distributing my book in public&#10;&#10;so all my old milahu accounts are dead&#10;and now im publishing on darktea.onion&#10;&#10;http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos&#10;">new milahu/alchi - active fork - going dark</a></b><br>#58 opened on 2024-12-24 11:03 by pendecho2 &#x1f4ac; 2</td></tr>
+<tr><td><b><a href="md/2024-12-24.58.issue.closed.md" title="since 2024-12-09 im in prison&#10;for distributing my book in public&#10;&#10;so all my old milahu accounts are dead&#10;and now im publishing on darktea.onion&#10;&#10;http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3siqmos&#10;">new milahu/alchi - active fork - going dark</a></b><br>#58 opened on 2024-12-24 11:03 by pendecho2 &#x1f4ac; 3</td></tr>
 <tr><td><b><a href="md/2023-09-08.53.issue.closed.md" title="in meinem buch beschreibe ich meine hypothese zum &quot;gruppenaufbau nach persönlichkeitstyp&quot;.&#10;&#10;persönlichkeitstyp ist zu 50% angeboren, das heisst, es ist von geburt an (also &quot;von natur aus&quot;) festgeleg&#10;">buch zusammenfassung: pallas. wer sind meine freunde. gruppenaufbau nach persönlichkeitstyp</a></b><br>#53 opened on 2023-09-08 07:27 by milahu &#x1f4ac; 3</td></tr>
 <tr><td><b><a href="md/2022-10-01.40.issue.closed.md" title="betrifft version 2022-09-30 von src/whoaremyfriends&#10;&#10;  falsche typen&#10;&#10;division passt besser zu typ 2:&#10;mutter (oder frau)&#10;vermehrung durch zellteilung&#10;birnenform (oben lang, unten breit)&#10;also gehen die&#10;">mathematik operatoren: falsche typen</a></b><br>#40 opened on 2022-10-01 15:38 by milahu &#x1f4ac; 1</td></tr>
 <tr><td><b><a href="md/2022-08-13.35.issue.closed.md" title="Ideological Subversion. by Yuri Bezmenov, Ex KGB Agent&#10;https://www.youtube.com/watch?v=KLdDmeyMJls&#10;https://bezmenov.net/lecture/&#10;&#10;deutsche tonspur von Alexander Benesch:&#10;Ex Kgb Agent Yuri Bezmenov Ali&#10;">Ideological Subversion. by Yuri Bezmenov, Ex KGB Agent</a></b><br>#35 opened on 2022-08-13 12:37 by milahu &#x1f4ac; 1</td></tr>
@@ -70,5 +70,6 @@
 <details>
 <summary>merged prs</summary>
 <table>
+<tr><td><b><a href="md/2025-02-13.59.pr.merged.md" title="------------------------------------------------------------------------&#10;&#10;[Export of Github issue for milahu/alchi.]&#10;">active fork</a></b><br>#59 opened on 2025-02-13 12:19 by milahu450</td></tr>
 </table>
 </details>
