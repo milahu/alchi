@@ -1130,6 +1130,9 @@
         console.log('renderPrintLayout', renderButton);
         renderButton.classList.add("disabled");
         renderButton.removeAttribute("href");
+        for (var elem of document.querySelectorAll(".screen-layout-only")) {
+          elem.remove();
+        }
         makeBinderyBook(book => {
           //renderButton.parentNode.remove();
           // remove the render button
