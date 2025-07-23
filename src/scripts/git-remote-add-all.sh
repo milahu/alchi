@@ -60,6 +60,8 @@ git_remote_add darktea.onion http://it7otdanqu7ktntxzm427cba6i53w6wlanlh23v5i3si
 
 git_remote_add righttoprivacy.onion http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi
 
+git_remote_add darkforest.onion http://git.dkforestseeaaq2dqz2uflmlsybvnq2irzn4ygyvu53oazyorednviid.onion/milahu/alchi
+
 
 
 # done
