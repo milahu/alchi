@@ -1,0 +1,1 @@
+Scheduled workflows are disabled automatically after 60 days of repository inactivity.
