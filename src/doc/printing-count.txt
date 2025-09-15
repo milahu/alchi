@@ -1,0 +1,30 @@
+date  printed books  printing costs  sent letters  shipping costs  total costs
+  comment lines start with a space character (\x20)
+  columns are separated by two space characters
+  the first row contains the column names
+
+  note: all numbers here are cumulated numbers
+  so if you want the numbers for one period
+  you have to subtract the numbers from the previous period
+
+2018-01-01  0  0  0  0
+  i dont know when exactly i started printing my book
+  but lets say it was year 2018
+  also note that the page count has increased with each version
+
+2025-09-15  7500  7500  3280  5298  12798
+  post stamps = sent letters
+    100 x 160: 21 + 6
+    100 x 180: 2
+    10 x 160: 33
+    10 x 180: 5
+    (27 * 100 + 33 * 10) + (2 * 100 + 5 * 10) = 3280 letters
+  shipping costs:
+    ((27 * 100 + 33 * 10) * 160 + (2 * 100 + 5 * 10) * 180) / 100 = 5298 euros
+  consumed staples -> printed books
+    15 x 1000 staples -> 7500 books
+  printing costs:
+    about 1 euro per book -> 7500 euro
+    see also: costs.md
+  total costs:
+    7500 + 5298 = 12798 euros
