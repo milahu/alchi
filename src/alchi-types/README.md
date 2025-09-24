@@ -1,4 +1,3 @@
-# alchi-tables
+# alchi-types
 
-[alchi-tables.html](alchi-tables.html)
-
+[alchi-types.html](alchi-types.html)
