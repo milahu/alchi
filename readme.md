@@ -39,7 +39,7 @@ this repository is organized as a monorepo of multiple packages
 * [src/whoaremyfriends/](src/whoaremyfriends/)
 * [src/alchi-book/](src/alchi-book/) - old version of `src/whoaremyfriends/`
 * [src/alchi-flyer/](src/alchi-flyer/)
-* [src/alchi-tables/](src/alchi-tables/)
+* [src/alchi-types/](src/alchi-types/)
 * [src/alchi-maps/](src/alchi-maps/)
 * [src/alchi-test/](src/alchi-test/)
 
