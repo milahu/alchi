@@ -1478,6 +1478,11 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   * tough-minded tourette syndrome
 * "paranoid schizophrenic" is what my enemies call me to deny my reasons
   * "paranoid schizophrenia" is what my enemies call me to deny my reasons
+* menschen sind kohlenstoff-basierte makromoleküle
+  (der häufigste feststoff im menschlichen körper ist kohlenstoff),
+  also haben menschen ein ähnliches bindungsverhalten wie kohlenstoff
+  (vier valenzelektronen = bis zu vier bindungspartner),
+  also kann jeder mensch bis zu vier freunde gleichzeitig haben?
 
 <!--
 
