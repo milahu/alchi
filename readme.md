@@ -1483,6 +1483,33 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
   also haben menschen ein ähnliches bindungsverhalten wie kohlenstoff
   (vier valenzelektronen = bis zu vier bindungspartner),
   also kann jeder mensch bis zu vier freunde gleichzeitig haben?
+* einladung zum richtigmachen
+  * wenn man etwas richtig haben will, dann muss man es selber machen
+  * wer sich verlässt, der ist verlassen
+    * wer sich verlässt auf seine feinde, der ist verlassen von seinen freunden
+    * wer sich verlässt auf böse geister, der ist von allen guten geistern verlassen
+    * wer arbeit delegiert an seine feinde, der erntet den hass seiner feinde
+    * jeder soll seine angeborenen stärken frei ausleben, und seine schwächen delegieren an seine freunde
+  * einladung auf den richtigen weg
+  * einladung zum richtigen weg
+  * einladung zum selbermachen
+  * einladung zu selbstorganisation
+  * einladung zu citizen science
+  * einladung zu peer-to-peer forschung
+  * einladung zu demokratischer forschung
+    * demokratische forschung
+    * forschung zum selbermachen
+  * aktivismus für anfänger
+  * selbstorganisation für anfänger
+  * gruppenaufbau für anfänger
+  * widerstand für anfänger
+  * exit the matrix für anfänger
+  * ausbrechen für anfänger
+    * die ausbrecher
+  * aussteigen für anfänger
+    * raus aus dem hamsterrad
+  * naturordnung für anfänger
+  * naturmedizin für anfänger
 
 <!--
 
