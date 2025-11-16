@@ -1,0 +1,23 @@
+<svg version="1.1" viewBox="0 0 367.07 138.7" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(72.129 -70.805)">
+    <g fill="none" stroke="#000" stroke-width="1px">
+      <path d="m90.115 84.17v98.487"/>
+      <path d="m139.36 133.41h-98.487"/>
+      <path d="m55.294 168.23 69.641-69.641"/>
+      <path d="m55.294 98.593 69.641 69.641"/>
+    </g>
+    <g font-family="sans-serif" font-size="10px">
+      <text fill="#000" x="76.453827" y="78.848">Earth</text>
+      <text fill="#000" x="79.504189" y="194.89816">Fire</text>
+      <text fill="#000" x="144.80605" y="136.85971">Air</text>
+      <text fill="#000" x="5.183486" y="136.81863">Water</text>
+      <text fill="#000" x="130.17912" y="94.852699">Neuroticism</text>
+      <text fill="#000" x="-38.16795" y="93.601761">Conscientiousness</text>
+      <text fill="#000" x="162.60603" y="135.96902">(Openness)</text>
+      <text fill="#000" x="57.597797" y="207.8334">(Extraversion)</text>
+      <text fill="#000" x="125.85151" y="179.09726">Extraversion = Openness</text>
+      <text fill="#000" x="-72.128944" y="135.66168">Agreeableness</text>
+      <text fill="#000" x="222.25435" y="135.66168">Agreeableness</text>
+    </g>
+  </g>
+</svg>
