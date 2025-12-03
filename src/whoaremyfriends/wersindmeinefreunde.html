@@ -1228,6 +1228,32 @@
     }
   </style>
 
+  <!-- create clickable headings on page load -->
+  <!-- NOTE these clickable headings do not work in "print to PDF" -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      for (const section of document.querySelectorAll("section[id]")) {
+        // Find the first heading inside the section
+        const heading = section.querySelector("h1, h2, h3, h4, h5, h6");
+        if (!heading) continue;
+        // If the heading already contains a link, skip
+        if (heading.querySelector("a")) continue;
+        // Wrap heading text inside an anchor
+        const text = heading.textContent;
+        heading.textContent = ""; // Clear existing content
+        const anchor = document.createElement("a");
+        anchor.href = `#${section.id}`;
+        anchor.textContent = text;
+        heading.appendChild(anchor);
+      }
+    });
+  </script>
+  <style>
+    h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+      color: black;
+    }
+  </style>
+
 </head>
 
 
