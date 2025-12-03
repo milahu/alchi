@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin:auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  inkscape:label="pallas-pattern.traditional-alchemy-is-wrong"
+>
+
+<!--
+  NOTE this pattern is wrong in my opinion
+
+  traditional alchemy says:
+  types 13 are masculine
+  types 24 are feminine
+
+  ->
+  types 14 are old
+  types 23 are young
+
+  ->
+  congruent group of four:
+  M1L F2S M3S F4L
+
+  here:
+  v1 = version 1:
+  diagonals in the "cross" groups of four:
+  type 1 is opposite to type 2 and
+  type 3 is opposite to type 4
+  so this gives the same pattern of basetypes 1234
+  only the physical properties MFLS are different
+
+  v2 = version 2:
+  diagonals in the "cross" groups of four:
+  type 1 is opposite to type 3 and
+  type 2 is opposite to type 4
+  so this gives a different pattern of basetypes 1234
+-->
+
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g inkscape:label="clipped image" clip-path="url(#clip-image)">
+
+    <!-- debug: darkgray background -->
+    <rect display="none" x="0" y="0" width="800" height="800" fill="#444"/>
+
+    <g fill="none" stroke="#000" stroke-width="2" inkscape:label="lines">
+
+
+
+      <g inkscape:label="simple pattern">
+        <g inkscape:label="single lines orthogonal: single lines outside squares">
+          <g>
+            <title>bottom left</title>
+            <path inkscape:label="right" d="M 300 560 L 300 640"/>
+            <path inkscape:label="left" d="M 100 560 L 100 640"/>
+            <path inkscape:label="bottom" d="M 160 700 L 240 700"/>
+            <path inkscape:label="top" d="M 160 500 L 240 500"/>
+          </g>
+          <g>
+            <title>bottom right</title>
+            <path inkscape:label="right" d="M 700 560 L 700 640"/>
+            <path inkscape:label="left" d="M 500 560 L 500 640"/>
+            <path inkscape:label="bottom" d="M 560 700 L 640 700"/>
+            <path inkscape:label="top" d="M 560 500 L 640 500"/>
+          </g>
+          <g>
+            <title>top right</title>
+            <!-- TODO add titles -->
+            <path d="M 700 160 L 700 240"/>
+            <path d="M 500 160 L 500 240"/>
+            <path d="M 560 300 L 640 300"/>
+            <path d="M 560 100 L 640 100"/>
+          </g>
+          <g>
+            <title>top left</title>
+            <!-- TODO add titles -->
+            <path d="M 300 160 L 300 240"/>
+            <path d="M 100 160 L 100 240"/>
+            <path d="M 160 300 L 240 300"/>
+            <path d="M 160 100 L 240 100"/>
+          </g>
+        </g>
+        <g inkscape:label="single lines diagonal">
+          <g inkscape:label="left">
+            <path d="M 0 400 L 58 458"/>
+            <path d="M 0 400 L 58 342"/>
+          </g>
+          <g inkscape:label="right">
+            <path d="M 800 400 L 742 458"/>
+            <path d="M 800 400 L 742 342"/>
+          </g>
+          <g inkscape:label="bottom">
+            <path d="M 400 800 L 458 742"/>
+            <path d="M 400 800 L 342 742"/>
+          </g>
+          <g inkscape:label="top">
+            <path d="M 400 0 L 458 58"/>
+            <path d="M 400 0 L 342 58"/>
+          </g>
+          <path inkscape:label="top right" d="M 800 0 L 742 58"/>
+          <path inkscape:label="bottom left" d="M 0 800 L 58 742"/>
+          <path inkscape:label="bottom right" d="M 800 800 L 742 742"/>
+          <path inkscape:label="top left" d="M 0 0 L 58 58"/>
+          <path inkscape:label="center bottom-left to top-right" d="M 458 342 L 342 458"/>
+          <path inkscape:label="center top-left to bottom-right" d="M 458 458 L 342 342"/>
+        </g>
+      </g>
+
+
+    </g>
+
+    <g inkscape:label="circles and text">
+      <g inkscape:label="circles" stroke-width="2" fill="none" stroke="black">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
+        <text x="100" y="100">F1S</text>
+        <text x="300" y="100">F2L</text>
+        <text x="500" y="100">F4S</text>
+        <text x="700" y="100">F3L</text>
+
+        <text x="100" y="300">M2S</text>
+        <text x="300" y="300">M1L</text>
+        <text x="500" y="300">M3S</text>
+        <text x="700" y="300">M4L</text>
+
+        <text x="100" y="500">F3S</text>
+        <text x="300" y="500">F4L</text>
+        <text x="500" y="500">F2S</text>
+        <text x="700" y="500">F1L</text>
+
+        <text x="100" y="700">M4S</text>
+        <text x="300" y="700">M3L</text>
+        <text x="500" y="700">M1S</text>
+        <text x="700" y="700">M2L</text>
+      </g>
+    </g>
+
+  </g>
+</svg>
