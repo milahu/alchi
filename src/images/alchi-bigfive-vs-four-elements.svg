@@ -1,23 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 378.16 138.99" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(72.129 -71.248)">
+<svg version="1.1" viewBox="0 0 387 192.67" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    translation from Big Five to Four Elements
+
+    based on
+
+    A robust data-driven approach identifies four personality types across four large data sets (Gerlach 2018)
+    https://sci-hub.st/https://doi.org/10.1038/s41562-018-0419-z
+
+    https://www.mccormick.northwestern.edu/news/articles/2018/09/are-you-average-reserved-self-centered-or-a-role-model.html
+    Are You Average, Reserved, Self-Centered, or a Role Model?
+    Amaral lab sifts through data to find four clusters of personality types
+
+    ../../english/chats/ChatGPT-Fascism-Big-Five-vs-Four-Types.md
+  -->
+  <g transform="translate(69.536 -45.425)">
     <g fill="none" stroke="#000" stroke-width="1px">
       <path d="m90.115 84.17v98.487"/>
       <path d="m139.36 133.41h-98.487"/>
-      <path d="m55.294 168.23 69.641-69.641"/>
-      <path d="m55.294 98.593 69.641 69.641"/>
+      <path d="m90.115 133.41 34.82-34.824"/>
+      <path d="m47.469 158.03 42.647-24.623-24.623 42.648" fill="none" stroke="#000" stroke-width="1"/>
     </g>
     <g font-family="sans-serif" font-size="10px">
-      <text fill="#000" x="76.453827" y="78.848">Earth</text>
-      <text fill="#000" x="79.504189" y="194.89816">Fire</text>
-      <text fill="#000" x="144.80605" y="136.85971">Air</text>
-      <text fill="#000" x="5.183486" y="136.81863">Water</text>
-      <text fill="#000" x="130.17912" y="94.852699">Neuroticism</text>
-      <text fill="#000" x="-36.124187" y="179.54193">Conscientiousness</text>
-      <text fill="#000" x="162.60603" y="135.96902">(Extraversion)</text>
-      <text fill="#000" x="61.276569" y="207.8334">(Openness)</text>
-      <text fill="#000" x="125.85151" y="179.09726">Openness + Extraversion</text>
-      <text fill="#000" x="-35.514198" y="190.71028">Agreeableness</text>
+      <text fill="#000" x="87.238693" y="196.80148">1</text>
+      <text fill="#000" x="81.523041" y="210.61433">Fire</text>
+      <text fill="#000" x="67.150993" y="223.39079">Openness</text>
+      <text fill="#000" x="64.293167" y="237.99747">Role Model</text>
+      <text fill="#000" x="87.287506" y="78.596107">2</text>
+      <text fill="#000" x="77.857155" y="66.627808">Earth</text>
+      <text fill="#000" x="71.345726" y="52.594551">Average</text>
+      <text fill="#000" x="144.80605" y="136.85971">3 = Air = Extraversion = Self-Centered</text>
+      <text fill="#000" x="-62.625217" y="136.81863">Reserved = Water = 4</text>
+      <text fill="#000" x="130.17912" y="94.852699">23 = Neuroticism</text>
+      <text fill="#000" x="-70.146439" y="164.81581">Conscientiousness = 401</text>
+      <text fill="#000" x="-33.121395" y="187.20844">Agreeableness = 104</text>
     </g>
   </g>
 </svg>
