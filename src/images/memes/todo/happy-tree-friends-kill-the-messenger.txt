@@ -1,0 +1,124 @@
+happy tree friends - kill the messenger
+
+
+
+can you make a comic strip?
+in the style of "happy tree friends":
+forest animals, bright colors, looking innocent at first sight, ...
+12 scenes or 16 scenes would be nice numbers
+
+scene 1:
+a terrified animals goes to a police officer.
+the terrified animal has a book in one hand (the book cover is the "pallas" symbol ⚴),
+and with the other hand it is pointing at the book,
+while shouting "someone sent me this book, but i dont understand anything"
+and looking really scared/shocked/terrified/worried.
+
+scene 2:
+the police officer gives the terrified animal a hug,
+now the terrified animal changes its mood to relaxed/calm.
+now the police officer has the "pallas" book in his hand.
+the police officer says "you did the right thing".
+
+scene 3:
+the two animals and some more animals are sitting together at a campfire,
+all animals are happy and relaxed,
+and the police officer is reading loud from the "pallas" book.
+
+scene 4:
+the mood of all animals has changed to "disgusted", including the police officer,
+but the police officer keeps on reading from the "pallas" book.
+
+scene 5:
+many animals are vomiting/puking, except the police officer.
+
+scene 6:
+many animals are lying around, looking exhausted and in pain, covered in puke
+
+scene 7:
+the police officer starts looking worried,
+but continues reading loud from the "pallas" book
+
+scene 8:
+some animals commit suicide by shooting themselves in the head
+
+scene 9:
+the police officer gets angry, stops reading,
+faces the crowd: "this is enough. you know what to do"
+
+scene 10:
+the mob, armed with torches and pitchforks,
+is marching to find the "pallas" book author.
+
+scene 11:
+the mob burns the house of the "pallas" book author.
+
+scene 12:
+on the next day, all animals are happy again,
+the sun is shining, a rainbow is in the sky...
+everything is "back to normal",
+the illusion of order has been saved once again.
+
+
+
+---
+
+
+
+https://support.upwork.com/hc/en-us/requests/53875455
+
+2025-12-29 11:33
+
+Attention: Upwork Policy Violation
+
+Hi Milan,
+ 
+We have removed your job post Vector Graphics Comic Strip Artist for Colorful Animal Series because it contained, promoted, or encouraged violent content, which is against Upwork's Terms of Service.
+ 
+Specifically, your job post stated: some animals commit suicide by shooting themselves in the head, the mob, armed with torches and pitchforks, the mob burns the house of the "pallas" book author
+ 
+Please note that we may have also canceled any contracts associated with this job opening.
+ 
+Your public post contained content that depicted graphic violence.
+ 
+Upwork is a community of talented professionals, and the content that is publicly viewable plays a big part in preserving and respecting the professional integrity of our community. To that end, Upwork customers cannot post graphic content in public posts or profiles. You can share content that depicts violence privately as long as it relates to the job and does not glorify violent tragedies, encourage real-world violence, or promote violence toward a specific person or group of people.
+ 
+This decision was arrived at after a careful review of your account. Our reviews include reports from other users, your history on the platform, automated detection tools, and our own investigations.
+ 
+Upwork’s Trust and Safety teams review and action content and user behavior through a combination of both automated and manual detection and review.
+ 
+What's next?
+ 
+To get back to using Upwork, all you need to do is log into your account and follow the instructions on the banner informing you of our policies. From there, you can find out more about this policy and acknowledge our Terms of Service.
+ 
+Trust is at the heart of the Upwork community and our Terms of Service are a critical part of creating and maintaining that trust. Although we hope not to get to this point, violating our Terms of Service again can result in your account being restricted or permanently blocked.
+ 
+Thanks in advance for your cooperation!
+ 
+Best,
+Nicole
+Upwork Trust & Safety
+
+
+
+---
+
+
+
+2025-12-29 13:00
+
+https://duckduckgo.com/?q=ai+image+generator+violent+content&ia=web
+
+https://www.reddit.com/r/aiArt/comments/16t03zc/any_recommendations_for_ai_art_generators_that/
+
+You can do anything with Stable Diffusion. It is by far the least restrictive.
+
+The core advantage of Stable Diffusion is that you can install it locally.
+
+You need minimum 6GB NVIDIA GPU and at least 24GB RAM, as far as I know.
+
+Grab Easy Diffusion for starters, run the installer then launch Easy Diffusion from the desktop
+
+https://civitai.com/search/models?sortBy=models_v9&query=happy%20tree%20friends
+
+https://github.com/easydiffusion/easydiffusion
