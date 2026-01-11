@@ -246,6 +246,9 @@ in the rare case that this project is censored, here are some mirror locations
 * righttoprivacy with [Tor Browser](https://www.torproject.org/download/)
   * [alchi](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi)
   * [alchi-journal](http://gg6zxtreajiijztyy5g6bt5o6l3qu32nrg7eulyemlhxwwl6enk6ghad.onion/milahu/alchi-journal)
+* archive.softwareheritage.org
+  * [alchi](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/milahu/alchi)
+  * [alchi-journal](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/milahu/alchi-journal)
 
 note: only some git hosters also offer static webhosting = pages
 
