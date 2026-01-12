@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "html-validate:recommended"
+  ],
+  "rules": {
+    "element-name": "off",
+    "no-inline-style": "off",
+    "valid-id": "off",
+    "wcag/h37": "off",
+    "no-trailing-whitespace": "off",
+    "no-deprecated-attr": "off",
+    "void-style": "off",
+    "prefer-tbody": "off",
+    "attr-quotes": "off",
+    "text-content": "off",
+    "prefer-native-element": "off",
+    "aria-label-misuse": "off",
+    "element-permitted-content": "off",
+    "attr-case": "off"
+  }
+}
