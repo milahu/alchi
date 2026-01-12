@@ -686,6 +686,7 @@
       line-height: 110%;
     }
     table.four-basetypes,
+    table.three-columns,
     table.two-parents,
     table.two-properties {
       margin-top: 0.5em;
@@ -784,6 +785,28 @@
     }
     table.four-basetypes tbody+tbody tr:first-child * {
       border-top: solid 1px black;
+    }
+
+    table.three-columns td {
+      text-align: right;
+      vertical-align: top;
+      padding-right: 3px;
+    }
+    table.three-columns td+td {
+      text-align: center;
+      border-left: solid 1px black;
+      padding-left: 3px;
+    }
+    table.three-columns td+td+td {
+      text-align: left;
+      padding-right: 0;
+    }
+    table.three-columns thead td {
+      border-bottom: solid 1px black;
+      padding-bottom: 3px;
+    }
+    table.three-columns tbody tr:first-child td {
+      padding-top: 3px;
     }
 
     table.two-properties {
@@ -6210,9 +6233,46 @@ TODO style="break-before:page"?
 
 
 
-<section id="subtypes-zodiac">
+<section id="absolute-definition-of-subtypes" class="h3">
+
+<a name="subtypes-zodiac"></a>
 
 <h3>Absolute Definition von Subtypen</h3>
+
+<div class="para">
+  Eine absolute Definition von Subtypen braucht man für manche Vierer-Gruppen.
+
+  Aber es gibt zwei verschiedene absolute Definitionen von Subtypen,
+  eine Definition für
+  <a href="#groups-of-four-by-subtype-age"
+  >Vierer-Gruppen nach Subtyp-Alter</a>
+  und eine andere Definition für die
+  <a href="#groups-of-four-by-subtype-gender"
+  >Vierer-Gruppen nach Subtyp-Geschlecht</a>.
+
+  Also ich schätze,
+  diese Vierer-Gruppen sind weniger stabil,
+  als andere Vierer-Gruppen mit einer eindeutigen Definition von Subtypen
+  (<a href="#pallas-experiment-groups-of-eight-cross-goups-and-square-groups"
+  ><nw>"Quadrat-Gruppen"</nw></a>)
+  oder gar keiner eindeutigen Definition von Subtypen
+  (<a href="#pallas-experiment-groups-of-eight-cross-goups-and-square-groups"
+  ><nw>"Kreuz-Gruppen"</nw></a>).
+
+  Im Pallas-Experiment könnte man vergleichen
+  die Stabilität (unter Stress) von verschiedenen Vierer-Gruppen.
+</div>
+
+
+
+<section id="subtype-age-is-stronger">
+
+<h4>Subtyp-Alter ist stärker</h4>
+
+<div class="para">
+  Subtypen 13 = kindische Subtypen.
+  Subtypen 24 = erwachsene Subtypen.
+</div>
 
 <!--(lang="en") no space on this page -->
 <div style="display:none" class="para">
@@ -6466,7 +6526,142 @@ TODO style="break-before:page"?
 </div>
 
 </section>
+<!-- end of <section id="subtype-age-is-stronger" -->
 
+
+
+<section id="subtype-gender-is-stronger">
+
+<h4>Subtyp-Geschlecht ist stärker</h4>
+
+<div class="para">
+  Subtypen 14 = männliche Subtypen.
+  Subtypen 23 = weibliche Subtypen.
+</div>
+
+<div class="xcenter">
+<table class="three-columns">
+  <!-- table.three-columns -->
+  <thead>
+    <tr>
+      <td>männliche Subtypen</td>
+      <td>Typ</td>
+      <td>weibliche Subtypen</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>104</td>
+      <td>1</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td>2</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <td>301</td>
+      <td>3</td>
+      <td>302</td>
+    </tr>
+    <tr>
+      <td>401</td>
+      <td>4</td>
+      <td>402</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</section>
+<!-- end of <section id="subtype-gender-is-stronger" -->
+
+
+
+<section id="groups-of-four-by-subtype-age" class="h4">
+
+<h4>Vierer-Gruppen nach Subtyp-Alter</h4>
+
+<!-- NOTE alchi-journal
+  2026-01-10
+    0750
+    0755
+    1240
+    1300
+    1320
+-->
+
+<div class="para">
+  <!--
+  Für diese Vierer-Gruppen habe ich noch keinen schönen Namen.
+  -->
+
+  <!--
+  Im Pallas-Muster liegen diese Vierer-Gruppen
+  zwischen "Kreuz-Gruppen" und zwischen "Quadrat-Gruppen".
+  -->
+
+  Im Pallas-Muster liegen diese Vierer-Gruppen
+  zwischen "Kreuz-Gruppen" und zwischen "Quadrat-Gruppen".
+
+  Diese Vierer-Gruppen folgen aus der Annahme:
+  die Subtypen 13 (kindisch, oben breit) sind aktiv = haben Einfluss,
+  die Subtypen 24 (erwachsen, oben lang) sind passiv = haben Vertrauen.
+
+  Wenn man Pfeile zwischen Einfluss und Vertrauen in das Pallas-Muster zeichnet,
+  dann ergibt sich der Flusskreis:
+  <nw>1&rarr;4&rarr;3&rarr;2&rarr;1.</nw>
+
+  Also diese Vierer-Gruppen sind ähnlich zu den "Quadrat-Gruppen",
+  aber dort ist die Flussrichtung eindeutig definiert.
+</div>
+
+<div class="xcenter">
+  <img
+    class="darkmode-invert"
+    style="max-width:18em;margin:2em"
+    src="../images/alchi.pallas-pattern.groups-of-four-by-subtype-age.svg"
+  >
+</div>
+
+</section>
+<!--(lang="en") end <section id="groups-of-four-by-subtype-age"> -->
+
+
+
+<section id="groups-of-four-by-subtype-gender" class="h4">
+
+<h4>Vierer-Gruppen nach Subtyp-Geschlecht</h4>
+
+<div class="para">
+  Diese Vierer-Gruppen bestehen immer aus den Typen 1342,
+  die im Pallas-Muster einen Kreis bilden (keine Linie).
+
+  Diese Vierer-Gruppen folgen aus der Annahme:
+  die Subtypen 14 (männlich, unten lang) sind aktiv = haben Einfluss,
+  die Subtypen 23 (weiblich, unten breit) sind passiv = haben Vertrauen.
+
+  Wenn man Pfeile zwischen Einfluss und Vertrauen in das Pallas-Muster zeichnet,
+  dann ergibt sich der Flusskreis:
+  <nw>1&rarr;3&rarr;4&rarr;2&rarr;1.</nw>
+</div>
+
+<div class="xcenter">
+  <img
+    class="darkmode-invert"
+    style="max-width:18em;margin:2em"
+    src="../images/alchi.pallas-pattern.groups-of-four-by-subtype-gender.svg"
+  >
+</div>
+
+</section>
+<!--(lang="en") end <section id="groups-of-four-by-subtype-age"> -->
+
+
+
+</section>
+<!-- end of <section id="absolute-definition-of-subtypes" -->
 
 
 <hr>

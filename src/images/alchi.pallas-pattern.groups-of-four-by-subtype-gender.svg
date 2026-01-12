@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  viewBox="0 0 800 800"
+  width="800" height="800"
+  style="margin:auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  inkscape:label="alchi.pallas-pattern.groups-of-four-by-subtype-gender"
+>
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g inkscape:label="clipped image" clip-path="url(#clip-image)">
+
+
+    <g fill="none" stroke="#000" stroke-width="2" inkscape:label="lines">
+
+
+
+      <g inkscape:label="simple pattern">
+        <g inkscape:label="single lines orthogonal: single lines outside squares">
+          <g>
+            <title>bottom left</title>
+            <path inkscape:label="right" d="M 300 560 L 300 640"/>
+            <path inkscape:label="left" d="M 100 560 L 100 640"/>
+            <path inkscape:label="bottom" d="M 160 700 L 240 700"/>
+            <path inkscape:label="top" d="M 160 500 L 240 500"/>
+          </g>
+          <g>
+            <title>bottom center</title>
+            <path inkscape:label="bottom" d="M 360 700 L 440 700"/>
+            <path inkscape:label="top" d="M 360 500 L 440 500"/>
+          </g>
+          <g>
+            <title>bottom right</title>
+            <path inkscape:label="right" d="M 700 560 L 700 640"/>
+            <path inkscape:label="left" d="M 500 560 L 500 640"/>
+            <path inkscape:label="bottom" d="M 560 700 L 640 700"/>
+            <path inkscape:label="top" d="M 560 500 L 640 500"/>
+          </g>
+          <g>
+            <title>center right</title>
+            <path inkscape:label="right" d="M 700 360 L 700 440"/>
+            <path inkscape:label="left" d="M 500 360 L 500 440"/>
+          </g>
+          <g>
+            <title>top right</title>
+            <path inkscape:label="right" d="M 700 160 L 700 240"/>
+            <path inkscape:label="left" d="M 500 160 L 500 240"/>
+            <path inkscape:label="bottom" d="M 560 300 L 640 300"/>
+            <path inkscape:label="top" d="M 560 100 L 640 100"/>
+          </g>
+          <g>
+            <title>top center</title>
+            <path inkscape:label="bottom" d="M 360 300 L 440 300"/>
+            <path inkscape:label="top" d="M 360 100 L 440 100"/>
+          </g>
+          <g>
+            <title>top left</title>
+            <path inkscape:label="right" d="M 300 160 L 300 240"/>
+            <path inkscape:label="left" d="M 100 160 L 100 240"/>
+            <path inkscape:label="bottom" d="M 160 300 L 240 300"/>
+            <path inkscape:label="top" d="M 160 100 L 240 100"/>
+          </g>
+          <g>
+            <title>center left</title>
+            <path inkscape:label="right" d="M 300 360 L 300 440"/>
+            <path inkscape:label="left" d="M 100 360 L 100 440"/>
+          </g>
+        </g>
+        <g inkscape:label="arrowheads">
+          <g inkscape:label="bottom left">
+            <path inkscape:label="right" d="M 300 560 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="left" d="M 100 640 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="bottom" d="M 240 700 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="top" d="M 160 500 l 20 -20 l -20 20 l 20 20"/>
+          </g>
+          <g inkscape:label="bottom center">
+            <path inkscape:label="bottom" d="M 360 700 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="top" d="M 440 500 l -20 -20 l 20 20 l -20 20"/>
+          </g>
+          <g inkscape:label="bottom right">
+            <path inkscape:label="right" d="M 700 560 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="left" d="M 500 640 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="bottom" d="M 640 700 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="top" d="M 560 500 l 20 -20 l -20 20 l 20 20"/>
+          </g>
+          <g inkscape:label="center right">
+            <path inkscape:label="left top" d="M 500 400 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="left top" d="M 500 400 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="right top" d="M 700 360 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="right bottom" d="M 700 440 l 20 -20 l -20 20 l -20 -20"/>
+          </g>
+          <g inkscape:label="top right">
+            <path inkscape:label="right" d="M 700 240 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="left" d="M 500 160 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="bottom" d="M 560 300 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="top" d="M 640 100 l -20 -20 l 20 20 l -20 20"/>
+          </g>
+          <g inkscape:label="top center">
+            <path inkscape:label="bottom" d="M 440 300 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="top" d="M 360 100 l 20 -20 l -20 20 l 20 20"/>
+          </g>
+          <g inkscape:label="top left">
+            <path inkscape:label="right" d="M 300 240 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="left" d="M 100 160 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="bottom" d="M 160 300 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="top" d="M 240 100 l -20 -20 l 20 20 l -20 20"/>
+          </g>
+          <g inkscape:label="center left">
+            <path inkscape:label="left top" d="M 100 400 l 20 -20 l -20 20 l -20 -20"/>
+            <path inkscape:label="left top" d="M 100 400 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="right top" d="M 300 360 l 20 20 l -20 -20 l -20 20"/>
+            <path inkscape:label="right bottom" d="M 300 440 l 20 -20 l -20 20 l -20 -20"/>
+          </g>
+        </g>
+        <g display="none" inkscape:label="single lines diagonal">
+          <g inkscape:label="left">
+            <path d="M 0 400 L 58 458"/>
+            <path d="M 0 400 L 58 342"/>
+          </g>
+          <g inkscape:label="right">
+            <path d="M 800 400 L 742 458"/>
+            <path d="M 800 400 L 742 342"/>
+          </g>
+          <g inkscape:label="bottom">
+            <path d="M 400 800 L 458 742"/>
+            <path d="M 400 800 L 342 742"/>
+          </g>
+          <g inkscape:label="top">
+            <path d="M 400 0 L 458 58"/>
+            <path d="M 400 0 L 342 58"/>
+          </g>
+          <path inkscape:label="top right" d="M 800 0 L 742 58"/>
+          <path inkscape:label="bottom left" d="M 0 800 L 58 742"/>
+          <path inkscape:label="bottom right" d="M 800 800 L 742 742"/>
+          <path inkscape:label="top left" d="M 0 0 L 58 58"/>
+          <path inkscape:label="center bottom-left to top-right" d="M 458 342 L 342 458"/>
+          <path inkscape:label="center top-left to bottom-right" d="M 458 458 L 342 342"/>
+        </g>
+      </g>
+
+
+    </g>
+
+    <g inkscape:label="circles and text">
+      <g inkscape:label="circles" stroke-width="2" fill="none" stroke="black">
+        <title>Circles</title>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="300" cy="100" r="60"/>
+        <circle cx="500" cy="100" r="60"/>
+        <circle cx="700" cy="100" r="60"/>
+        <circle cx="100" cy="300" r="60"/>
+        <circle cx="300" cy="300" r="60"/>
+        <circle cx="500" cy="300" r="60"/>
+        <circle cx="700" cy="300" r="60"/>
+        <circle cx="100" cy="500" r="60"/>
+        <circle cx="300" cy="500" r="60"/>
+        <circle cx="500" cy="500" r="60"/>
+        <circle cx="700" cy="500" r="60"/>
+        <circle cx="100" cy="700" r="60"/>
+        <circle cx="300" cy="700" r="60"/>
+        <circle cx="500" cy="700" r="60"/>
+        <circle cx="700" cy="700" r="60"/>
+      </g>
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
+        <text x="100" y="100">F1L</text>
+        <text x="300" y="100">M2L</text>
+        <text x="500" y="100">F4L</text>
+        <text x="700" y="100">M3L</text>
+        <text x="100" y="300">F2S</text>
+        <text x="300" y="300">M1S</text>
+        <text x="500" y="300">F3S</text>
+        <text x="700" y="300">M4S</text>
+        <text x="100" y="500">F3L</text>
+        <text x="300" y="500">M4L</text>
+        <text x="500" y="500">F2L</text>
+        <text x="700" y="500">M1L</text>
+        <text x="100" y="700">F4S</text>
+        <text x="300" y="700">M3S</text>
+        <text x="500" y="700">F1S</text>
+        <text x="700" y="700">M2S</text>
+      </g>
+    </g>
+
+    <g inkscape:label="crosses squares text">
+      <g inkscape:label="crosses" stroke-width="2" fill="none" stroke="black" transform="translate(-30 -30)">
+        <path inkscape:label="left" d="M 430 430 l 20 20 l -40 -40 l 20 20 l 20 -20 l -40 40"/>
+      </g>
+      <g inkscape:label="squares" stroke-width="2" fill="none" stroke="black" transform="translate(-30 -30)">
+        <rect inkscape:label="bottom left" x="200" y="600" width="60" height="60"/>
+        <rect inkscape:label="bottom center" x="400" y="600" width="60" height="60"/>
+        <rect inkscape:label="bottom right" x="600" y="600" width="60" height="60"/>
+        <rect inkscape:label="top right" x="600" y="200" width="60" height="60"/>
+        <rect inkscape:label="top center" x="400" y="200" width="60" height="60"/>
+        <rect inkscape:label="top left" x="200" y="200" width="60" height="60"/>
+      </g>
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
+        <text x="400" y="200">M</text>
+        <text x="400" y="600">M</text>
+      </g>
+    </g>
+
+  </g>
+</svg>
