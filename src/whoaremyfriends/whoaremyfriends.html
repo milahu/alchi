@@ -1254,13 +1254,34 @@
   <!-- create clickable paragraphs on page load -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      for (const para of document.querySelectorAll("div.para[id]")) {
+      for (let para of document.querySelectorAll("div.para[id], section[id] > div.para:first-child")) {
+        if (para.style.display == "none") {
+          if (para.id) continue;
+          // find next div.para[id] in this section
+          for (let elem of para.parentElement.children) {
+            if (elem.nodeName == "div" && "para" in elem.classList && elem.style.display != "none") {
+              para = elem;
+              break;
+            }
+          }
+          if (!para.id) {
+            // div.para[id] was not found in this section
+            continue;
+          }
+        }
+        // console.log("creating clickable paragraph", para);
         const rect = para.getBoundingClientRect();
         const scrollX = window.scrollX || document.documentElement.scrollLeft;
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         const a = document.createElement("a");
         a.textContent = "#";
-        a.href = `#${para.id}`;
+        let paraId = para.id;
+        if (!paraId) {
+          if (!para.parentElement) continue;
+          paraId = para.parentElement.id;
+        }
+        if (!paraId) continue;
+        a.href = `#${paraId}`;
         a.className = "para-anchor";
         a.style.left = (rect.left + scrollX - 20) + "px";  // 20px left of the paragraph
         a.style.top  = (rect.top  + scrollY) + "px";       // aligned with top
