@@ -9860,7 +9860,9 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
 
 
 
-<section id="todo-help-wanted-book-printing">
+<section id="book-printing">
+
+<a name="todo-help-wanted-book-printing"></a>
 
 <h4>Buch drucken</h4>
 
@@ -9875,26 +9877,48 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
   Drucker kaufe ich neu von eBay.
   Toner und Trommel kaufe ich nicht original, sondern "kompatibel" von eBay.
   Papier kaufe ich auf Paletten von eBay.
-  Meine 6 Drucker sind symmetrisch angeschlossen an 3 Stromphasen.
+  Meine 12 Drucker sind symmetrisch angeschlossen an 3 Stromphasen.
+  Physikalische Grenze:
+  Die 3x 20 A Neozed-Vorsicherungen hinter meinem Stromzähler
+  begrenzen die Dauerlast auf 14 KW = 20 Drucker.
 </div>
 
 <div id="printing-costs" class="para">
   Laserdrucker:
   <a class="notranslate" href="https://geizhals.de/brother-hl-l5100dn-hll5100dng1-a1409933.html"
   >Brother HL-L5100DN</a>.
-  Neupreis: 200 Euro bei eBay.
+  Neupreis: 420 Euro.
+  Garantie: 3 Jahre.
   Stromverbrauch: 700 Watt.
-  <!-- 200 / 50_000 * 100 == 0.4 -->
-  Lebensdauer: 50K Seiten = 0,4 Cent pro Seite.
-  <!-- https://www.ebay.de/itm/365089200917 # 8x TN-3480 # 89 eur / 8 == 11.125 -->
-  <!-- 10 / 3_000 * 100 == 0.333 -->
-  Toner: TN-3480, 10 Euro / 3K Seiten = 0,3 Cent pro Seite.
-  <!-- https://www.ebay.de/itm/365086190360 # 8x DR-3400 # 115 eur / 8 == 14.375 -->
-  <!-- 15 / 6_000 * 100 == 0.25 -->
-  Drum: DR-3400, 15 Euro / 6K Seiten = 0,25 Cent pro Seite.
-  <!-- https://www.ebay.de/itm/364613935032 # 1 palette = 100K blatt = 740 eur -->
-  <!-- 740 / 100_000 / 2 * 100 == 0.37 -->
-  Papier: Go Copy Basic Pro, 70 g/m², 4 Euro / 500 Blatt = 0,4 Cent pro Seite.
+  Maximum Duty Cycle: 50K Seiten pro Monat.
+  <!-- 50_000 * 12 * 3 = 1_800_000 -->
+  <!-- 420 / 1_800_000 * 100 = 0.0233 -->
+  Lebensdauer: 1,8M Seiten = 0,023 Cent pro Seite.
+  <!-- 8x TN-3480 # 75 / 8 = 9.375 eur -->
+  <!-- 10 / 7_200 * 100 == 0.138 -->
+  <a href="https://www.ebay.de/itm/316185432727?var=614875395974"
+  >Toner: TN-3480</a>, 10 Euro / 7,2K Seiten = 0,138 Cent pro Seite.
+  <!-- 8x DR-3400 # 104 / 8 = 13 eur -->
+  <!-- 13 / 15_000 * 100 == 0.086 -->
+  <a href="https://www.ebay.de/itm/316491700302?var=615038517795"
+  >Drum: DR-3400</a>, 13 Euro / 15K Seiten = 0,086 Cent pro Seite.
+  <!-- 1 palette = 500 kg = 100K blatt = 600 eur -->
+  <!-- 600 / 100_000 / 2 * 100 == 0.3 -->
+  <!-- +10% https://www.ebay.de/itm/364613935032 -->
+  <a href="https://kopierpapieronline.de/p/kopierpapier-go-copy-basic-pro-100-000-blatt-70g-weiss-1-palette-hoher-weissegrad-zuverlaessig-und-gut"
+  >Papier: Go Copy Basic Pro</a>, 70 g/m², 3 Euro / 500 Blatt = 0,3 Cent pro Seite.
+  <!-- 90 / 30 / 100_000 * 100 = 0.003 -->
+  <a
+    href="https://www.ebay.de/itm/254253161128"
+    title="3SET Fuser Film Sleeve Druck Roller Brother HL L5102 L5202 L6202 L6402 DCP L5502 - gzoffice"
+  >Fuser Sleeve + Roller</a>, 90 Euro / 3 Stück, 0,003 Cent pro Seite.
+  <!-- 20 / 40 / 100_000 * 100 = 0.0005 -->
+  <a
+    href="https://www.ebay.de/itm/326534539169"
+    title="OEM-Hochtemperatur Fixier Fett Grease FY9-6022-00 für Canon Fixiereinheiten Fuse - printbaergmbh"
+  >Fuser Grease: FY9-6022-00</a>, 20 Gramm = 40 Fuser Rebuilds
+  (Fix: vertikale Falten im Drucker Output),
+  20 Euro, 0,0005 Cent pro Seite.
 
 
 
@@ -9903,19 +9927,15 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
 
 
 
-  <!-- 0.4 + 0.333 + 0.25 + 0.37 = 1.35 -->
-  &rarr; Druckkosten: circa 1,4 Cent pro A4 Seite
-  = 1,20 Euro pro Heft mit 172 A5 Seiten.
+  <!-- 0.023 + 0.138 + 0.086 + 0.3 + 0.003 + 0.0005 -->
+  &rarr; Druckkosten: circa 0,55 Cent pro A4 Seite
+  = 0,473 Euro pro Heft mit 172 A5 Seiten.
   Speed: 40 Seiten / Minute.
   Duplex Speed: 20 Seiten / Minute.
   Gewicht: 10 kg.
   Papierzufuhr: 250 Blatt.
   Papierausgabe: 150 Blatt.
   Recommended Duty Cycle: 3K Seiten pro Monat.
-  Schwäche:
-  Nach circa 50K Seiten macht der Drucker vertikale Falten in die Blätter,
-  wahrscheinlich weil die Rollen verdreckt sind mit Toner, und ihren Grip verlieren.
-  Die Fuser Unit schafft 100K Seiten, aber so weit komme ich nicht.
 </div>
 
 <div class="para">

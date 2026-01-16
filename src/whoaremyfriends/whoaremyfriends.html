@@ -9732,7 +9732,9 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
   have no interest in this work.
 </div>
 
-<section id="todo-help-wanted-book-printing">
+<section id="book-printing">
+
+<a name="todo-help-wanted-book-printing"></a>
 
 <h4>Book printing</h4>
 
@@ -9747,39 +9749,55 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
   Printer I buy new from eBay.
   Toner and drums I buy not original, but "compatible" from eBay.
   Paper I buy on palettes from eBay.
-  My 6 printers are symmetrically connected to 3 power lines.
+  My 12 printers are symmetrically connected to 3 power lines.
+  Physical limit:
+  The 3x 20 A Neozed pre-fuses after my electricity meter
+  limit the constant load to 14 KW = 20 printers.
 </div>
 
 <div id="printing-costs" class="para">
   Laser printer:
   <a class="notranslate" href="https://geizhals.de/brother-hl-l5100dn-hll5100dng1-a1409933.html"
   >Brother HL-L5100DN</a>.
-  New price: 200 Euro on eBay.
+  New price: 420 Euro.
+  Warranty: 3 years.
   Power consumption: 700 Watt.
-  <!-- 200 / 50_000 * 100 == 0.4 -->
-  Lifetime: 50K pages = 0.4 Cent per page.
-  <!-- https://www.ebay.de/itm/365089200917 # 8x TN-3480 # 89 eur / 8 == 11.125 -->
-  <!-- 10 / 3_000 * 100 == 0.333 -->
-  Toner: TN-3480, 10 Euro / 3K pages = 0.3 Cent per page.
-  <!-- https://www.ebay.de/itm/365086190360 # 8x DR-3400 # 115 eur / 8 == 14.375 -->
-  <!-- 15 / 6_000 * 100 == 0.25 -->
-  Drum: DR-3400, 15 Euro / 6K pages = 0.25 Cent per page.
-  <!-- https://www.ebay.de/itm/364613935032 # 1 palette = 100K blatt = 740 eur -->
-  <!-- 740 / 100_000 / 2 * 100 == 0.37 -->
-  Paper: Go Copy Basic Pro, 70 g/m², 4 Euro / 500 sheets = 0.4 Cent per page.
-  <!-- 0.4 + 0.333 + 0.25 + 0.37 = 1.35 -->
-  &rarr; Printing costs: about 1.4 Cent per A4 page
-  = 1.20 Euro per book with 172 A5 pages.
+  Maximum Duty Cycle: 50K pages per month.
+  <!-- 420 / 1_800_000 * 100 = 0.0233 -->
+  Lifetime: 1.8M pages = 0.023 Cent per page.
+  <!-- 8x TN-3480 # 75 / 8 = 9.375 eur -->
+  <!-- 10 / 7_200 * 100 == 0.138 -->
+  <a href="https://www.ebay.de/itm/316185432727?var=614875395974"
+  >Toner: TN-3480</a>, 10 Euro / 7.2K pages = 0.138 Cent per page.
+  <!-- 8x DR-3400 # 104 / 8 = 13 eur -->
+  <!-- 13 / 15_000 * 100 == 0.086 -->
+  <a href="https://www.ebay.de/itm/316491700302?var=615038517795"
+  >Drum: DR-3400</a>, 13 Euro / 15K pages = 0,086 Cent per page.
+  <!-- 1 palette = 500 kg = 100K blatt = 600 eur -->
+  <!-- 600 / 100_000 / 2 * 100 == 0.3 -->
+  <!-- +10% https://www.ebay.de/itm/364613935032 -->
+  <a href="https://kopierpapieronline.de/p/kopierpapier-go-copy-basic-pro-100-000-blatt-70g-weiss-1-palette-hoher-weissegrad-zuverlaessig-und-gut"
+  >Paper: Go Copy Basic Pro</a>, 70 g/m², 3 Euro / 500 Blatt = 0,3 Cent per page.
+  <!-- 90 / 30 / 100_000 * 100 = 0.003 -->
+  <a
+    href="https://www.ebay.de/itm/254253161128"
+    title="3SET Fuser Film Sleeve Druck Roller Brother HL L5102 L5202 L6202 L6402 DCP L5502 - gzoffice"
+  >Fuser Sleeve + Roller</a>, 90 Euro / 3 pieces, 0,003 Cent per page.
+  <!-- 20 / 40 / 100_000 * 100 = 0.0005 -->
+  <a
+    href="https://www.ebay.de/itm/326534539169"
+    title="OEM-Hochtemperatur Fixier Fett Grease FY9-6022-00 für Canon Fixiereinheiten Fuse - printbaergmbh"
+  >Fuser Grease: FY9-6022-00</a>, 20 Grams = 40 Fuser Rebuilds
+  (fix vertical creases in printer output),
+  20 Euro, 0,0005 Cent per page.
+  <!-- 0.023 + 0.138 + 0.086 + 0.3 + 0.003 + 0.0005 -->
+  &rarr; Printing costs: about 0.55 Cent per A4 page
+  = 0.473 Euro per book with 172 A5 pages.
   Speed: 40 pages/minute.
   Duplex Speed: 20 pages/minute.
   Weight: 10kg.
   Paper input: 250 sheets.
   Paper output: 150 sheets.
-  Recommended Duty Cycle: 3K pages per month.
-  Weakness:
-  After about 50K pages, the printer starts creating vertical creases in the paper,
-  probably because of dirty paper rollers, which are covered with toner, and lose their grip.
-  The Fuser Unit can do 100K pages, but I dont get that far.
 </div>
 
 <div class="para">
