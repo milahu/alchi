@@ -68,6 +68,8 @@ for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
   if [[ "$branch" == "$main_branch" ]]; then
     merge_base=$(git merge-base $branch remotes/$remote/$branch)
+    echo "rebasing branch $branch from commit $merge_base"
+    git show --quiet "$merge_base"
     git rebase remotes/$remote/$branch --committer-date-is-author-date
     "$git_rebase_order_commits_by_author_date" $merge_base --committer-date-is-author-date
     if $did_stash_main; then
