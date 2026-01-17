@@ -273,7 +273,28 @@
   <!-- `files/alchi-pallas-symbol.small.svg` -->
   <link rel="icon" type="image/svg" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%221.1%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20id%3D%22pallas-symbol%22%3E%0A%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2210%22%20height%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23fff%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22m8%2B10%204-4%20-4-4%20-4%2B4%20z%20m0%200v4%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.4%22%2F%3E%0A%3Cpath%20d%3D%22m5%2012h6%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E">
 
+  <!-- no. this resets zoom to 100% on page reload
   <meta name="viewport" content="width=device-width">
+  -->
+  <script>
+    // dynamically add viewport meta tag in mobile browsers
+    (function () {
+      // Threshold for "mobile-like" layout
+      var MOBILE_MAX_WIDTH = 768;
+      // Use the smallest reliable metric
+      var width = Math.min(
+        screen.width,
+        window.innerWidth || Infinity
+      );
+      if (width <= MOBILE_MAX_WIDTH) {
+        console.log("detected mobile browser -> adding viewport meta tag");
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content = "width=device-width";
+        document.head.appendChild(meta);
+      }
+    })();
+  </script>
 
   <!-- do not translate content in <nt>...</nt> -->
   <!-- default: do not translate content with class="notranslate" -->
