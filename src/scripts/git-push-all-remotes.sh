@@ -67,9 +67,9 @@ fi
 for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
   if [[ "$branch" == "$main_branch" ]]; then
-    last_head=$(git rev-parse $branch)
+    merge_base=$(git merge-base $branch remotes/$remote/$branch)
     git rebase remotes/$remote/$branch --committer-date-is-author-date
-    "$git_rebase_order_commits_by_author_date" $last_head --committer-date-is-author-date
+    "$git_rebase_order_commits_by_author_date" $merge_base --committer-date-is-author-date
     if $did_stash_main; then
       git stash pop
     fi
