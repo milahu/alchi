@@ -1279,6 +1279,7 @@
   </style>
 
   <!-- create clickable paragraphs on page load -->
+  <!-- FIXME handle images with IDs: <img id="..."> -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       for (let para of document.querySelectorAll("div.para[id], section[id] > div.para:first-child")) {
