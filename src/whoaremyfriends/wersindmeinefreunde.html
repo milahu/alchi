@@ -1415,16 +1415,11 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
 
-            <!--(lang="en") TODO generate table of contents -->
-            <!-- <notranslate> -->
-            <!--
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasTableOfContents" aria-controls="offcanvasTableOfContents">
                 Inhalt
               </a>
             </li>
-            -->
-            <!-- </notranslate> -->
 
             <li class="nav-item">
               <!-- <notranslate> -->
@@ -1514,11 +1509,14 @@
   </nav>
 
   <!--(lang="en") table of contents -->
-  <!--(lang="en") TODO generate from headings in <article id="content" -->
-  <!--(lang="en") TODO generate table of contents -->
-  <!-- <notranslate> -->
-  <!--
-  <div class="offcanvas offcanvas-start text-start" tabindex="-1" id="offcanvasTableOfContents" aria-labelledby="offcanvasTableOfContentsLabel">
+  <div
+      class="offcanvas offcanvas-start text-start"
+      tabindex="-1"
+      id="offcanvasTableOfContents"
+      aria-labelledby="offcanvasTableOfContentsLabel"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+    >
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasTableOfContentsLabel">Inhalt</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -1526,6 +1524,7 @@
     <div class="offcanvas-body">
 
       <ol id="table-of-contents">
+        <!--
         <li><a href="#">Wer sind meine Freunde?</a></li>
         <li>
           <a href="#">Pallas-Muster</a>
@@ -1554,11 +1553,271 @@
             <li><a href="#">Vierer-Gruppen</a></li>
           </ol>
         </li>
+        -->
       </ol>
     </div>
   </div>
-  -->
-  <!-- </notranslate> -->
+
+  <script>
+    // build table of contents after page load
+
+    function buildTableOfContents() {
+      const toc = document.getElementById("table-of-contents");
+      if (!toc) return;
+
+      // Select all headings that should appear in the TOC
+      const headings = document.querySelectorAll(
+        "section h2, section h3, section h4, section h5, section h6"
+      );
+
+      let currentLevel = 0;
+      const rootList = toc;
+      const listStack = [rootList];
+      let currentList = rootList;
+
+      headings.forEach(heading => {
+        const level = parseInt(heading.tagName.substring(1), 10);
+
+        const section = heading.closest("section");
+        if (section.style.display == "none") return;
+        if (section.closest("hidden")) return;
+
+        // Determine link target
+        let targetId = heading.id;
+        if (!targetId) {
+          if (!section || !section.id) return;
+          targetId = section.id;
+        }
+
+        // Adjust list depth
+        if (level > currentLevel) {
+          for (let i = currentLevel; i < level; i++) {
+            const newList = document.createElement("ol");
+            const lastLi = currentList.lastElementChild;
+            if (!lastLi) break;
+            lastLi.appendChild(newList);
+            listStack.push(newList);
+            currentList = newList;
+          }
+        } else if (level < currentLevel) {
+          // Going up: pop the stack safely
+          for (let i = currentLevel; i > level; i--) {
+            if (listStack.length > 1) listStack.pop();
+          }
+          currentList = listStack[listStack.length - 1];
+        }
+        // same level: currentList stays the same
+
+        currentLevel = level;
+
+        // Create TOC entry
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+
+        a.href = `#${targetId}`;
+        a.textContent = heading.textContent;
+
+        li.appendChild(a);
+        currentList.appendChild(li);
+      });
+
+      focusTocItem();
+
+      syncScrollWithTocItems();
+    }
+    document.addEventListener("DOMContentLoaded", buildTableOfContents);
+
+    function focusTocItem() {
+      // focus and highlight the active TOC item
+      const tocEl = document.getElementById("table-of-contents");
+      const tocLinks = tocEl.querySelectorAll("a");
+      tocLinks.forEach(link => {
+        link.addEventListener("click", event => {
+          // console.log("click TOC link", event.target);
+
+          const targetId = link.getAttribute("href").slice(1);
+          const targetSection = document.getElementById(targetId);
+          if (!targetSection) return;
+
+          // temporarily ignore observer until scroll settles
+          ignoreObserver = true;
+
+          // Smooth scroll the content container
+          targetSection.scrollIntoView({
+            // behavior: "smooth",
+            behavior: "instant",
+            block: "start" // aligns section at top
+          });
+
+          highlightLink(link);
+
+          // re-enable observer after scroll animation (~300ms)
+          setTimeout(() => {
+            ignoreObserver = false;
+          }, 500);
+        });
+      });
+    }
+
+    function highlightLink(activeLink) {
+      // console.log("highlightLink: activeLink", activeLink);
+      const tocEl = document.getElementById("table-of-contents");
+      if (!tocEl) return;
+      const tocLinks = tocEl.querySelectorAll("a");
+      tocLinks.forEach(l => l.classList.remove("active"));
+      activeLink.classList.add("active");
+
+      const tocContainer = tocEl.parentElement;
+      const containerHeight = tocContainer.clientHeight;
+      const linkOffset = activeLink.offsetTop - tocContainer.offsetTop;
+      const scrollTop = linkOffset - containerHeight / 2 + activeLink.offsetHeight / 2;
+      // console.log(`scrolling to ${scrollTop} of ${containerHeight}`, tocContainer);
+      tocContainer.scrollTo({
+        top: scrollTop,
+        behavior: "instant"
+      });
+    }
+
+    function syncTOC() {
+      // initial sync from document to TOC scroll position
+      const tocEl = document.getElementById("table-of-contents");
+      if (!tocEl) return;
+
+      const tocLinks = tocEl.querySelectorAll("a");
+      if (!tocLinks.length) return;
+
+      let observer = null;
+
+      // Map section id -> TOC link
+      const linkMap = new Map();
+      tocLinks.forEach(link => {
+        const id = link.getAttribute("href").slice(1);
+        linkMap.set(id, link);
+      });
+
+      let activeSection = null;
+      let closestTop = Infinity;
+
+      linkMap.forEach((link, id) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        // pick the section whose top is nearest to top of viewport but not below it
+        if (rect.top >= 0 && rect.top < closestTop) {
+          closestTop = rect.top;
+          activeSection = section;
+        }
+      });
+
+      if (activeSection) {
+        const activeLink = linkMap.get(activeSection.id);
+        if (activeLink) highlightLink(activeLink);
+      }
+    }
+
+    function syncScrollWithTocItems() {
+      const tocEl = document.getElementById("table-of-contents");
+      if (!tocEl) return;
+
+      const tocLinks = tocEl.querySelectorAll("a");
+      if (!tocLinks.length) return;
+
+      let observer = null;
+      let ignoreObserver = false;
+
+      // Map section id -> TOC link
+      const linkMap = new Map();
+      tocLinks.forEach(link => {
+        const id = link.getAttribute("href").slice(1);
+        linkMap.set(id, link);
+      });
+
+      function onOffcanvasShow() {
+
+        ignoreObserver = true;
+
+        // always hide menu when TOC is open
+        document.getElementById("navbar").style.top = "-100%";
+
+        if (observer) return; // already created
+        observer = new IntersectionObserver(
+          entries => {
+            // skip during programmatic scroll
+            if (ignoreObserver) return;
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const id = entry.target.id;
+              const activeLink = linkMap.get(id);
+              if (!activeLink) continue;
+
+              // console.log("observer: activeLink", activeLink);
+
+              // highlight active TOC item
+              // FIXME often this is off by one (or more)
+              // clicking a TOC item should highlight that TOC item
+              for (const link of tocLinks) {
+                link.classList.remove("active");
+              }
+              activeLink.classList.add("active");
+
+              // Scroll TOC so the active link is vertically centered
+              const tocContainer = tocEl.parentElement;
+              const containerHeight = tocContainer.clientHeight;
+              const linkOffset = activeLink.offsetTop - tocContainer.offsetTop;
+              const scrollTop = linkOffset - containerHeight / 2 + activeLink.offsetHeight / 2;
+              // console.log(`scrolling to ${scrollTop} of ${containerHeight}`, tocContainer);
+              tocContainer.scrollTo({
+                top: scrollTop,
+                behavior: "instant"
+              });
+
+              break;
+            }
+          },
+          {
+            rootMargin: "-30% 0px -60% 0px",
+            // rootMargin: "-10% 0px -80% 0px",
+            threshold: 0
+          }
+        );
+
+        // Observe all sections that appear in the TOC
+        linkMap.forEach((_, id) => {
+          const section = document.getElementById(id);
+          if (section) observer.observe(section);
+        });
+
+        syncTOC();
+
+        setTimeout(() => {
+          ignoreObserver = false;
+        }, 500);
+
+      }
+
+      function onOffcanvasHide() {
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+          // Reset all link colors
+          for (const link of tocLinks) {
+            link.classList.remove("active");
+          }
+        }
+      }
+
+      // Bootstrap Offcanvas events
+      const offcanvasEl = document.getElementById("offcanvasTableOfContents");
+      offcanvasEl.addEventListener("show.bs.offcanvas", onOffcanvasShow);
+      offcanvasEl.addEventListener("hide.bs.offcanvas", onOffcanvasHide);
+    }
+  </script>
+
+  <style>
+    #table-of-contents a.active {
+      color: black;
+    }
+  </style>
 
   <script>
     /*
@@ -1575,6 +1834,15 @@
         window.scrollListener = undefined;
         return;
       }
+
+      // always hide menu when TOC is open
+      // dont show menu when clicking a previous TOC item
+      const offcanvasTOC = document.getElementById('offcanvasTableOfContents');
+      if (offcanvasTOC.classList.contains('show')) {
+        document.getElementById("navbar").style.top = "-100%";
+        return;
+      }
+
       var st = window.pageYOffset || document.documentElement.scrollTop;
       if (st > lastScrollTop){
           document.getElementById("navbar").style.top = "-100%";
