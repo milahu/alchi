@@ -12525,7 +12525,7 @@ textarea.form-control-lg {
     .navbar {
       --darkreader-bgimg--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath opacity='0.55' stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
-    :root[data-darkreader-mode]
+    :root[data-darkreader-scheme="dark"]
     .btn-close {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath opacity='0.55' stroke='white' d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
     }
@@ -12598,6 +12598,10 @@ textarea.form-control-lg {
     h1 {
       font-size: 250%;
     }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.17em; }
+    h4 { font-size: 1em; }
+
     h1, h2, h3 {
       font-weight:normal;
     }
@@ -12978,6 +12982,20 @@ textarea.form-control-lg {
       a { color: black; }
     }
 
+    :root[data-darkreader-scheme="dark"] .darkmode-invert a {
+      color: #80d1ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      a { color: #80d1ff; }
+    }
+
+    [data-bs-theme="dark"] {
+      /* --bs-body-bg: #000; */
+      --bs-body-color: #fff;
+      --bs-link-color: #80d1ff;
+      --bs-border-color: #666;
+    }
+
     /* light mode */
     :root { --fg: black; --bg: white; }
 
@@ -12994,10 +13012,13 @@ textarea.form-control-lg {
       }
       */
       /* darkreader extension */
-      :root[data-darkreader-mode="dynamic"] {
+      :root[data-darkreader-scheme="dark"] {
         --fg: white; --bg: black;
       }
-      :root[data-darkreader-mode="dynamic"] .darkmode-invert {
+      :root[data-darkreader-scheme="dark"] body {
+        color: white;
+      }
+      :root[data-darkreader-scheme="dark"] .darkmode-invert {
         filter: invert();
       }
     }
@@ -13363,7 +13384,7 @@ textarea.form-control-lg {
   </script>
   <style>
     h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
-      color: black;
+      color: inherit;
     }
   </style>
 
@@ -13450,7 +13471,7 @@ textarea.form-control-lg {
 
     TODO this is a "toolbar" so there are no active items
   -->
-  <nav id="navbar" class="navbar navbar-expand-sm mb-4 navbar-light bg-light fixed-top">
+  <nav id="navbar" class="navbar navbar-expand-sm mb-4 bg-body fixed-top">
     <div class="container-fluid">
       <!-- <notranslate> -->
       <!--
@@ -13872,7 +13893,7 @@ textarea.form-control-lg {
 
   <style>
     #table-of-contents a.active {
-      color: black;
+      color: inherit;
     }
   </style>
 
