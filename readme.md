@@ -949,6 +949,8 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * community organization
 * group organization
 * offline community
+  * offline peer-to-peer networking
+  * offline peer-to-peer networks
 * communism (not socialism!)
 * organized resistance
 * self organization
