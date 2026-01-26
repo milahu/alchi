@@ -12645,10 +12645,14 @@ textarea.form-control-lg {
       background: rgba(255, 255, 0, 0.6); /* transparent yellow */
     }
     @media print {
+      /* see also: javascript: function renderPrintLayout */
       div.annotation {
         background: none;
       }
       .screen-layout-only {
+        display: none;
+      }
+      details {
         display: none;
       }
     }
@@ -13270,7 +13274,7 @@ textarea.form-control-lg {
         console.log('renderPrintLayout', renderButton);
         renderButton.classList.add("disabled");
         renderButton.removeAttribute("href");
-        for (var elem of document.querySelectorAll(".screen-layout-only")) {
+        for (var elem of document.querySelectorAll(".screen-layout-only, details")) {
           elem.remove();
         }
         makeBinderyBook(book => {
