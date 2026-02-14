@@ -1,0 +1,29 @@
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     ⨉               ⨉               ⨉               ⨉
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             ◻               ◻               ◻
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     ⨉               ⨉               ⨉               ⨉
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+
+             ◻               ◻               ◻
+
+M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+
+     ⨉               ⨉               ⨉               ⨉
+
+M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+
+             ◻               ◻               ◻
+
+M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+
+     ⨉               ⨉               ⨉               ⨉
+
+M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
