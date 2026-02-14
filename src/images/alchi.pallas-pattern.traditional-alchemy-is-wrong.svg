@@ -136,25 +136,25 @@
         <circle cx="700" cy="700" r="60"/>
       </g>
       <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black">
-        <text x="100" y="100">F1S</text>
-        <text x="300" y="100">F2L</text>
-        <text x="500" y="100">F4S</text>
-        <text x="700" y="100">F3L</text>
+        <text x="100" y="100">M2S</text>
+        <text x="300" y="100">F1S</text>
+        <text x="500" y="100">M4S</text>
+        <text x="700" y="100">F3S</text>
 
-        <text x="100" y="300">M2S</text>
-        <text x="300" y="300">M1L</text>
-        <text x="500" y="300">M3S</text>
-        <text x="700" y="300">M4L</text>
+        <text x="100" y="300">M1L</text>
+        <text x="300" y="300">F2L</text>
+        <text x="500" y="300">M3L</text>
+        <text x="700" y="300">F4L</text>
 
-        <text x="100" y="500">F3S</text>
-        <text x="300" y="500">F4L</text>
-        <text x="500" y="500">F2S</text>
-        <text x="700" y="500">F1L</text>
+        <text x="100" y="500">M3S</text>
+        <text x="300" y="500">F4S</text>
+        <text x="500" y="500">M1S</text>
+        <text x="700" y="500">F2S</text>
 
-        <text x="100" y="700">M4S</text>
-        <text x="300" y="700">M3L</text>
-        <text x="500" y="700">M1S</text>
-        <text x="700" y="700">M2L</text>
+        <text x="100" y="700">M4L</text>
+        <text x="300" y="700">F3L</text>
+        <text x="500" y="700">M2L</text>
+        <text x="700" y="700">F1L</text>
       </g>
     </g>
 
