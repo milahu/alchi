@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  width="800" height="800"
+-->
+<svg
+  version="1.1"
+  viewBox="0 0 1000 1000"
+  style="margin:auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  inkscape:label="alchi.pallas-pattern.names-template"
+>
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g inkscape:label="clipped image" clip-path="url(#clip-image)">
+    <g fill="none" stroke="#000" stroke-width="2" inkscape:label="lines">
+      <g inkscape:label="grid lines">
+        <g inkscape:label="vertical grid lines">
+          <path inkscape:label="right" d="M 0 0 v 1000"/>
+          <path inkscape:label="right" d="M 200 0 v 1000"/>
+          <path inkscape:label="right" d="M 400 0 v 1000"/>
+          <path inkscape:label="right" d="M 600 0 v 1000"/>
+          <path inkscape:label="right" d="M 800 0 v 1000"/>
+          <path inkscape:label="right" d="M 1000 0 v 1000"/>
+        </g>
+        <g inkscape:label="horizontal grid lines">
+          <path inkscape:label="right" d="M 0 0 h 1000"/>
+          <path inkscape:label="right" d="M 0 200 h 1000"/>
+          <path inkscape:label="right" d="M 0 400 h 1000"/>
+          <path inkscape:label="right" d="M 0 600 h 1000"/>
+          <path inkscape:label="right" d="M 0 800 h 1000"/>
+          <path inkscape:label="right" d="M 0 1000 h 1000"/>
+        </g>
+      </g>
+      <g inkscape:label="simple pattern">
+        <g transform="translate(-10,-10)" inkscape:label="squares">
+          <rect x="200" y="200" width="20" height="20" inkscape:label="top left"/>
+          <rect x="600" y="200" width="20" height="20" inkscape:label="top right"/>
+          <rect x="600" y="600" width="20" height="20" inkscape:label="bottom right"/>
+          <rect x="200" y="600" width="20" height="20" inkscape:label="bottom left"/>
+          <rect x="200" y="1000" width="20" height="20"/>
+          <rect x="600" y="1000" width="20" height="20"/>
+          <rect x="1000" y="1000" width="20" height="20"/>
+          <rect x="1000" y="600" width="20" height="20"/>
+          <rect x="1000" y="200" width="20" height="20"/>
+        </g>
+        <g inkscape:label="crosses">
+          <path inkscape:label="left" d="M 0 400 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="right" d="M 800 400 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="bottom" d="M 400 800 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="top" d="M 400 0 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="top right" d="M 800 0 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="bottom left" d="M 0 800 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="bottom right" d="M 800 800 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="top left" d="M 0 0 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+          <path inkscape:label="center" d="M 400 400 m 10 -10 l -20 20 10 -10 l 10 10 l -20 -20"/>
+        </g>
+      </g>
+    </g>
+    <g inkscape:label="text">
+      <g inkscape:label="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="24" fill="black">
+        <text x="100" y="100">M2S</text>
+        <text x="300" y="100">F1S</text>
+        <text x="500" y="100">M3S</text>
+        <text x="700" y="100">F4S</text>
+        <text x="100" y="300">M1L</text>
+        <text x="300" y="300">F2L</text>
+        <text x="500" y="300">M4L</text>
+        <text x="700" y="300">F3L</text>
+        <text x="100" y="500">M4S</text>
+        <text x="300" y="500">F3S</text>
+        <text x="500" y="500">M1S</text>
+        <text x="700" y="500">F2S</text>
+        <text x="100" y="700">M3L</text>
+        <text x="300" y="700">F4L</text>
+        <text x="500" y="700">M2L</text>
+        <text x="700" y="700">F1L</text>
+
+        <text x="100" y="900">M2S</text>
+        <text x="300" y="900">F1S</text>
+        <text x="500" y="900">M3S</text>
+        <text x="700" y="900">F4S</text>
+
+        <text x="900" y="100">M2S</text>
+        <text x="900" y="300">M1L</text>
+        <text x="900" y="500">M4S</text>
+        <text x="900" y="700">M3L</text>
+
+        <text x="900" y="900">M2S</text>
+      </g>
+    </g>
+  </g>
+</svg>
