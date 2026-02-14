@@ -32,7 +32,7 @@ https://boxy-svg.com/
       </style>
   </defs>
   <g class="fig1">
-    <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
+    <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40" fill="black" class="fillfg">
       <title>Text</title>
       <text x="100" y="100">F1L</text>
       <text x="300" y="100">M2L</text>
