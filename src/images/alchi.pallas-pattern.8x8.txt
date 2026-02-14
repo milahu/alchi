@@ -1,29 +1,29 @@
-M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+F3L     M4L     F2L     M1L     F3L     M4L     F2L     M1L
 
-     ⨉               ⨉               ⨉               ⨉
+     ◻               ◻               ◻               ◻
 
-M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+F4S     M3S     F1S     M2S     F4S     M3S     F1S     M2S
 
-             ◻               ◻               ◻
+             ⨉               ⨉               ⨉
 
-M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+F1L     M2L     F4L     M3L     F1L     M2L     F4L     M3L
 
-     ⨉               ⨉               ⨉               ⨉
+     ◻               ◻               ◻               ◻
 
-M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+F2S     M1S     F3S     M4S     F2S     M1S     F3S     M4S
 
-             ◻               ◻               ◻
+             ⨉               ⨉               ⨉
 
-M4S     F2S     M1S     F3S     M4S     F2S     M1S     F3S
+F3L     M4L     F2L     M1L     F3L     M4L     F2L     M1L
 
-     ⨉               ⨉               ⨉               ⨉
+     ◻               ◻               ◻               ◻
 
-M1L     F3L     M4L     F2L     M1L     F3L     M4L     F2L
+F4S     M3S     F1S     M2S     F4S     M3S     F1S     M2S
 
-             ◻               ◻               ◻
+             ⨉               ⨉               ⨉
 
-M2S     F4S     M3S     F1S     M2S     F4S     M3S     F1S
+F1L     M2L     F4L     M3L     F1L     M2L     F4L     M3L
 
-     ⨉               ⨉               ⨉               ⨉
+     ◻               ◻               ◻               ◻
 
-M3L     F1L     M2L     F4L     M3L     F1L     M2L     F4L
+F2S     M1S     F3S     M4S     F2S     M1S     F3S     M4S
