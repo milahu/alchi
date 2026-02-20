@@ -123,6 +123,23 @@ challenge: synchronize measurements between all devices
 - [mne-python](https://github.com/mne-tools/mne-python)
 - ...?
 
+it would be nice to have some custom software
+to plot all metrics of all participants on some display
+
+joining metrics of all participants would require
+a bluetooth/wifi network
+with a shared clock signal for synchronization
+
+the main node in this network
+is broadcasting the clock signal to client nodes
+and client nodes send their timestamped measurement data to the main node
+so the main node can analyze and plot the measurement data
+
+with a peer-to-peer network,
+we could also measure the physical distance between nodes,
+using ping latency as a proxy for physical distance,
+so the system can correlate physical proximity and brain synchrony
+
 ## calibration of personality types
 
 expected patterns of stress reactivity and recovery speed
