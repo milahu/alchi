@@ -135,7 +135,7 @@ is broadcasting the clock signal to client nodes
 and client nodes send their timestamped measurement data to the main node
 so the main node can analyze and plot the measurement data
 
-with a peer-to-peer network,
+with a peer-to-peer network (client nodes talking to each other),
 we could also measure the physical distance between nodes,
 using ping latency as a proxy for physical distance,
 so the system can correlate physical proximity and brain synchrony
@@ -160,7 +160,9 @@ who self-report a high relationship satisfaction
 - [ChatGPT-Reliable-Personality-Tests.md](https://github.com/milahu/alchi/blob/master/english/chats/ChatGPT-Reliable-Personality-Tests.md#prompt-5)
 - [alchi-types.html](https://milahu.github.io/alchi/src/alchi-types/alchi-types.html)
 
-studies based on EEG scans
+### studies based on EEG scans
 
-- [Neurocognitive correlates of liberalism and conservatism. Amodio 2007](https://sci-hub.ru/https://doi.org/10.1038/nn1979)
-- [The political (and physiological) divide: Political orientation, performance monitoring, and the anterior cingulate response. Weissflog 2013](https://sci-hub.ru/https://doi.org/10.1080/17470919.2013.833549)
+hint: use `sci hub ru` to bypass paywalls
+
+- [Neurocognitive correlates of liberalism and conservatism. Amodio 2007](https://doi.org/10.1038/nn1979)
+- [The political (and physiological) divide: Political orientation, performance monitoring, and the anterior cingulate response. Weissflog 2013](https://doi.org/10.1080/17470919.2013.833549)
