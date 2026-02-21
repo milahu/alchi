@@ -27,3 +27,21 @@ wegen meinem forschungsprojekt im bereich psychologie?
 aha...
 
 das sagt viel über euch, und wenig über mich!
+
+---
+
+r/ichbin40undSchwurbler MOD 2026-02-21 20:48 +0100
+
+Egal in welchem Sub, sowas solltest Du immer vorher mit den zuständigen Mods abstimmen.
+
+Was Deinen speziellen Fall angeht; Du bringst Unruhe in den Sub, das können und wollen wir nicht dulden!
+
+---
+
+milahu2 2026-02-21 21:13 +0100
+
+"unruhe"?! das nennt man leben... wenn du "ruhe" willst dann geh sterben!
+
+---
+
+You have been muted by this subreddit.

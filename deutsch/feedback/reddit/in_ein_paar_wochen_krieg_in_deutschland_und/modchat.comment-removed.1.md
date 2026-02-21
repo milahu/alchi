@@ -27,3 +27,13 @@ Grund: Der Inhalt muss klar als ironischer Schwurbelgram zu erkennen sein.
 milahu2 2026-02-21 19:09 +0100
 
 keine ironie, auch du bist teil vom problem... ⸸
+
+---
+
+r/ichbin40undSchwurbler MOD 2026-02-21 20:50 +0100
+
+Such Dir Hilfe!
+
+---
+
+You have been permanently muted from r/ichbin40undSchwurbler. You will not be able to message the moderators of r/ichbin40undSchwurbler.
