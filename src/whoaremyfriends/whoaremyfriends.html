@@ -20802,6 +20802,309 @@ TODO style="break-before:page"?
 </section>
 <!-- end of `<section id="limitations-relation-quality"` -->
 
+<section id="measuring-personality-type-and-compatibility">
+
+<h3>
+  Measuring personality type and compatibility
+</h3>
+
+<div class="para">
+  <a
+    href="https://collapseos.org/civ.html"
+    title="
+      what makes collapse inevitable and imminent
+
+      I believe that the collapse of our global civilization
+      is both inevitable and imminent.
+      Climate changes make it inevitable.
+      Peak oil and cultural bankruptcy make it imminent.
+    "
+  >As long as we have access to high-tech machines</a>,
+  we can use these machines
+  to
+  <a
+    href="https://www.reddit.com/r/BCI/comments/1r8yral/measuring_personality_types_and_interpersonal/"
+    title="measuring personality types and interpersonal compatibility with EEG"
+  >measure personality type and compatibility</a>.
+</div>
+
+<div class="para">
+  Three machines are suitable for this purpose:
+  <a
+    href="https://en.wikipedia.org/wiki/Magnetic_resonance_imaging"
+    title="Magnetic resonance imaging"
+  >MRI scanner</a>,
+  <a
+    href="https://en.wikipedia.org/wiki/Magnetoencephalography"
+    title="Magnetoencephalography"
+  >MEG scanner</a>,
+  and
+  <a
+    href="https://en.wikipedia.org/wiki/Electroencephalography"
+    title="Electroencephalography"
+  >EEG scanner</a>.
+
+  MRI and MEG scanners are extremely expensive,
+  with fixed costs of around 2 million Euros,
+  and scanning costs of around 1000 Euros.
+  A small EEG scanner (8 channels)
+  <!-- 300 + 25 + 20 + 15 = 360 -->
+  has fixed costs of around 400 Euros
+  and scanning costs around zero.
+  <!-- (nur die Kosten für elektrische Energie) -->
+</div>
+
+<div id="small-eeg-scanner" class="para">
+  Small EEG scanner:
+
+  <!-- original: OpenBCI Cyton Biosensing Board (8-channels)
+  https://shop.openbci.com/products/cyton-biosensing-board-8-channel
+  1080 Euro
+  -->
+  <a href="https://www.alibaba.com/product-detail/One-set-of-OpenBCI-8-channel_1601281770688.html"
+  >OpenBCI module 8-channel WiFi</a>: 300 Euro.
+
+  <!-- original: OpenBCI Gold Cup Electrodes
+  https://shop.openbci.com/collections/frontpage/products/openbci-gold-cup-electrodes
+  8x EEG electrode, 1.5m cable
+  50 Euro
+  -->
+  <!-- FIXME Silber?
+  https://openbci.com/forum/index.php?p=/discussion/156/gsr-openbci
+  https://en.wikipedia.org/wiki/Silver_chloride_electrode#Biological_electrode_systems
+  https://www.alibaba.com/product-detail/3-9mm-Medical-Disposable-ECG-Electrode_1601408257439.html
+  https://www.alibaba.com/product-detail/Disposable-Medical-3-9mm-ECG-Electrode_1601601707742.html
+  https://www.alibaba.com/product-detail/AgCl-Plating-EEG-Electrodes-EEG-Flat_1601277452439.html
+  https://www.alibaba.com/product-detail/EEG-Cable-Reusable-Sintered-Agcl-Silver_60804610223.html
+  -->
+  <a href="https://www.alibaba.com/product-detail/10pcs-Multicolor-Din-1-5mm-Female_1600232710963.html"
+  >10x EEG electrode gold-plated 1.5m cable DIN 1.5mm plug</a>: 25 Euro.
+
+  <!-- original: OpenBCI EEG Electrode Cap Kit
+  https://shop.openbci.com/collections/frontpage/products/openbci-eeg-electrocap
+  19-channel electrode cap with patented, sintered Ag/AgCl electrodes
+  860 Euro
+  -->
+  <!-- alternative:
+  https://www.alibaba.com/product-detail/TES-TMS-Device-Accessories-Black-EEG_1601517737797.html
+  -->
+  <a href="https://www.alibaba.com/product-detail/Smart-Health-Transcranial-Electrogram-Cap-for_1601523355047.html"
+  >EEG head cap black</a>: 20 Euro.
+
+  <!-- original: OpenBCI Header Pin to Touch Proof Electrode Adapter
+  https://shop.openbci.com/products/touch-proof-electrode-cable-adapter
+  35 Euro
+  -->
+  <!--
+  gerade verlängerung:
+  https://www.alibaba.com/product-detail/Din-1-5mm-Plug-Male-to_1600628214792.html
+  gerade sockel:
+  https://www.alibaba.com/product-detail/DIN-1-5mm-Female-Socket-for_1601597536557.html
+  gerade sockel gewinde:
+  https://www.alibaba.com/product-detail/DIN-1-5mm-Touch-Proof-Terminal_1601301159927.html
+  gewinkelt sockel:
+  https://www.alibaba.com/product-detail/Multicolor-3-PIN-Socket-EEG-Electrodes_1601597044297.html
+  -->
+  <a href="https://www.alibaba.com/product-detail/DIN-1-5mm-Touch-Proof-Terminal_1601301159927.html"
+  >8x Touch-Proof DIN 1.5mm male plug</a>: 15 Euro.
+
+  Soldering iron.
+  Solder.
+  Cable.
+  Heat-shrink tubes.
+  USB Hub.
+  Notebook.
+
+  <!-- TODO OpenBCI Android app -->
+
+  <!-- https://docs.openbci.com/Cyton/CytonDataFormat/ -->
+
+  <!-- NOTE wireless mode is preferred for isolation
+  https://openbci.com/forum/index.php?p=/discussion/comment/21169/#Comment_21169
+  -->
+
+  <!-- TODO Galvanic Skin Response GSR Sensor
+  https://en.wikipedia.org/wiki/Electrodermal_activity
+  https://shop.openbci.com/products/emotibit
+  https://openbci.com/forum/index.php?p=/discussion/156/gsr-openbci
+  https://web.archive.org/web/20100625041850/http://affect.media.mit.edu/pdfs/10.Poh-etal-TBME-EDA-tests.pdf
+  https://wiki.seeedstudio.com/Grove-GSR_Sensor/
+  EDA sensor SPI
+  Electrodermal activity sensor SPI
+  https://www.alibaba.com/product-detail/CJMCU-6701-GSR-Skin-Sensor-Module_62241101261.html
+  -->
+  <a href="https://wiki.seeedstudio.com/Grove-GSR_Sensor/"
+  >Galvanic skin response GSR sensor module + electrodes</a>: 10 Euro.
+
+  <!-- TODO Arduino or Raspberry Pi for GSR sensor module. -->
+
+  <!-- TODO Heart Rate sensor -> Heart Rate Variability HRV
+  single-lead electrocardiogram (ECG)
+  https://en.wikipedia.org/wiki/Heart_rate_variability
+  https://shop.openbci.com/products/pulse-sensor
+  https://docs.openbci.com/ThirdParty/Pulse_Sensor/Pulse_Sensor_Landing/
+  https://www.alibaba.com/product-detail/Keyestudio-XD-58C-pulsesensor-pulse-develop_60760979893.html
+  https://www.alibaba.com/product-detail/Keyestudio-XD-58C-Pulse-Sensor-Measurement_1601574934957.html
+  -->
+  <a href="https://www.alibaba.com/product-detail/Keyestudio-XD-58C-Pulse-Sensor-Measurement_1601574934957.html"
+  >Heart Rate sensor module</a>: 2 Euro.
+
+  <!-- TODO GoPro head camera? -->
+</div>
+
+<div class="para">
+  Optional metric:
+  <a href="https://en.wikipedia.org/wiki/Electrodermal_activity"
+  >Skin conductance
+  (galvanic skin response = GSR)</a>
+  as an indicator of stress =
+  <a href="https://en.wikipedia.org/wiki/Sympathetic_nervous_system"
+  >sympathetic nervous system</a> is activated =
+  <a href="https://en.wikipedia.org/wiki/Fight-or-flight_response"
+  >fight-or-flight response</a> =
+  emotional arousal =
+  body produces more sweat.
+  Latency: 2 seconds.
+</div>
+
+<div class="para">
+  Optional metric:
+  <a href="https://en.wikipedia.org/wiki/Heart_rate_variability"
+  >Heart rate variability (HRV)</a>.
+  Types 14 = high resting HRV = high recovery speed.
+  Latency: 10 seconds.
+</div>
+
+<div class="para">
+  TODO: App with personality test
+  (<a href="https://www.psytoolkit.org/experiment-library/go-no-go.html"
+  >Go/NoGo test</a>)
+  and evaluation of multiple EEG scanners.
+  Synchronization of multiple EEG scanners with a clock signal.
+</div>
+
+
+
+<section id="measuring-personality-type-with-eeg">
+
+<h4>
+  Measuring personality type with EEG
+</h4>
+
+<div class="para">
+  Studies:
+  <br>
+  <span class="notranslate">
+  <a href="https://sci-hub.ru/https://doi.org/10.1038/nn1979"
+  >Amodio 2007:
+  Neurocognitive correlates of liberalism and conservatism.</a>
+  <br>
+  <a href="https://sci-hub.ru/https://doi.org/10.1080/17470919.2013.833549"
+  >Weissflog 2013:
+  The political (and physiological) divide:
+  Political orientation, performance monitoring,
+  and the anterior cingulate response.</a>
+  </span>
+</div>
+
+<div id="eeg-scan-four-personality-types" class="para">
+  Four types in
+  <a
+    href="https://en.wikipedia.org/wiki/Electroencephalography"
+    title="Electroencephalography"
+  >EEG</a> scans:
+  Types 13 = high stress reactivity.
+  Types 14 = high recovery speed.
+  Stress reactivity = stress-related change in
+  <a
+    href="https://en.wikipedia.org/wiki/Alpha_wave"
+    title="Alpha waves are neural oscillations in the frequency range of 8-12 Hz"
+  >alpha power</a>
+  and
+  <a
+    href="https://en.wikipedia.org/wiki/Beta_wave"
+    title="Beta waves are neural oscillations with a frequency range of between 12.5 and 30 Hz"
+  >beta power</a> compared to resting values.
+  Recovery speed = After the end of stress, how quickly does the EEG recover to its resting value?
+</div>
+
+<div class="para">
+  Calibration of personality types:
+  Test subjects with obvious personality types,
+  so mostly types 34:
+  Type 3 = broad body.
+  Type 4 = long body.
+</div>
+
+</section>
+<!-- end of <section id="measuring-personality-type-with-eeg"> -->
+
+
+
+<section id="measuring-compatibility-with-eeg">
+
+<h4>
+  Measuring compatibility with EEG
+</h4>
+
+<div class="para">
+  High EEG synchrony = high compatibility.
+  Synchrony develops within a few minutes and remains stable.
+  Which brain waves?
+  Alpha waves <nw>(8-12Hz)</nw> in the frontal area
+  <nw>(<a href="https://en.wikipedia.org/wiki/10–20_system_(EEG)"
+  >F3 Fz F4</a>)</nw>
+  and theta waves <nw>(4-8Hz)</nw> in the central area <nw>(F3 Fz F4,</nw> <nw>C3 Cz C4).</nw>
+</div>
+
+<div class="para">
+  Stress transfer:
+  Compatible partners calm each other down.
+</div>
+
+<div class="para">
+  High HRV synchronicity = high compatibility.
+</div>
+
+<div class="para">
+  Calibration of compatibility:
+  Test subjects with high compatibility:
+  Romantic couples with high relationship satisfaction.
+</div>
+
+<div class="para">
+  <!--
+  
+  -->
+  <a href="https://en.wikipedia.org/wiki/Three-body_problem"
+  >Three-body problem</a>:
+  We need at least three EEG scanners (1200 euros)
+  to compare compatible and incompatible relationships.
+  Example:
+  The Pallas pattern says:
+  M1 and M2 are compatible,
+  M1 and M3 are not compatible.
+  M2 is in room A,
+  M3 is in room B,
+  M1 switches between rooms.
+</div>
+
+<div class="para">
+  Interaction:
+  Eye contact,
+  shaking hands,
+  hugging,
+  <a href="#pallas-experiment-groups-of-four-peer-exchange"
+  >talking and listening,
+  showing and watching</a>.
+</div>
+
+</section>
+<!-- end of <section id="measuring-compatibility-with-eeg"> -->
+
+</section>
+<!-- end of <section id="measuring-personality-type-and-compatibility"> -->
+
 </section>
 <!-- end of `<section id="limitations"` -->
 
