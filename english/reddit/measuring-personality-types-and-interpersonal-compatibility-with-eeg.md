@@ -24,7 +24,7 @@ too many errors come from
 apparently there is some research
 that found low to moderate correlations between EEG scans and personality traits
 
-i dont have the money (about 4000 euros)
+i dont have the money (about 1200 euros)
 to buy all the hardware for this experiment,
 so maybe someone who already owns the hardware
 can conduct these experiments
@@ -70,12 +70,36 @@ true synchrony is stable over time
 - upward regulation = escalation = low compatibility
 - downward regulation = deescalation = high compatibility
 
-problem: what is "stress"? how to induce "stress" in only one person?
+problem: how to induce "stress"?
+is physical proximity to an incompatible human enough stress?
+
+#### Galvanic Skin Response
+
+- high skin conductance = high stress = low compatibility
+- low skin conductance = low stress = high compatibility
+
+[Electrodermal activity](https://en.wikipedia.org/wiki/Electrodermal_activity)
+
+Galvanic Skin Response offers higher time-resolution than Heart rate
+(lower latency,
+2 seconds in GSR versus 10 seconds in HRV)
+
+Skin conductance =
+sympathetic nervous system activation =
+"fight or flight" response =
+sweat gland activity increases =
+skin becomes more electrically conductive =
+emotional arousal =
+threat detection =
+anticipatory anxiety
 
 ### metric 5. Heart rate variability (HRV) synchrony
 
 - higher synchrony = higher compatibility
 - lower synchrony = lower compatibility
+
+optional?
+Heart rate offers lower time-resolution than Galvanic Skin Response
 
 ### metric 6: resting Heart rate variability (HRV)
 
@@ -107,16 +131,28 @@ broad-first search
 
 many persons, short time per person
 
+only one person has EEG scanner
+
 ## hardware
 
-- 3 EEG devices
-  - based on OpenBCI?
-  - how many channels are needed? 6 channels? (F3 F4 Fz C3 C4 Cz)
-  - about 1000 eur each
-- 3 chest straps for HRV scanning
-  - about 100 eur each
+3 times...
 
-challenge: synchronize measurements between all devices
+- EEG scanner 8-channel: 400 euros
+  - [OpenBCI module 8-channel WiFi](https://www.alibaba.com/product-detail/One-set-of-OpenBCI-8-channel_1601281770688.html): 300 Euro (wireless operation is preferred for electrical isolation from the power grid)
+  - [10x EEG electrode gold-plated 1.5m cable DIN 1.5mm plug](https://www.alibaba.com/product-detail/10pcs-Multicolor-Din-1-5mm-Female_1600232710963.html): 25 Euro (better: [silver electrodes](https://en.wikipedia.org/wiki/Silver_chloride_electrode))
+  - [EEG head cap black](https://www.alibaba.com/product-detail/Smart-Health-Transcranial-Electrogram-Cap-for_1601523355047.html): 20 Euro
+  - [8x Touch-Proof DIN 1.5mm male plug](https://www.alibaba.com/product-detail/DIN-1-5mm-Touch-Proof-Terminal_1601301159927.html): 15 Euro (required to [connect pin header and electrode cables](https://shop.openbci.com/products/touch-proof-electrode-cable-adapter))
+- [Galvanic skin response GSR sensor module + electrodes](https://wiki.seeedstudio.com/Grove-GSR_Sensor/): 10 Euro
+- [Heart Rate sensor module](https://www.alibaba.com/product-detail/Keyestudio-XD-58C-Pulse-Sensor-Measurement_1601574934957.html): 2 Euro
+
+challenges:
+
+- connect EEG electrodes to human heads (use contact gel?) (use comb electrodes?)
+- synchronize measurements between all devices
+- [connect GSR sensor to OpenBCI module](https://openbci.com/forum/index.php?p=/discussion/156/gsr-openbci)
+  - use AC current to drive the GSR sensor to avoid polarization of the GSR electrodes
+  - no contact gel for the GSR electrodes
+- [connect HRV sensor to OpenBCI module](https://docs.openbci.com/ThirdParty/Pulse_Sensor/Pulse_Sensor_Landing/)
 
 ## software
 
