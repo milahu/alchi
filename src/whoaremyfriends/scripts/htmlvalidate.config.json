@@ -16,6 +16,7 @@
     "prefer-native-element": "off",
     "aria-label-misuse": "off",
     "element-permitted-content": "off",
+    "element-required-content": "off",
     "attr-case": "off"
   }
 }
