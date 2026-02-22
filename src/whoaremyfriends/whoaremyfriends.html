@@ -13238,6 +13238,8 @@ textarea.form-control-lg {
 
         const options = getBinderyOptions(Bindery);
 
+        window._binderyContentElem = document.querySelector(options.content);
+
         options.onResult = onResult;
 
         console.time(`Bindery.makeBook`);
@@ -13308,6 +13310,11 @@ textarea.form-control-lg {
           if (binderyControls) {
             binderyControls.style.marginTop = "100px"; // TODO better
           }
+          // remove the original document to fix internal links
+          // bindery creates a copy of the document
+          // with elements split across pages
+          // but the visible document is not reachable via fragment IDs
+          window._binderyContentElem.remove();
         });
         // TODO? remove navbar now, show long status message
         renderButton.innerHTML = 'Print ...';
