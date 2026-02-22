@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body, html {
+      margin: 0;
+    }
+    #cutmarks {
+      margin-top: calc(0.5 * 297mm - 10mm);
+      padding: 10mm 0;
+      outline: solid 1px black;
+    }
+    #spine {
+      width: 210mm;
+      height: 10mm;
+      outline: solid 1px black;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      text-align: center;
+      font-size: 5mm;
+      line-height: 10mm;
+    }
+    @page {
+      margin: 0;
+      size: A4;
+    }
+    @media print {
+      #spine {
+        outline: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="cutmarks">
+
+<div id="spine">
+
+Pallas
+&nbsp; &nbsp;
+⚴
+&nbsp; &nbsp;
+Who are my friends?
+&nbsp; &nbsp;
+Group composition by personality type
+
+</div>
+
+</div>
+
+</body>
+
+</html>
