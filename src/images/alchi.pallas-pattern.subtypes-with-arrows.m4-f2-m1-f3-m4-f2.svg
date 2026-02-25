@@ -30,17 +30,17 @@
     <g dominant-baseline="middle" font-family="sans" font-size="40px" text-anchor="middle">
       <!-- NOTE no age -->
       <circle class="stroke nofill" cx="100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="100" y="300">F2</text>
+      <text class="fillfg" x="100" y="300">M4</text>
       <circle class="stroke nofill" cx="300" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="300" y="300">M1</text>
+      <text class="fillfg" x="300" y="300">F3</text>
       <circle class="stroke nofill" cx="500" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="500" y="300">F3</text>
+      <text class="fillfg" x="500" y="300">M1</text>
       <circle class="stroke nofill" cx="700" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="700" y="300">M4</text>
+      <text class="fillfg" x="700" y="300">F2</text>
       <circle class="stroke nofill" cx="-100" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="-100" y="300">M4</text>
+      <text class="fillfg" x="-100" y="300">F2</text>
       <circle class="stroke nofill" cx="900" cy="300" r="60" fill="none" stroke="#000" stroke-width="2"/>
-      <text class="fillfg" x="900" y="300">F2</text>
+      <text class="fillfg" x="900" y="300">M4</text>
       <g id="g5966">
         <!-- arrow head. workaround for chrome. inkscape arrow head is not working: <path marker-end="url(#Arrow2Mend)"> -->
         <path transform="translate(-163 .63606)" d="m804.78 227.38 11.784 25.491-25.491-11.784c7.0239-1.0689 12.543-6.6222 13.707-13.707z" fill-rule="evenodd" fill="#000" stroke="#000" stroke-linejoin="round" stroke-width=".11963"/>
