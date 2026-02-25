@@ -70,6 +70,34 @@
             <path inkscape:label="right" d="M 300 360 L 300 440"/>
             <path inkscape:label="left" d="M 100 360 L 100 440"/>
           </g>
+          <g>
+            <title>margin left</title>
+            <path inkscape:label="1" d="M 0 100 h 40"/>
+            <path inkscape:label="2" d="M 0 300 h 40"/>
+            <path inkscape:label="3" d="M 0 500 h 40"/>
+            <path inkscape:label="4" d="M 0 700 h 40"/>
+          </g>
+          <g>
+            <title>margin right</title>
+            <path inkscape:label="1" d="M 800 100 h -40"/>
+            <path inkscape:label="2" d="M 800 300 h -40"/>
+            <path inkscape:label="3" d="M 800 500 h -40"/>
+            <path inkscape:label="4" d="M 800 700 h -40"/>
+          </g>
+          <g>
+            <title>margin top</title>
+            <path inkscape:label="1" d="M 100 0 v 40"/>
+            <path inkscape:label="2" d="M 300 0 v 40"/>
+            <path inkscape:label="3" d="M 500 0 v 40"/>
+            <path inkscape:label="4" d="M 700 0 v 40"/>
+          </g>
+          <g>
+            <title>margin bottom</title>
+            <path inkscape:label="1" d="M 100 800 v -40"/>
+            <path inkscape:label="2" d="M 300 800 v -40"/>
+            <path inkscape:label="3" d="M 500 800 v -40"/>
+            <path inkscape:label="4" d="M 700 800 v -40"/>
+          </g>
         </g>
         <g inkscape:label="arrowheads" transform-origin="400 400" transform="scale(-1,-1)">
           <g>
@@ -123,6 +151,32 @@
             <title>center left</title>
             <path inkscape:label="left" d="M 300 440 l 20 -20 l -20 20 l -20 -20"/>
             <path inkscape:label="right" d="M 100 360 l 20 20 l -20 -20 l -20 20"/>
+          </g>
+        </g>
+        <g inkscape:label="arrowheads2">
+          <g>
+            <title>margin left</title>
+            <path inkscape:label="1" d="M 0 100 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="2" d="M 40 300 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="3" d="M 0 500 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="4" d="M 40 700 l -20 -20 l 20 20 l -20 20"/>
+          </g>
+          <g>
+            <title>margin right</title>
+            <path inkscape:label="1" d="M 800 100 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="2" d="M 760 300 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="3" d="M 800 500 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="4" d="M 760 700 l 20 -20 l -20 20 l 20 20"/>
+          </g>
+          <g>
+            <title>margin top</title>
+            <path inkscape:label="1" d="M 100 40 l -20 -20 l 20 20 l 20 -20"/>
+            <path inkscape:label="4" d="M 700 40 l -20 -20 l 20 20 l 20 -20"/>
+          </g>
+          <g>
+            <title>margin bottom</title>
+            <path inkscape:label="2" d="M 300 800 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
+            <path inkscape:label="3" d="M 500 800 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
           </g>
         </g>
         <g display="none" inkscape:label="single lines diagonal">
