@@ -26,11 +26,16 @@
       fill: var(--fg);
     }
   </style>
-  <g class="fig1">
+  <defs>
+    <clipPath id="clip-image">
+      <rect x="-200" y="-200" width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+  <g class="fig1" clip-path="url(#clip-image)">
     <g class="stroke nofill" transform="translate(800,800)">
       <path d="m160 100h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-1340h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260 660h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80m260-540h80m-80 200h80m-140-140v80m200-80v80m-1340-140h80m-80 200h80m-140-140v80m200-80v80m158 618-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m916 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-284 400-116-116m116 0-116 116m116-800-116-116m116 0-116 116m116 400-116-116m116 0-116 116m-182-358h80m-80 200h80m-140-140v80m200-80v80m260-140h80m-80 200h80m-140-140v80m200-80v80" stroke="#000"/>
     </g>
-    <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+    <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
       <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
       <text x="100" y="100" class="fillfg">F1L</text>
 
@@ -79,7 +84,7 @@
       <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
       <text x="700" y="700" class="fillfg">M2S</text>
     </g>
-    <g transform="translate(-800,0)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+    <g title="text" transform="translate(-800,0)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
       <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
       <text x="100" y="100" class="fillfg">F1L</text>
 
@@ -128,7 +133,7 @@
       <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
       <text x="700" y="700" class="fillfg">M2S</text>
     </g>
-    <g transform="translate(-800,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+    <g title="text" transform="translate(-800,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
       <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
       <text x="100" y="100" class="fillfg">F1L</text>
 
@@ -177,7 +182,7 @@
       <circle cx="700" cy="700" r="60" stroke-width="2" class="stroke nofill" />
       <text x="700" y="700" class="fillfg">M2S</text>
     </g>
-    <g transform="translate(0,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+    <g title="text" transform="translate(0,-800)" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
       <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
       <text x="100" y="100" class="fillfg">F1L</text>
 
