@@ -28,7 +28,13 @@
 
   </style>
 
-  <g class="fig1">
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="100%" height="100%"/>
+    </clipPath>
+  </defs>
+
+  <g class="fig1" clip-path="url(#clip-image)">
 
     <!-- start generated svg -->
 
@@ -70,7 +76,7 @@
         M 300 560 V 640
       "/>
 
-      <g dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
+      <g title="text" dominant-baseline="middle" text-anchor="middle" font-family="sans" font-size="40">
 
           <circle cx="100" cy="100" r="60" stroke-width="2" class="stroke nofill" />
           <text x="100" y="100" class="fillfg">F1L</text>
