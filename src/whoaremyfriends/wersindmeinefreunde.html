@@ -13470,6 +13470,23 @@ textarea.form-control-lg {
     }
   </style>
 
+  <script>
+    function updateLanguageLinks() {
+      const fragment = window.location.hash;
+      // console.log(`updateLanguageLinks: fragment: ${fragment}`);
+      for (const link of document.querySelectorAll('a.language-link')) {
+        const url = link.getAttribute('href').split('#')[0];
+        if (fragment) {
+          link.setAttribute('href', url + fragment);
+        } else {
+          link.setAttribute('href', url);
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', updateLanguageLinks);
+    window.addEventListener('hashchange', updateLanguageLinks);
+  </script>
+
 </head>
 
 
@@ -13578,8 +13595,8 @@ textarea.form-control-lg {
                 Sprachen
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
-                <li><a class="dropdown-item" href="wersindmeinefreunde.html">Deutsch</a></li>
-                <li><a class="dropdown-item" href="whoaremyfriends.html">Englisch</a></li>
+                <li><a class="dropdown-item language-link" href="wersindmeinefreunde.html">Deutsch</a></li>
+                <li><a class="dropdown-item language-link" href="whoaremyfriends.html">Englisch</a></li>
               </ul>
             </li>
 
