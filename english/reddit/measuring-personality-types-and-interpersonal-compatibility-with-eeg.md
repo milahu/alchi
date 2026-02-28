@@ -17,9 +17,9 @@ the evaluation of my hypothesis poses two challenges
 
 too many errors come from
 
-- self-report: participants can game personality type questionnaires
-- language: personality type questionnaires assume objective definitions of words
-- self-deception: unrealistic self-image, "living a lie"
+- [self-report](https://en.wikipedia.org/wiki/Self-report_study): participants can lie to personality type questionnaires
+- language-related misunderstanding: personality type questionnaires assume objective definitions of words, but different people have different subjective definitons of words
+- [self-deception](https://en.wikipedia.org/wiki/Self-deception): unrealistic self-image, "living a lie", wishful thinking, behavior in low-stress settings ([pacifism](https://en.wikipedia.org/wiki/Pacifism)) (but personality type = typical stress response)
 
 apparently there is some research
 that found low to moderate correlations between EEG scans and personality traits
