@@ -73,16 +73,18 @@ true synchrony is stable over time
 problem: how to induce "stress"?
 is physical proximity to an incompatible human enough stress?
 
-#### Galvanic Skin Response
+#### Electrodermal activity
 
 - high skin conductance = high stress = low compatibility
 - low skin conductance = low stress = high compatibility
 
-[Electrodermal activity](https://en.wikipedia.org/wiki/Electrodermal_activity)
+EDA = [Electrodermal activity](https://en.wikipedia.org/wiki/Electrodermal_activity)
 
-Galvanic Skin Response offers higher time-resolution than Heart rate
+aka: GSR = Galvanic Skin Response
+
+Electrodermal activity offers higher time-resolution than Heart rate
 (lower latency,
-2 seconds in GSR versus 10 seconds in HRV)
+2 seconds in EDA versus 10 seconds in HRV)
 
 Skin conductance =
 sympathetic nervous system activation =
@@ -99,7 +101,7 @@ anticipatory anxiety
 - lower synchrony = lower compatibility
 
 optional?
-Heart rate offers lower time-resolution than Galvanic Skin Response
+Heart rate offers lower time-resolution than Electrodermal activity
 
 ### metric 6: resting Heart rate variability (HRV)
 
@@ -142,16 +144,16 @@ only one person has EEG scanner
   - [10x EEG electrode gold-plated 1.5m cable DIN 1.5mm plug](https://www.alibaba.com/product-detail/10pcs-Multicolor-Din-1-5mm-Female_1600232710963.html): 25 Euro (better: [silver electrodes](https://en.wikipedia.org/wiki/Silver_chloride_electrode))
   - [EEG head cap black](https://www.alibaba.com/product-detail/Smart-Health-Transcranial-Electrogram-Cap-for_1601523355047.html): 20 Euro
   - [8x Touch-Proof DIN 1.5mm male plug](https://www.alibaba.com/product-detail/DIN-1-5mm-Touch-Proof-Terminal_1601301159927.html): 15 Euro (required to [connect pin header and electrode cables](https://shop.openbci.com/products/touch-proof-electrode-cable-adapter))
-- [Galvanic skin response GSR sensor module + electrodes](https://wiki.seeedstudio.com/Grove-GSR_Sensor/): 10 Euro
+- [Electrodermal activity sensor module + electrodes](https://wiki.seeedstudio.com/Grove-GSR_Sensor/): 10 Euro
 - [Heart Rate sensor module](https://www.alibaba.com/product-detail/Keyestudio-XD-58C-Pulse-Sensor-Measurement_1601574934957.html): 2 Euro
 
 challenges:
 
 - connect EEG electrodes to human heads (use contact gel?) (use comb electrodes?)
 - synchronize measurements between all devices
-- [connect GSR sensor to OpenBCI module](https://openbci.com/forum/index.php?p=/discussion/156/gsr-openbci)
-  - use AC current to drive the GSR sensor to avoid polarization of the GSR electrodes
-  - no contact gel for the GSR electrodes
+- [connect EDA sensor to OpenBCI module](https://openbci.com/forum/index.php?p=/discussion/156/gsr-openbci)
+  - use AC current to drive the EDA sensor to avoid polarization of the EDA electrodes
+  - no contact gel for the EDA electrodes
 - [connect HRV sensor to OpenBCI module](https://docs.openbci.com/ThirdParty/Pulse_Sensor/Pulse_Sensor_Landing/)
 
 ## software
