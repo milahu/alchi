@@ -12746,6 +12746,22 @@ textarea.form-control-lg {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
       line-height: 110%;
+      /*
+        create a clean rectangular block of text.
+        standard in book typography.
+        but this requires hyphenation to avoid wide gaps ("rivers") between words.
+        otherwise justified text can create large gaps between words = ugly.
+        explicit hyphenation with soft hyphens:
+        a: Sozialstaat
+        b: Sozial&shy;staat
+        renderPrintLayout could be used to add soft hyphens
+        https://github.com/mnater/Hyphenopoly
+        https://en.wikipedia.org/wiki/Typographic_alignment#Justified
+      */
+      /*
+      text-align: justify;
+      hyphens: auto;
+      */
     }
     table.four-basetypes,
     table.three-columns,
