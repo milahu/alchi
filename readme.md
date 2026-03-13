@@ -78,6 +78,7 @@ or use github's [watch repo](https://docs.github.com/en/github/managing-subscrip
   * [google translate](https://milahu-github-io.translate.goog/alchi/src/dorfkultur/dorfkultur.html?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=de&_x_tr_pto=wapp). Sorry I don't have a proper english version at the moment.
 * visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-maps/public/alchi-maps.html))
 * personality test: [alchi-test](https://milahu.github.io/alchi/src/alchi-test/public/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-test/public/)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-test/public/)). combination of multiple personality tests (mostly Big Five), returns result in the four elements (four basetypes)
+  TODO make alchi-test use my latest [mapping from Big Five to Four Elements](https://milahu.github.io/alchi/src/alchi-types/alchi-types.html#big-five)
 
 <details>
 
