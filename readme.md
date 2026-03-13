@@ -79,6 +79,9 @@ or use github's [watch repo](https://docs.github.com/en/github/managing-subscrip
 * visualization: [alchi-maps](https://milahu.github.io/alchi/src/alchi-maps/public/alchi-maps.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-maps/public/alchi-maps.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-maps/public/alchi-maps.html))
 * personality test: [alchi-test](https://milahu.github.io/alchi/src/alchi-test/public/) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-test/public/)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-test/public/)). combination of multiple personality tests (mostly Big Five), returns result in the four elements (four basetypes)
   TODO make alchi-test use my latest [mapping from Big Five to Four Elements](https://milahu.github.io/alchi/src/alchi-types/alchi-types.html#big-five)
+* alchi types: translation tables between different typologies:
+  [github](https://milahu.github.io/alchi/english/alchi-types.html),
+  [gitlab](https://milahu.gitlab.io/alchi/english/alchi-types.html)
 
 <details>
 
@@ -99,7 +102,6 @@ or use github's [watch repo](https://docs.github.com/en/github/managing-subscrip
   * alchi-test html: [github](https://milahu.github.io/alchi/src/alchi-test/public/), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-test/public/) - first public release - combine multiple personality tests, show result with the four elements
 
 * 2020-09-01
-  * alchi tables html: [github](https://milahu.github.io/alchi/english/alchi-tables.html), [gitlab](https://milahu.gitlab.io/alchi/english/alchi-tables.html)
   * alchi flyer html (german): [github](https://milahu.github.io/alchi/deutsch/alchi-flyer.html), [gitlab](https://milahu.gitlab.io/alchi/deutsch/alchi-flyer.html)
   * alchi-maps 2020-09-02 html+svg+js: [github](https://milahu.github.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np), [gitlab](https://milahu.gitlab.io/alchi/src/alchi-maps/dist/alchi-maps.2020-09-02.html#A1_e/bxinout_s+m_1110_0_en_np) - new: with fotos (format `e/bxfoto`)
 
