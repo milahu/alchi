@@ -13503,6 +13503,29 @@ textarea.form-control-lg {
     window.addEventListener('hashchange', updateLanguageLinks);
   </script>
 
+  <script>
+    let hypothesisEmbedScriptElem = null;
+    function toggleHypothesisAnnotations() {
+      if (hypothesisEmbedScriptElem) {
+        // TODO remove hypothesis client
+        // https://github.com/hypothesis/client/issues/1322
+        return;
+      }
+      // add hypothesis client
+      // NOTE hypothesis will identify this document by its canonical URL
+      // <link rel="canonical" href="...">
+      window.hypothesisConfig = function () {
+        return {
+          openSidebar: true
+        };
+      };
+      let script = hypothesisEmbedScriptElem = document.createElement("script");
+      script.src = "src/hypothesis/embed.js";
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  </script>
+
 </head>
 
 
@@ -13604,6 +13627,15 @@ textarea.form-control-lg {
                 <li><a class="dropdown-item" href="http://gdatura24gtdy23lxd7ht3xzx6mi7mdlkabpvuefhrjn4t5jduviw5ad.onion/milahu/alchi">gdatura.onion</a></li>
               </ul>
               <!-- </notranslate> -->
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdownComments" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Kommentare
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownComments">
+                <li><a class="dropdown-item" href="javascript: toggleHypothesisAnnotations()">Hypothesis</a></li>
+              </ul>
             </li>
 
             <li class="nav-item dropdown">
