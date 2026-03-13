@@ -64,6 +64,7 @@ subscribe to the [RSS feed](https://github.com/milahu/alchi/commits/master.atom)
 or use github's [watch repo](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) function
 
 * prison since 2024-12-09 for distributing my book in public. here in prison im wasting lots of energy... see [deutsch/feedback/knast-2024/](deutsch/feedback/knast-2024/)
+  * i was released on 2025-04-16 = 4 months later
   * [Prison for book distributor](deutsch/feedback/knast-2024/2024-12-09.prison-for-book-distributor.md)
   * german: [Knast für Buchverteiler](deutsch/feedback/knast-2024/2024-12-09.knast-fuer-buchverteiler.md)
 * german flyer: [Hausdurchsuchung gegen Buchdrucker](https://milahu.github.io/alchi/src/alchi-flyer/hausdurchsuchung-gegen-buchdrucker.html) ([mirror: gitlab](https://milahu.gitlab.io/alchi/src/alchi-flyer/hausdurchsuchung-gegen-buchdrucker.html)) ([mirror: codeberg](https://milahu.codeberg.page/alchi/src/alchi-flyer/hausdurchsuchung-gegen-buchdrucker.html)) ([mirror: sourceforge](https://milahu-alchi.sourceforge.io/src/alchi-flyer/hausdurchsuchung-gegen-buchdrucker.html))
