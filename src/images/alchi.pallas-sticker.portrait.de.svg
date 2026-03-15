@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57mm" height="105mm" version="1.1" viewBox="0 0 57 105" xmlns="http://www.w3.org/2000/svg">
+ <rect x="0" y="0" width="57" height="105" fill="#fff"/>
+ <!-- <rect x="0" y="0" width="57" height="105" fill="none" stroke="#000"/> -->
+ <path transform="translate(28.5,42) scale(0.2,0.2)"
+  d="m0 0 50-50-50-50-50 50zm0 0v100m-50-50h100"
+  fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+ />
+ <g font-family="monospace" stroke-width="4" text-anchor="middle" font-size="5px">
+  <text x="28.5" y="15" fill="#000" font-size="10px">Pallas</text>
+  <text x="28.5" y="73" fill="#000" font-size="6px">Wer sind</text>
+  <text x="28.5" y="80" fill="#000" font-size="6px">meine Freunde</text>
+  <text x="28.5" y="91" fill="#000" font-size="4.5px">Gruppenaufbau nach</text>
+  <text x="28.5" y="98" fill="#000" font-size="4.5px">Persönlichkeitstyp</text>
+ </g>
+</svg>
