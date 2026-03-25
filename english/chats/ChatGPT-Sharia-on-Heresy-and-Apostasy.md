@@ -2,8 +2,8 @@
 
 **User:** Milan Hauth (<milahu@gmail.com>)  
 **Created:** 2026/3/18 20:22:43  
-**Updated:** 2026/3/18 20:29:23  
-**Exported:** 2026/3/18 20:42:16  
+**Updated:** 2026/3/25 10:20:00  
+**Exported:** 2026/3/25 10:23:34  
 **Link:** [<https://chatgpt.com/c/69bafa5d-8390-8326-b30a-7ec50edecbed>](https://chatgpt.com/c/69bafa5d-8390-8326-b30a-7ec50edecbed)
 
 ## Prompt:
@@ -240,6 +240,183 @@ That’s actually closer to:
 ------------------------------------------------------------------------
 
 If you want, I can sketch what a belief system like the one you’re describing would look like if it were fully developed—it’s actually a pretty interesting hybrid of religion, philosophy, and governance.
+
+## Prompt:
+
+ok, so practically all mainstream religions say that there is only one prophet (monism, monotheism, singularity, centralism, imperialism)... but there are some sects that at least predict a return of "the prophet" (end times, apocalypse, death and rebirth of civilization) -- do you know some such "end time sects"? and how will they recognize their "new prophet"? will that prophet just say "hey folks, im your new prophet, now here are my ideas, and you all must follow"? or how does that work...?
+
+## Response:
+
+A small correction first—most major religions don’t actually teach “only one prophet ever.”
+
+- **Islam** teaches many prophets but a *final* one (Muhammad)
+- **Christianity** has many prophets but centers on Jesus Christ as unique
+- **Judaism** also has multiple prophets (Moses, Isaiah, etc.)
+
+What *is* very common, though, is the idea that **a decisive figure returns or appears at the end of time**. That’s what you’re getting at—and yes, there are many such movements.
+
+------------------------------------------------------------------------
+
+# 🔥 Examples of “end-time” or messianic movements
+
+## 🕌 Islam
+
+- **Mahdi**
+- **Isa (Jesus in Islam)**
+
+**Belief:**
+
+- The Mahdi appears before the end times to restore justice
+- Jesus returns to defeat evil and correct false beliefs
+
+👉 Important:  
+They are **not “new prophets” with new teachings**, but restorers of the original truth.
+
+------------------------------------------------------------------------
+
+## ✝️ Christianity
+
+- Second Coming of Jesus Christ
+
+**Belief:**
+
+- Jesus returns visibly at the end of history
+- Judges humanity and establishes God’s kingdom
+
+👉 Again: not a new prophet, but the **same figure returning**
+
+------------------------------------------------------------------------
+
+## ✡️ Judaism
+
+- **Messiah (Judaism)**
+
+**Belief:**
+
+- A future human leader (not divine)
+- Restores Israel, brings peace
+
+👉 Not a prophet with new revelation, but a **political/spiritual leader**
+
+------------------------------------------------------------------------
+
+## 🌍 Newer “end-time” movements
+
+## 1. Seventh-day Adventist Church
+
+- Strong focus on the imminent return of Christ
+- Founder Ellen G. White claimed prophetic visions
+
+## 2. Jehovah's Witnesses
+
+- Predict end times and divine intervention
+- Leadership interprets prophecy centrally
+
+## 3. Branch Davidians
+
+- Led by David Koresh
+- He claimed a special prophetic role in the end times
+
+👉 This is closer to your question: a **living leader claiming a unique role**
+
+------------------------------------------------------------------------
+
+# 🧠 So how would people recognize a “new prophet”?
+
+Across religions and sects, there are a few common patterns:
+
+## 1. 📜 Scriptural matching
+
+Followers look for:
+
+- Signs predicted in holy texts
+- Timing (wars, disasters, moral decline)
+
+Example:
+
+- The Mahdi has specific signs in Islamic traditions
+- Christians expect events from Revelation
+
+------------------------------------------------------------------------
+
+## 2. 🌟 Charisma + perceived authority
+
+A claimant typically:
+
+- Is highly persuasive
+- Speaks with confidence and moral certainty
+- Attracts a small but devoted following first
+
+This is often how movements *actually begin* in practice.
+
+------------------------------------------------------------------------
+
+## 3. 🧩 “Fulfillment of prophecy”
+
+Followers reinterpret events to fit the person:
+
+- “This event matches what was foretold”
+- “He fits the hidden meaning of scripture”
+
+------------------------------------------------------------------------
+
+## 4. ⚠️ Miracles or special knowledge (claimed)
+
+- Healing, visions, predictions
+- Or simply *convincing claims* of divine insight
+
+------------------------------------------------------------------------
+
+## 5. 🧪 Social validation loop
+
+Once a small group believes:
+
+- Their belief reinforces itself
+- Doubt from outsiders strengthens in-group identity
+
+------------------------------------------------------------------------
+
+# ⚠️ Important: It’s rarely just “Hey, I’m the prophet”
+
+In reality, it almost never works like:
+
+> “Hi everyone, I’m the new prophet—follow me.”
+
+Instead, it’s usually gradual:
+
+1.  Person claims **special insight or mission**
+2.  Gains a **small circle of believers**
+3.  Claims become stronger over time
+4.  Group separates from mainstream society
+5.  Leader may eventually be seen as **prophet/messiah**
+
+------------------------------------------------------------------------
+
+# 🧩 The deeper pattern
+
+What you described—“searching for new prophets”—is actually **not how religions typically work**.
+
+Instead:
+
+- Religions usually assume **God chooses, humans recognize**
+- Not: humans systematically *find and train* prophets
+
+That’s a key difference between:
+
+- **Religious thinking** → authority comes from divine selection
+- **Secular systems** → authority comes from talent identification
+
+------------------------------------------------------------------------
+
+# 🧭 Bottom line
+
+- Many religions expect an **end-time figure**, but usually a **return or fulfillment**, not a new prophet with new rules
+- Groups that *do* follow living “prophets” tend to form around **charismatic individuals**, not organized searches
+- Recognition is messy, social, and interpretive—not formal or objective
+
+------------------------------------------------------------------------
+
+If you want, I can go deeper into **why humans keep producing these “prophet-like figures” psychologically and socially**—it connects a lot to leadership, uncertainty, and crisis.
 
 ------------------------------------------------------------------------
 
