@@ -154,6 +154,7 @@ see also [git clone](#git-clone)
 * handout = one page summary (see [de](deutsch/alchi-flyer.html) and [en](english/alchi-flyer.en.html), but they are very hard to read)
 * video (for example: how to [Construct the Map Of Sixteen Types](src/alchi-book/src/pages/page-020.html) from scratch)
 * proof of concept
+* [south park episode: who are my friends](https://github.com/milahu/sp-wamf)
 
 ## work in progress
 
