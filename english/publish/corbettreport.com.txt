@@ -1,0 +1,37 @@
+https://corbettreport.com/solutionswatch-communication/#comment-185913
+
+Decentralized Communication – #SolutionsWatch
+
+---
+
+milahu on 2026-03-28 09:00 +0100
+
+all these fancy hightech "decentralized communication" projects are doomed to fail,
+because we have still not solved the problem of offline peer-to-peer networking
+= bottom-up organization = lowtech = primitive culture = interpersonal compatibility
+= stable groups based on different personality types = teamwork = selforganization = tribalism.
+
+i have found a possible solution, which i describe in my book:
+Pallas. Who are my friends. Group composition by personality type
+https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html
+
+if my hypothesis is true, then it is a "blueprint for paradise on earth".
+spoiler: pacifism is the root of all problems, and all the evil schemes we see today
+(junk food, junk medicine, vaccines, migrant invasions, war on energy, war on food supply, global famine, ...)
+are pacifistic solutions for problems that were caused by pacifism in the first place
+(overpopulation, degeneration, destruction of nature, resource depletion).
+overpopulation, because a natural lifestyle (carnivore diet) can feed "only" 500 million humans.
+(why do we need more than 500M humans?)
+see also https://github.com/milahu/alchi/tree/master/src/alchi-mindmap
+
+i want to reach as many people as possible before SHTF (year 2026?)
+so im offering money for content featuring my thesis.
+you can reach me via https://github.com/milahu/contact
+
+i dont believe that hightech has a future, see also https://collapseos.org/civ.html
+so i will not invest energy to build better apps.
+i have outlined some wanted specs in https://github.com/milahu/p2p-killerapp
+mostly, we need collaborative mindmapping (knowledge graph, p2p wikipedia),
+a generic tagging and voting system,
+delay-tolerant networking (high-latency networking, sneakernet, lora, reticulum),
+micropayments, ...
