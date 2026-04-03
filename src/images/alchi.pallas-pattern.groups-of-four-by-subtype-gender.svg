@@ -145,6 +145,36 @@
             <path inkscape:label="right bottom" d="M 300 440 l 20 -20 l -20 20 l -20 -20"/>
           </g>
         </g>
+        <g inkscape:label="arrowheads2">
+          <g>
+            <title>margin left</title>
+            <path inkscape:label="1" d="M 40 100 l -20 -20 l 20 20 l -20 20"/>
+            <path inkscape:label="2" d="M 0 300 l 20 -20 l -20 20 l 20 20" display="none"/>
+            <path inkscape:label="3" d="M 0 500 l 20 -20 l -20 20 l 20 20" display="none"/>
+            <path inkscape:label="4" d="M 40 700 l -20 -20 l 20 20 l -20 20"/>
+          </g>
+          <g>
+            <title>margin right</title>
+            <path inkscape:label="1" d="M 800 100 l -20 -20 l 20 20 l -20 20" display="none"/>
+            <path inkscape:label="2" d="M 760 300 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="3" d="M 760 500 l 20 -20 l -20 20 l 20 20"/>
+            <path inkscape:label="4" d="M 800 700 l -20 -20 l 20 20 l -20 20" display="none"/>
+          </g>
+          <g>
+            <title>margin top</title>
+            <path inkscape:label="1" d="M 100 40 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
+            <path inkscape:label="2" d="M 300 40 l -20 -20 l 20 20 l 20 -20"/>
+            <path inkscape:label="3" d="M 500 40 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
+            <path inkscape:label="4" d="M 700 40 l -20 -20 l 20 20 l 20 -20"/>
+          </g>
+          <g>
+            <title>margin bottom</title>
+            <path inkscape:label="1" d="M 100 800 l -20 -20 l 20 20 l 20 -20"/>
+            <path inkscape:label="2" d="M 300 800 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
+            <path inkscape:label="3" d="M 500 800 l -20 -20 l 20 20 l 20 -20"/>
+            <path inkscape:label="4" d="M 700 800 m 0 -40 l -20 20 l 20 -20 l 20 20"/>
+          </g>
+        </g>
         <g display="none" inkscape:label="single lines diagonal">
           <g inkscape:label="left">
             <path d="M 0 400 L 58 458"/>
