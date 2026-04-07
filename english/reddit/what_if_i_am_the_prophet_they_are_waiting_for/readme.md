@@ -71,3 +71,63 @@ probably my post gets deleted (or downvoted) for whatever "reason", but that doe
 being overwhelmed is okay, but then we should delegate (share) this problem to our friends, so we (a group of friends) can solve the problem together, instead of ignoring the problem to protect our friends from unnecessary work...
 
 all talents are beautiful
+
+---
+
+## removed by reddit
+
+private message from atheism-ModTeam[M] via /r/atheism sent 2026-04-06T15:28:26+0100
+
+Thank you for your comment. Unfortunately, your comment has been removed for the following reason:
+
+- This comment has been removed for breaking site-wide reddit rules. Removals of this type may also include subreddit bans and/or suspensions from the whole site depending on the severity of the offense.
+
+For information regarding this and similar issues please see the Subreddit Commandments. If you have any questions, please do not delete your comment and message the mods, Thank you.
+
+---
+
+private message from milahu2 sent 2026-04-06T12:30:27+0200
+
+chat message from milahu2 sent 2026-04-06T18:12:00+0200
+
+## what rules
+
+i did not break site-wide rules because my content is not "inciting violence". i am "inciting" a change in global policy: serial murder of humans should be legal, serial murder of our ecosystem should be illegal. just move the two letters "il" from position 34 to position 82.
+
+```diff
+                                   vv                                              vv
+-serial murder of humans should be illegal, serial murder of our ecosystem should be legal.
++serial murder of humans should be legal, serial murder of our ecosystem should be illegal.
+```
+
+---
+
+## permaban
+
+chat message from atheism-ModTeam[M] via /r/atheism sent 2026-04-06T17:28:41+0200
+
+Hello, You have been permanently banned from participating in /r/atheism because your comment violates this community's rules. You won't be able to post or comment, but you can still view and subscribe to it.
+
+Note from the moderators:
+
+<blockquote>
+
+context ^/ sub rules ^/ sidebar ^/ site rules ^/ cat
+
+<blockquote>
+
+> Because it reads like the manifesto of a serial killer.
+
+funny how often i get that response. sure, yeah, im a potential serial killer, i am proposing serial murder as the only actual alternative to mass murder. legalize serial murder and give me a gun, and i will kill 100 useless eaters every day for the next 20 years, because that is my job in natural order.
+
+but most people (the idiots) prefer mass murder via junk food, junk medicine, junk science, vaccines, pesticides, wars, famines, pandemics, biological weapons, chemical weapons, ... because most people prefer comforting lies over unpleasant truths
+
+</blockquote>
+
+This comment may have fully or partially contr
+
+</blockquote>
+
+If you have a question regarding your ban, you can contact the moderator team by replying to this message.
+
+**Reminder from the Reddit Admin team**: If you use another account to circumvent this community ban, that will be considered a violation of the [Reddit Rules](https://reddit.com/help/contentpolicy#section_prohibited_behavior) and may result in your account being [banned](https://www.reddithelp.com/en/categories/reddit-101/rules-reporting/account-and-community-restrictions/suspensions) from the platform as a whole.
