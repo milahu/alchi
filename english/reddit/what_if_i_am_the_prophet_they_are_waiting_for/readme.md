@@ -131,3 +131,43 @@ This comment may have fully or partially contr
 If you have a question regarding your ban, you can contact the moderator team by replying to this message.
 
 **Reminder from the Reddit Admin team**: If you use another account to circumvent this community ban, that will be considered a violation of the [Reddit Rules](https://reddit.com/help/contentpolicy#section_prohibited_behavior) and may result in your account being [banned](https://www.reddithelp.com/en/categories/reddit-101/rules-reporting/account-and-community-restrictions/suspensions) from the platform as a whole.
+
+---
+
+## account suspended
+
+Your account has been suspended from Reddit for 3 days.
+
+---
+
+## Your account has been temporarily banned
+
+private message from u/reddit sent 2026-04-07T07:32:57.765Z
+
+Hi milahu2,
+
+Reddit is a vast network of communities that are created, run, and populated by people like you. In order to keep communities welcoming, safe, and great places to be, everyone who uses the platform operates by a shared set of rules.
+
+> Banned 3-days for encouraging violence
+>
+> Someone on the platform reported the following:
+
+- [Content shared from milahu2 on 04/06/2026 UTC](https://www.reddit.com/r/atheism/comments/1sdud15/comment/oel4my3)
+
+<blockquote>
+
+After reviewing, we found that you broke [Rule 1](https://www.redditinc.com/policies/content-policy) because you [encouraged or glorified violence or physical harm](https://support.reddithelp.com/hc/en-us/articles/360043513151). Reddit is a place for creating community and belonging, not for encouraging violence against people or animals. We don’t tolerate any behavior that encourages, glorifies, incites, or calls for violence or physical harm against an individual, groups of people, places, or animals. Any communities or people that encourage or incite violence towards an individual, group, animals, or place will be banned.
+
+As a result, we’re issuing a temporary 3-day ban on your milahu2 account, removing the violating content, and asking you not to break this rule again.
+
+</blockquote>
+
+Reddit and its communities are only what we make of them together, and we want you to continue enjoying Reddit while helping your fellow redditors and communities stay safe. We suggest reading and getting acquainted with the [Reddit Rules](https://redditinc.com/policies/reddit-rules). A better understanding of these rules will help you avoid further actions from our admin team. If you do continue to break Reddit’s rules through this or any other Reddit account, you may face additional actions such as a permanent ban from the platform.
+
+If you feel like you didn’t break the rules, you can [file an appeal](https://reddit.com/appeals/7bf1fdf2-3045-4351-90ad-39dfaa72ed7a) any time within the next six months and we’ll take a second look.
+
+If you live in the European Union, you can also [contact a settlement body](https://support.reddithelp.com/hc/articles/23512591656212) to dispute the decision. You may also have the right to have this decision reviewed by a competent court under the applicable laws of your country.
+
+\– Reddit Admin Team
+
+Note: This decision was made without the assistance of automation.
