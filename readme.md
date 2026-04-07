@@ -666,6 +666,8 @@ ideally replace the old file with an html redirect to the new location, like
 
 some keywords (tags) for search engine optimization (SEO)
 
+because 20 github topics are not enough
+
 <details>
 
 * [interpersonal compatibility](https://en.wikipedia.org/wiki/Interpersonal_compatibility), intertype compatibility, compatibility algorithm, candidate for a "general theory of interpersonal compatibility"
@@ -945,6 +947,54 @@ some keywords (tags) for search engine optimization (SEO)
 * they lied about everything
   * they lie about everything
   * theyliedabout
+* illegal research
+  * real science is value-free
+    * real science is valuefree
+    * real science is nihilistic
+  * modern heresy
+    * modern heretic
+    * ketzer der neuzeit
+    * asking the wrong questions
+    * proposing the wrong solutions
+    * proposing a wrong thesis
+    * proposing a wrong hypothesis
+  * banned from the mainstream
+    * banned from mainstream
+    * banned from the public
+    * banned from public
+    * private research
+    * secret research
+    * hidden research
+    * underground research
+    * clandestine research
+    * decentral research
+    * decentralized research
+    * anticentral research
+    * peer-to-peer research
+    * peertopeer research
+    * p2p research
+  * subjectivism
+    * openmind
+    * openminded
+    * antimoralism
+    * antiprejudice
+    * antinarrowmind
+    * antinarrowminded
+    * antidogmatic
+    * antidogmatism
+  * all religions are wrong
+    * religion is the problem
+    * religions are the problem
+    * religion is a tool to control idiots
+    * religion is a tool to control the stupid
+    * religion is a tool to control stupid people
+    * religion is a tool to control stupid humans
+    * religion is a beautiful lie to keep idiots stupid and happy
+    * mainstream science is a religion
+    * mainstream science is a cult
+    * centralization is the root of all evil
+      * overcentralization is the root of all evil
+      * institutionalization is the root of all evil
 
 ### more keywords
 
