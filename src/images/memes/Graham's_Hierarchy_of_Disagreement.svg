@@ -1,0 +1,37 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="707" height="530">
+<path d="M 201,463 L 664,463 L 693,520 L 172,520" fill="#ff99cb"/>
+<path d="M 232,404 L 634,404 L 664,463 L 201,463" fill="#ffcb99"/>
+<path d="M 264,341 L 602,341 L 634,404 L 232,404" fill="#feff99"/>
+<path d="M 297,277 L 570,277 L 602,341 L 264,341" fill="#cefecc"/>
+<path d="M 331,211 L 536,211 L 570,277 L 297,277" fill="#cff"/>
+<path d="M 367,140 L 500,140 L 536,211 L 331,211" fill="#ca9bfb"/>
+<path d="M 434,10 L 500,140 L 367,140" fill="#e1e1e1"/>
+<path d="M 434,10 L 172,520 L 693,520 z M 14,140 L 500,140 M 14,211 L 536,211 M 14,277 L 570,277 M 14,341 L 602,341 M 14,404 L 634,404 M 14,463 L 664,463 M 14,520 L 172,520" fill="none" stroke="#000" stroke-width="4"/>
+<text font-family="Arial" font-size="22px">
+	<tspan x="14" y="130" fill="#8d8d8d" id="a">Refuting the Central Point</tspan>
+	<tspan x="14" y="201" fill="#8a3be0" id="b">Refutation</tspan>
+	<tspan x="14" y="267" fill="#38e1e1" id="c">Counterargument</tspan>
+	<tspan x="14" y="331" fill="#3ce535" id="d">Contradiction</tspan>
+	<tspan x="14" y="394" fill="#e3e404" id="e">Responding to Tone</tspan>
+	<tspan x="14" y="453" fill="#ff8b1a" id="f">Ad Hominem</tspan>
+	<tspan x="14" y="510" fill="#ec5ba2" id="g">Name-calling</tspan>
+</text>
+<text font-family="Arial" font-size="17px" text-anchor="middle">
+	<tspan x="436" y="90" id="a1">explicitly</tspan>
+	<tspan x="436" y="109" id="a2">refutes the</tspan>
+	<tspan x="436" y="128" id="a3">central point</tspan>
+	<tspan x="436" y="161" id="b1">finds the mistake</tspan>
+	<tspan x="436" y="180" id="b2">and explains why it's</tspan>
+	<tspan x="436" y="199" id="b3">mistaken using quotes</tspan>
+	<tspan x="436" y="230" id="c1">contradicts and then</tspan>
+	<tspan x="436" y="249" id="c2">backs it up with reasoning</tspan>
+	<tspan x="436" y="268" id="c3">and/or supporting evidence</tspan>
+	<tspan x="436" y="305" id="d1">states the opposing case</tspan>
+	<tspan x="436" y="324" id="d2">with little or no supporting evidence</tspan>
+	<tspan x="436" y="369" id="e1">criticizes the tone of the writing without</tspan>
+	<tspan x="436" y="388" id="e2">addressing the substance of the argument</tspan>
+	<tspan x="436" y="429" id="f1">attacks the characteristics or authority of the writer</tspan>
+	<tspan x="436" y="448" id="f2">without addressing the substance of the argument</tspan>
+	<tspan x="436" y="496" id="g1">sounds something like, “You are an ass hat.”</tspan>
+</text>
+</svg>
