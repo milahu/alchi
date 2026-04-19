@@ -1,0 +1,47 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" 
+    version="1.0" width="800" height="800"  viewBox ="-470 50 800 600">
+	<g style="stroke: #000000; stroke-width : 4; stroke-linejoin : miter;">
+		<polygon points="0,0 50,100 90,180 -450,180 -90,180 -50,100" style="fill :#cccccc" /> 
+		<polygon points="-90,180   90,180 135,270 -450,270 -135,270" style="fill :#cc99ff" /> 
+		<polygon points="-135,270 135,270 180,360 -450,360 -180,360" style="fill :#ccffff" /> 
+		<polygon points="-180,360 180,360 215,430 -450,430 -215,430" style="fill :#ccffcc" /> 
+		<polygon points="-215,430 215,430 250,500 -450,500 -250,500" style="fill :#ffff99" /> 
+		<polygon points="-250,500 250,500 285,570 -450,570 -285,570" style="fill :#ffcc99" /> 
+		<polygon points="-285,570 285,570 310,620 -450,620 -310,620" style="fill :#ff99cc" /> 
+	</g>
+	<g transform="translate(-450,0)">
+		<text style="font-family :Arial,sans-serif; font-size : 24px; fill :#000000;"><!--
+		--><tspan x="0" y="170" id="a">Widerlegen des zentralen Punkts</tspan><!--
+		--><tspan x="0" y="260" id="b">Widerlegung</tspan><!--
+		--><tspan x="0" y="350" id="c">Gegenargument</tspan><!--
+		--><tspan x="0" y="420" id="d">Widerspruch</tspan><!--
+		--><tspan x="0" y="490" id="e">Tonfallbezug</tspan><!--
+		--><tspan x="0" y="560" id="f">Ad Hominem</tspan><!--
+		--><tspan x="0" y="610" id="g">Beleidigen</tspan><!--
+	--></text>
+	</g>
+<text font-family="Arial" font-size="20px" text-anchor="middle"><!--
+--><tspan x="0" y="120" id="a1">widerlegt</tspan><!--
+--><tspan x="0" y="145" id="a2">den zentralen</tspan><!--
+--><tspan x="0" y="170" id="a3">Punkt</tspan><!--
+
+--><tspan x="0" y="210" id="b1">zeigt den Fehler auf</tspan><!--
+--><tspan x="0" y="235" id="b2">und mit Zitaten, warum</tspan><!--
+--><tspan x="0" y="260" id="b3">das Argument fehlerhaft ist</tspan><!--
+
+--><tspan x="0" y="300" id="c1">widerspricht und unterstützt</tspan><!--
+--><tspan x="0" y="325" id="c2">das Gegenargument mit</tspan><!--
+--><tspan x="0" y="350" id="c3">Begründungen und/oder Belegen</tspan><!--
+
+--><tspan x="0" y="390" id="d1">nimmt die Gegenposition ein,</tspan><!--
+--><tspan x="0" y="420" id="d2">(fast) ohne Belege vorzuweisen</tspan><!--
+
+--><tspan x="0" y="460" id="e1">kritisiert den Ton des Beitrags</tspan><!--
+--><tspan x="0" y="490" id="e2">ohne auf das Argument selbst einzugehen</tspan><!--
+
+--><tspan x="0" y="530" id="f1">greift den Charakter oder die Autorität des</tspan><!--
+--><tspan x="0" y="560" id="f2">Schreibers an, ohne sich gegen die Argumente zu wenden</tspan><!--
+
+--><tspan x="0" y="610" id="g1">ähnelt: „Du bist ein Arschloch“</tspan><!--
+--></text>
+</svg>
