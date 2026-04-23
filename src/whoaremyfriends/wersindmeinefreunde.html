@@ -13329,6 +13329,11 @@ textarea.form-control-lg {
         console.log('renderPrintLayout', renderButton);
         renderButton.classList.add("disabled");
         renderButton.removeAttribute("href");
+        const zoom = window.outerWidth / window.innerWidth;
+        if (zoom != 1) {
+          // show a warning if the page zoom is not 100%
+          alert(`Warnung: Der Zoom-Level der Seite ist ${Math.round(zoom * 100)}%\nZum Drucken sollte er sein 100%`);
+        }
         for (var elem of document.querySelectorAll(".screen-layout-only, details")) {
           elem.remove();
         }

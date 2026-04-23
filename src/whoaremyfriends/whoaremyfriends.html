@@ -13296,6 +13296,11 @@ textarea.form-control-lg {
         console.log('renderPrintLayout', renderButton);
         renderButton.classList.add("disabled");
         renderButton.removeAttribute("href");
+        const zoom = window.outerWidth / window.innerWidth;
+        if (zoom != 1) {
+          // show a warning if the page zoom is not 100%
+          alert(`Warning: The page zoom level is ${Math.round(zoom * 100)}%\nFor printing, it should be 100%`);
+        }
         for (var elem of document.querySelectorAll(".screen-layout-only, details")) {
           elem.remove();
         }
