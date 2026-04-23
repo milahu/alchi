@@ -1,6 +1,6 @@
 # Pacifism
 
-Pacifism is the root of all problems.
+Pacifism is the root of all [problems](problems.md).
 
 
 
@@ -10,6 +10,7 @@ Pacifism is the root of all problems.
 * [Degeneration](degeneration.md) - too many ugly people
 * [Destruction of nature](destruction-of-nature.md) - killing plants and animals
 * [Resource depletion](resource-depletion.md) - running out of cheap energy and materials
+* [Idiocracy](idiocracy.md) - pacifism protects idiots, pacifism conserves bad habits
 
 
 
@@ -29,6 +30,7 @@ Pacifism is the root of all problems.
 ## Synonyms
 
 - Humanism - humans are better than all animals and plants
+- Feminism - females produce humans, males kill humans
 - Voluntarism - forced therapy is not allowed
 - Civilization
 - High culture - opposite of: Primitive culture
