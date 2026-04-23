@@ -1293,6 +1293,8 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
 * compatibility landscape
 * modulo four ring in two dimensions
 * pattern of human relations by personality type gender age
+  * pallas-pattern for human relations
+  * pallas-pattern of human relations
 * open source education
   * open source school
   * "linux for education"
