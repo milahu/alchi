@@ -299,6 +299,18 @@ Frank Zappa "Freeman Report" Part 1 of 5 October 26, 1981
   <!-- `files/alchi-pallas-symbol.small.svg` -->
   <link rel="icon" type="image/svg" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%221.1%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20id%3D%22pallas-symbol%22%3E%0A%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2210%22%20height%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23fff%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22m8%2B10%204-4%20-4-4%20-4%2B4%20z%20m0%200v4%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.4%22%2F%3E%0A%3Cpath%20d%3D%22m5%2012h6%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E">
 
+  <script>
+    // proxy for
+    // document.addEventListener("DOMContentLoaded", someFunction);
+    // allowing to set a custom position for each handler
+    window.contentLoadedHandlers = [];
+
+    // window.contentLoadedHandlers.push({
+    //   position: 123,
+    //   handler: someFunction,
+    // });
+  </script>
+
   <!-- no. this resets zoom to 100% on page reload
   <meta name="viewport" content="width=device-width">
   -->
@@ -13259,8 +13271,6 @@ textarea.form-control-lg {
     }
   </script>
 
-
-
   <script id="call-Bindery-makeBook">
 
     /* dom + assets are ready
@@ -13269,9 +13279,7 @@ textarea.form-control-lg {
     };
     */
 
-    // dom is ready
-    document.addEventListener("DOMContentLoaded", function(){
-      //alert('DOMContentLoaded');
+    function addRenderPrintLayout() {
 
       window.makeBinderyBook =
       async function makeBinderyBook(onResult) {
@@ -13377,6 +13385,11 @@ textarea.form-control-lg {
         renderPrintLayout();
       }
 
+    }
+  
+    window.contentLoadedHandlers.push({
+      position: 99999, // last handler
+      handler: addRenderPrintLayout,
     });
 
   </script>
@@ -13398,7 +13411,7 @@ textarea.form-control-lg {
   <!-- create clickable headings on page load -->
   <!-- NOTE these clickable headings do not work in "print to PDF" -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    function makeClickableHeadings() {
       for (const section of document.querySelectorAll("section[id]")) {
         // Find the first heading inside the section
         const heading = section.querySelector("h1, h2, h3, h4, h5, h6");
@@ -13413,6 +13426,10 @@ textarea.form-control-lg {
         anchor.textContent = text;
         heading.appendChild(anchor);
       }
+    }
+    window.contentLoadedHandlers.push({
+      position: 200,
+      handler: makeClickableHeadings,
     });
   </script>
   <style>
@@ -13424,7 +13441,7 @@ textarea.form-control-lg {
   <!-- create clickable paragraphs on page load -->
   <!-- FIXME handle images with IDs: <img id="..."> -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    function makeClickableParagraphs() {
       for (let para of document.querySelectorAll("div.para[id], section[id] > div.para:first-child")) {
         if (para.style.display == "none") {
           if (para.id) continue;
@@ -13458,6 +13475,10 @@ textarea.form-control-lg {
         a.style.top  = (rect.top  + scrollY) + "px";       // aligned with top
         para.appendChild(a);
       }
+    }
+    window.contentLoadedHandlers.push({
+      position: 300,
+      handler: makeClickableParagraphs,
     });
   </script>
   <style>
@@ -13520,6 +13541,17 @@ textarea.form-control-lg {
       script.async = true;
       document.head.appendChild(script);
     }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // sort handlers by position ascending
+      window.contentLoadedHandlers.sort((a, b) => a.position - b.position);
+      // call handlers
+      for (const handler of window.contentLoadedHandlers) {
+        handler.handler();
+      }
+    });
   </script>
 
 </head>
@@ -13785,7 +13817,10 @@ textarea.form-control-lg {
 
       syncScrollWithTocItems();
     }
-    document.addEventListener("DOMContentLoaded", buildTableOfContents);
+    window.contentLoadedHandlers.push({
+      position: 100,
+      handler: buildTableOfContents,
+    });
 
     function focusTocItem() {
       // focus and highlight the active TOC item
