@@ -995,6 +995,109 @@ because 20 github topics are not enough
     * centralization is the root of all evil
       * overcentralization is the root of all evil
       * institutionalization is the root of all evil
+* realism, realists
+  * keep it real
+  * physicalism
+  * materialism, matter, material
+  * matter first
+  * matter over mind
+  * reality is stronger than ideas
+  * body is stronger than head
+  * nature is stronger than culture
+  * nature is stronger than nurture
+  * talent is more important than experience
+  * reality is independent of mind
+  * matter is primary, consciousness is secondary
+  * anti-constructivism, anti-constructivists
+* pragmatism, pragmatists
+  * consequentialism, consequentialists
+  * utilitarianism, utilitarianists, utilitarian, utilitarians
+  * pragmatism, pragmatists, pragmatic
+  * good outcomes are better than good intentions
+  * perceiving is better than judging
+  * false expectations lead to bad results
+  * good intentions are paving the road to hell
+  * Results Culture @ Culture Alignment Framework (CAF) by Spencer Stuart
+    * Anti Caring Culture @ Culture Alignment Framework (CAF) by Spencer Stuart
+  * anti-idealism, anti-idealists, anti-ideal, anti-idea
+  * anti-psychism, anti-psychists, anti-psychos, anti-psychotics
+  * anti-spiritualism, anti-spiritualists, anti-spirit
+  * pro-materialism, pro-materialists, pro-matter, pro-mater
+    * mother and son = type 2 and type 1
+  * anti-esoteric, anti-esoterics
+  * primitive, primitivism, primitivists
+  * physical, physicalists, physicists, physicalism
+  * bodies
+  * blood
+  * objectivism, objectivists
+    * there is only one truth
+    * there is only one reality
+    * absolutism, absolutists
+    * monism, monists
+    * reality makes the rules, and we follow these rules
+    * the laws of physics are the only laws we must follow
+    * we only follow the laws of physics
+    * we follow only the laws of physics
+  * empiricism, empiricists, empirical
+  * rationalism, rationalists, rational
+    * anti-emotionalists
+    * skepticism, skeptics
+    * reductionism, reductionists
+    * scientistic, scientific, scientists
+    * realistic, realists
+    * determinists
+    * mature, anti-childish, anti-naive
+* naturalism, naturalistic, naturalist, natural
+  * natural religion
+  * tribalism, tribalists
+  * primitive culture
+* "right"
+  * perfectionism, perfectionists, perfect
+  * pro choice is better than pro life
+  * equal opportunity is better than equal outcome
+  * justice is better than equality
+  * bottom-up organization
+* decentralization, decentralized
+  * small states
+  * small groups
+  * small societies
+* hard power
+  * transactional leadership style
+  * strong leaders
+* nihilism, nihilists
+  * anti-moral
+  * no future
+  * everything will die
+  * nothing makes sense
+  * life has no meaning
+  * life has no goal
+  * how do we want to die
+  * better no solution than bad solutions
+  * no lives matter
+  * anti-visionary
+  * cold-blooded
+    * blue blood
+    * aristrocratic
+    * exclusive
+    * elite
+    * rational
+    * cool temper, cool-tempered
+    * cold temper, cold-tempered
+* vagotonic, anti-sympatonic
+  * [vagotonia](https://en.wikipedia.org/wiki/Vagotonia), anti-sympatheticotonia
+  * parasympathetic nervous system, anti-sympathetic nervous system
+  * endurance
+  * patience
+  * high stress tolerance
+  * hard to excite
+  * psychotic?
+* anti-social
+  * anti-charismatic
+  * anti-popular
+  * lone wolves
+  * hermits
+
+
 
 ### more keywords
 
