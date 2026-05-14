@@ -1675,6 +1675,29 @@ taken from [src/alchi-book/src/pages/page-005-my-last-words.html](src/alchi-book
     * raus aus dem hamsterrad
   * naturordnung für anfänger
   * naturmedizin für anfänger
+* "wie konnte es so weit kommen?"
+  * "hier läuft grundsätzlich etwas falsch"
+  * "hier läuft grundsätzlich etwas schief"
+  * "hier läuft doch ganz grundsätzlich irgendwas falsch"
+  * "hier läuft doch ganz grundsätzlich irgendwas schief"
+  * "wir sind irgendwo am anfang falsch abgebogen, und seitdem auf einem falschen weg"
+  * "wir sind irgendwo ganz am anfang falsch abgebogen, und seitdem sind wir auf einem falschen weg"
+  * "warum haben wir keine grundsatzdiskussionen?"
+  * "wie wertvoll sind unsere ach-so-guten grundsätze, wenn sie uns in diese hölle auf erden gebracht haben?"
+    * "Der Weg in die Hölle ist gepflastert mit guten Vorsätzen"
+    * "gut gemeint ist das gegenteil von gut gemacht"
+    * "nur kriminelle müssen sich verstecken"
+    * "nur wer scheisse baut muss nett sein"
+    * "nur versager müssen nett sein"
+    * "wer schlechte ergebnisse liefert der kompensiert durch gute gesinnung"
+    * "If the rule you followed brought you to this, of what use was the rule?" ― Cormac McCarthy, No Country for Old Men
+      * "Wenn die Regel, nach der du lebst, dich hergeführt hat, was ist diese Regel dann wert?" ― Cormac McCarthy, No Country for Old Men
+      * "Wenn die Regel, der du gefolgt bist, dich hierher geführt hat, wie nützlich war diese Regel?" ― Cormac McCarthy, No Country for Old Men, T=01:23:00
+      * "Wenn die Regel, die du befolgt hast, dich hierher gebracht hat, wie nützlich war diese Regel?" ― Cormac McCarthy, No Country for Old Men
+    * "You should admit your situation. There would be more dignity in it. - You go to hell. - All right. Let me ask you something. If the rule you followed brought you to this, of what use was the rule? - Do you have any idea how crazy you are? - You mean the nature of this conversation? - I mean the nature of you." ― Cormac McCarthy, No Country for Old Men
+      * "Du solltest dir deine Situation eingestehen. Es hätte mehr Würde auf diese Art. - Fahr zur Hölle. - Okay. Ich möchte dich etwas fragen. Wenn die Regel, nach der du lebst, dich hergeführt hat, was ist diese Regel dann wert? - Hast du eigentlich ne Ahnung, wie irre du bist? - Uuh, du meinst die Art unserer Unterhaltung? - Nein, ich meine deine Art." ― Cormac McCarthy, No Country for Old Men
+    * "How's that working out for you, being clever?" ― Tyler Durden, Fight Club, T=21:55
+      * "Oh, I get it. It's very clever. - Thank you. - How's that working out for you? - What? - Being clever. - ... Great. - Keep it up, then." ― Tyler Durden, Fight Club, T=21:55
 
 <!--
 
