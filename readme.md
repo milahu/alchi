@@ -883,6 +883,15 @@ because 20 github topics are not enough
   * the criminalization of serial murder is a desperate rebellion against the laws of nature
   * fuck pacifism
   * hate pacifism
+    * War On Pacifism
+    * War Against Pacifism
+    * War On Pacifists
+    * War Against Pacifists
+    * Black versus White
+    * Satan versus Jesus
+    * Black privilege is to kill white people
+    * Blacks are warriors. Whites are pacifists
+    * Black warriors versus White pacifists
   * pacifism was the most stupid invention in human history
   * serial murder is the only alternative to mass murder (wars and famines)
   * serial murder is the best solution to the problems of overpopulation and degeneration
