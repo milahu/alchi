@@ -4,7 +4,7 @@ https://www.deviantart.com/comments/1/1327950534/5281851558
 
 Comment on civilization is a suicide cult. satan vs jesus by milahu
 
-
+---
 
 BattleHamsterReturns 2026-05-03
 
@@ -12,8 +12,7 @@ While it is unfortunate that life had to end . It did none the less stop all fur
 
 To be perfectly honest here , unless there was some way to greatly improve matters , I would gladly take annihilation . 
 
-
-
+---
 
 milahu 2026-05-17
 
@@ -21,7 +20,7 @@ milahu 2026-05-17
 
 yep, you are part of the problem.
 
-
+---
 
 BattleHamsterReturns 2026-05-17
 
@@ -29,7 +28,7 @@ I am part of the problem because I want to greatly improve matters ? Really ? Yo
 
 Make your case as to what problem I am part of . 
 
-
+---
 
 milahu 2026-05-19
 
@@ -39,7 +38,7 @@ you sound like a humanist, who only cares about human suffering, but completely 
 
 in that sense, yeah, humans are the absolute worst that has ever happened to this planet, even worse than the impacts of asteroids, or the eruptions of volcanos... in my language, calling someone a human, or a humanist, is the absolute worst insult i can think of. humans cannot be hated enough.
 
-
+---
 
 BattleHamsterReturns 2026-05-20
 
@@ -55,13 +54,13 @@ You are a sub human unworthy of the title : MAN ! Vermin who spits in the face o
 
 Begone you shit ! 
 
-
+---
 
 milahu 2026-05-20
 
 haha. i guess you have at least 10 children, so at some point we have 10 billion humans, and then 100 billion humans, and then 1 trillion humans... because you just never have enough... infinite greed... so yeah, you really are part of the problem, thanks for the confirmation
 
-
+---
 
 BattleHamsterReturns 2026-05-20
 
@@ -85,7 +84,7 @@ Humanity First — unapologetically.
 
 This is satire. Take it as such.
 
-
+---
 
 milahu 2026-05-21
 
@@ -107,4 +106,4 @@ in other words: just because you dont see your impact immediately, does not mean
 
 haha, this is so stupid. humans are million times more brutal than all other species, but you paint "the brutality of nature" as a rationalization of your human brutality. "look, nature is brutal, so we can be brutal too!" yeah, this would work in the "sticks and stones" version of humans, where humans are limited to primitive tools, so the human footprint is minimal.
 
-but the same logic fails, when humans use machines to kill animals and plants by the millions, and in the process destroy the whole ecosystem, turning old-growth forests into deserts. and probably their only argument is "if god would hate what we are doing, then he would stop us, because god is infinitely smarter and stronger than humans, and if god does not say no, that means yes, we are doing everything right." (circular logic)
+but the same logic fails, when humans use machines to kill animals and plants by the millions, and in the process destroy the whole ecosystem, turning old-growth forests into deserts. and probably their only argument is "if god would hate what we are doing, then he would stop us, because god is infinitely smarter and stronger than humans, and if god does not say no, that means yes, we are doing everything right." (circular logic, rape logic)
