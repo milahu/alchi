@@ -1,8 +1,23 @@
 https://www.deviantart.com/comments/1/1327950534/5281851558
 
+civilization is a suicide cult. satan vs jesus
 
+![](pacifism-is-the-problem.2026-05-01.png.avif)
 
-Comment on civilization is a suicide cult. satan vs jesus by milahu
+pacifism is the problem
+
+ChatGPT Image May 1, 2026, 10_22_39 AM.png
+
+chatGPT prompt:
+
+draw a cartoon.
+
+planet earth is dead (all ecosystems have collapsed because of destructive human activity, so all animals and plants are dead, and planet earth is one big desert)
+
+above the dead planet earth, sitting on a cloud, jesus and satan are having a discussion.  
+satan, with an angry face: "why did your people destroy this whole planet?!"  
+jesus, with a relaxed and smiling face and closed eyes: "at least now, there is peace forever."  
+(satan wears red, jesus wears blue.)
 
 ---
 
@@ -69,6 +84,8 @@ Get fucked traitor !
 Loser and shit sub human !
 
 https://www.deviantart.com/battlehamsterreturns/art/Save-the-Whales-save-the-snails-1335270601
+
+![](save-the-whales-save-the-snails.2026-05-20.png.avif)
 
 This piece is a satirical take inspired by a mindset I keep seeing more and more — the idea that humanity is somehow less valuable than the rest of nature.
 
@@ -188,6 +205,8 @@ we will see : ) but yeah, probably you are right, because if you cannot have the
 
 https://www.deviantart.com/milahu/art/civilization-is-a-suicide-cult-satan-vs-jesus-1327950534
 
+![](pacifism-is-the-problem.2026-05-01.png.avif)
+
 the dialog might just as well be:  
 satan: why did your people destroy this whole planet?!  
 jesus: so your people cant have it.
@@ -242,8 +261,12 @@ of course i am. why should i work for my enemies? all legal jobs are shit.
 
 https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html#no-future-we-are-all-going-to-die
 
+[whoaremyfriends.html#no-future-we-are-all-going-to-die](../../../whoaremyfriends/whoaremyfriends.html#no-future-we-are-all-going-to-die)
+
 > In 100 million years, an asteroid may hit the earth, that is the same size as the asteroid 66 million years ago, that killed all the dinosaurs. Movie: Dont Look Up (2021). ... In 1000 million years only single-celled organisms will live on earth, in mountain lakes or in caves. So by then everyone will be dead.
 
 i also have to mention the magnetic pole shift, which may happen in a few years. but of course you dont think that far, plus you dont wanna waste your time with "negative stuff", your too busy having "fun" (hedonism)
 
 https://www.deviantart.com/milahu/art/1335691650
+
+![](pacifism-is-the-problem.2026-05-21.png.avif)
