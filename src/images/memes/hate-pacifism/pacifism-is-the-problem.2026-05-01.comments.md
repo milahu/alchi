@@ -270,3 +270,118 @@ i also have to mention the magnetic pole shift, which may happen in a few years.
 https://www.deviantart.com/milahu/art/1335691650
 
 ![](pacifism-is-the-problem.2026-05-21.png.avif)
+
+---
+
+BattleHamsterReturns 2026-05-21
+
+Wow , the Degenerate is desperate for my attention today , back again and again . Always with the same shit preaching no one cares about .
+
+Planet is fine , you are the one that is messed up .  
+You do not get to talk shit about my work when you are on welfare like sub human shit you are .
+
+All legal jobs are shit ? Ah the criminal path ! You are by your own words sub human .
+
+Stick your shit links up your ass fagot , be content I answer to you here .
+
+You don’t know jack shit about the future of mankind . The only future for you is unemployment and possibly criminality . Again you mentally masturbate with the though of future human death . Nah degenerate , we will be fine . You will die and be forgotten and we humans will do just fine .
+
+The only pole shift here happened when your brain ( such as it was ) switched places with the shit in your gut . You have after all shit for brains , you admitted as much .
+
+I am wasting my stuff with negative stuff . YOU ! Ha ha ha ha ha
+
+Yes I do confess I am having fun , at your expense of course . I will of course continue to do so , both me and my family . Yes we will absolutely have fun bashing woke faggots like you .
+
+You need to cope and seethe harder ! Try harder degenerate try harder !  
+Remember the whales and the snails need you help !
+
+---
+
+milahu 2026-05-21
+
+> Always with the same shit preaching no one cares about .
+
+haha, yeah, in my world, no one cares about the shit you preach all day.
+
+your rhetoric is just cheap and boring, only entertaining to people with the same mental defect as yours.
+
+> > what work?
+>
+> You do not get to talk shit about my work
+
+its like asking for your reasons, or asking for your long-term strategy... you just have none. (mysticism, neuroticism, blind and deaf)
+
+same with your work, you do have some "work", as in some "source of money", but youre not particularly proud of it, you just have a job because thats "normal", plus you somehow have to feed your family... or what is your oh-so-great contribution to human progress? why should i pay for your work?
+
+> Remember the whales and the snails need you help !
+
+nah, it makes much more sense to destroy your system that is destroying the planet. its not some stupid whales or snakes, its the entire ecosystem with millions of species. its just your stupid brain that needs to reduce the complexity.
+
+> You don’t know jack shit about the future of mankind .
+
+you seem to know a lot about the future of humans. will humans live forever? will planet earth last forever? will humans colonize other planets? how many planets in the universe support human life?
+
+also, what is the chance that you are wrong? is it 0.000000000000000001%? or is it exactly zero?
+
+---
+
+BattleHamsterReturns 2026-05-21
+
+Yeah well you are a degenerate so of course you would not care about anything that is sound of mind .
+
+We have already established you are a degenerate woke shit so you have the mental defects well covered . You do not get to wish the death of mankind and claim others have mental defects .
+
+Ah yes again with the mysticism accusation . Cretin ! I claimed no gods .
+
+Yes I do have a family and yes I do have to take care of them . But no you do not get to talk shit about my job while you admitted to being a sub human on welfare . First work then criticize ! Of course expecting woke sub humans to work is a tall order I understand .
+
+Nah you do not get to ask me about my contribution to human progress when you clearly said you can think of no greater insult than human . My contribution to human progress , in our setting , is shitting on insufferable woke losers like you . A contribution I greatly enjoy !
+
+Pay for my work ? Why would I do any business with losers on welfare ? Thanks I will pass keep your coupons .
+
+Sure in your depraved degenerate mind it might make more sense to get rid of humanity . Unfortunately for shits like you all you can do is dream . But hey if you think you can : Bring it faggot !
+
+Mah whales , my snails , mah ecosystems . . . bla bla bla , we all heard it all before . Cretinous unemployed losers lecturing people about their woke shit woo woo mah planet .  
+Speaking of reduced complexity , again that would be your cognition .
+
+Absolute cretin , “ oh I am an ape and not a man “ unemployed loser who wants mankind dead trying to be all intellectual and shit and while claiming others have mental illnesses and not him . Hilarious .
+
+Shut up bitch ! You don’t get to talk science shit with me . If I wanted to argue science with the mentally insane I would have talked with a Creationist .
+
+Odds and percentages ? Yeah . I am 100 % sure you are a loser shit . No doubt there . 
+
+So like always : Cope and Seethe !
+
+---
+
+milahu 2026-05-21
+
+> Shut up bitch ! You don’t get to talk science shit with me . If I wanted to argue science with the mentally insane I would have talked with a Creationist .
+
+yeah, the only science you respect is the science that helps you kill the planet faster, stuff like genetic engineering or bioweapons or chemical weapons... because "muh progress!"
+
+but you cannot even explain your own contributions to human progress, looks kinda weak, probably you dont contribute anything worth mentioning, but yeah, you just keep patting yourself on the back with your "100% sure" attitude, selecting your friends via mental incest, so you can all pat each other on the back, congratulating each other how smart you are.
+
+amazing! in rare moments i envy such simple worldviews (stupid and happy), but then, all the side-effects and long-term consequences... nah, not my style.
+
+> lecturing people about their woke shit woo woo mah planet .
+
+nah, im old enough to know that "lecturing people" has zero effect... because human stupidity is only defeated by violence, in effect, my bullet in your head : )
+
+---
+
+BattleHamsterReturns 2026-05-22
+
+Again shut up degenerate , no one is interested in your bellyaching . Losers on welfare do not get to talk about science , let alone madmen who want mankind gone . Yes we will have progress and you will still be on the bread line .
+
+I did not say I cannot explain my contribution to humanity . I said I will not do so to a loser like you . I have a family and I work to take care of them , you do not because you are not , in your own words , a man . You are sub human and so you will remain .
+
+Yes I am smarten than you though truth be told that is not a particularly high bar . Come to think of it a legitimate retard is smarter than you . They know they are dumb you see yourself as smart , you are the worst sort of dumb : a wokie shit !
+
+Yes you are stupid , we have established that numerous times . Yes I am happy , even happier when I shit on you . Yes you do envy other people , if you did not you would not be a wokie . You cannot have stuff because you are a lazy loser so you want other people gone so you can feel better . Absolute shit sub human .
+
+Side effects this , long term consequences that . . . bitch shut the fuck up ! Government welfare sub human envious shit lecturing people on science and shit . Put down the Mary Jane , wash , put a shirt on get a job ! Not your style ? Yes you did say you are not human . Sub humans don’t do decency I know .
+
+Ah yes yes fantasies about violence once again ! Wokie sub human degenerate fantasizing about harming human beings , so cute ! You are powerless you loser faggot !
+
+Cope and Seethe like the waste of human skin you are !
