@@ -1,0 +1,55 @@
+https://www.goodreads.com/topic/new?context_id=220-goodreads-librarians-group&context_type=Group
+
+https://www.goodreads.com/topic/show/24675584-add-my-book
+
+add my book
+
+i want to add my book to goodreads, so my readers can publish reviews (and so more readers can discover my book, "freedom of reach" is a thing...)
+
+Pallas. Who are my friends. Group composition by personality type
+https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html
+
+my book is open-source, self-published, ... so i have no ISBN/ASIN number, but i have many git commit hashes ; )
+
+title:
+Pallas. Who are my friends. Group composition by personality type
+
+author:
+Milan Hauth
+https://github.com/milahu/about
+
+project homepage:
+https://github.com/milahu/alchi
+
+HTML version:
+https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html
+
+PDF version:
+https://milahu.github.io/alchi-pdf/pallas/whoaremyfriends.2026-04-28.pdf
+
+book cover:
+https://milahu.github.io/alchi-pdf/pallas/whoaremyfriends.2026-04-28.cover.png
+
+ebay:
+https://www.ebay.de/itm/357279910205
+
+publication date:
+2026-04-28
+
+publisher:
+self-published
+
+page count:
+204
+
+ISBN:
+(none)
+
+format:
+booklet
+
+description:
+Who are my friends? The question sounds simple... but it's complicated, and psychology experts still don't have an answer. So: We must help ourselves.
+Topics: Justice. Humans and relations. Selforganization. Group composition. Stable groups. Tribalism. Small states. Decentralization. Primitive culture. Natural order.
+Target group: People with a future. Farmers and soldiers.
+Technical terms: Human Resource Management. Matchmaking Algorithm. Interpersonal Compatibility. Team Composition.
