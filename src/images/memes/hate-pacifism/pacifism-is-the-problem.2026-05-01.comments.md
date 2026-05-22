@@ -405,3 +405,59 @@ so you will only stop when everything is dead, including you. you are part of a 
 > get a job
 
 yes please, give me a gun and let me kill 100 useless eaters every day for the next 20 years. because all other "jobs" are a waste of time, because all "civilized" solutions have failed
+
+---
+
+BattleHamsterReturns 2026-05-22
+
+Yawn ! The left can’t meme . In order to meme you must have humor and you clearly don’t . Though if I think better of it your whole existence and ideology is a joke .
+
+Which one is me ? Well I am the one over here shitting on you and the rest of the degenerate woke left .
+
+I am not raping anyone , least of all the whole planet . Since I am not a degenerate wokie I don’t do rape . I hear its quite popular in leftist communities , I am sure you know a lot about it being a faggot .
+
+Stop ? Will I ever stop making fun of you and your kind ? No , I do not think I will . How could I ever stop serving you the shit you deserve ? I will never stop shitting on the woke !
+
+Suicide cult ? I told you this like 20 times already , I do not claim any gods / spirituality / religion . The only suicide cult here is the one you are part of , the sub human man hating woke quasi religion . You want everyone exterminated and I am the one in a suicide cult ? Makes perfect sense if you are insane .
+
+Funny you would speak of useless eaters since you are one of them . Unlike righteous men like me who take care of their families you are a sub human degenerate on welfare , by your own admission ! You are the textbook definition of an useless eater .
+
+Speaking of meals , I had a wonderful one . I doubt you could afford it . How much does the state lose monthly for an useless eater like you ?
+
+Again with the revenge fantasies . How cute ! Very Kawaii ! Trouble is you are an useless faggot and in reality people do fire back . I told you before degenerate : If you think you can do something , do it !
+
+Cope and Seethe as usual .
+
+PS : What drugs are you on ? Are you taking anti – depressants ?
+
+---
+
+milahu 2026-05-22
+
+> In order to meme you must have humor and you clearly don’t .
+
+yeah, idiots like you are blind for different types of humor. if someone does not mirror your type of humor, then he must be destroyed, so you can have your mental incest. (equality)
+
+here is another one you will never understand:
+
+![Alex Grey - Gaia (1989)](Gaia-1989-Alex-Grey-watermarked.jpg.avif)
+
+> I do not claim any gods / spirituality / religion . The only suicide cult here is the one you are part of , the sub human man hating woke quasi religion . You want everyone exterminated and I am the one in a suicide cult ? Makes perfect sense if you are insane .
+
+> righteous men like me who take care of their families
+
+makes perfect sense if one understands the difference between conscious and subconscious = the difference between intention and result.
+
+this level of insight surely helps to decode all kinds of paradoxons, but can never be explained to the idiots in plato's cave, otherwise the idiots kill the messenger, as they always do. it can never be explained, because these differences are inborn and stable for life.
+
+> How much does the state lose monthly for an useless eater like you ?
+
+about 2000 euros per month. in prison, i would cost them about 3000 euros per month, in psychiatry about 15000 euros per month.
+
+i dont know why the idiots dont just shoot me, a bullet and a grave would be much cheaper. apparently they have enough money to pay for their "pro life" fantasy. but probably its just part of their accelerationism strategy, they also have enough money to feed millions of migrant invaders from africa, until the welfare system collapses, and on the next day we have civil war.
+
+> What drugs are you on ?
+
+drugs dont help, especially not the legal drugs. MDMA and LSD and Ketamine and Mescaline and 2C are fun, better than watching TV, but also dont help. (let me guess, you have zero experience with illegal drugs, and you somehow feel "right" about it, in your circular logic.)
+
+only guns and ammo would help. my bullet + your head = perfect match.
