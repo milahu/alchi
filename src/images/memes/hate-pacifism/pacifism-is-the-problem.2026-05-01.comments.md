@@ -385,3 +385,23 @@ Side effects this , long term consequences that . . . bitch shut the fuck up ! G
 Ah yes yes fantasies about violence once again ! Wokie sub human degenerate fantasizing about harming human beings , so cute ! You are powerless you loser faggot !
 
 Cope and Seethe like the waste of human skin you are !
+
+---
+
+milahu 2026-05-22
+
+> Yes I am happy , even happier when I shit on you .
+
+which one of these happy little fuckers is you?
+
+https://www.deviantart.com/milahu/art/civilization-is-a-suicide-cult-no-means-yes-1336046398
+
+![](pacifism-is-the-problem.no-means-yes.2026-05-22.png.avif)
+
+you are raping the whole planet, because we are too weak to stop you, and the only language you understand is violence = our bullet in your head.
+
+so you will only stop when everything is dead, including you. you are part of a suicide cult, but youre too stupid to get it, and you drag everyone else into your suicide cult, because youre so "generous"...
+
+> get a job
+
+yes please, give me a gun and let me kill 100 useless eaters every day for the next 20 years. because all other "jobs" are a waste of time, because all "civilized" solutions have failed
