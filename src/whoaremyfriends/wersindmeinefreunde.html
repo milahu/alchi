@@ -13777,6 +13777,8 @@ textarea.form-control-lg {
       const rootList = toc;
       const listStack = [rootList];
       let currentList = rootList;
+      const numbering = [];
+      let tocStr = "";
 
       headings.forEach(heading => {
         const level = parseInt(heading.tagName.substring(1), 10);
@@ -13822,7 +13824,21 @@ textarea.form-control-lg {
 
         li.appendChild(a);
         currentList.appendChild(li);
+
+        // add entry to tocStr
+        numbering[level] = (numbering[level] || 0) + 1;
+        for (let i = level + 1; i < numbering.length; i++) {
+          numbering[i] = 0;
+        }
+        const indexPath = numbering
+          .slice(2, level + 1)
+          .filter(n => n > 0)
+          .join(".");
+        tocStr += `${indexPath}. ${heading.textContent.trim()}\n`;
+
       });
+
+      console.log(`table of contents:\n${tocStr}`);
 
       focusTocItem();
 
