@@ -14106,10 +14106,40 @@ textarea.form-control-lg {
 
 <h2 class="nopagebreak">Gruppenaufbau nach Persönlichkeitstyp</h2>
 
-<div class="screen-layout-only" style="margin: 2em 0">Version <script>
+<script>
   var version = document.querySelector('meta#version').content;
-  document.write(version);
-</script></div>
+document.write(`
+<div class="screen-layout-only" style="margin: 2em 0">Version ${version}</div>
+`);
+if (version.endsWith("+X")) {
+var lastPrintVersion = version.split("+")[0];
+var title = `
+`;
+// TODO GitHub webinterface: compare only this file
+document.write(`
+<details style="text-align: left">
+<summary>+X version</summary>
+diese screen version enthält mehrere kleine änderungen (+X)<br>
+im vergleich zu der letzten print version
+(<a href="https://milahu.github.io/alchi-pdf/pallas/wersindmeinefreunde.${lastPrintVersion}.pdf"
+>${lastPrintVersion}</a>).<br>
+<br>
+zum sehen dieser änderungen kannst du nutzen<br>
+<br>
+a) das git programm:
+<pre style="overflow: hidden">
+git clone https://github.com/milahu/alchi
+cd alchi
+git diff ${lastPrintVersion} -- src/whoaremyfriends/wersindmeinefreunde.html
+</pre>
+<br>
+b) das GitHub webinterface:<br>
+<a href="https://github.com/milahu/alchi/compare/${lastPrintVersion}...HEAD"
+>github.com/milahu/alchi/compare/${lastPrintVersion}...HEAD</a>
+</details>
+`);
+}
+</script>
 
 </section>
 <!--(lang="en") end of `<section id="first-page"` -->
