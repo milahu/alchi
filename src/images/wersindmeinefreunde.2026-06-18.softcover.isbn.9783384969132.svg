@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+source: https://tredition.com/
+
+original:
+viewBox="0 0 115 55"
+
+W = 33 mm = 94 px
+94 / 33 = 2.8484 px/mm
+H_long = 11 mm = 31.3 px
+55 - 30 = 25
+-->
+<svg
+version="1.1"
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 25 115 30"
+fill="#FFFFFF"
+stroke="#000000"
+stroke-width="1"
+stroke-linecap="butt"
+>
+  <line x2="10" x1="10" y1="0" y2="55" />
+  <line x2="12" x1="12" y1="0" y2="55" />
+  <line x2="14" x1="14" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="14.75" x1="14.75" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="15.75" x1="15.75" y1="0" y2="48" />
+  <line x2="18" x1="18" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="18.75" x1="18.75" y1="0" y2="48" />
+  <line x2="23" x1="23" y1="0" y2="48" />
+  <line x2="26" x1="26" y1="0" y2="48" />
+  <line x2="28" x1="28" y1="0" y2="48" />
+  <line x2="33" x1="33" y1="0" y2="48" />
+  <line x2="35" x1="35" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="35.75" x1="35.75" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="36.75" x1="36.75" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="37.75" x1="37.75" y1="0" y2="48" />
+  <line x2="40" x1="40" y1="0" y2="48" />
+  <line x2="44" x1="44" y1="0" y2="48" />
+  <line x2="47" x1="47" y1="0" y2="48" />
+  <line x2="49" x1="49" y1="0" y2="48" />
+  <line x2="53" x1="53" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="53.75" x1="53.75" y1="0" y2="48" />
+  <line x2="56" x1="56" y1="0" y2="55" />
+  <line x2="58" x1="58" y1="0" y2="55" />
+  <line x2="60" x1="60" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="60.75" x1="60.75" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="61.75" x1="61.75" y1="0" y2="48" />
+  <line x2="64" x1="64" y1="0" y2="48" />
+  <line x2="67" x1="67" y1="0" y2="48" />
+  <line x2="69" x1="69" y1="0" y2="48" />
+  <line x2="74" x1="74" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="74.75" x1="74.75" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="75.75" x1="75.75" y1="0" y2="48" />
+  <line x2="78" x1="78" y1="0" y2="48" />
+  <line x2="81" x1="81" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="81.75" x1="81.75" y1="0" y2="48" />
+  <line x2="85" x1="85" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="85.75" x1="85.75" y1="0" y2="48" />
+  <line x2="88" x1="88" y1="0" y2="48" />
+  <line x2="93" x1="93" y1="0" y2="48" />
+  <line x2="95" x1="95" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="95.75" x1="95.75" y1="0" y2="48" />
+  <line x2="98" x1="98" y1="0" y2="48" />
+  <line stroke-width="1.5" x2="98.75" x1="98.75" y1="0" y2="48" />
+  <line x2="102" x1="102" y1="0" y2="55" />
+  <line x2="104" x1="104" y1="0" y2="55" />
+  <!--
+  <text style="font-family: arial" x="4" y="54.5" stroke-width="0" fill="#000000" font-size="8">9</text>
+  <text style="font-family: arial" x="21" y="54.5" stroke-width="0" fill="#000000" font-size="8">783384</text>
+  <text style="font-family: arial" x="67" y="54.5" stroke-width="0" fill="#000000" font-size="8">969132</text>
+  -->
+  <text style="font-family: monospace" x="4" y="54.5" stroke-width="0" fill="#000000" font-size="8">9</text>
+  <text style="font-family: monospace" x="21" y="54.5" stroke-width="0" fill="#000000" font-size="8">783384</text>
+  <text style="font-family: monospace" x="67" y="54.5" stroke-width="0" fill="#000000" font-size="8">969132</text>
+</svg>
