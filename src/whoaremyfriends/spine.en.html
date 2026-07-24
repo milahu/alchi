@@ -8,11 +8,13 @@
     body, html {
       margin: 0;
     }
+    /*
     #cutmarks {
       margin-top: calc(0.5 * 297mm - 10mm);
       padding: 10mm 0;
       outline: solid 1px black;
     }
+    */
     #spine {
       width: 210mm;
       height: 10mm;
@@ -21,14 +23,52 @@
       text-align: center;
       font-size: 5mm;
       line-height: 10mm;
+      /* rotate */
+      transform: rotate(90deg);
+      transform-origin: top left;
+      margin-left: 10mm;
+    }
+    #pallas-symbol {
+      font-size: 100%;
+      /* rotate */
+      display: inline-block;
+      transform: rotate(-90deg);
+      /* transform-origin: top left; */
+      margin-bottom: -2.2mm; /* left */
     }
     @page {
       margin: 0;
-      size: A4;
+      /* size: A5; */
+      /* 70 g/m² -> 10 mm / 208 pages DIN A5 */
+      size: 10mm 210mm;
     }
     @media print {
       #spine {
         outline: none;
+      }
+    }
+
+    /* dark mode */
+    @media screen {
+      /* no. the user's desktop can be in dark mode,
+      but the web browser can be in light mode.
+      so require the "darkreader extension" for dark mode.
+      @media (prefers-color-scheme: dark) {
+        :root { --fg: white; --bg: black; }
+        .darkmode-invert {
+          filter: invert();
+        }
+      }
+      */
+      /* darkreader extension */
+      :root[data-darkreader-scheme="dark"] {
+        --fg: white; --bg: black;
+      }
+      :root[data-darkreader-scheme="dark"] body {
+        color: white;
+      }
+      :root[data-darkreader-scheme="dark"] .darkmode-invert {
+        filter: invert();
       }
     }
   </style>
@@ -42,7 +82,15 @@
 
 Pallas
 &nbsp; &nbsp;
-⚴
+<!-- <span id="pallas-symbol">⚴</span> -->
+<img
+  id="pallas-symbol"
+  class="darkmode-invert"
+  alt="⚴"
+  title="Pallas symbol"
+  style="max-width:1.6em"
+  src="../images/alchi.pallas-symbol.small.svg"
+>
 &nbsp; &nbsp;
 Who are my friends?
 &nbsp; &nbsp;
