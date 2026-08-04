@@ -13772,6 +13772,9 @@ textarea.form-control-lg {
       let tocStr = "";
 
       headings.forEach(heading => {
+
+        if (heading.classList.contains("notoc")) return;
+
         const level = parseInt(heading.tagName.substring(1), 10);
 
         const section = heading.closest("section");
@@ -14092,11 +14095,11 @@ textarea.form-control-lg {
 
 <div class="vspace" style="height:2em"></div>
 
-<h2>Who are my friends</h2>
+<h2 class="notoc">Who are my friends</h2>
 
 <div class="vspace" style="height:1em"></div>
 
-<h2 class="nopagebreak">Group composition by personality type</h2>
+<h2 class="nopagebreak notoc">Group composition by personality type</h2>
 
 <script>
   var version = document.querySelector('meta#version').content;
