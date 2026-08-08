@@ -1,308 +1,306 @@
-1. Who are my friends
-2. Group composition by personality type
-3. Who are my friends?
-4. Pallas Pattern
-4.1. Where does the Pallas pattern come from?
-4.2. Friends are close, enemies are distant
-4.3. Better world
-4.4. Pallas-Muster ohne Kreise
-4.5. Pallas symbol
-4.6. Alternative representations of the Pallas pattern
-4.7. Round lines
-4.8. Double bonds and single bonds
-4.9. Four Dimensions
-5. Contents
-5.1. Interesting chapters
-5.2. Alternative Titles
-5.3. Soundtrack for this book
-6. Zero feedback
-6.1. Minimal consensus
-7. Active reading
-8. Feedback
-9. Hypothesis
-9.1. Alternative hypotheses
-9.2. Truth Matrix
-9.3. Experiment
-10. Pallas Experiment
-10.1. Levels
-10.2. Groups of Two
-10.3. Groups of four
-10.3.1. Partner exchange
-10.3.2. Role reversal
-10.3.3. Influence and trust
-10.3.4. Subtype and partner
-10.3.5. Subtype and same basetype
-10.4. Groups of Eight
-10.4.1. Pallas key
-10.4.2. Cross groups and square groups
-10.4.3. Square groups
-10.5. Linear groups of four
-10.5.1. Same age
-10.5.2. Same sex
-11. Four Types
-11.1. Who is who?
-11.2. Body Shape
-11.3. Stress response
-11.3.1. The Strange Situation
-11.4. Elements
-11.5. Numbers
-11.6. Colors
-11.6.1. Colors: Top or bottom?
-11.7. Body shapes
-11.8. Eating
-11.9. Smilies
-11.10. Main jobs
-11.11. Stupid are always the others
-11.11.1. Basic Laws of Human Stupidity
-11.12. No type
-11.13. Basetype is hereditary
-11.14. Body odor shows personality type
-11.14.1. Does Personality Smell
-11.14.2. Armpits or Genitals
-11.14.3. Oral Sex and Compatibility
-11.14.4. Illegal research
-11.14.5. Dogs as Role Model
-11.15. Political Spectrum
-11.15.1. Lokalpolitik oder Geopolitik
-11.15.2. Politischer Kreis
-11.15.3. Extremismus
-12. Inner Properties
-12.1. Inner gender
-12.2. inner age
-12.3. Inner diagonal
-13. Subtypes
-13.1. Basetype or subtype
-13.2. Relative definition of subtypes
-13.3. Absolute definition of subtypes
-13.3.1. Subtype age is stronger
-13.3.2. Subtype gender is stronger
-13.3.3. Groups of four by subtype age
-13.3.4. Groups of four by subtype gender
-13.4. Subtype and partner
-13.4.1. Same gender
-13.5. Subtypes in the Pallas pattern
-13.6. Coding of subtypes
-13.7. Research Questions
-14. Application in the real world
-14.1. Cult
-14.2. Honeypot
-14.3. Mass murder
-14.4. The caravan moves on
-14.4.1. Moses parts the sea
-14.5. Offline Peer-to-peer networks
-14.6. Group composition
-14.7. Building Village Culture
-14.7.1. 144 people
-14.7.2. Small States and Utopias
-14.7.3. Tribe culture
-14.7.4. Conquering foreign land
-14.7.5. Predator-prey relationship
-14.7.6. Tyrants need weaklings
-14.7.7. How to enslave people
-14.7.8. Large states and hell on earth
-14.7.9. Growth-Based Economies
-14.7.10. Balance
-14.7.11. Balance in Small Groups
-14.8. Problem child: Hold on or let go?
-14.8.1. Child robbers
-14.8.2. Both are guilty
-14.8.3. System winners
-15. Limitations
-15.1. Estimating personality types
-15.2. Schwachstellen
-15.3. Estimating relation quality
-15.4. Measuring personality type and compatibility
-15.4.1. Measuring personality type with EEG
-15.4.2. Measuring compatibility with EEG
-16. Consequences
-16.1. Radical tolerance
-16.2. Light without shadow?
-16.3. Nietzsche and Zarathustra
-16.4. Radical problems
-16.5. Initial resistance
-16.6. Trapped in Loneliness
-16.6.1. Vicious Cycle of Loneliness and Ignorance
-16.7. Where do you leave?
-16.8. By Nature Blind for Natural Order
-16.8.1. Blindness is a personality trait, not a defect
-16.8.2. Type-limited access to truth
-16.8.3. The Structural Risk: Totalization and Cognitive Closure
-16.8.4. Two paradoxes of tolerance
-16.8.4.1. Right paradox of tolerance
-16.8.4.2. Left paradox of tolerance
-16.8.5. Empirical Falsifiability: Limited but Real
-16.8.6. The Cost of Honesty
-16.9. What if I am right
-16.9.1. Who are my friends
-16.10. Forced therapy
-16.10.1. Personal reasons
-16.10.2. Violence is Authority
-16.10.3. Equality of Arms and Decentralization
-16.10.4. Voluntary Methods Fail
-16.10.5. Forced Therapy for breaking Initial Resistance
-16.10.6. Retrospective Consent
-16.10.7. Individual Resistance and Social Resistance
-16.10.8. Risk, Criminalization, Asymmetry
-16.10.9. Abuse of power
-16.10.10. My forced therapy
-16.10.11. Two pairs are one group of four
-16.10.12. Forced therapy against vaccine damage
-17. TODO Move sections
-17.1. Wild theory
-17.2. Nobody is responsible
-17.3. Where does my theory come from?
-17.4. Help wanted
-17.4.1. Book printing
-17.4.2. Target group
-17.4.3. Voluntarism
-17.4.4. Children and parents
-17.4.5. Successors wanted
-17.4.6. I will not always be here
-18. Other theories
-18.1. MBTI is too complex
-18.2. Serious personality tests
-18.3. Calendar astrology is wrong
-18.4. Traditional Alchemy is wrong
-19. Five-value scales
-19.1. Basetypes in five-value scales
-19.1.1. Types 12
-19.1.2. Types 13
-19.1.3. Types 14
-19.2. Subtypes in five-value scales
-19.2.1. Types 104 and 203
-19.2.2. Types 103 and 204
-19.2.3. Types 104 and 302
-19.2.4. Typen 103 402
-20. Appendix: Concepts
-20.1. Playing theater is psychotherapy
-20.2. Morbid Gain
-20.3. Investment protection
-20.4. Old habits give security
-20.5. Illusion of movement
-20.6. Slave morality
-20.7. Industry has no future
-20.8. Traditional agriculture
-20.9. Masters eat meat, slaves eat bread
-20.9.1. Shit on NutriScore
-20.9.2. Recipe: Carnivore meatloaf
-20.10. Healthy fats
-20.11. Wild Potatos
-20.12. Nutrient therapy
-20.13. Social therapy
-20.14. Electrosmog makes sick
-20.15. Movies make stupid
-20.16. Carrying books makes sick
-20.17. Children don't understand this
-20.18. School is political
-20.19. Simple problem
-20.20. Mathematik: Vier Operatoren
-20.21. Social Darwinism
-20.22. System criticism
-20.22.1. I am allowed
-20.23. Justice
-20.24. Insurance
-20.25. Religion
-20.25.1. Pro Life
-20.26. Patriarchy and Matriarchy
-20.27. Roman Cross
-20.27.1. With raised sword
-20.28. Trauma Releasing Exercises
-20.28.1. Shaking is also a sport
-20.29. Stretching muscles and relieving pressure on joints
-20.30. Fairness in sex
-20.31. Dont pay for government propaganda
-20.32. Dont pay for filesharing demands
-20.33. Trauma-based mind control
-20.33.1. Child protective service as child robbers
-20.34. Chaos and order
-21. Appendix: Fragments
-21.1. Strict or sloppy
-21.2. Mathematics: Modulo Five
-21.3. Politics and Basics
-21.3.1. Overpopulation is the cause of all problems
-21.3.2. Cheap energy
-21.3.3. End time
-21.4. Dualism
-21.5. Dynamic balance
-21.6. What do children need?
-21.7. Common correlations
-21.8. Minimum law
-21.9. Why do I do this?
-21.10. Why am I an enemy of the state?
-21.11. Zero euros
-21.12. Selbsteinschätzung
-21.13. Trapped in poverty
-21.14. Believing together or living together
-21.15. Hamster Wheel and Tunnel Vision
-21.16. Science and politics
-21.17. Freedom of opinion
-21.18. No discussion
-21.19. Internet is censored to death
-21.19.1. Censored or ignored
-21.19.2. Fear of consequences
-21.20. Elektrosmog macht müde
-21.21. Direct voting rights for children
-21.22. Illusion of choice
-21.23. Doing or Talking
-21.24. Good violence and evil violence
-21.25. Blood or Tears
-21.26. Slave morality and master morality
-21.27. Bulls and bears
-21.28. Aussen Gold - Innen Scheisse
-21.29. Infallible
-21.30. Devil stuff
-21.31. Peasant Revolt
-21.32. Miracle Healing
-21.33. Forced Schooling
-21.34. Leader without followers
-21.35. 99 percent idiots
-21.36. My Death List
-21.37. Regime his death list
-21.38. Who do I trust
-21.39. To my daughter
-21.40. Es gibt keine politische Lösung
-21.41. Refusal
-21.42. Grandpa wants to die
-21.43. Brain Drain
-21.44. Too little or too much
-21.45. Everyone wants justice
-21.46. Hope dies last
-21.47. Stupid or evil
-21.48. Fake Evidence
-21.49. The future is in Africa
-21.50. How do we want to die
-21.51. Digitalization and power outages
-21.52. Digitalization and Hyperinflation
-21.53. Great Reset is nothing new
-21.53.1. Gold confiscation is nothing new
-21.54. Conversations with Dying People
-21.55. No Future
-21.56. Medicine makes you sick
-21.57. Vaccines make you sick
-21.58. State is church
-21.59. School makes you stupid
-21.60. Power vacuum
-21.61. Alte Lehrer oder Junge Lehrer
-21.62. You think you have time
-21.62.1. Nobody helps me
-21.63. Why do I write so strangely?
-21.64. Punks Not Dead
-21.65. No Go Areas for Everyone
-21.66. Homogeneous neighborhood
-21.67. Active Neighborhood
-21.68. Choosing neighbors
-21.69. Three-class society
-21.70. When children want to work
-21.71. Idiots like children
-21.72. Young teachers
-21.73. AFD is Controlled Opposition
-21.74. Muslims are the new Superhumans
-21.74.1. Muslim Revolution
-21.75. War against Russia
-21.76. Drugs are natural medicine
-21.77. Psilocin mushrooms outdoor grow
-21.78. Reviews
-21.78.1. Forbidden in schools
-21.78.2. Prison for book distributor
-21.79. TODO ...
-22. Appendix: Quotes and sayings
+1. Who are my friends?
+2. Pallas Pattern
+2.1. Where does the Pallas pattern come from?
+2.2. Friends are close, enemies are distant
+2.3. Better world
+2.4. Pallas-Muster ohne Kreise
+2.5. Pallas symbol
+2.6. Alternative representations of the Pallas pattern
+2.7. Round lines
+2.8. Double bonds and single bonds
+2.9. Four Dimensions
+3. Contents
+3.1. Interesting chapters
+3.2. Alternative Titles
+3.3. Soundtrack for this book
+4. Zero feedback
+4.1. Minimal consensus
+5. Active reading
+6. Feedback
+7. Hypothesis
+7.1. Alternative hypotheses
+7.2. Truth Matrix
+7.3. Experiment
+8. Pallas Experiment
+8.1. Levels
+8.2. Groups of Two
+8.3. Groups of four
+8.3.1. Partner exchange
+8.3.2. Role reversal
+8.3.3. Influence and trust
+8.3.4. Subtype and partner
+8.3.5. Subtype and same basetype
+8.4. Groups of Eight
+8.4.1. Pallas key
+8.4.2. Cross groups and square groups
+8.4.3. Square groups
+8.5. Linear groups of four
+8.5.1. Same age
+8.5.2. Same sex
+9. Four Types
+9.1. Who is who?
+9.2. Body Shape
+9.3. Stress response
+9.3.1. The Strange Situation
+9.4. Elements
+9.5. Numbers
+9.6. Colors
+9.6.1. Colors: Top or bottom?
+9.7. Body shapes
+9.8. Eating
+9.9. Smilies
+9.10. Main jobs
+9.11. Stupid are always the others
+9.11.1. Basic Laws of Human Stupidity
+9.12. No type
+9.13. Basetype is hereditary
+9.14. Body odor shows personality type
+9.14.1. Does Personality Smell
+9.14.2. Armpits or Genitals
+9.14.3. Oral Sex and Compatibility
+9.14.4. Illegal research
+9.14.5. Dogs as Role Model
+9.15. Political Spectrum
+9.15.1. Lokalpolitik oder Geopolitik
+9.15.2. Politischer Kreis
+9.15.3. Extremismus
+10. Inner Properties
+10.1. Inner gender
+10.2. inner age
+10.3. Inner diagonal
+11. Subtypes
+11.1. Basetype or subtype
+11.2. Relative definition of subtypes
+11.3. Absolute definition of subtypes
+11.3.1. Subtype age is stronger
+11.3.2. Subtype gender is stronger
+11.3.3. Groups of four by subtype age
+11.3.4. Groups of four by subtype gender
+11.4. Subtype and partner
+11.4.1. Same gender
+11.5. Subtypes in the Pallas pattern
+11.6. Coding of subtypes
+11.7. Research Questions
+12. Application in the real world
+12.1. Cult
+12.2. Honeypot
+12.3. Mass murder
+12.4. The caravan moves on
+12.4.1. Moses parts the sea
+12.5. Offline Peer-to-peer networks
+12.6. Group composition
+12.7. Building Village Culture
+12.7.1. 144 people
+12.7.2. Small States and Utopias
+12.7.3. Tribe culture
+12.7.4. Conquering foreign land
+12.7.5. Predator-prey relationship
+12.7.6. Tyrants need weaklings
+12.7.7. How to enslave people
+12.7.8. Large states and hell on earth
+12.7.9. Growth-Based Economies
+12.7.10. Balance
+12.7.11. Balance in Small Groups
+12.8. Problem child: Hold on or let go?
+12.8.1. Child robbers
+12.8.2. Both are guilty
+12.8.3. System winners
+13. Limitations
+13.1. Estimating personality types
+13.2. Schwachstellen
+13.3. Estimating relation quality
+13.4. Measuring personality type and compatibility
+13.4.1. Measuring personality type with EEG
+13.4.2. Measuring compatibility with EEG
+14. Consequences
+14.1. Radical tolerance
+14.2. Light without shadow?
+14.3. Nietzsche and Zarathustra
+14.4. Radical problems
+14.5. Initial resistance
+14.6. Trapped in Loneliness
+14.6.1. Vicious Cycle of Loneliness and Ignorance
+14.7. Where do you leave?
+14.8. By Nature Blind for Natural Order
+14.8.1. Blindness is a personality trait, not a defect
+14.8.2. Type-limited access to truth
+14.8.3. The Structural Risk: Totalization and Cognitive Closure
+14.8.4. Two paradoxes of tolerance
+14.8.4.1. Right paradox of tolerance
+14.8.4.2. Left paradox of tolerance
+14.8.5. Empirical Falsifiability: Limited but Real
+14.8.6. The Cost of Honesty
+14.9. What if I am right
+14.9.1. Who are my friends
+14.10. Forced therapy
+14.10.1. Personal reasons
+14.10.2. Violence is Authority
+14.10.3. Equality of Arms and Decentralization
+14.10.4. Voluntary Methods Fail
+14.10.5. Forced Therapy for breaking Initial Resistance
+14.10.6. Retrospective Consent
+14.10.7. Individual Resistance and Social Resistance
+14.10.8. Risk, Criminalization, Asymmetry
+14.10.9. Abuse of power
+14.10.10. My forced therapy
+14.10.11. Two pairs are one group of four
+14.10.12. Forced therapy against vaccine damage
+15. TODO Move sections
+15.1. Wild theory
+15.2. Nobody is responsible
+15.3. Where does my theory come from?
+15.4. Help wanted
+15.4.1. Book printing
+15.4.2. Target group
+15.4.3. Voluntarism
+15.4.4. Children and parents
+15.4.5. Successors wanted
+15.4.6. I will not always be here
+16. Other theories
+16.1. MBTI is too complex
+16.2. Serious personality tests
+16.3. Calendar astrology is wrong
+16.4. Traditional Alchemy is wrong
+17. Five-value scales
+17.1. Basetypes in five-value scales
+17.1.1. Types 12
+17.1.2. Types 13
+17.1.3. Types 14
+17.2. Subtypes in five-value scales
+17.2.1. Types 104 and 203
+17.2.2. Types 103 and 204
+17.2.3. Types 104 and 302
+17.2.4. Typen 103 402
+18. Appendix: Concepts
+18.1. Playing theater is psychotherapy
+18.2. Morbid Gain
+18.3. Investment protection
+18.4. Old habits give security
+18.5. Illusion of movement
+18.6. Slave morality
+18.7. Industry has no future
+18.8. Traditional agriculture
+18.9. Masters eat meat, slaves eat bread
+18.9.1. Shit on NutriScore
+18.9.2. Recipe: Carnivore meatloaf
+18.10. Healthy fats
+18.11. Wild Potatos
+18.12. Nutrient therapy
+18.13. Social therapy
+18.14. Electrosmog makes sick
+18.15. Movies make stupid
+18.16. Carrying books makes sick
+18.17. Children don't understand this
+18.18. School is political
+18.19. Simple problem
+18.20. Mathematik: Vier Operatoren
+18.21. Social Darwinism
+18.22. System criticism
+18.22.1. I am allowed
+18.23. Justice
+18.24. Insurance
+18.25. Religion
+18.25.1. Pro Life
+18.26. Patriarchy and Matriarchy
+18.27. Roman Cross
+18.27.1. With raised sword
+18.28. Trauma Releasing Exercises
+18.28.1. Shaking is also a sport
+18.29. Stretching muscles and relieving pressure on joints
+18.30. Fairness in sex
+18.31. Dont pay for government propaganda
+18.32. Dont pay for filesharing demands
+18.33. Trauma-based mind control
+18.33.1. Child protective service as child robbers
+18.34. Chaos and order
+19. Appendix: Fragments
+19.1. Strict or sloppy
+19.2. Mathematics: Modulo Five
+19.3. Politics and Basics
+19.3.1. Overpopulation is the cause of all problems
+19.3.2. Cheap energy
+19.3.3. End time
+19.4. Dualism
+19.5. Dynamic balance
+19.6. What do children need?
+19.7. Common correlations
+19.8. Minimum law
+19.9. Why do I do this?
+19.10. Why am I an enemy of the state?
+19.11. Zero euros
+19.12. Selbsteinschätzung
+19.13. Trapped in poverty
+19.14. Believing together or living together
+19.15. Hamster Wheel and Tunnel Vision
+19.16. Science and politics
+19.17. Freedom of opinion
+19.18. No discussion
+19.19. Internet is censored to death
+19.19.1. Censored or ignored
+19.19.2. Fear of consequences
+19.20. Elektrosmog macht müde
+19.21. Direct voting rights for children
+19.22. Illusion of choice
+19.23. Doing or Talking
+19.24. Good violence and evil violence
+19.25. Blood or Tears
+19.26. Slave morality and master morality
+19.27. Bulls and bears
+19.28. Aussen Gold - Innen Scheisse
+19.29. Infallible
+19.30. Devil stuff
+19.31. Peasant Revolt
+19.32. Miracle Healing
+19.33. Forced Schooling
+19.34. Leader without followers
+19.35. 99 percent idiots
+19.36. My Death List
+19.37. Regime his death list
+19.38. Who do I trust
+19.39. To my daughter
+19.40. Es gibt keine politische Lösung
+19.41. Refusal
+19.42. Grandpa wants to die
+19.43. Brain Drain
+19.44. Too little or too much
+19.45. Everyone wants justice
+19.46. Hope dies last
+19.47. Stupid or evil
+19.48. Fake Evidence
+19.49. Future is in a bunker
+19.50. How do we want to die
+19.51. Digitalization and power outages
+19.52. Digitalization and Hyperinflation
+19.53. Great Reset is nothing new
+19.53.1. Gold confiscation is nothing new
+19.54. Conversations with Dying People
+19.55. No Future
+19.56. Medicine makes you sick
+19.57. Vaccines make you sick
+19.58. State is church
+19.59. School makes you stupid
+19.60. Power vacuum
+19.61. Alte Lehrer oder Junge Lehrer
+19.62. You think you have time
+19.62.1. Nobody helps me
+19.63. Why do I write so strangely?
+19.64. Punks Not Dead
+19.65. No Go Areas for Everyone
+19.66. Homogeneous neighborhood
+19.67. Active Neighborhood
+19.68. Choosing neighbors
+19.69. Three-class society
+19.70. When children want to work
+19.71. Idiots like children
+19.72. Young teachers
+19.73. AFD is Controlled Opposition
+19.74. Muslims are the new Superhumans
+19.74.1. Muslim Revolution
+19.75. War against Russia
+19.76. Drugs are natural medicine
+19.77. Psilocin mushrooms outdoor grow
+19.78. Reviews
+19.78.1. Forbidden in schools
+19.78.2. Prison for book distributor
+19.79. TODO ...
+20. Appendix: Quotes and sayings
