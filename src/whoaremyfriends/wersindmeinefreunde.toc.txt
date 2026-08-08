@@ -1,308 +1,306 @@
-1. Wer sind meine Freunde
-2. Gruppenaufbau nach Persönlichkeitstyp
-3. Wer sind meine Freunde?
-4. Pallas-Muster
-4.1. Woher kommt das Pallas-Muster?
-4.2. Freunde sind nah, Feinde sind fern
-4.3. Bessere Welt
-4.4. Pallas-Muster ohne Kreise
-4.5. Pallas-Symbol
-4.6. Alternative Darstellungen vom Pallas-Muster
-4.7. Runde Linien
-4.8. Doppelbindungen und Einfachbindungen
-4.9. Vier Dimensionen
-5. Inhalt
-5.1. Interessante Kapitel
-5.2. Alternative Titel
-5.3. Soundtrack zu diesem Buch
-6. Null Feedback
-6.1. Minimal-Konsens
-7. Aktiv Lesen
-8. Feedback
-9. Hypothese
-9.1. Alternativ-Hypothesen
-9.2. Wahrheitsmatrix
-9.3. Experiment
-10. Pallas-Experiment
-10.1. Level
-10.2. Zweier-Gruppen
-10.3. Vierer-Gruppen
-10.3.1. Partnertausch
-10.3.2. Rollentausch
-10.3.3. Einfluss und Vertrauen
-10.3.4. Subtyp und Partner
-10.3.5. Subtyp und gleicher Grundtyp
-10.4. Achter-Gruppen
-10.4.1. Pallas-Schlüssel
-10.4.2. Kreuz-Gruppen und Quadrat-Gruppen
-10.4.3. Quadrat-Gruppen
-10.5. Lineare Vierer-Gruppen
-10.5.1. Gleiches Alter
-10.5.2. Gleiches Geschlecht
-11. Vier Typen
-11.1. Wer ist wer
-11.2. Körperform
-11.3. Stress-Reaktion
-11.3.1. The Strange Situation
-11.4. Elemente
-11.5. Zahlen
-11.6. Farben
-11.6.1. Farben: Oben oder unten?
-11.7. Körperformen
-11.8. Essen
-11.9. Smilies
-11.10. Hauptberufe
-11.11. Dumm sind immer die Anderen
-11.11.1. Prinzipien der menschlichen Dummheit
-11.12. Kein Typ
-11.13. Grundtyp ist erblich
-11.14. Körpergeruch zeigt Persönlichkeitstyp
-11.14.1. Kann man Persönlichkeit riechen
-11.14.2. Achselhöhlen oder Genitalien
-11.14.3. Oralsex und Kompatibilität
-11.14.4. Illegale Forschung
-11.14.5. Hunde als Vorbild
-11.15. Politisches Spektrum
-11.15.1. Lokalpolitik oder Geopolitik
-11.15.2. Politischer Kreis
-11.15.3. Extremismus
-12. Innere Eigenschaften
-12.1. Inneres Geschlecht
-12.2. Inneres Alter
-12.3. Innere Diagonale
-13. Subtypen
-13.1. Grundtyp oder Subtyp
-13.2. Relative Definition von Subtypen
-13.3. Absolute Definition von Subtypen
-13.3.1. Subtyp-Alter ist stärker
-13.3.2. Subtyp-Geschlecht ist stärker
-13.3.3. Vierer-Gruppen nach Subtyp-Alter
-13.3.4. Vierer-Gruppen nach Subtyp-Geschlecht
-13.4. Subtyp und Partner
-13.4.1. Gleiches Geschlecht
-13.5. Subtypen im Pallas-Muster
-13.6. Kodierung von Subtypen
-13.7. Forschungs-Fragen
-14. Anwendung in der echten Welt
-14.1. Sekte
-14.2. Honeypot
-14.3. Massenmord
-14.4. Die Karavane zieht weiter
-14.4.1. Moses teilt das Meer
-14.5. Offline Peer-to-peer Netzwerke
-14.6. Aufbau von Gruppen
-14.7. Aufbau von Dorfkultur
-14.7.1. 144 Menschen
-14.7.2. Kleinstaaten und Utopien
-14.7.3. Stamm-Kultur
-14.7.4. Fremdes Land erobern
-14.7.5. Räuber-Beute Beziehung
-14.7.6. Tyrannen brauchen Schwächlinge
-14.7.7. Wie versklavt man ein Volk?
-14.7.8. Großstaaten und die Hölle auf Erden
-14.7.9. Growth-Based Economies
-14.7.10. Gleichgewicht
-14.7.11. Gleichgewicht in kleinen Gruppen
-14.8. Problemkind: Festhalten oder Loslassen?
-14.8.1. Kinderräuber
-14.8.2. Beide sind schuld
-14.8.3. Systemgewinner
-15. Schwachstellen
-15.1. Persönlichkeitstypen schätzen
-15.2. Schwachstellen
-15.3. Beziehungsqualität schätzen
-15.4. Messen von Persönlichkeitstyp und Kompatibilität
-15.4.1. Messen von Persönlichkeitstyp mit EEG
-15.4.2. Messen von Kompatibilität mit EEG
-16. Konsequenzen
-16.1. Radikale Toleranz
-16.2. Licht ohne Schatten?
-16.3. Nietzsche und Zarathustra
-16.4. Radikale Probleme
-16.5. Anfangswiderstand
-16.6. Gefangen in Einsamkeit
-16.6.1. Teufelskreis von Einsamkeit und Ignoranz
-16.7. Wo steigst Du aus?
-16.8. Von Natur aus blind für Naturordnung
-16.8.1. Blindheit ist ein Persönlichkeitsmerkmal, kein Defekt
-16.8.2. Typ-begrenzter Zugang zur Wahrheit
-16.8.3. Das strukturelle Risiko: Totalisierung und kognitive Verschlossenheit
-16.8.4. Zwei Paradoxons der Toleranz
-16.8.4.1. Rechtes Paradox der Toleranz
-16.8.4.2. Linkes Paradox der Toleranz
-16.8.5. Empirische Falsifizierbarkeit: begrenzt aber real
-16.8.6. Der Preis der Ehrlichkeit
-16.9. Was wenn ich Recht habe
-16.9.1. Wer sind meine Freunde
-16.10. Zwangstherapie
-16.10.1. Persönliche Gründe
-16.10.2. Gewalt ist Autorität
-16.10.3. Waffengleichheit und Dezentralisierung
-16.10.4. Freiwillige Methoden scheitern
-16.10.5. Zwangsbehandlung zum Überwinden von Anfangswiderstand
-16.10.6. Rückwirkende Zustimmung
-16.10.7. Individueller Widerstand und sozialen Widerstand
-16.10.8. Risiko, Kriminalisierung, Asymmetrie
-16.10.9. Machtmissbrauch
-16.10.10. Meine Zwangstherapie
-16.10.11. Zwei Paare sind eine Vierer-Gruppe
-16.10.12. Zwangstherapie gegen Impfschaden
-17. TODO Abschnitte verschieben
-17.1. Wilde Theorie
-17.2. Keiner ist verantwortlich
-17.3. Woher kommt meine Theorie?
-17.4. Hilfe gesucht
-17.4.1. Buch drucken
-17.4.2. Zielgruppe
-17.4.3. Freiwilligkeit
-17.4.4. Kinder und Eltern
-17.4.5. Nachwuchs gesucht
-17.4.6. Ich werde nicht immer hier sein
-18. Andere Theorien
-18.1. MBTI ist zu komplex
-18.2. Seriöse Persönlichkeitstests
-18.3. Kalender-Astrologie ist falsch
-18.4. Traditionelle Alchemie ist falsch
-19. Fünf-Werte Skalen
-19.1. Grundtypen in Fünf-Werte Skalen
-19.1.1. Typen 12
-19.1.2. Typen 13
-19.1.3. Typen 14
-19.2. Subtypen in Fünf-Werte Skalen
-19.2.1. Typen 104 und 203
-19.2.2. Typen 103 und 204
-19.2.3. Typen 104 und 302
-19.2.4. Typen 103 402
-20. Anhang: Konzepte
-20.1. Theater spielen ist Psychotherapie
-20.2. Morbid Gain (Krankheitsgewinn)
-20.3. Investitionsschutz
-20.4. Old Habits geben Sicherheit
-20.5. Illusion von Bewegung
-20.6. Sklavenmoral
-20.7. Industrie hat keine Zukunft
-20.8. Traditionelle Landwirtschaft
-20.9. Herren essen Fleisch, Sklaven essen Brot
-20.9.1. Scheiss auf NutriScore
-20.9.2. Rezept: Hackbraten für Fleischfresser
-20.10. Gesunde Fette
-20.11. Wilde Kartoffeln
-20.12. Nährstoff-Therapie
-20.13. Sozialtherapie
-20.14. Elektrosmog macht krank
-20.15. Filme machen dumm
-20.16. Bücher tragen macht krank
-20.17. Kinder verstehen das nicht
-20.18. Schule ist politisch
-20.19. Einfaches Problem
-20.20. Mathematik: Vier Operatoren
-20.21. Sozial-Darwinismus
-20.22. Systemkritik
-20.22.1. Ich darf das
-20.23. Gerechtigkeit
-20.24. Versicherung
-20.25. Religion
-20.25.1. Pro Life
-20.26. Patriarchat und Matriarchat
-20.27. Römisches Kreuz
-20.27.1. Mit erhobenem Schwert
-20.28. Trauma Releasing Exercises
-20.28.1. Zittern ist auch Sport
-20.29. Muskeln dehnen und Gelenke entlasten
-20.30. Gerechtigkeit beim Sex
-20.31. Nicht zahlen für Staatsfunk
-20.32. Nicht zahlen für Filesharing Abmahnungen
-20.33. Trauma-based Mind Control
-20.33.1. Jugendamt als Kinderklau-Behörde
-20.34. Chaos und Ordnung
-21. Anhang: Fragmente
-21.1. Streng oder schlampig
-21.2. Mathematik: Modulo Fünf
-21.3. Politik und Grundlagen
-21.3.1. Übervölkerung ist die Ursache aller Probleme
-21.3.2. Billige Energie
-21.3.3. Endzeit
-21.4. Dualismus
-21.5. Dynamisches Gleichgewicht
-21.6. Was brauchen Kinder
-21.7. Gemeinsame Korrelationen
-21.8. Minimum-Gesetz
-21.9. Warum mache ich das?
-21.10. Warum bin ich ein Staatsfeind?
-21.11. Null Euro
-21.12. Selbsteinschätzung
-21.13. Gefangen in Armut
-21.14. Glaubensgemeinschaft oder Lebensgemeinschaft
-21.15. Hamsterrad und Tunnelblick
-21.16. Wissenschaft und Politik
-21.17. Meinungsfreiheit
-21.18. Keine Diskussion
-21.19. Internet ist totzensiert
-21.19.1. Zensiert oder ignoriert
-21.19.2. Angst vor Konsequenzen
-21.20. Elektrosmog macht müde
-21.21. Direktes Wahlrecht für Kinder
-21.22. Illusion von Wahl
-21.23. Machen oder Reden
-21.24. Gute Gewalt und Böse Gewalt
-21.25. Blut oder Tränen
-21.26. Sklavenmoral und Herrenmoral
-21.27. Bullen und Bären
-21.28. Aussen Gold - Innen Scheisse
-21.29. Unfehlbar
-21.30. Teufelszeug
-21.31. Bauern-Aufstand
-21.32. Wunderheilung
-21.33. Schulzwang
-21.34. Führer ohne Folger
-21.35. 99 Prozent Idioten
-21.36. Meine Todesliste
-21.37. Regime seine Todesliste
-21.38. Wem glaube ich
-21.39. An meine Tochter
-21.40. Es gibt keine politische Lösung
-21.41. Verweigerung
-21.42. Opa will sterben
-21.43. Brain Drain
-21.44. Zu wenig oder zu viel
-21.45. Alle wollen Gerechtigkeit
-21.46. Die Hoffnung stirbt zuletzt
-21.47. Dumm oder böse
-21.48. Falsche Beweise
-21.49. Zukunft ist in Afrika
-21.50. Wie wollen wir sterben
-21.51. Digitalisierung und Stromausfall
-21.52. Digitalisierung und Hyperinflation
-21.53. Great Reset ist nichts Neues
-21.53.1. Gold-Enteignung ist nichts Neues
-21.54. Gespräche mit Sterbenden
-21.55. No Future
-21.56. Medizin macht krank
-21.57. Impfungen machen krank
-21.58. Staat ist Kirche
-21.59. Schule macht dumm
-21.60. Machtvakuum
-21.61. Alte Lehrer oder Junge Lehrer
-21.62. Du glaubst du hast Zeit
-21.62.1. Keiner hilft mir
-21.63. Warum schreibe ich so komisch?
-21.64. Punks Not Dead
-21.65. No Go Areas für Alle
-21.66. Homogene Nachbarschaft
-21.67. Aktive Nachbarschaft
-21.68. Nachbarn wählen
-21.69. Drei-Klassen Gesellschaft
-21.70. Wenn Kinder arbeiten wollen
-21.71. Idioten mögen Kinder
-21.72. Junge Lehrer
-21.73. AFD ist Controlled Opposition
-21.74. Moslems sind die neuen Übermenschen
-21.74.1. Moslem-Revolution
-21.75. Krieg gegen Russland
-21.76. Drogen sind Naturmedizin
-21.77. Psilocin-Pilze Outdoor Grow
-21.78. Rezensionen
-21.78.1. In Schulen verboten
-21.78.2. Knast für Buchverteiler
-21.79. TODO ...
-22. Anhang: Zitate und Sprüche
+1. Wer sind meine Freunde?
+2. Pallas-Muster
+2.1. Woher kommt das Pallas-Muster?
+2.2. Freunde sind nah, Feinde sind fern
+2.3. Bessere Welt
+2.4. Pallas-Muster ohne Kreise
+2.5. Pallas-Symbol
+2.6. Alternative Darstellungen vom Pallas-Muster
+2.7. Runde Linien
+2.8. Doppelbindungen und Einfachbindungen
+2.9. Vier Dimensionen
+3. Inhalt
+3.1. Interessante Kapitel
+3.2. Alternative Titel
+3.3. Soundtrack zu diesem Buch
+4. Null Feedback
+4.1. Minimal-Konsens
+5. Aktiv Lesen
+6. Feedback
+7. Hypothese
+7.1. Alternativ-Hypothesen
+7.2. Wahrheitsmatrix
+7.3. Experiment
+8. Pallas-Experiment
+8.1. Level
+8.2. Zweier-Gruppen
+8.3. Vierer-Gruppen
+8.3.1. Partnertausch
+8.3.2. Rollentausch
+8.3.3. Einfluss und Vertrauen
+8.3.4. Subtyp und Partner
+8.3.5. Subtyp und gleicher Grundtyp
+8.4. Achter-Gruppen
+8.4.1. Pallas-Schlüssel
+8.4.2. Kreuz-Gruppen und Quadrat-Gruppen
+8.4.3. Quadrat-Gruppen
+8.5. Lineare Vierer-Gruppen
+8.5.1. Gleiches Alter
+8.5.2. Gleiches Geschlecht
+9. Vier Typen
+9.1. Wer ist wer
+9.2. Körperform
+9.3. Stress-Reaktion
+9.3.1. The Strange Situation
+9.4. Elemente
+9.5. Zahlen
+9.6. Farben
+9.6.1. Farben: Oben oder unten?
+9.7. Körperformen
+9.8. Essen
+9.9. Smilies
+9.10. Hauptberufe
+9.11. Dumm sind immer die Anderen
+9.11.1. Prinzipien der menschlichen Dummheit
+9.12. Kein Typ
+9.13. Grundtyp ist erblich
+9.14. Körpergeruch zeigt Persönlichkeitstyp
+9.14.1. Kann man Persönlichkeit riechen
+9.14.2. Achselhöhlen oder Genitalien
+9.14.3. Oralsex und Kompatibilität
+9.14.4. Illegale Forschung
+9.14.5. Hunde als Vorbild
+9.15. Politisches Spektrum
+9.15.1. Lokalpolitik oder Geopolitik
+9.15.2. Politischer Kreis
+9.15.3. Extremismus
+10. Innere Eigenschaften
+10.1. Inneres Geschlecht
+10.2. Inneres Alter
+10.3. Innere Diagonale
+11. Subtypen
+11.1. Grundtyp oder Subtyp
+11.2. Relative Definition von Subtypen
+11.3. Absolute Definition von Subtypen
+11.3.1. Subtyp-Alter ist stärker
+11.3.2. Subtyp-Geschlecht ist stärker
+11.3.3. Vierer-Gruppen nach Subtyp-Alter
+11.3.4. Vierer-Gruppen nach Subtyp-Geschlecht
+11.4. Subtyp und Partner
+11.4.1. Gleiches Geschlecht
+11.5. Subtypen im Pallas-Muster
+11.6. Kodierung von Subtypen
+11.7. Forschungs-Fragen
+12. Anwendung in der echten Welt
+12.1. Sekte
+12.2. Honeypot
+12.3. Massenmord
+12.4. Die Karavane zieht weiter
+12.4.1. Moses teilt das Meer
+12.5. Offline Peer-to-peer Netzwerke
+12.6. Aufbau von Gruppen
+12.7. Aufbau von Dorfkultur
+12.7.1. 144 Menschen
+12.7.2. Kleinstaaten und Utopien
+12.7.3. Stamm-Kultur
+12.7.4. Fremdes Land erobern
+12.7.5. Räuber-Beute Beziehung
+12.7.6. Tyrannen brauchen Schwächlinge
+12.7.7. Wie versklavt man ein Volk?
+12.7.8. Großstaaten und die Hölle auf Erden
+12.7.9. Growth-Based Economies
+12.7.10. Gleichgewicht
+12.7.11. Gleichgewicht in kleinen Gruppen
+12.8. Problemkind: Festhalten oder Loslassen?
+12.8.1. Kinderräuber
+12.8.2. Beide sind schuld
+12.8.3. Systemgewinner
+13. Schwachstellen
+13.1. Persönlichkeitstypen schätzen
+13.2. Schwachstellen
+13.3. Beziehungsqualität schätzen
+13.4. Messen von Persönlichkeitstyp und Kompatibilität
+13.4.1. Messen von Persönlichkeitstyp mit EEG
+13.4.2. Messen von Kompatibilität mit EEG
+14. Konsequenzen
+14.1. Radikale Toleranz
+14.2. Licht ohne Schatten?
+14.3. Nietzsche und Zarathustra
+14.4. Radikale Probleme
+14.5. Anfangswiderstand
+14.6. Gefangen in Einsamkeit
+14.6.1. Teufelskreis von Einsamkeit und Ignoranz
+14.7. Wo steigst Du aus?
+14.8. Von Natur aus blind für Naturordnung
+14.8.1. Blindheit ist ein Persönlichkeitsmerkmal, kein Defekt
+14.8.2. Typ-begrenzter Zugang zur Wahrheit
+14.8.3. Das strukturelle Risiko: Totalisierung und kognitive Verschlossenheit
+14.8.4. Zwei Paradoxons der Toleranz
+14.8.4.1. Rechtes Paradox der Toleranz
+14.8.4.2. Linkes Paradox der Toleranz
+14.8.5. Empirische Falsifizierbarkeit: begrenzt aber real
+14.8.6. Der Preis der Ehrlichkeit
+14.9. Was wenn ich Recht habe
+14.9.1. Wer sind meine Freunde
+14.10. Zwangstherapie
+14.10.1. Persönliche Gründe
+14.10.2. Gewalt ist Autorität
+14.10.3. Waffengleichheit und Dezentralisierung
+14.10.4. Freiwillige Methoden scheitern
+14.10.5. Zwangsbehandlung zum Überwinden von Anfangswiderstand
+14.10.6. Rückwirkende Zustimmung
+14.10.7. Individueller Widerstand und sozialen Widerstand
+14.10.8. Risiko, Kriminalisierung, Asymmetrie
+14.10.9. Machtmissbrauch
+14.10.10. Meine Zwangstherapie
+14.10.11. Zwei Paare sind eine Vierer-Gruppe
+14.10.12. Zwangstherapie gegen Impfschaden
+15. TODO Abschnitte verschieben
+15.1. Wilde Theorie
+15.2. Keiner ist verantwortlich
+15.3. Woher kommt meine Theorie?
+15.4. Hilfe gesucht
+15.4.1. Buch drucken
+15.4.2. Zielgruppe
+15.4.3. Freiwilligkeit
+15.4.4. Kinder und Eltern
+15.4.5. Nachwuchs gesucht
+15.4.6. Ich werde nicht immer hier sein
+16. Andere Theorien
+16.1. MBTI ist zu komplex
+16.2. Seriöse Persönlichkeitstests
+16.3. Kalender-Astrologie ist falsch
+16.4. Traditionelle Alchemie ist falsch
+17. Fünf-Werte Skalen
+17.1. Grundtypen in Fünf-Werte Skalen
+17.1.1. Typen 12
+17.1.2. Typen 13
+17.1.3. Typen 14
+17.2. Subtypen in Fünf-Werte Skalen
+17.2.1. Typen 104 und 203
+17.2.2. Typen 103 und 204
+17.2.3. Typen 104 und 302
+17.2.4. Typen 103 402
+18. Anhang: Konzepte
+18.1. Theater spielen ist Psychotherapie
+18.2. Morbid Gain (Krankheitsgewinn)
+18.3. Investitionsschutz
+18.4. Old Habits geben Sicherheit
+18.5. Illusion von Bewegung
+18.6. Sklavenmoral
+18.7. Industrie hat keine Zukunft
+18.8. Traditionelle Landwirtschaft
+18.9. Herren essen Fleisch, Sklaven essen Brot
+18.9.1. Scheiss auf NutriScore
+18.9.2. Rezept: Hackbraten für Fleischfresser
+18.10. Gesunde Fette
+18.11. Wilde Kartoffeln
+18.12. Nährstoff-Therapie
+18.13. Sozialtherapie
+18.14. Elektrosmog macht krank
+18.15. Filme machen dumm
+18.16. Bücher tragen macht krank
+18.17. Kinder verstehen das nicht
+18.18. Schule ist politisch
+18.19. Einfaches Problem
+18.20. Mathematik: Vier Operatoren
+18.21. Sozial-Darwinismus
+18.22. Systemkritik
+18.22.1. Ich darf das
+18.23. Gerechtigkeit
+18.24. Versicherung
+18.25. Religion
+18.25.1. Pro Life
+18.26. Patriarchat und Matriarchat
+18.27. Römisches Kreuz
+18.27.1. Mit erhobenem Schwert
+18.28. Trauma Releasing Exercises
+18.28.1. Zittern ist auch Sport
+18.29. Muskeln dehnen und Gelenke entlasten
+18.30. Gerechtigkeit beim Sex
+18.31. Nicht zahlen für Staatsfunk
+18.32. Nicht zahlen für Filesharing Abmahnungen
+18.33. Trauma-based Mind Control
+18.33.1. Jugendamt als Kinderklau-Behörde
+18.34. Chaos und Ordnung
+19. Anhang: Fragmente
+19.1. Streng oder schlampig
+19.2. Mathematik: Modulo Fünf
+19.3. Politik und Grundlagen
+19.3.1. Übervölkerung ist die Ursache aller Probleme
+19.3.2. Billige Energie
+19.3.3. Endzeit
+19.4. Dualismus
+19.5. Dynamisches Gleichgewicht
+19.6. Was brauchen Kinder
+19.7. Gemeinsame Korrelationen
+19.8. Minimum-Gesetz
+19.9. Warum mache ich das?
+19.10. Warum bin ich ein Staatsfeind?
+19.11. Null Euro
+19.12. Selbsteinschätzung
+19.13. Gefangen in Armut
+19.14. Glaubensgemeinschaft oder Lebensgemeinschaft
+19.15. Hamsterrad und Tunnelblick
+19.16. Wissenschaft und Politik
+19.17. Meinungsfreiheit
+19.18. Keine Diskussion
+19.19. Internet ist totzensiert
+19.19.1. Zensiert oder ignoriert
+19.19.2. Angst vor Konsequenzen
+19.20. Elektrosmog macht müde
+19.21. Direktes Wahlrecht für Kinder
+19.22. Illusion von Wahl
+19.23. Machen oder Reden
+19.24. Gute Gewalt und Böse Gewalt
+19.25. Blut oder Tränen
+19.26. Sklavenmoral und Herrenmoral
+19.27. Bullen und Bären
+19.28. Aussen Gold - Innen Scheisse
+19.29. Unfehlbar
+19.30. Teufelszeug
+19.31. Bauern-Aufstand
+19.32. Wunderheilung
+19.33. Schulzwang
+19.34. Führer ohne Folger
+19.35. 99 Prozent Idioten
+19.36. Meine Todesliste
+19.37. Regime seine Todesliste
+19.38. Wem glaube ich
+19.39. An meine Tochter
+19.40. Es gibt keine politische Lösung
+19.41. Verweigerung
+19.42. Opa will sterben
+19.43. Brain Drain
+19.44. Zu wenig oder zu viel
+19.45. Alle wollen Gerechtigkeit
+19.46. Die Hoffnung stirbt zuletzt
+19.47. Dumm oder böse
+19.48. Falsche Beweise
+19.49. Zukunft ist im Bunker
+19.50. Wie wollen wir sterben
+19.51. Digitalisierung und Stromausfall
+19.52. Digitalisierung und Hyperinflation
+19.53. Great Reset ist nichts Neues
+19.53.1. Gold-Enteignung ist nichts Neues
+19.54. Gespräche mit Sterbenden
+19.55. No Future
+19.56. Medizin macht krank
+19.57. Impfungen machen krank
+19.58. Staat ist Kirche
+19.59. Schule macht dumm
+19.60. Machtvakuum
+19.61. Alte Lehrer oder Junge Lehrer
+19.62. Du glaubst du hast Zeit
+19.62.1. Keiner hilft mir
+19.63. Warum schreibe ich so komisch?
+19.64. Punks Not Dead
+19.65. No Go Areas für Alle
+19.66. Homogene Nachbarschaft
+19.67. Aktive Nachbarschaft
+19.68. Nachbarn wählen
+19.69. Drei-Klassen Gesellschaft
+19.70. Wenn Kinder arbeiten wollen
+19.71. Idioten mögen Kinder
+19.72. Junge Lehrer
+19.73. AFD ist Controlled Opposition
+19.74. Moslems sind die neuen Übermenschen
+19.74.1. Moslem-Revolution
+19.75. Krieg gegen Russland
+19.76. Drogen sind Naturmedizin
+19.77. Psilocin-Pilze Outdoor Grow
+19.78. Rezensionen
+19.78.1. In Schulen verboten
+19.78.2. Knast für Buchverteiler
+19.79. TODO ...
+20. Anhang: Zitate und Sprüche
