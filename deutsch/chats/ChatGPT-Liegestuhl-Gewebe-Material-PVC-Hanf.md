@@ -2,8 +2,8 @@
 
 **User:** Anonymous  
 **Created:** 2026/8/7 16:23:30  
-**Updated:** 2026/8/8 8:56:42  
-**Exported:** 2026/8/8 8:59:14  
+**Updated:** 2026/8/10 16:47:31  
+**Exported:** 2026/8/10 16:50:11  
 **Link:** [<https://chatgpt.com/c/6a75e9cd-e578-83eb-92dc-087cb9bbc317>](https://chatgpt.com/c/6a75e9cd-e578-83eb-92dc-087cb9bbc317)
 
 ## Prompt:
@@ -1710,6 +1710,233 @@ Dann können wir ihn gezielt belasten.
 Damit würde ich **zwei 50-m-Rollen** kaufen, wenn du das komplette Projekt machst - nicht weil du 100 m unbedingt verbrauchst, sondern weil du bei Handnähten lieber deutlich Reserve hast.
 
 **Und bevor du den teuren Hanf bestellst, würde ich als Nächstes tatsächlich den Gütermann-5129-Faden genauer identifizieren:** Wenn du möchtest, kann ich die Hersteller-/Händlerangaben zur **Fadendicke und Reißfestigkeit dieses konkreten 5129** heraussuchen. Dann können wir feststellen, ob er mit seinen tatsächlichen Werten für die Liege sinnvoll ist oder ob wir einen stärkeren Leinenzwirn brauchen.
+
+## Prompt:
+
+8/10/2026, 4:47:16 PM
+
+der stoffhändler hat keinen passenden leinenzwirn (die sind alle zu dünn), aber dafür hat er einen hanfgarn. geht der auch? oder warum ist leinen besser?
+
+[<https://www.naturstoff.de/Hanfgarn-08-mm-natur.html>](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html)  
+Hanfgarn 0,8 mm, natur  
+Hanfgarn 60m Rolle  
+4,90€ / Stk  
+inkl. 19% MwSt.  
+zzgl. Versand  
+Art. Nr.: ZH-H008  
+Material: 100% Hanf  
+Ausrüstung: naturbelassen, roh  
+Farbe: beige-braun, natur-beige, naturbelassen  
+Durchmesser: 0,8 mm  
+Zertifizierung: europäische Produktion
+
+und passen diese nadeln dazu? also passt der 0,8 mm hanfgarn durch die Nadelöhrgröße 18-22?
+
+[<https://www.naturstoff.de/Sticknadeln-ohne-Spitze.html>](https://www.naturstoff.de/Sticknadeln-ohne-Spitze.html)  
+Sticknadeln ohne Spitze  
+Nadeltyp: Sticknadel mit extra langem Öhr und stumpfer Spitze  
+Nadelöhrgröße: 18-22  
+Inhalt: 6 Stk  
+Verwendung: grobes Gewebe  
+2,70€ / Stk  
+inkl. 19% MwSt.  
+zzgl. Versand  
+Art. Nr.: ZSV-017
+
+## Response:
+
+8/10/2026, 4:47:17 PM
+
+> **Searching the web**
+>
+> **Searching 10 websites**
+>
+> Worked for 5s
+
+Ja - **das 0,8-mm-Hanfgarn würde ich für dein Projekt tatsächlich in Betracht ziehen.** Und ich würde meine vorherige Aussage etwas korrigieren: Es gibt keinen grundsätzlichen Grund, warum Leinen als Nähfaden für deine Liege zwingend besser sein muss. **Hanf ist für deine „100-%-Naturfaser“-Konstruktion sogar sehr passend.**
+
+Der von dir gefundene Faden ist ausdrücklich **100 % Hanf, 0,8 mm, naturbelassen und 60 m pro Rolle**. ([Naturstoff Online-Shop](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html?utm_source=chatgpt.com))
+
+### Hanf vs. Leinen
+
+Leinen hat einen kleinen Vorteil bei einer Sache, die für deinen Liegestuhl relevant ist: **Leinenfaden wird traditionell für stark beanspruchte Nähte verwendet und gilt als sehr langlebig sowie relativ sonnenbeständig.** Es gibt beispielsweise 100-%-Leinenzwirn in etwa 0,6 mm und 1 mm speziell für Handnähen. ([Organic Cotton Plus](https://organiccottonplus.com/collections/hemp-hemp-thread?utm_source=chatgpt.com))
+
+Aber:
+
+**0,8-mm-Hanf + mehrere parallele Nähte + 40 cm Überlappung** ist für dein Vorhaben absolut plausibel.
+
+Ich würde daher nicht krampfhaft nach Leinen suchen.
+
+------------------------------------------------------------------------
+
+# Was ich bei deinem Hanfgarn machen würde
+
+Ich würde sogar **bei 0,8 mm bleiben**.
+
+Das ist schon ein sehr kräftiger Faden. Und weil du nicht eine einzige Naht hast, sondern beispielsweise **3-4 parallele Nähte über 40 cm Überlappung**, muss nicht jede einzelne Naht die komplette Belastung tragen.
+
+Der größere Nachteil von 0,8 mm ist nicht die Festigkeit, sondern die Verarbeitung:
+
+**Das ist dick.**
+
+Du musst das Garn durch den Hanfstoff bekommen, ohne die Fasern unnötig zu beschädigen.
+
+------------------------------------------------------------------------
+
+# Zu den von dir gefundenen Nadeln
+
+Hier wäre ich **vorsichtig**.
+
+Die von dir verlinkten Sticknadeln haben zwar ein **extra langes Öhr, Größe 18-22**, und sind laut Händler für grobes Gewebe gedacht - das klingt zunächst perfekt.
+
+Aber sie haben eine **stumpfe Spitze**.
+
+Für dein 550-g/m²-Hanfcanvas möchte ich **keine stumpfe Nadel als primäres Werkzeug**.
+
+Denn du willst nicht nur zwischen vorhandenen Maschen hindurchgehen. Bei dichtem Canvas musst du teilweise **Fäden verdrängen bzw. das Gewebe durchdringen**.
+
+### Meine Wahl wäre:
+
+**Sattler-/Ledernadel mit großem Öhr und scharfer Spitze**, etwa:
+
+**1,0-1,2 mm Durchmesser**
+
+und ein Öhr, das dein **0,8-mm-Hanfgarn** tatsächlich aufnehmen kann.
+
+Das ist wichtiger als die reine „Nadelgröße 18-22“.
+
+Die Angabe **18-22 bei Sticknadeln ist nämlich keine einfache Angabe „Öhr ist 18/22 mm groß“**. Die Größenbezeichnung beschreibt die Nadelgröße; die tatsächlichen Öhrabmessungen variieren je nach Nadeltyp und Hersteller.
+
+Deshalb würde ich **nicht allein anhand „18-22“ davon ausgehen, dass 0,8 mm sicher durchpasst.**
+
+------------------------------------------------------------------------
+
+## Noch besser für dein Projekt: Ahle + Nadel
+
+Ich würde mir tatsächlich **eine Nähahle/Sattlerahle** besorgen.
+
+Dann machst du:
+
+**1. Loch mit Ahle vorstechen**
+
+→
+
+**2. 0,8-mm-Hanfgarn mit Sattlernadel durchziehen**
+
+Das ist bei 550-g/m²-Hanf viel kontrollierbarer als zu versuchen, eine dicke Nadel mit Gewalt durch den Stoff zu drücken.
+
+Und du kannst die Löcher exakt dort setzen, wo du sie haben möchtest.
+
+------------------------------------------------------------------------
+
+# Ich würde sogar eine kleine Änderung an deinem Nähplan machen
+
+Du hast 40 cm Überlappung.
+
+Ich würde daraus **nicht 6 oder 7 Nähte** machen.
+
+Ich denke, **4 parallele Sattlernähte** sind ein sehr guter Ausgangspunkt:
+
+``` text
+        40 cm Überlappung
+┌─────────────────────────────────┐
+│                                 │
+│  ═════════════════════════════  │  ← Naht 1
+│                                 │
+│  ═════════════════════════════  │  ← Naht 2
+│                                 │
+│  ═════════════════════════════  │  ← Naht 3
+│                                 │
+│  ═════════════════════════════  │  ← Naht 4
+│                                 │
+└─────────────────────────────────┘
+             170 cm
+```
+
+Abstand beispielsweise **7-10 cm**.
+
+Damit hast du insgesamt:
+
+**4 × 170 cm = 6,8 m Nahtlänge.**
+
+Bei einer Sattlernaht brauchst du grob das 4-5-fache der Nahtlänge an Faden:
+
+**≈ 27-34 m**
+
+Daher sind deine **60 m auf einer Rolle sehr komfortabel ausreichend**. ([Naturstoff Online-Shop](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html?utm_source=chatgpt.com))
+
+------------------------------------------------------------------------
+
+# Und ich würde das Hanfgarn leicht wachsen
+
+Das 0,8-mm-Garn ist laut Händler **naturbelassen/roh**. ([Naturstoff Online-Shop](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html?utm_source=chatgpt.com))
+
+Ich würde es vor dem Nähen durch **Bienenwachs** ziehen.
+
+Das hat mehrere Vorteile:
+
+- Fasern werden zusammengehalten
+- weniger Aufspleißen
+- leichter durch den Stoff zu ziehen
+- weniger Verknoten
+- die Naht wird sauberer
+
+Und Bienenwachs passt weiterhin zu deiner Idee einer **rein natürlichen Materialkombination**.
+
+Es gibt auch schwere Hanfgarne, bei denen genau dieses Wachsen vor dem Handnähen empfohlen wird. ([Townsends](https://www.townsends.us/products/heavy-hemp-thread-s3290-p-1420?utm_source=chatgpt.com))
+
+------------------------------------------------------------------------
+
+## Meine Einkaufsliste wäre jetzt daher:
+
+**Gewebe**
+
+- 100 % Hanfcanvas
+- ca. 550-600 g/m²
+
+**Faden**
+
+- dein **100-%-Hanfgarn, 0,8 mm**
+- 60 m
+- **1 Rolle reicht für den Schlauch**, solange wir bei etwa 4 Nähten bleiben
+
+**Nadel**
+
+- **Sattler-/Ledernadel**
+- ca. **1,0-1,2 mm**
+- großes Öhr
+- scharfe Spitze
+
+**Zusätzlich**
+
+- kleine **Sattler-/Nähahle**
+- etwas **Bienenwachs**
+
+Die von dir verlinkten stumpfen Sticknadeln würde ich **nicht als Hauptnadel kaufen**. Für Stickerei auf grobem Gewebe sind sie sinnvoll; für eine stark belastete, 550-g/m²-Hanf-Naht würde ich lieber eine scharfe Sattlernadel nehmen.
+
+------------------------------------------------------------------------
+
+### Eine Sache ist mir bei dem Hanfgarn allerdings wichtig
+
+Der Händler gibt **0,8 mm Durchmesser an, aber keine Reißfestigkeit**. ([Naturstoff Online-Shop](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html?utm_source=chatgpt.com))
+
+Und genau die Reißfestigkeit wäre für unsere Konstruktion interessant.
+
+Deshalb würde ich den fertigen Schlauch **nicht einfach als „200 kg sicher“ betrachten**, nur weil wir einen dicken Faden und vier Nähte haben.
+
+Ich würde zunächst ein **30-40 cm langes Teststück** aus demselben Hanf nähen, mit genau diesem 0,8-mm-Garn und genau der geplanten Sattlernaht. Dann können wir die Naht gezielt testen.
+
+**Wenn die Naht beispielsweise 150-200 kg statische Last aushält, ohne dass Faden oder Hanf ausreißen, hätten wir einen sehr guten Hinweis, dass die Konstruktion ausreichend dimensioniert ist.** Für eine tatsächliche 200-kg-Freigabe müsste man natürlich dynamische Belastung und Sicherheitsfaktoren berücksichtigen.
+
+Und noch ein interessanter Punkt: **Bei deinem Schlauchkonzept würde ich sogar erwarten, dass der Hanf selbst deutlich stärker ist als die Befestigung an den vier 5-mm-Schrauben.** Das sollten wir bei der Konstruktion ebenfalls berücksichtigen.
+
+------------------------------------------------------------------------
+
+**Sources:**
+
+- [Hanfgarn 0,8 mm, natur, Schnur, natur-beige, Hanf, Hanfgarn ...](https://www.naturstoff.de/Hanfgarn-08-mm-natur.html?utm_source=chatgpt.com)
+- [Hemp - Hemp Thread & Fiber \| Organic Cotton Plus](https://organiccottonplus.com/collections/hemp-hemp-thread?utm_source=chatgpt.com)
+- [Heavy Hemp Thread – Townsends](https://www.townsends.us/products/heavy-hemp-thread-s3290-p-1420?utm_source=chatgpt.com)
 
 ------------------------------------------------------------------------
 
