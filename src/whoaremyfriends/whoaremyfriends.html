@@ -13352,6 +13352,12 @@ textarea.form-control-lg {
               // verbose feedback
               //alert(`bindery: Layout ready in ${sec(layout)}s (plus ${sec(timeWaiting)}s waiting for images)`);
               alert(`print layout ready after ${sec(book.stats.layout)} seconds → ${book.pageCount} pages`);
+              alert(
+                `print layout ready after ${sec(book.stats.layout)} seconds → ${book.pageCount} pages.\n` +
+                "\n" +
+                "Note: The last page is empty and should not be printed.\n" +
+                ""
+              );
 
           }
           const header = document.querySelector('header');
