@@ -30,7 +30,7 @@ opts="--force"
 
 main_branch="master"
 
-extra_branches=""
+extra_branches="2026-06-18.de.tredition"
 
 branches="$main_branch $extra_branches"
 
