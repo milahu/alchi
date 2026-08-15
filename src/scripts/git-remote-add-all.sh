@@ -50,7 +50,8 @@ git_remote_add codeberg.org https://codeberg.org/milahu/alchi
 
 git_remote_add sourceforge.net https://git.code.sourceforge.net/p/milahu-alchi/code
 
-git_remote_add notabug.org https://notabug.org/milahu/alchi
+# Due to relentless AI scrapers notabug.org is currently down.
+# git_remote_add notabug.org https://notabug.org/milahu/alchi
 
 git_remote_add disroot.org https://git.disroot.org/milahu/alchi
 
