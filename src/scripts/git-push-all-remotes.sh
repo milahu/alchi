@@ -57,7 +57,7 @@ git fetch $remote $branches --tags
 # usually, these changes come from the Issues2Markdown github action
 date=$(date +%F-%H-%M-%S)
 # stash changes to the main branch
-stash_output="$(git stash -m "git pull-push $(date)")"
+stash_output="$(git stash -m "git pull-push $date $main_branch")"
 echo "$stash_output"
 if [[ "$stash_output" == "No local changes to save" ]]; then
   did_stash_main=false
@@ -67,15 +67,10 @@ fi
 for branch in $branches; do
   git branch --copy $branch $branch-bak-$date
   if [[ "$branch" == "$main_branch" ]]; then
-    merge_base=$(git merge-base $branch remotes/$remote/$branch)
-    echo "rebasing branch $branch from commit $merge_base"
-    git show --quiet "$merge_base"
-    git rebase remotes/$remote/$branch --committer-date-is-author-date
-    "$git_rebase_order_commits_by_author_date" $merge_base --committer-date-is-author-date
-    if $did_stash_main; then
-      git stash pop
-    fi
+    :
+    # main branch
   else
+    # non-main branch
     branch_path="$(git worktree list | grep " \[$branch\]$" || true)"
     is_temp_branch_path=false
     if [ -n "$branch_path" ]; then
@@ -86,23 +81,50 @@ for branch in $branches; do
       is_temp_branch_path=true
     fi
     pushd "$branch_path" >/dev/null
-    stash_output="$(git stash -m "git pull-push $(date)")"
+    stash_output="$(git stash -m "git pull-push $date $branch")"
     echo "$stash_output"
     if [[ "$stash_output" == "No local changes to save" ]]; then
       did_stash=false
     else
       did_stash=true
     fi
-    last_head=$(git rev-parse $branch)
-    git rebase remotes/$remote/$branch --committer-date-is-author-date
-    "$git_rebase_order_commits_by_author_date" $last_head --committer-date-is-author-date
-    if $is_temp_branch_path; then
-      git worktree remove "$branch_path"
+  fi
+  if true; then
+    # every branch
+    merge_base=$(git merge-base $branch remotes/$remote/$branch)
+    remote_head=$(git rev-parse remotes/$remote/$branch)
+    local_head=$(git rev-parse $branch)
+    if true; then
+      # debug
+      echo "merge_base: $merge_base"; git show --quiet "$merge_base"
+      echo "remote_head: $remote_head"; git show --quiet "$remote_head"
+      echo "local_head: $local_head"; git show --quiet "$local_head"
     fi
+    if [ "$merge_base" = "$remote_head" ]; then
+      echo "remotes/$remote/$branch has no new commits -> not rebasing the local branch $branch"
+    else
+      echo "remotes/$remote/$branch has new commits -> rebasing the local branch $branch"
+      echo "rebasing branch $branch from commit $merge_base"
+      git show --quiet "$merge_base"
+      git rebase remotes/$remote/$branch --committer-date-is-author-date
+      "$git_rebase_order_commits_by_author_date" $merge_base --committer-date-is-author-date
+    fi
+  fi
+  if [[ "$branch" == "$main_branch" ]]; then
+    :
+    # main branch
+    if $did_stash_main; then
+      git stash pop
+    fi
+  else
+    # non-main branch
     if $did_stash; then
       git stash pop
     fi
     popd >/dev/null
+    if $is_temp_branch_path; then
+      git worktree remove "$branch_path"
+    fi
   fi
 done
 
