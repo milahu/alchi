@@ -1,0 +1,299 @@
+is Dario Nardi still alive?
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 18:40
+From: Dario Nardi <darionardi22@gmail.com>
+To: milahu@gmail.com
+
+Thanks for your humor and concern.
+A revamp of the the website is scheduled for March-April.
+Note my new, modern website here: www.EEGinsightsLAB.com 
+The other sites will get the same treatment soon. Just, I don't pay people $1000s to do web design. Waste of money.
+--
+*** I respond to email during normal business hours **
+
+Dario Nardi
+Radiance House media store
+www.darionardi.com
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 19:28
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+thanks for the good news, assuming this is really you
+i was just irritated that your online activity seemingly stopped in year 2023
+(homepage, youtube, facebook, ...)
+
+i wanted to share my research proposal:
+measuring personality types and interpersonal compatibility with EEG
+https://github.com/milahu/alchi/blob/master/english/eeg/dario-nardi.md
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 19:36
+From: Dario Nardi <darionardi22@gmail.com>
+To: Milan Hauth <milahu@gmail.com>
+
+Hi Milan,
+I was working for a high-paying game-design company in Norway, and I still do a lot of videos with YouTubers like Joyce Meng and Matt Sherman. But yeah, I don't enjoy keeping up on social media or maintain things and stopped using Facebook pretty much altogether. 
+I did NOT take the horrid mRNA Covid shots! 
+Your idea about speed dating using no words, only body language, is very interesting. 
+I use a 32-sensor EEG cap now, and the suite of free EEG analysis libraries makes analysis a lot easier than it used to be, especially with some coding skills and AI help.
+Have almost a 1000 people in the database now. 
+More than MB type, analysis supports DISC, and Dr. Helen's Fisher on neuro-transmitter types, and Dr. Victor Gulenko's work on subtypes.
+Are you ISTP preferences? I can send something if so.
+Will take a further look.
+Cheers,
+Dario
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 19:37
+From: Dario Nardi <darionardi22@gmail.com>
+To: Milan Hauth <milahu@gmail.com>
+
+And yeah, this is me, Dario. LOL
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 19:40
+From: Dario Nardi <darionardi22@gmail.com>
+To: Milan Hauth <milahu@gmail.com>
+
+And yes, people--especially Americans--are highly allergic to physiological data points for personality such face, eyes, etc except in the most general or poetic way. A bit of a shame: genes + life style/environment --> hormones --> personality and also physical traits
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 20:15
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+> I have never looked at two people's brains at the same time as they interacted
+
+have you ever realized that TODO item?
+should be rather trivial to sync multiple EEG scanners
+at least the OpenBCI boards can capture a clock signal
+
+my first impression of this field
+is mostly based on this chat
+https://github.com/milahu/alchi/blob/master/english/chats/ChatGPT-Reliable-Personality-Tests.md#prompt-5
+
+...so compatibility should be visible as
+stable synchrony of brain waves
+and low stress (low sweating, Galvanic skin response)
+(GSR latency is around 2 seconds,
+Heart Rate Variability: 10 sec)
+
+
+
+> 8:08 none of this is formal study
+
+it would be nice to formalize this research
+into an EEG personality test
+based on some standardized stress test (go/nogo tests, ...)
+because my impression is that too many people are mistyped
+
+
+
+> in this case, it would be helpful to know the body type
+> type 3 = endomorph = broad, round
+> type 4 = ectomorph = long
+
+i saw that your mom did research on body types (glands, hormones)
+similar to the work of Elliot Abravanel
+https://milahu.github.io/alchi/src/alchi-types/alchi-types.html#elliot-abravanel
+1234 = Adrenal Gonad Pituitary Thyroid
+and similar to the work of William Sheldon
+https://milahu.github.io/alchi/src/alchi-types/alchi-types.html#william-sheldon
+1234 = heartshape-mesomorph pearshape-mesomorph endomorph ectomorph
+
+
+
+> I was working for a high-paying game-design company in Norway
+
+nice : )
+our type (type 1, SP @ David Keirsey, Ntuition @ Carl Jung)
+seems to gravitate towards the "performance tribe" of coders
+was that job connected with your EEG research?
+
+
+
+> allergic to physiological data points
+
+do you mean the stigma around
+physiognomy aka morphopsychology?
+
+in my understanding, personality psychology
+is a fundamental building block of "master morality" (nietzsche)
+aka leadership skill
+(Group composition by personality type)
+which is obviously demonized in the public domain
+where only slave morality is allowed
+(propaganda, equality, "we are all friends", "assume good faith", ...)
+
+so i have learned to not take these attacks personally
+but i understand this as a psychological battleground
+where i as a "white magician" am fighting against "black magicians"...
+enlightenment versus confusion
+decentralization versus centralization
+communism versus fascism
+"the cold war"
+...
+
+the real challenge is to find actual solutions
+which are not sublimated/integrated into the system
+https://en.wikipedia.org/wiki/Sublimation_(psychology)
+
+> fighting against "black magicians"
+
+this also explains some of my paranoia
+i mean...
+they literally threw me in jail for 4 months
+for distributing my book in a "public" school here in germany
+calling me "crazy and suicidal"
+https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html#forbidden-in-schools
+
+
+
+also, most people subconsciously work for "the dark side"
+
+> The matrix is a system, Neo. That system is our enemy. But when you're inside, you look around, what do you see? Businessmen, teachers, lawyers, carpenters... the very minds of the people we are trying to save. But until we do, these people are still a part of that system, and that makes them our enemy. You have to understand, most of these people are not ready to be unplugged. And many of them are so inured, so hopelessly dependent on the system that they will fight to protect it.
+
+...so i have distributed around 5000 copies of my book
+for free to random people
+but i get practically zero feedback
+except people reporting me to police for "hate speech"
+
+
+
+black magicians rarely talk about their methods
+their whole system is built on "security by obscurity"
+closed-source software, lies, scams, ...
+
+but i found this rare quote
+which is quite revealing
+once you learn to translate the word "christian" to "slave"
+
+https://milahu.github.io/alchi/src/whoaremyfriends/whoaremyfriends.html#catholics-versus-new-age
+
+> John Paul II warns with regard to the "return of ancient gnostic ideas under the guise of the so-called New Age: We cannot delude ourselves that this will lead toward a renewal of religion.
+> It is only a new way of practising gnosticism — that attitude of the spirit that, in the name of a profound knowledge of God, results in distorting His Word and replacing it with purely human words.
+> Gnosticism never completely abandoned the realm of Christianity. Instead, it has always existed side by side with Christianity, sometimes taking the shape of a philosophical movement, but more often assuming the characteristics of a religion or a para-religion in distinct, if not declared, conflict with all that is essentially Christian."
+> An example of this can be seen in the enneagram, the nine-type tool for character analysis [personality psychology], which when used as a means of spiritual growth introduces an ambiguity in the doctrine and the life of the Christian faith.
+> — Pontifical Council For Culture - A Christian reflection on the "New Age"
+> [gnostics, scientists, atheists, Protestants, infidels, dissidents, heretics, antichrists, antisocialists, nihilists, opposition, dividers, dualism, enemies of the state, private humans, living gods, master morality, small states, communists, subjectivism, individualism]
+
+
+
+im a bit surprised that google dont censor these emails...
+
+stay paranoid ; )
+
+
+
+-----
+
+
+
+Date: 24. Februar 2026 um 20:30
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+> but i get practically zero feedback
+
+i am buying attention for my book
+paying money is my way to show that im serious
+ideas?
+
+mostly i want to get maximum attention before SHTF here in germany
+which can be as soon as in a few days when our natural gas runs empty
+https://milahu.github.io/gasspeicher-deutschland/dist/
+so if i dont make it (P=99%)
+then maybe someone else can continue my "fringe" research
+
+
+
+-----
+
+
+
+Milan Hauth <milahu@gmail.com>	25. Februar 2026 um 08:14
+To: Dario Nardi <darionardi22@gmail.com>
+does this still work? (message 5)
+
+
+
+-----
+
+
+
+Date: 25. Februar 2026 um 18:57
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+the almighty G seems to be silently dropping my emails
+
+apparently its taboo to send links via email
+so let me describe it in a poem
+
+gitt-to-the-hubb
+doh comm slush
+mila-to-the-hu slush
+contact hush ricochet
+
+lets see if google qualifies that as "spam"...
+
+also all your contact forms
+seem to go directly to your G account
+hitting the same "spam" filter
+
+
+
+-----
+
+
+
+Date: 25. Februar 2026 um 20:12
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+the packet loss here is amazing
+
+
+
+-----
+
+
+
+Date: 25. Februar 2026 um 22:35
+From: Milan Hauth <milahu@gmail.com>
+To: Dario Nardi <darionardi22@gmail.com>
+
+still fighting the spam filter
