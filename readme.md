@@ -220,6 +220,11 @@ see the repo urls in [mirrors](#mirrors)
 
 to download the `alchi-journal` repo, you have to run a separate [git clone](#git-clone)
 
+## making of
+
+- https://www.youtube.com/watch?v=JJ3Od1RXgUw&list=PLS9_HdRCFIZ0
+  - HassDruck 5: buch drucken: Milan Hauth - Pallas. Wer sind meine Freunde. Gruppenaufbau nach Persönlichkeitstyp (2026-06-18)
+
 ## mirrors
 
 in the rare case that this project is censored, here are some mirror locations
