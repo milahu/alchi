@@ -1,0 +1,7 @@
+github dependabot keeps spamming alerts for unpinned dependencies
+https://github.com/milahu/alchi/security/dependabot
+which is unexpected
+because to me, "unpinned dependencies" means "use the latest versions of all dependencies"
+
+the actually installed dependencies can become old and broken
+but that is a different problem, not fixed by pinning package versions in package.json
