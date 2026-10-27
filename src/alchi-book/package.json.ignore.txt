@@ -5,3 +5,6 @@ because to me, "unpinned dependencies" means "use the latest versions of all dep
 
 the actually installed dependencies can become old and broken
 but that is a different problem, not fixed by pinning package versions in package.json
+
+todo: fix other dependabot alerts
+https://github.com/milahu/alchi/security/dependabot?q=-manifest%3Asrc%2Falchi-book%2Fpackage.json
