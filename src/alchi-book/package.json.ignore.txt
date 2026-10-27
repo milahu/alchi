@@ -1,5 +1,5 @@
 github dependabot keeps spamming alerts for unpinned dependencies
-https://github.com/milahu/alchi/security/dependabot
+https://github.com/milahu/alchi/security/dependabot?q=manifest%3Asrc%2Falchi-book%2Fpackage.json
 which is unexpected
 because to me, "unpinned dependencies" means "use the latest versions of all dependencies"
 
