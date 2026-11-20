@@ -13782,6 +13782,10 @@ textarea.form-control-lg {
 
         if (heading.classList.contains("notoc")) return;
 
+        // exclude hidden headings from the table of contents
+        // <details><h4>Hidden Heading</h4></details>
+        if (heading.closest("details")) return;
+
         const level = parseInt(heading.tagName.substring(1), 10);
 
         const section = heading.closest("section");
