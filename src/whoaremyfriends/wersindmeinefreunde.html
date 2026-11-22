@@ -25050,57 +25050,154 @@ no, this is not a section. every section must have a heading like <h2>, <h3>, <h
 
 <div id="printing-costs" class="para">
   Laserdrucker:
-  <a class="notranslate" href="https://geizhals.de/brother-hl-l5100dn-hll5100dng1-a1409933.html"
-  >Brother HL-L5100DN</a>.
-  Neupreis: 460 Euro.
+  <a class="notranslate" href="https://geizhals.de/brother-hl-l6250dn-hll6250dng1-a1391294.html"
+  >Brother HL-L6250DN</a>.
+  Preis: 300 Euro.
   Garantie: 3 Jahre.
-  Stromverbrauch: 700 Watt.
+  Stromverbrauch: 740 Watt.
   Maximum Duty Cycle: 50K Seiten pro Monat.
+  <!-- Brother HL-L5100DN: 104 A4 pages duplex / 344 seconds
+    = 18.139 A4 pages duplex / minute -->
+  <!-- Brother HL-L6250DN: TODO -->
+  Speed: 46 A4 Seiten / Minute.
+  Duplex Speed: 24 A4 Seiten / Minute.
+  Gewicht: 12,4 kg.
+  Papierzufuhr: 500 Blatt.
+  Papierausgabe: 150 Blatt.
+
+  <!--
+    https://store.brother.de/geraete/laser/hl/hll6250dn#specifications
+    Arbeitszyklus
+    Empfohlenes monatliches Volumen: Bis zu 5.000 Seiten
+
+    TODO Maximum Monthly Duty Cycle
+  -->
+  Recommended Duty Cycle: 5K A4 Seiten pro Monat.
+
   <!-- 50_000 * 12 * 3 = 1_800_000 -->
-  <!-- 460 / 1_800_000 * 100 = 0.0255 -->
-  Lebensdauer: 1,8M Seiten = 0,025 Cent pro Seite.
-  <!-- 24x TN-3480 # 211.89 / 24 = 8.82875 eur -->
-  <!-- 8.82875 / 7_200 * 100 == 0.12262152777777777 -->
-  <a href="https://www.ebay.de/itm/316185432727?var=614875395974"
-  >Toner: TN-3480</a>, 8,83 Euro / 7,2K Seiten = 0,123 Cent pro Seite.
+  <!-- FIXME 1.8M pages per printer is not realistic.
+    most of these printers need serious repairs after 200K pages
+    and i dont know how many of these repairs
+    are covered by the two-year warranty, or by the three-year warranty.
+    the 1.8M pages number is based on the "Maximum Duty Cycle" of 50K pages per month,
+    which means 50E3 / 20 / 60 = 41.666 hours per month
+    but "full load" means 40 hours per week = 160 hours per month...
+  -->
+  <!-- 300 / 1_800_000 * 100 = 0.0166 -->
+  Maximum Duty Cycle: 50K A4 Seiten pro Monat = 1,8M A4 Seiten über 3 Jahre.
+  Lebensdauer: 1,8M Seiten = 0,0166 Cent pro Seite.
+
+  <!-- 1.8E6 / 20 / 60 = 1500 Stunden Betrieb pro Drucker -->
+  <!-- 1.8E6 / 20 / 60 * 740 / 1000 * 0.50 = 555 -->
+  <!-- 560 / 1.8E6 = 0.0311 -->
+  Stromkosten: 560 Euro = 0,0311 Cent pro A4 Seite.
+  <!--
+    rätsel: die toner schaffen keine reichweite von 7,2K A4 seiten
+
+    eine teillösung für dieses rätsel ist meine relativ hohe deckung von 8%
+    (deckung: wie viel schwarz pro fläche)
+    (mein buch ist ziemlich "vollgestopft" mit text)
+
+    die angaben zur reichweite von toner rechnen mit einer deckung von nur 5%
+
+    also die reichweite (bei 8% deckung) sollte sein: 5 / 8 * 8000 = 5000
+    aber der toner schafft (bei 8% deckung) nur 3600 seiten: 3600 / 5000 = 72%
+    bei einer deckung von 5% wären das: 3600 / 5 * 8 = 5800
+    also circa 6000 / 8000 = 75%
+
+    mal sehn wie das weitergeht mit dem einkauf von toner...
+    bei meinem umsatz machen die 25% halt schon einen unterschied
+    also der händler soll mir entweder nen 25% rabatt geben (refund), oder 25% mehr toner schicken (reship)
+    (oder seine angabe zur reichweite korrigieren auf 6000 seiten)
+
+    andere toner-händler gibt es praktisch nicht, zumindest nicht auf ebay
+    da gibt es 5 verschiedene ebay accounts, aber das ist alles der gleiche händler (in Krefeld bei Düsseldorf)
+    (temquilifyh, cooltonereu, master-shop02, toner-ink-express, utility_store66)
+  -->
+  <!-- 32x TN-3480 # 252.76 / 32 = 7.89875 eur -->
+  <!-- 7.89875 / 3_600 * 100 == 0.21940972222222221 -->
+  <!-- 30x Eurotone TN-3512: 326.94 / (3 * 10) = 10.898 -->
+  <!-- Reichweite mit 8% Deckung und 30% Scam: 12_000 * 5/8 * 0.7 = 5250 -->
+  <!-- 10.898 / 5_000 * 100 = 0.21796 -->
+  <a href="https://www.ebay.de/sch/i.html?_sop=15&_udhi=150&_nkw=10x+Eurotone+TN+3512+-Nachfülltinte"
+  >Toner: Eurotone TN-3512</a>, 10,90 Euro / 5K A4 Seiten (8% Deckung) = 0,22 Cent pro A4 Seite.
+
   <!-- 24x DR-3400 # 289.62 / 24 = 12.0675 eur -->
   <!-- 12.0675 / 15_000 * 100 == 0.080 -->
+  <!-- TODO verify: reichweite von drums -->
   <a href="https://www.ebay.de/itm/316491700302?var=615038517795"
-  >Drum: DR-3400</a>, 12,07 Euro / 15K Seiten = 0,080 Cent pro Seite.
-  <!-- 1 palette = 600 kg = 120K blatt = 698.85 eur -->
-  <!-- 698.85 / 120_000 / 2 * 100 == 0.2911875 -->
+  >Drums: DR-3400</a>, 12,07 Euro / 15K A4 Seiten = 0,080 Cent pro A4 Seite.
+
+  <!-- 1 palette = 600 kg = 100K blatt = 616.53 eur -->
+  <!-- 616.53 / 100_000 / 2 * 100 == 0.308265 -->
   <!-- +10% https://www.ebay.de/itm/364613935032 -->
-  <a href="https://kopierpapieronline.de/p/kopierpapier-go-copy-basic-pro-100-000-blatt-70g-weiss-1-palette-hoher-weissegrad-zuverlaessig-und-gut"
-  >Papier: Go Copy Basic Pro</a>, 70 g/m², 3 Euro / 500 Blatt = 0,3 Cent pro Seite.
+  <a href="https://kopierpapieronline.de/p/kopierpapier-go-copy-basic-pro-70g-100-000-blatt-1-pal-hoher-weissegrad-a-2-58eur-zzgl-mwst"
+  >Papier: Go Copy Basic Pro</a>, 70 g/m², 3 Euro / 500 Blatt = 0,3 Cent pro A4 Seite.
+
+  <!--
+  25 Bücher pro Stunde.
+  12,50 Euro pro Stunde.
+  104 A4 Seiten pro Buch.
+  12.50 * 100 / (25 * 104) = 0.4807
+  -->
+  Arbeit:
+  0,48 Cent pro A4 Seite.
+
+  <!-- TODO remove. this is covered by the printer warranty -->
   <!-- 90 / 30 / 100_000 * 100 = 0.003 -->
+  <!--
   <a
     href="https://www.ebay.de/itm/254253161128"
     title="3SET Fuser Film Sleeve Druck Roller Brother HL L5102 L5202 L6202 L6402 DCP L5502 - gzoffice"
-  >Fuser Sleeve + Roller</a>, 90 Euro / 3 Stück, 0,003 Cent pro Seite.
+  >Fuser Sleeve + Roller</a>, 90 Euro / 3 Stück, 0,003 Cent pro A4 Seite.
+  -->
+
+  <!-- TODO remove. this is covered by the printer warranty -->
   <!-- 20 / 40 / 100_000 * 100 = 0.0005 -->
+  <!--
   <a
     href="https://www.ebay.de/itm/326534539169"
     title="OEM-Hochtemperatur Fixier Fett Grease FY9-6022-00 für Canon Fixiereinheiten Fuse - printbaergmbh"
   >Fuser Grease: FY9-6022-00</a>, 20 Gramm = 40 Fuser Rebuilds
   (Fix: vertikale Falten im Drucker Output),
-  20 Euro, 0,0005 Cent pro Seite.
+  20 Euro, 0,0005 Cent pro A4 Seite.
+  -->
 
 
 
+  <!-- TODO remove? -->
   <!-- fix print layout -->
   <br>
 
 
 
-  <!-- 0.025 + 0.123 + 0.080 + 0.3 + 0.003 + 0.0005 -->
-  &rarr; Druckkosten: circa 0,53 Cent pro A4 Seite
-  = 0,55 Euro pro Heft mit 208 A5 Seiten.
-  Speed: 40 Seiten / Minute.
-  Duplex Speed: 20 Seiten / Minute.
-  Gewicht: 10 kg.
-  Papierzufuhr: 250 Blatt.
-  Papierausgabe: 150 Blatt.
-  Recommended Duty Cycle: 3K Seiten pro Monat.
+  <!-- druckkosten in cent pro A4 seite:
+  arbeit: 0.48
+
+  material:
+  papier: 0.3
+  toner: 0.22
+  drums: 0.08
+  strom: 0.0311
+  drucker: 0.0166
+  0.3 + 0.22 + 0.08 + 0.0311 + 0.0166 = 0.6477
+
+  arbeit + material:
+  0.48 + 0.3 + 0.22 + 0.08 + 0.0311 + 0.0166 = 1.1277
+
+  relative kosten:
+  arbeit: 0.48 / 1.1277 = 42%
+  papier: 0.3 / 1.1277 = 26%
+  toner: 0.22 / 1.1277 = 19%
+  drums: 0.08 / 1.1277 = 7%
+  strom: 0.0311 / 1.1277 = 2.7%
+  drucker: 0.0166 / 1.1277 = 1.4%
+  -->
+
+  &rarr; Druckkosten: circa 1,13 Cent pro A4 Seite
+
+  <!-- 1.1277 * 104 = 117.2808 -->
+  = 1,20 Euro pro Heft mit 208 A5 Seiten.
 </div>
 
 <div class="para">
