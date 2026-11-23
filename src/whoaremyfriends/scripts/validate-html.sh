@@ -14,4 +14,9 @@ html_validate="$PWD/node_modules/html-validate/bin/html-validate.mjs"
 config="$PWD/htmlvalidate.config.json"
 
 cd ..
+
+set -x
+
+# exec "$html_validate" foo.html
+# exec "$html_validate" --config="$config" foo.html
 exec "$html_validate" --config="$config" wersindmeinefreunde.html whoaremyfriends.html

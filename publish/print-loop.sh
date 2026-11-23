@@ -19,6 +19,10 @@ pdf="$1"
 echo "pdf: $pdf"
 
 printer_nums="1                 10 11 12 13 14 15 16 17 18 19"
+printer_nums="1 2 3             10 11 12 13 14 15    17 18 19"
+printer_nums="                  10 11    13 14 15    17 18 19 20 21 22 23 24"
+printer_nums="                                       17    19 20 21 22 23 24 25 26 27 28" # restore: 19
+printer_nums="                                                20    22 23 24 25 26    28"
 
 # options=(-o sides=two-sided-short-edge -o PageSize=A4 -o PrintQuality=600dpi)
 options=(-o sides=two-sided-long-edge -o PageSize=A4 -o PrintQuality=600dpi)

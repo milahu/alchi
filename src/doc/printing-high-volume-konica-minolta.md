@@ -782,6 +782,8 @@ FS-536SD Booklet finisher: 50-sheet staple finisher, 20-sheet booklet finisher, 
 FS-537 Staple finisher: 100-sheet stapling, 3,200 sheets max. output
 FS-537SD Booklet finisher: 100-sheet stapling, 20-sheet booklet finisher, 2,500 sheets max. output
 
+TODO FS-527 - Heftkapazität 50 Blatt - Ausgabekapazität 3.200 Blatt
+
 ### Konica Minolta bizhub 654e
 
 65 ppm
@@ -971,6 +973,81 @@ Punch kit for FS-532 PK-522
 Post inserter for FS-532 PI-502
 Envelop fuser EF-102
 Removable HDD Kit RH-101 & HD-511
+
+#### AccurioPrint 950i
+
+https://www.konicaminolta.de/de-de/produktionsdrucker/accurioprint-850i-950i
+
+- Systemgewicht: Ca. 202 kg (einschl. ADF)
+  - TODO wie klein kann man das zerlegen zum transport durchs treppenhaus
+- Abmessungen (B x T x H): 670 x 820 x 1227 mm (einschl. ADF)
+  - TODO wie viel platz hab ich im keller
+- Systemgeschwindigkeit A4: Bis zu 95 Seiten/Min.
+- Autoduplexgeschwindigkeit A4: Bis zu 95 Seiten/Min.
+  - 95 Seiten/Minute = 5700 Seiten/Stunde = 66 sekunden/buch (208 seiten A5 = 104 seiten A4 = 52 blatt A4)
+  - 436 Bücher / 8 Stunden (Tag) = 2K Bücher / 40 Stunden (Woche) = 8K Bücher / 160 Stunden (Monat) = 100K Bücher / Jahr
+- Tonertechnologie: Simitri® HD-Polymerisationstoner
+- Papiereingabekapazität: 3.650 Blatt/6.650 Blatt (Standard/max.)
+  - 6.650 Blatt = 128 bücher -> 2,4 stunden
+- Heftung: Bis zu 100 Blatt oder 98 Blatt + 2 Deckblätter (max. 300 g/m²)
+- Ausgabekapazität Heften: Max. 200 Sätze
+  - 200 bücher -> 3,6 stunden
+- Leistungsaufnahme: 220–240 V/50/60 Hz, weniger als 2,4 kW
+  - TODO stromanschluss: einphasig oder dreiphasig
+  - TODO welche stromleistung habe ich im keller? welche sicherung?
+- LU-303 Großraumkassette: 3.000 Blatt, A4, 52–256 g/m²
+- FS-539 Heftfinisher: 50-Blatt-Heftung, max. Ausgabe: 3.200 Blatt
+  - TODO kann der finisher 2 klammern in die blattmitte setzen?
+  - TODO 50 blatt 80g/m2 = 52 blatt 70g/m2 (?)
+- FS-539SD Broschürenfinisher: Heftkapazität 50 Blatt, Broschürenfinisher für 20 Blatt;Ausgabekapazität maximal 2.200 Blatt
+- FS-540 Heftfinisher: 100-Blatt-Heftung, max. Ausgabe: 3.200 Blatt
+- FS-540SD Broschürenfinisher: Heftkapazität 100 Blatt, Broschürenfinisher für 20 Blatt;Ausgabekapazität maximal 2.700 Blatt
+- RU-515 Verbindungseinheit: Benötigt für die Installation von FS-539(SD) oder FS-540(SD)
+
+#### AccurioPress 6272P
+
+https://www.konicaminolta.de/de-de/produktionsdrucker/accuriopress-6272p
+
+- Gewicht der Haupteinheit: 776 kg
+  - viel zu schwer für transport durchs treppenhaus, braucht ebenerdige lieferzufahrt (garage?)
+- Druckgeschwindigkeit von 272 (A4 Bilder/ Minute)
+  - "bilder"? = seiten?
+- Durchsatz mit mehr als 15.000 Seiten pro Stunde
+- Tandem-Technologie
+- Bis zu 272 DIN A4-Bilder pro Minute 
+- Heißklebe-Bindung für Bücher bis zu 30 mm
+  - TODO "perfect binding"?
+- Heften mit bis zu 100 Bögen 
+- Druckauflösung: 1,200 x 1,200 dpi
+
+#### AccurioPress 7136
+
+https://www.konicaminolta.de/de-de/produktionsdrucker/accuriopress-7136-series
+
+- Gewicht der Haupteinheit: 369 kg (AccurioPress 7136/7120)
+  - zu schwer für transport durchs treppenhaus, braucht ebenerdige lieferzufahrt (garage?)
+
+#### AccurioPress 7136P
+
+https://www.konicaminolta.de/de-de/produktionsdrucker/accuriopress-7136-series
+
+- Gewicht der Haupteinheit: 345 kg (AccurioPress 7136P)
+  - zu schwer für transport durchs treppenhaus, braucht ebenerdige lieferzufahrt (garage?)
+- Papiereingabekapazität: Max.: 18.000 Bögen
+- Abmessungen des Systems (BxTxH): 990 x 910 x 1.454 mm
+- A4 – max. pro Minute: 136 ppm
+
+#### AccurioPrint 2100
+
+https://www.konicaminolta.de/de-de/produktionsdrucker/accurioprint-2100#features
+
+- Gewicht Hauptsystem: 340 kg
+  - zu schwer für transport durchs treppenhaus, braucht ebenerdige lieferzufahrt (garage?)
+- Druckgeschwindigkeit bis zu 100 Bögen/Min. DIN A4
+  - "bögen"? = blätter?
+- Papiereingabekapazität: Standard: 3.000 BögenMax.: 9.000 Bögen
+- Abmessungen Hauptsystem (BxTxH): 990 x 910 x 1.460 mm
+- 1.200 dpi Druckauflösung
 
 #### AccurioPress 6120
 
@@ -1308,6 +1385,142 @@ Versatzausgabe
 
 inkl. Brückeneinheit (Relay Unit) und allen Anbauteilen
 inkl. Locher-Einheit PK520!
+
+### Konica Minolta bizhub PRESS 2250P
+
+https://www.ebay.de/itm/376877154575
+
+EUR 5.343,00
+
+1 x Konica Minolta Bizhub PRESS 2250P mit folgender Ausstattung:
+
+- inkl. 2x Paperdeck
+- inkl. Stacker LS-505
+
+Zählerstände:
+
+- Gesamt:	Ca. 34.784.268 Seiten
+
+https://kmbs.konicaminolta.us/products/predecessor-products/production-print-predecessor/predecessor-digital-press/bizhub-press-2250p/
+
+- 250 Impressions Per Minute
+- 6,000,000 Impressions Per Month
+- 18,000-sheet maximum paper capacity to handle the longest press runs with less reloading
+- Options for perfect-binding, saddle stitching and multi-folding
+- Paper input capacity Standard: 3,000 sheets Max.: 18,000 sheets
+- Paper output capacity Max.: 15,000 sheets (plus sub trays)
+- Productivity
+  - 8.5" x 11" Max. per minute 250 ppm duplex
+  - 8.5" x 11" Max. per hour 15,000 pph duplex
+- Options
+  - FS-532 100-sheet stapling finisher
+  - HM-102 Humidification unit for RU-509
+  - PB-503 Perfect binding unit
+  - RU-509 Decurling relay unit
+  - SD-506 Saddle stitch unit
+  - SD-513 Saddle stitch unit
+
+https://www.precisionroller.com/toner-cartridges-for-konica-minolta-bizhub-press-2250p/products.html
+
+Konica Minolta bizhub PRESS 2250P Specifications:
+
+- Introduction Date: 06/2014
+- MSRP: $212,960.00
+- Toner Cartridge Yield, Black: Estimated 137,000 @ 5%
+- Developer Yield, Black: Estimated 1,000,000 Pages
+- Drum Yield, Black: Estimated 1,000,000 Pages
+- Supported Page Size: Half-Letter, Letter, Legal, Ledger, Architectural
+- Print Speed, Black: 125
+- First Page Print Time: 2.8 sec
+- Paper Capacity: 18,000 Sheets
+- Monthly Duty Cycle: 6,000,000 Sheets
+- Two-Sided Printing: Auto
+
+toner
+
+```
+Konica Minolta A3VV130 (TN014) Black Toner Cartridge
+Konica Minolta A3VV130
+Konica Minolta TN014
+137,000 Page Yield
+https://www.precisionroller.com/toner-cartridges-for-konica-minolta-bizhub-press-2250p/details_74894.html
+100 USD
+https://www.ebay.de/itm/406266682634
+70 EUR
+70 / 137000 = 0.0005109489051094891 EUR/page
+```
+
+drum
+
+```
+Konica Minolta DR012 (A3VVP00) Drum
+Konica Minolta DR012
+Konica Minolta A3VVP00
+Yield: 1mil pages
+Part Number: DR-012 , DR012 , A3VVP00
+https://discountcopiercenter.com/black-drum-dr012-a3vvp00k/
+230 USD
+https://www.ebay.de/itm/406958765168
+130 EUR
+130 / 1E6 = 0.00013 EUR/page
+```
+
+developer
+
+```
+Konica Minolta G1687
+Konica Minolta DV-011
+Konica Minolta DV011
+Konica Minolta A0TH500
+bizhub PRESS 2250P Black Developer
+Konica Minolta bizhub PRESS Entwickler schwarz
+Yield: 1mil pages
+https://www.precisionroller.com/developers-for-konica-minolta-bizhub-press-2250p/details_68686.html
+Mfr Part #: Konica Minolta DV-011, DV011, A0TH500
+PR Order #: G1687
+https://www.ebay.de/itm/407001662628
+160 EUR
+160 / 1E6 = 0.00016 EUR/page
+```
+
+toner + drum + developer
+
+```
+70 / 137000 = 0.0005109489051094891 EUR/page
+130 / 1E6 = 0.00013 EUR/page
+160 / 1E6 = 0.00016 EUR/page
+0.0005109489051094891 + 0.00013 + 0.00016 = 0.0008009489051094891 EUR/page
+0.08009489051094891 EUR / 100 A4 pages
+```
+
+paper
+
+```
+https://kopierpapieronline.de/p/kopierpapier-go-copy-basic-pro-70g-100-000-blatt-1-pal-hoher-weissegrad-a-2-58eur-zzgl-mwst
+KOPIERPAPIER go copy BASIC PRO 70g 100.000 Blatt 1 Pal hoher Weißegrad a 2,58€ zzgl Mwst
+614,04 EUR
+614.04 / 200000 = 0.0030702 EUR/page
+0.30702 EUR / 100 A4 pages
+```
+
+Konica Minolta bizhub PRESS 2250P service manual
+
+https://printcopy.info/?mod=docs&brand=Konica-Minolta&prefix=BizHub+PRESS&gID=27795
+
+- Service manual in English: maintenance, repair, troubleshooting, error codes, service mode, adjustment
+- Parts catalog: parts list, parts numbers, exploded diagrams
+
+Version: Arrival date: 2016-04
+
+Unpacked size: 109 MB
+
+16 USD
+
+### Konica Minolta Perfect Binder PB-503
+
+https://www.ebay.de/itm/376623800162
+
+EUR 4.748,00
 
 ### Triumph Adler 5056i
 
